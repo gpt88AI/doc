@@ -50,21 +50,27 @@ const QUICK_CURL = `curl https://gpt88.cc/v1/chat/completions \\
     ]
   }'`
 
+const BASE_URL_SNIPPET = `# 只需要改这一行
+base_url = "https://gpt88.cc/v1"
+
+# model 按需切换，Claude / GPT / Gemini / DeepSeek 等都走同一个入口
+model = "claude-opus-4-7"`
+
 const FEATURES = [
   {
     icon: Globe,
-    title: '统一 API 网关',
-    desc: '一个 endpoint 聚合多家厂商和自托管模型，无需改 base_url。',
+    title: '一行 base_url',
+    desc: '把现有 OpenAI 兼容 SDK 的 base_url 指到 gpt88.cc/v1，业务代码基本不用动。',
   },
   {
     icon: Zap,
-    title: 'OpenAI Compatible',
-    desc: '完全兼容 OpenAI 协议，Python / Node / cURL 直接换 base_url 即可使用。',
+    title: '一个入口切全部模型',
+    desc: 'Claude、GPT、Gemini、DeepSeek、Qwen 等模型用同一套请求结构和鉴权方式。',
   },
   {
     icon: Boxes,
-    title: '多模型一站接入',
-    desc: 'Chat / Image / Video / Audio 全模态，主流模型即点即用。',
+    title: '多模态统一接入',
+    desc: 'Chat / Image / Video / Audio 统一管理，模型能力通过 model 字段自由切换。',
   },
   {
     icon: ShieldCheck,
@@ -84,9 +90,9 @@ const FEATURES = [
 ] as const
 
 const BULLETS = [
-  '兼容 OpenAI 协议，零重写迁移',
-  '聚合主流厂商：Anthropic / DeepSeek / Qwen / Moonshot 等',
-  '透明计费与用量统计，无隐藏字段',
+  '只改 base_url，不重写 SDK',
+  '一个 API Key 调用全部已开通模型',
+  '模型、线路、工具配置统一管理',
 ] as const
 
 export default function LandingPage() {
@@ -114,16 +120,41 @@ export default function LandingPage() {
 
           {/* 主标题 */}
           <h1 className="text-center text-4xl font-extrabold tracking-tight text-ink-50 sm:text-5xl lg:text-6xl">
-            一行 base_url，
+            一行 <code className="rounded-md border border-violet-400/30 bg-violet-400/10 px-2 py-0.5 font-mono text-[0.86em] text-violet-100">base_url</code>
             <br className="hidden sm:block" />
-            接入<span className="text-gradient-violet"> gpt88.cc </span>
-            全部模型
+            接入 <span className="text-gradient-violet">gpt88.cc</span> 全部模型
           </h1>
 
           <p className="mt-6 max-w-2xl text-center text-base text-ink-300 sm:text-lg">
-            gpt88.cc 是面向开发者的统一大模型 API 网关，提供 OpenAI 协议兼容的
-            Chat / Image / Video / Audio 能力，一份代码调用任意主流模型。
+            不再为每个模型、每家厂商、每个工具维护一套接入方式。把
+            <code className="mx-1 rounded bg-white/5 px-1.5 py-0.5 font-mono text-violet-200">base_url</code>
+            指向 gpt88.cc，再通过
+            <code className="mx-1 rounded bg-white/5 px-1.5 py-0.5 font-mono text-violet-200">model</code>
+            字段切换 Claude、GPT、Gemini、DeepSeek、Qwen 等模型。
           </p>
+
+          <div className="mt-7 grid w-full max-w-4xl gap-3 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-stretch">
+            <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-left">
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500">
+                Before
+              </div>
+              <p className="mt-2 text-sm text-ink-300">
+                不同厂商各有 endpoint、鉴权方式、SDK 参数和错误结构。
+              </p>
+            </div>
+            <div className="hidden items-center justify-center text-violet-300 sm:flex">
+              <ArrowRight className="h-5 w-5" />
+            </div>
+            <div className="rounded-lg border border-violet-500/35 bg-violet-500/10 p-4 text-left shadow-lg shadow-violet-900/20">
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-300">
+                After
+              </div>
+              <p className="mt-2 text-sm text-ink-100">
+                一行 <code className="font-mono text-violet-100">https://gpt88.cc/v1</code>，
+                用同一套协议接入全部已开通模型。
+              </p>
+            </div>
+          </div>
 
           {/* CTA 按钮组
            * Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。
@@ -168,7 +199,12 @@ export default function LandingPage() {
           </ul>
 
           {/* 首屏代码示例 */}
-          <div className="mt-14 w-full max-w-3xl">
+          <div className="mt-14 grid w-full max-w-5xl gap-4 lg:grid-cols-[0.86fr_1.14fr]">
+            <CodeBlock
+              code={BASE_URL_SNIPPET}
+              lang="python"
+              filename="config"
+            />
             <CodeBlock
               code={QUICK_CURL}
               lang="bash"
@@ -183,10 +219,10 @@ export default function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-semibold tracking-tight text-ink-50 sm:text-3xl">
-              为什么选择 gpt88.cc
+              从一行配置开始，后面都交给网关
             </h2>
             <p className="mt-3 text-sm text-ink-300">
-              我们把"接多模型"这件事做成了一行配置；其余精力你应该花在你的业务上。
+              你继续使用熟悉的 SDK、工具和请求结构，gpt88.cc 负责模型聚合、线路选择、用量记录和后续扩展。
             </p>
           </div>
 
