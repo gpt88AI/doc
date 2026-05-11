@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* gpt88.cc 文档站全局样式
+ * 视觉风格：深色技术文档（参考 derouter.ai/docs/api 风格）
+ * 主调：#0A0B10 极深底，叠加 violet/cyan 微光，强层次、分区清晰
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* 字体：避免 Inter 单一主字体；正文用 Manrope，代码用 JetBrains Mono */
+  --font-sans:
+    'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    monospace;
+
+  /* 文档站品牌色板（深色优先） */
+  --color-ink-50: #f5f7fb;
+  --color-ink-100: #e6eaf3;
+  --color-ink-200: #c5cbe0;
+  --color-ink-300: #9aa3c0;
+  --color-ink-400: #6f7a99;
+  --color-ink-500: #4d5572;
+  --color-ink-600: #2f3553;
+  --color-ink-700: #1f2540;
+  --color-ink-800: #161a30;
+  --color-ink-900: #0e1124;
+  --color-ink-950: #0a0b10;
+
+  /* 强调色：科技紫 + 青蓝 */
+  --color-accent-400: #a78bfa;
+  --color-accent-500: #8b5cf6;
+  --color-accent-600: #7c3aed;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+
+  /* 动画 */
+  --animate-fade-in: fade-in 0.25s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-glow: glow 6s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.8; }
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  /* 锚点跳转留出顶部导航的空间 */
+  scroll-padding-top: 5rem;
+}
+
+html.dark {
+  color-scheme: dark;
+  background-color: #0a0b10;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #e6eaf3;
+  background-color: #0a0b10;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+button,
+[role='button'],
+a,
+select,
+label[for],
+summary,
+[tabindex]:not([tabindex='-1']) {
+  cursor: pointer;
+}
+
+/* 选中态 */
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: #fff;
+}
+
+/* 网格背景：用于首屏背景层 */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.bg-grid-fade {
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 60% at 50% 30%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 60% 60% at 50% 30%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* 发光描边卡片：技术文档风 */
+.tech-card {
+  position: relative;
+  border-radius: 0.875rem;
+  background: linear-gradient(
+    180deg,
+    rgba(22, 26, 48, 0.55) 0%,
+    rgba(14, 17, 36, 0.55) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.tech-card-hover {
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tech-card-hover:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.15),
+    0 16px 40px -16px rgba(124, 58, 237, 0.45);
+  transform: translateY(-2px);
+}
+
+/* 渐变文字 */
+.text-gradient-violet {
+  background: linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ─── 代码块语法高亮（highlight.js）────────────────────── */
+.hljs {
+  color: #c9d1d9;
+  background: transparent;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: #ff7b72;
+}
+.hljs-string,
+.hljs-attr {
+  color: #a5d6ff;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #8b949e;
+  font-style: italic;
+}
+.hljs-number,
+.hljs-literal {
+  color: #79c0ff;
+}
+.hljs-function .hljs-title,
+.hljs-title.function_ {
+  color: #d2a8ff;
+}
+.hljs-type,
+.hljs-title.class_ {
+  color: #ffa657;
+}
+.hljs-variable,
+.hljs-template-variable {
+  color: #ffa657;
+}
+.hljs-meta {
+  color: #8b949e;
+}
+.hljs-tag,
+.hljs-name {
+  color: #7ee787;
+}
+.hljs-attribute {
+  color: #79c0ff;
+}
+.hljs-symbol,
+.hljs-bullet {
+  color: #79c0ff;
+}
+
+/* ─── 滚动条：细且不抢戏 ────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.18);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.4);
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
