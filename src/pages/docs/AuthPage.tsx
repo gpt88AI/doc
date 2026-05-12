@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
+import { FieldTable } from '../../components/ui/FieldTable'
 
 /**
  * 文档：认证与计费
@@ -26,6 +27,21 @@ const ROTATE = `# 1. 在控制台创建新 Key（标注用途，例如 web-prod-
 # 3. 应用读取顺序：优先 NEXT，回退老 Key（双 Key 阶段）
 # 4. 监控指标全部稳定后，把新 Key 改回 GPT88_API_KEY，删除老 Key`
 
+const BILLING_COMPARE = [
+  {
+    name: '传统中转站',
+    type: '积分盘 / 虚拟额度',
+    required: false,
+    description: '充值后先换成虚拟额度、刀或积分，不同模型再乘倍率，用户需要自己换算真实成本。',
+  },
+  {
+    name: 'gpt88.cc',
+    type: '人民币余额 / Token 电力',
+    required: true,
+    description: '充值 1 元就是账户 1 元余额，模型实际消耗多少就扣多少，成本以人民币清晰呈现。',
+  },
+]
+
 export default function AuthPage() {
   return (
     <DocPage
@@ -38,6 +54,8 @@ export default function AuthPage() {
         { id: 'security', text: '密钥安全', level: 2 },
         { id: 'rotation', text: '密钥轮换', level: 2 },
         { id: 'billing', text: '用量与计费', level: 2 },
+        { id: 'token-power', text: 'AI 电网与 Token 电力', level: 2 },
+        { id: 'billing-questions', text: '用户常问：倍率、额度、积分', level: 2 },
         { id: 'limits', text: '限速与配额', level: 2 },
         { id: 'sla', text: 'SLA 与状态', level: 2 },
       ]}
@@ -95,6 +113,79 @@ export default function AuthPage() {
           可以用于客户端侧的成本预估与告警。
         </p>
       </Callout>
+
+      <h2 id="token-power">AI 电网与 Token 电力</h2>
+      <p>
+        很多用户从其他中转站迁移过来时，会习惯先问：
+        <strong>倍率多少</strong>、<strong>1 块等于多少刀</strong>、
+        <strong>额度怎么算</strong>、<strong>有没有积分体系</strong>。
+        gpt88.cc 的计费思路和传统「积分盘」不太一样。我们更愿意把它理解成
+        <strong>AI 电网</strong>：Token 就像 AI 世界里的电力，按真实消耗计费，而不是先把人民币换成一层空气积分。
+      </p>
+
+      <div className="my-6 rounded-xl border border-sky-400/20 bg-sky-400/[0.06] p-5">
+        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-300">
+          AI Grid
+        </div>
+        <p className="mt-2 text-lg font-semibold text-ink-50">
+          我们卖的不是「积分」，而是稳定的 AI Token 电力。
+        </p>
+        <p className="mt-2 text-sm leading-7 text-ink-300">
+          就像用电按度计费、用水按吨计费，AI 使用也应该回到真实资源消耗：
+          你实际用了多少 Token，就清楚看到花了多少钱。
+        </p>
+      </div>
+
+      <FieldTable
+        rows={BILLING_COMPARE}
+      />
+
+      <h3 id="billing-model">我们的计费方式</h3>
+      <ul>
+        <li>
+          <strong>按人民币真实计价</strong>：充值 1 元 = 账户 1 元余额。
+        </li>
+        <li>
+          <strong>按模型实际消耗扣费</strong>：模型实际消耗多少 Token，就按对应实时单价扣多少。
+        </li>
+        <li>
+          <strong>不玩复杂倍率</strong>：不需要研究 0.5x、2x、组倍率或虚拟额度换算。
+        </li>
+        <li>
+          <strong>成本透明可追踪</strong>：每次请求都能看到 token usage，用量、扣费和排障都围绕真实数据展开。
+        </li>
+      </ul>
+
+      <Callout tone="info" title="像看电费一样看 AI 成本">
+        <p>
+          家里用电时，你不会问「电的倍率是多少」，只会看用了多少度电、花了多少钱。
+          AI 未来也会越来越像这样：Token 是 AI 的电力，账户余额是你的电费余额。
+        </p>
+      </Callout>
+
+      <h2 id="billing-questions">用户常问：倍率、额度、积分</h2>
+      <p>
+        如果你之前使用的是「充值 → 换额度 / 刀 / 积分 → 再按模型倍率扣除」的中转站，
+        可以用下面的方式理解 gpt88.cc：
+      </p>
+      <ul>
+        <li>
+          <strong>你们倍率多少？</strong>
+          没有传统积分盘里的复杂倍率。不同模型有不同实际单价，最终以人民币余额扣费。
+        </li>
+        <li>
+          <strong>1 块等于多少刀？</strong>
+          1 元就是账户 1 元余额，不再先折算成虚拟美元额度或空气积分。
+        </li>
+        <li>
+          <strong>额度怎么算？</strong>
+          额度就是人民币余额和模型实际消耗。看 Token 用量、看人民币扣费，不需要二次换算。
+        </li>
+        <li>
+          <strong>有没有积分体系？</strong>
+          核心计费不依赖积分体系。我们更偏向「电费模式」：透明、简单、可长期开发。
+        </li>
+      </ul>
 
       <h2 id="limits">限速与配额</h2>
       <Callout tone="warn" title="限速由控制台配置，本文档不固化数字">
