@@ -72,6 +72,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '对话补全主接口',
       },
       {
+        title: 'POST /v1/images/generations',
+        path: '/docs/api/images',
+        blurb: '图片生成接口，支持文生图与图生图',
+      },
+      {
         title: 'GET /v1/models',
         path: '/docs/api/list-models',
         blurb: '列出可用模型',

@@ -15,7 +15,7 @@ import {
   Tag,
   Target,
 } from 'lucide-react'
-import { CodeTabs } from '../components/ui/CodeTabs'
+import { CodeTabs, type CodeTab } from '../components/ui/CodeTabs'
 import { CodeBlock } from '../components/ui/CodeBlock'
 import { Callout } from '../components/ui/Callout'
 import { EndpointBadge } from '../components/ui/EndpointBadge'
@@ -253,7 +253,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
 
             {/* 请求示例 */}
             <Section icon={Cpu} title="请求示例">
-              <CodeTabs tabs={model.examples} />
+              <ModelRequestExamples model={model} />
               <Callout tone="warn" title="价格、限速、SLA 不在此页固化">
                 <p>
                   不同模型的单价、并发上限、限速、SLA 与可用上下文，会随账号等级与控制台配置动态调整。
@@ -469,6 +469,62 @@ function Section({
       </div>
       {children}
     </section>
+  )
+}
+
+function ModelRequestExamples({ model }: { model: ModelEntry }) {
+  if (model.category !== 'image') {
+    return <CodeTabs tabs={model.examples} />
+  }
+
+  const textToImageTabs = model.examples.filter(tab => tab.label.startsWith('文生图'))
+  const imageToImageTabs = model.examples.filter(tab => tab.label.startsWith('图生图'))
+
+  if (textToImageTabs.length === 0 || imageToImageTabs.length === 0) {
+    return <CodeTabs tabs={model.examples} />
+  }
+
+  return (
+    <div className="space-y-6">
+      <ExampleGroup
+        title="文生图"
+        description="只传 prompt，由模型直接生成一张新图片。"
+        tabs={textToImageTabs}
+      />
+      <ExampleGroup
+        title="图生图"
+        description="传入 image_urls 作为参考图，在保留主体或风格的基础上继续生成。"
+        tabs={imageToImageTabs}
+        highlighted
+      />
+    </div>
+  )
+}
+
+function ExampleGroup({
+  title,
+  description,
+  tabs,
+  highlighted = false,
+}: {
+  title: string
+  description: string
+  tabs: CodeTab[]
+  highlighted?: boolean
+}) {
+  return (
+    <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <h3 className="text-sm font-semibold text-ink-100">{title}</h3>
+        {highlighted ? (
+          <span className="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-2 py-0.5 text-[11px] font-medium text-cyan-200">
+            参考图生成
+          </span>
+        ) : null}
+      </div>
+      <p className="mt-1 text-xs leading-relaxed text-ink-400">{description}</p>
+      <CodeTabs tabs={tabs} className="mb-0 mt-3" />
+    </div>
   )
 }
 

@@ -8,6 +8,7 @@ import AuthPage from './pages/docs/AuthPage'
 import FaqPage from './pages/docs/FaqPage'
 import ChatCompletionsPage from './pages/docs/api/ChatCompletionsPage'
 import ListModelsPage from './pages/docs/api/ListModelsPage'
+import ImagesPage from './pages/docs/api/ImagesPage'
 import ErrorsPage from './pages/docs/api/ErrorsPage'
 import CurlSdkPage from './pages/docs/sdk/CurlPage'
 import PythonSdkPage from './pages/docs/sdk/PythonPage'
@@ -49,6 +50,7 @@ export default function App() {
 
           {/* API Reference */}
           <Route path="api/chat-completions" element={<ChatCompletionsPage />} />
+          <Route path="api/images" element={<ImagesPage />} />
           <Route path="api/list-models" element={<ListModelsPage />} />
           <Route path="api/errors" element={<ErrorsPage />} />
 
