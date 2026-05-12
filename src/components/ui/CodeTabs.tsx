@@ -51,14 +51,14 @@ export function CodeTabs({
     >
       {/* 顶部 Tab 条 */}
       <div className="flex items-center justify-between border-b border-white/5 bg-white/[0.02] pl-1 pr-2">
-        <div className="flex items-center">
+        <div className="flex min-w-0 flex-1 items-center overflow-x-auto">
           {tabs.map((t, i) => (
             <button
               key={t.label}
               type="button"
               onClick={() => setIdx(i)}
               className={cn(
-                'relative px-3 py-1.5 text-xs font-medium transition-colors',
+                'relative shrink-0 px-3 py-1.5 text-xs font-medium transition-colors',
                 i === idx
                   ? 'text-violet-200'
                   : 'text-ink-400 hover:text-ink-200',

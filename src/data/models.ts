@@ -53,7 +53,7 @@ export type ModelEntry = {
   slug: string
   /** 展示名 */
   name: string
-  /** 调用 API 时 body.model 写的字符串（snapshot.canonical_name 原值） */
+  /** 调用 API 时 body.model 写的字符串；少数市场别名会保留官方大小写 */
   modelId: string
   /** Provider 推断结果，无法识别时显示 "未知" */
   provider: string
@@ -759,6 +759,38 @@ function endpointFromCategory(category: string): ModelEndpoint {
   }
 }
 
+/*
+ * marketplace 快照里的 canonical_name 偏向机器归一化；少数模型真实可调用的
+ * body.model 需要保留官方大小写。例如 NanoBanana2 如果写成 nanobanana2，
+ * 用户复制示例后会因为模型 ID 大小写不一致而失败。
+ */
+const API_MODEL_ID_OVERRIDES: Record<string, string> = {
+  nanobanana2: 'NanoBanana2',
+}
+
+function apiModelIdFromRow(row: CatalogRow): string {
+  return API_MODEL_ID_OVERRIDES[row.canonical_name] ?? row.canonical_name
+}
+
+const IMAGE_SIZE_RATIOS = [
+  '16:9',
+  '1:1',
+  '21:9',
+  '2:3',
+  '3:2',
+  '3:4',
+  '4:3',
+  '4:5',
+  '5:4',
+  '9:16',
+  'auto',
+]
+
+function usesRatioImageSize(modelId: string): boolean {
+  const id = modelId.toLowerCase()
+  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
+}
+
 /* ──────────────────────────────────────────────────────────────────
  * 长尾模型详情模板生成器
  *
@@ -908,6 +940,11 @@ function buildLongTailDetail(
     '价格、限速、SLA、上下文长度、是否开放多模态等动态值以 gpt88.cc 控制台为准。',
     '如果当前线路延迟偏高或连接不稳定，可切换到中国调用 / 海外全球加速等价端点重新测试。',
   ]
+  if (model.category === 'image' && usesRatioImageSize(model.modelId)) {
+    caveats.unshift(
+      `该图像模型使用 size 控制画幅比例，支持 ${IMAGE_SIZE_RATIOS.join(' / ')}；不要传 "1024x1024" 这类像素尺寸，推荐同时传 resolution，例如 "1K"。`,
+    )
+  }
   if (hints.thinking) {
     caveats.unshift('thinking 变体通常更偏深度推理，实际延迟可能高于普通版本；是否值得切换请结合真实任务验证。')
   } else if (hints.flash || hints.mini) {
@@ -935,55 +972,136 @@ function buildLongTailDetail(
 
 function buildExamples(modelId: string, endpoint: ModelEndpoint): ModelExample[] {
   if (endpoint.path === '/v1/images/generations') {
+    const ratioSizeModel = usesRatioImageSize(modelId)
+    const prompt = ratioSizeModel ? '月光下的竹林小径' : '极简风格的 API 文档站封面'
+    const editPrompt = ratioSizeModel
+      ? '保留参考图主体，将背景改成月光下的竹林小径'
+      : '保留参考图主体，改成极简 API 文档站封面风格'
+    const imageParamsJson = ratioSizeModel
+      ? `    "size": "1:1",
+    "resolution": "1K",
+    "n": 1`
+      : `    "size": "1024x1024",
+    "n": 1`
+    const imagePayloadPython = ratioSizeModel
+      ? `        "size": "1:1",
+        "resolution": "1K",
+        "n": 1,`
+      : `        "size": "1024x1024",
+        "n": 1,`
+    const imagePayloadNode = ratioSizeModel
+      ? `    size: "1:1",
+    resolution: "1K",
+    n: 1,`
+      : `    size: "1024x1024",
+    n: 1,`
     return [
       {
-        label: 'cURL',
+        label: '文生图 cURL',
         lang: 'bash',
         code: `curl https://gpt88.cc${endpoint.path} \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "model": "${modelId}",
-    "prompt": "极简风格的 API 文档站封面",
-    "size": "1024x1024",
-    "n": 1
+    "prompt": "${prompt}",
+${imageParamsJson}
   }'`,
       },
       {
-        label: 'Python',
+        label: '文生图 Python',
         lang: 'python',
-        code: `from openai import OpenAI
+        code: `import requests
 
-client = OpenAI(
-    base_url="https://gpt88.cc/v1",
-    api_key="YOUR_GPT88_API_KEY",
+resp = requests.post(
+    "https://gpt88.cc${endpoint.path}",
+    headers={
+        "Authorization": "Bearer YOUR_GPT88_API_KEY",
+        "Content-Type": "application/json",
+    },
+    json={
+        "model": "${modelId}",
+        "prompt": "${prompt}",
+${imagePayloadPython}
+    },
 )
-
-resp = client.images.generate(
-    model="${modelId}",
-    prompt="极简风格的 API 文档站封面",
-    size="1024x1024",
-    n=1,
-)
-print(resp.data[0].url)`,
+print(resp.json())`,
       },
       {
-        label: 'Node.js',
+        label: '文生图 Node.js',
         lang: 'typescript',
-        code: `import OpenAI from "openai";
-
-const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
-  apiKey: process.env.GPT88_API_KEY,
+        code: `const resp = await fetch("https://gpt88.cc${endpoint.path}", {
+  method: "POST",
+  headers: {
+    Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: "${modelId}",
+    prompt: "${prompt}",
+${imagePayloadNode}
+  }),
 });
 
-const resp = await client.images.generate({
-  model: "${modelId}",
-  prompt: "极简风格的 API 文档站封面",
-  size: "1024x1024",
-  n: 1,
+console.log(await resp.json());`,
+      },
+      {
+        label: '图生图 cURL',
+        lang: 'bash',
+        code: `curl https://gpt88.cc${endpoint.path} \\
+  -H "Authorization: Bearer $GPT88_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "${modelId}",
+    "prompt": "${editPrompt}",
+    "image_urls": [
+      "https://example.com/reference.png"
+    ],
+${imageParamsJson}
+  }'`,
+      },
+      {
+        label: '图生图 Python',
+        lang: 'python',
+        code: `import requests
+
+resp = requests.post(
+    "https://gpt88.cc${endpoint.path}",
+    headers={
+        "Authorization": "Bearer YOUR_GPT88_API_KEY",
+        "Content-Type": "application/json",
+    },
+    json={
+        "model": "${modelId}",
+        "prompt": "${editPrompt}",
+        "image_urls": [
+            "https://example.com/reference.png",
+        ],
+${imagePayloadPython}
+    },
+)
+print(resp.json())`,
+      },
+      {
+        label: '图生图 Node.js',
+        lang: 'typescript',
+        code: `const resp = await fetch("https://gpt88.cc${endpoint.path}", {
+  method: "POST",
+  headers: {
+    Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: "${modelId}",
+    prompt: "${editPrompt}",
+    image_urls: [
+      "https://example.com/reference.png",
+    ],
+${imagePayloadNode}
+  }),
 });
-console.log(resp.data[0].url);`,
+
+console.log(await resp.json());`,
       },
     ]
   }
@@ -1236,6 +1354,7 @@ function buildCatalog(): ModelEntry[] {
     const normalizedCategory: ModelCategory =
       picked.category === 'completion' ? 'chat' : (picked.category as ModelCategory)
     const slug = canonicalToSlug(picked.canonical_name)
+    const apiModelId = apiModelIdFromRow(picked)
     const featured = (FEATURED_SLUGS as readonly string[]).includes(slug)
     /*
      * 注意：detail 的查找解耦了 featured 标记。
@@ -1247,7 +1366,7 @@ function buildCatalog(): ModelEntry[] {
     const detail = FEATURED_DETAILS[slug]
     const longTailDetail = buildLongTailDetail({
       slug,
-      modelId: picked.canonical_name,
+      modelId: apiModelId,
       name: picked.display_name,
       provider: detail?.provider ?? inferProvider(picked.canonical_name, picked.display_name),
       category: normalizedCategory,
@@ -1279,7 +1398,7 @@ function buildCatalog(): ModelEntry[] {
     entries.push({
       slug,
       name: picked.display_name,
-      modelId: picked.canonical_name,
+      modelId: apiModelId,
       provider,
       category: normalizedCategory,
       featured,
@@ -1292,7 +1411,7 @@ function buildCatalog(): ModelEntry[] {
       caveats: detail?.caveats ?? longTailDetail.caveats,
       vendorsCount: list.reduce((sum, r) => sum + r.vendors_count, 0),
       endpoint,
-      examples: buildExamples(picked.canonical_name, endpoint),
+      examples: buildExamples(apiModelId, endpoint),
       descriptionsSample: picked.descriptions_sample,
     })
   }
