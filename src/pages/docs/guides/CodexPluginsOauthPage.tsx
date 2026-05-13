@@ -98,6 +98,31 @@ unset ANTHROPIC_BASE_URL
 # 如果你把这些变量写在 ~/.zshrc、~/.bashrc、~/.profile 或工具配置里，
 # 也需要同步删除或注释掉，然后重启终端 / Codex。`
 
+const RECONNECTING_PROXY_FIX = `# 1. 先确认你的代理地址。下面只是示例，请改成自己的本地代理端口。
+export HTTP_PROXY="http://127.0.0.1:7890"
+export HTTPS_PROXY="http://127.0.0.1:7890"
+export ALL_PROXY="socks5://127.0.0.1:7890"
+
+# 2. Codex 新会话可能使用 wss:// WebSocket 连接，也要补上 WebSocket 代理。
+export WS_PROXY="http://127.0.0.1:7890"
+export WSS_PROXY="http://127.0.0.1:7890"
+
+# 3. 写入 ~/.codex/config.toml，让 Codex 子进程也能读到代理。
+# 如果已有 config.toml，请把 [env] 段合并进去，不要覆盖原文件。
+[env]
+HTTP_PROXY = "http://127.0.0.1:7890"
+HTTPS_PROXY = "http://127.0.0.1:7890"
+ALL_PROXY = "socks5://127.0.0.1:7890"
+WS_PROXY = "http://127.0.0.1:7890"
+WSS_PROXY = "http://127.0.0.1:7890"
+
+# 4. macOS 图形界面启动的 Codex Desktop 还需要写入 launchctl 环境。
+launchctl setenv HTTP_PROXY "http://127.0.0.1:7890"
+launchctl setenv HTTPS_PROXY "http://127.0.0.1:7890"
+launchctl setenv ALL_PROXY "socks5://127.0.0.1:7890"
+launchctl setenv WS_PROXY "http://127.0.0.1:7890"
+launchctl setenv WSS_PROXY "http://127.0.0.1:7890"`
+
 const DUAL_PROFILE = `推荐保留两个配置：
 
 profile: gpt88-api
@@ -175,6 +200,7 @@ export default function CodexPluginsOauthPage() {
         { id: 'verify', text: '验证插件是否恢复', level: 2 },
         { id: 'two-profiles', text: '推荐保留双配置', level: 2 },
         { id: 'troubleshooting', text: '常见问题排查', level: 2 },
+        { id: 'reconnecting', text: '新会话反复 Reconnecting 1/5', level: 3 },
         { id: 'references', text: '官方参考', level: 2 },
       ]}
     >
@@ -377,6 +403,27 @@ export default function CodexPluginsOauthPage() {
         <li>需要 Codex 插件、App、ChatGPT 账号权益：用 ChatGPT OAuth。</li>
         <li>两者都需要：在 CC Switch 里建两个 profile，按任务切换。</li>
       </ul>
+
+      <h3 id="reconnecting">5. 新会话每次都反复 Reconnecting 1/5 到 5/5</h3>
+      <p>
+        如果 Codex 每次开启新会话都会出现 <code>Reconnecting... 1/5</code>、
+        <code>2/5</code>、<code>3/5</code> 直到多次重连，通常不是 OAuth 本身坏了，
+        而是 Codex 的连接链路没有完整吃到代理。尤其是新会话可能走
+        <code>wss://</code> WebSocket 连接，只配置 <code>HTTP_PROXY</code> 和
+        <code>HTTPS_PROXY</code> 可能不够。
+      </p>
+      <CodeBlock lang="toml" filename="proxy checklist" code={RECONNECTING_PROXY_FIX} />
+      <Callout tone="warn" title="设置后必须完全退出 Codex 再重开">
+        <p>
+          不要只是关闭窗口。需要从菜单或 Dock 里彻底退出 Codex，让旧进程结束，
+          再重新打开。否则旧进程不会自动继承新的代理环境。
+        </p>
+      </Callout>
+      <p>
+        核心思路是同时覆盖三层：HTTP 代理、WebSocket 代理，以及 Codex Desktop
+        从 macOS 图形界面启动时能读取到的 <code>launchctl</code> 环境。
+        如果你使用的代理不是 <code>127.0.0.1:7890</code>，请替换成自己的代理地址。
+      </p>
 
       <h2 id="references">官方参考</h2>
       <ul>
