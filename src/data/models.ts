@@ -139,6 +139,35 @@ type FeaturedDetail = {
 }
 
 const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
+  // slug=nanobanana2 ←→ modelId=NanoBanana2
+  // Google Gemini 3 Pro Image Preview 的模型别名，走 Gemini 原生 generateContent 图片接口。
+  nanobanana2: {
+    provider: 'Google',
+    tagline: 'Google Gemini 3 Pro Image Preview 的图片生成入口，走 generateContent 并支持 1K/2K/4K 输出。',
+    capabilities: ['Google Gemini', '文生图', '图生图', '4K 输出'],
+    scenarios: ['视觉素材生成', '图像编辑', '产品概念图', '社媒配图'],
+    overview: [
+      'NanoBanana2 是基于 Google Gemini 3 Pro Image Preview 的图片生成模型入口，在 gpt88.cc 中按 Google/Gemini 原生兼容方式调用。',
+      '它使用 contents、parts 与 generationConfig.imageConfig 描述提示词、参考图、画幅比例和输出清晰度，返回图片通常在 inlineData.data 中。',
+    ],
+    whenToUse: [
+      '需要快速生成海报、电商图、概念图、社媒配图等视觉素材时',
+      '需要通过 fileData.fileUri 传参考图做图生图或局部风格迁移时',
+      '希望使用 Google Gemini 图片能力，并保持与官方 generateContent 结构一致时',
+      '需要 1K、2K、4K 这类清晰度控制时',
+    ],
+    integrationNotes: [
+      '推荐走加速域名 https://china.claudecoder.me，并调用 /v1beta/models/NanoBanana2:generateContent。',
+      '模型 ID 写在路径里，必须保持 NanoBanana2 的大小写一致。',
+      '请求体使用 Gemini 原生 contents / generationConfig 结构；如果 Authorization: Bearer 返回 401，可改用 x-goog-api-key 重试。',
+    ],
+    caveats: [
+      'imageConfig.aspectRatio 表示画幅比例，例如 1:1、16:9、9:16、4:3、3:4、auto；不要传 1024x1024 这类像素尺寸。',
+      'imageConfig.imageSize 使用 1K、2K、4K 这类大写值；具体可用范围以控制台为准。',
+      '价格、限速、可用线路与返回格式以 gpt88.cc 控制台当前配置为准。',
+    ],
+  },
+
   // ── 主推 8 个（FEATURED_SLUGS 决定置顶顺序） ──────────────────────
   // slug=claude-opus-4-7 ←→ modelId=claude-opus-4-7
   'claude-opus-4-7': {
@@ -800,7 +829,7 @@ function usesRatioImageSize(modelId: string): boolean {
 
 function usesGeminiGenerateContentImage(modelId: string): boolean {
   const id = modelId.toLowerCase()
-  return id === 'gemini-3-pro-image-preview'
+  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
 }
 
 /* ──────────────────────────────────────────────────────────────────
@@ -934,10 +963,16 @@ function buildLongTailDetail(
       break
   }
 
-  const integrationNotes = [
-    `OpenAI 风格工具优先从 https://gpt88.cc${model.endpoint.path.startsWith('/v1') ? '/v1' : ''} 起步；Claude 风格工具优先使用根地址。`,
-    `第一次接入时，建议先用一条最小请求验证 API Key、模型名 ${model.modelId} 和当前线路是否匹配。`,
-  ]
+  const integrationNotes = usesGeminiGenerateContentImage(model.modelId)
+    ? [
+        'Google/Gemini 图片模型请优先使用加速根地址 https://china.claudecoder.me。',
+        `第一次接入时，建议先用 ${model.endpoint.path} 验证 API Key、模型名 ${model.modelId} 和当前线路是否匹配。`,
+        '请求体使用 Gemini 原生 contents / generationConfig 结构，返回图片通常在 inlineData.data 中。',
+      ]
+    : [
+        `OpenAI 风格工具优先从 https://gpt88.cc${model.endpoint.path.startsWith('/v1') ? '/v1' : ''} 起步；Claude 风格工具优先使用根地址。`,
+        `第一次接入时，建议先用一条最小请求验证 API Key、模型名 ${model.modelId} 和当前线路是否匹配。`,
+      ]
   if (model.category === 'chat') {
     integrationNotes.push(`如果你的工具支持 chat/completions，请优先从 ${model.endpoint.path} 这条最稳定的主路径开始验证。`)
   }
@@ -952,7 +987,11 @@ function buildLongTailDetail(
     '价格、限速、SLA、上下文长度、是否开放多模态等动态值以 gpt88.cc 控制台为准。',
     '如果当前线路延迟偏高或连接不稳定，可切换到中国调用 / 海外全球加速等价端点重新测试。',
   ]
-  if (model.category === 'image' && usesRatioImageSize(model.modelId)) {
+  if (model.category === 'image' && usesGeminiGenerateContentImage(model.modelId)) {
+    caveats.unshift(
+      `该 Google 图片模型使用 generationConfig.imageConfig.aspectRatio 控制画幅比例，支持 ${IMAGE_SIZE_RATIOS.join(' / ')}；不要传 "1024x1024" 这类像素尺寸，清晰度请使用 imageConfig.imageSize，例如 "1K"。`,
+    )
+  } else if (model.category === 'image' && usesRatioImageSize(model.modelId)) {
     caveats.unshift(
       `该图像模型使用 size 控制画幅比例，支持 ${IMAGE_SIZE_RATIOS.join(' / ')}；不要传 "1024x1024" 这类像素尺寸，推荐同时传 resolution，例如 "1K"。`,
     )
@@ -1543,7 +1582,7 @@ export const CATEGORY_META: Record<
   },
   image: {
     title: 'Image',
-    subtitle: '图像生成 · /v1/images/generations',
+    subtitle: '图像生成 · Gemini generateContent / images',
   },
   video: {
     title: 'Video',

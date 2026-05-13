@@ -633,7 +633,8 @@ function isOpenAIModel(model: ModelEntry): boolean {
 }
 
 function isGeminiImageModel(model: ModelEntry): boolean {
-  return model.modelId.toLowerCase() === 'gemini-3-pro-image-preview'
+  const id = model.modelId.toLowerCase()
+  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
 }
 
 function chatBaseUrlHint(model: ModelEntry): string {
@@ -1031,6 +1032,11 @@ function geminiImageRequestFields(model: ModelEntry): FieldRow[] {
       type: 'string',
       required: true,
       description: <>图片生成提示词，例如主体、风格、比例、细节和限制。</>,
+    },
+    {
+      name: 'contents[].parts[].fileData',
+      type: 'object',
+      description: <>图生图参考图。包含 <code>mimeType</code> 与 <code>fileUri</code>，图片 URL 需要能被服务端访问。</>,
     },
     {
       name: 'generationConfig.responseModalities',
