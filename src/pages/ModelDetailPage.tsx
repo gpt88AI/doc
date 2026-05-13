@@ -19,6 +19,7 @@ import { CodeTabs, type CodeTab } from '../components/ui/CodeTabs'
 import { CodeBlock } from '../components/ui/CodeBlock'
 import { Callout } from '../components/ui/Callout'
 import { EndpointBadge } from '../components/ui/EndpointBadge'
+import { FieldTable, type FieldRow } from '../components/ui/FieldTable'
 import {
   CATEGORY_META,
   MODELS,
@@ -235,21 +236,28 @@ function DetailContent({ model }: { model: ModelEntry }) {
               <div className="space-y-3">
                 <EndpointBadge
                   method={model.endpoint.method}
-                  path={`https://gpt88.cc${model.endpoint.path}`}
+                  path={`${apiOriginForModel(model)}${model.endpoint.path}`}
                 />
+                <p className="text-sm text-ink-300">
+                  该路径由模型分类决定：Chat / Image / Video / Audio 使用不同 endpoint，
+                  同一分类内通常只需要替换 <code>model</code> 字段。Chat 模型还要区分
+                  OpenAI 兼容协议与 Anthropic / Claude 协议。
+                </p>
                 <p className="text-sm text-ink-300">
                   请求需在 Header 中携带{' '}
                   <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-violet-200">
                     Authorization: Bearer &lt;API_KEY&gt;
                   </code>
                   。完整字段说明见{' '}
-                  <Link to="/docs/api/chat-completions" className="text-violet-300 hover:text-violet-200">
-                    API Reference
+                  <Link to={apiReferencePathForModel(model)} className="text-violet-300 hover:text-violet-200">
+                    {apiReferenceLabelForModel(model)}
                   </Link>
                   。
                 </p>
               </div>
             </Section>
+
+            <ModelApiReference model={model} />
 
             {/* 请求示例 */}
             <Section icon={Cpu} title="请求示例">
@@ -472,6 +480,632 @@ function Section({
   )
 }
 
+function ModelApiReference({ model }: { model: ModelEntry }) {
+  return (
+    <Section icon={Cpu} title="API 文档">
+      <div className="space-y-6">
+        <ApiQuickFacts model={model} />
+        <div>
+          <h3 className="text-sm font-semibold text-ink-100">Headers / 鉴权</h3>
+          <FieldTable rows={headerFieldsForModel(model)} className="mb-0 mt-3" />
+        </div>
+        {model.category === 'chat' ? <ChatProtocolGuide model={model} /> : null}
+        <div>
+          <h3 className="text-sm font-semibold text-ink-100">请求参数</h3>
+          <p className="mt-1 text-sm leading-relaxed text-ink-300">
+            以下字段按当前模型分类生成。价格、上下文长度、限速、可用线路等动态信息以
+            gpt88.cc 控制台为准。
+          </p>
+          <FieldTable rows={requestFieldsForModel(model)} className="mb-0 mt-3" />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold text-ink-100">响应字段</h3>
+          <p className="mt-1 text-sm leading-relaxed text-ink-300">
+            响应结构保持 OpenAI 兼容风格；媒体类模型可能返回异步任务 ID 或资源 URL。
+          </p>
+          <FieldTable rows={responseFieldsForModel(model)} className="mb-0 mt-3" />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold text-ink-100">状态码</h3>
+          <FieldTable rows={statusCodeRows(model)} className="mb-0 mt-3" />
+        </div>
+        <ErrorChecklist model={model} />
+      </div>
+    </Section>
+  )
+}
+
+function ApiQuickFacts({ model }: { model: ModelEntry }) {
+  const contentType =
+    model.category === 'audio' ? 'multipart/form-data' : 'application/json'
+  const protocolHint = protocolHintForModel(model)
+  const baseUrlHint =
+    model.category === 'chat'
+      ? chatBaseUrlHint(model)
+      : isGeminiImageModel(model)
+        ? 'Gemini 原生兼容接口使用根地址，例如 https://china.claudecoder.me。'
+      : model.category === 'image'
+        ? '图片接口使用加速域名 https://china.claudecoder.me/v1。'
+      : '媒体类接口使用 https://gpt88.cc/v1，并按对应 endpoint 提交请求。'
+  const endpointValue =
+    model.category === 'chat' && isAnthropicModel(model)
+      ? 'POST /v1/messages 或 POST /v1/chat/completions'
+      : isGeminiImageModel(model)
+        ? `POST /v1beta/models/${model.modelId}:generateContent`
+      : `${model.endpoint.method} ${model.endpoint.path}`
+
+  return (
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <QuickFact label="Endpoint" value={endpointValue} />
+      <QuickFact label="Model ID" value={model.modelId} mono />
+      <QuickFact label="Content-Type" value={contentType} mono />
+      <QuickFact label="接口类型" value={protocolHint} />
+      <QuickFact label="Base URL" value={baseUrlHint} />
+    </div>
+  )
+}
+
+function QuickFact({
+  label,
+  value,
+  mono = false,
+}: {
+  label: string
+  value: string
+  mono?: boolean
+}) {
+  return (
+    <div className="rounded-lg border border-white/5 bg-white/[0.02] px-4 py-3">
+      <div className="text-[11px] uppercase tracking-wider text-ink-500">
+        {label}
+      </div>
+      <div
+        className={
+          'mt-1 text-sm leading-relaxed text-ink-100' +
+          (mono ? ' font-mono text-violet-200' : '')
+        }
+      >
+        {value}
+      </div>
+    </div>
+  )
+}
+
+function apiOriginForModel(model: ModelEntry): string {
+  if (model.category === 'image') {
+    return 'https://china.claudecoder.me'
+  }
+  return 'https://gpt88.cc'
+}
+
+function apiReferencePathForModel(model: ModelEntry): string {
+  switch (model.category) {
+    case 'image':
+      return '/docs/api/images'
+    case 'chat':
+      return '/docs/api/chat-completions'
+    case 'video':
+    case 'audio':
+    default:
+      return '/models'
+  }
+}
+
+function apiReferenceLabelForModel(model: ModelEntry): string {
+  switch (model.category) {
+    case 'image':
+      return '图片生成 API'
+    case 'video':
+      return '当前模型页的 Video API 文档'
+    case 'audio':
+      return '当前模型页的 Audio API 文档'
+    case 'chat':
+    default:
+      return 'Chat Completions API'
+  }
+}
+
+function protocolHintForModel(model: ModelEntry): string {
+  switch (model.category) {
+    case 'image':
+      if (isGeminiImageModel(model)) {
+        return 'Gemini 原生图片生成接口，generateContent 返回 inlineData base64 图片'
+      }
+      return '图像生成接口，支持文生图；部分模型支持图生图'
+    case 'video':
+      return '视频生成接口，通常为异步任务'
+    case 'audio':
+      return '音频转写接口，使用文件上传'
+    case 'chat':
+    default:
+      return isAnthropicModel(model)
+        ? 'Claude 模型：Claude 工具优先用 Anthropic Messages 协议；OpenAI 工具可用兼容协议'
+        : 'OpenAI 兼容对话补全接口，支持非流式和流式输出'
+  }
+}
+
+function isAnthropicModel(model: ModelEntry): boolean {
+  return model.provider.includes('Anthropic') || model.modelId.toLowerCase().startsWith('claude-')
+}
+
+function isOpenAIModel(model: ModelEntry): boolean {
+  return model.provider.includes('OpenAI') || model.modelId.toLowerCase().startsWith('gpt-')
+}
+
+function isGeminiImageModel(model: ModelEntry): boolean {
+  return model.modelId.toLowerCase() === 'gemini-3-pro-image-preview'
+}
+
+function chatBaseUrlHint(model: ModelEntry): string {
+  if (isAnthropicModel(model)) {
+    return 'Claude Code / Anthropic SDK 用 https://gpt88.cc；OpenAI SDK / Cursor 用 https://gpt88.cc/v1。'
+  }
+  if (isOpenAIModel(model)) {
+    return 'OpenAI SDK / Cursor / cURL 用 https://gpt88.cc/v1。'
+  }
+  return 'OpenAI 兼容工具用 https://gpt88.cc/v1；Claude 风格工具如支持该模型则用根地址。'
+}
+
+function ChatProtocolGuide({ model }: { model: ModelEntry }) {
+  const anthropic = isAnthropicModel(model)
+  return (
+    <div className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
+      <h3 className="text-sm font-semibold text-ink-100">Chat 协议差异</h3>
+      <p className="mt-1 text-sm leading-relaxed text-ink-300">
+        Chat 模型不只看模型名，还要看你使用的客户端协议。
+        Claude Code / Anthropic SDK 和 OpenAI SDK 拼出来的路径不同。
+      </p>
+      <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <ProtocolCard
+          title="OpenAI 兼容"
+          endpoint="POST /v1/chat/completions"
+          baseUrl="https://gpt88.cc/v1"
+          body={`{ "model": "${model.modelId}", "messages": [...] }`}
+          recommended={!anthropic}
+        />
+        <ProtocolCard
+          title="Anthropic / Claude"
+          endpoint="POST /v1/messages"
+          baseUrl="https://gpt88.cc"
+          body={`{ "model": "${model.modelId}", "messages": [...] }`}
+          recommended={anthropic}
+        />
+      </div>
+      <p className="mt-3 text-xs leading-relaxed text-ink-400">
+        {anthropic
+          ? '这个模型属于 Claude 系列；Claude Code、Anthropic SDK、OpenClaw 等工具建议优先走 Anthropic / Claude 风格。'
+          : '这个模型更适合优先走 OpenAI 兼容协议；只有当目标工具明确支持 Claude 风格接入时，才使用 Anthropic 路径。'}
+      </p>
+    </div>
+  )
+}
+
+function ProtocolCard({
+  title,
+  endpoint,
+  baseUrl,
+  body,
+  recommended = false,
+}: {
+  title: string
+  endpoint: string
+  baseUrl: string
+  body: string
+  recommended?: boolean
+}) {
+  return (
+    <div className="rounded-lg border border-white/5 bg-ink-900/40 p-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-xs font-semibold text-ink-100">{title}</span>
+        {recommended ? (
+          <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-2 py-0.5 text-[10px] font-medium text-emerald-200">
+            推荐
+          </span>
+        ) : null}
+      </div>
+      <dl className="mt-3 space-y-2 text-xs leading-relaxed">
+        <div>
+          <dt className="text-ink-500">Base URL</dt>
+          <dd className="font-mono text-violet-200">{baseUrl}</dd>
+        </div>
+        <div>
+          <dt className="text-ink-500">Endpoint</dt>
+          <dd className="font-mono text-ink-200">{endpoint}</dd>
+        </div>
+        <div>
+          <dt className="text-ink-500">Body</dt>
+          <dd className="font-mono text-ink-200">{body}</dd>
+        </div>
+      </dl>
+    </div>
+  )
+}
+
+function requestFieldsForModel(model: ModelEntry): FieldRow[] {
+  switch (model.category) {
+    case 'image':
+      if (isGeminiImageModel(model)) {
+        return geminiImageRequestFields(model)
+      }
+      return [
+        modelField(model),
+        {
+          name: 'prompt',
+          type: 'string',
+          required: true,
+          description: <>生成或编辑图片的文字指令。建议写清主体、风格、构图和不希望改变的内容。</>,
+        },
+        {
+          name: 'image_urls',
+          type: 'string[]',
+          description: <>图生图参考图 URL 列表。图片需要能被 gpt88.cc 服务端访问。</>,
+        },
+        {
+          name: 'size',
+          type: 'string',
+          default: usesRatioSizeCopy(model) ? '1:1' : '1024x1024',
+          description: usesRatioSizeCopy(model) ? (
+            <>
+              画幅比例，例如 <code>1:1</code>、<code>16:9</code>、<code>9:16</code>、
+              <code>auto</code>。该模型不要传 <code>1024x1024</code> 这类像素尺寸。
+            </>
+          ) : (
+            <>输出尺寸或画幅配置。不同图像模型支持范围不同，以控制台为准。</>
+          ),
+        },
+        {
+          name: 'resolution',
+          type: 'string',
+          default: usesRatioSizeCopy(model) ? '1K' : undefined,
+          description: <>输出清晰度，例如 <code>1K</code>。是否支持更高清晰度以控制台为准。</>,
+        },
+        {
+          name: 'n',
+          type: 'integer',
+          default: '1',
+          description: <>生成图片数量。批量生成时请关注账号限速与并发。</>,
+        },
+      ]
+    case 'video':
+      return [
+        modelField(model),
+        {
+          name: 'prompt',
+          type: 'string',
+          required: true,
+          description: <>视频画面、镜头运动、主体、风格和节奏描述。</>,
+        },
+        {
+          name: 'image_url',
+          type: 'string',
+          description: <>可选参考图，用于图生视频或首帧约束；是否支持取决于具体模型。</>,
+        },
+        {
+          name: 'duration',
+          type: 'integer',
+          default: '6',
+          description: <>目标视频时长，单位秒。可用范围以模型和控制台配置为准。</>,
+        },
+        {
+          name: 'aspect_ratio',
+          type: 'string',
+          default: '16:9',
+          description: <>画幅比例，例如 <code>16:9</code>、<code>9:16</code>、<code>1:1</code>。</>,
+        },
+      ]
+    case 'audio':
+      return [
+        modelField(model),
+        {
+          name: 'file',
+          type: 'File',
+          required: true,
+          description: <>要转写的音频文件，使用 <code>multipart/form-data</code> 上传。</>,
+        },
+        {
+          name: 'language',
+          type: 'string',
+          description: <>音频语言提示，例如 <code>zh</code>、<code>en</code>。不传时由模型自动判断。</>,
+        },
+        {
+          name: 'prompt',
+          type: 'string',
+          description: <>可选上下文提示，用于专有名词、会议主题或人名纠偏。</>,
+        },
+        {
+          name: 'response_format',
+          type: 'string',
+          default: 'json',
+          description: <>返回格式，例如 <code>json</code>、<code>text</code>、<code>verbose_json</code>。</>,
+        },
+      ]
+    case 'chat':
+    default:
+      return [
+        modelField(model),
+        {
+          name: 'messages',
+          type: 'array<Message>',
+          required: true,
+          description: (
+            <>
+              多轮对话历史。每条消息包含 <code>role</code> 和 <code>content</code>。
+            </>
+          ),
+        },
+        {
+          name: 'stream',
+          type: 'boolean',
+          default: 'false',
+          description: <>是否使用 SSE 流式返回。适合聊天界面和长回答。</>,
+        },
+        {
+          name: 'temperature',
+          type: 'number',
+          default: '1',
+          description: <>采样温度，值越高越发散。正式业务建议先固定后再调优。</>,
+        },
+        {
+          name: 'max_tokens',
+          type: 'integer',
+          description: <>本次生成的最大 token 数。模型上下文边界以控制台为准。</>,
+        },
+        {
+          name: 'response_format',
+          type: 'object',
+          description: <>结构化输出配置，例如 <code>{'{ "type": "json_object" }'}</code>。</>,
+        },
+        {
+          name: 'tools',
+          type: 'array<Tool>',
+          description: <>Function calling 工具定义。是否支持取决于具体模型和账号配置。</>,
+        },
+      ]
+  }
+}
+
+function headerFieldsForModel(model: ModelEntry): FieldRow[] {
+  const contentType =
+    model.category === 'audio' ? 'multipart/form-data' : 'application/json'
+  const headers: FieldRow[] = [
+    {
+      name: 'Authorization',
+      type: 'string',
+      required: true,
+      description: (
+        <>
+          使用 <code>Bearer {'<GPT88_API_KEY>'}</code>。API Key 在 gpt88.cc 控制台创建。
+        </>
+      ),
+    },
+    {
+      name: 'Content-Type',
+      type: 'string',
+      required: true,
+      default: contentType,
+      description: <>请求体格式。音频转写上传文件时使用 <code>multipart/form-data</code>。</>,
+    },
+    {
+      name: 'Accept',
+      type: 'string',
+      default: model.category === 'chat' ? 'application/json 或 text/event-stream' : 'application/json',
+      description: <>非流式接口返回 JSON；Chat 流式请求会返回 SSE 数据流。</>,
+    },
+  ]
+  if (isGeminiImageModel(model)) {
+    headers.push({
+      name: 'x-goog-api-key',
+      type: 'string',
+      description: <>如果当前中转线路不接受 <code>Authorization: Bearer</code>，可改用该 Header 传 API Key。</>,
+    })
+  }
+  return headers
+}
+
+function responseFieldsForModel(model: ModelEntry): FieldRow[] {
+  switch (model.category) {
+    case 'image':
+      if (isGeminiImageModel(model)) {
+        return [
+          { name: 'candidates', type: 'array<Candidate>', required: true, description: <>Gemini 返回候选结果数组。</> },
+          {
+            name: 'candidates[].content.parts',
+            type: 'array<Part>',
+            required: true,
+            description: <>包含文本 part 和图片 part。图片通常在 <code>inlineData.data</code> 中。</>,
+          },
+          {
+            name: 'inlineData.data',
+            type: 'string',
+            description: <>base64 编码图片数据，提取后可写入 PNG 文件。</>,
+          },
+          {
+            name: 'usageMetadata',
+            type: 'object',
+            description: <>Gemini 风格用量信息；是否返回以实际响应为准。</>,
+          },
+        ]
+      }
+      return [
+        { name: 'created', type: 'integer', required: true, description: <>生成时间，Unix 秒。</> },
+        {
+          name: 'data',
+          type: 'array<Image>',
+          required: true,
+          description: <>生成结果数组，通常包含图片 <code>url</code> 或 <code>b64_json</code>。</>,
+        },
+        {
+          name: 'usage',
+          type: 'object',
+          description: <>部分模型会返回用量统计；是否返回以模型实际响应为准。</>,
+        },
+      ]
+    case 'video':
+      return [
+        { name: 'id', type: 'string', required: true, description: <>视频生成任务 ID，用于后续查询任务状态。</> },
+        { name: 'status', type: 'string', required: true, description: <>任务状态，例如 <code>queued</code>、<code>processing</code>、<code>succeeded</code>。</> },
+        { name: 'model', type: 'string', required: true, description: <>本次使用的模型 ID。</> },
+        { name: 'url', type: 'string', description: <>任务完成后的视频文件 URL；异步任务未完成时可能为空。</> },
+      ]
+    case 'audio':
+      return [
+        { name: 'text', type: 'string', required: true, description: <>完整转写文本。</> },
+        { name: 'language', type: 'string', description: <>识别到或指定的语言。</> },
+        { name: 'duration', type: 'number', description: <>音频时长，单位秒。是否返回取决于响应格式。</> },
+        { name: 'segments', type: 'array<Segment>', description: <>分段时间轴，仅在 verbose_json 等详细格式中返回。</> },
+      ]
+    case 'chat':
+    default:
+      return [
+        { name: 'id', type: 'string', required: true, description: <>本次补全的唯一 ID，便于排障关联日志。</> },
+        { name: 'object', type: 'string', required: true, description: <>固定为 <code>chat.completion</code> 或流式 chunk 类型。</> },
+        { name: 'model', type: 'string', required: true, description: <>实际承担推理的模型 ID。</> },
+        {
+          name: 'choices',
+          type: 'array<Choice>',
+          required: true,
+          description: <>生成结果数组，包含 <code>message</code>、<code>delta</code> 或 <code>finish_reason</code>。</>,
+        },
+        {
+          name: 'usage',
+          type: 'object',
+          description: <>Token 用量统计。流式请求可能在结束包或非流式响应中返回。</>,
+        },
+      ]
+  }
+}
+
+function statusCodeRows(model: ModelEntry): FieldRow[] {
+  return [
+    {
+      name: '200',
+      type: 'OK',
+      required: true,
+      description: model.category === 'video'
+        ? <>请求已被接受或任务创建成功，响应中包含任务状态和任务 ID。</>
+        : <>请求成功，响应体结构见上方响应字段。</>,
+    },
+    {
+      name: '400',
+      type: 'Bad Request',
+      description: <>请求字段不合法，例如缺少必填字段、图片尺寸格式错误或文件格式不支持。</>,
+    },
+    {
+      name: '401',
+      type: 'Unauthorized',
+      description: <>API Key 缺失、无效或格式错误。</>,
+    },
+    {
+      name: '404',
+      type: 'Not Found',
+      description: (
+        <>
+          Endpoint 或模型不存在。请确认路径为 <code>{model.endpoint.path}</code>，
+          模型 ID 为 <code>{model.modelId}</code>。
+        </>
+      ),
+    },
+    {
+      name: '429',
+      type: 'Rate Limited',
+      description: <>触发限速、并发限制或余额不足。控制台会展示当前账号可用额度。</>,
+    },
+    {
+      name: '5xx',
+      type: 'Upstream Error',
+      description: <>上游或线路异常。可切换等价线路重试，并保留请求 ID 便于排查。</>,
+    },
+  ]
+}
+
+function geminiImageRequestFields(model: ModelEntry): FieldRow[] {
+  return [
+    {
+      name: 'contents',
+      type: 'array<Content>',
+      required: true,
+      description: <>Gemini generateContent 输入。文字提示放在 <code>contents[].parts[].text</code>。</>,
+    },
+    {
+      name: 'contents[].parts[].text',
+      type: 'string',
+      required: true,
+      description: <>图片生成提示词，例如主体、风格、比例、细节和限制。</>,
+    },
+    {
+      name: 'generationConfig.responseModalities',
+      type: 'string[]',
+      required: true,
+      default: '["TEXT", "IMAGE"]',
+      description: <>要求模型同时返回文本与图片。生成图片时需要包含 <code>IMAGE</code>。</>,
+    },
+    {
+      name: 'generationConfig.imageConfig.aspectRatio',
+      type: 'string',
+      default: '1:1',
+      description: <>图片比例，例如 <code>1:1</code>、<code>16:9</code>、<code>9:16</code>、<code>4:3</code>、<code>3:4</code>。</>,
+    },
+    {
+      name: 'generationConfig.imageConfig.imageSize',
+      type: 'string',
+      default: '1K',
+      description: <>输出清晰度，使用大写，例如 <code>1K</code>、<code>2K</code>、<code>4K</code>。</>,
+    },
+    {
+      name: 'model',
+      type: 'path parameter',
+      required: true,
+      description: (
+        <>
+          当前模型 ID 写在路径里：<code>/v1beta/models/{model.modelId}:generateContent</code>。
+        </>
+      ),
+    },
+  ]
+}
+
+function modelField(model: ModelEntry): FieldRow {
+  return {
+    name: 'model',
+    type: 'string',
+    required: true,
+    description: (
+      <>
+        当前模型 ID：<code>{model.modelId}</code>。复制时请保持大小写一致。
+      </>
+    ),
+  }
+}
+
+function usesRatioSizeCopy(model: ModelEntry): boolean {
+  const id = model.modelId.toLowerCase()
+  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
+}
+
+function ErrorChecklist({ model }: { model: ModelEntry }) {
+  return (
+    <div className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
+      <h3 className="text-sm font-semibold text-ink-100">错误与排查</h3>
+      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-ink-300">
+        <li>
+          <code>401</code>：检查 <code>Authorization</code> 是否为
+          <code> Bearer {'<API_KEY>'}</code>，以及 Key 是否仍有效。
+        </li>
+        <li>
+          <code>404</code>：检查 endpoint 是否为 <code>{model.endpoint.path}</code>，
+          以及模型名 <code>{model.modelId}</code> 是否在控制台可见。
+        </li>
+        <li>
+          <code>429</code>：触发限速或余额不足时，降低并发、缩短请求，或到控制台查看额度。
+        </li>
+        <li>
+          <code>5xx</code>：优先切换等价线路重试，并记录请求 ID 方便排障。
+        </li>
+      </ul>
+    </div>
+  )
+}
+
 function ModelRequestExamples({ model }: { model: ModelEntry }) {
   if (model.category !== 'image') {
     return <CodeTabs tabs={model.examples} />
@@ -559,6 +1193,29 @@ function buildExpectedResponse(model: ModelEntry): string {
   "usage": { "prompt_tokens": 24, "completion_tokens": 64, "total_tokens": 88 }
 }`
     case 'image':
+      if (isGeminiImageModel(model)) {
+        return `{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          { "text": "已生成图片。" },
+          {
+            "inlineData": {
+              "mimeType": "image/png",
+              "data": "iVBORw0KGgoAAA..."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 24,
+    "totalTokenCount": 88
+  }
+}`
+      }
       return `{
   "created": 1730000000,
   "data": [

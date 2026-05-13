@@ -759,6 +759,13 @@ function endpointFromCategory(category: string): ModelEndpoint {
   }
 }
 
+function endpointForModel(category: string, modelId: string): ModelEndpoint {
+  if (usesGeminiGenerateContentImage(modelId)) {
+    return { method: 'POST', path: `/v1beta/models/${modelId}:generateContent` }
+  }
+  return endpointFromCategory(category)
+}
+
 /*
  * marketplace 快照里的 canonical_name 偏向机器归一化；少数模型真实可调用的
  * body.model 需要保留官方大小写。例如 NanoBanana2 如果写成 nanobanana2，
@@ -789,6 +796,11 @@ const IMAGE_SIZE_RATIOS = [
 function usesRatioImageSize(modelId: string): boolean {
   const id = modelId.toLowerCase()
   return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
+}
+
+function usesGeminiGenerateContentImage(modelId: string): boolean {
+  const id = modelId.toLowerCase()
+  return id === 'gemini-3-pro-image-preview'
 }
 
 /* ──────────────────────────────────────────────────────────────────
@@ -971,7 +983,104 @@ function buildLongTailDetail(
  * ────────────────────────────────────────────────────────────────── */
 
 function buildExamples(modelId: string, endpoint: ModelEndpoint): ModelExample[] {
+  if (usesGeminiGenerateContentImage(modelId)) {
+    return [
+      {
+        label: 'Gemini cURL',
+        lang: 'bash',
+        code: `export API_KEY="YOUR_GPT88_API_KEY"
+export BASE_URL="https://china.claudecoder.me"
+export MODEL="${modelId}"
+
+curl -s -X POST \\
+  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
+  -H "Authorization: Bearer $API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "contents": [{
+      "parts": [{
+        "text": "生成一张16:9的赛博朋克城市夜景，霓虹灯，雨夜，电影感，高细节"
+      }]
+    }],
+    "generationConfig": {
+      "responseModalities": ["TEXT", "IMAGE"],
+      "imageConfig": {
+        "aspectRatio": "16:9",
+        "imageSize": "2K"
+      }
+    }
+  }' > response.json
+
+jq -r '.. | objects | (.inlineData?.data // .inline_data?.data)? | select(.)' response.json \\
+  | head -n 1 \\
+  | base64 -d > output.png`,
+      },
+      {
+        label: 'macOS base64',
+        lang: 'bash',
+        code: `jq -r '.. | objects | (.inlineData?.data // .inline_data?.data)? | select(.)' response.json \\
+  | head -n 1 \\
+  | base64 -D > output.png`,
+      },
+      {
+        label: 'Node.js',
+        lang: 'typescript',
+        code: `import fs from "node:fs";
+
+const API_KEY = process.env.API_KEY;
+const BASE_URL = "https://china.claudecoder.me";
+const MODEL = "${modelId}";
+
+const res = await fetch(
+  \`\${BASE_URL}/v1beta/models/\${MODEL}:generateContent\`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: \`Bearer \${API_KEY}\`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      contents: [{
+        parts: [{
+          text: "生成一张1:1的可爱3D图标，白色背景，彩色质感，无文字",
+        }],
+      }],
+      generationConfig: {
+        responseModalities: ["TEXT", "IMAGE"],
+        imageConfig: {
+          aspectRatio: "1:1",
+          imageSize: "1K",
+        },
+      },
+    }),
+  },
+);
+
+const json = await res.json();
+if (!res.ok) throw new Error(JSON.stringify(json, null, 2));
+
+const part = json.candidates?.[0]?.content?.parts?.find(
+  p => p.inlineData?.data || p.inline_data?.data,
+);
+
+const b64 = part?.inlineData?.data ?? part?.inline_data?.data;
+fs.writeFileSync("output.png", Buffer.from(b64, "base64"));
+console.log("saved output.png");`,
+      },
+      {
+        label: 'x-goog-api-key',
+        lang: 'bash',
+        code: `curl -s -X POST \\
+  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
+  -H "x-goog-api-key: $API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d @payload.json > response.json`,
+      },
+    ]
+  }
+
   if (endpoint.path === '/v1/images/generations') {
+    const imageBaseUrl = 'https://china.claudecoder.me'
     const ratioSizeModel = usesRatioImageSize(modelId)
     const prompt = ratioSizeModel ? '月光下的竹林小径' : '极简风格的 API 文档站封面'
     const editPrompt = ratioSizeModel
@@ -999,7 +1108,7 @@ function buildExamples(modelId: string, endpoint: ModelEndpoint): ModelExample[]
       {
         label: '文生图 cURL',
         lang: 'bash',
-        code: `curl https://gpt88.cc${endpoint.path} \\
+        code: `curl ${imageBaseUrl}${endpoint.path} \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -1014,7 +1123,7 @@ ${imageParamsJson}
         code: `import requests
 
 resp = requests.post(
-    "https://gpt88.cc${endpoint.path}",
+    "${imageBaseUrl}${endpoint.path}",
     headers={
         "Authorization": "Bearer YOUR_GPT88_API_KEY",
         "Content-Type": "application/json",
@@ -1030,7 +1139,7 @@ print(resp.json())`,
       {
         label: '文生图 Node.js',
         lang: 'typescript',
-        code: `const resp = await fetch("https://gpt88.cc${endpoint.path}", {
+        code: `const resp = await fetch("${imageBaseUrl}${endpoint.path}", {
   method: "POST",
   headers: {
     Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
@@ -1048,7 +1157,7 @@ console.log(await resp.json());`,
       {
         label: '图生图 cURL',
         lang: 'bash',
-        code: `curl https://gpt88.cc${endpoint.path} \\
+        code: `curl ${imageBaseUrl}${endpoint.path} \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -1066,7 +1175,7 @@ ${imageParamsJson}
         code: `import requests
 
 resp = requests.post(
-    "https://gpt88.cc${endpoint.path}",
+    "${imageBaseUrl}${endpoint.path}",
     headers={
         "Authorization": "Bearer YOUR_GPT88_API_KEY",
         "Content-Type": "application/json",
@@ -1085,7 +1194,7 @@ print(resp.json())`,
       {
         label: '图生图 Node.js',
         lang: 'typescript',
-        code: `const resp = await fetch("https://gpt88.cc${endpoint.path}", {
+        code: `const resp = await fetch("${imageBaseUrl}${endpoint.path}", {
   method: "POST",
   headers: {
     Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
@@ -1370,7 +1479,7 @@ function buildCatalog(): ModelEntry[] {
       name: picked.display_name,
       provider: detail?.provider ?? inferProvider(picked.canonical_name, picked.display_name),
       category: normalizedCategory,
-      endpoint: endpointFromCategory(picked.category),
+      endpoint: endpointForModel(picked.category, apiModelId),
     })
 
     const provider = detail?.provider ?? inferProvider(picked.canonical_name, picked.display_name)
@@ -1394,7 +1503,7 @@ function buildCatalog(): ModelEntry[] {
       : `${upper} 模型 · ${provider}`
     const tagline = detail?.tagline ?? longTailTagline
 
-    const endpoint = endpointFromCategory(picked.category)
+    const endpoint = endpointForModel(picked.category, apiModelId)
     entries.push({
       slug,
       name: picked.display_name,
