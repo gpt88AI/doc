@@ -11,6 +11,34 @@ const SYMPTOM = `你现在的状态通常是这样：
 4. 模型调用可以工作
 5. 但是 Codex 里的插件 / Plugin / App 能力不可用或不显示`
 
+const INSTALL_CODEX = `# 1. 确认本机已有 Node.js 与 npm
+node -v
+npm -v
+
+# 2. 安装或升级 OpenAI Codex CLI
+npm install -g @openai/codex
+
+# macOS 用户也可以使用 Homebrew：
+# brew install --cask codex
+
+# 3. 验证 codex 命令可用
+codex --version`
+
+const ENABLE_OAUTH = `# 1. 如果之前用过 API Key 登录，先退出
+codex logout
+
+# 2. 打开 Codex OAuth 登录流程
+codex --login
+
+# 3. 在浏览器授权页选择：
+# Sign in with ChatGPT / 使用 ChatGPT 登录
+#
+# 不要粘贴 gpt88.cc API Key，也不要选择 API Key 登录。
+
+# 4. 授权完成后，在项目目录启动 Codex
+cd /path/to/your-project
+codex`
+
 const LOGOUT_AND_LOGIN = `# 1. 退出当前 Codex API Key 登录
 codex logout
 
@@ -23,13 +51,43 @@ codex --login
 # 不要选择手动粘贴 API Key。`
 
 const CC_SWITCH_FLOW = `1. 打开 CC Switch
-2. 进入 Codex 配置
-3. 找到当前使用 gpt88.cc API Key 的配置
-4. 退出 / 禁用 / 取消选中 API Key 登录配置
-5. 新建或切换到 ChatGPT OAuth 配置
-6. 点击 Sign in with ChatGPT
-7. 在浏览器中完成 ChatGPT 登录与授权
-8. 回到 Codex，重新打开插件面板验证`
+2. 进入 Codex / Routes / 路由配置
+3. 找到当前使用 gpt88.cc API Key 的 Codex 配置
+4. 先关闭或取消激活这个 API Key 路由
+5. 新建一个 ChatGPT OAuth profile，例如 chatgpt-oauth
+6. Auth / 登录方式选择 ChatGPT OAuth / Sign in with ChatGPT
+7. Base URL 保持官方默认，不要填 gpt88.cc/v1
+8. 打开 Route / Router / Enable / 启用路由 开关
+9. 目标工具选择 Codex，并保存 / Apply / Activate
+10. 在浏览器中完成 ChatGPT 登录与授权
+11. 重启 Codex，重新打开插件面板验证`
+
+const CC_SWITCH_ROUTE_CHECK = `CC Switch 路由检查清单：
+
+route/profile name:
+  chatgpt-oauth
+
+target/tool:
+  Codex
+
+auth type:
+  ChatGPT OAuth / Sign in with ChatGPT
+
+route status:
+  Enabled / Active / 已启用
+
+base url:
+  使用官方默认
+  不要填 https://gpt88.cc/v1
+  不要填 https://china.claudecoder.me/v1
+
+api key:
+  留空
+  不要粘贴 gpt88.cc API Key
+
+after apply:
+  重启 Codex
+  确认插件面板可见`
 
 const ENV_CHECK = `# 当前终端临时取消 API Key 覆盖，避免 Codex 继续走 API Key 模式
 unset OPENAI_API_KEY
@@ -101,11 +159,15 @@ export default function CodexPluginsOauthPage() {
     <DocPage
       path="/docs/guides/codex-plugins-oauth"
       title="Codex 插件与 ChatGPT OAuth 登录"
-      description="当你通过 CC Switch 使用 gpt88.cc 中转站 API 登录 Codex 后，如果插件能力不可用，可以切回 ChatGPT OAuth 登录来恢复插件。"
+      description="当你通过 CC Switch 使用 gpt88.cc 中转站 API 登录 Codex 后，如果插件能力不可用，可以安装 Codex CLI、开启 ChatGPT OAuth，并在 CC Switch 中启用 Codex OAuth 路由来恢复插件。"
       headings={[
         { id: 'problem', text: '问题现象', level: 2 },
         { id: 'why', text: '为什么 API Key 模式不能用插件', level: 2 },
         { id: 'compare', text: '两种登录模式对比', level: 2 },
+        { id: 'prepare', text: '先准备三件事', level: 2 },
+        { id: 'install-codex', text: '安装 Codex CLI', level: 3 },
+        { id: 'enable-oauth', text: '开启 ChatGPT OAuth 认证', level: 3 },
+        { id: 'enable-cc-switch-route', text: '开启 CC Switch 路由', level: 3 },
         { id: 'switch', text: '切换到 ChatGPT OAuth', level: 2 },
         { id: 'cc-switch', text: '通过 CC Switch 切换', level: 3 },
         { id: 'codex-cli', text: '通过 Codex CLI 切换', level: 3 },
@@ -172,8 +234,57 @@ export default function CodexPluginsOauthPage() {
             '继承 ChatGPT / Codex 产品侧身份，插件能力可用',
             '模型、用量与权限走 ChatGPT/Codex 官方账号体系',
           ],
-        ]}
+          ]}
       />
+
+      <h2 id="prepare">先准备三件事</h2>
+      <p>
+        如果你的目标是“Codex 能正常使用插件”，不要只改 Base URL。
+        需要同时满足三件事：本机装好 Codex CLI、Codex 使用 ChatGPT OAuth 认证、
+        CC Switch 当前激活的是 Codex OAuth 路由。
+      </p>
+
+      <h3 id="install-codex">安装 Codex CLI</h3>
+      <p>
+        先确认当前机器能运行 <code>codex</code> 命令。官方推荐通过 npm 安装，
+        macOS 用户也可以用 Homebrew。安装后看到版本号，说明 CLI 已经可用。
+      </p>
+      <CodeBlock lang="bash" filename="terminal" code={INSTALL_CODEX} />
+      <Callout tone="info" title="如果提示 command not found">
+        <p>
+          通常是 npm 全局安装目录没有加入 <code>PATH</code>。先执行
+          <code> npm config get prefix</code> 查看安装位置，再把对应的
+          <code> bin</code> 目录加入 shell 配置。处理好后重开终端，再执行
+          <code> codex --version</code>。
+        </p>
+      </Callout>
+
+      <h3 id="enable-oauth">开启 ChatGPT OAuth 认证</h3>
+      <p>
+        插件依赖 ChatGPT / Codex 产品侧身份，所以这里必须选择
+        <strong> Sign in with ChatGPT</strong>。如果你之前已经用 gpt88.cc API Key
+        登录过，建议先退出，再重新走 OAuth 登录。
+      </p>
+      <CodeBlock lang="bash" filename="terminal" code={ENABLE_OAUTH} />
+      <p>
+        OAuth 授权完成后，Codex 会保存本地认证信息。之后你在项目目录运行
+        <code> codex</code>，应当进入 ChatGPT 登录态，而不是再次要求你粘贴 API Key。
+      </p>
+
+      <h3 id="enable-cc-switch-route">开启 CC Switch 路由</h3>
+      <p>
+        CC Switch 不只是“存配置”，它还决定当前 Codex 请求到底走哪条路由。
+        如果路由没有启用，或者仍然激活的是 gpt88.cc API Key profile，
+        Codex 可能继续按 API Key 模式运行，插件自然不会恢复。
+      </p>
+      <CodeBlock lang="yaml" filename="cc switch route checklist" code={CC_SWITCH_ROUTE_CHECK} />
+      <Callout tone="warn" title="OAuth 路由不要填 gpt88.cc Base URL">
+        <p>
+          这个 profile 的目标是恢复 Codex 插件能力，所以它应当走 ChatGPT OAuth。
+          gpt88.cc 的 <code>https://gpt88.cc/v1</code>、<code>china.claudecoder.me</code>
+          等地址继续留给 API Key profile 使用，不要混到 OAuth profile 里。
+        </p>
+      </Callout>
 
       <h2 id="switch">切换到 ChatGPT OAuth</h2>
       <p>
@@ -185,12 +296,14 @@ export default function CodexPluginsOauthPage() {
       <p>
         如果你是通过 CC Switch 管理 Codex 配置，推荐在 CC Switch 里保留两个 profile：
         一个用于 gpt88.cc API 调用，一个用于 ChatGPT OAuth 插件功能。
+        切换后一定要确认 OAuth profile 的路由状态是 Enabled / Active。
       </p>
       <CodeBlock lang="text" filename="cc switch flow" code={CC_SWITCH_FLOW} />
       <Callout tone="info" title="不同版本的 CC Switch 菜单可能不同">
         <p>
           如果你的 CC Switch 菜单文案和上面不完全一致，以“退出 API Key 配置”和
           “使用 ChatGPT OAuth 登录”这两个动作作为判断标准。
+          同时确认 <strong>Route / Router / 启用路由</strong> 已经打开。
         </p>
       </Callout>
 
