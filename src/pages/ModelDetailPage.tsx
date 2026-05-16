@@ -26,6 +26,8 @@ import {
   findModel,
   type ModelEntry,
 } from '../data/models'
+import { Seo } from '../components/seo/Seo'
+import { modelStructuredData } from '../components/seo/structuredData'
 
 /**
  * 模型详情页 (M3 + Human msg-20260509-qoz7ey/jwfia3/8ivlof 全量 catalog)
@@ -81,6 +83,9 @@ export default function ModelDetailPage() {
 }
 
 function DetailContent({ model }: { model: ModelEntry }) {
+  const seoPath = `/models/${model.slug}`
+  const seoDescription = `${model.provider} ${model.name} · ${CATEGORY_META[model.category].title} 模型。Model ID: ${model.modelId}，${model.tagline}`
+
   // 同分类的相关模型，按 vendors_count 降序取前 4
   const related = useMemo(
     () =>
@@ -92,7 +97,22 @@ function DetailContent({ model }: { model: ModelEntry }) {
   )
 
   return (
-    <div className="relative isolate">
+    <>
+      <Seo
+        title={`${model.name} API 文档`}
+        description={seoDescription}
+        path={seoPath}
+        type="article"
+        structuredData={modelStructuredData({
+          name: model.name,
+          description: seoDescription,
+          path: seoPath,
+          provider: model.provider,
+          category: model.category,
+          modelId: model.modelId,
+        })}
+      />
+      <div className="relative isolate">
       {/* 背景光晕 */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid bg-grid-fade opacity-30" />
@@ -341,7 +361,8 @@ function DetailContent({ model }: { model: ModelEntry }) {
           </aside>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
 

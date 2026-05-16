@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "seo": "node scripts/generate-seo-assets.mjs",
+    "build": "npm run seo && tsc -b && vite build && npm run build:ssr && npm run prerender",
+    "build:ssr": "vite build --ssr src/main.ssr.tsx --outDir dist/server",
+    "prerender": "node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

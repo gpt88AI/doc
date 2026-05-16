@@ -72,9 +72,9 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '对话补全主接口',
       },
       {
-        title: 'POST /v1/images/generations',
+        title: 'Google 图片生成',
         path: '/docs/api/images',
-        blurb: '图片生成接口，支持文生图与图生图',
+        blurb: 'Google / Gemini 图片生成接口，支持 NanoBanana2 文生图与图生图',
       },
       {
         title: 'GET /v1/models',

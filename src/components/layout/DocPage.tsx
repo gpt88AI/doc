@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { AnchorNav, type Heading } from './AnchorNav'
 import { DOCS_FLAT } from '../../data/nav'
+import { Seo } from '../seo/Seo'
+import { docStructuredData } from '../seo/structuredData'
 
 type DocPageProps = {
   /** 页面在 DOCS_FLAT 中的 path，用于 prev/next */
@@ -22,6 +24,8 @@ type DocPageProps = {
  * - 内容由父组件传入，可以是任意 JSX；若有标题需要被锚点跟踪，需自行加 id 并在 headings 中登记
  */
 export function DocPage({ path, title, description, headings = [], children }: DocPageProps) {
+  const seoDescription = description ?? `${title} - gpt88.cc API 文档。`
+
   // 翻页导航：从扁平结构中找上一/下一篇
   const { prev, next } = useMemo(() => {
     const idx = DOCS_FLAT.findIndex(item => item.path === path)
@@ -37,7 +41,15 @@ export function DocPage({ path, title, description, headings = [], children }: D
   }, [path])
 
   return (
-    <div className="flex gap-10">
+    <>
+      <Seo
+        title={title}
+        description={seoDescription}
+        path={path}
+        type="article"
+        structuredData={docStructuredData(title, seoDescription, path)}
+      />
+      <div className="flex gap-10">
       <article className="prose prose-invert min-w-0 flex-1 max-w-none prose-headings:scroll-mt-20 prose-headings:font-semibold prose-h1:text-3xl prose-h1:tracking-tight prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-3 prose-h2:border-b prose-h2:border-white/5 prose-h2:pb-2 prose-h3:text-base prose-h3:mt-8 prose-p:text-ink-200 prose-p:leading-7 prose-a:text-violet-300 hover:prose-a:text-violet-200 prose-strong:text-ink-50 prose-code:text-violet-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-ink-900/80 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-lg prose-li:text-ink-200">
         <header className="not-prose mb-8 border-b border-white/5 pb-6">
           <h1 className="text-3xl font-semibold tracking-tight text-ink-50">
@@ -92,6 +104,7 @@ export function DocPage({ path, title, description, headings = [], children }: D
           <AnchorNav headings={headings} />
         </aside>
       ) : null}
-    </div>
+      </div>
+    </>
   )
 }

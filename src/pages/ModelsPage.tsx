@@ -20,6 +20,7 @@ import {
   type ModelEntry,
 } from '../data/models'
 import { cn } from '../lib/cn'
+import { Seo } from '../components/seo/Seo'
 
 /**
  * 模型导航主页 (M3 + Human msg-20260509-qoz7ey/jwfia3/8ivlof 全量 catalog)
@@ -81,7 +82,13 @@ export default function ModelsPage() {
   )
 
   return (
-    <div className="relative isolate">
+    <>
+      <Seo
+        title="模型导航"
+        description="按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型，复制 Model ID 即可接入 OpenAI 兼容 API。"
+        path="/models"
+      />
+      <div className="relative isolate">
       {/* 背景：和首页同款光晕 + 网格，但更克制 */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid bg-grid-fade opacity-40" />
@@ -222,7 +229,8 @@ export default function ModelsPage() {
           )}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
 

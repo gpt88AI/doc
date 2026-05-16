@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://doc.gpt88.cc/sitemap.xml

@@ -19,6 +19,8 @@ import {
   FEATURED_SLUGS,
   findModel,
 } from '../data/models'
+import { Seo } from '../components/seo/Seo'
+import { websiteStructuredData } from '../components/seo/structuredData'
 
 /**
  * gpt88.cc 首页（M1 首屏）
@@ -98,6 +100,12 @@ const BULLETS = [
 export default function LandingPage() {
   return (
     <>
+      <Seo
+        title="gpt88.cc API 文档"
+        description="gpt88.cc 开发者文档首页，一行 base_url 接入 Claude、GPT、Gemini、DeepSeek、Qwen 等模型。"
+        path="/"
+        structuredData={websiteStructuredData()}
+      />
       {/* ─── Hero ─── */}
       <section className="relative isolate overflow-hidden">
         {/* 背景：网格 + 双色辐射光晕 */}

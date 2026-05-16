@@ -37,6 +37,32 @@ npm run preview
 
 构建产物输出到 `dist/`。`dist/` 不提交到 Git，部署时由 CI 生成。
 
+## SEO / GEO
+
+本站在构建前会自动生成搜索引擎与 AI 引擎入口文件：
+
+```bash
+npm run seo
+```
+
+生成文件：
+
+- `public/robots.txt`：允许抓取并声明 sitemap。
+- `public/sitemap.xml`：包含首页、文档页和模型详情页 URL。
+- `public/llms.txt`：面向 AI 搜索和开发者 Agent 的精简索引。
+- `public/llms-full.txt`：面向 LLM 的完整文档与模型索引。
+
+`npm run build` 会先执行 `npm run seo`，确保 GitHub Pages 发布产物包含最新 SEO/GEO 入口。
+
+构建流程还会执行 SSR 预渲染：
+
+```bash
+npm run build:ssr
+npm run prerender
+```
+
+预渲染会根据 `sitemap.xml` 为首页、文档页和模型详情页生成真实 HTML，并额外生成 `dist/404.html`。这样搜索引擎和 AI 抓取器即使不执行 JavaScript，也能读取页面标题、正文、canonical、Open Graph 与 JSON-LD。
+
 ## GitHub Pages
 
 仓库使用 GitHub Actions 部署到 GitHub Pages：
@@ -125,7 +151,7 @@ src/
 ## 维护约定
 
 - 不在静态文档中写死真实价格、限速、SLA 等强时效信息；这些内容应指向控制台或后端动态配置。
-- 示例 Base URL 默认展示 `https://api.gpt88.cc/v1`，配置文件导出页面可展示按线路生成的地址。
+- 示例 Base URL 默认展示 `https://gpt88.cc/v1`，配置文件导出页面可展示按线路生成的地址。
 - API Key、截图和日志中必须脱敏，禁止提交真实密钥。
 - 新增模型时优先更新 `src/data/models.ts`，再补对应文档或详情页说明。
 - 新增文档入口时同步更新 `src/data/nav.ts`。
