@@ -9,6 +9,7 @@ const siteUrl = (process.env.SITE_URL || 'https://doc.gpt88.cc').replace(/\/$/, 
 const consoleUrl = 'https://gpt88.cc'
 const apiBaseUrl = `${consoleUrl}/v1`
 const imageBaseUrl = 'https://china.claudecoder.me'
+const buildDate = new Date().toISOString().slice(0, 10)
 
 const docs = [
   {
@@ -216,6 +217,7 @@ function sitemapXml(pages) {
   const urls = pages
     .map(page => `  <url>
     <loc>${xmlEscape(absoluteUrl(page.path))}</loc>
+    <lastmod>${page.lastmod || buildDate}</lastmod>
     <changefreq>${page.path.startsWith('/models/') ? 'weekly' : 'monthly'}</changefreq>
     <priority>${page.priority}</priority>
   </url>`)
@@ -229,7 +231,16 @@ ${urls}
 }
 
 function robotsTxt() {
-  return `User-agent: *
+  return `User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: *
 Allow: /
 
 Sitemap: ${siteUrl}/sitemap.xml
