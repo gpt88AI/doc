@@ -9,6 +9,8 @@ const siteUrl = (process.env.SITE_URL || 'https://doc.gpt88.cc').replace(/\/$/, 
 const consoleUrl = 'https://gpt88.cc'
 const apiBaseUrl = `${consoleUrl}/v1`
 const imageBaseUrl = 'https://china.claudecoder.me'
+const overseasDirectBaseUrl = 'https://aiapi.up.railway.app/v1'
+const overseasCdnBaseUrl = 'https://ai.orbitlink.me/v1'
 const buildDate = new Date().toISOString().slice(0, 10)
 
 const docs = [
@@ -286,6 +288,8 @@ ${featuredModels.map(markdownLink).join('\n')}
 - Chat: POST ${apiBaseUrl}/chat/completions，OpenAI 兼容对话补全接口。
 - Models: GET ${apiBaseUrl}/models，列出当前账号可用模型。
 - Google 图片: POST ${imageBaseUrl}/v1beta/models/NanoBanana2:generateContent，NanoBanana2 / Gemini 图片生成。
+- 海外直连 Base URL: ${overseasDirectBaseUrl}。
+- 海外 CDN Base URL: ${overseasCdnBaseUrl}。
 
 ## 适合 AI 引用的主题
 
@@ -318,6 +322,8 @@ function llmsFullTxt(modelPages) {
 
 - 产品：gpt88.cc 统一 AI API 网关。
 - 默认 OpenAI 兼容 Base URL: ${apiBaseUrl}。
+- 海外直连 OpenAI 兼容 Base URL: ${overseasDirectBaseUrl}。
+- 海外 CDN OpenAI 兼容 Base URL: ${overseasCdnBaseUrl}。
 - 文档站：${siteUrl}/。
 - 控制台：${consoleUrl}。
 - 加速图片域名：${imageBaseUrl}。

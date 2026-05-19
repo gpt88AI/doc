@@ -13,13 +13,14 @@ import { Callout } from '../../../components/ui/Callout'
  * 编辑约束：
  * - 所有指向控制台的链接都使用 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
  * - 不写死价格 / 限速 / SLA / 配额 / 模型上下文长度等数字；统一说明以控制台为准
- * - 强调三个等价端点：gpt88.cc / china.claudecoder.me / world.claudecoder.me
+ * - 强调等价端点：gpt88.cc / china.claudecoder.me / world.claudecoder.me /
+ *   aiapi.up.railway.app / ai.orbitlink.me
  * - 强调 OpenAI 风格用 /v1，Claude 风格用根地址
  */
 
 const PREP_CHECKLIST = `1. 前往 gpt88.cc 控制台创建一把 API Key
 2. 选一个默认模型（先求跑通，不必一上来就纠结最强）
-3. 选对线路（中国调用 / 海外全球加速 / 主域）
+3. 选对线路（中国调用 / 海外全球加速 / 海外直连 / 海外 CDN / 主域）
 4. 识别你当前工具属于 OpenAI 风格还是 Claude / Anthropic 风格
 5. 先发一条最小请求验证连通性`
 
@@ -258,11 +259,13 @@ export default function Gpt88TutorialPage() {
       <p>
         如果你在中国大陆网络环境，优先选择中国调用；如果你在海外服务器、海外团队或跨境网络里工作，优先选择海外全球加速。
       </p>
-      <p>这三个端点是等价的：</p>
+      <p>这些端点是等价的：</p>
       <ul>
         <li><code>https://gpt88.cc/v1</code></li>
         <li><code>https://china.claudecoder.me/v1</code></li>
         <li><code>https://world.claudecoder.me/v1</code></li>
+        <li><code>https://aiapi.up.railway.app/v1</code></li>
+        <li><code>https://ai.orbitlink.me/v1</code></li>
       </ul>
       <p>它们共享同一套 API Key、模型和字段语义，只是网络路由不同。</p>
 

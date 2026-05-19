@@ -6,6 +6,8 @@
 
 - 产品：gpt88.cc 统一 AI API 网关。
 - 默认 OpenAI 兼容 Base URL: https://gpt88.cc/v1。
+- 海外直连 OpenAI 兼容 Base URL: https://aiapi.up.railway.app/v1。
+- 海外 CDN OpenAI 兼容 Base URL: https://ai.orbitlink.me/v1。
 - 文档站：https://doc.gpt88.cc/。
 - 控制台：https://gpt88.cc。
 - 加速图片域名：https://china.claudecoder.me。

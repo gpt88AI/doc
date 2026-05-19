@@ -11,7 +11,8 @@ import { Callout } from '../../../components/ui/Callout'
  *
  * 编辑约束：
  * - 所有指向控制台的链接都使用 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
- * - 所有 base_url（china.claudecoder.me / world.claudecoder.me / gpt88.cc/v1）作为代码字面量呈现
+ * - 所有 base_url（china.claudecoder.me / world.claudecoder.me / aiapi.up.railway.app /
+ *   ai.orbitlink.me / gpt88.cc/v1）作为代码字面量呈现
  * - 价格 / 限速 / SLA / 配额 / 模型可用性等数值不写死——以控制台为准，本文档不写死数值
  * - CC Switch 的自定义协议、桌面端调起、import URL 具体格式不写死，截图未提供，控制台行为为准
  */
@@ -20,7 +21,7 @@ const QUICK_FLOW = `1. 在控制台「API Keys」中创建或选择一个 API Ke
 2. 打开「配置文件导出」页面
 3. 选择 API Key（默认列出你账号下的所有 Key）
 4. 选择模型（如 claude-haiku-4-5-20251001 / claude-opus-4-7 / gpt-5.4 等）
-5. 选择调用线路（中国大陆 → 中国调用；海外/跨境 → 海外全球加速）
+5. 选择调用线路（中国大陆 → 中国调用；海外/跨境 → 海外全球加速、海外直连或海外 CDN）
 6. 选择要接入的工具 tab（Claude Code / Cursor / Python SDK …）
 7a. 复制 Base URL + 复制工具对应的配置片段，粘贴到目标工具的设置中；
     或
@@ -214,7 +215,7 @@ export default function ConfigExportPage() {
       </ul>
 
       <h3 id="field-route">3.3 选择调用线路</h3>
-      <p>页面提供两个等价的服务端点，作用完全相同，只是网络路由不同。请按你的网络环境选：</p>
+      <p>页面提供多个等价的服务端点，作用完全相同，只是网络路由不同。请按你的网络环境选：</p>
       <DocTable
         headers={['线路', '推荐场景', '示例地址']}
         rows={[
@@ -227,6 +228,16 @@ export default function ConfigExportPage() {
             <strong key="r2-1">海外全球加速</strong>,
             '海外服务器、海外团队、跨境网络、走 VPN 的用户',
             <code key="r2-3">https://world.claudecoder.me</code>,
+          ],
+          [
+            <strong key="r3-1">海外直连</strong>,
+            '海外服务器直连、希望减少代理层或做线路对比的用户',
+            <code key="r3-3">https://aiapi.up.railway.app</code>,
+          ],
+          [
+            <strong key="r4-1">海外 CDN</strong>,
+            '海外访问希望优先走 CDN 边缘节点的团队或生产服务',
+            <code key="r4-3">https://ai.orbitlink.me</code>,
           ],
         ]}
       />

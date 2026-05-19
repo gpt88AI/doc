@@ -12,8 +12,9 @@ import { cn } from '../../lib/cn'
  * 同时仍保持纯静态 + 可服务端渲染。
  *
  * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
- * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me 与 world.claudecoder.me
- * 是等价端点，本页"兼容性"分组新增「我能用其他 base_url 吗？」一条 FAQ 说明这一点。
+ * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me、world.claudecoder.me、
+ * aiapi.up.railway.app 与 ai.orbitlink.me 是等价端点，本页"兼容性"分组新增
+ * 「我能用其他 base_url 吗？」一条 FAQ 说明这一点。
  */
 
 type QA = { q: string; a: React.ReactNode; group: string }
@@ -103,16 +104,20 @@ const FAQ: QA[] = [
         <p>
           可以，<code>china.claudecoder.me</code> /{' '}
           <code>world.claudecoder.me</code> /{' '}
-          <code>gpt88.cc</code> 三个端点完全等价，
+          <code>aiapi.up.railway.app</code> /{' '}
+          <code>ai.orbitlink.me</code> /{' '}
+          <code>gpt88.cc</code> 这些端点完全等价，
           按你的网络情况选择即可：
         </p>
         <ul className="list-disc pl-5">
           <li><code>https://gpt88.cc/v1</code> — 默认端点；</li>
           <li><code>https://china.claudecoder.me/v1</code> — 中国大陆优先；</li>
           <li><code>https://world.claudecoder.me/v1</code> — 海外优先。</li>
+          <li><code>https://aiapi.up.railway.app/v1</code> — 海外直连。</li>
+          <li><code>https://ai.orbitlink.me/v1</code> — 海外 CDN。</li>
         </ul>
         <p>
-          API Key、模型清单、字段语义在三个端点上保持一致，<strong>无需重新生成 Key</strong>。
+          API Key、模型清单、字段语义在这些端点上保持一致，<strong>无需重新生成 Key</strong>。
           详细说明见{' '}
           <Link to="/docs/quickstart#endpoints">快速开始 · 可选服务端点</Link>。
         </p>

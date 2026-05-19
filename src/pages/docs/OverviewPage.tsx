@@ -9,8 +9,8 @@ import { DocPage } from '../../components/layout/DocPage'
  * 此页面不包含真实计费/SLA 数字，避免传达不准确信息。
  *
  * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
- * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me 与 world.claudecoder.me
- * 是等价端点，本页"一句话介绍"段落附带提到这一点。
+ * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me、world.claudecoder.me、
+ * aiapi.up.railway.app 与 ai.orbitlink.me 是等价端点，本页"一句话介绍"段落附带提到这一点。
  */
 
 const NEXT_STEPS = [
@@ -55,8 +55,10 @@ export default function OverviewPage() {
       <p>
         所有接口都通过 <code>https://gpt88.cc/v1</code> 提供（也可使用等价端点{' '}
         <code>china.claudecoder.me</code> /{' '}
-        <code>world.claudecoder.me</code>）。
-        三个端点完全等价，详见{' '}
+        <code>world.claudecoder.me</code> /{' '}
+        <code>aiapi.up.railway.app</code> /{' '}
+        <code>ai.orbitlink.me</code>）。
+        这些端点完全等价，详见{' '}
         <Link to="/docs/quickstart#endpoints">快速开始 · 可选服务端点</Link>。
       </p>
       {/*

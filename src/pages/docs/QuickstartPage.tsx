@@ -9,8 +9,9 @@ import { CodeBlock } from '../../components/ui/CodeBlock'
  * 因此结构必须线性、命令必须可直接复制、一定要给出预期返回片段。
  *
  * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
- * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me 与 world.claudecoder.me
- * 是等价端点，文档示例使用默认端点，并在「可选服务端点」段落把三者一起列出。
+ * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me、world.claudecoder.me、
+ * aiapi.up.railway.app 与 ai.orbitlink.me 是等价端点，文档示例使用默认端点，
+ * 并在「可选服务端点」段落把它们一起列出。
  *
  * Human 历史决策：站内主推模型口径已切到 Claude/GPT 系列，
  * 文档默认示例需与产品导向一致；长尾模型仍保留于模型导航，不作为默认示例。
@@ -143,13 +144,13 @@ export default function QuickstartPage() {
 
       {/*
        * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
-       * 三个端点完全等价，文档默认使用 https://gpt88.cc/v1；
+       * 多个端点完全等价，文档默认使用 https://gpt88.cc/v1；
        * china.claudecoder.me 服务于中国大陆访问，
-       * world.claudecoder.me 服务于海外访问。
+       * world.claudecoder.me / aiapi.up.railway.app / ai.orbitlink.me 服务于海外访问。
        */}
       <h2 id="endpoints">可选服务端点</h2>
       <p>
-        gpt88.cc 提供三个完全等价的服务端点，挑选一个最适合你网络环境的即可，
+        gpt88.cc 提供多个完全等价的服务端点，挑选一个最适合你网络环境的即可，
         本文档默认使用 <code>https://gpt88.cc/v1</code>。
       </p>
       <ul>
@@ -165,9 +166,17 @@ export default function QuickstartPage() {
           <code>https://world.claudecoder.me/v1</code>{' '}
           <span className="text-ink-400">— 海外优先线路。</span>
         </li>
+        <li>
+          <code>https://aiapi.up.railway.app/v1</code>{' '}
+          <span className="text-ink-400">— 海外直连线路。</span>
+        </li>
+        <li>
+          <code>https://ai.orbitlink.me/v1</code>{' '}
+          <span className="text-ink-400">— 海外 CDN 线路。</span>
+        </li>
       </ul>
       <p>
-        三个端点完全等价：<strong>API Key、模型、协议、字段都一致</strong>，
+        这些端点完全等价：<strong>API Key、模型、协议、字段都一致</strong>，
         只是接入网络不同。如需切换，只要把 <code>base_url</code>（或 cURL URL 前缀）
         改成对应域名即可，<strong>无需重新生成 API Key</strong>。
       </p>
