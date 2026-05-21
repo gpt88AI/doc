@@ -98,6 +98,12 @@ const docs = [
     description: '使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。',
     section: '指南',
   },
+  {
+    title: 'Codex gpt-image-2 Skill 生成图片',
+    path: '/docs/guides/codex-gpt-image-2-skill',
+    description: '直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。',
+    section: '指南',
+  },
 ]
 
 const staticPages = [
@@ -296,7 +302,7 @@ ${featuredModels.map(markdownLink).join('\n')}
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
 - Token 电力计费理念：充值 1 元 = 账户 1 元余额，按实际 Token 消耗扣费。
-- Codex CLI、CC Switch、OAuth 登录和插件能力排障。
+- Codex CLI、CC Switch、OAuth 登录、插件能力排障和 gpt-image-2 skill 图片生成。
 
 完整机器可读索引见 ${siteUrl}/llms-full.txt。
 `

@@ -117,6 +117,11 @@ export const DOCS_NAV: NavSection[] = [
         path: '/docs/guides/codex-plugins-oauth',
         blurb: '使用 gpt88.cc API Key 后插件不可用时，切回 ChatGPT OAuth 的完整教程',
       },
+      {
+        title: 'Codex gpt-image-2 Skill',
+        path: '/docs/guides/codex-gpt-image-2-skill',
+        blurb: '用 Codex skill 调用 gpt88.cc 的 gpt-image-2 生成真实图片文件',
+      },
     ],
   },
   {

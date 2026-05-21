@@ -16,6 +16,7 @@ import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
 import ConfigExportPage from './pages/docs/guides/ConfigExportPage'
 import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
 import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
+import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
 import ModelsPage from './pages/ModelsPage'
 import ModelDetailPage from './pages/ModelDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -64,6 +65,7 @@ export default function App() {
           <Route path="guides/config-export" element={<ConfigExportPage />} />
           <Route path="guides/gpt88-tutorial" element={<Gpt88TutorialPage />} />
           <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
+          <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
         </Route>
 
         {/* 模型导航（M3）：列表 + 详情 */}
