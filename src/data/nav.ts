@@ -113,6 +113,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'Claude 与 OpenAI 通用接入、模型选择、线路选择、工具接入',
       },
       {
+        title: '完整接入手册',
+        path: '/docs/guides/complete-integration',
+        blurb: '从 API Key、Base URL、客户端配置到用量核对和错误排查的端到端教程',
+      },
+      {
         title: 'Codex 插件 OAuth 登录',
         path: '/docs/guides/codex-plugins-oauth',
         blurb: '使用 gpt88.cc API Key 后插件不可用时，切回 ChatGPT OAuth 的完整教程',

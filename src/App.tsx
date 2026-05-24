@@ -15,6 +15,7 @@ import PythonSdkPage from './pages/docs/sdk/PythonPage'
 import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
 import ConfigExportPage from './pages/docs/guides/ConfigExportPage'
 import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
+import CompleteIntegrationGuidePage from './pages/docs/guides/CompleteIntegrationGuidePage'
 import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
 import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
 import ModelsPage from './pages/ModelsPage'
@@ -64,6 +65,7 @@ export default function App() {
           {/* 指南：how-to 类教程 */}
           <Route path="guides/config-export" element={<ConfigExportPage />} />
           <Route path="guides/gpt88-tutorial" element={<Gpt88TutorialPage />} />
+          <Route path="guides/complete-integration" element={<CompleteIntegrationGuidePage />} />
           <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
           <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
         </Route>

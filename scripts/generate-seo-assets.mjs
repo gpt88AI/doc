@@ -93,6 +93,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: '完整接入手册',
+    path: '/docs/guides/complete-integration',
+    description: '从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。',
+    section: '指南',
+  },
+  {
     title: 'Codex 插件 OAuth 登录',
     path: '/docs/guides/codex-plugins-oauth',
     description: '使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。',
