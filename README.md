@@ -2,16 +2,37 @@
 
 `gpt88.cc` 开发者文档站，使用 React + TypeScript + Vite + Tailwind CSS v4 构建。
 
-站点内容围绕统一 AI API 网关展开，包含快速开始、认证与计费、API Reference、SDK 示例、配置文件导出指南、模型导航和模型详情页。
+站点内容围绕统一 AI API 网关展开，包含快速开始、认证与计费、API Reference、SDK 示例、配置文件导出指南、Agent 图片工作台教程、Codex 工具教程、模型导航和模型详情页。
 
 ## 内容范围
 
 - 首页：展示 gpt88.cc、OpenAI Compatible、统一 API 网关、多模型接入。
 - 文档：概览、快速开始、认证与计费、FAQ。
-- API Reference：`POST /v1/chat/completions`、`GET /v1/models`、错误码。
+- API Reference：`POST /v1/chat/completions`、Google / Gemini 图片生成、`GET /v1/models`、错误码。
 - SDK 示例：cURL、Python SDK、Node.js SDK。
-- 指南：配置文件导出、gpt88.cc 接入教程。
+- 指南：配置文件导出、gpt88.cc 通用教程、完整接入手册、Agent 图片工作台、Codex 插件 OAuth 登录、Codex gpt-image-2 Skill 图片生成。
 - 模型市场：模型分类、搜索、能力标签、推荐场景、详情页。
+
+## 重要入口
+
+```text
+文档站: https://doc.gpt88.cc/
+控制台: https://gpt88.cc/
+Agent 图片工作台: https://agent.gpt88.cc/
+默认 OpenAI 兼容 Base URL: https://gpt88.cc/v1
+图片加速 Base URL: https://china.claudecoder.me
+海外直连 Base URL: https://aiapi.up.railway.app/v1
+海外 CDN Base URL: https://ai.orbitlink.me/v1
+```
+
+## 核心理念
+
+gpt88.cc 文档站强调“AI 电网 / Token 电力”的计费理解方式：
+
+- 充值 1 元 = 账户 1 元余额。
+- 模型实际消耗多少，就按真实人民币余额扣多少。
+- 不使用传统中转站的复杂倍率、积分盘、虚拟刀换算。
+- 文档中避免写死强时效价格、限速和 SLA，具体数值以控制台动态配置为准。
 
 ## 本地开发
 
@@ -146,12 +167,16 @@ src/
     ModelsPage.tsx                # 模型导航
     ModelDetailPage.tsx           # 模型详情
     docs/                         # 文档页面
+      api/                        # API Reference
+      guides/                     # 任务式教程
+      sdk/                        # SDK 示例
 ```
 
 ## 维护约定
 
 - 不在静态文档中写死真实价格、限速、SLA 等强时效信息；这些内容应指向控制台或后端动态配置。
-- 示例 Base URL 默认展示 `https://gpt88.cc/v1`，配置文件导出页面可展示按线路生成的地址。
+- 示例 Base URL 默认展示 `https://gpt88.cc/v1`，Google 图片生成示例使用 `https://china.claudecoder.me`，配置文件导出页面可展示按线路生成的地址。
 - API Key、截图和日志中必须脱敏，禁止提交真实密钥。
 - 新增模型时优先更新 `src/data/models.ts`，再补对应文档或详情页说明。
-- 新增文档入口时同步更新 `src/data/nav.ts`。
+- 新增文档入口时同步更新 `src/data/nav.ts`、`src/App.tsx` 和 `scripts/generate-seo-assets.mjs`，然后执行 `npm run seo`。
+- 新增面向搜索或 AI Agent 的重要页面后，必须确认 `public/sitemap.xml`、`public/llms.txt`、`public/llms-full.txt` 已包含对应 URL。

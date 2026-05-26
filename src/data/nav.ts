@@ -118,6 +118,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '从 API Key、Base URL、客户端配置到用量核对和错误排查的端到端教程',
       },
       {
+        title: 'Agent 图片工作台',
+        path: '/docs/guides/agent-image-studio',
+        blurb: '使用 agent.gpt88.cc 生成电商主图、场景图、模特图、详情页素材和批量图片',
+      },
+      {
         title: 'Codex 插件 OAuth 登录',
         path: '/docs/guides/codex-plugins-oauth',
         blurb: '使用 gpt88.cc API Key 后插件不可用时，切回 ChatGPT OAuth 的完整教程',

@@ -99,6 +99,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'GPT88 Agent 图片工作台教程',
+    path: '/docs/guides/agent-image-studio',
+    description: '使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。',
+    section: '指南',
+  },
+  {
     title: 'Codex 插件 OAuth 登录',
     path: '/docs/guides/codex-plugins-oauth',
     description: '使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。',
@@ -308,7 +314,7 @@ ${featuredModels.map(markdownLink).join('\n')}
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
 - Token 电力计费理念：充值 1 元 = 账户 1 元余额，按实际 Token 消耗扣费。
-- Codex CLI、CC Switch、OAuth 登录、插件能力排障和 gpt-image-2 skill 图片生成。
+- GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障和 gpt-image-2 skill 图片生成。
 
 完整机器可读索引见 ${siteUrl}/llms-full.txt。
 `

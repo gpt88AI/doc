@@ -18,6 +18,7 @@ import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
 import CompleteIntegrationGuidePage from './pages/docs/guides/CompleteIntegrationGuidePage'
 import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
 import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
+import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
 import ModelsPage from './pages/ModelsPage'
 import ModelDetailPage from './pages/ModelDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -66,6 +67,7 @@ export default function App() {
           <Route path="guides/config-export" element={<ConfigExportPage />} />
           <Route path="guides/gpt88-tutorial" element={<Gpt88TutorialPage />} />
           <Route path="guides/complete-integration" element={<CompleteIntegrationGuidePage />} />
+          <Route path="guides/agent-image-studio" element={<AgentImageStudioGuidePage />} />
           <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
           <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
         </Route>
