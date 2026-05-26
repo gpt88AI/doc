@@ -116,6 +116,12 @@ const docs = [
     description: '直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。',
     section: '指南',
   },
+  {
+    title: 'Codex 工具恢复教程',
+    path: '/docs/guides/codex-tool-recovery',
+    description: '当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。',
+    section: '指南',
+  },
 ]
 
 const staticPages = [
@@ -314,7 +320,7 @@ ${featuredModels.map(markdownLink).join('\n')}
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
 - Token 电力计费理念：充值 1 元 = 账户 1 元余额，按实际 Token 消耗扣费。
-- GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障和 gpt-image-2 skill 图片生成。
+- GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障、工具恢复排查和 gpt-image-2 skill 图片生成。
 
 完整机器可读索引见 ${siteUrl}/llms-full.txt。
 `
