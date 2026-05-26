@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: gh-pages
@@ -37,6 +39,12 @@ jobs:
       - name: Add CNAME
         run: printf '%s\n' 'doc.gpt88.cc' > dist/CNAME
 
+      - name: Write deploy marker
+        run: |
+          printf 'commit=%s\n' "${GITHUB_SHA}" > dist/deploy-version.txt
+          printf 'run_id=%s\n' "${GITHUB_RUN_ID}" >> dist/deploy-version.txt
+          printf 'deployed_at=%s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> dist/deploy-version.txt
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -44,3 +52,16 @@ jobs:
           publish_branch: gh-pages
           publish_dir: dist
           force_orphan: true
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
