@@ -86,34 +86,24 @@ npm run prerender
 
 ## GitHub Pages
 
-仓库使用 GitHub Actions 部署到 GitHub Pages：
+仓库使用 GitHub Actions 构建后发布到 `gh-pages` 分支，再由 GitHub Pages 提供站点：
 
 ```text
-.github/workflows/pages.yml
+.github/workflows/gh-pages.yml
 ```
 
-如果部署到默认项目 Pages 地址：
-
-```text
-https://gpt88ai.github.io/doc/
-```
-
-构建时需要使用：
-
-```bash
-VITE_BASE_PATH=/doc/ npm run build
-```
-
-如果绑定自定义域名：
-
-```text
-https://doc.gpt88.cc/
-```
-
-构建时应使用根路径：
+当前发布方式面向自定义域名 `https://doc.gpt88.cc/`，构建时使用：
 
 ```bash
 VITE_BASE_PATH=/ npm run build
+```
+
+GitHub Pages 设置：
+
+```text
+Source: Deploy from a branch
+Branch: gh-pages
+Folder: / (root)
 ```
 
 DNS 配置：
@@ -127,9 +117,16 @@ DNS 配置：
 GitHub 仓库设置：
 
 1. 打开 `https://github.com/gpt88AI/doc/settings/pages`
-2. `Source` 选择 `GitHub Actions`
-3. `Custom domain` 填写 `doc.gpt88.cc`
-4. DNS 检查通过后启用 `Enforce HTTPS`
+2. `Source` 选择 `Deploy from a branch`
+3. `Branch` 选择 `gh-pages`
+4. `Custom domain` 填写 `doc.gpt88.cc`
+5. DNS 检查通过后启用 `Enforce HTTPS`
+
+如果你要改回 GitHub 项目页地址 `https://gpt88ai.github.io/doc/`，需要把构建基路径改回：
+
+```bash
+VITE_BASE_PATH=/doc/ npm run build
+```
 
 ## SPA Fallback
 
@@ -148,7 +145,7 @@ GitHub 仓库设置：
 
 - `public/_redirects`：Netlify / Cloudflare Pages fallback。
 - `vercel.json`：Vercel fallback。
-- GitHub Pages workflow：构建后复制 `dist/index.html` 为 `dist/404.html`。
+- GitHub Pages workflow：构建后输出到 `gh-pages` 分支，并生成 `404.html`。
 
 ## 项目结构
 
