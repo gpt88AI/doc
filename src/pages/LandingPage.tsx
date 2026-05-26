@@ -6,6 +6,7 @@ import {
   Cpu,
   ExternalLink,
   Globe,
+  ShieldAlert,
   KeyRound,
   Rocket,
   ShieldCheck,
@@ -76,6 +77,11 @@ const FEATURES = [
     icon: Boxes,
     title: '多模态统一接入',
     desc: 'Chat / Image / Video / Audio 统一管理，模型能力通过 model 字段自由切换。',
+  },
+  {
+    icon: ShieldAlert,
+    title: 'Codex 工具恢复',
+    desc: '工具突然不可调用时，先检查文件工具是否可用，恢复后从第一步重新落代码。',
   },
   {
     icon: ShieldCheck,
