@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Boxes, Code2, Compass, Zap } from 'lucide-react'
+import { ArrowRight, Boxes, Code2, Compass, Image, Zap } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
 
 /**
@@ -31,6 +31,12 @@ const NEXT_STEPS = [
     desc: '按 Chat / Image / Video / Audio 与场景挑选模型。',
     href: '/models',
     icon: Compass,
+  },
+  {
+    title: 'Agent 图片工作台',
+    desc: '使用 agent.gpt88.cc 生成电商主图、场景图、模特图和批量图片。',
+    href: '/docs/guides/agent-image-studio',
+    icon: Image,
   },
 ] as const
 
@@ -119,7 +125,7 @@ export default function OverviewPage() {
       </p>
 
       <h2 id="next">下一步</h2>
-      <div className="not-prose mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <div className="not-prose mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {NEXT_STEPS.map(step => (
           <Link
             key={step.href}
