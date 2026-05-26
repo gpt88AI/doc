@@ -103,7 +103,13 @@ export default function IntegrationsHubPage() {
       ]}
     >
       <p>
-        这一页是集成指南总入口。你可以先按工具类型找到对应教程，再进入更细的配置说明。
+        这一页是集成指南总入口。每篇教程都按“准备工作、逐步配置、验证方式、常见问题、排障清单”组织，
+        适合直接照着配置，也适合把链接发给团队成员。
+      </p>
+      <p>
+        如果你不确定该从哪里开始：普通聊天先看 ChatBox，开发工具先看 Codex CLI 或 Claude Code，
+        平台应用先看 Dify。OpenAI 兼容工具通常使用 <code>https://gpt88.cc/v1</code>，
+        Claude 风格工具通常使用 <code>https://gpt88.cc</code>。
       </p>
 
       <h2 id="chat-apps">聊天应用</h2>

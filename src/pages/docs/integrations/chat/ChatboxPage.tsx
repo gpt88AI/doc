@@ -33,6 +33,24 @@ curl https://gpt88.cc/v1/chat/completions \\
     ]
   }'`
 
+const TROUBLESHOOTING = `1. 连不上服务
+   - 检查是否写成了 https://gpt88.cc 而不是 https://gpt88.cc/v1
+   - 检查 API Key 是否完整
+   - 先用 curl 验证，再回到 ChatBox
+
+2. 模型列表为空
+   - 手动输入模型 ID
+   - 到 /v1/models 或模型导航复制真实模型名
+
+3. 返回 401
+   - Key 无效、过期或权限不足
+
+4. 返回 404
+   - 多半是 Base URL 或模型名写错
+
+5. 返回很慢
+   - 先换一个更轻的模型测试网络和配置`
+
 function DocTable({
   headers,
   rows,
@@ -91,6 +109,7 @@ export default function ChatboxPage() {
         { id: 'advanced', text: '高级功能', level: 2 },
         { id: 'faq', text: '常见问题', level: 2 },
         { id: 'tips', text: '使用技巧', level: 2 },
+        { id: 'troubleshoot', text: '排障清单', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
       ]}
     >
@@ -98,9 +117,14 @@ export default function ChatboxPage() {
         <p>
           绝大多数场景下，直接把 ChatBox 的 OpenAI 兼容配置指向
           <code>https://gpt88.cc/v1</code> 就够了。只要模型 ID 选对，
-          你基本可以不改聊天工作流。
+        你基本可以不改聊天工作流。
         </p>
       </Callout>
+
+      <p>
+        这篇教程的目标不是“知道有个配置项”，而是让你按截图一样把 ChatBox
+        从空白状态接成可用状态：先填 API Key，再填 Base URL，再选模型，最后做一轮验证。
+      </p>
 
       <h2 id="prepare">准备工作</h2>
       <p>开始之前，先确认这几件事：</p>
@@ -131,6 +155,13 @@ export default function ChatboxPage() {
         ]}
       />
 
+      <Callout tone="warn" title="先决定你走哪种协议">
+        <p>
+          如果你当前要接的是 OpenAI 风格模型，优先按 <code>https://gpt88.cc/v1</code> 配置；
+          如果你明确要走 Claude 风格，再切换到根地址。不要把两种风格混填。
+        </p>
+      </Callout>
+
       <h2 id="launch">第一步：启动 ChatBox 并开始配置</h2>
       <p>
         首次启动 ChatBox，通常会看到配置向导；如果已经配置过，也可以从设置里重新进入。
@@ -156,6 +187,7 @@ export default function ChatboxPage() {
       <CodeBlock lang="text" filename="openai-config" code={OPENAI_CONFIG} />
       <p>如果你准备走 Claude 风格，再改成下面这样：</p>
       <CodeBlock lang="text" filename="claude-config" code={CLAUDE_CONFIG} />
+      <p>配置时最容易出错的就是“地址形态”和“模型名”。你可以直接对照下面的简表：</p>
       <DocTable
         headers={['配置项', 'OpenAI 风格', 'Claude 风格']}
         rows={[
@@ -215,6 +247,13 @@ export default function ChatboxPage() {
         <li>提示词模板：把常用提示词存成模板，减少重复输入。</li>
         <li>模型切换：根据任务在快速模型和高质量模型之间切换。</li>
       </ul>
+
+      <h2 id="troubleshoot">排障清单</h2>
+      <CodeBlock lang="text" filename="troubleshooting" code={TROUBLESHOOTING} />
+      <p>
+        如果你已经按上面的步骤配置完，还是不通，优先去控制台和 cURL 里确认 Key、
+        模型权限与 Base URL，而不是先怀疑 ChatBox 本身。
+      </p>
 
       <h2 id="faq">常见问题</h2>
       <p><strong>Q1: 无法连接到 gpt88.cc？</strong></p>
