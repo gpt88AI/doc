@@ -97,6 +97,71 @@ export const DOCS_NAV: NavSection[] = [
     ],
   },
   {
+    title: '集成指南',
+    items: [
+      {
+        title: '集成总览',
+        path: '/docs/integrations',
+        blurb: '按聊天应用、开发工具、应用平台分类浏览所有集成教程',
+      },
+      {
+        title: 'ChatBox',
+        path: '/docs/integrations/chat/chatbox',
+        blurb: 'ChatBox 的 OpenAI 兼容接入与模型选择',
+      },
+      {
+        title: 'Cherry Studio',
+        path: '/docs/integrations/chat/cherry-studio',
+        blurb: 'Cherry Studio 的多模型与提示词工作流配置',
+      },
+      {
+        title: 'AnythingLLM',
+        path: '/docs/integrations/chat/anythingllm',
+        blurb: 'AnythingLLM 的知识库与聊天接入教程',
+      },
+      {
+        title: 'Claude Code',
+        path: '/docs/integrations/dev/claude-code',
+        blurb: 'Claude Code 的 OAuth、API Key 和路由接法',
+      },
+      {
+        title: 'Cursor',
+        path: '/docs/integrations/dev/cursor',
+        blurb: 'Cursor 编辑器里的模型接入指南',
+      },
+      {
+        title: 'Cline',
+        path: '/docs/integrations/dev/cline',
+        blurb: 'Cline 的 Agent 接入与模型切换',
+      },
+      {
+        title: 'Gemini CLI',
+        path: '/docs/integrations/dev/gemini-cli',
+        blurb: 'Gemini CLI 与 Google 图片模型接法',
+      },
+      {
+        title: 'Codex CLI',
+        path: '/docs/integrations/dev/codex-cli',
+        blurb: 'Codex CLI 通过 gpt88.cc 调模型的完整流程',
+      },
+      {
+        title: 'CC-Switch',
+        path: '/docs/integrations/dev/cc-switch',
+        blurb: '中转站路由与 OAuth 切换说明',
+      },
+      {
+        title: 'Dify',
+        path: '/docs/integrations/platforms/dify',
+        blurb: '把 gpt88.cc 接入 Dify 应用和工作流',
+      },
+      {
+        title: '沉浸式翻译',
+        path: '/docs/integrations/platforms/immersive-translate',
+        blurb: '浏览器翻译扩展接入 gpt88.cc',
+      },
+    ],
+  },
+  {
     // 指南：偏"任务式"内容，把 API Key + 模型 + 线路打包给具体工具的实操教程。
     // 当前只有"配置文件导出"一篇，未来可以追加更多 how-to。
     // TOP_NAV 暂不增加"指南"项以免顶部导航过载，依赖侧边栏即可。

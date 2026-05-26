@@ -98,6 +98,11 @@ const FEATURES = [
     title: '开发者优先',
     desc: '清晰错误码、稳定字段、长期不变更的请求结构。',
   },
+  {
+    icon: Boxes,
+    title: '集成指南',
+    desc: 'ChatBox、Cherry Studio、Claude Code、Cursor、Codex CLI、Dify 等工具教程。',
+  },
 ] as const
 
 const BULLETS = [

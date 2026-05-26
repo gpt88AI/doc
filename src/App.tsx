@@ -20,6 +20,18 @@ import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
 import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
 import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
 import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
+import IntegrationsHubPage from './pages/docs/integrations/IntegrationsHubPage'
+import ChatboxPage from './pages/docs/integrations/chat/ChatboxPage'
+import CherryStudioPage from './pages/docs/integrations/chat/CherryStudioPage'
+import AnythingLlmPage from './pages/docs/integrations/chat/AnythingLlmPage'
+import ClaudeCodeIntegrationPage from './pages/docs/integrations/dev/ClaudeCodePage'
+import CursorIntegrationPage from './pages/docs/integrations/dev/CursorPage'
+import ClineIntegrationPage from './pages/docs/integrations/dev/ClinePage'
+import GeminiCliIntegrationPage from './pages/docs/integrations/dev/GeminiCliPage'
+import CodexCliIntegrationPage from './pages/docs/integrations/dev/CodexCliPage'
+import CcSwitchIntegrationPage from './pages/docs/integrations/dev/CcSwitchPage'
+import DifyIntegrationPage from './pages/docs/integrations/platforms/DifyPage'
+import ImmersiveTranslateIntegrationPage from './pages/docs/integrations/platforms/ImmersiveTranslatePage'
 import ModelsPage from './pages/ModelsPage'
 import ModelDetailPage from './pages/ModelDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -50,8 +62,20 @@ export default function App() {
           <Route index element={<Navigate to="/docs/overview" replace />} />
           <Route path="overview" element={<OverviewPage />} />
           <Route path="quickstart" element={<QuickstartPage />} />
-          <Route path="auth" element={<AuthPage />} />
-          <Route path="faq" element={<FaqPage />} />
+        <Route path="auth" element={<AuthPage />} />
+        <Route path="faq" element={<FaqPage />} />
+        <Route path="integrations" element={<IntegrationsHubPage />} />
+        <Route path="integrations/chat/chatbox" element={<ChatboxPage />} />
+        <Route path="integrations/chat/cherry-studio" element={<CherryStudioPage />} />
+        <Route path="integrations/chat/anythingllm" element={<AnythingLlmPage />} />
+        <Route path="integrations/dev/claude-code" element={<ClaudeCodeIntegrationPage />} />
+        <Route path="integrations/dev/cursor" element={<CursorIntegrationPage />} />
+        <Route path="integrations/dev/cline" element={<ClineIntegrationPage />} />
+        <Route path="integrations/dev/gemini-cli" element={<GeminiCliIntegrationPage />} />
+        <Route path="integrations/dev/codex-cli" element={<CodexCliIntegrationPage />} />
+        <Route path="integrations/dev/cc-switch" element={<CcSwitchIntegrationPage />} />
+        <Route path="integrations/platforms/dify" element={<DifyIntegrationPage />} />
+        <Route path="integrations/platforms/immersive-translate" element={<ImmersiveTranslateIntegrationPage />} />
 
           {/* API Reference */}
           <Route path="api/chat-completions" element={<ChatCompletionsPage />} />
