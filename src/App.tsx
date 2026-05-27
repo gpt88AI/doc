@@ -20,6 +20,7 @@ import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
 import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
 import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
 import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
+import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage'
 import IntegrationsHubPage from './pages/docs/integrations/IntegrationsHubPage'
 import ChatboxPage from './pages/docs/integrations/chat/ChatboxPage'
 import CherryStudioPage from './pages/docs/integrations/chat/CherryStudioPage'
@@ -96,6 +97,7 @@ export default function App() {
           <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
           <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
           <Route path="guides/codex-tool-recovery" element={<CodexToolRecoveryPage />} />
+          <Route path="guides/zero-downtime-release" element={<ZeroDowntimeReleasePage />} />
         </Route>
 
         {/* 模型导航（M3）：列表 + 详情 */}

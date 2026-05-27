@@ -194,6 +194,12 @@ const docs = [
     description: '当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。',
     section: '指南',
   },
+  {
+    title: '无停服更新技术方案',
+    path: '/docs/guides/zero-downtime-release',
+    description: '基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。',
+    section: '指南',
+  },
 ]
 
 const staticPages = [

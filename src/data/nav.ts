@@ -202,6 +202,11 @@ export const DOCS_NAV: NavSection[] = [
         path: '/docs/guides/codex-tool-recovery',
         blurb: 'Codex 执行中工具失效时，先检查文件工具是否可用，恢复后从第一步重新落代码',
       },
+      {
+        title: '无停服更新技术方案',
+        path: '/docs/guides/zero-downtime-release',
+        blurb: '基于蓝绿槽位、健康检查、反向代理切流和快速回滚的生产发布教程',
+      },
     ],
   },
   {

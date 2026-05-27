@@ -39,6 +39,7 @@
 - [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
 - [Codex gpt-image-2 Skill 生成图片](https://doc.gpt88.cc/docs/guides/codex-gpt-image-2-skill): 直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。
 - [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
+- [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
 
 ## 重点模型
 
