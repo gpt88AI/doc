@@ -17,6 +17,7 @@ export function docStructuredData(title: string, description: string, path: stri
       '@type': 'Organization',
       name: 'gpt88.cc',
       url: 'https://gpt88.cc',
+      sameAs: ['https://x.com/webstarchina', 'https://t.me/+CtlYILkGaY1jYzBl'],
     },
   }
 }
@@ -28,6 +29,12 @@ export function websiteStructuredData() {
     name: 'gpt88.cc API 文档',
     url: `${SITE_URL}/`,
     inLanguage: 'zh-CN',
+    publisher: {
+      '@type': 'Organization',
+      name: 'gpt88.cc',
+      url: 'https://gpt88.cc',
+      sameAs: ['https://x.com/webstarchina', 'https://t.me/+CtlYILkGaY1jYzBl'],
+    },
     potentialAction: {
       '@type': 'SearchAction',
       target: `${SITE_URL}/models?query={search_term_string}`,
@@ -68,5 +75,6 @@ export function modelStructuredData({
       url: 'https://gpt88.cc',
       priceCurrency: 'CNY',
     },
+    sameAs: ['https://x.com/webstarchina', 'https://t.me/+CtlYILkGaY1jYzBl'],
   }
 }

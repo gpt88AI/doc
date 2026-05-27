@@ -8,11 +8,7 @@ import { Link } from 'react-router-dom'
  * - 站内深链（/docs/*、/models 等）一律使用 react-router 的 <Link>，
  *   避免在 BrowserRouter 下整页刷新；同时也防止部署环境缺少 SPA rewrite 时
  *   通过裸 <a href="/x"> 触发服务端 404。
- * - Human msg-20260509-jwfia3 要求站内仅保留 *.gpt88.cc / *.claudecoder.me
- *   两个根域的链接。原先这里有一个指向外部参考文档站的"状态"链接，
- *   现已按 human 要求移除；不替换成站内 placeholder，等 PM 派下"状态"页任务再加回。
- * - 旧域名不应再出现在源码（包括注释）中，以避免 QA grep 误报，
- *   也避免后续维护者误以为这里仍应保留第三方状态页入口。
+ * - 社区入口使用官方 X 与 Telegram 链接，统一放在全局底部，避免分散到单篇文档。
  */
 export function Footer() {
   return (
@@ -34,6 +30,22 @@ export function Footer() {
           <Link className="hover:text-ink-200" to="/models">
             模型
           </Link>
+          <a
+            className="hover:text-ink-200"
+            href="https://x.com/webstarchina"
+            target="_blank"
+            rel="noreferrer"
+          >
+            X
+          </a>
+          <a
+            className="hover:text-ink-200"
+            href="https://t.me/+CtlYILkGaY1jYzBl"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Telegram
+          </a>
         </nav>
       </div>
     </footer>

@@ -19,6 +19,8 @@
 文档站: https://doc.gpt88.cc/
 控制台: https://gpt88.cc/
 Agent 图片工作台: https://agent.gpt88.cc/
+X / Twitter: https://x.com/webstarchina
+Telegram: https://t.me/+CtlYILkGaY1jYzBl
 默认 OpenAI 兼容 Base URL: https://gpt88.cc/v1
 图片加速 Base URL: https://china.claudecoder.me
 海外直连 Base URL: https://aiapi.up.railway.app/v1
