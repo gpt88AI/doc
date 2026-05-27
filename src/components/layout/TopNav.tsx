@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { ExternalLink, Menu, X } from 'lucide-react'
 import { Logo } from '../ui/Logo'
 import { TOP_NAV } from '../../data/nav'
 import { cn } from '../../lib/cn'
+
+const COMMUNITY_LINKS = [
+  { title: 'X 社区', href: 'https://x.com/webstarchina' },
+  { title: 'Telegram', href: 'https://t.me/+CtlYILkGaY1jYzBl' },
+] as const
 
 /**
  * 顶部主导航
@@ -50,13 +55,18 @@ export function TopNav() {
 
         {/* 右侧操作区 */}
         <div className="ml-auto flex items-center gap-2">
-          {/*
-           * Human msg-20260509-jwfia3 要求站内仅保留 *.gpt88.cc / *.claudecoder.me
-           * 两个根域的链接。原先这里有一个指向外部参考文档站的
-           * BookOpen "参考文档" 外链（连同图标一起），现已按 human 要求移除。
-           * 旧域名不应再出现在源码（包括注释）中，以避免 QA grep 误报，
-           * 也避免后续维护者误以为这里仍应保留第三方入口。
-           */}
+          {COMMUNITY_LINKS.map(item => (
+            <a
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden items-center gap-1 rounded-md px-2.5 py-1.5 text-sm font-medium text-ink-300 transition-colors hover:bg-white/5 hover:text-ink-100 lg:inline-flex"
+            >
+              {item.title}
+              <ExternalLink className="h-3 w-3 opacity-70" />
+            </a>
+          ))}
           {/*
            * "开始使用"是站内深链 (/docs/quickstart)，原先用 <a href> 在
            * BrowserRouter 下点击会触发整页刷新；改成 react-router 的 <Link>，
@@ -103,6 +113,24 @@ export function TopNav() {
                 </NavLink>
               )
             })}
+            <div className="mt-2 border-t border-white/5 pt-2">
+              <div className="px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-ink-500">
+                社区
+              </div>
+              {COMMUNITY_LINKS.map(item => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-ink-200 transition-colors hover:bg-white/5"
+                >
+                  {item.title}
+                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
+                </a>
+              ))}
+            </div>
             {/*
              * 移动端抽屉里的"开始使用"同样是站内深链，统一改用 <Link>。
              * 点击后通过 onClick 关闭抽屉，再由 react-router 完成路由切换。

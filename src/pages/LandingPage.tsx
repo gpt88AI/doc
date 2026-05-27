@@ -213,6 +213,27 @@ export default function LandingPage() {
               查看 API Reference
             </Link>
           </div>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-ink-400">
+            <span>加入社区</span>
+            <a
+              href="https://x.com/webstarchina"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-violet-300 hover:text-violet-200"
+            >
+              X / Twitter
+              <ExternalLink className="h-3 w-3" />
+            </a>
+            <a
+              href="https://t.me/+CtlYILkGaY1jYzBl"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-violet-300 hover:text-violet-200"
+            >
+              Telegram
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </div>
 
           {/* 卖点小列表 */}
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-ink-400">
