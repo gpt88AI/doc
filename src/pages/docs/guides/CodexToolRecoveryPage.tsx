@@ -63,6 +63,7 @@ export default function CodexToolRecoveryPage() {
         { id: 'prompt', text: '可直接复制给 Codex 的提示词', level: 2 },
         { id: 'workflow', text: '恢复后的执行流程', level: 2 },
         { id: 'checklist', text: '排查清单', level: 2 },
+        { id: 'references', text: '扩展阅读', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
       ]}
     >
@@ -110,6 +111,16 @@ export default function CodexToolRecoveryPage() {
 
       <h2 id="checklist">排查清单</h2>
       <CodeBlock lang="text" filename="checklist" code={CHECKLIST} />
+
+      <h2 id="references">扩展阅读</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/freestylefly/CodexGuide" target="_blank" rel="noreferrer">
+            freestylefly/CodexGuide
+          </a>
+          {' '}— Codex 使用、配置和工作流实践指南，可用于补充理解 Codex 的日常操作方式。
+        </li>
+      </ul>
 
       <h2 id="next">下一步</h2>
       <ul>

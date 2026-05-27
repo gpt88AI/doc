@@ -448,6 +448,16 @@ export default function CodexPluginsOauthPage() {
           {' '}— Codex CLI 的 ChatGPT 登录流程与 OAuth 授权说明。
         </li>
         <li>
+          <a
+            href="https://github.com/freestylefly/CodexGuide"
+            target="_blank"
+            rel="noreferrer"
+          >
+            freestylefly/CodexGuide
+          </a>
+          {' '}— Codex 入门、CLI 配置和工作流实践，可作为本教程的扩展阅读。
+        </li>
+        <li>
           如果你只是想配置 gpt88.cc API 模型调用，继续阅读{' '}
           <Link to="/docs/guides/config-export">配置文件导出</Link>。
         </li>

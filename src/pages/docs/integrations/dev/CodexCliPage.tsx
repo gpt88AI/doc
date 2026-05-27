@@ -72,6 +72,7 @@ export default function CodexCliIntegrationPage() {
         { id: 'verify', text: '第三步：验证文件工具', level: 2 },
         { id: 'oauth', text: 'OAuth 与插件能力', level: 2 },
         { id: 'troubleshoot', text: '排障清单', level: 2 },
+        { id: 'references', text: '扩展阅读', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
       ]}
     >
@@ -127,6 +128,16 @@ export default function CodexCliIntegrationPage() {
 
       <h2 id="troubleshoot">排障清单</h2>
       <CodeBlock lang="text" filename="troubleshooting" code={TROUBLESHOOTING} />
+
+      <h2 id="references">扩展阅读</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/freestylefly/CodexGuide" target="_blank" rel="noreferrer">
+            freestylefly/CodexGuide
+          </a>
+          {' '}— Codex 入门、CLI 配置、工作流和实践经验整理，可作为 gpt88.cc Codex 接入教程之外的补充参考。
+        </li>
+      </ul>
 
       <h2 id="next">下一步</h2>
       <ul>

@@ -245,6 +245,13 @@ export default function CodexGptImage2SkillPage() {
           如果你还需要 Codex 插件能力，参考{' '}
           <Link to="/docs/guides/codex-plugins-oauth">Codex 插件与 ChatGPT OAuth 登录</Link>。
         </li>
+        <li>
+          Codex 入门、CLI 配置和工作流实践可参考{' '}
+          <a href="https://github.com/freestylefly/CodexGuide" target="_blank" rel="noreferrer">
+            freestylefly/CodexGuide
+          </a>
+          。
+        </li>
       </ul>
     </DocPage>
   )
