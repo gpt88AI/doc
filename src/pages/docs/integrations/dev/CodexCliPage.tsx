@@ -83,6 +83,16 @@ export default function CodexCliIntegrationPage() {
         </p>
       </Callout>
 
+      <Callout tone="tip" title="额外参考">
+        <p>
+          如果你想看更系统的 Codex 使用、CLI 配置和工作流整理，可以参考{' '}
+          <a href="https://github.com/freestylefly/CodexGuide" target="_blank" rel="noreferrer">
+            freestylefly/CodexGuide
+          </a>
+          。这是外部实践指南，适合作为本页的补充阅读。
+        </p>
+      </Callout>
+
       <h2 id="overview">先看结论</h2>
       <p>
         Codex CLI 作为开发工具接入 gpt88.cc 时，核心是三件事：安装 CLI、配置

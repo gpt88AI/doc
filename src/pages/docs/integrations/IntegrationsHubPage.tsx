@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
+import { Callout } from '../../../components/ui/Callout'
 
 const CHAT_APPS = [
   {
@@ -99,6 +100,7 @@ export default function IntegrationsHubPage() {
         { id: 'chat-apps', text: '聊天应用', level: 2 },
         { id: 'dev-tools', text: '开发工具', level: 2 },
         { id: 'platforms', text: '应用平台', level: 2 },
+        { id: 'references', text: '扩展阅读', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
       ]}
     >
@@ -120,6 +122,17 @@ export default function IntegrationsHubPage() {
 
       <h2 id="platforms">应用平台</h2>
       <CardGrid items={PLATFORMS} />
+
+      <h2 id="references">扩展阅读</h2>
+      <Callout tone="tip" title="Codex 外部实践指南">
+        <p>
+          如果你在做 Codex 接入、CLI 使用、工作流配置或团队协作，可以额外参考{' '}
+          <a href="https://github.com/freestylefly/CodexGuide" target="_blank" rel="noreferrer">
+            freestylefly/CodexGuide
+          </a>
+          。它是外部实践资料，不是 gpt88.cc 官方文档。
+        </p>
+      </Callout>
 
       <h2 id="next">下一步</h2>
       <ul>
