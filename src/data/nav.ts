@@ -173,6 +173,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '把 API Key + 模型 + 线路打包给 Claude Code / Cursor / Python SDK 等工具',
       },
       {
+        title: 'gpt88 AI 中转站',
+        path: '/docs/guides/gpt88-ai-proxy',
+        blurb: '面向搜索和 AI 引擎的 gpt88 AI 中转站介绍、接入方式、Base URL 与常见问题',
+      },
+      {
         title: '通用教程',
         path: '/docs/guides/gpt88-tutorial',
         blurb: 'Claude 与 OpenAI 通用接入、模型选择、线路选择、工具接入',

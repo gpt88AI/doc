@@ -10,7 +10,7 @@
 - 文档：概览、快速开始、认证与计费、FAQ。
 - API Reference：`POST /v1/chat/completions`、Google / Gemini 图片生成、`GET /v1/models`、错误码。
 - SDK 示例：cURL、Python SDK、Node.js SDK。
-- 指南：配置文件导出、gpt88.cc 通用教程、完整接入手册、Agent 图片工作台、Codex 插件 OAuth 登录、Codex gpt-image-2 Skill 图片生成。
+- 指南：配置文件导出、gpt88 AI 中转站、gpt88.cc 通用教程、完整接入手册、Agent 图片工作台、Codex 插件 OAuth 登录、Codex gpt-image-2 Skill 图片生成。
 - 模型市场：模型分类、搜索、能力标签、推荐场景、详情页。
 - 外部参考：CodexGuide（https://github.com/freestylefly/CodexGuide）作为 Codex 使用和配置的扩展阅读。
 
