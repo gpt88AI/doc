@@ -276,9 +276,17 @@ function categoryEndpoint(category, modelId) {
 async function readModels() {
   const snapshotPath = path.join(publicDir, 'marketplace-snapshot.json')
   const snapshot = JSON.parse(await fs.readFile(snapshotPath, 'utf8'))
+  const localCatalog = [
+    {
+      canonical_name: 'claude-opus-4-8',
+      display_name: 'claude-opus-4-8',
+      category: 'chat',
+      vendors_count: 1,
+    },
+  ]
   const byName = new Map()
 
-  for (const row of snapshot.catalog || []) {
+  for (const row of [...(snapshot.catalog || []), ...localCatalog]) {
     if (row.category === 'embedding') continue
     const list = byName.get(row.canonical_name) || []
     list.push(row)
@@ -372,7 +380,7 @@ function markdownLink(page) {
 
 function llmsTxt(modelPages) {
   const featuredModels = modelPages
-    .filter(page => ['claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
+    .filter(page => ['claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 12)
 
   return `# gpt88.cc API 文档

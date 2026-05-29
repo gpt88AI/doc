@@ -313,6 +313,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/models/claude-opus-4-8</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/models/claude-sonnet-4-20250514</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>

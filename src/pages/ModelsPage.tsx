@@ -27,13 +27,13 @@ import { Seo } from '../components/seo/Seo'
  *
  * 信息架构（参考 apimart.ai/zh/model 心智，UI 不照搬）：
  * 1) Hero：站点定位 + 搜索框
- * 2) 「主推模型」：固定 8 个 featured 卡片（人工运营展示位）
+ * 2) 「主推模型」：固定 featured 卡片（人工运营展示位）
  * 3) 「全部模型」：分类切换（Chat/Image/Video/Audio） + 搜索过滤 + 网格
  *    - completion 7 条已经在 data/models.ts 按 canonical_name 与 chat 去重并入 chat
  *      （注释里标注「completion 暂归入 chat 待 human 确认」）
  *    - embedding 不展示
  *
- * 搜索范围：display_name / modelId / provider 推断 / descriptions_sample / 主推 8 的能力/场景
+ * 搜索范围：display_name / modelId / provider 推断 / descriptions_sample / 主推模型的能力/场景
  *           （详细见 src/data/models.ts 中的 searchModels）
  *
  * 设计参考 derouter.ai/docs/api：深色底、卡片悬浮发光、网格背景。
@@ -75,7 +75,7 @@ export default function ModelsPage() {
     return searchModels(inCategory, query)
   }, [nonFeatured, category, query])
 
-  // 搜索状态下，主推 8 也参与匹配
+  // 搜索状态下，主推模型也参与匹配
   const filteredFeatured = useMemo<ModelEntry[]>(
     () => searchModels(featured, query),
     [featured, query],

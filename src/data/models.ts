@@ -1,5 +1,5 @@
 /**
- * 模型导航数据源（M3 主推 8 个 + subrouter 全量 catalog）
+ * 模型导航数据源（主推模型 + subrouter 全量 catalog + 本地上新补丁）
  *
  * 数据源：
  * - 静态 JSON `public/marketplace-snapshot.json`，由 PM 在 2026-05-09 抓取
@@ -9,9 +9,9 @@
  * - 快照位于 public/，Vite 构建期能直接 `import` JSON（tsconfig 已开启 resolveJsonModule）；
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
- * 主推顺序（Human msg-20260509-qoz7ey/jwfia3/8ivlof 决定）：
- *   claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
- *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → gpt-5.3-codex
+ * 主推顺序：
+ *   claude-opus-4-8 → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6
+ *   → claude-haiku-4-5-20251001 → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → gpt-5.3-codex
  *
  * Catalog 处理：
  * - completion 7 条全部 canonical_name 与 chat 重名（snapshot 内同名条目分类为 chat 与 completion 两份），
@@ -20,10 +20,10 @@
  * - embedding 1 条（text-embedding-3-small）暂不展示（任务要求）。
  * - image / video / audio 全部保留。
  *
- * 为什么把"主推 8 个的能力/场景/中文 tagline"写在前端代码里，而不是放在 snapshot：
+ * 为什么把"主推模型的能力/场景/中文 tagline"写在前端代码里，而不是放在 snapshot：
  * - snapshot 只有 vendors_count / descriptions_sample（vendor 卖点宣传，文案不一致），
  *   不能直接展示给开发者读者；
- * - 这 8 条是人工运营的展示位，由 human 决定中文文案；其他长尾模型一律标注「以控制台为准」，
+ * - 主推模型是人工运营展示位，由 human 决定中文文案；其他长尾模型一律标注「以控制台为准」，
  *   避免文档站说"我说能做 X"但实际后端没暴露的偏差。
  */
 
@@ -97,15 +97,15 @@ export type ModelEntry = {
  * Human msg-20260509-4q7t82：缺失字段网上查找；查不到回退占位
  * （ConsoleAuthoritativeNote 「以控制台为准」由 ModelDetailPage 渲染）。
  *
- * 范围演进：原本仅覆盖 FEATURED_SLUGS 的 8 个主推。本轮扩展到 21 条——
- * 在主推 8 个之外，把 marketplace vendors_count >= 4 的 13 个非主推 chat 模型
+ * 范围演进：原本仅覆盖 FEATURED_SLUGS 的主推模型。本轮扩展到 21 条——
+ * 在主推模型之外，把 marketplace vendors_count >= 4 的非主推 chat 模型
  * 也补上中文 capabilities / scenarios / tagline；运行时由 buildCatalog
  * 按 slug 查表（无论是否在 FEATURED_SLUGS 中），命中即采用人工文案，
  * 未命中（或字段为空）则在详情页回退「以控制台为准」占位。
  *
  * 重要约束：
- * - FEATURED_SLUGS 仍为 8（控制 ModelsPage 主推区块、首页精选模型卡），不变
- * - 新增 13 条只补字典数据，不进 FEATURED_SLUGS
+ * - FEATURED_SLUGS 控制 ModelsPage 主推区块、首页精选模型卡
+ * - 部分次主推模型只补字典数据，不进 FEATURED_SLUGS
  * - 任何无法在公开来源查到的字段填空数组，让 UI 回退「以控制台为准」
  *
  * 注意：FEATURED_SLUGS 是"已转 - 之后"的 slug；FEATURED_DETAILS key 与之对应。
@@ -113,6 +113,7 @@ export type ModelEntry = {
  * ────────────────────────────────────────────────────────────────── */
 
 export const FEATURED_SLUGS = [
+  'claude-opus-4-8',
   'claude-opus-4-7',
   'claude-opus-4-6',
   'claude-sonnet-4-6',
@@ -168,7 +169,39 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
     ],
   },
 
-  // ── 主推 8 个（FEATURED_SLUGS 决定置顶顺序） ──────────────────────
+  // ── 主推模型（FEATURED_SLUGS 决定置顶顺序） ──────────────────────
+  // slug=claude-opus-4-8 ←→ modelId=claude-opus-4-8
+  'claude-opus-4-8': {
+    provider: 'Anthropic',
+    tagline: 'Anthropic 当前最强通用可用 Opus 模型，面向长周期 Agent 编码、复杂推理和专业知识工作。',
+    capabilities: ['1M 上下文', '128k 输出', 'adaptive thinking', 'tool use'],
+    scenarios: ['长周期 Agent 编码', '大型代码库迁移', '复杂文档分析', '企业知识工作'],
+    overview: [
+      'Claude Opus 4.8 是 Anthropic 在 2026-05-28 发布的 Opus 系列模型，官方定位为当前最强的 generally available model。',
+      '它建立在 Claude Opus 4.7 之上，重点增强长周期 agentic coding、复杂推理、专业知识工作、工具调用可靠性和长上下文任务稳定性。',
+      '官方文档显示，Claude Opus 4.8 在 Claude API、Amazon Bedrock 和 Vertex AI 上默认支持 1M token context window；Microsoft Foundry 为 200k context。最大输出为 128k tokens。',
+    ],
+    whenToUse: [
+      '需要模型在大型代码库里做迁移、重构、bug sweep、测试修复或跨文件代码审查时',
+      '需要长周期 Agent 工作流持续推进、多工具协作、遇到阻碍后自动恢复时',
+      '需要综合长文档、财报、法律材料、研究资料、表格和多阶段项目上下文时',
+      '需要专业知识工作输出更少返工、更强自检和更高结构化质量时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 claude-opus-4-8。',
+      'Claude / Anthropic 风格工具通常使用根地址 https://gpt88.cc，再按工具要求填写模型 ID。',
+      'Claude Opus 4.8 默认 effort 为 high；如果你的客户端显式设置 effort，则以客户端设置为准。',
+      '模型支持 adaptive thinking；简单任务可直接响应，复杂多步骤问题会按需触发推理。',
+      '它继承 Claude Opus 4.7 的工具和平台能力，并新增 mid-conversation system messages、公开 refusal stop_details、fast mode research preview、更低的 prompt cache 最小长度等能力。',
+    ],
+    caveats: [
+      '新上模型的价格、限速、上下文、权限和可用线路以 gpt88.cc 控制台当前配置为准。',
+      '如果业务已有 claude-opus-4-7 稳定链路，可先灰度切换到 claude-opus-4-8，再扩大使用范围。',
+      '与 Claude Opus 4.7 一样，Messages API 下不支持把 temperature、top_p、top_k 设置为非默认值；相关参数请省略，并用提示词控制输出风格。',
+      '如果走 Claude 原生 Messages API，adaptive thinking 需要显式设置 thinking: {type: "adaptive"}；未设置时 thinking 不会自动开启。',
+      'Claude Opus 4.8 不支持旧式 extended thinking budget；需要思考模式时使用 adaptive thinking 和 effort 参数。',
+    ],
+  },
   // slug=claude-opus-4-7 ←→ modelId=claude-opus-4-7
   'claude-opus-4-7': {
     provider: 'Anthropic',
@@ -1473,8 +1506,19 @@ type CatalogRow = {
   descriptions_sample: string[]
 }
 
+const LOCAL_CATALOG_ROWS: CatalogRow[] = [
+  {
+    canonical_name: 'claude-opus-4-8',
+    display_name: 'claude-opus-4-8',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-opus-4-8'],
+    descriptions_sample: ['gpt88.cc 新上主推模型，具体价格、权限和线路以控制台为准。'],
+  },
+]
+
 function buildCatalog(): ModelEntry[] {
-  const rows = (snapshot.catalog as CatalogRow[]).slice()
+  const rows = (snapshot.catalog as CatalogRow[]).concat(LOCAL_CATALOG_ROWS)
   // 分组：(canonical_name) → array of rows
   const byName = new Map<string, CatalogRow[]>()
   for (const r of rows) {
@@ -1596,7 +1640,7 @@ export const CATEGORY_META: Record<
 
 export const CATEGORY_ORDER: ModelCategory[] = ['chat', 'image', 'video', 'audio']
 
-/** 主推 8 个，按 FEATURED_SLUGS 顺序返回（仅返回真实存在于 catalog 的） */
+/** 主推模型，按 FEATURED_SLUGS 顺序返回（仅返回真实存在于 catalog 的） */
 export function getFeaturedModels(): ModelEntry[] {
   const bySlug = new Map(MODELS.map(m => [m.slug, m]))
   const result: ModelEntry[] = []

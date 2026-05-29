@@ -80,6 +80,7 @@
 - [claude-opus-4-7](https://doc.gpt88.cc/models/claude-opus-4-7): Anthropic claude-opus-4-7 · CHAT 模型，Model ID: claude-opus-4-7，接口路径: /v1/chat/completions。
 - [claude-opus-4-7-agentic](https://doc.gpt88.cc/models/claude-opus-4-7-agentic): Anthropic claude-opus-4-7-agentic · CHAT 模型，Model ID: claude-opus-4-7-agentic，接口路径: /v1/chat/completions。
 - [claude-opus-4-7-thinking](https://doc.gpt88.cc/models/claude-opus-4-7-thinking): Anthropic claude-opus-4-7-thinking · CHAT 模型，Model ID: claude-opus-4-7-thinking，接口路径: /v1/chat/completions。
+- [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-20250514](https://doc.gpt88.cc/models/claude-sonnet-4-20250514): Anthropic claude-sonnet-4-20250514 · CHAT 模型，Model ID: claude-sonnet-4-20250514，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-5-20250929](https://doc.gpt88.cc/models/claude-sonnet-4-5-20250929): Anthropic claude-sonnet-4-5-20250929 · CHAT 模型，Model ID: claude-sonnet-4-5-20250929，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-5-20250929-thinking](https://doc.gpt88.cc/models/claude-sonnet-4-5-20250929-thinking): Anthropic claude-sonnet-4-5-20250929-thinking · CHAT 模型，Model ID: claude-sonnet-4-5-20250929-thinking，接口路径: /v1/chat/completions。
