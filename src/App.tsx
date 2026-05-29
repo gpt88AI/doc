@@ -19,6 +19,7 @@ import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
 import CompleteIntegrationGuidePage from './pages/docs/guides/CompleteIntegrationGuidePage'
 import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
 import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
+import CodexFrontendTasteSkillPage from './pages/docs/guides/CodexFrontendTasteSkillPage'
 import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
 import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
 import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage'
@@ -98,6 +99,7 @@ export default function App() {
           <Route path="guides/agent-image-studio" element={<AgentImageStudioGuidePage />} />
           <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
           <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
+          <Route path="guides/codex-frontend-taste-skill" element={<CodexFrontendTasteSkillPage />} />
           <Route path="guides/codex-tool-recovery" element={<CodexToolRecoveryPage />} />
           <Route path="guides/zero-downtime-release" element={<ZeroDowntimeReleasePage />} />
         </Route>

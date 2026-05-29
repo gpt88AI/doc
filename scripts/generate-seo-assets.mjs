@@ -195,6 +195,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Codex 前端设计 Skill',
+    path: '/docs/guides/codex-frontend-taste-skill',
+    description: '使用 Taste Skill 为 Codex 增强前端设计判断力，改善 AI 生成页面的排版、动效、设计系统、反模板化检查和最终交付质量。',
+    section: '指南',
+  },
+  {
     title: 'Codex 工具恢复教程',
     path: '/docs/guides/codex-tool-recovery',
     description: '当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。',

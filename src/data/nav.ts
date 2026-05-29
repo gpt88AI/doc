@@ -203,6 +203,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '用 Codex skill 调用 gpt88.cc 的 gpt-image-2 生成真实图片文件',
       },
       {
+        title: 'Codex 前端设计 Skill',
+        path: '/docs/guides/codex-frontend-taste-skill',
+        blurb: '使用 Taste Skill 为 Codex 增强前端设计判断力，避免 AI 模板感',
+      },
+      {
         title: 'Codex 工具恢复',
         path: '/docs/guides/codex-tool-recovery',
         blurb: 'Codex 执行中工具失效时，先检查文件工具是否可用，恢复后从第一步重新落代码',
