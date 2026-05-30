@@ -5,53 +5,53 @@
 ## 核心页面
 
 - [gpt88.cc API 文档](https://doc.gpt88.cc/): gpt88.cc 开发者文档首页，一行 base_url 接入 Claude、GPT、Gemini、DeepSeek、Qwen 等模型。
-- [模型导航](https://doc.gpt88.cc/models): 按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型。
+- [模型导航](https://doc.gpt88.cc/models/): 按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型。
 
 ## 文档入口
 
-- [产品概览](https://doc.gpt88.cc/docs/overview): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口。
-- [快速开始](https://doc.gpt88.cc/docs/quickstart): 5 分钟内完成第一次 gpt88.cc 模型调用，只需替换 base_url 与 API Key。
-- [认证与计费](https://doc.gpt88.cc/docs/auth): API Key、人民币余额、Token 电力计费、用量与配额说明。
-- [FAQ](https://doc.gpt88.cc/docs/faq): gpt88.cc 兼容性、安全、计费、可靠性和排障常见问题。
-- [Chat Completions API](https://doc.gpt88.cc/docs/api/chat-completions): OpenAI 兼容的 POST /v1/chat/completions 对话补全接口，支持流式、工具调用与多模态内容。
-- [Google 图片生成 API](https://doc.gpt88.cc/docs/api/images): 使用 gpt88.cc 的 Google / Gemini 图片生成能力，包含 NanoBanana2 文生图和图生图示例。
-- [List Models API](https://doc.gpt88.cc/docs/api/list-models): 通过 GET /v1/models 列出当前账号可用模型。
-- [错误码](https://doc.gpt88.cc/docs/api/errors): HTTP 状态码与业务错误码排查说明。
-- [cURL SDK 示例](https://doc.gpt88.cc/docs/sdk/curl): 用 cURL 调用 gpt88.cc API，适合快速验证、Shell 脚本和 CI 健康检查。
-- [Python SDK 示例](https://doc.gpt88.cc/docs/sdk/python): OpenAI 官方 Python SDK 接入 gpt88.cc 的同步、异步、流式和 function calling 示例。
-- [Node.js SDK 示例](https://doc.gpt88.cc/docs/sdk/nodejs): OpenAI 官方 Node SDK 接入 gpt88.cc 的同步、流式、function calling 和重试示例。
-- [集成总览](https://doc.gpt88.cc/docs/integrations): 按聊天应用、开发工具、应用平台分类浏览 gpt88.cc 的所有集成教程。
-- [ChatBox 集成](https://doc.gpt88.cc/docs/integrations/chat/chatbox): 在 ChatBox 中配置 gpt88.cc 的 OpenAI 兼容接入、模型、线路和常见问题排查。
-- [Cherry Studio 集成](https://doc.gpt88.cc/docs/integrations/chat/cherry-studio): Cherry Studio 接入 gpt88.cc 的多模型工作流、模型切换和配置说明。
-- [AnythingLLM 集成](https://doc.gpt88.cc/docs/integrations/chat/anythingllm): AnythingLLM 接入 gpt88.cc 的知识库问答与聊天配置教程。
-- [Claude Code 集成](https://doc.gpt88.cc/docs/integrations/dev/claude-code): Claude Code 使用 gpt88.cc 时的 OAuth、API Key、插件和路由配置指南。
-- [Cursor 集成](https://doc.gpt88.cc/docs/integrations/dev/cursor): Cursor 编辑器里接入 gpt88.cc 的模型、Base URL 和工作流配置说明。
-- [Cline 集成](https://doc.gpt88.cc/docs/integrations/dev/cline): Cline Agent 接入 gpt88.cc 的配置、模型切换与排障教程。
-- [Gemini CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/gemini-cli): Gemini CLI 通过 gpt88.cc 使用 Gemini 模型和图片接口的教程。
-- [Codex CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/codex-cli): Codex CLI 接入 gpt88.cc 的模型、插件和工具恢复流程。
-- [CC-Switch 集成](https://doc.gpt88.cc/docs/integrations/dev/cc-switch): CC-Switch 的路由、OAuth、API Key 与 Codex 插件切换教程。
-- [Dify 集成](https://doc.gpt88.cc/docs/integrations/platforms/dify): 把 gpt88.cc 接入 Dify 平台、工作流和知识库应用。
-- [沉浸式翻译集成](https://doc.gpt88.cc/docs/integrations/platforms/immersive-translate): 把 gpt88.cc 接入沉浸式翻译等浏览器扩展。
-- [配置文件导出](https://doc.gpt88.cc/docs/guides/config-export): 把 API Key、模型和线路打包给 Claude Code、Cursor、Python SDK、CC Switch 等工具。
-- [gpt88 AI 中转站](https://doc.gpt88.cc/docs/guides/gpt88-ai-proxy): gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。
-- [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
-- [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
-- [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
-- [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
-- [Codex gpt-image-2 Skill 生成图片](https://doc.gpt88.cc/docs/guides/codex-gpt-image-2-skill): 直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。
-- [Codex 前端设计 Skill](https://doc.gpt88.cc/docs/guides/codex-frontend-taste-skill): 使用 Taste Skill 为 Codex 增强前端设计判断力，改善 AI 生成页面的排版、动效、设计系统、反模板化检查和最终交付质量。
-- [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
-- [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
+- [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口。
+- [快速开始](https://doc.gpt88.cc/docs/quickstart/): 5 分钟内完成第一次 gpt88.cc 模型调用，只需替换 base_url 与 API Key。
+- [认证与计费](https://doc.gpt88.cc/docs/auth/): API Key、人民币余额、Token 电力计费、用量与配额说明。
+- [FAQ](https://doc.gpt88.cc/docs/faq/): gpt88.cc 兼容性、安全、计费、可靠性和排障常见问题。
+- [Chat Completions API](https://doc.gpt88.cc/docs/api/chat-completions/): OpenAI 兼容的 POST /v1/chat/completions 对话补全接口，支持流式、工具调用与多模态内容。
+- [Google 图片生成 API](https://doc.gpt88.cc/docs/api/images/): 使用 gpt88.cc 的 Google / Gemini 图片生成能力，包含 NanoBanana2 文生图和图生图示例。
+- [List Models API](https://doc.gpt88.cc/docs/api/list-models/): 通过 GET /v1/models 列出当前账号可用模型。
+- [错误码](https://doc.gpt88.cc/docs/api/errors/): HTTP 状态码与业务错误码排查说明。
+- [cURL SDK 示例](https://doc.gpt88.cc/docs/sdk/curl/): 用 cURL 调用 gpt88.cc API，适合快速验证、Shell 脚本和 CI 健康检查。
+- [Python SDK 示例](https://doc.gpt88.cc/docs/sdk/python/): OpenAI 官方 Python SDK 接入 gpt88.cc 的同步、异步、流式和 function calling 示例。
+- [Node.js SDK 示例](https://doc.gpt88.cc/docs/sdk/nodejs/): OpenAI 官方 Node SDK 接入 gpt88.cc 的同步、流式、function calling 和重试示例。
+- [集成总览](https://doc.gpt88.cc/docs/integrations/): 按聊天应用、开发工具、应用平台分类浏览 gpt88.cc 的所有集成教程。
+- [ChatBox 集成](https://doc.gpt88.cc/docs/integrations/chat/chatbox/): 在 ChatBox 中配置 gpt88.cc 的 OpenAI 兼容接入、模型、线路和常见问题排查。
+- [Cherry Studio 集成](https://doc.gpt88.cc/docs/integrations/chat/cherry-studio/): Cherry Studio 接入 gpt88.cc 的多模型工作流、模型切换和配置说明。
+- [AnythingLLM 集成](https://doc.gpt88.cc/docs/integrations/chat/anythingllm/): AnythingLLM 接入 gpt88.cc 的知识库问答与聊天配置教程。
+- [Claude Code 集成](https://doc.gpt88.cc/docs/integrations/dev/claude-code/): Claude Code 使用 gpt88.cc 时的 OAuth、API Key、插件和路由配置指南。
+- [Cursor 集成](https://doc.gpt88.cc/docs/integrations/dev/cursor/): Cursor 编辑器里接入 gpt88.cc 的模型、Base URL 和工作流配置说明。
+- [Cline 集成](https://doc.gpt88.cc/docs/integrations/dev/cline/): Cline Agent 接入 gpt88.cc 的配置、模型切换与排障教程。
+- [Gemini CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/gemini-cli/): Gemini CLI 通过 gpt88.cc 使用 Gemini 模型和图片接口的教程。
+- [Codex CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/codex-cli/): Codex CLI 接入 gpt88.cc 的模型、插件和工具恢复流程。
+- [CC-Switch 集成](https://doc.gpt88.cc/docs/integrations/dev/cc-switch/): CC-Switch 的路由、OAuth、API Key 与 Codex 插件切换教程。
+- [Dify 集成](https://doc.gpt88.cc/docs/integrations/platforms/dify/): 把 gpt88.cc 接入 Dify 平台、工作流和知识库应用。
+- [沉浸式翻译集成](https://doc.gpt88.cc/docs/integrations/platforms/immersive-translate/): 把 gpt88.cc 接入沉浸式翻译等浏览器扩展。
+- [配置文件导出](https://doc.gpt88.cc/docs/guides/config-export/): 把 API Key、模型和线路打包给 Claude Code、Cursor、Python SDK、CC Switch 等工具。
+- [gpt88 AI 中转站](https://doc.gpt88.cc/docs/guides/gpt88-ai-proxy/): gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。
+- [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
+- [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
+- [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
+- [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth/): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
+- [Codex gpt-image-2 Skill 生成图片](https://doc.gpt88.cc/docs/guides/codex-gpt-image-2-skill/): 直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。
+- [Codex 前端设计 Skill](https://doc.gpt88.cc/docs/guides/codex-frontend-taste-skill/): 使用 Taste Skill 为 Codex 增强前端设计判断力，改善 AI 生成页面的排版、动效、设计系统、反模板化检查和最终交付质量。
+- [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
+- [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
 
 ## 重点模型
 
-- [claude-opus-4-6](https://doc.gpt88.cc/models/claude-opus-4-6): Anthropic claude-opus-4-6 · CHAT 模型，Model ID: claude-opus-4-6，接口路径: /v1/chat/completions。
-- [claude-opus-4-7](https://doc.gpt88.cc/models/claude-opus-4-7): Anthropic claude-opus-4-7 · CHAT 模型，Model ID: claude-opus-4-7，接口路径: /v1/chat/completions。
-- [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
-- [claude-sonnet-4-6](https://doc.gpt88.cc/models/claude-sonnet-4-6): Anthropic claude-sonnet-4-6 · CHAT 模型，Model ID: claude-sonnet-4-6，接口路径: /v1/chat/completions。
-- [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
-- [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
-- [NanoBanana2](https://doc.gpt88.cc/models/nanobanana2): Google NanoBanana2 · IMAGE 模型，Model ID: NanoBanana2，接口路径: /v1beta/models/NanoBanana2:generateContent。
+- [claude-opus-4-6](https://doc.gpt88.cc/models/claude-opus-4-6/): Anthropic claude-opus-4-6 · CHAT 模型，Model ID: claude-opus-4-6，接口路径: /v1/chat/completions。
+- [claude-opus-4-7](https://doc.gpt88.cc/models/claude-opus-4-7/): Anthropic claude-opus-4-7 · CHAT 模型，Model ID: claude-opus-4-7，接口路径: /v1/chat/completions。
+- [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8/): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-6](https://doc.gpt88.cc/models/claude-sonnet-4-6/): Anthropic claude-sonnet-4-6 · CHAT 模型，Model ID: claude-sonnet-4-6，接口路径: /v1/chat/completions。
+- [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4/): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
+- [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5/): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
+- [NanoBanana2](https://doc.gpt88.cc/models/nanobanana2/): Google NanoBanana2 · IMAGE 模型，Model ID: NanoBanana2，接口路径: /v1beta/models/NanoBanana2:generateContent。
 
 ## API 摘要
 

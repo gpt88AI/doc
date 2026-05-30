@@ -2,7 +2,11 @@ const SITE_URL = 'https://doc.gpt88.cc'
 
 function absoluteUrl(path = '/') {
   if (/^https?:\/\//.test(path)) return path
-  return path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`
+  if (path === '/') return `${SITE_URL}/`
+  const clean = path.split(/[?#]/)[0]
+  const suffix = path.slice(clean.length)
+  const normalized = clean.endsWith('/') ? clean : `${clean}/`
+  return `${SITE_URL}${normalized}${suffix}`
 }
 
 export function docStructuredData(title: string, description: string, path: string) {
@@ -37,7 +41,7 @@ export function websiteStructuredData() {
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${SITE_URL}/models?query={search_term_string}`,
+      target: `${SITE_URL}/models/?query={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   }

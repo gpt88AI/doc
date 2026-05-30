@@ -325,7 +325,10 @@ async function readModels() {
 
 function absoluteUrl(routePath) {
   if (routePath === '/') return `${siteUrl}/`
-  return `${siteUrl}${routePath}`
+  const clean = routePath.split(/[?#]/)[0]
+  const suffix = routePath.slice(clean.length)
+  const normalized = clean.endsWith('/') ? clean : `${clean}/`
+  return `${siteUrl}${normalized}${suffix}`
 }
 
 function xmlEscape(value) {

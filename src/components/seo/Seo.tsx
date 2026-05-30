@@ -16,7 +16,11 @@ type SeoProps = {
 
 function absoluteUrl(path = '/') {
   if (/^https?:\/\//.test(path)) return path
-  return path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`
+  if (path === '/') return `${SITE_URL}/`
+  const clean = path.split(/[?#]/)[0]
+  const suffix = path.slice(clean.length)
+  const normalized = clean.endsWith('/') ? clean : `${clean}/`
+  return `${SITE_URL}${normalized}${suffix}`
 }
 
 function setMeta(attribute: 'name' | 'property', key: string, content?: string) {
