@@ -357,6 +357,17 @@ ${urls}
 `
 }
 
+function sitemapIndexXml() {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${xmlEscape(`${siteUrl}/sitemap-pages.xml`)}</loc>
+    <lastmod>${buildDate}</lastmod>
+  </sitemap>
+</sitemapindex>
+`
+}
+
 function robotsTxt() {
   return `User-agent: Googlebot
 Allow: /
@@ -371,6 +382,7 @@ User-agent: *
 Allow: /
 
 Sitemap: ${siteUrl}/sitemap.xml
+Sitemap: ${siteUrl}/sitemap-index.xml
 `
 }
 
@@ -468,6 +480,8 @@ async function main() {
   await Promise.all([
     fs.writeFile(path.join(publicDir, 'robots.txt'), robotsTxt()),
     fs.writeFile(path.join(publicDir, 'sitemap.xml'), sitemapXml(pages)),
+    fs.writeFile(path.join(publicDir, 'sitemap-pages.xml'), sitemapXml(pages)),
+    fs.writeFile(path.join(publicDir, 'sitemap-index.xml'), sitemapIndexXml()),
     fs.writeFile(path.join(publicDir, 'llms.txt'), llmsTxt(modelPages)),
     fs.writeFile(path.join(publicDir, 'llms-full.txt'), llmsFullTxt(modelPages)),
   ])

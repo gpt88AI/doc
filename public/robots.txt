@@ -11,3 +11,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://doc.gpt88.cc/sitemap.xml
+Sitemap: https://doc.gpt88.cc/sitemap-index.xml
