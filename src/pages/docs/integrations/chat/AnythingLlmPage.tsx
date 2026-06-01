@@ -84,7 +84,7 @@ export default function AnythingLlmPage() {
 
       <h2 id="next">下一步</h2>
       <ul>
-        <li><Link to="/docs/integrations">返回集成总览</Link></li>
+        <li><Link to="/docs/integrations/">返回集成总览</Link></li>
       </ul>
     </DocPage>
   )

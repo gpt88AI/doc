@@ -21,13 +21,13 @@ export function Footer() {
         </div>
         <nav className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {/* 文档/快速开始/模型导航：站内深链，使用 <Link> */}
-          <Link className="hover:text-ink-200" to="/docs/overview">
+          <Link className="hover:text-ink-200" to="/docs/overview/">
             文档
           </Link>
-          <Link className="hover:text-ink-200" to="/docs/quickstart">
+          <Link className="hover:text-ink-200" to="/docs/quickstart/">
             快速开始
           </Link>
-          <Link className="hover:text-ink-200" to="/models">
+          <Link className="hover:text-ink-200" to="/models/">
             模型
           </Link>
           <a

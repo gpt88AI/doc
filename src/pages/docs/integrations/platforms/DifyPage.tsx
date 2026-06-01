@@ -124,9 +124,9 @@ export default function DifyIntegrationPage() {
 
       <h2 id="next">下一步</h2>
       <ul>
-        <li><Link to="/docs/api/chat-completions">查看 Chat Completions API</Link></li>
-        <li><Link to="/docs/guides/complete-integration">查看完整接入手册</Link></li>
-        <li><Link to="/docs/integrations">返回集成总览</Link></li>
+        <li><Link to="/docs/api/chat-completions/">查看 Chat Completions API</Link></li>
+        <li><Link to="/docs/guides/complete-integration/">查看完整接入手册</Link></li>
+        <li><Link to="/docs/integrations/">返回集成总览</Link></li>
       </ul>
     </DocPage>
   )

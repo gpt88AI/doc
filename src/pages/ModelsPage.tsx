@@ -244,7 +244,7 @@ export default function ModelsPage() {
 function ModelCard({ model }: { model: ModelEntry }) {
   return (
     <Link
-      to={`/models/${model.slug}`}
+      to={`/models/${model.slug}/`}
       className="tech-card tech-card-hover group flex h-full flex-col p-5"
     >
       <div className="flex items-start justify-between gap-3">

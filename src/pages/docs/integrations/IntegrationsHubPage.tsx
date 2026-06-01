@@ -5,17 +5,17 @@ import { Callout } from '../../../components/ui/Callout'
 const CHAT_APPS = [
   {
     title: 'ChatBox',
-    href: '/docs/integrations/chat/chatbox',
+    href: '/docs/integrations/chat/chatbox/',
     desc: '最适合普通聊天用户的 OpenAI 兼容接入指南。',
   },
   {
     title: 'Cherry Studio',
-    href: '/docs/integrations/chat/cherry-studio',
+    href: '/docs/integrations/chat/cherry-studio/',
     desc: '适合多模型管理、提示词模板和知识库工作流。',
   },
   {
     title: 'AnythingLLM',
-    href: '/docs/integrations/chat/anythingllm',
+    href: '/docs/integrations/chat/anythingllm/',
     desc: '适合团队知识库、文档问答和 Agent 工作流。',
   },
 ]
@@ -23,32 +23,32 @@ const CHAT_APPS = [
 const DEV_TOOLS = [
   {
     title: 'Claude Code',
-    href: '/docs/integrations/dev/claude-code',
+    href: '/docs/integrations/dev/claude-code/',
     desc: 'Claude 风格工具接入、OAuth、插件与账号切换教程。',
   },
   {
     title: 'Cursor',
-    href: '/docs/integrations/dev/cursor',
+    href: '/docs/integrations/dev/cursor/',
     desc: '编辑器里的 OpenAI 兼容模型接入与常见配置。',
   },
   {
     title: 'Cline',
-    href: '/docs/integrations/dev/cline',
+    href: '/docs/integrations/dev/cline/',
     desc: 'VS Code Agent 工具接入与模型切换指南。',
   },
   {
     title: 'Gemini CLI',
-    href: '/docs/integrations/dev/gemini-cli',
+    href: '/docs/integrations/dev/gemini-cli/',
     desc: 'Google 风格 CLI 和图片模型接入说明。',
   },
   {
     title: 'Codex CLI',
-    href: '/docs/integrations/dev/codex-cli',
+    href: '/docs/integrations/dev/codex-cli/',
     desc: 'Codex CLI 通过 gpt88.cc 连接模型和工具的完整流程。',
   },
   {
     title: 'CC-Switch',
-    href: '/docs/integrations/dev/cc-switch',
+    href: '/docs/integrations/dev/cc-switch/',
     desc: '中转站路由切换、OAuth 与插件能力的使用说明。',
   },
 ]
@@ -56,12 +56,12 @@ const DEV_TOOLS = [
 const PLATFORMS = [
   {
     title: 'Dify',
-    href: '/docs/integrations/platforms/dify',
+    href: '/docs/integrations/platforms/dify/',
     desc: '把 gpt88.cc 接入 Dify 工作流、应用和知识库。',
   },
   {
     title: '沉浸式翻译',
-    href: '/docs/integrations/platforms/immersive-translate',
+    href: '/docs/integrations/platforms/immersive-translate/',
     desc: '浏览器翻译扩展接入与模型配置指南。',
   },
 ]
@@ -137,10 +137,10 @@ export default function IntegrationsHubPage() {
       <h2 id="next">下一步</h2>
       <ul>
         <li>
-          先看 <Link to="/docs/integrations/chat/chatbox">ChatBox 集成</Link>。
+          先看 <Link to="/docs/integrations/chat/chatbox/">ChatBox 集成</Link>。
         </li>
         <li>
-          再看 <Link to="/docs/guides/complete-integration">完整接入手册</Link>。
+          再看 <Link to="/docs/guides/complete-integration/">完整接入手册</Link>。
         </li>
         <li>
           如果你用的是开发工具，去看对应的 CLI / IDE 教程。

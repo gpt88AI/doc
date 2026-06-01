@@ -297,7 +297,7 @@ export default function ErrorsPage() {
         每次响应（成功或失败）都会带上 <code>X-Request-Id</code> Header，
         失败响应体也包含 <code>error.request_id</code>。
         提交工单或在{' '}
-        <Link to="/docs/faq">FAQ</Link>
+        <Link to="/docs/faq/">FAQ</Link>
         提到的任何排查流程中都需要这个 ID——它能让我们直接定位到具体一次请求的链路日志。
       </p>
     </DocPage>

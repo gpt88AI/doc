@@ -44,6 +44,13 @@ function extractHead(html) {
   }
 }
 
+function canonicalizeInternalHrefs(html) {
+  return html.replace(/href="(\/(?:docs|models)([^"#]*?))(#[^"]*)?"/g, (_match, pathPart, _rest, hash = '') => {
+    if (pathPart.endsWith('/')) return `href="${pathPart}${hash}"`
+    return `href="${pathPart}/${hash}"`
+  })
+}
+
 function injectIntoTemplate(template, rendered) {
   const { head, body } = extractHead(rendered)
   let html = template
@@ -51,7 +58,7 @@ function injectIntoTemplate(template, rendered) {
     .replace(/\s*<title>[\s\S]*?<\/title>\n?/i, '\n')
 
   html = html.replace('</head>', `    ${head}\n  </head>`)
-  return html.replace('<div id="root"></div>', `<div id="root">${body}</div>`)
+  return canonicalizeInternalHrefs(html.replace('<div id="root"></div>', `<div id="root">${body}</div>`))
 }
 
 async function main() {

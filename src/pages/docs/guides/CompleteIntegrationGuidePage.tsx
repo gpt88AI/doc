@@ -267,8 +267,8 @@ export default function CompleteIntegrationGuidePage() {
         如果它们支持自定义 OpenAI provider，就优先选择 OpenAI compatible，而不是写死官方 OpenAI endpoint。
       </p>
       <p>
-        更完整的 Python / Node 示例见 <Link to="/docs/sdk/python">Python SDK</Link> 和{' '}
-        <Link to="/docs/sdk/nodejs">Node.js SDK</Link>。
+        更完整的 Python / Node 示例见 <Link to="/docs/sdk/python/">Python SDK</Link> 和{' '}
+        <Link to="/docs/sdk/nodejs/">Node.js SDK</Link>。
       </p>
 
       <h2 id="usage">用量记录与成本排查</h2>
@@ -287,7 +287,7 @@ export default function CompleteIntegrationGuidePage() {
       <h2 id="errors">常见错误速查</h2>
       <CodeBlock lang="text" filename="error quick reference" code={TROUBLESHOOTING} />
       <p>
-        完整错误结构、HTTP 状态码和重试策略见 <Link to="/docs/api/errors">错误码</Link>。
+        完整错误结构、HTTP 状态码和重试策略见 <Link to="/docs/api/errors/">错误码</Link>。
       </p>
 
       <h2 id="best-practices">上线前最佳实践</h2>
@@ -304,17 +304,17 @@ export default function CompleteIntegrationGuidePage() {
       <h2 id="next">下一步</h2>
       <ul>
         <li>
-          只想快速跑通：看 <Link to="/docs/quickstart">快速开始</Link>。
+          只想快速跑通：看 <Link to="/docs/quickstart/">快速开始</Link>。
         </li>
         <li>
           想把配置导入 Claude Code / Cursor / Codex：看{' '}
-          <Link to="/docs/guides/config-export">配置文件导出</Link>。
+          <Link to="/docs/guides/config-export/">配置文件导出</Link>。
         </li>
         <li>
-          想理解人民币余额和 Token 电力：看 <Link to="/docs/auth">认证与计费</Link>。
+          想理解人民币余额和 Token 电力：看 <Link to="/docs/auth/">认证与计费</Link>。
         </li>
         <li>
-          想挑模型：去 <Link to="/models">模型导航</Link>。
+          想挑模型：去 <Link to="/models/">模型导航</Link>。
         </li>
       </ul>
     </DocPage>

@@ -208,16 +208,16 @@ export default function QuickstartPage() {
        * 这里三条都是站内绝对路径，全部从 <a href> 改为 <Link to>。
        */}
       <ul>
-        <li>查看完整的 <Link to="/docs/api/chat-completions">Chat Completions 接口字段</Link>；</li>
-        <li>浏览 <Link to="/models">模型导航</Link>，挑选最适合你场景的模型；</li>
-        <li>了解 <Link to="/docs/api/errors">错误码</Link>，让你的客户端在异常情况下更稳健。</li>
+        <li>查看完整的 <Link to="/docs/api/chat-completions/">Chat Completions 接口字段</Link>；</li>
+        <li>浏览 <Link to="/models/">模型导航</Link>，挑选最适合你场景的模型；</li>
+        <li>了解 <Link to="/docs/api/errors/">错误码</Link>，让你的客户端在异常情况下更稳健。</li>
         <li>
           把当前配置导出给 Claude Code、Cursor、Python SDK 等工具：
-          <Link to="/docs/guides/config-export">配置文件导出</Link>。
+          <Link to="/docs/guides/config-export/">配置文件导出</Link>。
         </li>
         <li>
           阅读通用教程，理解 Claude / OpenAI 兼容接入方式：
-          <Link to="/docs/guides/gpt88-tutorial">通用教程</Link>。
+          <Link to="/docs/guides/gpt88-tutorial/">通用教程</Link>。
         </li>
       </ul>
     </DocPage>

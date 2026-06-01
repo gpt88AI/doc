@@ -196,7 +196,7 @@ export default function ListModelsPage() {
         </li>
         <li>
           <strong>异常处理</strong>：参考{' '}
-          <Link to="/docs/api/errors">错误码</Link>，对
+          <Link to="/docs/api/errors/">错误码</Link>，对
           <code>model_not_found</code> / <code>permission_denied</code> 给出友好提示。
         </li>
       </ul>

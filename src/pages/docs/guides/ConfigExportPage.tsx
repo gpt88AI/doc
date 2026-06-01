@@ -161,7 +161,7 @@ export default function ConfigExportPage() {
 
       <p>
         如果你只是想快速试一次接口调用，参见站内文档{' '}
-        <Link to="/docs/quickstart">快速开始</Link>。
+        <Link to="/docs/quickstart/">快速开始</Link>。
         如果你要把 gpt88.cc 接到本地工具或团队 IDE，使用本页面更省事。
       </p>
 
@@ -461,10 +461,10 @@ export default function ConfigExportPage() {
       <h2 id="relations">与本文档站现有内容的关系</h2>
       <ul>
         <li>
-          <Link to="/docs/quickstart">快速开始</Link> 偏重「拿到 Key 后写第一行代码」。
+          <Link to="/docs/quickstart/">快速开始</Link> 偏重「拿到 Key 后写第一行代码」。
         </li>
         <li>
-          <Link to="/docs/api/chat-completions">API Reference</Link> 列出每个接口的参数和响应。
+          <Link to="/docs/api/chat-completions/">API Reference</Link> 列出每个接口的参数和响应。
         </li>
         <li>本「配置文件导出」文档侧重「把 Key + 模型 + 线路打包给某个具体工具」。</li>
       </ul>

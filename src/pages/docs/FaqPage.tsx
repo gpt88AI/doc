@@ -38,7 +38,7 @@ const FAQ: QA[] = [
         </a>{' '}
         控制台 → 「API Keys」页面 → 创建新的 Key。复制后注入到环境变量
         <code>GPT88_API_KEY</code>，再按照{' '}
-        <Link to="/docs/quickstart">快速开始</Link> 跑通第一次调用。
+        <Link to="/docs/quickstart/">快速开始</Link> 跑通第一次调用。
       </p>
     ),
   },
@@ -61,7 +61,7 @@ const FAQ: QA[] = [
         </a>{' '}
         控制台进入「配置文件导出」，选择 API Key、模型、调用线路和目标工具后即可复制配置或一键导入到 CC Switch；
         详见站内文档{' '}
-        <Link to="/docs/guides/config-export">配置文件导出</Link>。
+        <Link to="/docs/guides/config-export/">配置文件导出</Link>。
       </p>
     ),
   },
@@ -80,7 +80,7 @@ const FAQ: QA[] = [
           <code>capabilities</code> / <code>context_window</code> /
           <code>modalities</code> 字段（向前兼容），错误体里多了
           <code>request_id</code>。详见{' '}
-          <Link to="/docs/api/list-models">GET /v1/models</Link>。
+          <Link to="/docs/api/list-models/">GET /v1/models</Link>。
         </p>
       </>
     ),
@@ -119,7 +119,7 @@ const FAQ: QA[] = [
         <p>
           API Key、模型清单、字段语义在这些端点上保持一致，<strong>无需重新生成 Key</strong>。
           详细说明见{' '}
-          <Link to="/docs/quickstart#endpoints">快速开始 · 可选服务端点</Link>。
+          <Link to="/docs/quickstart/#endpoints">快速开始 · 可选服务端点</Link>。
         </p>
       </>
     ),
@@ -143,7 +143,7 @@ const FAQ: QA[] = [
     q: '如何确认我的账号能调哪些模型？',
     a: (
       <p>
-        调用 <Link to="/docs/api/list-models">GET /v1/models</Link>{' '}
+        调用 <Link to="/docs/api/list-models/">GET /v1/models</Link>{' '}
         返回的列表就是你这把 Key 当前可用的模型。控制台「API Keys」页面也能查看每把
         Key 的模型权限。
       </p>
@@ -167,7 +167,7 @@ const FAQ: QA[] = [
       <p>
         立刻在控制台「API Keys」页面 revoke 该 Key——之后任何使用都会
         返回 <code>401 invalid_api_key</code>。再创建新 Key 走{' '}
-        <Link to="/docs/auth#rotation">滚动轮换</Link>，并扫一遍代码仓库 /
+        <Link to="/docs/auth/#rotation">滚动轮换</Link>，并扫一遍代码仓库 /
         日志确认是否还有备份。
       </p>
     ),
@@ -184,7 +184,7 @@ const FAQ: QA[] = [
         <p>
           所以你不需要每天研究模型倍率、组倍率、虚拟额度或真假积分，只需要关注实际用了多少
           Token、实际花了多少钱。详细说明见{' '}
-          <Link to="/docs/auth#token-power">AI 电网与 Token 电力</Link>。
+          <Link to="/docs/auth/#token-power">AI 电网与 Token 电力</Link>。
         </p>
       </>
     ),
@@ -208,7 +208,7 @@ const FAQ: QA[] = [
         同样不写死。账号级 RPM / TPM、单 Key 的 RPM / TPM / 并发、单个模型的并发与排队
         上限均由控制台 Quota 配置决定。触发时返回{' '}
         <code>429 rate_limit_exceeded</code>，请参考{' '}
-        <Link to="/docs/api/errors#retry">重试策略</Link>。
+        <Link to="/docs/api/errors/#retry">重试策略</Link>。
       </p>
     ),
   },

@@ -326,14 +326,14 @@ export default function ZeroDowntimeReleasePage() {
       <ul>
         <li>
           如果你要把 gpt88.cc API 接入应用，可以先看{' '}
-          <Link to="/docs/guides/complete-integration">完整接入手册</Link>。
+          <Link to="/docs/guides/complete-integration/">完整接入手册</Link>。
         </li>
         <li>
-          如果你要配置开发工具，可以看 <Link to="/docs/integrations">集成指南</Link>。
+          如果你要配置开发工具，可以看 <Link to="/docs/integrations/">集成指南</Link>。
         </li>
         <li>
           如果你要排查 Codex 执行中断，可以看{' '}
-          <Link to="/docs/guides/codex-tool-recovery">Codex 工具恢复</Link>。
+          <Link to="/docs/guides/codex-tool-recovery/">Codex 工具恢复</Link>。
         </li>
       </ul>
     </DocPage>

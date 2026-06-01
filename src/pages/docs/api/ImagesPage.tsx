@@ -430,7 +430,7 @@ export default function ImagesPage() {
         <li>多张参考图可以继续往 <code>contents[].parts</code> 里追加多个 <code>fileData</code> part。</li>
         <li>Gemini 原生接口如果返回 <code>401</code>，可把 <code>Authorization: Bearer</code> 改成 <code>x-goog-api-key</code> 重试。</li>
         <li><code>NanoBanana2</code> 与 <code>gemini-3-pro-image-preview</code> 的 <code>aspectRatio</code> 可用 <code>1:1</code>、<code>16:9</code>、<code>9:16</code>、<code>4:3</code>、<code>3:4</code> 等，<code>imageSize</code> 使用 <code>1K</code>、<code>2K</code>、<code>4K</code>。</li>
-        <li>更多可用图像模型可在 <Link to="/models">模型导航</Link> 的 Image 分类查看。</li>
+        <li>更多可用图像模型可在 <Link to="/models/">模型导航</Link> 的 Image 分类查看。</li>
       </ul>
     </DocPage>
   )

@@ -204,9 +204,9 @@ export default function AgentImageStudioGuidePage() {
         headers={['需求', '推荐入口', '说明']}
         rows={[
           ['手动做图、快速打样', <a href="https://agent.gpt88.cc/" target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">agent.gpt88.cc</a>, '直接使用图片工作台，适合运营和设计。'],
-          ['代码调用图片生成', <Link to="/docs/api/images">Google 图片生成 API</Link>, '适合把图片生成集成进产品、脚本或后端服务。'],
-          ['Codex 自动生成图片文件', <Link to="/docs/guides/codex-gpt-image-2-skill">Codex gpt-image-2 Skill</Link>, '适合让 Codex 在项目里直接生成封面、海报和素材。'],
-          ['模型能力与接口路径', <Link to="/models">模型导航</Link>, '查看模型 ID、分类、供应商和接口路径。'],
+          ['代码调用图片生成', <Link to="/docs/api/images/">Google 图片生成 API</Link>, '适合把图片生成集成进产品、脚本或后端服务。'],
+          ['Codex 自动生成图片文件', <Link to="/docs/guides/codex-gpt-image-2-skill/">Codex gpt-image-2 Skill</Link>, '适合让 Codex 在项目里直接生成封面、海报和素材。'],
+          ['模型能力与接口路径', <Link to="/models/">模型导航</Link>, '查看模型 ID、分类、供应商和接口路径。'],
         ]}
       />
 

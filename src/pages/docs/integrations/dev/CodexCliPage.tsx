@@ -132,7 +132,7 @@ export default function CodexCliIntegrationPage() {
       <CodeBlock lang="text" filename="oauth-notes" code={OAUTH_NOTES} />
       <p>
         如果你要的是插件能力，继续看
-        <Link to="/docs/guides/codex-plugins-oauth"> Codex 插件 OAuth 教程</Link>。
+        <Link to="/docs/guides/codex-plugins-oauth/"> Codex 插件 OAuth 教程</Link>。
         如果你只是要稳定调用 gpt88.cc 模型，API Key 模式更直接。
       </p>
 
@@ -151,10 +151,10 @@ export default function CodexCliIntegrationPage() {
 
       <h2 id="next">下一步</h2>
       <ul>
-        <li><Link to="/docs/guides/codex-tool-recovery">查看工具恢复教程</Link></li>
-        <li><Link to="/docs/guides/codex-plugins-oauth">查看 OAuth 插件教程</Link></li>
-        <li><Link to="/docs/integrations/dev/cc-switch">查看 CC-Switch 路由教程</Link></li>
-        <li><Link to="/docs/integrations">返回集成总览</Link></li>
+        <li><Link to="/docs/guides/codex-tool-recovery/">查看工具恢复教程</Link></li>
+        <li><Link to="/docs/guides/codex-plugins-oauth/">查看 OAuth 插件教程</Link></li>
+        <li><Link to="/docs/integrations/dev/cc-switch/">查看 CC-Switch 路由教程</Link></li>
+        <li><Link to="/docs/integrations/">返回集成总览</Link></li>
       </ul>
     </DocPage>
   )

@@ -126,11 +126,11 @@ export default function CodexToolRecoveryPage() {
       <ul>
         <li>
           如果你正在处理 Codex 登录或插件问题，可以看{' '}
-          <Link to="/docs/guides/codex-plugins-oauth">Codex 插件 OAuth 登录</Link>。
+          <Link to="/docs/guides/codex-plugins-oauth/">Codex 插件 OAuth 登录</Link>。
         </li>
         <li>
           如果你需要让 Codex 生成真实图片文件，可以看{' '}
-          <Link to="/docs/guides/codex-gpt-image-2-skill">Codex gpt-image-2 Skill</Link>。
+          <Link to="/docs/guides/codex-gpt-image-2-skill/">Codex gpt-image-2 Skill</Link>。
         </li>
       </ul>
     </DocPage>

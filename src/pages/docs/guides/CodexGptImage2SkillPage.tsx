@@ -236,14 +236,14 @@ export default function CodexGptImage2SkillPage() {
       <h2 id="next">下一步</h2>
       <ul>
         <li>
-          查看 <Link to="/docs/api/images">Google 图片生成 API</Link>，了解另一类 Gemini / NanoBanana2 图片接口。
+          查看 <Link to="/docs/api/images/">Google 图片生成 API</Link>，了解另一类 Gemini / NanoBanana2 图片接口。
         </li>
         <li>
-          到 <Link to="/models/gpt-image-2">gpt-image-2 模型页</Link> 查看模型能力和调用说明。
+          到 <Link to="/models/gpt-image-2/">gpt-image-2 模型页</Link> 查看模型能力和调用说明。
         </li>
         <li>
           如果你还需要 Codex 插件能力，参考{' '}
-          <Link to="/docs/guides/codex-plugins-oauth">Codex 插件与 ChatGPT OAuth 登录</Link>。
+          <Link to="/docs/guides/codex-plugins-oauth/">Codex 插件与 ChatGPT OAuth 登录</Link>。
         </li>
         <li>
           Codex 入门、CLI 配置和工作流实践可参考{' '}

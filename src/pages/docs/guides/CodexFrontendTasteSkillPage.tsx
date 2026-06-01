@@ -280,9 +280,9 @@ export default function CodexFrontendTasteSkillPage() {
 
       <h2 id="next">下一步</h2>
       <ul>
-        <li>如果你还没配置 Codex 模型调用，先看 <Link to="/docs/integrations/dev/codex-cli">Codex CLI 接入 gpt88.cc</Link>。</li>
-        <li>如果 Codex 工具突然不可用，看 <Link to="/docs/guides/codex-tool-recovery">Codex 工具恢复</Link>。</li>
-        <li>如果你要让 Codex 生成图片素材，看 <Link to="/docs/guides/codex-gpt-image-2-skill">Codex gpt-image-2 Skill</Link>。</li>
+        <li>如果你还没配置 Codex 模型调用，先看 <Link to="/docs/integrations/dev/codex-cli/">Codex CLI 接入 gpt88.cc</Link>。</li>
+        <li>如果 Codex 工具突然不可用，看 <Link to="/docs/guides/codex-tool-recovery/">Codex 工具恢复</Link>。</li>
+        <li>如果你要让 Codex 生成图片素材，看 <Link to="/docs/guides/codex-gpt-image-2-skill/">Codex gpt-image-2 Skill</Link>。</li>
       </ul>
     </DocPage>
   )

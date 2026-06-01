@@ -73,7 +73,7 @@ export function TopNav() {
            * 只走前端路由，避免不必要的网络往返与潜在的 404（无 SPA rewrite）。
            */}
           <Link
-            to="/docs/quickstart"
+            to="/docs/quickstart/"
             className="hidden rounded-md border border-violet-500/40 bg-violet-500/10 px-3 py-1.5 text-sm font-medium text-violet-200 transition-colors hover:bg-violet-500/20 hover:text-white md:inline-flex"
           >
             开始使用
@@ -136,7 +136,7 @@ export function TopNav() {
              * 点击后通过 onClick 关闭抽屉，再由 react-router 完成路由切换。
              */}
             <Link
-              to="/docs/quickstart"
+              to="/docs/quickstart/"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-md border border-violet-500/40 bg-violet-500/10 px-3 py-2 text-center text-sm font-medium text-violet-200"
             >

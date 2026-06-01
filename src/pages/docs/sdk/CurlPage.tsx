@@ -137,7 +137,7 @@ export default function CurlSdkPage() {
       <CodeBlock lang="bash" code={CHAT} />
       <p>
         响应字段与 OpenAI 一致；完整字段定义见{' '}
-        <Link to="/docs/api/chat-completions">POST /v1/chat/completions</Link>。
+        <Link to="/docs/api/chat-completions/">POST /v1/chat/completions</Link>。
       </p>
 
       <h2 id="stream">流式响应</h2>
@@ -151,7 +151,7 @@ export default function CurlSdkPage() {
       <CodeBlock lang="bash" filename="call.sh" code={RETRY} />
       <p>
         关于错误码与各自的处理建议，请参阅{' '}
-        <Link to="/docs/api/errors">错误码</Link> 页。
+        <Link to="/docs/api/errors/">错误码</Link> 页。
       </p>
     </DocPage>
   )

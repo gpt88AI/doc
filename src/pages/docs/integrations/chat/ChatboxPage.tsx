@@ -266,7 +266,7 @@ export default function ChatboxPage() {
       <p><strong>Q2: 模型列表里没有显示模型？</strong></p>
       <ul>
         <li>直接手动输入模型 ID。</li>
-        <li>去 <Link to="/docs/api/list-models">GET /v1/models</Link> 或 <Link to="/models">模型导航</Link> 复制真实模型名。</li>
+        <li>去 <Link to="/docs/api/list-models/">GET /v1/models</Link> 或 <Link to="/models/">模型导航</Link> 复制真实模型名。</li>
       </ul>
 
       <p><strong>Q3: 对话报错怎么办？</strong></p>
@@ -293,23 +293,23 @@ export default function ChatboxPage() {
         <li>先跑通最小请求，再调参数。</li>
         <li>把常用模型固定成默认模型，减少每次手动输入。</li>
         <li>长任务用更强模型，简单问答用更便宜更快的模型。</li>
-        <li>如果你主要做开发，建议先看 <Link to="/docs/guides/complete-integration">完整接入手册</Link>。</li>
+        <li>如果你主要做开发，建议先看 <Link to="/docs/guides/complete-integration/">完整接入手册</Link>。</li>
       </ol>
 
       <h2 id="next">下一步</h2>
       <ul>
         <li>
           如果你要先理解整个站点的接入心智，可以看{' '}
-          <Link to="/docs/guides/gpt88-tutorial">gpt88.cc 通用接入教程</Link>。
+          <Link to="/docs/guides/gpt88-tutorial/">gpt88.cc 通用接入教程</Link>。
         </li>
         <li>
           如果你要把配置同步给别的工具，可以看{' '}
-          <Link to="/docs/guides/config-export">配置文件导出</Link>。
+          <Link to="/docs/guides/config-export/">配置文件导出</Link>。
         </li>
         <li>
           如果你想继续看更细的 API 说明，可以看{' '}
-          <Link to="/docs/quickstart">快速开始</Link> 和{' '}
-          <Link to="/docs/api/chat-completions">Chat Completions API</Link>。
+          <Link to="/docs/quickstart/">快速开始</Link> 和{' '}
+          <Link to="/docs/api/chat-completions/">Chat Completions API</Link>。
         </li>
       </ul>
     </DocPage>

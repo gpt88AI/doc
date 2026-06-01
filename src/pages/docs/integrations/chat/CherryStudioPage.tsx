@@ -108,8 +108,8 @@ export default function CherryStudioPage() {
 
       <h2 id="next">下一步</h2>
       <ul>
-        <li><Link to="/docs/integrations">返回集成总览</Link></li>
-        <li><Link to="/docs/guides/complete-integration">查看完整接入手册</Link></li>
+        <li><Link to="/docs/integrations/">返回集成总览</Link></li>
+        <li><Link to="/docs/guides/complete-integration/">查看完整接入手册</Link></li>
       </ul>
     </DocPage>
   )

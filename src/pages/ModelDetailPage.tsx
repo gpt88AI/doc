@@ -45,7 +45,7 @@ import { modelStructuredData } from '../components/seo/structuredData'
  *
  * 关于"slug 无效"的处理（QA 反馈 t-20260508-ekhzqd）：
  *
- * 早期实现是 `<Navigate to="/models" replace />`，纯客户端重定向。
+ * 早期实现是 `<Navigate to="/models/" replace />`，纯客户端重定向。
  * 它依赖两个前提：
  *   1) 客户端 JS 能正常加载（react-router 需要先渲染才能触发 Navigate）；
  *   2) 托管平台已经把任意路径 200 rewrite 到 index.html。
@@ -122,7 +122,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
       <section className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
         {/* 面包屑 */}
         <nav className="text-xs text-ink-400" aria-label="面包屑">
-          <Link to="/models" className="inline-flex items-center gap-1 hover:text-ink-200">
+          <Link to="/models/" className="inline-flex items-center gap-1 hover:text-ink-200">
             <ArrowLeft className="h-3 w-3" />
             模型导航
           </Link>
@@ -178,7 +178,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
               <ExternalLink className="h-4 w-4 opacity-80 transition-transform group-hover:translate-x-0.5" />
             </a>
             <Link
-              to="/docs/quickstart"
+              to="/docs/quickstart/"
               className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-ink-100 hover:border-violet-500/40 hover:bg-violet-500/10"
             >
               <Rocket className="h-4 w-4 text-violet-300" />
@@ -331,7 +331,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
                   {related.map(r => (
                     <li key={r.slug}>
                       <Link
-                        to={`/models/${r.slug}`}
+                        to={`/models/${r.slug}/`}
                         className="group flex items-center justify-between gap-2 rounded-md px-2 py-2 text-sm text-ink-200 hover:bg-white/5"
                       >
                         <span className="min-w-0">
@@ -352,7 +352,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
 
             {/* 返回模型导航 */}
             <Link
-              to="/models"
+              to="/models/"
               className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-400 hover:text-ink-200"
             >
               <ArrowLeft className="h-3 w-3" />
@@ -1312,14 +1312,14 @@ function ModelNotFound({ slug }: { slug?: string }) {
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         {/* 站内深链统一使用 <Link>，避免在 BrowserRouter 下整页刷新 */}
         <Link
-          to="/models"
+          to="/models/"
           className="inline-flex items-center gap-2 rounded-md bg-violet-500 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-400"
         >
           <Compass className="h-4 w-4" />
           查看全部模型
         </Link>
         <Link
-          to="/docs/quickstart"
+          to="/docs/quickstart/"
           className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-ink-100 hover:border-violet-500/40 hover:bg-violet-500/10"
         >
           先看快速开始

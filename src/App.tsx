@@ -62,7 +62,7 @@ export default function App() {
 
         {/* 文档区 */}
         <Route path="docs" element={<DocsLayout />}>
-          <Route index element={<Navigate to="/docs/overview" replace />} />
+          <Route index element={<Navigate to="/docs/overview/" replace />} />
           <Route path="overview" element={<OverviewPage />} />
           <Route path="quickstart" element={<QuickstartPage />} />
         <Route path="auth" element={<AuthPage />} />

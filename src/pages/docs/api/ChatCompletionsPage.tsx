@@ -25,7 +25,7 @@ const REQ_BODY: FieldRow[] = [
       <>
         要调用的模型 ID，例如 <code>claude-opus-4-7</code>。
         可用模型清单通过{' '}
-        <Link to="/docs/api/list-models">GET /v1/models</Link> 实时获取，
+        <Link to="/docs/api/list-models/">GET /v1/models</Link> 实时获取，
         不同账号可见的模型由控制台权限决定。
       </>
     ),
@@ -80,7 +80,7 @@ const REQ_BODY: FieldRow[] = [
     description: (
       <>
         本次生成的最大 token 数。模型自身的上下文上限由具体模型决定，请通过{' '}
-        <Link to="/docs/api/list-models">GET /v1/models</Link> 查看。
+        <Link to="/docs/api/list-models/">GET /v1/models</Link> 查看。
       </>
     ),
   },
@@ -493,7 +493,7 @@ export default function ChatCompletionsPage() {
       <h2 id="errors">错误处理</h2>
       <p>
         所有错误均以统一结构返回。HTTP 状态码遵循 OpenAI 协议惯例，
-        详细码表请参阅 <Link to="/docs/api/errors">错误码</Link> 页。
+        详细码表请参阅 <Link to="/docs/api/errors/">错误码</Link> 页。
       </p>
 
       <CodeBlock

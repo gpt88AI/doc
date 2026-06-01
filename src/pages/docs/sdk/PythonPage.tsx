@@ -173,7 +173,7 @@ export default function PythonSdkPage() {
       <CodeBlock lang="python" filename="retry.py" code={ERROR} />
       <p>
         完整错误码语义见{' '}
-        <Link to="/docs/api/errors">错误码</Link> 页。
+        <Link to="/docs/api/errors/">错误码</Link> 页。
       </p>
 
       <h2 id="async">异步用法</h2>

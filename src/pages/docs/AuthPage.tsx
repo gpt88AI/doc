@@ -92,7 +92,7 @@ export default function AuthPage() {
       <Callout tone="danger" title="一旦发现泄露">
         <p>
           立刻在控制台撤销该 Key，并搜索代码仓库 / 日志确认是否还有备份；
-          再创建新 Key 走<Link to="/docs/auth#rotation">滚动轮换</Link>。
+          再创建新 Key 走<Link to="/docs/auth/#rotation">滚动轮换</Link>。
         </p>
       </Callout>
 
@@ -200,7 +200,7 @@ export default function AuthPage() {
         <p>
           具体上限以你账号在控制台「Quota」页面看到的为准。触发时返回
           <code>429 rate_limit_exceeded</code>，请按{' '}
-          <Link to="/docs/api/errors#retry">重试策略</Link> 处理。
+          <Link to="/docs/api/errors/#retry">重试策略</Link> 处理。
         </p>
       </Callout>
 

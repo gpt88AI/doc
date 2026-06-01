@@ -151,10 +151,10 @@ export default function Gpt88TutorialPage() {
         <p>
           这不是某一个 SDK 的单页说明，而是一篇「统一 Claude / OpenAI 兼容心智」的总入口教程。
           如果你是第一次接入 gpt88.cc，建议先通读本文，再按需跳转到
-          {' '}<Link to="/docs/quickstart">快速开始</Link>、
-          <Link to="/docs/auth">认证与计费</Link>、
-          <Link to="/docs/guides/config-export">配置文件导出</Link>、
-          <Link to="/models">模型导航</Link> 等页面深入。
+          {' '}<Link to="/docs/quickstart/">快速开始</Link>、
+          <Link to="/docs/auth/">认证与计费</Link>、
+          <Link to="/docs/guides/config-export/">配置文件导出</Link>、
+          <Link to="/models/">模型导航</Link> 等页面深入。
         </p>
       </Callout>
 
@@ -341,7 +341,7 @@ export default function Gpt88TutorialPage() {
       </ul>
       <p>
         如果工具本身支持导入配置，那就把它交给{' '}
-        <Link to="/docs/guides/config-export">配置文件导出</Link> 页面生成。
+        <Link to="/docs/guides/config-export/">配置文件导出</Link> 页面生成。
       </p>
 
       <Callout tone="tip" title="一个最容易成功的起步方式">
@@ -361,7 +361,7 @@ export default function Gpt88TutorialPage() {
         <li>有的工具需要导入链接，有的工具需要配置文件。</li>
       </ul>
       <p>
-        <Link to="/docs/guides/config-export">配置文件导出</Link> 页面就是为了解决这些碎片化问题：
+        <Link to="/docs/guides/config-export/">配置文件导出</Link> 页面就是为了解决这些碎片化问题：
       </p>
       <ul>
         <li>先把 API Key、模型和线路选对；</li>
@@ -438,13 +438,13 @@ export default function Gpt88TutorialPage() {
       <h2 id="related-docs">应该搭配阅读哪些文档</h2>
       <p>建议阅读顺序：</p>
       <ol>
-        <li><Link to="/docs/overview">产品概览</Link> —— 先理解 gpt88.cc 是什么；</li>
-        <li><Link to="/docs/quickstart">快速开始</Link> —— 跑通第一次请求；</li>
-        <li><Link to="/docs/auth">认证与计费</Link> —— 理解 Key、限速、计费和安全；</li>
-        <li><Link to="/docs/api/chat-completions">API Reference</Link> —— 看完整字段；</li>
-        <li><Link to="/models">模型导航</Link> —— 选模型；</li>
-        <li><Link to="/docs/guides/config-export">配置文件导出</Link> —— 把配置分发到具体工具；</li>
-        <li><Link to="/docs/faq">FAQ</Link> —— 查常见问题。</li>
+        <li><Link to="/docs/overview/">产品概览</Link> —— 先理解 gpt88.cc 是什么；</li>
+        <li><Link to="/docs/quickstart/">快速开始</Link> —— 跑通第一次请求；</li>
+        <li><Link to="/docs/auth/">认证与计费</Link> —— 理解 Key、限速、计费和安全；</li>
+        <li><Link to="/docs/api/chat-completions/">API Reference</Link> —— 看完整字段；</li>
+        <li><Link to="/models/">模型导航</Link> —— 选模型；</li>
+        <li><Link to="/docs/guides/config-export/">配置文件导出</Link> —— 把配置分发到具体工具；</li>
+        <li><Link to="/docs/faq/">FAQ</Link> —— 查常见问题。</li>
       </ol>
 
       <h2 id="summary">一句话总结</h2>

@@ -198,7 +198,7 @@ export default function NodejsSdkPage() {
       <CodeBlock lang="typescript" filename="retry.ts" code={RETRY} />
       <p>
         错误类别与处理建议详见{' '}
-        <Link to="/docs/api/errors">错误码</Link>。
+        <Link to="/docs/api/errors/">错误码</Link>。
       </p>
 
       <h2 id="edge">Next.js Edge / serverless</h2>

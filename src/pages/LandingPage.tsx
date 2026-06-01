@@ -189,7 +189,7 @@ export default function LandingPage() {
            */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
-              to="/docs/quickstart"
+              to="/docs/quickstart/"
               className="group inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-violet-500 to-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition-transform hover:scale-[1.02]"
             >
               <Rocket className="h-4 w-4" />
@@ -207,7 +207,7 @@ export default function LandingPage() {
               <ExternalLink className="h-3.5 w-3.5 opacity-80 transition-transform group-hover:translate-x-0.5" />
             </a>
             <Link
-              to="/docs/api/chat-completions"
+              to="/docs/api/chat-completions/"
               className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-ink-100 hover:border-violet-500/40 hover:bg-violet-500/10"
             >
               查看 API Reference
@@ -314,7 +314,7 @@ export default function LandingPage() {
               </p>
             </div>
             <Link
-              to="/models"
+              to="/models/"
               className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-ink-100 hover:border-violet-500/40 hover:bg-violet-500/10"
             >
               浏览全部模型
@@ -329,7 +329,7 @@ export default function LandingPage() {
               return (
                 <li key={slug}>
                   <Link
-                    to={`/models/${slug}`}
+                    to={`/models/${slug}/`}
                     className="tech-card tech-card-hover group flex h-full flex-col p-5"
                   >
                     <div className="flex items-start justify-between gap-2">
@@ -381,7 +381,7 @@ export default function LandingPage() {
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to="/docs/quickstart"
+                  to="/docs/quickstart/"
                   className="rounded-md bg-violet-500 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-400"
                 >
                   快速开始
@@ -391,7 +391,7 @@ export default function LandingPage() {
                  * 后续 human 改主推顺序时，无需改首页代码。
                  */}
                 <Link
-                  to={`/models/${DEFAULT_FEATURED_SLUG}`}
+                  to={`/models/${DEFAULT_FEATURED_SLUG}/`}
                   className="rounded-md border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-ink-100 hover:border-violet-500/40"
                 >
                   查看默认主推模型

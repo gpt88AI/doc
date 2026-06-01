@@ -17,25 +17,25 @@ const NEXT_STEPS = [
   {
     title: '快速开始',
     desc: '5 分钟内通过 cURL 完成第一次 chat completion 调用。',
-    href: '/docs/quickstart',
+    href: '/docs/quickstart/',
     icon: Zap,
   },
   {
     title: 'API Reference',
     desc: '查看 /v1/chat/completions、/v1/models 与错误码细节。',
-    href: '/docs/api/chat-completions',
+    href: '/docs/api/chat-completions/',
     icon: Code2,
   },
   {
     title: '模型导航',
     desc: '按 Chat / Image / Video / Audio 与场景挑选模型。',
-    href: '/models',
+    href: '/models/',
     icon: Compass,
   },
   {
     title: 'Agent 图片工作台',
     desc: '使用 agent.gpt88.cc 生成电商主图、场景图、模特图和批量图片。',
-    href: '/docs/guides/agent-image-studio',
+    href: '/docs/guides/agent-image-studio/',
     icon: Image,
   },
 ] as const
@@ -65,7 +65,7 @@ export default function OverviewPage() {
         <code>aiapi.up.railway.app</code> /{' '}
         <code>ai.orbitlink.me</code>）。
         这些端点完全等价，详见{' '}
-        <Link to="/docs/quickstart#endpoints">快速开始 · 可选服务端点</Link>。
+        <Link to="/docs/quickstart/#endpoints">快速开始 · 可选服务端点</Link>。
       </p>
       {/*
        * Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。
@@ -84,7 +84,7 @@ export default function OverviewPage() {
         </a>{' '}
         控制台并创建 API Key 后，即可开始用 OpenAI 兼容协议调用各家模型；
         具体步骤请参考{' '}
-        <Link to="/docs/quickstart">快速开始</Link>。
+        <Link to="/docs/quickstart/">快速开始</Link>。
       </p>
 
       <h2 id="who-is-it-for">适合什么人</h2>
@@ -110,7 +110,7 @@ export default function OverviewPage() {
         </li>
         <li>
           <strong>多模态扩展</strong>：Image / Audio / Video 模型按厂商语义提供，详见{' '}
-          <Link to="/models">模型导航</Link>。
+          <Link to="/models/">模型导航</Link>。
         </li>
         <li>
           <strong>错误码映射</strong>：把不同厂商的错误统一映射到稳定的 HTTP 状态与

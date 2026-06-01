@@ -118,9 +118,9 @@ export default function CcSwitchIntegrationPage() {
 
       <h2 id="next">下一步</h2>
       <ul>
-        <li><Link to="/docs/guides/codex-plugins-oauth">查看插件 OAuth 教程</Link></li>
-        <li><Link to="/docs/integrations/dev/codex-cli">查看 Codex CLI 接入教程</Link></li>
-        <li><Link to="/docs/integrations">返回集成总览</Link></li>
+        <li><Link to="/docs/guides/codex-plugins-oauth/">查看插件 OAuth 教程</Link></li>
+        <li><Link to="/docs/integrations/dev/codex-cli/">查看 Codex CLI 接入教程</Link></li>
+        <li><Link to="/docs/integrations/">返回集成总览</Link></li>
       </ul>
     </DocPage>
   )

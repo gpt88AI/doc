@@ -459,7 +459,7 @@ export default function CodexPluginsOauthPage() {
         </li>
         <li>
           如果你只是想配置 gpt88.cc API 模型调用，继续阅读{' '}
-          <Link to="/docs/guides/config-export">配置文件导出</Link>。
+          <Link to="/docs/guides/config-export/">配置文件导出</Link>。
         </li>
       </ul>
     </DocPage>

@@ -193,7 +193,7 @@ export default function Gpt88AiProxyPage() {
         <li><strong>OpenAI API 中转</strong>：支持常见 OpenAI 兼容 SDK 和工具，把 <code>base_url</code> 指向 <code>https://gpt88.cc/v1</code>。</li>
         <li><strong>Claude API 中转</strong>：Claude / Anthropic 风格工具通常使用根地址 <code>https://gpt88.cc</code>。</li>
         <li><strong>Gemini 图片生成</strong>：Google / Gemini 图片生成、NanoBanana2 等图片模型按专用图片接口接入。</li>
-        <li><strong>多模型导航</strong>：通过 <Link to="/models">模型导航</Link> 浏览 Chat、Image、Video、Audio 分类模型。</li>
+        <li><strong>多模型导航</strong>：通过 <Link to="/models/">模型导航</Link> 浏览 Chat、Image、Video、Audio 分类模型。</li>
         <li><strong>工具集成教程</strong>：提供 ChatBox、Cherry Studio、AnythingLLM、Claude Code、Cursor、Cline、Codex CLI、Dify 等教程。</li>
         <li><strong>透明用量心智</strong>：不使用复杂积分倍率表达，具体用量、扣费、权限和限速以控制台为准。</li>
       </ul>
@@ -213,8 +213,8 @@ export default function Gpt88AiProxyPage() {
       </p>
       <CodeBlock lang="bash" filename="gpt88-ai-proxy-smoke-test.sh" code={CURL_EXAMPLE} />
       <p>
-        更完整的 SDK 示例可以继续看 <Link to="/docs/sdk/python">Python SDK</Link>、
-        <Link to="/docs/sdk/nodejs">Node.js SDK</Link> 和 <Link to="/docs/sdk/curl">cURL</Link> 文档。
+        更完整的 SDK 示例可以继续看 <Link to="/docs/sdk/python/">Python SDK</Link>、
+        <Link to="/docs/sdk/nodejs/">Node.js SDK</Link> 和 <Link to="/docs/sdk/curl/">cURL</Link> 文档。
       </p>
 
       <h2 id="tools">适合接入哪些工具</h2>
@@ -233,17 +233,17 @@ export default function Gpt88AiProxyPage() {
           ],
           [
             'ChatBox / Cherry Studio / AnythingLLM',
-            <Link key="integrations" to="/docs/integrations">集成指南</Link>,
+            <Link key="integrations" to="/docs/integrations/">集成指南</Link>,
             '适合桌面聊天、知识库和多模型管理。',
           ],
           [
             'Dify / 工作流平台',
-            <Link key="dify" to="/docs/integrations/platforms/dify">Dify 接入教程</Link>,
+            <Link key="dify" to="/docs/integrations/platforms/dify/">Dify 接入教程</Link>,
             '适合应用、工作流、知识库和 Agent 编排。',
           ],
           [
             'Gemini / NanoBanana2 图片生成',
-            <Link key="images" to="/docs/api/images">Google 图片生成 API</Link>,
+            <Link key="images" to="/docs/api/images/">Google 图片生成 API</Link>,
             '图片模型使用 Google / Gemini 原生兼容接口，不要套用普通文本模型接口。',
           ],
         ]}
@@ -270,17 +270,17 @@ export default function Gpt88AiProxyPage() {
       <ul>
         <li>第一次接入先用轻量模型跑通，不要一开始就接复杂工作流。</li>
         <li>每个项目或工具单独创建 API Key，便于统计、限额和停用。</li>
-        <li>把模型 ID 从 <Link to="/models">模型导航</Link> 或 <Link to="/docs/api/list-models">GET /v1/models</Link> 复制，不要凭记忆手写。</li>
+        <li>把模型 ID 从 <Link to="/models/">模型导航</Link> 或 <Link to="/docs/api/list-models/">GET /v1/models</Link> 复制，不要凭记忆手写。</li>
         <li>生产环境不要把 API Key 写到前端代码里，应放在服务端或安全配置里。</li>
-        <li>遇到 401、404、429、503 时，先看 <Link to="/docs/api/errors">错误码</Link>，再排查模型名、Base URL、余额和限速。</li>
+        <li>遇到 401、404、429、503 时，先看 <Link to="/docs/api/errors/">错误码</Link>，再排查模型名、Base URL、余额和限速。</li>
       </ul>
 
       <h2 id="next">下一步</h2>
       <ul>
-        <li>如果你是第一次接入，先看 <Link to="/docs/quickstart">快速开始</Link>。</li>
-        <li>如果你要迁移完整项目，看 <Link to="/docs/guides/complete-integration">完整接入手册</Link>。</li>
-        <li>如果你要配置具体客户端，看 <Link to="/docs/integrations">集成指南</Link>。</li>
-        <li>如果你要了解认证、余额和扣费，看 <Link to="/docs/auth">认证与计费</Link>。</li>
+        <li>如果你是第一次接入，先看 <Link to="/docs/quickstart/">快速开始</Link>。</li>
+        <li>如果你要迁移完整项目，看 <Link to="/docs/guides/complete-integration/">完整接入手册</Link>。</li>
+        <li>如果你要配置具体客户端，看 <Link to="/docs/integrations/">集成指南</Link>。</li>
+        <li>如果你要了解认证、余额和扣费，看 <Link to="/docs/auth/">认证与计费</Link>。</li>
       </ul>
     </DocPage>
   )
