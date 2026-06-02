@@ -189,6 +189,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'ChatGPT / Codex 手机号二次验证解决方法',
+    path: '/docs/guides/codex-chatgpt-phone-verification',
+    description: 'ChatGPT OAuth 或 Codex 登录反复要求手机号二次验证时，使用 Advanced Account Security、passkey 和恢复密钥降低对短信验证码的依赖。',
+    section: '指南',
+  },
+  {
     title: 'Codex gpt-image-2 Skill 生成图片',
     path: '/docs/guides/codex-gpt-image-2-skill',
     description: '直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。',

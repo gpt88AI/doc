@@ -18,6 +18,7 @@ import Gpt88AiProxyPage from './pages/docs/guides/Gpt88AiProxyPage'
 import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
 import CompleteIntegrationGuidePage from './pages/docs/guides/CompleteIntegrationGuidePage'
 import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
+import CodexChatgptPhoneVerificationPage from './pages/docs/guides/CodexChatgptPhoneVerificationPage'
 import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
 import CodexFrontendTasteSkillPage from './pages/docs/guides/CodexFrontendTasteSkillPage'
 import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
@@ -98,6 +99,7 @@ export default function App() {
           <Route path="guides/complete-integration" element={<CompleteIntegrationGuidePage />} />
           <Route path="guides/agent-image-studio" element={<AgentImageStudioGuidePage />} />
           <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
+          <Route path="guides/codex-chatgpt-phone-verification" element={<CodexChatgptPhoneVerificationPage />} />
           <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
           <Route path="guides/codex-frontend-taste-skill" element={<CodexFrontendTasteSkillPage />} />
           <Route path="guides/codex-tool-recovery" element={<CodexToolRecoveryPage />} />
