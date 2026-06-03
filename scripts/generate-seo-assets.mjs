@@ -227,7 +227,7 @@ const docs = [
   {
     title: 'giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程',
     path: '/docs/guides/giffgaff-sim-guide',
-    description: '基于 0xFun 的长帖整理的详细教程，讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。',
+    description: '详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。',
     section: '指南',
   },
 ]

@@ -84,57 +84,57 @@ const ACTIVATION_IMAGES = [
   {
     src: '/images/guides/giffgaff/HH0CvD3bsAA7q3o.png',
     alt: 'giffgaff 官方激活页面与 6 位激活码输入界面',
-    caption: '原帖截图 1：进入官方激活页并输入 6 位激活码。',
+    caption: '步骤截图 1：进入官方激活页并输入 6 位激活码。',
   },
   {
     src: '/images/guides/giffgaff/HH0Cx_vaUAAzi1J.png',
     alt: 'giffgaff 激活流程中的邮箱输入界面',
-    caption: '原帖截图 2：输入邮箱并继续。',
+    caption: '步骤截图 2：输入邮箱并继续。',
   },
   {
     src: '/images/guides/giffgaff/HH0C0grbQAA8gzy.png',
     alt: 'giffgaff 邮箱验证码确认界面',
-    caption: '原帖截图 3：填写邮箱验证码完成确认。',
+    caption: '步骤截图 3：填写邮箱验证码完成确认。',
   },
   {
     src: '/images/guides/giffgaff/HH0Ef9xbYAA75Ku.png',
     alt: 'giffgaff 注册时创建密码的界面',
-    caption: '原帖截图 4：创建密码并注册账号。',
+    caption: '步骤截图 4：创建密码并注册账号。',
   },
   {
     src: '/images/guides/giffgaff/HH0EiTTa0AAE3tl.png',
     alt: 'giffgaff 流程中的 No, thanks 继续界面',
-    caption: '原帖截图 5：选择 No, thanks 后继续。',
+    caption: '步骤截图 5：选择 No, thanks 后继续。',
   },
   {
     src: '/images/guides/giffgaff/HH0EkC3a8AAT0u8.png',
     alt: 'giffgaff Pay as you go 选择界面',
-    caption: '原帖截图 6：下拉到底部，选择 Pay as you go。',
+    caption: '步骤截图 6：下拉到底部，选择 Pay as you go。',
   },
   {
     src: '/images/guides/giffgaff/HH0EmAnbwAATFGb.png',
     alt: 'giffgaff 10 英镑充值或 voucher 激活界面',
-    caption: '原帖截图 7：选择 10 英镑充值，或使用 voucher 激活。',
+    caption: '步骤截图 7：选择 10 英镑充值，或使用 voucher 激活。',
   },
   {
     src: '/images/guides/giffgaff/HH0EoSfbsAASEQL.png',
     alt: 'giffgaff 姓名和地址填写界面',
-    caption: '原帖截图 8：填写英文姓名和真实地址格式。',
+    caption: '步骤截图 8：填写英文姓名和真实地址格式。',
   },
   {
     src: '/images/guides/giffgaff/HH0EqKebIAE7NgF.png',
     alt: 'giffgaff Place order 下单界面',
-    caption: '原帖截图 9：完成支付或提交订单。',
+    caption: '步骤截图 9：完成支付或提交订单。',
   },
   {
     src: '/images/guides/giffgaff/HH0EtOKaAAABz-Q.png',
     alt: 'giffgaff 分配英国手机号的界面',
-    caption: '原帖截图 10：系统显示分配的 +44 英国号码。',
+    caption: '步骤截图 10：系统显示分配的 +44 英国号码。',
   },
   {
     src: '/images/guides/giffgaff/HH0EvHDboAEvBW6.png',
     alt: 'giffgaff 首页显示余额表示激活完成',
-    caption: '原帖截图 11：主页显示余额，说明卡基本已激活完成。',
+    caption: '步骤截图 11：主页显示余额，说明卡基本已激活完成。',
   },
 ] as const
 
@@ -142,12 +142,12 @@ const MAINTENANCE_IMAGES = [
   {
     src: '/images/guides/giffgaff/HH0IAjjbMAAWz9I.jpg',
     alt: 'giffgaff 保号提醒与使用说明截图',
-    caption: '原帖截图：保号提醒示意，建议把提醒设在 175 天左右。',
+    caption: '保号提醒示意：建议把提醒设在 175 天左右。',
   },
   {
     src: '/images/guides/giffgaff/HH09219bgAA0Yu-.jpg',
     alt: 'giffgaff 实体卡实拍图片',
-    caption: '原帖截图：giffgaff 实体卡实拍，可用于确认你拿到的是标准空白卡。',
+    caption: '实体卡实拍：可用于确认你拿到的是标准空白卡。',
   },
 ] as const
 
@@ -199,14 +199,56 @@ function ScreenshotGallery({
   )
 }
 
+function ProductCard() {
+  return (
+    <section className="not-prose my-6 overflow-hidden rounded-2xl border border-violet-400/20 bg-gradient-to-br from-violet-500/10 via-white/[0.03] to-cyan-400/10">
+      <div className="border-b border-white/10 px-5 py-4">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="rounded-full border border-violet-400/30 bg-violet-500/10 px-2.5 py-1 text-xs font-medium text-violet-200">
+            在售商品
+          </span>
+          <h3 className="text-lg font-semibold text-ink-50">英国 giffgaff 实体 SIM 卡</h3>
+        </div>
+        <p className="mt-3 text-sm leading-6 text-ink-200">
+          适合需要英国手机号、海外应用短信验证、长期保号和实体卡转 eSIM 的用户。
+          购买后可按本文教程直接激活使用。
+        </p>
+      </div>
+
+      <div className="grid gap-5 px-5 py-5 md:grid-cols-2">
+        <div>
+          <h4 className="text-sm font-semibold text-ink-50">商品特点</h4>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-ink-200">
+            <li>英国 +44 号码，可用于海外平台注册与验证场景</li>
+            <li>0 月租，适合低频持有与长期保号</li>
+            <li>支持按教程激活、换号、查询号码与实体卡转 eSIM</li>
+            <li>适合作为 ChatGPT、Codex 等海外工具验证用备用号码</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-sm font-semibold text-ink-50">购买方式</h4>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-ink-200">
+            <li>通过 Telegram 联系购买：<a href="https://t.me/+CtlYILkGaY1jYzBl" target="_blank" rel="noreferrer">加入 Telegram 社区</a></li>
+            <li>通过 X 私信咨询：<a href="https://x.com/webstarchina" target="_blank" rel="noreferrer">联系 X 社区账号</a></li>
+            <li>下单前建议确认发货地区、库存状态和交付方式</li>
+            <li>收到实体卡后，按本页激活流程操作即可</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function GiffgaffGuidePage() {
   return (
     <DocPage
       path="/docs/guides/giffgaff-sim-guide"
       title="giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程"
-      description="基于 0xFun 的长帖整理的详细教程，讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。"
+      description="详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。"
       headings={[
         { id: 'why', text: '为什么很多人选 giffgaff', level: 2 },
+        { id: 'buy', text: '购买英国 giffgaff 实体 SIM 卡', level: 2 },
         { id: 'activate', text: '激活流程', level: 2 },
         { id: 'roaming', text: '漫游与资费', level: 2 },
         { id: 'keepalive', text: '保号规则', level: 2 },
@@ -232,9 +274,16 @@ export default function GiffgaffGuidePage() {
       </p>
       <CodeBlock lang="text" filename="why-giffgaff" code={WHY_GIFFGAFF} />
 
+      <h2 id="buy">购买英国 giffgaff 实体 SIM 卡</h2>
+      <p>
+        如果你还没有卡，可以直接购买英国 giffgaff 实体 SIM 卡。更适合的用户是：
+        需要英国手机号、要做海外平台注册验证、或者希望长期保留一张低维护号码的人。
+      </p>
+      <ProductCard />
+
       <h2 id="activate">激活流程</h2>
       <p>
-        下面是根据 0xFun 的长帖整理后的标准激活路径。第一次激活时最容易出错的是：
+        下面是整理后的标准激活路径。第一次激活时最容易出错的是：
         选错资费类型、地址乱填、付款方式没准备好。
       </p>
       <CodeBlock lang="text" filename="activate-flow" code={ACTIVATE_FLOW} />
@@ -287,7 +336,7 @@ export default function GiffgaffGuidePage() {
 
       <h2 id="roaming">漫游与资费</h2>
       <p>
-        如果只是拿来接码和保号，尽量不要把这张卡当作高频流量或通话卡使用。0xFun 的原帖也明确提示：
+        如果只是拿来接码和保号，尽量不要把这张卡当作高频流量或通话卡使用。
         除了短信接码之外，其他漫游使用通常不划算。
       </p>
       <ul>
@@ -386,12 +435,6 @@ export default function GiffgaffGuidePage() {
 
       <h2 id="references">参考资料</h2>
       <ul>
-        <li>
-          <a href="https://x.com/0xFunX/status/2053001375597080679" target="_blank" rel="noreferrer">
-            0xFun 原帖：英国 giffgaff 实体 SIM 卡激活使用保号手把手教程 & 购买指南
-          </a>
-        </li>
-        <li>本文中的截图已下载到站内静态资源，内容来源于 0xFun 原帖配图。</li>
         <li>
           <a href="https://www.giffgaff.com/activate" target="_blank" rel="noreferrer">
             giffgaff 官方激活页
