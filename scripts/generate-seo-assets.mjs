@@ -224,6 +224,12 @@ const docs = [
     description: '基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。',
     section: '指南',
   },
+  {
+    title: 'giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程',
+    path: '/docs/guides/giffgaff-sim-guide',
+    description: '基于 0xFun 的长帖整理的详细教程，讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。',
+    section: '指南',
+  },
 ]
 
 const staticPages = [

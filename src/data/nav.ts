@@ -227,6 +227,11 @@ export const DOCS_NAV: NavSection[] = [
         path: '/docs/guides/zero-downtime-release/',
         blurb: '基于蓝绿槽位、健康检查、反向代理切流和快速回滚的生产发布教程',
       },
+      {
+        title: 'giffgaff SIM 教程',
+        path: '/docs/guides/giffgaff-sim-guide/',
+        blurb: '英国 giffgaff 实体 SIM 卡激活、保号、查号、换号和 eSIM 转换详细教程',
+      },
     ],
   },
   {
