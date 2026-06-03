@@ -57,6 +57,7 @@
 - [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
 - [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth/): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
 - [ChatGPT / Codex 手机号二次验证解决方法](https://doc.gpt88.cc/docs/guides/codex-chatgpt-phone-verification/): ChatGPT OAuth 或 Codex 登录反复要求手机号二次验证时，使用 Advanced Account Security、passkey 和恢复密钥降低对短信验证码的依赖。
+- [ECC Agent 工作流教程](https://doc.gpt88.cc/docs/guides/ecc-agent-harness/): 基于 affaan-m/ECC 的详细教程，讲清 ECC 是什么、如何选择插件或手动安装路径、如何避免重复安装，以及如何和 gpt88.cc、Codex、Claude Code 工作流配合。
 - [Codex gpt-image-2 Skill 生成图片](https://doc.gpt88.cc/docs/guides/codex-gpt-image-2-skill/): 直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。
 - [Codex 前端设计 Skill](https://doc.gpt88.cc/docs/guides/codex-frontend-taste-skill/): 使用 Taste Skill 为 Codex 增强前端设计判断力，改善 AI 生成页面的排版、动效、设计系统、反模板化检查和最终交付质量。
 - [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。

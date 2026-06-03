@@ -203,6 +203,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'ChatGPT / Codex OAuth 登录要求手机号二次验证时，用高级账号安全与通行密钥降低短信依赖',
       },
       {
+        title: 'ECC Agent 工作流',
+        path: '/docs/guides/ecc-agent-harness/',
+        blurb: '使用 affaan-m/ECC 为 Claude Code、Codex、Cursor 等工具配置可复用 Agent 工作流',
+      },
+      {
         title: 'Codex gpt-image-2 Skill',
         path: '/docs/guides/codex-gpt-image-2-skill/',
         blurb: '用 Codex skill 调用 gpt88.cc 的 gpt-image-2 生成真实图片文件',

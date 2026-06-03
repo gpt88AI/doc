@@ -195,6 +195,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'ECC Agent 工作流教程',
+    path: '/docs/guides/ecc-agent-harness',
+    description: '基于 affaan-m/ECC 的详细教程，讲清 ECC 是什么、如何选择插件或手动安装路径、如何避免重复安装，以及如何和 gpt88.cc、Codex、Claude Code 工作流配合。',
+    section: '指南',
+  },
+  {
     title: 'Codex gpt-image-2 Skill 生成图片',
     path: '/docs/guides/codex-gpt-image-2-skill',
     description: '直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。',
