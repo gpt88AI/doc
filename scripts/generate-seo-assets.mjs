@@ -230,6 +230,12 @@ const docs = [
     description: '详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。',
     section: '指南',
   },
+  {
+    title: 'AI 视频分镜与提示词教程',
+    path: '/docs/guides/ai-video-storyboard-guide',
+    description: '把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流，适合短视频剧情片、情绪片和口播叙事片。',
+    section: '指南',
+  },
 ]
 
 const staticPages = [

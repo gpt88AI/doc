@@ -232,6 +232,11 @@ export const DOCS_NAV: NavSection[] = [
         path: '/docs/guides/giffgaff-sim-guide/',
         blurb: '英国 giffgaff 实体 SIM 卡激活、保号、查号、换号和 eSIM 转换详细教程',
       },
+      {
+        title: 'AI 视频分镜教程',
+        path: '/docs/guides/ai-video-storyboard-guide/',
+        blurb: '把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流',
+      },
     ],
   },
   {
