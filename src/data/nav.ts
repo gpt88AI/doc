@@ -237,6 +237,36 @@ export const DOCS_NAV: NavSection[] = [
         path: '/docs/guides/ai-video-storyboard-guide/',
         blurb: '把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流',
       },
+      {
+        title: 'video-generation-skills 总览',
+        path: '/docs/guides/video-generation-skills-overview/',
+        blurb: '讲清 adoin/video-generation-skills 的 4 个 skill 模块、适用场景、组合方式和仓库结构',
+      },
+      {
+        title: 'video-generation-skills 安装',
+        path: '/docs/guides/video-generation-skills-install/',
+        blurb: '把 video-generation-skills 安装到 Cursor、Claude Code、Codex 等 Agent 的详细步骤',
+      },
+      {
+        title: 'prompt-director 教程',
+        path: '/docs/guides/video-generation-skills-prompt-director/',
+        blurb: '把小说、剧本、情节和创意 brief 转成分镜草案与 AI 图像 / 视频 Prompt 的方法论',
+      },
+      {
+        title: 'ecommerce 教程',
+        path: '/docs/guides/video-generation-skills-ecommerce/',
+        blurb: '电商主图、详情页、UGC、种草视频和多品类素材工作流详解',
+      },
+      {
+        title: 'brand-ad-cg 教程',
+        path: '/docs/guides/video-generation-skills-brand-ad-cg/',
+        blurb: '品牌广告、TVC、产品 CG、大牌质感和风格化商业视觉工作流',
+      },
+      {
+        title: 'ai-video-director 教程',
+        path: '/docs/guides/video-generation-skills-ai-video-director/',
+        blurb: '短剧、漫剧、故事板、分镜、一致性和复杂动作视频制片工作流',
+      },
     ],
   },
   {

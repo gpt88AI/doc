@@ -64,6 +64,12 @@
 - [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
 - [giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程](https://doc.gpt88.cc/docs/guides/giffgaff-sim-guide/): 详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。
 - [AI 视频分镜与提示词教程](https://doc.gpt88.cc/docs/guides/ai-video-storyboard-guide/): 把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流，适合短视频剧情片、情绪片和口播叙事片。
+- [video-generation-skills 总览](https://doc.gpt88.cc/docs/guides/video-generation-skills-overview/): 基于 adoin/video-generation-skills 仓库整理的系列文档总览，讲清 4 个 AI 视频生成 skill 的定位、边界、组合方式和适用场景。
+- [video-generation-skills 安装与使用教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-install/): 把 adoin/video-generation-skills 安装到 Cursor、Claude Code、Codex 等 Agent 的详细步骤，包括按需安装、全量安装、验证和本地开发。
+- [prompt-director 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-prompt-director/): 讲清 video-generation-skills 里的 prompt-director 怎么把小说、剧本、情节和创意 brief 转成分镜草案与 AI 图像 / 视频 Prompt。
+- [ecommerce 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ecommerce/): 讲清 video-generation-skills 里的 ecommerce skill 如何处理电商主图、详情页、UGC、种草视频，以及服装、3C、美妆等垂类素材工作流。
+- [brand-ad-cg 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-brand-ad-cg/): 讲清 video-generation-skills 里的 brand-ad-cg skill 如何处理品牌广告、TVC、产品 CG、大牌既视感和风格化商业视觉。
+- [ai-video-director 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ai-video-director/): 讲清 video-generation-skills 里的 ai-video-director 如何处理短剧、漫剧、分镜、故事板、场景一致性和复杂动作视频。
 
 ## CHAT 模型
 

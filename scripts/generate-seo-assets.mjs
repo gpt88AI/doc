@@ -236,6 +236,42 @@ const docs = [
     description: '把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流，适合短视频剧情片、情绪片和口播叙事片。',
     section: '指南',
   },
+  {
+    title: 'video-generation-skills 总览',
+    path: '/docs/guides/video-generation-skills-overview',
+    description: '基于 adoin/video-generation-skills 仓库整理的系列文档总览，讲清 4 个 AI 视频生成 skill 的定位、边界、组合方式和适用场景。',
+    section: '指南',
+  },
+  {
+    title: 'video-generation-skills 安装与使用教程',
+    path: '/docs/guides/video-generation-skills-install',
+    description: '把 adoin/video-generation-skills 安装到 Cursor、Claude Code、Codex 等 Agent 的详细步骤，包括按需安装、全量安装、验证和本地开发。',
+    section: '指南',
+  },
+  {
+    title: 'prompt-director 详细教程',
+    path: '/docs/guides/video-generation-skills-prompt-director',
+    description: '讲清 video-generation-skills 里的 prompt-director 怎么把小说、剧本、情节和创意 brief 转成分镜草案与 AI 图像 / 视频 Prompt。',
+    section: '指南',
+  },
+  {
+    title: 'ecommerce 详细教程',
+    path: '/docs/guides/video-generation-skills-ecommerce',
+    description: '讲清 video-generation-skills 里的 ecommerce skill 如何处理电商主图、详情页、UGC、种草视频，以及服装、3C、美妆等垂类素材工作流。',
+    section: '指南',
+  },
+  {
+    title: 'brand-ad-cg 详细教程',
+    path: '/docs/guides/video-generation-skills-brand-ad-cg',
+    description: '讲清 video-generation-skills 里的 brand-ad-cg skill 如何处理品牌广告、TVC、产品 CG、大牌既视感和风格化商业视觉。',
+    section: '指南',
+  },
+  {
+    title: 'ai-video-director 详细教程',
+    path: '/docs/guides/video-generation-skills-ai-video-director',
+    description: '讲清 video-generation-skills 里的 ai-video-director 如何处理短剧、漫剧、分镜、故事板、场景一致性和复杂动作视频。',
+    section: '指南',
+  },
 ]
 
 const staticPages = [
