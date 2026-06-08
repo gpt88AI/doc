@@ -36,6 +36,72 @@ Prompt: ...
 - 构图
 - 节奏`
 
+const REFERENCE_INDEX = [
+  ['composition.md', '§1 / §9 / §26 / §39', '构图、伪透视、负空间、前景遮挡'],
+  ['lighting.md', '§2 / §20 / §25 / §47', '光线方向、室内光、天气光、光影重构'],
+  ['camera-movement.md', '§3 / §21 / §33 / §36 / §41', '相机角度、运镜、情绪镜头、空间感'],
+  ['candid-capture.md', '§4', '纪实抓拍与媒介锁定'],
+  ['prompt-precision.md', '§5-8 / §10 / §12', '禁止词、扰动词、剪词、鲁棒性、特征塌陷'],
+  ['time-causality.md', '§11 / §13', '时间态与假因果'],
+  ['json-and-reverse.md', '§14-16 / §19 / §22 / §27 / §31 / §52', 'JSON 生图、反推、参考图降维、画面结构拆解'],
+  ['style-prompts.md', '§17 / §18', '风格提取与 MJ 人像去油腻'],
+  ['video-prompt.md', '§28 / §50 / §54', '图生视频、动作状态流、人物动作自然'],
+  ['color-grading.md', '§23 / §38', '数据驱动调色、HEX 调色法'],
+  ['consistency.md', '§24 / §37 / §40 / §43 / §45 / §46', '视频一致性、多角色、产品一致性、站位与比例'],
+  ['atmosphere.md', '§32', '氛围三底层'],
+  ['waste-recovery.md', '§30', '废片补救'],
+  ['director-storyboard.md', '§34 / §35 / §57', '导演思维、故事板、成片调度'],
+  ['edit-fusion.md', '§42 / §44', '局部融合与视觉标注修正'],
+  ['character-performance.md', '§29 / §48-49 / §51 / §53 / §55', '微表情、语气、活人感、行为动机、妆造'],
+] as const
+
+const WORKFLOW_INDEX = [
+  ['confirmation-gates.md', '收集画幅、工具、风格、镜头密度和镜号确认'],
+  ['debug-prompt.md', '已有 Prompt 效果不对时的诊断路径'],
+  ['narrative-to-prompt.md', '把叙事内容转成分镜 Prompt 的主流程'],
+] as const
+
+function IndexTable({
+  headers,
+  rows,
+}: {
+  headers: string[]
+  rows: readonly (readonly string[])[]
+}) {
+  return (
+    <div className="not-prose my-6 overflow-x-auto rounded-lg border border-white/5">
+      <table className="w-full min-w-[44rem] text-left text-sm">
+        <thead className="bg-white/[0.03] text-[11px] uppercase tracking-wider text-ink-400">
+          <tr>
+            {headers.map(h => (
+              <th key={h} className="px-4 py-2.5 font-medium">
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr
+              key={row.join('-')}
+              className={
+                'border-t border-white/5 align-top' +
+                (i % 2 === 1 ? ' bg-white/[0.012]' : '')
+              }
+            >
+              {row.map(cell => (
+                <td key={cell} className="px-4 py-3 text-[13px] leading-relaxed text-ink-200">
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 export default function VideoGenerationSkillsPromptDirectorPage() {
   return (
     <DocPage
@@ -48,6 +114,7 @@ export default function VideoGenerationSkillsPromptDirectorPage() {
         { id: 'flow', text: '标准工作流', level: 2 },
         { id: 'gates', text: '为什么它强调确认闸门', level: 2 },
         { id: 'references', text: '参考内容怎么分层', level: 2 },
+        { id: 'topics', text: '教程目录', level: 2 },
         { id: 'output', text: '输出长什么样', level: 2 },
       ]}
     >
@@ -100,6 +167,15 @@ export default function VideoGenerationSkillsPromptDirectorPage() {
       <p>
         这套结构很适合作为 Agent skill 的组织方式，也值得我们自己写技能时参考。
       </p>
+
+      <h2 id="topics">教程目录</h2>
+      <p>
+        这个模块在仓库里不是按原始教程标题一篇篇展开，而是按技法主题聚合到 reference 文件里。
+        下面这张表就是 prompt-director 在站内应覆盖的完整主题目录。
+      </p>
+      <IndexTable headers={['reference', '覆盖章节', '主题']} rows={REFERENCE_INDEX} />
+      <p>工作流文件单独负责创作流程：</p>
+      <IndexTable headers={['workflow', '作用']} rows={WORKFLOW_INDEX} />
 
       <h2 id="output">输出长什么样</h2>
       <CodeBlock lang="text" filename="output" code={OUTPUT} />

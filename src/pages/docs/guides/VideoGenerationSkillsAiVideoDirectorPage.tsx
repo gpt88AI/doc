@@ -49,6 +49,82 @@ const RULES = `1. 成片感来自体系统一，不是单镜好看
 4. 一致性问题必须单独管理
 5. 废片回收不是失败，而是制片流程的一部分`
 
+const NARRATIVE_TOPICS = [
+  '女频古风短剧工作流',
+  '3D 漫剧角色极速资产化',
+  '720 全景虚拟影棚',
+  '复刻大师镜头',
+  '东方奇幻风骨荒原',
+  '30 秒日系预告',
+  '童话小剧场卖火柴的小女孩',
+] as const
+
+const PRODUCTION_TOPICS = [
+  '场景不穿帮 4 法',
+  '分镜逻辑拆解',
+  '复杂动作视频两种方法',
+  '企业宣传片图片到成片',
+] as const
+
+const REFERENCE_FILES = [
+  ['narrative/short-drama.md', '女频 / 古风短剧'],
+  ['narrative/3d-anime-drama.md', '3D 漫剧资产化'],
+  ['narrative/scene-consistency.md', '场景一致性'],
+  ['narrative/film-style.md', '电影感 / 奇幻'],
+  ['production/storyboard.md', '故事板'],
+  ['production/shot-breakdown.md', '分镜 / 复杂动作'],
+  ['production/consistency.md', '人物 / 环境一致'],
+  ['production/scene-continuity.md', '场景不穿帮'],
+] as const
+
+function TopicList({
+  title,
+  topics,
+}: {
+  title: string
+  topics: readonly string[]
+}) {
+  return (
+    <section className="not-prose my-6 rounded-xl border border-white/8 bg-white/[0.02] p-5">
+      <h3 className="text-base font-semibold text-ink-50">{title}</h3>
+      <ul className="mt-3 grid gap-2 text-sm leading-6 text-ink-200">
+        {topics.map(topic => (
+          <li key={topic}>{topic}</li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+function RefTable() {
+  return (
+    <div className="not-prose my-6 overflow-x-auto rounded-lg border border-white/5">
+      <table className="w-full min-w-[44rem] text-left text-sm">
+        <thead className="bg-white/[0.03] text-[11px] uppercase tracking-wider text-ink-400">
+          <tr>
+            <th className="px-4 py-2.5 font-medium">reference</th>
+            <th className="px-4 py-2.5 font-medium">覆盖主题</th>
+          </tr>
+        </thead>
+        <tbody>
+          {REFERENCE_FILES.map((row, i) => (
+            <tr
+              key={row[0]}
+              className={
+                'border-t border-white/5 align-top' +
+                (i % 2 === 1 ? ' bg-white/[0.012]' : '')
+              }
+            >
+              <td className="px-4 py-3 text-[13px] leading-relaxed text-ink-100">{row[0]}</td>
+              <td className="px-4 py-3 text-[13px] leading-relaxed text-ink-200">{row[1]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 export default function VideoGenerationSkillsAiVideoDirectorPage() {
   return (
     <DocPage
@@ -60,6 +136,7 @@ export default function VideoGenerationSkillsAiVideoDirectorPage() {
         { id: 'modes', text: '两条轨道', level: 2 },
         { id: 'flow', text: '标准工作流', level: 2 },
         { id: 'routing', text: '内容路由', level: 2 },
+        { id: 'topics', text: '教程目录', level: 2 },
         { id: 'rules', text: '制片铁律', level: 2 },
       ]}
     >
@@ -92,6 +169,11 @@ export default function VideoGenerationSkillsAiVideoDirectorPage() {
         仓库里把 narrative 和 production 拆开是很合理的。前者更偏故事和风格，
         后者更偏镜头工程和连续性控制。
       </p>
+
+      <h2 id="topics">教程目录</h2>
+      <RefTable />
+      <TopicList title="叙事轨主题（7）" topics={NARRATIVE_TOPICS} />
+      <TopicList title="制片轨主题（4）" topics={PRODUCTION_TOPICS} />
 
       <h2 id="rules">制片铁律</h2>
       <CodeBlock lang="text" filename="rules" code={RULES} />

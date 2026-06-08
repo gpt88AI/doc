@@ -34,6 +34,44 @@ const INSTALL_MATRIX = `日常写提示词
 想全都要
   推荐：--all`
 
+const COVERAGE_TABLE = [
+  ['prompt-director', '提示词方法论：构图、光线、运镜、一致性、角色控制', '~70 篇'],
+  ['ecommerce', '电商素材：服装 / 3C / 美妆详情页、主图、UGC 种草', '~57 篇'],
+  ['brand-ad-cg', '品牌广告 / TVC / 产品 CG 大片', '~74 篇'],
+  ['ai-video-director', '叙事制片：短剧 / 漫剧 + 分镜 / 故事板 / 一致性', '~17 篇'],
+] as const
+
+function OverviewTable() {
+  return (
+    <div className="not-prose my-6 overflow-x-auto rounded-lg border border-white/5">
+      <table className="w-full min-w-[44rem] text-left text-sm">
+        <thead className="bg-white/[0.03] text-[11px] uppercase tracking-wider text-ink-400">
+          <tr>
+            <th className="px-4 py-2.5 font-medium">Skill</th>
+            <th className="px-4 py-2.5 font-medium">说明</th>
+            <th className="px-4 py-2.5 font-medium">覆盖教程量级</th>
+          </tr>
+        </thead>
+        <tbody>
+          {COVERAGE_TABLE.map((row, i) => (
+            <tr
+              key={row[0]}
+              className={
+                'border-t border-white/5 align-top' +
+                (i % 2 === 1 ? ' bg-white/[0.012]' : '')
+              }
+            >
+              <td className="px-4 py-3 text-[13px] leading-relaxed text-ink-100">{row[0]}</td>
+              <td className="px-4 py-3 text-[13px] leading-relaxed text-ink-200">{row[1]}</td>
+              <td className="px-4 py-3 text-[13px] leading-relaxed text-ink-200">{row[2]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 export default function VideoGenerationSkillsOverviewPage() {
   return (
     <DocPage
@@ -43,6 +81,7 @@ export default function VideoGenerationSkillsOverviewPage() {
       headings={[
         { id: 'what', text: '这是什么', level: 2 },
         { id: 'modules', text: '4 个 skill 分别做什么', level: 2 },
+        { id: 'coverage', text: '技能一览', level: 2 },
         { id: 'routing', text: '怎么选组合', level: 2 },
         { id: 'repo', text: '仓库结构怎么看', level: 2 },
         { id: 'next', text: '下一步读哪篇', level: 2 },
@@ -73,6 +112,9 @@ export default function VideoGenerationSkillsOverviewPage() {
         <li><Link to="/docs/guides/video-generation-skills-brand-ad-cg/">brand-ad-cg 详解</Link></li>
         <li><Link to="/docs/guides/video-generation-skills-ai-video-director/">ai-video-director 详解</Link></li>
       </ul>
+
+      <h2 id="coverage">技能一览</h2>
+      <OverviewTable />
 
       <h2 id="routing">怎么选组合</h2>
       <p>
