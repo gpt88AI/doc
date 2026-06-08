@@ -267,6 +267,36 @@ export const DOCS_NAV: NavSection[] = [
         path: '/docs/guides/video-generation-skills-ai-video-director/',
         blurb: '短剧、漫剧、故事板、分镜、一致性和复杂动作视频制片工作流',
       },
+      {
+        title: '图生视频提示词专题',
+        path: '/docs/guides/video-generation-skills-i2v-prompt/',
+        blurb: '图生视频提示词怎么写，如何避免动作混乱、运镜冲突和重复写风格词',
+      },
+      {
+        title: '电商白底图裂变',
+        path: '/docs/guides/video-generation-skills-white-background-scaling/',
+        blurb: '把白底产品图扩成主图、场景图、详情页、广告图和短视频首帧',
+      },
+      {
+        title: '产品 CG 工作流',
+        path: '/docs/guides/video-generation-skills-product-cg/',
+        blurb: '产品关键帧、材质特写、动态镜头和商业级产品视觉制作方法',
+      },
+      {
+        title: 'TVC 广告片专题',
+        path: '/docs/guides/video-generation-skills-tvc-playbook/',
+        blurb: '15 到 30 秒 TVC 的脚本、分镜、关键帧和单镜头视频工作流',
+      },
+      {
+        title: '场景一致性专题',
+        path: '/docs/guides/video-generation-skills-scene-consistency/',
+        blurb: '九宫格、俯视图、环绕截图和全景图如何解决场景穿帮',
+      },
+      {
+        title: '复杂动作与分镜',
+        path: '/docs/guides/video-generation-skills-complex-action-storyboard/',
+        blurb: '12 宫格分镜法、参考视频替换法和复杂动作镜头的拆解方法',
+      },
     ],
   },
   {

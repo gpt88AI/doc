@@ -127,6 +127,43 @@ const TVC_TOPICS = [
   'TVC 与 UGC 复刻全攻略',
 ] as const
 
+const GATES = `品牌广告开工前先锁定：
+- project_type：product_cg / tvc / brand_film / creative_mv / logo_motion
+- brand_tone：tech / luxury / youth / guofeng / playful / minimal
+- reference：具体品牌参考 or 只有情绪板
+- product：汽车 / 3C / 美妆 / 时尚 / 食品
+- format：16:9、9:16、Banner 或仅关键帧
+- look：纯 CG / 写实 / 实拍感增强`
+
+const PLAYBOOK = `推荐流程：
+1. 先出视觉策略，不先写长 Prompt
+2. 先定关键帧，再做分镜段落
+3. 产品、场景、人物分别锚定
+4. 运动镜头交给视频模型，材质与品牌色交给静帧
+5. 最后才做音效、剪辑和节奏强化`
+
+function DetailBlock({
+  title,
+  intro,
+  bullets,
+}: {
+  title: string
+  intro: string
+  bullets: readonly string[]
+}) {
+  return (
+    <section className="not-prose my-6 rounded-xl border border-white/8 bg-white/[0.02] p-5">
+      <h3 className="text-base font-semibold text-ink-50">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-ink-300">{intro}</p>
+      <ul className="mt-3 grid gap-2 text-sm leading-6 text-ink-200">
+        {bullets.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 function TopicList({
   title,
   topics,
@@ -157,6 +194,7 @@ export default function VideoGenerationSkillsBrandAdCgPage() {
         { id: 'flow', text: '创作流程', level: 2 },
         { id: 'routing', text: '内容路由', level: 2 },
         { id: 'topics', text: '教程目录', level: 2 },
+        { id: 'chapters', text: '章节精华', level: 2 },
         { id: 'boundary', text: '它和 ecommerce 的区别', level: 2 },
       ]}
     >
@@ -175,6 +213,8 @@ export default function VideoGenerationSkillsBrandAdCgPage() {
 
       <h2 id="flow">创作流程</h2>
       <CodeBlock lang="text" filename="brand-flow" code={FLOW} />
+      <CodeBlock lang="text" filename="brand-gates" code={GATES} />
+      <CodeBlock lang="text" filename="brand-playbook" code={PLAYBOOK} />
       <p>
         这里最关键的是“先出视觉策略 + 分镜 / 关键帧草案，再出 Prompt”。这比直接写一大段提示词稳定得多，
         也更符合品牌广告创作逻辑。
@@ -193,6 +233,66 @@ export default function VideoGenerationSkillsBrandAdCgPage() {
       <TopicList title="创意广告（15）" topics={CREATIVE_ADS_TOPICS} />
       <TopicList title="产品 CG（29）" topics={PRODUCT_CG_TOPICS} />
       <TopicList title="TVC 广告（4）" topics={TVC_TOPICS} />
+
+      <h2 id="chapters">章节精华</h2>
+      <p>
+        brand-ad-cg 的重点不是多几种风格词，而是把“品牌感”拆成不同制片模块。下面这些内容已经覆盖了仓库里最有用的操作逻辑。
+      </p>
+      <DetailBlock
+        title="品牌美学：先定视觉工艺，再定主体"
+        intro="brand-aesthetics.md 里最有价值的是它把风格拆成可执行工艺，例如 Riso、Y2K、梦核、韦斯安德森，而不是抽象审美词。"
+        bullets={[
+          'Riso、剪贴画、十字绣、Rotoscope 这类风格，先写工艺特征，再写主体，不要后期靠滤镜硬套。',
+          'Higgsfield 情绪板、多张风格参考图比一大段风格形容词更稳定。',
+          '品牌大片里，黄金时刻、横转竖、电影级镜头不是附加项，而是制片阶段的一部分。',
+          '大牌风格参考适合借镜头和质感，不适合原封不动照抄文案与剧情。',
+        ]}
+      />
+      <DetailBlock
+        title="品牌体系：Logo、包装、品牌故事要分三条线做"
+        intro="brand-system.md 说明，品牌体系不是一张主视觉图，而是图形、工艺、故事和动效的组合。"
+        bullets={[
+          'Logo 概念图适合先抽象符号，再让设计工具完成字标和落地排版。',
+          '包装升级的重点是纸张、压印、烫金、留白和信息布局，不是图案复杂度。',
+          '品牌故事短片适合先用 LLM 搭三幕式，再用图像模型统一关键帧。',
+          '科技企业的官网 Logo 动效，优先做可循环、可衔接、可嵌首屏的短段落。',
+        ]}
+      />
+      <DetailBlock
+        title="产品 CG：静帧定材质，视频定运动"
+        intro="product-cg.md 基本把商单方法讲清了。复杂产品不要期待一步成片，正确流程是关键帧重塑。"
+        bullets={[
+          '产品图、草图、三维白模、关键帧都可以当锚点，不必迷信纯文生图。',
+          '汽车、球鞋、音箱、耳机、鼠标这些项目，最好先做一组静帧，再做每镜 3 到 5 秒动态。',
+          '复杂翻转、大透视、爆炸图，更适合先导出关键帧重绘，再回送视频模型。',
+          '商业交付最怕 Logo、边缘和材质漂移，所以产品一致性要独立管理。',
+        ]}
+      />
+      <DetailBlock
+        title="TVC：先写情绪与卖点，再决定镜头顺序"
+        intro="tvc-ads.md 给出的方法很明确：前期脚本优先，单镜华丽其次。"
+        bullets={[
+          '扫地机器人这类功能型 TVC，要按空间建立、功能显现、剖视可视化、品牌落版来拆镜。',
+          '饮料和青春感 TVC，核心是角色和情绪节奏，不是硬拍产品特写。',
+          '汽车 TVC 必须按“幕”管理环境与地貌，否则只会变成随机车展图。',
+          '爆款复刻不是一条 Prompt 复制整片，而是拆镜、换主体、重建节奏。',
+        ]}
+      />
+      <DetailBlock
+        title="创意广告：节奏和结构比画质更重要"
+        intro="creative-ads.md 覆盖了企业片、MV、猫咪 Vlog、城市片、K-pop 等内容，说明这个模块能处理非标准广告。"
+        bullets={[
+          '企业宣传片适合按图片到成片的链式流程做，不用一开始就赌长视频。',
+          '复杂动作、跑酷、舞蹈、爆炸图这类内容，要么拆分镜，要么借参考视频。',
+          '婚礼动漫、宠物 Vlog、美妆爆品片，本质上都是“情绪脚本 + 节奏剪辑”。',
+          '创意片最忌讳只有画面风格，没有节拍、情绪拐点和声音设计。',
+        ]}
+      />
+      <p>
+        如果你要继续深挖，优先看
+        <Link to="/docs/guides/video-generation-skills-product-cg/"> 产品 CG 工作流</Link> 和
+        <Link to="/docs/guides/video-generation-skills-tvc-playbook/"> TVC 广告片专题</Link>。
+      </p>
 
       <h2 id="boundary">它和 ecommerce 的区别</h2>
       <ul>

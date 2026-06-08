@@ -41,6 +41,46 @@ const COVERAGE_TABLE = [
   ['ai-video-director', '叙事制片：短剧 / 漫剧 + 分镜 / 故事板 / 一致性', '~17 篇'],
 ] as const
 
+const READING_PATH = `如果你不知道先看哪篇，按这个顺序：
+1. 先看总览，确认自己是做提示词、电商、品牌还是剧情
+2. 再看安装页，按需安装 1 到 2 个模块
+3. 先用 prompt-director 打底
+4. 再叠加 ecommerce / brand-ad-cg / ai-video-director`
+
+const DECISION_TREE = `你主要写提示词
+  读：prompt-director
+
+你要做淘宝 / Amazon / TikTok 商品素材
+  读：prompt-director + ecommerce
+
+你要做品牌广告 / TVC / 产品 CG
+  读：prompt-director + brand-ad-cg
+
+你要做短剧 / 漫剧 / 分镜制片
+  读：prompt-director + ai-video-director`
+
+function DetailBlock({
+  title,
+  intro,
+  bullets,
+}: {
+  title: string
+  intro: string
+  bullets: readonly string[]
+}) {
+  return (
+    <section className="not-prose my-6 rounded-xl border border-white/8 bg-white/[0.02] p-5">
+      <h3 className="text-base font-semibold text-ink-50">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-ink-300">{intro}</p>
+      <ul className="mt-3 grid gap-2 text-sm leading-6 text-ink-200">
+        {bullets.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 function OverviewTable() {
   return (
     <div className="not-prose my-6 overflow-x-auto rounded-lg border border-white/5">
@@ -83,6 +123,7 @@ export default function VideoGenerationSkillsOverviewPage() {
         { id: 'modules', text: '4 个 skill 分别做什么', level: 2 },
         { id: 'coverage', text: '技能一览', level: 2 },
         { id: 'routing', text: '怎么选组合', level: 2 },
+        { id: 'how', text: '怎么理解这套体系', level: 2 },
         { id: 'repo', text: '仓库结构怎么看', level: 2 },
         { id: 'next', text: '下一步读哪篇', level: 2 },
       ]}
@@ -122,6 +163,41 @@ export default function VideoGenerationSkillsOverviewPage() {
         是垂直业务层。换句话说，电商、品牌、短剧这三类需求，最后都会回到提示词、分镜和一致性控制。
       </p>
       <CodeBlock lang="text" filename="install-matrix" code={INSTALL_MATRIX} />
+      <CodeBlock lang="text" filename="decision-tree" code={DECISION_TREE} />
+
+      <h2 id="how">怎么理解这套体系</h2>
+      <p>
+        这套仓库不是把所有教程扔进一个大杂烩里，而是按“基础方法论 + 垂直业务模块”来组织。这样做的好处是，
+        Agent 不需要每次都读完整个教程库，而是能先走基础层，再按任务选择具体领域。
+      </p>
+      <DetailBlock
+        title="prompt-director 是底层，不是可选项"
+        intro="如果你只记一个结论，就是其他模块几乎都会回到 prompt-director。"
+        bullets={[
+          'ecommerce 解决的是商品素材怎么做，但镜头、光线、动作和一致性，仍然来自 prompt-director。',
+          'brand-ad-cg 解决的是品牌势能和高级感，但最终静帧、关键帧和视频提示词仍需要底层方法。',
+          'ai-video-director 解决的是制片和分镜，但真正落到动作、运镜、角色状态时，也会回到底层规则。',
+        ]}
+      />
+      <DetailBlock
+        title="三个业务模块分别对应三种目标"
+        intro="理解目标，比死记目录更重要。"
+        bullets={[
+          'ecommerce 目标是转化和批量化，强调主图、详情页、UGC、种草和素材裂变。',
+          'brand-ad-cg 目标是品牌势能和视觉记忆点，强调质感、风格和广告结构。',
+          'ai-video-director 目标是成片连续性，强调角色资产、场景母版、分镜逻辑和补拍。',
+        ]}
+      />
+      <DetailBlock
+        title="最常见的误用方式"
+        intro="很多人装了技能包后觉得没效果，通常不是 skill 不行，而是调用思路错了。"
+        bullets={[
+          '做电商却只追品牌大片，最后素材高级但不转化。',
+          '做短剧却直接文生视频，没有角色资产和空间母版，结果全片漂移。',
+          '做品牌广告却只写一大段华丽提示词，没有先出视觉策略和关键帧。',
+          '装了全部 skill 却不给任务边界，导致上下文过重、输出跑偏。',
+        ]}
+      />
 
       <h2 id="repo">仓库结构怎么看</h2>
       <ul>
@@ -136,6 +212,7 @@ export default function VideoGenerationSkillsOverviewPage() {
       </p>
 
       <h2 id="next">下一步读哪篇</h2>
+      <CodeBlock lang="text" filename="reading-path" code={READING_PATH} />
       <ul>
         <li>如果你要安装到 Cursor、Claude Code、Codex：看 <Link to="/docs/guides/video-generation-skills-install/">安装与使用教程</Link>。</li>
         <li>如果你主要写提示词：看 <Link to="/docs/guides/video-generation-skills-prompt-director/">prompt-director</Link>。</li>

@@ -102,6 +102,33 @@ const WORKFLOW_TOPICS = [
   '亚马逊产品头图全流程',
 ] as const
 
+const GATES = `电商开工前先确认：
+- 品类：服装 / 3C / 美妆 / 家居 / 宠物 / 保健
+- 平台：淘宝 / 小红书 / TikTok / Amazon / 独立站
+- 素材：白底图 / 详情图 / 模特图 / 参考视频 / 参考链接
+- 目标：主图 / 详情页 / Lookbook / UGC / 短视频 / 广告片
+- 规模：单素材试产 or 批量裂变`
+
+const MODES = `模式 A：白底图裂变
+- 适合：先做主图、场景图、详情页和短视频首帧
+
+模式 B：单产品做整套资产
+- 适合：产品页、海报、A+、横竖版广告一起出
+
+模式 C：从参考爆款反推
+- 适合：要快速对标平台已有高转化内容
+
+模式 D：把图扩成视频
+- 适合：TikTok、Reels、种草和口播素材`
+
+const OUTPUT_TEMPLATE = `输出建议：
+1. 平台与受众
+2. 素材现状
+3. 推荐工作流
+4. 首图 / 场景 / 视频分镜方案
+5. 每一步工具与提示词重点
+6. 批量裂变与复用策略`
+
 function TopicList({
   title,
   topics,
@@ -121,6 +148,28 @@ function TopicList({
   )
 }
 
+function DetailBlock({
+  title,
+  intro,
+  bullets,
+}: {
+  title: string
+  intro: string
+  bullets: readonly string[]
+}) {
+  return (
+    <section className="not-prose my-6 rounded-xl border border-white/8 bg-white/[0.02] p-5">
+      <h3 className="text-base font-semibold text-ink-50">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-ink-300">{intro}</p>
+      <ul className="mt-3 grid gap-2 text-sm leading-6 text-ink-200">
+        {bullets.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 export default function VideoGenerationSkillsEcommercePage() {
   return (
     <DocPage
@@ -132,6 +181,8 @@ export default function VideoGenerationSkillsEcommercePage() {
         { id: 'flow', text: '标准工作流', level: 2 },
         { id: 'verticals', text: '垂类路由', level: 2 },
         { id: 'topics', text: '教程目录', level: 2 },
+        { id: 'chapters', text: '章节精华', level: 2 },
+        { id: 'scaling', text: '批量裂变模式', level: 2 },
         { id: 'boundaries', text: '与其他 skill 的边界', level: 2 },
         { id: 'output', text: '推荐输出结构', level: 2 },
       ]}
@@ -151,6 +202,7 @@ export default function VideoGenerationSkillsEcommercePage() {
 
       <h2 id="flow">标准工作流</h2>
       <CodeBlock lang="text" filename="ecommerce-flow" code={FLOW} />
+      <CodeBlock lang="text" filename="ecommerce-gates" code={GATES} />
       <p>
         仓库里把“品类 / 平台 / 输入素材未说明时必须先 AskQuestion”写成了硬性规则，这一点非常对。
         电商素材如果不知道是淘宝、亚马逊还是 TK Shop，不知道是服装还是耳机，提示词方向会直接错位。
@@ -170,6 +222,62 @@ export default function VideoGenerationSkillsEcommercePage() {
       <TopicList title="美妆 / 家居 / 宠物 / 保健（15）" topics={VERTICAL_TOPICS} />
       <TopicList title="通用工作流（3）" topics={WORKFLOW_TOPICS} />
 
+      <h2 id="chapters">章节精华</h2>
+      <p>
+        这个模块真正有价值的地方，在于它不是让你多记几十条提示词，而是把不同类目的素材生产方式拆开了。
+        下面按真实项目流程整理核心内容。
+      </p>
+      <DetailBlock
+        title="3C / 数码：先锁产品结构，再做卖点镜头"
+        intro="3c-digital.md 的核心方法是：不要让模型自由发挥硬件结构。产品图、草图和关键角度必须先锚定。"
+        bullets={[
+          '产品 Hero 图、材质特写、功能可视化、场景化使用，通常要拆成 4 类镜头分别做。',
+          '复杂透视海报、爆炸图和悬浮拆解，优先用草图或参考图锁结构，再图生图。',
+          '产品卖点海报更像“商业 CG + 文案留白区”，不是把卖点文字塞进图里。',
+          '泰式反转广告、挂脖风扇广告这类案例，重点是节奏和创意钩子，不是单纯硬件渲染。',
+        ]}
+      />
+      <DetailBlock
+        title="服装：先做人物与版型系统，再扩成 Lookbook / UGC"
+        intro="fashion.md 覆盖最广，说明服装是最适合做批量裂变的品类。它的核心不是换背景，而是“人货场一起变”。"
+        bullets={[
+          '单品平铺、挂拍、模特图、三视图要分开管理，不要用一张图硬扩所有用途。',
+          '详情页强调版型、面料、穿着场景；UGC 强调镜头真实感、手机拍摄感和人物动作。',
+          '白底图裂变种草视频时，先做生活方式首帧，再扩成 3 到 5 秒短段视频拼接。',
+          '对镜自拍、低头杀、买家秀这类内容，人物动作链和手机镜头感比光影华丽更重要。',
+        ]}
+      />
+      <DetailBlock
+        title="垂类项目：保健、美妆、家居、宠物要按卖点重组"
+        intro="verticals.md 不是简单罗列案例，而是在提示你：每个垂类的说服方式不同。"
+        bullets={[
+          '保健品更适合“功效可视化 + 口播 + 时间变化”，而不是纯静物摆拍。',
+          '家居图重点是空间可信度和尺度感，产品不能像贴纸一样浮在房间里。',
+          '美妆内容通常要拆成质地特写、模特使用、节日营销 KV 和短视频四条线。',
+          '宠物带货更适合人格化场景和轻剧情，不能只把商品摆在猫狗旁边。',
+        ]}
+      />
+      <DetailBlock
+        title="从白底图到整套资产"
+        intro="product-to-assets.md 和 workflows.md 共同强调的是“同一个 SKU 要做成资产池”，而不是临时抽几张图。"
+        bullets={[
+          '先把白底图扩成统一风格场景图，再衍生主图、详情页、短视频首帧和广告图。',
+          'Amazon、独立站和小红书的素材结构不同，前者强调卖点清晰，后者强调氛围和代入感。',
+          '批量生产时要固定主色、镜头语言和人物类型，否则同一批素材会像来自不同品牌。',
+          '同一产品适合先做 1 套标准模板，再换场景、道具和文案方向裂变。',
+        ]}
+      />
+
+      <h2 id="scaling">批量裂变模式</h2>
+      <p>
+        workflows.md 里最值得保留的是模式化生产思路。它不是单独某个工具技巧，而是告诉你怎么把同一个产品扩成一组可复用资产。
+      </p>
+      <CodeBlock lang="text" filename="ecommerce-modes" code={MODES} />
+      <p>
+        如果你现在就是从白底图起步，直接继续看
+        <Link to="/docs/guides/video-generation-skills-white-background-scaling/"> 电商白底图裂变专题</Link>。
+      </p>
+
       <h2 id="boundaries">与其他 skill 的边界</h2>
       <ul>
         <li>如果你做的是大牌 TVC 或高端品牌感大片，应该看 <Link to="/docs/guides/video-generation-skills-brand-ad-cg/">brand-ad-cg</Link>。</li>
@@ -179,6 +287,7 @@ export default function VideoGenerationSkillsEcommercePage() {
 
       <h2 id="output">推荐输出结构</h2>
       <CodeBlock lang="text" filename="ecommerce-output" code={OUTPUT} />
+      <CodeBlock lang="text" filename="ecommerce-output-template" code={OUTPUT_TEMPLATE} />
     </DocPage>
   )
 }

@@ -33,6 +33,12 @@ import VideoGenerationSkillsPromptDirectorPage from './pages/docs/guides/VideoGe
 import VideoGenerationSkillsEcommercePage from './pages/docs/guides/VideoGenerationSkillsEcommercePage'
 import VideoGenerationSkillsBrandAdCgPage from './pages/docs/guides/VideoGenerationSkillsBrandAdCgPage'
 import VideoGenerationSkillsAiVideoDirectorPage from './pages/docs/guides/VideoGenerationSkillsAiVideoDirectorPage'
+import VideoGenerationSkillsI2vPromptPage from './pages/docs/guides/VideoGenerationSkillsI2vPromptPage'
+import VideoGenerationSkillsWhiteBackgroundPage from './pages/docs/guides/VideoGenerationSkillsWhiteBackgroundPage'
+import VideoGenerationSkillsProductCgPage from './pages/docs/guides/VideoGenerationSkillsProductCgPage'
+import VideoGenerationSkillsTvcPage from './pages/docs/guides/VideoGenerationSkillsTvcPage'
+import VideoGenerationSkillsSceneConsistencyPage from './pages/docs/guides/VideoGenerationSkillsSceneConsistencyPage'
+import VideoGenerationSkillsComplexActionPage from './pages/docs/guides/VideoGenerationSkillsComplexActionPage'
 import IntegrationsHubPage from './pages/docs/integrations/IntegrationsHubPage'
 import ChatboxPage from './pages/docs/integrations/chat/ChatboxPage'
 import CherryStudioPage from './pages/docs/integrations/chat/CherryStudioPage'
@@ -122,6 +128,12 @@ export default function App() {
           <Route path="guides/video-generation-skills-ecommerce" element={<VideoGenerationSkillsEcommercePage />} />
           <Route path="guides/video-generation-skills-brand-ad-cg" element={<VideoGenerationSkillsBrandAdCgPage />} />
           <Route path="guides/video-generation-skills-ai-video-director" element={<VideoGenerationSkillsAiVideoDirectorPage />} />
+          <Route path="guides/video-generation-skills-i2v-prompt" element={<VideoGenerationSkillsI2vPromptPage />} />
+          <Route path="guides/video-generation-skills-white-background-scaling" element={<VideoGenerationSkillsWhiteBackgroundPage />} />
+          <Route path="guides/video-generation-skills-product-cg" element={<VideoGenerationSkillsProductCgPage />} />
+          <Route path="guides/video-generation-skills-tvc-playbook" element={<VideoGenerationSkillsTvcPage />} />
+          <Route path="guides/video-generation-skills-scene-consistency" element={<VideoGenerationSkillsSceneConsistencyPage />} />
+          <Route path="guides/video-generation-skills-complex-action-storyboard" element={<VideoGenerationSkillsComplexActionPage />} />
         </Route>
 
         {/* 模型导航（M3）：列表 + 详情 */}
