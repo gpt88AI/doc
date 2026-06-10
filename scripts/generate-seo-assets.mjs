@@ -344,6 +344,12 @@ async function readModels() {
   const snapshot = JSON.parse(await fs.readFile(snapshotPath, 'utf8'))
   const localCatalog = [
     {
+      canonical_name: 'claude-fable-5',
+      display_name: 'claude-fable-5',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
       canonical_name: 'claude-opus-4-8',
       display_name: 'claude-opus-4-8',
       category: 'chat',
