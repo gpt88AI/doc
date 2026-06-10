@@ -31,8 +31,36 @@ function parseNavRoutes(source) {
   return [...new Set([...paths, ...hrefs].map(normalizeRoute))]
 }
 
-function parseLocalCatalogNames(source) {
+function parseCatalogNames(source) {
   return [...source.matchAll(/canonical_name:\s*'([^']+)'/g)].map(match => match[1])
+}
+
+function parseCatalogBlockNames(source, startMarker) {
+  const start = source.indexOf(startMarker)
+  if (start === -1) return []
+
+  const assignment = source.indexOf('=', start)
+  if (assignment === -1) return []
+
+  const arrayStart = source.indexOf('[', assignment)
+  if (arrayStart === -1) return []
+
+  let depth = 0
+  let end = -1
+  for (let i = arrayStart; i < source.length; i += 1) {
+    const char = source[i]
+    if (char === '[') depth += 1
+    if (char === ']') {
+      depth -= 1
+      if (depth === 0) {
+        end = i
+        break
+      }
+    }
+  }
+
+  if (end === -1) return []
+  return parseCatalogNames(source.slice(arrayStart, end + 1))
 }
 
 function main() {
@@ -45,10 +73,9 @@ function main() {
   const missingDistRoutes = sitemapRoutes.filter(route => !fs.existsSync(routeToFile(route)))
   const navMissingFromSitemap = navRoutes.filter(route => route !== '/docs/' && !sitemapSet.has(route))
 
-  const localModelPatches = ['claude-fable-5', 'claude-opus-4-8'].filter(name =>
-    parseLocalCatalogNames(modelsSource).includes(name),
-  )
-  const missingSeoPatches = localModelPatches.filter(name => !parseLocalCatalogNames(seoSource).includes(name))
+  const localModelPatches = parseCatalogBlockNames(modelsSource, 'const LOCAL_CATALOG_ROWS')
+  const seoLocalPatches = parseCatalogBlockNames(seoSource, 'const localCatalog')
+  const missingSeoPatches = localModelPatches.filter(name => !seoLocalPatches.includes(name))
 
   const failures = []
   if (missingDistRoutes.length) {
