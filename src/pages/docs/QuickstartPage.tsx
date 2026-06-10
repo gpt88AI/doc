@@ -23,7 +23,7 @@ const CURL_REQ = `curl https://gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "claude-opus-4-8",
+    "model": "claude-fable-5",
     "stream": false,
     "messages": [
       {"role": "system", "content": "You are a helpful assistant."},
@@ -35,7 +35,7 @@ const CURL_RESP = `{
   "id": "chatcmpl-xxxxxxxx",
   "object": "chat.completion",
   "created": 1730000000,
-  "model": "claude-opus-4-8",
+  "model": "claude-fable-5",
   "choices": [
     {
       "index": 0,
@@ -61,7 +61,7 @@ client = OpenAI(
 )
 
 resp = client.chat.completions.create(
-    model="claude-opus-4-8",
+    model="claude-fable-5",
     messages=[
         {"role": "user", "content": "用一句话介绍 gpt88.cc"},
     ],
@@ -77,7 +77,7 @@ const client = new OpenAI({
 });
 
 const resp = await client.chat.completions.create({
-  model: "claude-opus-4-8",
+  model: "claude-fable-5",
   messages: [{ role: "user", content: "用一句话介绍 gpt88.cc" }],
 });
 
@@ -182,7 +182,7 @@ export default function QuickstartPage() {
       </p>
 
       <h2 id="curl">使用 cURL 发送请求</h2>
-      <p>下面这条命令会向 <code>claude-opus-4-8</code> 发起一次非流式 chat completion：</p>
+      <p>下面这条命令会向 <code>claude-fable-5</code> 发起一次非流式 chat completion：</p>
       <CodeBlock lang="bash" code={CURL_REQ} />
 
       <p>预期返回（精简示意，字段顺序可能略有不同）：</p>

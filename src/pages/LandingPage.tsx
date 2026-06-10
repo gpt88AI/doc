@@ -37,9 +37,9 @@ import { websiteStructuredData } from '../components/seo/structuredData'
  *
  * Human msg-20260509-qoz7ey/jwfia3/8ivlof 决定：
  * 默认主推模型按顺序为
- *   claude-opus-4-8 / claude-opus-4-7 / claude-opus-4-6 / claude-sonnet-4-6
+ *   claude-fable-5 / claude-opus-4-8 / claude-opus-4-7 / claude-opus-4-6 / claude-sonnet-4-6
  *   / claude-haiku-4-5-20251001 / gpt-5.5 / gpt-5.4 / gpt-5.4-mini / gpt-5.3-codex
- * 首页"精选模型"区块展示前 4 张卡片，深入详情默认进 /models/claude-opus-4-8
+ * 首页"精选模型"区块展示前 4 张卡片，深入详情默认进 /models/claude-fable-5
  * （取代旧的 deepseek-v4-pro 默认入口；deepseek-v4-pro 仍作为 marketplace 长尾保留）。
  */
 
@@ -47,7 +47,7 @@ const QUICK_CURL = `curl https://gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "claude-opus-4-8",
+    "model": "claude-fable-5",
     "messages": [
       {"role": "user", "content": "用一句话介绍 gpt88.cc"}
     ]
@@ -60,7 +60,7 @@ base_url = "https://gpt88.cc/v1"
 # 海外 CDN: https://ai.orbitlink.me/v1
 
 # model 按需切换，Claude / GPT / Gemini / DeepSeek 等都走同一个入口
-model = "claude-opus-4-8"`
+model = "claude-fable-5"`
 
 const FEATURES = [
   {
@@ -387,7 +387,7 @@ export default function LandingPage() {
                   快速开始
                 </Link>
                 {/*
-                 * 默认主推入口：由 DEFAULT_FEATURED_SLUG 提供，等价 /models/claude-opus-4-8。
+                 * 默认主推入口：由 DEFAULT_FEATURED_SLUG 提供，等价 /models/claude-fable-5。
                  * 后续 human 改主推顺序时，无需改首页代码。
                  */}
                 <Link

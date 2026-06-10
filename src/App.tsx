@@ -66,7 +66,7 @@ import NotFoundPage from './pages/NotFoundPage'
  *
  * M2 已经把 quickstart、API Reference (chat/completions, models, errors)、
  * SDK (curl/python/nodejs)、auth、faq 全部实现成真实内容页。
- * M3 把模型导航与模型详情接上：默认突出 claude-opus-4-7（Human msg-20260509-* 决策），
+ * M3 把模型导航与模型详情接上：默认突出 claude-fable-5（Human msg-20260610 新上模型决策），
  * 支持 Chat / Image / Video / Audio 分类切换与按名/能力/场景搜索。
  */
 export default function App() {

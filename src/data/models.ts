@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   claude-opus-4-8 → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6
+ *   claude-fable-5 → claude-opus-4-8 → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6
  *   → claude-haiku-4-5-20251001 → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → gpt-5.3-codex
  *
  * Catalog 处理：
@@ -113,6 +113,7 @@ export type ModelEntry = {
  * ────────────────────────────────────────────────────────────────── */
 
 export const FEATURED_SLUGS = [
+  'claude-fable-5',
   'claude-opus-4-8',
   'claude-opus-4-7',
   'claude-opus-4-6',
@@ -170,6 +171,37 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
   },
 
   // ── 主推模型（FEATURED_SLUGS 决定置顶顺序） ──────────────────────
+  // 来源：Anthropic 于 2026-06-09 公开发布 Claude Fable 5；下列定位结合官方公开发布
+  // 与当日公开报道整理，文档不固化价格、限速与权限，以控制台为准。
+  // slug=claude-fable-5 ←→ modelId=claude-fable-5
+  'claude-fable-5': {
+    provider: 'Anthropic',
+    tagline: 'Anthropic 最新公开发布的 Mythos 级 Claude，主打长任务、代码、复杂知识工作与高强度 Agent 协作。',
+    capabilities: ['Mythos-class', '长周期 Agent', 'tool use', '视觉理解'],
+    scenarios: ['长周期 Agent 编码', '复杂知识工作', '高难度多步推理', '研究与分析任务'],
+    overview: [
+      'Claude Fable 5 是 Anthropic 在 2026-06-09 公开发布的 Claude 新模型；公开报道普遍将其描述为首个面向广泛可用的 Mythos 级 Claude。',
+      '公开信息显示，它在软件工程、知识工作、视觉任务以及更长、更复杂的任务上表现突出，可以看作 Anthropic 当前公开发布序列里的最高能力档之一。',
+      '对 gpt88.cc 文档站来说，它适合作为新的 Claude 主推入口：如果你想先试 Anthropic 的最新公开能力，优先从这个模型开始。',
+    ],
+    whenToUse: [
+      '需要模型在多轮、多文件、多步骤任务里持续推进，而不是只回答一个短问题时',
+      '需要做高复杂度代码工作，例如大型代码库迁移、复杂重构、测试修复或长链路 Agent 编码时',
+      '需要综合长文档、结构化资料、图像信息和多阶段上下文做判断时',
+      '希望把 Claude 路线里的最新公开模型作为默认试验对象时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 claude-fable-5。',
+      'Claude / Anthropic 风格工具通常使用根地址 https://gpt88.cc，再按工具要求填写模型 ID。',
+      '如果你不确定当前账号是否已开通，先调用 GET /v1/models 或在控制台查看模型权限，再把默认模型切到 claude-fable-5。',
+      '已有 Claude Opus 4.8 或 Claude Opus 4.7 的项目，可先灰度验证一批复杂任务，再决定是否把默认模型切换到 Fable 5。',
+    ],
+    caveats: [
+      '公开报道显示，Claude Fable 5 带有更严格的高风险安全护栏；涉及部分网络安全、生物或化学高风险请求时，系统可能回退到更保守的 Claude Opus 4.8 路径。',
+      '公开报道还将其描述为高于 Claude Opus 4.8 的定价档，但 gpt88.cc 文档站不固化价格；实际计费、可用线路、上下文和限速以控制台当前配置为准。',
+      '如果你的任务主要是轻量问答或高频批量处理，Haiku、Sonnet 或 GPT mini 一类模型往往更划算，不必默认全量切到 Fable 5。',
+    ],
+  },
   // slug=claude-opus-4-8 ←→ modelId=claude-opus-4-8
   'claude-opus-4-8': {
     provider: 'Anthropic',
@@ -1507,6 +1539,14 @@ type CatalogRow = {
 }
 
 const LOCAL_CATALOG_ROWS: CatalogRow[] = [
+  {
+    canonical_name: 'claude-fable-5',
+    display_name: 'claude-fable-5',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-fable-5'],
+    descriptions_sample: ['Anthropic 新上 Claude Fable 5，具体价格、权限和线路以控制台为准。'],
+  },
   {
     canonical_name: 'claude-opus-4-8',
     display_name: 'claude-opus-4-8',
