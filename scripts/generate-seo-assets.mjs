@@ -272,6 +272,42 @@ const docs = [
     description: '讲清 video-generation-skills 里的 ai-video-director 如何处理短剧、漫剧、分镜、故事板、场景一致性和复杂动作视频。',
     section: '指南',
   },
+  {
+    title: '图生视频提示词专题',
+    path: '/docs/guides/video-generation-skills-i2v-prompt',
+    description: '讲清图生视频提示词怎么写，如何控制动作、镜头、节奏与风格，并减少动作混乱、运镜冲突和提示词堆砌。',
+    section: '指南',
+  },
+  {
+    title: '电商白底图裂变专题',
+    path: '/docs/guides/video-generation-skills-white-background-scaling',
+    description: '讲清如何把白底产品图扩成主图、场景图、详情页、广告图和短视频首帧，并建立稳定的电商素材生产流程。',
+    section: '指南',
+  },
+  {
+    title: '产品 CG 工作流专题',
+    path: '/docs/guides/video-generation-skills-product-cg',
+    description: '讲清产品关键帧、材质特写、动态镜头和商业级产品视觉的制作方法，适合硬件、消费电子和质感商品展示。',
+    section: '指南',
+  },
+  {
+    title: 'TVC 广告片专题',
+    path: '/docs/guides/video-generation-skills-tvc-playbook',
+    description: '讲清 15 到 30 秒 TVC 的脚本、分镜、关键帧、单镜头视频和后期拼接工作流，适合品牌广告和商业投放。',
+    section: '指南',
+  },
+  {
+    title: '场景一致性专题',
+    path: '/docs/guides/video-generation-skills-scene-consistency',
+    description: '讲清九宫格、俯视图、环绕截图和全景图如何解决场景穿帮，并提升 AI 视频的连续性与统一感。',
+    section: '指南',
+  },
+  {
+    title: '复杂动作与分镜专题',
+    path: '/docs/guides/video-generation-skills-complex-action-storyboard',
+    description: '讲清 12 宫格分镜法、参考视频替换法和复杂动作镜头拆解方法，适合打斗、奔跑、群像和高动作密度视频。',
+    section: '指南',
+  },
 ]
 
 const staticPages = [

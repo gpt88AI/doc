@@ -271,6 +271,42 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/guides/video-generation-skills-i2v-prompt/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/video-generation-skills-white-background-scaling/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/video-generation-skills-product-cg/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/video-generation-skills-tvc-playbook/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/video-generation-skills-scene-consistency/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/video-generation-skills-complex-action-storyboard/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/models/claude-0pus-4-5-20251101/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>

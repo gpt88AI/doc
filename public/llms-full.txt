@@ -70,6 +70,12 @@
 - [ecommerce 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ecommerce/): 讲清 video-generation-skills 里的 ecommerce skill 如何处理电商主图、详情页、UGC、种草视频，以及服装、3C、美妆等垂类素材工作流。
 - [brand-ad-cg 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-brand-ad-cg/): 讲清 video-generation-skills 里的 brand-ad-cg skill 如何处理品牌广告、TVC、产品 CG、大牌既视感和风格化商业视觉。
 - [ai-video-director 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ai-video-director/): 讲清 video-generation-skills 里的 ai-video-director 如何处理短剧、漫剧、分镜、故事板、场景一致性和复杂动作视频。
+- [图生视频提示词专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-i2v-prompt/): 讲清图生视频提示词怎么写，如何控制动作、镜头、节奏与风格，并减少动作混乱、运镜冲突和提示词堆砌。
+- [电商白底图裂变专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-white-background-scaling/): 讲清如何把白底产品图扩成主图、场景图、详情页、广告图和短视频首帧，并建立稳定的电商素材生产流程。
+- [产品 CG 工作流专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-product-cg/): 讲清产品关键帧、材质特写、动态镜头和商业级产品视觉的制作方法，适合硬件、消费电子和质感商品展示。
+- [TVC 广告片专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-tvc-playbook/): 讲清 15 到 30 秒 TVC 的脚本、分镜、关键帧、单镜头视频和后期拼接工作流，适合品牌广告和商业投放。
+- [场景一致性专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-scene-consistency/): 讲清九宫格、俯视图、环绕截图和全景图如何解决场景穿帮，并提升 AI 视频的连续性与统一感。
+- [复杂动作与分镜专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-complex-action-storyboard/): 讲清 12 宫格分镜法、参考视频替换法和复杂动作镜头拆解方法，适合打斗、奔跑、群像和高动作密度视频。
 
 ## CHAT 模型
 

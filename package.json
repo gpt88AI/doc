@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "seo": "node scripts/generate-seo-assets.mjs",
-    "build": "npm run seo && tsc -b && vite build && npm run build:ssr && npm run prerender",
+    "build": "npm run seo && tsc -b && vite build && npm run build:ssr && npm run prerender && npm run audit:routes",
     "build:ssr": "vite build --ssr src/main.ssr.tsx --outDir dist/server",
     "prerender": "node scripts/prerender.mjs",
+    "audit:routes": "node scripts/audit-static-routes.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
