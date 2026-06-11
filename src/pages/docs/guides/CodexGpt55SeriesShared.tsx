@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 export const SERIES_IMAGE_BASE = '/images/guides/codex-gpt55-system'
 export const SERIES_EXTRA_IMAGE_BASE = '/images/guides/codex-gpt55-system-extra'
 export const REFERENCE_VIDEO_URL =
-  'https://video.twimg.com/amplify_video/2064540117675790336/vid/avc1/480x270/Axa8Ank4BtvxukhK.mp4'
+  '/videos/codex-gpt55-workflow.mp4'
 
 export const SERIES_IMAGES = {
   researchChat: {
@@ -103,13 +103,22 @@ export function ReferenceVideo() {
         controls
         preload="metadata"
         playsInline
+        poster={SERIES_IMAGES.researchChat.src}
         className="aspect-video w-full bg-black"
         src={REFERENCE_VIDEO_URL}
       >
         当前浏览器不支持内嵌视频播放。
       </video>
       <figcaption className="border-t border-white/10 px-4 py-3 text-sm leading-6 text-ink-300">
-        参考视频：公开视频 MP4。本文只基于视频中可见界面、字幕和操作流程整理，不把模糊内容写成确定配置。
+        参考视频：已切换为站内同域 MP4，避免外链播放器拦截。
+        <a
+          href={REFERENCE_VIDEO_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="ml-2 text-violet-300 hover:text-violet-200"
+        >
+          直接打开视频文件
+        </a>
       </figcaption>
     </figure>
   )
