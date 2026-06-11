@@ -3,6 +3,7 @@ import { Callout } from '../../../components/ui/Callout'
 import {
   GuideScreenshot,
   MiniCardGrid,
+  SERIES_EXTRA_IMAGES,
   SERIES_IMAGES,
   SimpleTable,
   StepPanel,
@@ -18,6 +19,7 @@ export default function CodexProjectFactoryDeliveryPage() {
       headings={[
         { id: 'factory', text: '什么叫项目工厂', level: 2 },
         { id: 'deliverables', text: '视频里能确认的交付物类型', level: 2 },
+        { id: 'chorus-product', text: 'Chorus 产品线示例', level: 2 },
         { id: 'pipeline', text: '一条完整的交付流水线', level: 2 },
         { id: 'quality', text: '如何控制质量', level: 2 },
         { id: 'adopt', text: '如何在自己的团队里落地', level: 2 },
@@ -62,6 +64,34 @@ export default function CodexProjectFactoryDeliveryPage() {
             title: '系统能力本身',
             body: 'skill 创建与管理，让这套方法下次还能直接复用。',
           },
+        ]}
+      />
+
+      <h2 id="chorus-product">Chorus 产品线示例</h2>
+      <p>
+        重新核对视频后，Chorus 这条产品线值得单独补充。画面中能看到它被描述为一个 iPhone app：
+        用于学习 agent 基础、比较不同平台，并把 reusable skills 保存在一个地方。
+        后续画面还出现 landing page、数据库信息、下载页和移动端预览，说明它不是单点 demo，而是一条完整产品交付线。
+      </p>
+      <GuideScreenshot {...SERIES_EXTRA_IMAGES.chorusLandingPage} />
+      <SimpleTable
+        headers={['产品模块', '视频中可见线索', '交付含义']}
+        rows={[
+          [
+            'iOS App',
+            'Learn、Platforms、Skills、Saved 等 tab 结构，以及手机模拟器预览。',
+            'Codex 负责的不只是网页，还包括原生移动端产品。',
+          ],
+          [
+            'Landing Page',
+            '页面文案、下载入口、视觉布局和产品解释同时被迭代。',
+            '产品发布页与 App 功能可以在同一套工作流里推进。',
+          ],
+          [
+            '数据与验证',
+            '视频里出现数据库/数据可用性检查、资源修复和构建验证。',
+            '交付链路包含后端状态、前端展示和移动端构建验证。',
+          ],
         ]}
       />
 

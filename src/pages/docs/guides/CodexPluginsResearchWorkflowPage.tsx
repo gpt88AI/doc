@@ -3,6 +3,7 @@ import { Callout } from '../../../components/ui/Callout'
 import {
   GuideScreenshot,
   MiniCardGrid,
+  SERIES_EXTRA_IMAGES,
   SERIES_IMAGES,
   SimpleTable,
   StepPanel,
@@ -18,6 +19,7 @@ export default function CodexPluginsResearchWorkflowPage() {
       headings={[
         { id: 'research-mode', text: '研究模式长什么样', level: 2 },
         { id: 'plugin-role', text: '插件在这里解决什么问题', level: 2 },
+        { id: 'transcript-tools', text: 'YouTube 转录工具对比', level: 2 },
         { id: 'report-shape', text: '研究结果应该长成什么样', level: 2 },
         { id: 'repeatable', text: '如何做成可重复流程', level: 2 },
         { id: 'use-cases', text: '适合哪些场景', level: 2 },
@@ -55,6 +57,34 @@ export default function CodexPluginsResearchWorkflowPage() {
             title: '给后续任务供料',
             body: '研究产出的结论可以直接喂给前端、文档、课程、Deck 或视频制作任务。',
           },
+        ]}
+      />
+
+      <h2 id="transcript-tools">YouTube 转录工具对比</h2>
+      <p>
+        更细地核对视频后，可以看到作者让 Codex 研究 YouTube transcript 方案，并对 Supadata、
+        TranscriptAPI 等服务做了比较。这里的重点不是某个 API 名字，而是研究流程本身：
+        先比较可用工具，再要求 Codex 创建一个 skill，用来按频道拉取最新视频、获取 transcript、生成摘要。
+      </p>
+      <GuideScreenshot {...SERIES_EXTRA_IMAGES.youtubeTranscriptApiComparison} />
+      <SimpleTable
+        headers={['环节', '视频中可见做法', '可复用成什么']}
+        rows={[
+          [
+            '工具调研',
+            '比较多个 YouTube transcript / creator data API 的价格、可靠性和开发体验。',
+            '形成“外部数据源选择清单”，避免每次临时搜索。',
+          ],
+          [
+            '能力封装',
+            '要求 Codex 创建一个 skill：输入频道，搜索最新视频，拉 transcript，再总结。',
+            '沉淀成 research skill，后续可直接复用到竞品分析、课程整理和内容研究。',
+          ],
+          [
+            '结果输出',
+            '把视频信息整理成报告，而不是只返回散乱摘要。',
+            '作为后续文档、课程、Deck、产品需求的输入材料。',
+          ],
         ]}
       />
 

@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react'
 
 export const SERIES_IMAGE_BASE = '/images/guides/codex-gpt55-system'
+export const SERIES_EXTRA_IMAGE_BASE = '/images/guides/codex-gpt55-system-extra'
+export const REFERENCE_VIDEO_URL =
+  'https://video.twimg.com/amplify_video/2064540117675790336/vid/avc1/480x270/Axa8Ank4BtvxukhK.mp4'
 
 export const SERIES_IMAGES = {
   researchChat: {
@@ -69,6 +72,48 @@ export const SERIES_IMAGES = {
     caption: '能力沉淀：把一次性成果整理回 skill 系统，形成下次可直接复用的入口。',
   },
 } as const
+
+export const SERIES_EXTRA_IMAGES = {
+  permissionsProjectLocation: {
+    src: `${SERIES_EXTRA_IMAGE_BASE}/permissions-project-location.jpg`,
+    alt: 'Codex 权限、effort、project location 配置说明截图',
+    caption: '入口配置：视频开头强调 permissions、effort 和 project location，不是直接开聊。',
+  },
+  youtubeTranscriptApiComparison: {
+    src: `${SERIES_EXTRA_IMAGE_BASE}/youtube-transcript-api-comparison.jpg`,
+    alt: 'YouTube transcript API、Supadata 和 TranscriptAPI 对比截图',
+    caption: '研究能力外部化：视频中对 Supadata、TranscriptAPI 等 YouTube 转录方案做了对比。',
+  },
+  automationApiKey: {
+    src: `${SERIES_EXTRA_IMAGE_BASE}/automation-api-key.jpg`,
+    alt: 'Automation API Key 配置界面截图',
+    caption: '自动化准备：画面中出现 Automation API Key，说明自动化任务需要单独配置外部服务凭证。',
+  },
+  chorusLandingPage: {
+    src: `${SERIES_EXTRA_IMAGE_BASE}/chorus-landing-page.jpg`,
+    alt: 'Chorus iPhone 应用 landing page 与 Codex 编辑环境截图',
+    caption: '产品落地：Chorus 被描述为学习 agent 基础、比较平台、保存 reusable skills 的 iPhone app。',
+  },
+} as const
+
+export function ReferenceVideo() {
+  return (
+    <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+      <video
+        controls
+        preload="metadata"
+        playsInline
+        className="aspect-video w-full bg-black"
+        src={REFERENCE_VIDEO_URL}
+      >
+        当前浏览器不支持内嵌视频播放。
+      </video>
+      <figcaption className="border-t border-white/10 px-4 py-3 text-sm leading-6 text-ink-300">
+        参考视频：公开视频 MP4。本文只基于视频中可见界面、字幕和操作流程整理，不把模糊内容写成确定配置。
+      </figcaption>
+    </figure>
+  )
+}
 
 export function GuideScreenshot({
   src,

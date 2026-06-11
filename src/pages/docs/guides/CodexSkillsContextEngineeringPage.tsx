@@ -2,6 +2,7 @@ import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import {
   GuideScreenshot,
+  SERIES_EXTRA_IMAGES,
   SERIES_IMAGES,
   SimpleTable,
   StepPanel,
@@ -16,6 +17,7 @@ export default function CodexSkillsContextEngineeringPage() {
       description="把 Codex 变稳定，第一步不是换模型，而是把上下文、技能、权限和任务边界定义清楚。这一篇专门拆解公开视频里能确认的这套做法。"
       headings={[
         { id: 'why-first', text: '为什么先做上下文工程', level: 2 },
+        { id: 'entry-config', text: '入口配置：权限、目录与 effort', level: 2 },
         { id: 'skills', text: 'Skill 在这里扮演什么角色', level: 2 },
         { id: 'context-stack', text: '推荐的上下文分层', level: 2 },
         { id: 'task-boundary', text: '任务边界怎么写', level: 2 },
@@ -30,6 +32,34 @@ export default function CodexSkillsContextEngineeringPage() {
         这意味着 Codex 被当成一个执行器，而不是随机回答器。
       </p>
       <GuideScreenshot {...SERIES_IMAGES.skillsOverview} />
+
+      <h2 id="entry-config">入口配置：权限、目录与 effort</h2>
+      <p>
+        重新核对视频开头后，有一个细节需要补上：作者不是直接让 Codex 开始干活，
+        而是先解释 permissions、effort 和 project location。也就是说，Codex 的稳定性首先来自
+        <strong>能做什么、在哪里做、用多大推理强度做</strong>这三件事。
+      </p>
+      <GuideScreenshot {...SERIES_EXTRA_IMAGES.permissionsProjectLocation} />
+      <SimpleTable
+        headers={['配置项', '文档化建议', '风险点']}
+        rows={[
+          [
+            'Permissions',
+            '明确允许读写哪些目录、是否能运行命令、是否能修改文件。',
+            '权限过宽容易误改无关文件；权限过窄会导致任务无法落地。',
+          ],
+          [
+            'Project location',
+            '让 Codex 在正确项目目录工作，避免把上下文落到错误仓库。',
+            '目录错了，模型再强也会在错误位置创建文件或运行命令。',
+          ],
+          [
+            'Effort',
+            '复杂规划、架构、排障用更高 effort；简单文案或小改动用低 effort。',
+            '所有任务都高 effort 会慢；所有任务都低 effort 容易漏细节。',
+          ],
+        ]}
+      />
 
       <h2 id="skills">Skill 在这里扮演什么角色</h2>
       <p>

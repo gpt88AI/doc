@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ExternalLink, Menu, X } from 'lucide-react'
 import { Logo } from '../ui/Logo'
+import { GlobalSearch } from '../search/GlobalSearch'
 import { TOP_NAV } from '../../data/nav'
 import { cn } from '../../lib/cn'
 
@@ -55,6 +56,7 @@ export function TopNav() {
 
         {/* 右侧操作区 */}
         <div className="ml-auto flex items-center gap-2">
+          <GlobalSearch className="hidden md:inline-flex" />
           {COMMUNITY_LINKS.map(item => (
             <a
               key={item.href}
@@ -135,6 +137,7 @@ export function TopNav() {
              * 移动端抽屉里的"开始使用"同样是站内深链，统一改用 <Link>。
              * 点击后通过 onClick 关闭抽屉，再由 react-router 完成路由切换。
              */}
+            <GlobalSearch className="mt-2 w-full justify-center" onNavigate={() => setOpen(false)} />
             <Link
               to="/docs/quickstart/"
               onClick={() => setOpen(false)}

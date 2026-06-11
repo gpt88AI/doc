@@ -3,6 +3,7 @@ import { Callout } from '../../../components/ui/Callout'
 import {
   GuideScreenshot,
   MiniCardGrid,
+  SERIES_EXTRA_IMAGES,
   SERIES_IMAGES,
   SimpleTable,
   StepPanel,
@@ -19,6 +20,7 @@ export default function CodexParallelAutomationWorkflowPage() {
         { id: 'parallel-why', text: '为什么要并行', level: 2 },
         { id: 'what-parallel', text: '视频里展示了哪些并行任务', level: 2 },
         { id: 'automation-role', text: '自动化在这里的作用', level: 2 },
+        { id: 'automation-credentials', text: '自动化凭证与外部 API', level: 2 },
         { id: 'coordination', text: '如何避免多任务互相打架', level: 2 },
         { id: 'recovery', text: '中断后如何恢复', level: 2 },
       ]}
@@ -77,6 +79,33 @@ export default function CodexParallelAutomationWorkflowPage() {
           [
             '任务一多就容易漏验证。',
             '把构建、截图、文档落盘、路由接入等检查动作放进标准流程。',
+          ],
+        ]}
+      />
+
+      <h2 id="automation-credentials">自动化凭证与外部 API</h2>
+      <p>
+        补充核对视频后，可以看到自动化段出现了 API Key 配置界面。这说明自动化不是“让模型自己联网乱跑”，
+        而是要把外部服务、API Key、权限边界和触发条件都配置清楚。
+      </p>
+      <GuideScreenshot {...SERIES_EXTRA_IMAGES.automationApiKey} />
+      <SimpleTable
+        headers={['配置对象', '应该写清楚什么', '为什么重要']}
+        rows={[
+          [
+            '外部 API',
+            '服务名称、用途、调用限制、失败重试策略。',
+            '避免自动化任务失败后无提示，或者调用到错误服务。',
+          ],
+          [
+            'API Key',
+            '只放在本地环境变量、secret 或工具配置里，不写入公开文档和仓库。',
+            '视频可见的是配置动作，实际落地必须避免密钥泄露。',
+          ],
+          [
+            '触发条件',
+            '什么时候运行、输入从哪里来、结果写到哪里。',
+            '自动化必须有边界，否则会变成不可追踪的后台任务。',
           ],
         ]}
       />
