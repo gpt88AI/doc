@@ -218,6 +218,31 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '使用 Taste Skill 为 Codex 增强前端设计判断力，避免 AI 模板感',
       },
       {
+        title: 'Codex + GPT-5.5 总览',
+        path: '/docs/guides/codex-gpt55-system-overview/',
+        blurb: '从公开视频还原一套把 Codex 从聊天窗口升级为稳定交付系统的方法',
+      },
+      {
+        title: 'Codex Skills 与上下文工程',
+        path: '/docs/guides/codex-skills-context-engineering/',
+        blurb: '拆解 skills、上下文、权限、边界和 worklog 如何让 Codex 变得更稳定',
+      },
+      {
+        title: 'Codex 插件与研究工作流',
+        path: '/docs/guides/codex-plugins-research-workflow/',
+        blurb: '研究型任务、插件扩展、结构化报告和结果回流的详细教程',
+      },
+      {
+        title: 'Codex 并行与自动化',
+        path: '/docs/guides/codex-parallel-automation-workflow/',
+        blurb: '如何同时推进多个任务，并通过 worklog 与自动化保持稳定执行',
+      },
+      {
+        title: 'Codex 项目工厂交付系统',
+        path: '/docs/guides/codex-project-factory-delivery/',
+        blurb: '把 App、网站、视频、Deck 和课程等多种交付物统一纳入一套 Codex 系统',
+      },
+      {
         title: 'Codex 工具恢复',
         path: '/docs/guides/codex-tool-recovery/',
         blurb: 'Codex 执行中工具失效时，先检查文件工具是否可用，恢复后从第一步重新落代码',

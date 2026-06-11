@@ -213,6 +213,36 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Codex + GPT-5.5 实战拆解总览',
+    path: '/docs/guides/codex-gpt55-system-overview',
+    description: '根据公开视频里可见的操作界面和工作流，还原一套把 Codex 从聊天窗口升级成稳定交付系统的方法。',
+    section: '指南',
+  },
+  {
+    title: 'Codex Skills 与上下文工程教程',
+    path: '/docs/guides/codex-skills-context-engineering',
+    description: '讲清楚 skills、上下文、权限、任务边界和 worklog 如何共同作用，让 Codex 变得更稳定、更可恢复。',
+    section: '指南',
+  },
+  {
+    title: 'Codex 插件与研究工作流教程',
+    path: '/docs/guides/codex-plugins-research-workflow',
+    description: '从研究型任务界面出发，拆解 Codex 如何结合插件、资料搜集和结构化报告，把查资料升级成可复用工作流。',
+    section: '指南',
+  },
+  {
+    title: 'Codex 并行任务与自动化工作流教程',
+    path: '/docs/guides/codex-parallel-automation-workflow',
+    description: '分析 Codex 如何同时推进多个任务，并通过 worklog、自动化和任务拆分保持执行稳定。',
+    section: '指南',
+  },
+  {
+    title: '把 Codex 变成项目工厂的交付系统',
+    path: '/docs/guides/codex-project-factory-delivery',
+    description: '把 skills、研究、并行和自动化收束成完整交付系统，让同一个 Codex 环境持续产出 App、网站、视频、Deck 和课程。',
+    section: '指南',
+  },
+  {
     title: 'Codex 工具恢复教程',
     path: '/docs/guides/codex-tool-recovery',
     description: '当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。',

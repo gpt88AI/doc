@@ -22,6 +22,11 @@ import CodexChatgptPhoneVerificationPage from './pages/docs/guides/CodexChatgptP
 import EccGuidePage from './pages/docs/guides/EccGuidePage'
 import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
 import CodexFrontendTasteSkillPage from './pages/docs/guides/CodexFrontendTasteSkillPage'
+import CodexGpt55SystemOverviewPage from './pages/docs/guides/CodexGpt55SystemOverviewPage'
+import CodexSkillsContextEngineeringPage from './pages/docs/guides/CodexSkillsContextEngineeringPage'
+import CodexPluginsResearchWorkflowPage from './pages/docs/guides/CodexPluginsResearchWorkflowPage'
+import CodexParallelAutomationWorkflowPage from './pages/docs/guides/CodexParallelAutomationWorkflowPage'
+import CodexProjectFactoryDeliveryPage from './pages/docs/guides/CodexProjectFactoryDeliveryPage'
 import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
 import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
 import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage'
@@ -118,6 +123,11 @@ export default function App() {
           <Route path="guides/ecc-agent-harness" element={<EccGuidePage />} />
           <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
           <Route path="guides/codex-frontend-taste-skill" element={<CodexFrontendTasteSkillPage />} />
+          <Route path="guides/codex-gpt55-system-overview" element={<CodexGpt55SystemOverviewPage />} />
+          <Route path="guides/codex-skills-context-engineering" element={<CodexSkillsContextEngineeringPage />} />
+          <Route path="guides/codex-plugins-research-workflow" element={<CodexPluginsResearchWorkflowPage />} />
+          <Route path="guides/codex-parallel-automation-workflow" element={<CodexParallelAutomationWorkflowPage />} />
+          <Route path="guides/codex-project-factory-delivery" element={<CodexProjectFactoryDeliveryPage />} />
           <Route path="guides/codex-tool-recovery" element={<CodexToolRecoveryPage />} />
           <Route path="guides/zero-downtime-release" element={<ZeroDowntimeReleasePage />} />
           <Route path="guides/giffgaff-sim-guide" element={<GiffgaffGuidePage />} />
