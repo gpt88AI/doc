@@ -65,6 +65,7 @@
 - [Codex 插件与研究工作流教程](https://doc.gpt88.cc/docs/guides/codex-plugins-research-workflow/): 从研究型任务界面出发，拆解 Codex 如何结合插件、资料搜集和结构化报告，把查资料升级成可复用工作流。
 - [Codex 并行任务与自动化工作流教程](https://doc.gpt88.cc/docs/guides/codex-parallel-automation-workflow/): 分析 Codex 如何同时推进多个任务，并通过 worklog、自动化和任务拆分保持执行稳定。
 - [把 Codex 变成项目工厂的交付系统](https://doc.gpt88.cc/docs/guides/codex-project-factory-delivery/): 把 skills、研究、并行和自动化收束成完整交付系统，让同一个 Codex 环境持续产出 App、网站、视频、Deck 和课程。
+- [Loop Engineering 是什么：Harness 之后的下一步](https://doc.gpt88.cc/docs/guides/loop-engineering-harness/): 结合 Smith 铜匠关于 Loop Engineering 的文章主题，解释它和 Prompt Engineering、Harness、Skill、Codex 工作流之间的关系，以及如何在工程实践中落地。
 - [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
 - [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
 - [giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程](https://doc.gpt88.cc/docs/guides/giffgaff-sim-guide/): 详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。

@@ -243,6 +243,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '把 App、网站、视频、Deck 和课程等多种交付物统一纳入一套 Codex 系统',
       },
       {
+        title: 'Loop Engineering 与 Harness',
+        path: '/docs/guides/loop-engineering-harness/',
+        blurb: '结合 Smith 铜匠的文章，解释 Harness 之后为什么要进入 Loop Engineering，以及如何把它落到 Codex 工作流里',
+      },
+      {
         title: 'Codex 工具恢复',
         path: '/docs/guides/codex-tool-recovery/',
         blurb: 'Codex 执行中工具失效时，先检查文件工具是否可用，恢复后从第一步重新落代码',

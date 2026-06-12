@@ -29,6 +29,7 @@ import CodexParallelAutomationWorkflowPage from './pages/docs/guides/CodexParall
 import CodexProjectFactoryDeliveryPage from './pages/docs/guides/CodexProjectFactoryDeliveryPage'
 import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
 import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
+import LoopEngineeringGuidePage from './pages/docs/guides/LoopEngineeringGuidePage'
 import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage'
 import GiffgaffGuidePage from './pages/docs/guides/GiffgaffGuidePage'
 import AiVideoStoryboardGuidePage from './pages/docs/guides/AiVideoStoryboardGuidePage'
@@ -128,6 +129,7 @@ export default function App() {
           <Route path="guides/codex-plugins-research-workflow" element={<CodexPluginsResearchWorkflowPage />} />
           <Route path="guides/codex-parallel-automation-workflow" element={<CodexParallelAutomationWorkflowPage />} />
           <Route path="guides/codex-project-factory-delivery" element={<CodexProjectFactoryDeliveryPage />} />
+          <Route path="guides/loop-engineering-harness" element={<LoopEngineeringGuidePage />} />
           <Route path="guides/codex-tool-recovery" element={<CodexToolRecoveryPage />} />
           <Route path="guides/zero-downtime-release" element={<ZeroDowntimeReleasePage />} />
           <Route path="guides/giffgaff-sim-guide" element={<GiffgaffGuidePage />} />

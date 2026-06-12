@@ -243,6 +243,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Loop Engineering 是什么：Harness 之后的下一步',
+    path: '/docs/guides/loop-engineering-harness',
+    description: '结合 Smith 铜匠关于 Loop Engineering 的文章主题，解释它和 Prompt Engineering、Harness、Skill、Codex 工作流之间的关系，以及如何在工程实践中落地。',
+    section: '指南',
+  },
+  {
     title: 'Codex 工具恢复教程',
     path: '/docs/guides/codex-tool-recovery',
     description: '当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。',
