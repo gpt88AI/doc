@@ -32,6 +32,7 @@ import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
 import LoopEngineeringGuidePage from './pages/docs/guides/LoopEngineeringGuidePage'
 import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage'
 import GiffgaffGuidePage from './pages/docs/guides/GiffgaffGuidePage'
+import UsVirtualCardGuidePage from './pages/docs/guides/UsVirtualCardGuidePage'
 import AiVideoStoryboardGuidePage from './pages/docs/guides/AiVideoStoryboardGuidePage'
 import VideoGenerationSkillsOverviewPage from './pages/docs/guides/VideoGenerationSkillsOverviewPage'
 import VideoGenerationSkillsInstallPage from './pages/docs/guides/VideoGenerationSkillsInstallPage'
@@ -133,6 +134,7 @@ export default function App() {
           <Route path="guides/codex-tool-recovery" element={<CodexToolRecoveryPage />} />
           <Route path="guides/zero-downtime-release" element={<ZeroDowntimeReleasePage />} />
           <Route path="guides/giffgaff-sim-guide" element={<GiffgaffGuidePage />} />
+          <Route path="guides/us-virtual-card-guide" element={<UsVirtualCardGuidePage />} />
           <Route path="guides/ai-video-storyboard-guide" element={<AiVideoStoryboardGuidePage />} />
           <Route path="guides/video-generation-skills-overview" element={<VideoGenerationSkillsOverviewPage />} />
           <Route path="guides/video-generation-skills-install" element={<VideoGenerationSkillsInstallPage />} />

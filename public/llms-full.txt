@@ -69,6 +69,7 @@
 - [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
 - [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
 - [giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程](https://doc.gpt88.cc/docs/guides/giffgaff-sim-guide/): 详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。
+- [美区虚拟卡自助开卡教程](https://doc.gpt88.cc/docs/guides/us-virtual-card-guide/): 一篇面向 AI 平台和海外订阅场景的详细教程：自己注册、自助开卡、首充 10U、可绑定支付宝消费，并长期维护可持续使用的美区虚拟卡。
 - [AI 视频分镜与提示词教程](https://doc.gpt88.cc/docs/guides/ai-video-storyboard-guide/): 把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流，适合短视频剧情片、情绪片和口播叙事片。
 - [video-generation-skills 总览](https://doc.gpt88.cc/docs/guides/video-generation-skills-overview/): 基于 adoin/video-generation-skills 仓库整理的系列文档总览，讲清 4 个 AI 视频生成 skill 的定位、边界、组合方式和适用场景。
 - [video-generation-skills 安装与使用教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-install/): 把 adoin/video-generation-skills 安装到 Cursor、Claude Code、Codex 等 Agent 的详细步骤，包括按需安装、全量安装、验证和本地开发。

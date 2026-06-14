@@ -267,6 +267,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: '美区虚拟卡自助开卡教程',
+    path: '/docs/guides/us-virtual-card-guide',
+    description: '一篇面向 AI 平台和海外订阅场景的详细教程：自己注册、自助开卡、首充 10U、可绑定支付宝消费，并长期维护可持续使用的美区虚拟卡。',
+    section: '指南',
+  },
+  {
     title: 'AI 视频分镜与提示词教程',
     path: '/docs/guides/ai-video-storyboard-guide',
     description: '把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流，适合短视频剧情片、情绪片和口播叙事片。',
