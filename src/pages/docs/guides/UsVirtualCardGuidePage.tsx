@@ -96,7 +96,7 @@ export default function UsVirtualCardGuidePage() {
         { id: 'ai', text: '适合哪些 AI 平台场景', level: 2 },
         { id: 'avoid', text: '哪些坑最容易踩', level: 2 },
         { id: 'faq', text: '常见问题', level: 2 },
-        { id: 'source', text: '原始教程入口', level: 2 },
+        { id: 'source', text: '参考注册链接', level: 2 },
       ]}
     >
       <Callout tone="info" title="先看这一句">
@@ -138,10 +138,10 @@ export default function UsVirtualCardGuidePage() {
 
       <h2 id="open">按什么顺序操作</h2>
       <CodeBlock lang="text" filename="open-flow" code={OPEN_FLOW} />
-      <StepCard step="1" title="先打开原始教程，不要跳步骤">
+      <StepCard step="1" title="先打开参考注册链接，不要跳步骤">
         <p>
-          原始教程托管在外部文档平台，第一次打开时可能会比较慢，浏览器也可能提示你继续访问。
-          这种情况先等待页面加载完成，不要因为短暂空白就反复刷新。
+          先通过参考注册链接进入注册页，再按页面流程完成注册和后续开卡步骤。
+          如果页面加载较慢，先等待完全展开，不要因为短暂空白就反复刷新。
         </p>
       </StepCard>
       <StepCard step="2" title="先注册，再充值，再开卡">
@@ -221,22 +221,22 @@ export default function UsVirtualCardGuidePage() {
         从场景上看可以，但是否成功还取决于目标平台当前的风控策略、网络环境、账单信息匹配度和付款验证逻辑。这不是卡本身单方面决定的。
       </p>
 
-      <h2 id="source">原始教程入口</h2>
+      <h2 id="source">参考注册链接</h2>
       <p>
-        原始教程链接：
+        注册链接：
         {' '}
         <a
-          href="https://bristle-zircon-c53.notion.site/37589dd1b2e080fc9c1cc7150c41435f"
+          href="https://wap.roogoo.cloud/register?inviteCode=cg9rxt"
           target="_blank"
           rel="noreferrer"
         >
-          https://bristle-zircon-c53.notion.site/37589dd1b2e080fc9c1cc7150c41435f
+          https://wap.roogoo.cloud/register?inviteCode=cg9rxt
         </a>
       </p>
-      <Callout tone="info" title="关于页面访问">
+      <Callout tone="tip" title="注册链接权益说明">
         <p>
-          因为原始内容托管在国际办公软件里，打开时如果浏览器提示继续访问，按提示继续即可。页面加载慢是常见现象，先耐心等待。
-          如果页面字段和本文不同，以原始页面实际展示为准。
+          通过本链接注册可享免费开卡、7 天 0 费率试用，并可按平台规则升级卡片终身 0 费率权益。
+          页面还可能提供余额赚币收益、消费挖矿、邀请返佣等活动，具体以注册页和平台实时规则为准。
         </p>
       </Callout>
     </DocPage>
