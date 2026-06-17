@@ -655,7 +655,7 @@ function isOpenAIModel(model: ModelEntry): boolean {
 
 function isGeminiImageModel(model: ModelEntry): boolean {
   const id = model.modelId.toLowerCase()
-  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
+  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview' || id === 'gemini-3.1-flash-image' || id === 'gemini-3-pro-image'
 }
 
 function chatBaseUrlHint(model: ModelEntry): string {

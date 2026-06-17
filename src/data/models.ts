@@ -142,30 +142,30 @@ type FeaturedDetail = {
 
 const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
   // slug=nanobanana2 ←→ modelId=NanoBanana2
-  // Google Gemini 3 Pro Image Preview 的模型别名，走 Gemini 原生 generateContent 图片接口。
+  // gpt88.cc 平台别名，对应 Google Gemini 图片模型能力。
   nanobanana2: {
     provider: 'Google',
-    tagline: 'Google Gemini 3 Pro Image Preview 的图片生成入口，走 generateContent 并支持 1K/2K/4K 输出。',
+    tagline: 'Google Gemini 图片生成入口，走 generateContent，并支持比例与清晰度控制。',
     capabilities: ['Google Gemini', '文生图', '图生图', '4K 输出'],
     scenarios: ['视觉素材生成', '图像编辑', '产品概念图', '社媒配图'],
     overview: [
-      'NanoBanana2 是基于 Google Gemini 3 Pro Image Preview 的图片生成模型入口，在 gpt88.cc 中按 Google/Gemini 原生兼容方式调用。',
-      '它使用 contents、parts 与 generationConfig.responseFormat.image 描述提示词、参考图、画幅比例和输出清晰度，返回图片通常在 inlineData.data 中。',
+      'NanoBanana2 是 gpt88.cc 控制台里的平台别名，实际按 Google Gemini 图片生成接口调用。',
+      '请求体使用 Gemini 官方 generateContent 结构，文字提示放在 contents[].parts[].text，参考图可用 fileData 或 inlineData，返回图片通常在 candidates[].content.parts[].inlineData.data 中。',
     ],
     whenToUse: [
       '需要快速生成海报、电商图、概念图、社媒配图等视觉素材时',
       '需要通过 fileData.fileUri 传参考图做图生图或局部风格迁移时',
-      '希望使用 Google Gemini 图片能力，并保持与官方 generateContent 结构一致时',
-      '需要 1K、2K、4K 这类清晰度控制时',
+      '希望按 Google 官方图片接口调用，并保持和 Gemini 文档一致时',
+      '需要用比例 + 清晰度组合控制输出时',
     ],
     integrationNotes: [
-      '推荐走加速域名 https://china.claudecoder.me，并调用 /v1beta/models/NanoBanana2:generateContent。',
-      '模型 ID 写在路径里，必须保持 NanoBanana2 的大小写一致。',
-      '请求体使用 Gemini 原生 contents / generationConfig 结构；如果 Authorization: Bearer 返回 401，可改用 x-goog-api-key 重试。',
+      '如果使用 Google 官方模型 ID，优先参考 Gemini 官方命名，例如 gemini-3.1-flash-image。',
+      '如果使用 gpt88.cc 平台别名 NanoBanana2，保留平台控制台里的模型名，但接口仍然按 Gemini generateContent 形态组织。',
+      '请求时优先使用加速域名 https://china.claudecoder.me；如果 Authorization: Bearer 不被接受，可改用 x-goog-api-key。',
     ],
     caveats: [
-      'responseFormat.image.aspectRatio 表示画幅比例，例如 1:1、16:9、9:16、4:3、3:4、auto；不要传 1024x1024 这类像素尺寸。',
-      'responseFormat.image.imageSize 使用 1K、2K、4K 这类大写值；具体可用范围以控制台为准。',
+      'Gemini 图片接口里，比例值和像素尺寸不要混用；比例用 1:1、16:9、9:16、4:3、3:4、auto，清晰度用 1K、2K、4K。',
+      '参考图需要是服务端可访问的 URL 或可解析的 inlineData；图生图失败时先检查可达性与 mimeType。',
       '价格、限速、可用线路与返回格式以 gpt88.cc 控制台当前配置为准。',
     ],
   },
@@ -1097,27 +1097,27 @@ export BASE_URL="https://china.claudecoder.me"
 export MODEL="${modelId}"
 
 curl -s -X POST \\
-  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
-  -H "Authorization: Bearer $API_KEY" \\
+  "$BASE_URL/v1/models/$MODEL:generateContent" \\
+  -H "x-goog-api-key: $API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "contents": [{
       "parts": [{
-        "text": "生成一张16:9的赛博朋克城市夜景，霓虹灯，雨夜，电影感，高细节"
+        "text": "Create a cinematic 16:9 cyberpunk city at night with neon lights and rain."
       }]
     }],
     "generationConfig": {
-      "responseModalities": ["TEXT", "IMAGE"],
-      "imageConfig": {
-        "aspectRatio": "16:9",
-        "imageSize": "2K"
+      "responseModalities": ["IMAGE"],
+      "responseFormat": {
+        "image": {
+          "aspectRatio": "16:9",
+          "imageSize": "2K"
+        }
       }
     }
   }' > response.json
 
-jq -r '.. | objects | (.inlineData?.data // .inline_data?.data)? | select(.)' response.json \\
-  | head -n 1 \\
-  | base64 -d > output.png`,
+jq -r '.. | objects | .inlineData?.data? | select(.)' response.json | head -n 1 | base64 -d > output.png`,
       },
       {
         label: 'macOS base64',
@@ -1136,24 +1136,26 @@ const BASE_URL = "https://china.claudecoder.me";
 const MODEL = "${modelId}";
 
 const res = await fetch(
-  \`\${BASE_URL}/v1beta/models/\${MODEL}:generateContent\`,
+  \`\${BASE_URL}/v1/models/\${MODEL}:generateContent\`,
   {
     method: "POST",
     headers: {
-      Authorization: \`Bearer \${API_KEY}\`,
+      "x-goog-api-key": API_KEY,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       contents: [{
         parts: [{
-          text: "生成一张1:1的可爱3D图标，白色背景，彩色质感，无文字",
+          text: "Create a cute 1:1 3D icon on a white background with colorful materials and no text.",
         }],
       }],
       generationConfig: {
-        responseModalities: ["TEXT", "IMAGE"],
-        imageConfig: {
-          aspectRatio: "1:1",
-          imageSize: "1K",
+        responseModalities: ["IMAGE"],
+        responseFormat: {
+          image: {
+            aspectRatio: "1:1",
+            imageSize: "1K",
+          },
         },
       },
     }),
@@ -1175,7 +1177,7 @@ console.log("saved output.png");`,
         label: 'x-goog-api-key',
         lang: 'bash',
         code: `curl -s -X POST \\
-  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
+  "$BASE_URL/v1/models/$MODEL:generateContent" \\
   -H "x-goog-api-key: $API_KEY" \\
   -H "Content-Type: application/json" \\
   -d @payload.json > response.json`,
