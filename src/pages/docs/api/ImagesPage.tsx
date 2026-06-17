@@ -5,6 +5,108 @@ import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
 
+const GEMINI_UPLOAD_TABS = [
+  {
+    label: 'cURL',
+    lang: 'bash',
+    code: `export API_KEY="YOUR_GPT88_API_KEY"
+export BASE_URL="https://china.claudecoder.me"
+export MODEL="gemini-3.1-flash-image"
+
+# 先把本地参考图上传成可复用文件
+curl -s -X POST "$BASE_URL/upload/v1/files" \
+  -H "x-goog-api-key: $API_KEY" \
+  -F "file=@reference.png" \
+  -F "mimeType=image/png" > upload.json
+
+FILE_URI=$(jq -r '.file.uri // .uri // .name' upload.json)
+
+curl -s -X POST \
+  "$BASE_URL/v1/models/$MODEL:generateContent" \
+  -H "x-goog-api-key: $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"contents\": [{
+      \"parts\": [
+        { \"text\": \"Keep the main subject, change the background to a moonlit bamboo path\" },
+        {
+          \"fileData\": {
+            \"mimeType\": \"image/png\",
+            \"fileUri\": \"$FILE_URI\"
+          }
+        }
+      ]
+    }],
+    \"generationConfig\": {
+      \"responseModalities\": [\"TEXT\", \"IMAGE\"],
+      \"responseFormat\": {
+        \"image\": {
+          \"aspectRatio\": \"1:1\",
+          \"imageSize\": \"1K\"
+        }
+      }
+    }
+  }" > response.json`,
+  },
+  {
+    label: 'Node.js',
+    lang: 'typescript',
+    code: `import fs from "node:fs";
+
+async function uploadReferenceImage(filePath: string) {
+  const form = new FormData();
+  form.append("file", new Blob([fs.readFileSync(filePath)]), "reference.png");
+  form.append("mimeType", "image/png");
+
+  const res = await fetch("https://china.claudecoder.me/upload/v1/files", {
+    method: "POST",
+    headers: {
+      "x-goog-api-key": process.env.GPT88_API_KEY!,
+    },
+    body: form,
+  });
+
+  const json = await res.json();
+  if (!res.ok) throw new Error(JSON.stringify(json, null, 2));
+  return json.file?.uri ?? json.uri ?? json.name;
+}
+
+const fileUri = await uploadReferenceImage("reference.png");
+
+const res = await fetch("https://china.claudecoder.me/v1/models/gemini-3.1-flash-image:generateContent", {
+  method: "POST",
+  headers: {
+    "x-goog-api-key": process.env.GPT88_API_KEY!,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    contents: [{
+      parts: [
+        { text: "Keep the main subject, change the background to a moonlit bamboo path" },
+        {
+          fileData: {
+            mimeType: "image/png",
+            fileUri,
+          },
+        },
+      ],
+    }],
+    generationConfig: {
+      responseModalities: ["TEXT", "IMAGE"],
+      responseFormat: {
+        image: {
+          aspectRatio: "1:1",
+          imageSize: "1K",
+        },
+      },
+    },
+  }),
+});
+
+console.log(await res.json());`,
+  },
+]
+
 const OPENAI_GENERATE_TABS = [
   {
     label: 'Node.js',
@@ -200,78 +302,6 @@ fs.writeFileSync("output.png", Buffer.from(part.inlineData.data, "base64"));`,
   },
 ]
 
-const GEMINI_EDIT_TABS = [
-  {
-    label: 'cURL',
-    lang: 'bash',
-    code: `export API_KEY="YOUR_GPT88_API_KEY"
-export BASE_URL="https://china.claudecoder.me"
-export MODEL="gemini-3.1-flash-image"
-
-curl -s -X POST \\
-  "$BASE_URL/v1/models/$MODEL:generateContent" \\
-  -H "x-goog-api-key: $API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "contents": [{
-      "parts": [
-        { "text": "Keep the main subject, change the background to a moonlit bamboo path" },
-        {
-          "fileData": {
-            "mimeType": "image/png",
-            "fileUri": "https://example.com/reference.png"
-          }
-        }
-      ]
-    }],
-    "generationConfig": {
-      "responseModalities": ["TEXT", "IMAGE"],
-      "responseFormat": {
-        "image": {
-          "aspectRatio": "1:1",
-          "imageSize": "1K"
-        }
-      }
-    }
-  }' > response.json`,
-  },
-  {
-    label: 'Node.js',
-    lang: 'typescript',
-    code: `const res = await fetch("https://china.claudecoder.me/v1/models/gemini-3.1-flash-image:generateContent", {
-  method: "POST",
-  headers: {
-    "x-goog-api-key": process.env.GPT88_API_KEY!,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    contents: [{
-      parts: [
-        { text: "Keep the main subject, change the background to a moonlit bamboo path" },
-        {
-          fileData: {
-            mimeType: "image/png",
-            fileUri: "https://example.com/reference.png",
-          },
-        },
-      ],
-    }],
-    generationConfig: {
-      responseModalities: ["TEXT", "IMAGE"],
-      responseFormat: {
-        image: {
-          aspectRatio: "1:1",
-          imageSize: "1K",
-        },
-      },
-    },
-  }),
-});
-
-console.log(await res.json());`,
-  },
-]
-
 const OPENAI_FIELDS: FieldRow[] = [
   { name: 'model', type: 'string', required: true, description: <>官方 GPT Image 模型，例如 <code>gpt-image-2</code>。</> },
   { name: 'prompt', type: 'string', required: true, description: <>图片生成或编辑指令。</> },
@@ -374,10 +404,10 @@ export default function ImagesPage() {
 
       <h2 id="gemini-edit">Gemini 图生图与编辑</h2>
       <p>
-        Gemini 图生图仍然走同一个 <code>generateContent</code> 端点，只是把参考图作为
-        <code>inlineData</code> 或 <code>fileData</code> 放进 <code>contents[].parts[]</code>。
+        Gemini 图生图按官方口径优先走“上传图片，然后再调用 generateContent”的流程。
+        也就是说，参考图不要写成公网图片 URL，而是先上传成文件，再把返回的 file uri 放进 <code>fileData.fileUri</code>。
       </p>
-      <CodeTabs tabs={GEMINI_EDIT_TABS} />
+      <CodeTabs tabs={GEMINI_UPLOAD_TABS} />
 
       <h2 id="fields">字段对照</h2>
       <h3>OpenAI 图片 API</h3>
