@@ -117,6 +117,18 @@ export default function QuickstartPage() {
         </a>{' '}
         控制台注册并创建 API Key，再回到本页把它粘贴到下面的环境变量里使用。
       </p>
+      <p>
+        说明：<code>gpt88.cc</code> 主推文本大模型与 API 接入；如果你主要是直接做生图工作台使用，优先访问{' '}
+        <a
+          href="https://agent.gpt88.cc/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-cyan-300 hover:text-cyan-200"
+        >
+          agent.gpt88.cc
+        </a>
+        。
+      </p>
       <ol>
         <li>
           登录{' '}

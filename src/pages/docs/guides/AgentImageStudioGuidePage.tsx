@@ -112,6 +112,13 @@ export default function AgentImageStudioGuidePage() {
         </p>
       </Callout>
 
+      <Callout tone="tip" title="gpt-image-2 API 对接与价格">
+        <p>
+          工作台支持 <code>gpt-image-2</code> 生图 API 对接，适合把生成结果再回流到你的代码、脚本或自动化流程。
+          目前 1K / 2K / 4K 统一按每张 4 分钱说明，具体以控制台和实际计费为准。
+        </p>
+      </Callout>
+
       <h2 id="overview">入口与定位</h2>
       <p>
         GPT88 Agent 图片工作台面向电商、运营、设计和开发者。它不是传统聊天窗口，
@@ -172,6 +179,10 @@ export default function AgentImageStudioGuidePage() {
         <code>gpt-image-2</code> / <code>gpt-image-1</code>，以及 Gemini 图片模型。
         实际可用列表以控制台和工作台展示为准。
       </p>
+      <p>
+        如果你要做的是稳定生图接入，优先用 <code>gpt-image-2</code> 作为 API 对接模型；
+        如果你要的是直接在浏览器里出图打样，优先用 <code>agent.gpt88.cc</code>。
+      </p>
       <ul>
         <li>常用尺寸：<code>1K</code>、<code>2K</code>、<code>4K</code>。</li>
         <li>常用比例：<code>1:1</code>、<code>3:4</code>、<code>4:3</code>、<code>2:3</code>、<code>3:2</code>、<code>9:16</code>、<code>16:9</code>、<code>4:7</code>。</li>
@@ -204,7 +215,7 @@ export default function AgentImageStudioGuidePage() {
         headers={['需求', '推荐入口', '说明']}
         rows={[
           ['手动做图、快速打样', <a href="https://agent.gpt88.cc/" target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">agent.gpt88.cc</a>, '直接使用图片工作台，适合运营和设计。'],
-          ['代码调用图片生成', <Link to="/docs/api/images/">Google 图片生成 API</Link>, '适合把图片生成集成进产品、脚本或后端服务。'],
+          ['代码调用图片生成', <Link to="/docs/api/images/">图片生成 API</Link>, 'OpenAI gpt-image-2 与 Gemini 图片 API 的官方接口说明。'],
           ['Codex 自动生成图片文件', <Link to="/docs/guides/codex-gpt-image-2-skill/">Codex gpt-image-2 Skill</Link>, '适合让 Codex 在项目里直接生成封面、海报和素材。'],
           ['模型能力与接口路径', <Link to="/models/">模型导航</Link>, '查看模型 ID、分类、供应商和接口路径。'],
         ]}
@@ -212,7 +223,7 @@ export default function AgentImageStudioGuidePage() {
 
       <h2 id="cost">成本与质量建议</h2>
       <ul>
-        <li>先用低尺寸和单张确认方向，再提升到 2K / 4K。</li>
+        <li>先用低尺寸和单张确认方向，再提升到 2K / 4K；当前 1K / 2K / 4K 统一按每张 4 分钱说明。</li>
         <li>不要把“写文案”和“生成图片”混在一张图里，先生成无文字底图，后期再排版。</li>
         <li>商品一致性比风格更重要，电商图要明确“不改变瓶身、包装、颜色、Logo 位置”。</li>
         <li>批量生成前先人工确认 prompts 清单，避免重复生成无效图片。</li>

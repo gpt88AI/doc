@@ -58,6 +58,32 @@ export default function OverviewPage() {
         <strong>gpt88.cc</strong> 是一个统一 API 网关，开发者只需将 base_url 指向
         <code>https://gpt88.cc/v1</code>，即可使用一套 OpenAI 兼容协议调用多家厂商和自托管的大模型。
       </p>
+      <div className="not-prose my-6 grid gap-3 md:grid-cols-2">
+        <a
+          href="https://gpt88.cc/"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-xl border border-violet-500/25 bg-violet-500/[0.06] p-4 transition hover:border-violet-400/45 hover:bg-violet-500/[0.1]"
+        >
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-300">gpt88.cc</div>
+          <div className="mt-2 text-lg font-semibold text-ink-50">主推文本大模型</div>
+          <p className="mt-2 text-sm leading-6 text-ink-300">
+            Claude、GPT、Gemini、DeepSeek、Qwen 等文本模型与 SDK / Agent / 代码工作流优先看这里。
+          </p>
+        </a>
+        <a
+          href="https://agent.gpt88.cc/"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-xl border border-cyan-500/25 bg-cyan-500/[0.06] p-4 transition hover:border-cyan-400/45 hover:bg-cyan-500/[0.1]"
+        >
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">agent.gpt88.cc</div>
+          <div className="mt-2 text-lg font-semibold text-ink-50">主推生图工作台</div>
+          <p className="mt-2 text-sm leading-6 text-ink-300">
+            图片生成、海报、电商图、场景图、模特图和批量素材优先看这里。
+          </p>
+        </a>
+      </div>
       <p>
         所有接口都通过 <code>https://gpt88.cc/v1</code> 提供（也可使用等价端点{' '}
         <code>china.claudecoder.me</code> /{' '}

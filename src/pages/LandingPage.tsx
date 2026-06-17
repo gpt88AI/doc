@@ -111,6 +111,21 @@ const BULLETS = [
   '模型、线路、工具配置统一管理',
 ] as const
 
+const SITE_SPLIT = [
+  {
+    name: 'gpt88.cc',
+    href: 'https://gpt88.cc/',
+    title: '主推文本大模型',
+    desc: '适合 Claude、GPT、DeepSeek、Qwen、Gemini 文本能力、Agent、SDK 接入、代码与自动化工作流。',
+  },
+  {
+    name: 'agent.gpt88.cc',
+    href: 'https://agent.gpt88.cc/',
+    title: '主推生图工作台',
+    desc: '适合直接生成海报、电商主图、场景图、模特图、批量图片和可视化素材，并支持 gpt-image-2 生图 API 对接；1K / 2K / 4K 当前统一按每张 4 分钱说明。',
+  },
+] as const
+
 export default function LandingPage() {
   return (
     <>
@@ -244,6 +259,38 @@ export default function LandingPage() {
               </li>
             ))}
           </ul>
+
+          <div className="mt-8 w-full max-w-5xl rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-4 sm:p-5">
+            <div className="text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
+                双站点分工
+              </p>
+              <h2 className="mt-2 text-xl font-semibold text-ink-50 sm:text-2xl">
+                文本大模型看 <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-cyan-200">gpt88.cc</code>
+                ，生图主推看 <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-cyan-200">agent.gpt88.cc</code>
+              </h2>
+            </div>
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              {SITE_SPLIT.map(site => (
+                <a
+                  key={site.href}
+                  href={site.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl border border-white/10 bg-white/[0.04] p-4 text-left transition hover:border-cyan-400/40 hover:bg-cyan-400/[0.08]"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <div className="text-sm font-semibold text-ink-50">{site.name}</div>
+                      <div className="mt-1 text-xs font-medium text-cyan-300">{site.title}</div>
+                    </div>
+                    <ExternalLink className="h-4 w-4 text-cyan-300" />
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-ink-300">{site.desc}</p>
+                </a>
+              ))}
+            </div>
+          </div>
 
           {/* 首屏代码示例 */}
           <div className="mt-14 grid w-full max-w-5xl gap-4 lg:grid-cols-[0.86fr_1.14fr]">
