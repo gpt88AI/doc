@@ -150,7 +150,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
     scenarios: ['视觉素材生成', '图像编辑', '产品概念图', '社媒配图'],
     overview: [
       'NanoBanana2 是基于 Google Gemini 3 Pro Image Preview 的图片生成模型入口，在 gpt88.cc 中按 Google/Gemini 原生兼容方式调用。',
-      '它使用 contents、parts 与 generationConfig.imageConfig 描述提示词、参考图、画幅比例和输出清晰度，返回图片通常在 inlineData.data 中。',
+      '它使用 contents、parts 与 generationConfig.responseFormat.image 描述提示词、参考图、画幅比例和输出清晰度，返回图片通常在 inlineData.data 中。',
     ],
     whenToUse: [
       '需要快速生成海报、电商图、概念图、社媒配图等视觉素材时',
@@ -164,8 +164,8 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '请求体使用 Gemini 原生 contents / generationConfig 结构；如果 Authorization: Bearer 返回 401，可改用 x-goog-api-key 重试。',
     ],
     caveats: [
-      'imageConfig.aspectRatio 表示画幅比例，例如 1:1、16:9、9:16、4:3、3:4、auto；不要传 1024x1024 这类像素尺寸。',
-      'imageConfig.imageSize 使用 1K、2K、4K 这类大写值；具体可用范围以控制台为准。',
+      'responseFormat.image.aspectRatio 表示画幅比例，例如 1:1、16:9、9:16、4:3、3:4、auto；不要传 1024x1024 这类像素尺寸。',
+      'responseFormat.image.imageSize 使用 1K、2K、4K 这类大写值；具体可用范围以控制台为准。',
       '价格、限速、可用线路与返回格式以 gpt88.cc 控制台当前配置为准。',
     ],
   },

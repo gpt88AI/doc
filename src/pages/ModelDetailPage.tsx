@@ -1067,13 +1067,13 @@ function geminiImageRequestFields(model: ModelEntry): FieldRow[] {
       description: <>要求模型同时返回文本与图片。生成图片时需要包含 <code>IMAGE</code>。</>,
     },
     {
-      name: 'generationConfig.imageConfig.aspectRatio',
+      name: 'generationConfig.responseFormat.image.aspectRatio',
       type: 'string',
       default: '1:1',
       description: <>图片比例，例如 <code>1:1</code>、<code>16:9</code>、<code>9:16</code>、<code>4:3</code>、<code>3:4</code>。</>,
     },
     {
-      name: 'generationConfig.imageConfig.imageSize',
+      name: 'generationConfig.responseFormat.image.imageSize',
       type: 'string',
       default: '1K',
       description: <>输出清晰度，使用大写，例如 <code>1K</code>、<code>2K</code>、<code>4K</code>。</>,

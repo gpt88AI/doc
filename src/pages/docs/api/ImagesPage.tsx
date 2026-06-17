@@ -1,137 +1,221 @@
 import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
-import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { Callout } from '../../../components/ui/Callout'
+import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
 
-const TEXT_TO_IMAGE_TABS = [
+const OPENAI_GENERATE_TABS = [
+  {
+    label: 'Node.js',
+    lang: 'typescript',
+    code: `import OpenAI from "openai";
+import fs from "node:fs";
+
+const client = new OpenAI({
+  apiKey: process.env.GPT88_API_KEY,
+  baseURL: "https://china.claudecoder.me/v1",
+});
+
+const result = await client.images.generate({
+  model: "gpt-image-2",
+  prompt: "A children's book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter.",
+  size: "1024x1024",
+  quality: "high",
+});
+
+const imageBase64 = result.data[0].b64_json;
+fs.writeFileSync("otter.png", Buffer.from(imageBase64, "base64"));`,
+  },
+  {
+    label: 'Python',
+    lang: 'python',
+    code: `from openai import OpenAI
+import base64
+
+client = OpenAI(
+    api_key="YOUR_GPT88_API_KEY",
+    base_url="https://china.claudecoder.me/v1",
+)
+
+result = client.images.generate(
+    model="gpt-image-2",
+    prompt="A children's book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter.",
+    size="1024x1024",
+    quality="high",
+)
+
+image_base64 = result.data[0].b64_json
+with open("otter.png", "wb") as f:
+    f.write(base64.b64decode(image_base64))`,
+  },
+  {
+    label: 'cURL',
+    lang: 'bash',
+    code: `curl -s https://china.claudecoder.me/v1/images/generations \\
+  -H "Authorization: Bearer $GPT88_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "gpt-image-2",
+    "prompt": "A children's book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter.",
+    "size": "1024x1024",
+    "quality": "high"
+  }' > response.json
+
+jq -r '.data[0].b64_json' response.json | base64 -d > otter.png`,
+  },
+]
+
+const OPENAI_EDIT_TABS = [
+  {
+    label: 'Python',
+    lang: 'python',
+    code: `import base64
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="YOUR_GPT88_API_KEY",
+    base_url="https://china.claudecoder.me/v1",
+)
+
+prompt = """
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.
+"""
+
+result = client.images.edit(
+    model="gpt-image-2",
+    image=[
+        open("body-lotion.png", "rb"),
+        open("soap.png", "rb"),
+        open("bath-bomb.png", "rb"),
+        open("incense-kit.png", "rb"),
+    ],
+    prompt=prompt,
+    size="1536x1024",
+    quality="high",
+)
+
+image_base64 = result.data[0].b64_json
+with open("gift-basket.png", "wb") as f:
+    f.write(base64.b64decode(image_base64))`,
+  },
+  {
+    label: 'Node.js',
+    lang: 'typescript',
+    code: `import OpenAI from "openai";
+import fs from "node:fs";
+
+const client = new OpenAI({
+  apiKey: process.env.GPT88_API_KEY,
+  baseURL: "https://china.claudecoder.me/v1",
+});
+
+const result = await client.images.edit({
+  model: "gpt-image-2",
+  image: [
+    fs.createReadStream("body-lotion.png"),
+    fs.createReadStream("soap.png"),
+    fs.createReadStream("bath-bomb.png"),
+    fs.createReadStream("incense-kit.png"),
+  ],
+  prompt: "Generate a photorealistic image of a gift basket on a white background labeled 'Relax & Unwind' with a ribbon and handwriting-like font, containing all the items in the reference pictures.",
+  size: "1536x1024",
+  quality: "high",
+});
+
+const imageBase64 = result.data[0].b64_json;
+fs.writeFileSync("gift-basket.png", Buffer.from(imageBase64, "base64"));`,
+  },
+]
+
+const GEMINI_TEXT_TABS = [
   {
     label: 'cURL',
     lang: 'bash',
     code: `export API_KEY="YOUR_GPT88_API_KEY"
 export BASE_URL="https://china.claudecoder.me"
-export MODEL="NanoBanana2"
+export MODEL="gemini-3.1-flash-image"
 
 curl -s -X POST \\
-  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
-  -H "Authorization: Bearer $API_KEY" \\
+  "$BASE_URL/v1/models/$MODEL:generateContent" \\
+  -H "x-goog-api-key: $API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "contents": [{
-      "parts": [{
-        "text": "月光下的竹林小径"
-      }]
+      "parts": [
+        { "text": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme" }
+      ]
     }],
     "generationConfig": {
-      "responseModalities": ["TEXT", "IMAGE"],
-      "imageConfig": {
-        "aspectRatio": "1:1",
-        "imageSize": "1K"
+      "responseModalities": ["IMAGE"],
+      "responseFormat": {
+        "image": {
+          "aspectRatio": "16:9",
+          "imageSize": "2K"
+        }
       }
     }
   }' > response.json
 
-jq -r '.. | objects | (.inlineData?.data // .inline_data?.data)? | select(.)' response.json \\
-  | head -n 1 \\
-  | base64 -d > output.png`,
-  },
-  {
-    label: 'Python',
-    lang: 'python',
-    code: `import base64
-import requests
-
-api_key = "YOUR_GPT88_API_KEY"
-base_url = "https://china.claudecoder.me"
-model = "NanoBanana2"
-
-resp = requests.post(
-    f"{base_url}/v1beta/models/{model}:generateContent",
-    headers={
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json",
-    },
-    json={
-        "contents": [{
-            "parts": [{"text": "月光下的竹林小径"}],
-        }],
-        "generationConfig": {
-            "responseModalities": ["TEXT", "IMAGE"],
-            "imageConfig": {
-                "aspectRatio": "1:1",
-                "imageSize": "1K",
-            },
-        },
-    },
-)
-data = resp.json()
-resp.raise_for_status()
-
-for part in data["candidates"][0]["content"]["parts"]:
-    inline = part.get("inlineData") or part.get("inline_data")
-    if inline and inline.get("data"):
-        open("output.png", "wb").write(base64.b64decode(inline["data"]))
-        break`,
+jq -r '.. | objects | .inlineData?.data? | select(.)' response.json | head -n 1 | base64 -d > output.png`,
   },
   {
     label: 'Node.js',
     lang: 'typescript',
     code: `import fs from "node:fs";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.GPT88_API_KEY;
 const BASE_URL = "https://china.claudecoder.me";
-const MODEL = "NanoBanana2";
+const MODEL = "gemini-3.1-flash-image";
 
-const resp = await fetch(\`\${BASE_URL}/v1beta/models/\${MODEL}:generateContent\`, {
+const res = await fetch(\`\${BASE_URL}/v1/models/\${MODEL}:generateContent\`, {
   method: "POST",
   headers: {
-    Authorization: \`Bearer \${API_KEY}\`,
+    "x-goog-api-key": API_KEY!,
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
     contents: [{
-      parts: [{ text: "月光下的竹林小径" }],
+      parts: [{ text: "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme" }],
     }],
     generationConfig: {
-      responseModalities: ["TEXT", "IMAGE"],
-      imageConfig: {
-        aspectRatio: "1:1",
-        imageSize: "1K",
+      responseModalities: ["IMAGE"],
+      responseFormat: {
+        image: {
+          aspectRatio: "16:9",
+          imageSize: "2K",
+        },
       },
     },
   }),
 });
 
-const json = await resp.json();
-if (!resp.ok) throw new Error(JSON.stringify(json, null, 2));
+const json = await res.json();
+if (!res.ok) throw new Error(JSON.stringify(json, null, 2));
 
-const part = json.candidates?.[0]?.content?.parts?.find(
-  p => p.inlineData?.data || p.inline_data?.data
-);
-const b64 = part?.inlineData?.data ?? part?.inline_data?.data;
-fs.writeFileSync("output.png", Buffer.from(b64, "base64"));`,
+const part = json.candidates?.[0]?.content?.parts?.find((p: any) => p.inlineData?.data);
+fs.writeFileSync("output.png", Buffer.from(part.inlineData.data, "base64"));`,
   },
 ]
 
-const IMAGE_TO_IMAGE_TABS = [
+const GEMINI_EDIT_TABS = [
   {
     label: 'cURL',
     lang: 'bash',
     code: `export API_KEY="YOUR_GPT88_API_KEY"
 export BASE_URL="https://china.claudecoder.me"
-export MODEL="NanoBanana2"
+export MODEL="gemini-3.1-flash-image"
 
 curl -s -X POST \\
-  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
-  -H "Authorization: Bearer $API_KEY" \\
+  "$BASE_URL/v1/models/$MODEL:generateContent" \\
+  -H "x-goog-api-key: $API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "contents": [{
       "parts": [
-        {
-          "text": "保留参考图主体，将背景改成月光下的竹林小径"
-        },
+        { "text": "Keep the main subject, change the background to a moonlit bamboo path" },
         {
           "fileData": {
             "mimeType": "image/png",
@@ -142,60 +226,28 @@ curl -s -X POST \\
     }],
     "generationConfig": {
       "responseModalities": ["TEXT", "IMAGE"],
-      "imageConfig": {
-        "aspectRatio": "1:1",
-        "imageSize": "1K"
+      "responseFormat": {
+        "image": {
+          "aspectRatio": "1:1",
+          "imageSize": "1K"
+        }
       }
     }
   }' > response.json`,
   },
   {
-    label: 'Python',
-    lang: 'python',
-    code: `import requests
-
-resp = requests.post(
-    "https://china.claudecoder.me/v1beta/models/NanoBanana2:generateContent",
-    headers={
-        "Authorization": "Bearer YOUR_GPT88_API_KEY",
-        "Content-Type": "application/json",
-    },
-    json={
-        "contents": [{
-            "parts": [
-                {"text": "保留参考图主体，将背景改成月光下的竹林小径"},
-                {
-                    "fileData": {
-                        "mimeType": "image/png",
-                        "fileUri": "https://example.com/reference.png",
-                    },
-                },
-            ],
-        }],
-        "generationConfig": {
-            "responseModalities": ["TEXT", "IMAGE"],
-            "imageConfig": {
-                "aspectRatio": "1:1",
-                "imageSize": "1K",
-            },
-        },
-    },
-)
-print(resp.json())`,
-  },
-  {
     label: 'Node.js',
     lang: 'typescript',
-    code: `const resp = await fetch("https://china.claudecoder.me/v1beta/models/NanoBanana2:generateContent", {
+    code: `const res = await fetch("https://china.claudecoder.me/v1/models/gemini-3.1-flash-image:generateContent", {
   method: "POST",
   headers: {
-    Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
+    "x-goog-api-key": process.env.GPT88_API_KEY!,
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
     contents: [{
       parts: [
-        { text: "保留参考图主体，将背景改成月光下的竹林小径" },
+        { text: "Keep the main subject, change the background to a moonlit bamboo path" },
         {
           fileData: {
             mimeType: "image/png",
@@ -206,231 +258,147 @@ print(resp.json())`,
     }],
     generationConfig: {
       responseModalities: ["TEXT", "IMAGE"],
-      imageConfig: {
-        aspectRatio: "1:1",
-        imageSize: "1K",
+      responseFormat: {
+        image: {
+          aspectRatio: "1:1",
+          imageSize: "1K",
+        },
       },
     },
   }),
 });
 
-console.log(await resp.json());`,
+console.log(await res.json());`,
   },
 ]
 
-const GEMINI_NATIVE_TABS = [
-  {
-    label: 'cURL',
-    lang: 'bash',
-    code: `export API_KEY="YOUR_GPT88_API_KEY"
-export BASE_URL="https://china.claudecoder.me"
-export MODEL="gemini-3-pro-image-preview"
-
-curl -s -X POST \\
-  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
-  -H "Authorization: Bearer $API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "contents": [{
-      "parts": [{
-        "text": "生成一张16:9的赛博朋克城市夜景，霓虹灯，雨夜，电影感，高细节"
-      }]
-    }],
-    "generationConfig": {
-      "responseModalities": ["TEXT", "IMAGE"],
-      "imageConfig": {
-        "aspectRatio": "16:9",
-        "imageSize": "2K"
-      }
-    }
-  }' > response.json
-
-jq -r '.. | objects | (.inlineData?.data // .inline_data?.data)? | select(.)' response.json \\
-  | head -n 1 \\
-  | base64 -d > output.png`,
-  },
-  {
-    label: 'macOS base64',
-    lang: 'bash',
-    code: `jq -r '.. | objects | (.inlineData?.data // .inline_data?.data)? | select(.)' response.json \\
-  | head -n 1 \\
-  | base64 -D > output.png`,
-  },
-  {
-    label: 'Node.js',
-    lang: 'typescript',
-    code: `import fs from "node:fs";
-
-const API_KEY = process.env.API_KEY;
-const BASE_URL = "https://china.claudecoder.me";
-const MODEL = "gemini-3-pro-image-preview";
-
-const res = await fetch(\`\${BASE_URL}/v1beta/models/\${MODEL}:generateContent\`, {
-  method: "POST",
-  headers: {
-    Authorization: \`Bearer \${API_KEY}\`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    contents: [{
-      parts: [{
-        text: "生成一张1:1的可爱3D图标，白色背景，彩色质感，无文字",
-      }],
-    }],
-    generationConfig: {
-      responseModalities: ["TEXT", "IMAGE"],
-      imageConfig: {
-        aspectRatio: "1:1",
-        imageSize: "1K",
-      },
-    },
-  }),
-});
-
-const json = await res.json();
-if (!res.ok) throw new Error(JSON.stringify(json, null, 2));
-
-const part = json.candidates?.[0]?.content?.parts?.find(
-  p => p.inlineData?.data || p.inline_data?.data
-);
-
-const b64 = part?.inlineData?.data ?? part?.inline_data?.data;
-fs.writeFileSync("output.png", Buffer.from(b64, "base64"));
-console.log("saved output.png");`,
-  },
-  {
-    label: 'x-goog-api-key',
-    lang: 'bash',
-    code: `curl -s -X POST \\
-  "$BASE_URL/v1beta/models/$MODEL:generateContent" \\
-  -H "x-goog-api-key: $API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d @payload.json > response.json`,
-  },
+const OPENAI_FIELDS: FieldRow[] = [
+  { name: 'model', type: 'string', required: true, description: <>官方 GPT Image 模型，例如 <code>gpt-image-2</code>。</> },
+  { name: 'prompt', type: 'string', required: true, description: <>图片生成或编辑指令。</> },
+  { name: 'size', type: 'string', description: <>像素尺寸，例如 <code>1024x1024</code>、<code>1536x1024</code>、<code>1024x1536</code>，<code>gpt-image-2</code> 还支持更多合法分辨率与 <code>auto</code>。</> },
+  { name: 'quality', type: 'string', description: <><code>low</code>、<code>medium</code>、<code>high</code> 或 <code>auto</code>。</> },
+  { name: 'background', type: 'string', description: <>官方文档支持 <code>opaque</code> 或 <code>auto</code>；<code>gpt-image-2</code> 当前不支持 <code>transparent</code>。</> },
+  { name: 'output_format', type: 'string', description: <>默认返回 PNG，也可请求 JPEG 或 WebP。</> },
+  { name: 'output_compression', type: 'integer', description: <>JPEG / WebP 时可用，范围 0-100。</> },
+  { name: 'n', type: 'integer', description: <>一次请求生成多张图，默认 1。</> },
+  { name: 'image', type: 'file | file[]', description: <>编辑接口输入图片，使用 <code>/v1/images/edits</code>。</> },
+  { name: 'mask', type: 'file', description: <>局部编辑可选遮罩图，仅编辑被 mask 指定的区域。</> },
 ]
 
-const FIELDS: FieldRow[] = [
-  {
-    name: 'contents',
-    type: 'array<Content>',
-    required: true,
-    description: <>Gemini generateContent 输入。文生图只需要文本 part；图生图同时传文本 part 和图片 part。</>,
-  },
-  {
-    name: 'contents[].parts[].text',
-    type: 'string',
-    required: true,
-    description: <>生成或编辑图片的文字指令。建议明确主体、风格、比例、细节和限制。</>,
-  },
-  {
-    name: 'contents[].parts[].fileData',
-    type: 'object',
-    description: <>图生图参考图。包含 <code>mimeType</code> 和 <code>fileUri</code>，图片 URL 需要能被服务端访问。</>,
-  },
-  {
-    name: 'generationConfig.responseModalities',
-    type: 'string[]',
-    required: true,
-    default: '["TEXT", "IMAGE"]',
-    description: <>生成图片时需要包含 <code>IMAGE</code>，也可同时返回文本说明。</>,
-  },
-  {
-    name: 'generationConfig.imageConfig.aspectRatio',
-    type: 'string',
-    default: '1:1',
-    description: <>图片比例，例如 <code>1:1</code>、<code>16:9</code>、<code>9:16</code>、<code>4:3</code>、<code>3:4</code>。</>,
-  },
-  {
-    name: 'generationConfig.imageConfig.imageSize',
-    type: 'string',
-    default: '1K',
-    description: <>输出清晰度，使用大写，例如 <code>1K</code>、<code>2K</code>、<code>4K</code>。</>,
-  },
+const GEMINI_FIELDS: FieldRow[] = [
+  { name: 'contents', type: 'array<Content>', required: true, description: <>Gemini <code>generateContent</code> 输入。</> },
+  { name: 'contents[].parts[].text', type: 'string', required: true, description: <>文字提示词。</> },
+  { name: 'contents[].parts[].inlineData', type: 'object', description: <>参考图可直接以内联 base64 传入，包含 <code>mimeType</code> 与 <code>data</code>。</> },
+  { name: 'contents[].parts[].fileData', type: 'object', description: <>参考图也可用 <code>fileUri</code> 传入，URL 或文件 URI 必须可访问。</> },
+  { name: 'generationConfig.responseModalities', type: 'string[]', description: <>常见写法为 <code>["IMAGE"]</code> 或 <code>["TEXT", "IMAGE"]</code>。</> },
+  { name: 'generationConfig.responseFormat.image.aspectRatio', type: 'string', description: <>官方比例值，例如 <code>1:1</code>、<code>16:9</code>、<code>9:16</code>、<code>4:3</code>、<code>3:4</code>。</> },
+  { name: 'generationConfig.responseFormat.image.imageSize', type: 'string', description: <>部分 Gemini 3 图片模型支持 <code>1K</code>、<code>2K</code>、<code>4K</code>。</> },
 ]
 
 export default function ImagesPage() {
   return (
     <DocPage
       path="/docs/api/images"
-      title="Google 图片生成"
-      description="使用 gpt88.cc 的 Google / Gemini 图片生成能力，支持文生图与图生图。"
+      title="图片生成 API"
+      description="按 OpenAI 官方图片 API 与 Gemini 官方 generateContent 图片 API 分开说明，修正模型 ID、参数名、端点与返回结构。"
       headings={[
-        { id: 'endpoint', text: '端点与认证', level: 2 },
-        { id: 'text-to-image', text: '文生图', level: 2 },
-        { id: 'image-to-image', text: '图生图', level: 2 },
-        { id: 'gemini-native', text: 'Gemini 原生 generateContent', level: 2 },
-        { id: 'fields', text: '请求字段', level: 2 },
-        { id: 'tips', text: '使用提醒', level: 2 },
+        { id: 'overview', text: '先分清两套接口', level: 2 },
+        { id: 'openai', text: 'OpenAI 官方图片 API', level: 2 },
+        { id: 'openai-edit', text: 'OpenAI 图片编辑', level: 2 },
+        { id: 'gemini', text: 'Gemini 官方图片 API', level: 2 },
+        { id: 'gemini-edit', text: 'Gemini 图生图与编辑', level: 2 },
+        { id: 'fields', text: '字段对照', level: 2 },
+        { id: 'compat', text: 'gpt88.cc 兼容说明', level: 2 },
       ]}
     >
-      <h2 id="endpoint">端点与认证</h2>
-      <EndpointBadge method="POST" path="https://china.claudecoder.me/v1beta/models/NanoBanana2:generateContent" />
+      <h2 id="overview">先分清两套接口</h2>
       <p>
-        请求需携带 <code>Authorization: Bearer &lt;API_KEY&gt;</code>。
-        如果还没有 Key，请先到 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">gpt88.cc 控制台</a> 创建。
+        图片生成文档最容易写错的地方，是把 OpenAI 的图片接口参数和 Gemini 的图片接口参数混在一起。
+        这两套官方接口并不兼容，端点、字段名、模型 ID、返回结构都不同。
       </p>
-      <Callout tone="info" title="图片接口默认使用加速域名">
-        <p>
-          Google 图片生成示例默认使用 <code>https://china.claudecoder.me</code>。
-          如果你的部署环境在海外，也可以在控制台选择海外全球加速线路后替换 Base URL。
-        </p>
-      </Callout>
-
-      <h2 id="text-to-image">文生图</h2>
-      <p>
-        文生图只需要在 <code>contents[].parts[].text</code> 写入提示词，并在
-        <code>generationConfig.imageConfig</code> 里设置画幅比例和清晰度。
-        下面示例使用 <code>NanoBanana2</code> 走 Google/Gemini <code>generateContent</code>
-        生成一张 1:1 图片。
-      </p>
-      <CodeTabs tabs={TEXT_TO_IMAGE_TABS} />
-
-      <h2 id="image-to-image">图生图</h2>
-      <p>
-        图生图在 <code>contents[].parts</code> 中同时传入文字指令和参考图。
-        参考图应是公网可访问 URL；如果你使用临时签名 URL，请确认有效期足够完成请求。
-      </p>
-      <CodeTabs tabs={IMAGE_TO_IMAGE_TABS} />
-
-      <h2 id="gemini-native">Gemini 原生 generateContent</h2>
-      <p>
-        <code>NanoBanana2</code> 与 <code>gemini-3-pro-image-preview</code> 都走 Gemini 原生兼容接口：
-        <code>/v1beta/models/{'{model}'}:generateContent</code>。
-        如果你使用中国调用线路，可把官方 Gemini 域名替换成 <code>https://china.claudecoder.me</code>。
-      </p>
-      <CodeTabs tabs={GEMINI_NATIVE_TABS} />
-      <Callout tone="info" title="返回图片是 base64">
-        <p>
-          Gemini 原生响应中的图片通常在 <code>candidates[].content.parts[].inlineData.data</code>。
-          取出后用 <code>base64 -d</code> 解码即可；macOS 可使用 <code>base64 -D</code>。
-        </p>
-      </Callout>
-
-      <h2 id="fields">请求字段</h2>
-      <FieldTable rows={FIELDS} />
-
-      <Callout tone="warn" title="aspectRatio 是比例，不是像素尺寸">
-        <p>
-          对 <code>NanoBanana2</code>，请使用 <code>imageConfig.aspectRatio</code>
-          传 <code>"1:1"</code> 这类比例值，不要传 <code>"1024x1024"</code>。
-          如果需要控制清晰度，请使用 <code>imageConfig.imageSize</code>。
-        </p>
-      </Callout>
-      <Callout tone="info" title="NanoBanana2 与 Gemini 原生接口的区别">
-        <p>
-          <code>NanoBanana2</code> 是 Google Gemini 图片生成能力的模型别名，
-          也走 <code>/v1beta/models/{'{model}'}:generateContent</code>。
-          它和 <code>gemini-3-pro-image-preview</code> 的主要区别是模型 ID 不同。
-        </p>
-      </Callout>
-
-      <h2 id="tips">使用提醒</h2>
       <ul>
-        <li>图生图失败时，优先检查 <code>fileData.fileUri</code> 是否可公网访问，以及 <code>mimeType</code> 是否和图片格式一致。</li>
-        <li>多张参考图可以继续往 <code>contents[].parts</code> 里追加多个 <code>fileData</code> part。</li>
-        <li>Gemini 原生接口如果返回 <code>401</code>，可把 <code>Authorization: Bearer</code> 改成 <code>x-goog-api-key</code> 重试。</li>
-        <li><code>NanoBanana2</code> 与 <code>gemini-3-pro-image-preview</code> 的 <code>aspectRatio</code> 可用 <code>1:1</code>、<code>16:9</code>、<code>9:16</code>、<code>4:3</code>、<code>3:4</code> 等，<code>imageSize</code> 使用 <code>1K</code>、<code>2K</code>、<code>4K</code>。</li>
-        <li>更多可用图像模型可在 <Link to="/models/">模型导航</Link> 的 Image 分类查看。</li>
+        <li>OpenAI 官方图片 API：走 <code>/v1/images/generations</code> 与 <code>/v1/images/edits</code>。</li>
+        <li>Gemini 官方图片 API：走 <code>/v1/models/{"{model}"}:generateContent</code>。</li>
+        <li>OpenAI 常用字段是 <code>prompt</code>、<code>size</code>、<code>quality</code>、<code>background</code>。</li>
+        <li>Gemini 常用字段是 <code>contents</code>、<code>parts</code>、<code>responseModalities</code>、<code>responseFormat.image</code>。</li>
+      </ul>
+
+      <Callout tone="warn" title="官方模型 ID 与平台别名不要混写">
+        <p>
+          Google 官方文档中，Nano Banana 2 对应的官方模型 ID 是 <code>gemini-3.1-flash-image</code>，
+          Nano Banana Pro 对应 <code>gemini-3-pro-image</code>。如果你在 gpt88.cc 控制台里看到
+          <code>NanoBanana2</code> 这类名字，它属于平台别名，不是 Google 官方文档里的标准模型 ID。
+        </p>
+      </Callout>
+
+      <h2 id="openai">OpenAI 官方图片 API</h2>
+      <EndpointBadge method="POST" path="https://china.claudecoder.me/v1/images/generations" />
+      <p>
+        OpenAI 官方图片接口用于从文本直接生成图片。官方文档当前明确区分
+        <code> generations</code>、<code>edits</code>，并说明从 <code>gpt-image-1</code> 之后开始，
+        Image API 具备更清晰的生成与编辑分工。
+      </p>
+      <CodeTabs tabs={OPENAI_GENERATE_TABS} />
+
+      <Callout tone="info" title="OpenAI 返回结构">
+        <p>
+          Image API 返回的图片数据通常在 <code>data[0].b64_json</code>。默认输出格式是 PNG，
+          也可以请求 JPEG 或 WebP；JPEG / WebP 还支持 <code>output_compression</code>。
+        </p>
+      </Callout>
+
+      <h2 id="openai-edit">OpenAI 图片编辑</h2>
+      <EndpointBadge method="POST" path="https://china.claudecoder.me/v1/images/edits" />
+      <p>
+        OpenAI 官方编辑接口支持三类能力：编辑现有图片、基于参考图生成新图、以及配合 mask 做局部重绘。
+        这一段不要再写成 Gemini 风格的 <code>contents.parts.fileData</code>，因为那是另一套接口。
+      </p>
+      <CodeTabs tabs={OPENAI_EDIT_TABS} />
+
+      <h2 id="gemini">Gemini 官方图片 API</h2>
+      <EndpointBadge method="POST" path="https://china.claudecoder.me/v1/models/gemini-3.1-flash-image:generateContent" />
+      <p>
+        Gemini 官方图片生成走 <code>generateContent</code>。Google 当前官方文档里，Nano Banana 2
+        对应 <code>gemini-3.1-flash-image</code>，Nano Banana Pro 对应 <code>gemini-3-pro-image</code>。
+        对 Gemini 3 图片模型，官方文档使用 <code>responseFormat.image.aspectRatio</code> 与
+        <code>responseFormat.image.imageSize</code> 描述输出尺寸。
+      </p>
+      <CodeTabs tabs={GEMINI_TEXT_TABS} />
+
+      <Callout tone="info" title="Gemini 返回结构">
+        <p>
+          Gemini 生成结果通常在 <code>candidates[].content.parts[].inlineData.data</code> 中返回 base64 图片。
+          Google 官方文档也明确说明，生成图片会带 SynthID 水印。
+        </p>
+      </Callout>
+
+      <h2 id="gemini-edit">Gemini 图生图与编辑</h2>
+      <p>
+        Gemini 图生图仍然走同一个 <code>generateContent</code> 端点，只是把参考图作为
+        <code>inlineData</code> 或 <code>fileData</code> 放进 <code>contents[].parts[]</code>。
+      </p>
+      <CodeTabs tabs={GEMINI_EDIT_TABS} />
+
+      <h2 id="fields">字段对照</h2>
+      <h3>OpenAI 图片 API</h3>
+      <FieldTable rows={OPENAI_FIELDS} />
+      <h3 className="mt-8">Gemini 图片 API</h3>
+      <FieldTable rows={GEMINI_FIELDS} />
+
+      <Callout tone="warn" title="不要再把比例值和像素值混用">
+        <p>
+          OpenAI 的 <code>size</code> 是像素尺寸，例如 <code>1024x1024</code>。
+          Gemini 的 <code>aspectRatio</code> 是比例值，例如 <code>1:1</code>、<code>16:9</code>。
+          这是两套官方文档里最容易混淆、也最容易导致 400 报错的地方。
+        </p>
+      </Callout>
+
+      <h2 id="compat">gpt88.cc 兼容说明</h2>
+      <ul>
+        <li>如果你接入的是 OpenAI 兼容图片模型，例如 <code>gpt-image-2</code>，优先使用 <code>/v1/images/generations</code> 和 <code>/v1/images/edits</code>。</li>
+        <li>如果你接入的是 Google / Gemini 图片模型，优先使用 <code>/v1/models/{"{model}"}:generateContent</code>。</li>
+        <li>如果控制台展示了平台别名，例如 <code>NanoBanana2</code>，请先以控制台的可用模型列表为准，再参考本页理解它映射到哪类官方接口。</li>
+        <li>更多模型入口可在 <Link to="/models/">模型导航</Link> 查看，代码工作流可参考 <Link to="/docs/guides/codex-gpt-image-2-skill/">Codex gpt-image-2 Skill</Link>。</li>
       </ul>
     </DocPage>
   )
