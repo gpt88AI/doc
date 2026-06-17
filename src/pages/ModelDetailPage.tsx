@@ -758,9 +758,9 @@ function requestFieldsForModel(model: ModelEntry): FieldRow[] {
           description: <>生成或编辑图片的文字指令。建议写清主体、风格、构图和不希望改变的内容。</>,
         },
         {
-          name: 'image_urls',
-          type: 'string[]',
-          description: <>图生图参考图 URL 列表。图片需要能被 gpt88.cc 服务端访问。</>,
+          name: 'image',
+          type: 'file | file[]',
+          description: <>图生图参考图文件。OpenAI 官方编辑接口使用上传文件，而不是图片 URL。</>,
         },
         {
           name: 'size',
@@ -1154,7 +1154,7 @@ function ModelRequestExamples({ model }: { model: ModelEntry }) {
       />
       <ExampleGroup
         title="图生图"
-        description="传入 image_urls 作为参考图，在保留主体或风格的基础上继续生成。"
+        description="上传参考图文件，在保留主体或风格的基础上继续生成。"
         tabs={imageToImageTabs}
         highlighted
       />

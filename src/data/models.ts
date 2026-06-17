@@ -1261,59 +1261,48 @@ ${imagePayloadNode}
 console.log(await resp.json());`,
       },
       {
-        label: '图生图 cURL',
-        lang: 'bash',
-        code: `curl ${imageBaseUrl}${endpoint.path} \\
-  -H "Authorization: Bearer $GPT88_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "model": "${modelId}",
-    "prompt": "${editPrompt}",
-    "image_urls": [
-      "https://example.com/reference.png"
-    ],
-${imageParamsJson}
-  }'`,
-      },
-      {
         label: '图生图 Python',
         lang: 'python',
         code: `import requests
 
-resp = requests.post(
-    "${imageBaseUrl}${endpoint.path}",
-    headers={
-        "Authorization": "Bearer YOUR_GPT88_API_KEY",
-        "Content-Type": "application/json",
-    },
-    json={
-        "model": "${modelId}",
-        "prompt": "${editPrompt}",
-        "image_urls": [
-            "https://example.com/reference.png",
-        ],
-${imagePayloadPython}
-    },
-)
+with open("reference.png", "rb") as f:
+    resp = requests.post(
+        "${imageBaseUrl}/v1/images/edits",
+        headers={
+            "Authorization": "Bearer YOUR_GPT88_API_KEY",
+        },
+        files={
+            "image": f,
+        },
+        data={
+            "model": "${modelId}",
+            "prompt": "${editPrompt}",
+            "size": "1536x1024",
+            "quality": "high",
+        },
+    )
 print(resp.json())`,
       },
       {
         label: '图生图 Node.js',
         lang: 'typescript',
-        code: `const resp = await fetch("${imageBaseUrl}${endpoint.path}", {
+        code: `import fs from "node:fs";
+import FormData from "form-data";
+
+const form = new FormData();
+form.append("model", "${modelId}");
+form.append("prompt", "${editPrompt}");
+form.append("size", "1536x1024");
+form.append("quality", "high");
+form.append("image", fs.createReadStream("reference.png"));
+
+const resp = await fetch("${imageBaseUrl}/v1/images/edits", {
   method: "POST",
   headers: {
     Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
-    "Content-Type": "application/json",
+    ...form.getHeaders(),
   },
-  body: JSON.stringify({
-    model: "${modelId}",
-    prompt: "${editPrompt}",
-    image_urls: [
-      "https://example.com/reference.png",
-    ],
-${imagePayloadNode}
-  }),
+  body: form,
 });
 
 console.log(await resp.json());`,
