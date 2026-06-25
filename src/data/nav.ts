@@ -193,6 +193,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '使用 agent.gpt88.cc 生成电商主图、场景图、模特图、详情页素材和批量图片',
       },
       {
+        title: 'GPT-Image-2 生图服务通知',
+        path: '/docs/guides/gpt-image-2-service-notice/',
+        blurb: 'img.gpt88.cc 图片专线、原生 4K 与超分 4K 区别、价格口径和客户场景选型建议',
+      },
+      {
         title: 'Codex 插件 OAuth 登录',
         path: '/docs/guides/codex-plugins-oauth/',
         blurb: '使用 gpt88.cc API Key 后插件不可用时，切回 ChatGPT OAuth 的完整教程',

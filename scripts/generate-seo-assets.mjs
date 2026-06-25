@@ -183,6 +183,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'GPT-Image-2 生图服务通知与选型指南',
+    path: '/docs/guides/gpt-image-2-service-notice',
+    description: '详细说明 img.gpt88.cc 图片加速专线、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。',
+    section: '指南',
+  },
+  {
     title: 'Codex 插件 OAuth 登录',
     path: '/docs/guides/codex-plugins-oauth',
     description: '使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。',
