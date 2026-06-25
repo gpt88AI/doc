@@ -6,9 +6,6 @@ import { CodeBlock } from '../../../components/ui/CodeBlock'
 const RECOMMENDED_LINES = `图片加速专线
   https://img.gpt88.cc
 
-主站控制台
-  https://gpt88.cc
-
 图片工作台
   https://agent.gpt88.cc
 
@@ -85,10 +82,11 @@ export default function GptImage2ServiceNoticePage() {
     <DocPage
       path="/docs/guides/gpt-image-2-service-notice"
       title="GPT-Image-2 生图服务通知与选型指南"
-      description="详细说明 gpt88.cc 的 GPT-Image-2 生图专线、img.gpt88.cc 图片加速域名、原生 4K 与超分 4K 区别、价格策略和适用场景。"
+      description="详细说明 agent.gpt88.cc 的 GPT-Image-2 生图工作台、img.gpt88.cc 图片加速域名、原生 4K 与超分 4K 区别、价格策略和适用场景。"
       headings={[
         { id: 'overview', text: '推荐入口', level: 2 },
         { id: 'line', text: '为什么单独用图片专线', level: 2 },
+        { id: 'account', text: '账号体系说明', level: 2 },
         { id: 'pricing', text: '价格与分辨率策略', level: 2 },
         { id: 'native-vs-upscale', text: '原生 4K 与超分 4K', level: 2 },
         { id: 'scenes', text: '不同客户怎么选', level: 2 },
@@ -99,27 +97,38 @@ export default function GptImage2ServiceNoticePage() {
     >
       <Callout tone="tip" title="结论先看">
         <p>
-          如果你主要做图片生成，优先使用 <code>https://img.gpt88.cc</code>。它是面向
-          <code>gpt-image-2</code> 的图片优选入口，适合批量生图、海报、电商图和自动化对接。
+          如果你主要做图片生成，优先使用 <code>https://agent.gpt88.cc</code>。
+          这篇文档只讲图片工作台与图片专线，不包含文本大模型站点。
         </p>
       </Callout>
 
       <h2 id="overview">推荐入口</h2>
       <p>
-        这套文档涉及三个不同入口，定位不要混淆。文本模型、控制台和图片工作台虽然属于同一体系，
-        但最适合的使用方式并不一样。
+        这套文档只覆盖图片体系。<code>agent.gpt88.cc</code> 是图片工作台，
+        <code>img.gpt88.cc</code> 是图片加速专线。文本大模型站是另一套独立网站，不在本文范围内。
       </p>
       <CodeBlock lang="text" filename="recommended-lines" code={RECOMMENDED_LINES} />
       <ul>
-        <li>
-          <code>gpt88.cc</code>：主站控制台，负责注册、充值、创建 API Key、查看用量和管理模型权限。
-        </li>
         <li>
           <code>agent.gpt88.cc</code>：图片工作台，适合手动生成海报、电商图、场景图、模特图和批量素材。
         </li>
         <li>
           <code>img.gpt88.cc</code>：图片加速域名，适合程序调用 <code>gpt-image-2</code> 图片接口。
         </li>
+      </ul>
+
+      <h2 id="account">账号体系说明</h2>
+      <Callout tone="warn" title="不要混用账号">
+        <p>
+          <code>agent.gpt88.cc</code> 和文本大模型站是两个独立网站，账号体系也独立。
+          不要把两边当成同一个控制台，也不要用文本站的使用习惯来理解图片站。
+          如果你是在图片站里申请、登录或开通图片能力，就只按图片站的账号和权限流程操作。
+        </p>
+      </Callout>
+      <ul>
+        <li>图片站的登录、权限、额度和生成历史，只在图片站内查看。</li>
+        <li>图片站的手动打样、批量生图和 API 对接，都围绕图片工作流展开。</li>
+        <li>如果团队里同时有文本站和图片站，建议分别记录入口、账号和用途，避免误操作。</li>
       </ul>
 
       <h2 id="line">为什么单独用图片专线</h2>
@@ -154,8 +163,8 @@ export default function GptImage2ServiceNoticePage() {
       />
       <Callout tone="info" title="定位区别">
         <p>
-          <code>gpt88.cc</code> 负责“统一模型接入”，<code>agent.gpt88.cc</code> 负责“图片工作台”，
-          <code>img.gpt88.cc</code> 负责“图片接口优先”。三者不是冲突关系，而是分工不同。
+          <code>agent.gpt88.cc</code> 负责“图片工作台”，<code>img.gpt88.cc</code> 负责“图片接口优先”。
+          文本大模型网站和图片站是两套独立产品，不要混在一篇教程里理解。
         </p>
       </Callout>
 
@@ -172,7 +181,7 @@ export default function GptImage2ServiceNoticePage() {
       <Callout tone="warn" title="价格说明">
         <p>
           文档中的 “每张 4 分钱” 代表当前对外说明口径。实际价格、账号权限和活动策略仍以
-          <code>gpt88.cc</code> 控制台展示为准。
+          <code>agent.gpt88.cc</code> 图片站展示为准。
         </p>
       </Callout>
 
@@ -255,7 +264,7 @@ export default function GptImage2ServiceNoticePage() {
 
       <h2 id="workflow">推荐工作流</h2>
       <ol>
-        <li>先在 `agent.gpt88.cc` 手动打样，验证 prompt、构图、风格和商品一致性。</li>
+        <li>先在 <code>agent.gpt88.cc</code> 手动打样，验证 prompt、构图、风格和商品一致性。</li>
         <li>确认方向后，再把稳定的 prompt 模板迁移到 `img.gpt88.cc` 的 API 流程。</li>
         <li>批量素材优先用高性价比方案，封面图、主图、广告图优先用高质量方案。</li>
         <li>需要后期排版的图，先生成无文字底图，再交给设计工具或前端模板加文案。</li>

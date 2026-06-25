@@ -195,7 +195,7 @@ export const DOCS_NAV: NavSection[] = [
       {
         title: 'GPT-Image-2 生图服务通知',
         path: '/docs/guides/gpt-image-2-service-notice/',
-        blurb: 'img.gpt88.cc 图片专线、原生 4K 与超分 4K 区别、价格口径和客户场景选型建议',
+        blurb: 'agent.gpt88.cc 图片工作台、img.gpt88.cc 专线、原生 4K 与超分 4K 区别、价格口径和客户场景选型建议',
       },
       {
         title: 'Codex 插件 OAuth 登录',
