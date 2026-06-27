@@ -198,6 +198,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'agent.gpt88.cc 图片工作台、img.gpt88.cc 专线、原生 4K 与超分 4K 区别、价格口径和客户场景选型建议',
       },
       {
+        title: '生图质量与裁剪避坑',
+        path: '/docs/guides/agent-image-quality-crop-guide/',
+        blurb: '分析 agent.gpt88.cc 生图被裁剪、质量下降、多视图角色设定图失败的原因，并给出修复方案',
+      },
+      {
         title: 'Codex 插件 OAuth 登录',
         path: '/docs/guides/codex-plugins-oauth/',
         blurb: '使用 gpt88.cc API Key 后插件不可用时，切回 ChatGPT OAuth 的完整教程',

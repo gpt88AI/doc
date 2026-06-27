@@ -29,6 +29,7 @@ import CodexParallelAutomationWorkflowPage from './pages/docs/guides/CodexParall
 import CodexProjectFactoryDeliveryPage from './pages/docs/guides/CodexProjectFactoryDeliveryPage'
 import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
 import GptImage2ServiceNoticePage from './pages/docs/guides/GptImage2ServiceNoticePage'
+import AgentImageQualityCropGuidePage from './pages/docs/guides/AgentImageQualityCropGuidePage'
 import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
 import LoopEngineeringGuidePage from './pages/docs/guides/LoopEngineeringGuidePage'
 import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage'
@@ -122,6 +123,7 @@ export default function App() {
           <Route path="guides/complete-integration" element={<CompleteIntegrationGuidePage />} />
           <Route path="guides/agent-image-studio" element={<AgentImageStudioGuidePage />} />
           <Route path="guides/gpt-image-2-service-notice" element={<GptImage2ServiceNoticePage />} />
+          <Route path="guides/agent-image-quality-crop-guide" element={<AgentImageQualityCropGuidePage />} />
           <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
           <Route path="guides/codex-chatgpt-phone-verification" element={<CodexChatgptPhoneVerificationPage />} />
           <Route path="guides/ecc-agent-harness" element={<EccGuidePage />} />

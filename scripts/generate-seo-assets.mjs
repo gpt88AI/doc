@@ -189,6 +189,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'agent.gpt88.cc 生图质量与裁剪避坑指南',
+    path: '/docs/guides/agent-image-quality-crop-guide',
+    description: '分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并给出可执行修复方案。',
+    section: '指南',
+  },
+  {
     title: 'Codex 插件 OAuth 登录',
     path: '/docs/guides/codex-plugins-oauth',
     description: '使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。',
