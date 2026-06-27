@@ -1303,6 +1303,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/models/gpt-5-6-luna/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/models/gpt-5-6-sol/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/models/gpt-5-6-terra/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/models/gpt-5-chat/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>

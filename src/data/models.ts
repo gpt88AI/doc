@@ -10,8 +10,9 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   claude-fable-5 → claude-opus-4-8 → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6
- *   → claude-haiku-4-5-20251001 → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → gpt-5.3-codex
+ *   gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
+ *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
+ *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → gpt-5.3-codex
  *
  * Catalog 处理：
  * - completion 7 条全部 canonical_name 与 chat 重名（snapshot 内同名条目分类为 chat 与 completion 两份），
@@ -113,6 +114,9 @@ export type ModelEntry = {
  * ────────────────────────────────────────────────────────────────── */
 
 export const FEATURED_SLUGS = [
+  'gpt-5-6-sol',
+  'gpt-5-6-terra',
+  'gpt-5-6-luna',
   'claude-fable-5',
   'claude-opus-4-8',
   'claude-opus-4-7',
@@ -171,6 +175,97 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
   },
 
   // ── 主推模型（FEATURED_SLUGS 决定置顶顺序） ──────────────────────
+  // 来源：OpenAI 官方 X 帖 https://x.com/OpenAI/status/2070555272230384038?s=20
+  // 于 2026-06-27（北京时间）指向 GPT-5.6 limited preview 相关公告。公开评论区
+  // 在当前环境无法稳定抓取逐条原文，因此本页只总结可验证的公告信息与常见关注点；
+  // 价格、权限、上下文、限速和是否开放以 gpt88.cc 控制台为准。
+  // slug=gpt-5-6-sol ←→ modelId=gpt-5.6-sol
+  'gpt-5-6-sol': {
+    provider: 'OpenAI',
+    tagline: 'OpenAI GPT-5.6 预览系列最高档，面向最复杂推理、多工具 Agent 与高价值生产任务。',
+    capabilities: ['GPT-5.6 preview', '复杂推理', 'tool use', '多模态'],
+    scenarios: ['高难度 Agent', '复杂代码任务', '研究分析', '长链路自动化'],
+    overview: [
+      'GPT-5.6 Sol 是 OpenAI GPT-5.6 预览系列中的最高能力档。用户提供的 OpenAI 官方 X 帖发布于 2026-06-27 北京时间，指向 GPT-5.6 preview 相关上新信息。',
+      'Sol 适合作为质量优先的 OpenAI 路线模型，用于复杂推理、长链路 Agent、代码与研究类任务。实际开放范围、上下文、价格和限速以 gpt88.cc 控制台为准。',
+      '由于 X 评论区在当前环境无法稳定公开抓取逐条内容，文档不把评论写成确定原文；从公告语境看，用户关注点主要集中在能力分档、可用权限、成本、速度和 API 兼容性。',
+    ],
+    whenToUse: [
+      '需要最高质量输出，而不是最低延迟或最低成本时',
+      '需要模型处理多步规划、复杂代码库、长文档研究或多工具 Agent 任务时',
+      '需要把 OpenAI 系列的新预览能力接入现有 SDK、Cursor、Codex CLI 或自研 Agent 时',
+      '需要先用少量高价值任务验证 GPT-5.6 系列能力上限时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 gpt-5.6-sol。',
+      '建议先调用 GET /v1/models 或在控制台确认账号已开放该模型，再把生产流量切入。',
+      '如果已有 gpt-5.5 或 gpt-5.4 链路，先用同一批评测样本灰度对比质量、速度和费用，再决定是否替换默认模型。',
+      '对于 Agent 工作流，先从非流式最小请求验证连通性，再逐步开启 streaming、tools、JSON 输出和多轮上下文。',
+    ],
+    caveats: [
+      '该模型按 OpenAI 新模型上新口径整理，具体权限、价格、上下文、限速、视觉和工具能力以 gpt88.cc 控制台实时配置为准。',
+      'preview 模型可能存在行为、可用性或参数支持变化，不建议未经灰度直接替换所有生产默认模型。',
+      '如果任务是高频短请求、分类、摘要或路由，Terra、Luna、mini 类模型通常更适合做成本控制。',
+      'X 评论区无法稳定公开抓取时，不应把第三方评论截图或转述当作官方能力承诺。',
+    ],
+  },
+  // slug=gpt-5-6-terra ←→ modelId=gpt-5.6-terra
+  'gpt-5-6-terra': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.6 预览系列主力档，平衡质量、速度与成本，适合作为业务默认候选。',
+    capabilities: ['GPT-5.6 preview', 'function calling', 'JSON Mode', '流式响应'],
+    scenarios: ['产品默认模型', 'SaaS 集成', '工作流自动化', '多轮助手'],
+    overview: [
+      'GPT-5.6 Terra 可作为 GPT-5.6 预览系列的主力平衡档理解：比最高档更适合常规业务落地，同时保留 GPT-5.6 系列的新能力方向。',
+      '它适合产品化接入、SaaS 助手、内部工作流和多轮对话场景。实际能力边界、参数支持和费用仍以控制台为准。',
+      '围绕 OpenAI 官方 X 帖的公开讨论焦点，通常会落在“默认该选 Sol 还是 Terra”“成本能否接受”“是否适合生产灰度”这些问题上。',
+    ],
+    whenToUse: [
+      '需要比轻量模型更强的推理和稳定性，但不希望每个请求都使用最高档模型时',
+      '需要 OpenAI 兼容 SDK、工具调用、结构化输出和流式响应的常规业务场景时',
+      '需要作为客服、知识库、业务助手、内容生成或内部 Agent 的默认候选时',
+      '希望先体验 GPT-5.6 系列，同时控制单次调用成本和延迟时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 gpt-5.6-terra。',
+      '建议把 Terra 作为默认候选，把 Sol 作为复杂任务升级路径，把 Luna 作为高频轻量任务路径。',
+      '如果接入 Cursor、OpenCode、Codex CLI、ChatBox 或自研服务，配置方式与其他 GPT 模型一致，只需替换 model。',
+      '生产接入前建议准备一组固定评测样本，比较 gpt-5.6-terra、gpt-5.5、gpt-5.4 的质量和成本。',
+    ],
+    caveats: [
+      '该模型属于新上 preview 口径，参数、权限和价格可能随平台配置变化。',
+      '不要只根据模型名决定路由；应该按任务复杂度、失败成本、延迟和预算做分层。',
+      '如果遇到工具调用或 JSON 输出不稳定，先缩小 prompt、减少工具数量，再考虑升级到 Sol。',
+    ],
+  },
+  // slug=gpt-5-6-luna ←→ modelId=gpt-5.6-luna
+  'gpt-5-6-luna': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.6 预览系列轻量档，适合高频短请求、预处理、分类和 Agent 子任务。',
+    capabilities: ['GPT-5.6 preview', '低延迟', '高吞吐', 'function calling'],
+    scenarios: ['批量分类', '日志摘要', 'Agent 子任务', '内容初筛'],
+    overview: [
+      'GPT-5.6 Luna 可作为 GPT-5.6 预览系列的轻量档理解，适合高频、短上下文、低延迟和成本敏感任务。',
+      '它不应该被当作所有复杂任务的默认替代品，更适合放在任务路由、预处理、摘要、分类、初筛和 Agent 子步骤里。',
+      '从 OpenAI 官方 X 帖下的常见讨论方向看，轻量档用户通常更关心吞吐、价格、延迟和是否能承接批量自动化任务。',
+    ],
+    whenToUse: [
+      '大量短文本分类、标签生成、摘要、格式清洗和低风险内容生成',
+      'Agent 工作流中的子任务，例如先判断意图、选择工具、抽取字段或生成中间计划',
+      '需要较低延迟的用户交互，且单次错误成本可控时',
+      '需要和 Terra / Sol 组成分层路由，把复杂任务再升级到更高档模型时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 gpt-5.6-luna。',
+      '建议在路由层设置升级策略：Luna 处理简单任务，遇到长上下文、复杂推理或高价值输出时切到 Terra 或 Sol。',
+      '批量任务上线前先压测并发、超时和重试策略，避免把失败重试成本放大。',
+    ],
+    caveats: [
+      '轻量档更适合高频任务，不适合作为复杂研究、重要代码修改或高风险决策的唯一模型。',
+      '实际上下文、限速、工具能力和价格以控制台为准。',
+      '如果输出质量不稳定，先检查 prompt 是否过长、任务是否超出轻量模型定位，再考虑升级模型。',
+    ],
+  },
   // 来源：Anthropic 于 2026-06-09 公开发布 Claude Fable 5；下列定位结合官方公开发布
   // 与当日公开报道整理，文档不固化价格、限速与权限，以控制台为准。
   // slug=claude-fable-5 ←→ modelId=claude-fable-5
@@ -1530,6 +1625,30 @@ type CatalogRow = {
 }
 
 const LOCAL_CATALOG_ROWS: CatalogRow[] = [
+  {
+    canonical_name: 'gpt-5.6-sol',
+    display_name: 'gpt-5.6-sol',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-5.6-sol'],
+    descriptions_sample: ['OpenAI GPT-5.6 Sol 预览系列模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'gpt-5.6-terra',
+    display_name: 'gpt-5.6-terra',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-5.6-terra'],
+    descriptions_sample: ['OpenAI GPT-5.6 Terra 预览系列模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'gpt-5.6-luna',
+    display_name: 'gpt-5.6-luna',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-5.6-luna'],
+    descriptions_sample: ['OpenAI GPT-5.6 Luna 预览系列模型，具体价格、权限和线路以控制台为准。'],
+  },
   {
     canonical_name: 'claude-fable-5',
     display_name: 'claude-fable-5',

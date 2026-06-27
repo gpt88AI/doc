@@ -434,6 +434,24 @@ async function readModels() {
   const snapshot = JSON.parse(await fs.readFile(snapshotPath, 'utf8'))
   const localCatalog = [
     {
+      canonical_name: 'gpt-5.6-sol',
+      display_name: 'gpt-5.6-sol',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
+      canonical_name: 'gpt-5.6-terra',
+      display_name: 'gpt-5.6-terra',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
+      canonical_name: 'gpt-5.6-luna',
+      display_name: 'gpt-5.6-luna',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
       canonical_name: 'claude-fable-5',
       display_name: 'claude-fable-5',
       category: 'chat',
@@ -557,7 +575,7 @@ function markdownLink(page) {
 
 function llmsTxt(modelPages) {
   const featuredModels = modelPages
-    .filter(page => ['claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
+    .filter(page => ['gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 12)
 
   return `# gpt88.cc API 文档

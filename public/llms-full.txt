@@ -235,6 +235,9 @@
 - [gpt-5.4-pro](https://doc.gpt88.cc/models/gpt-5-4-pro/): OpenAI gpt-5.4-pro · CHAT 模型，Model ID: gpt-5.4-pro，接口路径: /v1/chat/completions。
 - [gpt-5.4-xhigh](https://doc.gpt88.cc/models/gpt-5-4-xhigh/): OpenAI gpt-5.4-xhigh · CHAT 模型，Model ID: gpt-5.4-xhigh，接口路径: /v1/chat/completions。
 - [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5/): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
+- [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
+- [gpt-5.6-sol](https://doc.gpt88.cc/models/gpt-5-6-sol/): OpenAI gpt-5.6-sol · CHAT 模型，Model ID: gpt-5.6-sol，接口路径: /v1/chat/completions。
+- [gpt-5.6-terra](https://doc.gpt88.cc/models/gpt-5-6-terra/): OpenAI gpt-5.6-terra · CHAT 模型，Model ID: gpt-5.6-terra，接口路径: /v1/chat/completions。
 - [gpt-5-chat](https://doc.gpt88.cc/models/gpt-5-chat/): OpenAI gpt-5-chat · CHAT 模型，Model ID: gpt-5-chat，接口路径: /v1/chat/completions。
 - [gpt-5-codex](https://doc.gpt88.cc/models/gpt-5-codex/): OpenAI gpt-5-codex · CHAT 模型，Model ID: gpt-5-codex，接口路径: /v1/chat/completions。
 - [gpt-5-codex-mini](https://doc.gpt88.cc/models/gpt-5-codex-mini/): OpenAI gpt-5-codex-mini · CHAT 模型，Model ID: gpt-5-codex-mini，接口路径: /v1/chat/completions。

@@ -76,6 +76,9 @@
 - [claude-sonnet-4-6](https://doc.gpt88.cc/models/claude-sonnet-4-6/): Anthropic claude-sonnet-4-6 · CHAT 模型，Model ID: claude-sonnet-4-6，接口路径: /v1/chat/completions。
 - [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4/): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
 - [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5/): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
+- [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
+- [gpt-5.6-sol](https://doc.gpt88.cc/models/gpt-5-6-sol/): OpenAI gpt-5.6-sol · CHAT 模型，Model ID: gpt-5.6-sol，接口路径: /v1/chat/completions。
+- [gpt-5.6-terra](https://doc.gpt88.cc/models/gpt-5-6-terra/): OpenAI gpt-5.6-terra · CHAT 模型，Model ID: gpt-5.6-terra，接口路径: /v1/chat/completions。
 - [NanoBanana2](https://doc.gpt88.cc/models/nanobanana2/): Google NanoBanana2 · IMAGE 模型，Model ID: NanoBanana2，接口路径: /v1beta/models/NanoBanana2:generateContent。
 
 ## API 摘要

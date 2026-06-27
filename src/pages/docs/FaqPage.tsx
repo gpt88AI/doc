@@ -129,7 +129,7 @@ const FAQ: QA[] = [
     q: '默认推荐用哪个模型？',
     a: (
       <p>
-        无特殊场景时，建议优先从 <code>claude-fable-5</code> 或{' '}
+        无特殊场景时，建议优先从 <code>gpt-5.6-sol</code> 或{' '}
         <code>gpt-5.4</code> 起步。轻量任务可选{' '}
         <code>claude-haiku-4-5-20251001</code> 或{' '}
         <code>gpt-5.4-mini</code>；如果你更偏好开源 / 高性价比路线，
