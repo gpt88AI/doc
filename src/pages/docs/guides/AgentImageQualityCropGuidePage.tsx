@@ -11,6 +11,26 @@ const SAFE_PROMPT = `构图要求：
 - 如果是角色设定图，每个视图独立占一个清晰分栏，分栏之间留出空隙
 - 无文字、无水印、无 UI、无边框`
 
+const SIZE_GUIDE = `gpt-image-2 防裁剪 size 选择示例：
+
+横屏海报 / 视频封面：
+- size: 1536x1024
+- prompt: wide shot, centered composition, full subject visible
+
+竖屏海报 / 小红书 / 角色全身：
+- size: 1024x1536
+- prompt: full body shot, ample negative space around the subject
+
+方形电商主图：
+- size: 1024x1024
+- prompt: centered product shot, product occupies about 70% of the image height
+
+自定义尺寸先检查：
+- 宽和高尽量使用 16 的倍数
+- 最长边不要超过 3840px
+- 宽高比不要超过 3:1 或 1:3
+- 最终发布平台如果会二次裁剪，额外保留 10%-15% 安全留白`
+
 const PRODUCT_PROMPT = `电商产品防裁剪提示词模板：
 
 一瓶高端护肤精华液，完整瓶身与泵头都必须出现在画面内。
@@ -63,10 +83,11 @@ const BATCH_CHECKLIST = `批量生图前检查：
 1. 是否先用 1-3 张小批量验证过构图
 2. 是否明确了最终比例：1:1、3:4、4:5、9:16、16:9 或横向设定表
 3. 是否写了“完整主体可见”和“安全留白”
-4. 是否避免了 close-up、macro、half body 与 full body 的互相冲突
-5. 是否把复杂任务拆成多个步骤，而不是一张图里塞太多要求
-6. 是否准备了失败重试策略：扩图、重绘、拆分生成、后期拼版
-7. 是否保留了最终可复用的 prompt、尺寸、质量和样图编号`
+4. 自定义 size 是否满足 16 倍数、最长边不超过 3840px、宽高比不超过 3:1
+5. 是否避免了 close-up、macro、half body 与 full body 的互相冲突
+6. 是否把复杂任务拆成多个步骤，而不是一张图里塞太多要求
+7. 是否准备了失败重试策略：扩图、重绘、拆分生成、后期拼版
+8. 是否保留了最终可复用的 prompt、尺寸、质量和样图编号`
 
 const CAUSE_ANALYSIS = `问题链路可以拆成 5 层：
 
@@ -131,6 +152,7 @@ export default function AgentImageQualityCropGuidePage() {
         { id: 'root-cause', text: '问题出现原因分析', level: 2 },
         { id: 'crop-causes', text: '为什么会被裁剪', level: 2 },
         { id: 'safe-area', text: '防裁剪核心写法', level: 2 },
+        { id: 'size-control', text: 'size 参数控制画布', level: 2 },
         { id: 'prompt-optimization', text: '用大模型优化英文提示词', level: 2 },
         { id: 'quality', text: '质量下降怎么处理', level: 2 },
         { id: 'character-sheet', text: '角色设定图专项', level: 2 },
@@ -266,6 +288,75 @@ export default function AgentImageQualityCropGuidePage() {
         <p>
           “不要裁剪”是必要的，但不够。模型需要知道主体应该占多大、放在哪里、四周留多少空间。
           只写 negative prompt，通常不如“完整主体 + 中远景 + 70% 占比 + 12% 留白”稳定。
+        </p>
+      </Callout>
+
+      <h2 id="size-control">size 参数控制画布</h2>
+      <p>
+        对 <code>gpt-image-2</code> 这类支持多宽高比的图片模型来说，<code>size</code> 是防裁剪的第一层控制。
+        它决定模型从一开始就在什么画布比例里构图，而不是先生成方图再后期硬裁切。
+      </p>
+      <DocTable
+        headers={['目标画面', '推荐 size', '为什么这样选']}
+        rows={[
+          [
+            '横屏海报、视频封面、网页 banner',
+            <code>1536x1024</code>,
+            '横向画布给左右两侧留出空间，适合多人、场景、横向商品组合和标题留白。',
+          ],
+          [
+            '竖屏海报、角色全身、小红书封面',
+            <code>1024x1536</code>,
+            '竖向画布更适合完整人物、长条商品、服装、角色设定和移动端首图。',
+          ],
+          [
+            '电商主图、头像、图标、社媒方图',
+            <code>1024x1024</code>,
+            '方图适合主体居中展示，但要明确主体占比，避免模型把商品或人物放得过大。',
+          ],
+          [
+            '极宽或极长构图',
+            '自定义尺寸',
+            '先确认平台支持该尺寸，再检查宽高是否为 16 的倍数、最长边是否超过 3840px、宽高比是否超过 3:1。',
+          ],
+        ]}
+      />
+      <CodeBlock lang="text" filename="gpt-image-2-size-guide" code={SIZE_GUIDE} />
+      <p>
+        选对 <code>size</code> 只能解决画布比例问题，不能自动保证镜头距离正确。如果 prompt 里仍然写了
+        <code>close-up</code>、<code>macro shot</code> 或强烈的近景摄影词，主体仍可能被放大到切边。
+        所以尺寸要和构图词一起使用。
+      </p>
+      <DocTable
+        headers={['构图词', '适合场景', '作用']}
+        rows={[
+          [
+            <code>full body shot</code>,
+            '人物、模特、角色设定',
+            '提醒模型展示完整身体，减少头、脚、衣摆被切掉的概率。',
+          ],
+          [
+            <code>wide shot</code>,
+            '场景图、海报、多人构图',
+            '拉远镜头，让主体和背景都有空间。',
+          ],
+          [
+            <code>un-cropped</code>,
+            '商品、人物、道具边缘容易被切的图',
+            '直接声明不要裁切主体，但仍建议配合主体占比和安全留白。',
+          ],
+          [
+            <code>centered composition with ample negative space around the subject</code>,
+            '电商主图、封面、海报',
+            '让主体居中并缩小，四周保留可裁切缓冲区。',
+          ],
+        ]}
+      />
+      <Callout tone="tip" title="尺寸和提示词要成套使用">
+        <p>
+          防裁剪的稳定组合是：先用 <code>size</code> 选择正确画布，再在 prompt 里写
+          <code>full body shot</code>、<code>wide shot</code>、<code>centered composition</code>、
+          <code>ample negative space</code> 和明确的安全留白。
         </p>
       </Callout>
 

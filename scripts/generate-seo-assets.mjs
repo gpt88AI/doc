@@ -191,7 +191,7 @@ const docs = [
   {
     title: 'agent.gpt88.cc 生图质量与裁剪避坑指南',
     path: '/docs/guides/agent-image-quality-crop-guide',
-    description: '分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并补充使用大模型优化英文提示词的可执行方案。',
+    description: '分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并补充 gpt-image-2 size 参数、构图词和英文提示词优化方案。',
     section: '指南',
   },
   {
