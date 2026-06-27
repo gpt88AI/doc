@@ -33,6 +33,20 @@ const CHARACTER_PROMPT = `国漫 3D 角色设定图防裁剪提示词模板：
 材质细节：陶瓷裂纹、玉化质地、冷色能量流、PBR 质感。
 无文字、无水印、无 UI 元素。`
 
+const PROMPT_OPTIMIZER = `你是专业 AI 生图提示词工程师。请把下面的中文需求改写成适合 GPT-Image-2 / 图片生成模型使用的英文提示词。
+
+要求：
+1. 保留原始需求中的主体、风格、场景、材质和用途
+2. 优先补全构图信息：camera distance, subject placement, subject scale, safe margins
+3. 明确画幅比例和安全留白，避免裁剪主体
+4. 删除互相冲突的词，例如 close-up 和 full body 同时出现
+5. 不要输出解释，只输出最终英文 prompt
+
+中文需求：
+一张电商护肤精华液主图，高级感，白色背景，玻璃瓶，完整瓶身，不要裁剪，适合淘宝和小红书使用`
+
+const ENGLISH_PROMPT_EXAMPLE = `A premium ecommerce product photo of a luxury skincare serum bottle, full bottle and pump clearly visible, centered composition, medium distance product shot, the bottle occupies about 70% of the image height, with 12% safe margin on all sides. Clean white studio background, soft diffused lighting, realistic glass material, sharp product edges, premium commercial photography style. Do not crop the cap, pump, bottle bottom, label, or package edges. No text, no watermark, no UI elements.`
+
 const API_SAFE_CURL = `curl https://img.gpt88.cc/v1/images/generations \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
@@ -117,6 +131,7 @@ export default function AgentImageQualityCropGuidePage() {
         { id: 'root-cause', text: '问题出现原因分析', level: 2 },
         { id: 'crop-causes', text: '为什么会被裁剪', level: 2 },
         { id: 'safe-area', text: '防裁剪核心写法', level: 2 },
+        { id: 'prompt-optimization', text: '用大模型优化英文提示词', level: 2 },
         { id: 'quality', text: '质量下降怎么处理', level: 2 },
         { id: 'character-sheet', text: '角色设定图专项', level: 2 },
         { id: 'repair', text: '已经裁剪怎么修', level: 2 },
@@ -251,6 +266,50 @@ export default function AgentImageQualityCropGuidePage() {
         <p>
           “不要裁剪”是必要的，但不够。模型需要知道主体应该占多大、放在哪里、四周留多少空间。
           只写 negative prompt，通常不如“完整主体 + 中远景 + 70% 占比 + 12% 留白”稳定。
+        </p>
+      </Callout>
+
+      <h2 id="prompt-optimization">用大模型优化英文提示词</h2>
+      <p>
+        如果你不是每天写生图 prompt，建议先把中文需求交给大模型整理，再把优化后的英文提示词用于
+        <code>agent.gpt88.cc</code> 或 <code>img.gpt88.cc</code>。这样做的重点不是“翻译”，而是让大模型帮你补全构图、
+        镜头距离、主体占比、安全留白、材质和负面限制。
+      </p>
+      <DocTable
+        headers={['做法', '作用', '注意事项']}
+        rows={[
+          [
+            '先写中文业务需求',
+            '保证商品卖点、角色设定、用途和风格不会遗漏。',
+            '中文需求可以口语化，但必须说清楚最终用途，例如电商主图、海报封面、角色设定图。',
+          ],
+          [
+            '让大模型改写成英文 prompt',
+            '英文提示词通常更容易稳定表达镜头、构图、材质、摄影和安全边距等标准图像术语。',
+            '要求模型只输出最终 prompt，避免把解释文字一起放进生图输入框。',
+          ],
+          [
+            '人工检查冲突词',
+            <span>
+              重点检查 <code>close-up</code>、<code>macro shot</code>、<code>full body</code>、
+              <code>wide shot</code> 这类镜头词是否互相冲突。
+            </span>,
+            '如果目标是完整主体，优先保留 medium distance、full subject visible、safe margin。',
+          ],
+          [
+            '保留可复用模板',
+            '批量生图时可以稳定复用同一套构图和质量约束。',
+            '每次只替换主体、风格或场景，不要每批都重新发明整段 prompt。',
+          ],
+        ]}
+      />
+      <CodeBlock lang="text" filename="prompt-optimizer-template" code={PROMPT_OPTIMIZER} />
+      <CodeBlock lang="text" filename="optimized-english-prompt" code={ENGLISH_PROMPT_EXAMPLE} />
+      <Callout tone="tip" title="推荐使用英文提示词">
+        <p>
+          图片模型对摄影、构图和设计类英文术语更稳定，例如 <code>centered composition</code>、
+          <code>medium distance product shot</code>、<code>safe margin</code>、<code>full subject visible</code>。
+          中文可以用于表达业务需求，最终生图 prompt 建议用英文版本。
         </p>
       </Callout>
 

@@ -38,7 +38,7 @@
 - [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
 - [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
 - [GPT-Image-2 生图服务通知与选型指南](https://doc.gpt88.cc/docs/guides/gpt-image-2-service-notice/): 详细说明 img.gpt88.cc 图片加速专线、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。
-- [agent.gpt88.cc 生图质量与裁剪避坑指南](https://doc.gpt88.cc/docs/guides/agent-image-quality-crop-guide/): 分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并给出可执行修复方案。
+- [agent.gpt88.cc 生图质量与裁剪避坑指南](https://doc.gpt88.cc/docs/guides/agent-image-quality-crop-guide/): 分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并补充使用大模型优化英文提示词的可执行方案。
 - [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth/): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
 - [ChatGPT / Codex 手机号二次验证解决方法](https://doc.gpt88.cc/docs/guides/codex-chatgpt-phone-verification/): ChatGPT OAuth 或 Codex 登录反复要求手机号二次验证时，使用 Advanced Account Security、passkey 和恢复密钥降低对短信验证码的依赖。
 - [ECC Agent 工作流教程](https://doc.gpt88.cc/docs/guides/ecc-agent-harness/): 基于 affaan-m/ECC 的详细教程，讲清 ECC 是什么、如何选择插件或手动安装路径、如何避免重复安装，以及如何和 gpt88.cc、Codex、Claude Code 工作流配合。
