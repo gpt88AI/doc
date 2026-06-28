@@ -64,7 +64,7 @@ export const DOCS_NAV: NavSection[] = [
       {
         title: '更新日志',
         path: '/docs/changelog/',
-        blurb: '持续记录 sub2api 项目的产品更新、重要修复、图片工作台、模型广场、计费和部署变化',
+        blurb: '持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费和部署变化',
       },
     ],
   },

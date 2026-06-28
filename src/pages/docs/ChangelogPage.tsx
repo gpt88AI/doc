@@ -4,13 +4,12 @@ import { Callout } from '../../components/ui/Callout'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 
 const UPDATE_SOURCE = `更新来源：
-- 项目目录：/Users/nft/sub2api
-- 当前分支：feat/gpt88-1panel
-- 记录方式：按 sub2api Git 提交与实际功能主题整理
+- 产品范围：GPT88 平台、gpt88.cc 控制台、agent.gpt88.cc 图片工作台和相关 API 能力
+- 记录方式：按实际功能主题整理
 - 更新原则：只记录用户可感知功能、重要修复、部署能力、计费和 API 行为变化
 
 维护建议：
-1. 每次 sub2api 发布或完成一组功能后，在本页新增日期分组
+1. 每次 GPT88 发布或完成一组功能后，在本页新增日期分组
 2. 先写用户能看懂的变化，再补技术细节
 3. 不把纯内部临时提交、无用户影响的中间提交写进正式 changelog
 4. 涉及计费、模型、图片生成、支付、部署的变化优先记录`
@@ -284,8 +283,8 @@ export default function ChangelogPage() {
   return (
     <DocPage
       path="/docs/changelog"
-      title="Sub2API 更新日志"
-      description="持续记录 /Users/nft/sub2api 项目的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。"
+      title="GPT88 更新日志"
+      description="持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。"
       headings={[
         { id: 'source', text: '更新来源', level: 2 },
         { id: 'latest', text: '最新更新', level: 2 },
@@ -295,13 +294,13 @@ export default function ChangelogPage() {
     >
       <Callout tone="info" title="页面用途">
         <p>
-          这个页面用于持续记录 <code>/Users/nft/sub2api</code> 项目的对外可感知更新。
+          这个页面用于持续记录 GPT88 的对外可感知更新。
           以后每次完成一组功能或发布前，都可以把 Git 提交整理成用户能看懂的 changelog 条目。
         </p>
       </Callout>
 
       <h2 id="source">更新来源</h2>
-      <CodeBlock lang="text" filename="sub2api-changelog-source" code={UPDATE_SOURCE} />
+      <CodeBlock lang="text" filename="gpt88-changelog-source" code={UPDATE_SOURCE} />
 
       <h2 id="latest">最新更新</h2>
       <div className="not-prose my-6 rounded-xl border border-white/8 bg-white/[0.025] p-5">

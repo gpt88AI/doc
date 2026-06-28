@@ -18,7 +18,7 @@
 - [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口。
 - [快速开始](https://doc.gpt88.cc/docs/quickstart/): 5 分钟内完成第一次 gpt88.cc 模型调用，只需替换 base_url 与 API Key。
 - [认证与计费](https://doc.gpt88.cc/docs/auth/): API Key、人民币余额、Token 电力计费、用量与配额说明。
-- [Sub2API 更新日志](https://doc.gpt88.cc/docs/changelog/): 持续记录 sub2api 项目的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。
+- [GPT88 更新日志](https://doc.gpt88.cc/docs/changelog/): 持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。
 - [FAQ](https://doc.gpt88.cc/docs/faq/): gpt88.cc 兼容性、安全、计费、可靠性和排障常见问题。
 
 ## API Reference

@@ -33,9 +33,9 @@ const docs = [
     section: '入门',
   },
   {
-    title: 'Sub2API 更新日志',
+    title: 'GPT88 更新日志',
     path: '/docs/changelog',
-    description: '持续记录 sub2api 项目的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。',
+    description: '持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。',
     section: '入门',
   },
   {
