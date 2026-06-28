@@ -291,6 +291,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: '6 个视频创作工具与工作流',
+    path: '/docs/guides/video-creator-tools-workflow',
+    description: '整理 Excalidraw、Screen Studio、Rotato、Jacky Illustration、Jacky Motion、MD Publish 六个视频创作工具的定位、适用场景和组合工作流。',
+    section: '指南',
+  },
+  {
     title: 'video-generation-skills 总览',
     path: '/docs/guides/video-generation-skills-overview',
     description: '基于 adoin/video-generation-skills 仓库整理的系列文档总览，讲清 4 个 AI 视频生成 skill 的定位、边界、组合方式和适用场景。',

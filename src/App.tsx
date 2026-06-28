@@ -36,6 +36,7 @@ import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage
 import GiffgaffGuidePage from './pages/docs/guides/GiffgaffGuidePage'
 import UsVirtualCardGuidePage from './pages/docs/guides/UsVirtualCardGuidePage'
 import AiVideoStoryboardGuidePage from './pages/docs/guides/AiVideoStoryboardGuidePage'
+import VideoCreatorToolsWorkflowPage from './pages/docs/guides/VideoCreatorToolsWorkflowPage'
 import VideoGenerationSkillsOverviewPage from './pages/docs/guides/VideoGenerationSkillsOverviewPage'
 import VideoGenerationSkillsInstallPage from './pages/docs/guides/VideoGenerationSkillsInstallPage'
 import VideoGenerationSkillsPromptDirectorPage from './pages/docs/guides/VideoGenerationSkillsPromptDirectorPage'
@@ -140,6 +141,7 @@ export default function App() {
           <Route path="guides/giffgaff-sim-guide" element={<GiffgaffGuidePage />} />
           <Route path="guides/us-virtual-card-guide" element={<UsVirtualCardGuidePage />} />
           <Route path="guides/ai-video-storyboard-guide" element={<AiVideoStoryboardGuidePage />} />
+          <Route path="guides/video-creator-tools-workflow" element={<VideoCreatorToolsWorkflowPage />} />
           <Route path="guides/video-generation-skills-overview" element={<VideoGenerationSkillsOverviewPage />} />
           <Route path="guides/video-generation-skills-install" element={<VideoGenerationSkillsInstallPage />} />
           <Route path="guides/video-generation-skills-prompt-director" element={<VideoGenerationSkillsPromptDirectorPage />} />

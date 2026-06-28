@@ -283,6 +283,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流',
       },
       {
+        title: '6 个视频创作工具',
+        path: '/docs/guides/video-creator-tools-workflow/',
+        blurb: '整理 Excalidraw、Screen Studio、Rotato、Jacky Illustration、Jacky Motion、MD Publish 的定位和组合工作流',
+      },
+      {
         title: 'video-generation-skills 总览',
         path: '/docs/guides/video-generation-skills-overview/',
         blurb: '讲清 adoin/video-generation-skills 的 4 个 skill 模块、适用场景、组合方式和仓库结构',
