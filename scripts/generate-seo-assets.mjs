@@ -33,6 +33,12 @@ const docs = [
     section: '入门',
   },
   {
+    title: 'Sub2API 更新日志',
+    path: '/docs/changelog',
+    description: '持续记录 sub2api 项目的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。',
+    section: '入门',
+  },
+  {
     title: 'FAQ',
     path: '/docs/faq',
     description: 'gpt88.cc 兼容性、安全、计费、可靠性和排障常见问题。',

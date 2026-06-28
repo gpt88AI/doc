@@ -6,6 +6,7 @@ import OverviewPage from './pages/docs/OverviewPage'
 import QuickstartPage from './pages/docs/QuickstartPage'
 import AuthPage from './pages/docs/AuthPage'
 import FaqPage from './pages/docs/FaqPage'
+import ChangelogPage from './pages/docs/ChangelogPage'
 import ChatCompletionsPage from './pages/docs/api/ChatCompletionsPage'
 import ListModelsPage from './pages/docs/api/ListModelsPage'
 import ImagesPage from './pages/docs/api/ImagesPage'
@@ -93,6 +94,7 @@ export default function App() {
           <Route path="quickstart" element={<QuickstartPage />} />
         <Route path="auth" element={<AuthPage />} />
         <Route path="faq" element={<FaqPage />} />
+        <Route path="changelog" element={<ChangelogPage />} />
         <Route path="integrations" element={<IntegrationsHubPage />} />
         <Route path="integrations/chat/chatbox" element={<ChatboxPage />} />
         <Route path="integrations/chat/cherry-studio" element={<CherryStudioPage />} />

@@ -31,6 +31,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/changelog/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/faq/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
