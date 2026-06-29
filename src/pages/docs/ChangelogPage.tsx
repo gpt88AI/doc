@@ -29,9 +29,87 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
-    date: '2026-06-28',
-    summary: '首页、价格文案、模型广场和图片工作台安全画幅继续优化。',
+    date: '2026-06-29',
+    summary: '图片工作台构图继续收紧，NOWPayments 最小充值金额与后台配置完成同步。',
     items: [
+      {
+        type: '修复',
+        title: '图片工作台构图收紧',
+        detail: '进一步收紧图片工作台的安全构图逻辑，减少主体过大、边缘裁切、提示词安全框被弱化等问题，提升批量生图稳定性。',
+        commits: ['8a6be308f'],
+      },
+      {
+        type: '修复',
+        title: 'NOWPayments 最小金额同步',
+        detail: '同步 NOWPayments 最小充值金额配置，让后台支付渠道限制、前端提示和实际下单校验保持一致。',
+        commits: ['421837255'],
+      },
+    ],
+  },
+  {
+    date: '2026-06-28',
+    summary: '新增 NOWPayments 加密支付能力，并优化模型广场、首页价格文案和图片工作台安全画幅。',
+    items: [
+      {
+        type: '新增',
+        title: 'NOWPayments 加密支付渠道',
+        detail: '新增 NOWPayments 加密支付提供方，支持后台配置支付渠道、用户侧加密货币充值和支付回调处理。',
+        commits: ['5ad7856c4'],
+      },
+      {
+        type: '修复',
+        title: 'NOWPayments 加密支付可用性恢复',
+        detail: '修复 NOWPayments 在加密支付链路中的可用性问题，保证用户可以正常进入加密充值流程。',
+        commits: ['2273ed4ce'],
+      },
+      {
+        type: '修复',
+        title: '加密充值汇率换算',
+        detail: '修复加密充值时 USD/CNY 汇率应用逻辑，减少充值金额和到账金额口径不一致的问题。',
+        commits: ['538dd0066'],
+      },
+      {
+        type: '修复',
+        title: 'NOWPayments 结账体验优化',
+        detail: '优化 NOWPayments 加密支付结账流程，减少用户在选择币种、确认金额和跳转支付时的困惑。',
+        commits: ['7919953bc'],
+      },
+      {
+        type: '修复',
+        title: '加密支付方式选择保持',
+        detail: '修复编辑支付配置时加密支付方式选择被丢失的问题，避免管理员保存后配置回退。',
+        commits: ['735d4a8f3'],
+      },
+      {
+        type: '修复',
+        title: '支付渠道限额保持',
+        detail: '修复编辑支付渠道时 provider 支付限额被覆盖的问题，保持后台配置和支付渠道真实限制一致。',
+        commits: ['626bd3c98'],
+      },
+      {
+        type: '修复',
+        title: 'NOWPayments 最小金额错误提示',
+        detail: '优化 NOWPayments 最小金额不足时的错误提示，让用户知道需要提高充值金额，而不是只看到模糊失败。',
+        commits: ['054309b46'],
+      },
+      {
+        type: '修复',
+        title: 'NOWPayments 不再要求手动地址',
+        detail: '修复 NOWPayments 支付流程中错误要求手动填写加密地址的问题，减少用户操作步骤。',
+        commits: ['cc31ee15e'],
+      },
+      {
+        type: '调整',
+        title: '默认关闭手动加密对账',
+        detail: '默认禁用手动加密支付对账，并在自动支付渠道中跳过 NOWPayments 手动对账流程，降低误处理风险。',
+        commits: ['94e557c01', '8e2363d56'],
+      },
+      {
+        type: '优化',
+        title: '模型广场移动端布局优化',
+        detail: '优化模型广场在移动端的卡片、间距和列表展示，让手机用户更容易浏览模型。',
+        commits: ['fc3c95c20'],
+      },
       {
         type: '优化',
         title: '首页价格促销文案更新',
