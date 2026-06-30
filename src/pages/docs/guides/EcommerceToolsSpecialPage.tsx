@@ -27,6 +27,29 @@ const STARTER_FLOW = `电商工具专题建议顺序：
 4. 把常用模板、场景、素材沉淀下来
 5. 最后再进入工具箱、批量工作流和成本控制`
 
+const DELIVERY_CHECKLIST = `单个商品出图交付检查：
+1. 白底主图是否主体完整、边缘干净、无裁切
+2. 场景图是否符合渠道气质，而不是只追求“好看”
+3. 详情图是否围绕卖点拆图，而不是把所有信息塞进一张
+4. 模特图是否保持服装版型、颜色和材质一致
+5. 不同渠道输出比例是否正确：商品图、详情图、社媒图分别检查
+6. 是否保留可复用 prompt、模板、参考图和失败案例说明`
+
+const BATCH_PLAYBOOK = `批量商品工作流：
+1. 先挑一个代表 SKU 做标准样板
+2. 样板通过后保存成模板和场景
+3. 再按品类分批次生成，不同品类不要混在同一批
+4. 每批先跑 3 到 5 张小样，不要直接全量开跑
+5. 对失败案例做原因归档：构图、裁切、材质漂移、颜色偏差
+6. 通过素材中心沉淀底图、场景图、模特图、详情模块和活动图`
+
+const COST_RULES = `成本控制原则：
+1. 白底图、主图修整优先用更稳定的低复杂度工作流
+2. 场景图和模特图才使用更重的图生图或高质量档位
+3. 复杂详情页先拆模块，不要一张图塞完全部卖点
+4. 失败率高的任务先降复杂度，再升清晰度
+5. 高分辨率只给最终交付图，不给所有测试图`
+
 type Topic = {
   no: string
   title: string
@@ -51,6 +74,11 @@ const TOPICS: Topic[] = [
           建议先看 <Link to="/docs/guides/agent-image-studio/">Agent 图片工作台</Link>，
           理解工作台、场景、模型、结果区和导出区之间的关系，再进入具体图像任务。
         </p>
+        <ul>
+          <li>先区分你要做的是主图、场景图、详情图、模特图，还是整套营销素材。</li>
+          <li>先找入口，再找参数。不要一上来就在错误工作台里反复试 prompt。</li>
+          <li>第一次使用时只关心“能不能稳定出图”，先不要追求复杂视觉风格。</li>
+        </ul>
       </>
     ),
   },
@@ -69,6 +97,11 @@ const TOPICS: Topic[] = [
           如果你做的是商品首图，优先选择主体清晰、背景简单、裁剪风险低的任务，再参考{' '}
           <Link to="/docs/guides/agent-image-quality-crop-guide/">生图质量与裁剪避坑</Link> 控制安全留白。
         </p>
+        <ol>
+          <li>先选单商品、简单背景任务，不要第一次就做模特换装或多商品拼图。</li>
+          <li>先生成 1 张，再确认下载、保存和复用链路正常。</li>
+          <li>通过后再复制 prompt，扩展到同商品的场景图和详情模块图。</li>
+        </ol>
       </>
     ),
   },
@@ -87,6 +120,15 @@ const TOPICS: Topic[] = [
           一个简单原则是：先按业务目标选工作台，再按画面任务选场景。不要用“模特试穿”的思路去做“白底主图”，
           也不要用“海报视觉”的思路去做“平台详情图”。
         </p>
+        <DocTable
+          headers={['任务类型', '优先工作台 / 场景', '不要这样做']}
+          rows={[
+            ['白底主图', '白底、抠图、轻修整场景', '不要直接用海报风或复杂棚拍风格起步'],
+            ['场景图', '商品入场景、品牌氛围、平台营销图场景', '不要让场景抢掉商品主体'],
+            ['模特图', '试穿、上身、模特替换场景', '不要在没有清晰参考图时直接强改版型'],
+            ['详情图', '卖点模块、局部特写、信息拆图场景', '不要把所有卖点堆进一张长图'],
+          ]}
+        />
       </>
     ),
   },
@@ -105,6 +147,15 @@ const TOPICS: Topic[] = [
           可以直接结合 <Link to="/docs/guides/agent-image-quality-crop-guide/">生图质量与裁剪避坑</Link>
           里的 size、构图词和英文提示词优化模板，把商品主图、场景图、模特图分别沉淀成固定模板。
         </p>
+        <DocTable
+          headers={['提示词模块', '应该写什么', '常见错误']}
+          rows={[
+            ['主体', '商品名、材质、颜色、结构、不能改变的元素', '只写“一个高级产品图”，不写具体结构'],
+            ['构图', '主体占比、镜头距离、安全留白、比例', '只写“高清、好看”，不写画面结构'],
+            ['背景', '白底、棚拍、厨房、卧室、户外、平台风格', '背景比商品更抢戏'],
+            ['限制', '无文字、无水印、不改颜色、不裁切标签', '没有限制词，导致品牌元素漂移'],
+          ]}
+        />
       </>
     ),
   },
@@ -122,6 +173,11 @@ const TOPICS: Topic[] = [
         <p>
           参考图要优先保证清晰、无遮挡、主体完整。如果是做商品图，最好明确写“不改变瓶型、比例、颜色和标签位置”。
         </p>
+        <ul>
+          <li>白底主图转场景图：适合先保住商品结构，再增加营销氛围。</li>
+          <li>服装图转模特图：适合做上身效果，但必须先保证版型、肩线、长度不漂移。</li>
+          <li>包装图换背景：适合节日活动和平台专题页，但要锁住标签和包装边缘。</li>
+        </ul>
       </>
     ),
   },
@@ -139,6 +195,11 @@ const TOPICS: Topic[] = [
         <p>
           对商家团队而言，模板还可以让不同运营、设计、投手使用同一风格基线，避免每个人都重新发明提示词。
         </p>
+        <ol>
+          <li>先把通过率最高的一版主图存为模板。</li>
+          <li>再按品类拆模板：护肤、女装、男装、数码、家居不要混用一套场景。</li>
+          <li>最后再按活动节点补模板：618、七夕、开学季、黑五等。</li>
+        </ol>
       </>
     ),
   },
@@ -156,6 +217,14 @@ const TOPICS: Topic[] = [
         <p>
           最有效的做法是给素材和提示词都加标签，例如：白底图、3C、服装女装、模特半身、618、七夕、黑五。
         </p>
+        <DocTable
+          headers={['沉淀对象', '建议内容', '价值']}
+          rows={[
+            ['素材中心', '白底底图、优质场景图、局部特写、模特参考图', '减少重复上传和重复筛选'],
+            ['提示词库', '稳定 prompt、失败案例、修复方案、节日模板', '让团队复用更快'],
+            ['标签体系', '品类、渠道、节日、风格、比例', '后续批量检索和复用更顺'],
+          ]}
+        />
       </>
     ),
   },
@@ -173,6 +242,12 @@ const TOPICS: Topic[] = [
         <p>
           一条常见链路是：抠图 → 白底图修整 → 场景图扩图 → 细节消除 → 批量换背景。这样比一次性大 prompt 更稳定。
         </p>
+        <ul>
+          <li>抠图：先解决边缘脏、背景不干净的问题。</li>
+          <li>扩图：解决安全留白不足和平台裁切问题。</li>
+          <li>消除：解决桌面杂物、反光、水印、穿帮元素。</li>
+          <li>批量：把同一商品复制成多渠道、多背景、多活动版本。</li>
+        </ul>
       </>
     ),
   },
@@ -192,6 +267,7 @@ const TOPICS: Topic[] = [
           <Link to="/docs/guides/video-generation-skills-white-background-scaling/">电商白底图裂变</Link>{' '}
           和 <Link to="/docs/guides/video-generation-skills-product-cg/">产品 CG 工作流</Link> 继续扩展。
         </p>
+        <CodeBlock lang="text" filename="ecommerce-batch-playbook" code={BATCH_PLAYBOOK} />
       </>
     ),
   },
@@ -211,6 +287,7 @@ const TOPICS: Topic[] = [
           <Link to="/docs/guides/gpt-image-2-service-notice/">GPT-Image-2 生图服务通知</Link>，
           把充值、图片成本和分辨率选择一起理解，避免一边批量出图一边盲目试错。
         </p>
+        <CodeBlock lang="text" filename="ecommerce-cost-rules" code={COST_RULES} />
       </>
     ),
   },
@@ -266,24 +343,22 @@ export default function EcommerceToolsSpecialPage() {
     <DocPage
       path="/docs/guides/ecommerce-tools-special"
       title="电商工具专题教程"
-      description="参考 huatua.com/studio/guide 的教程结构，整理成一套本地电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流和计费。"
+      description="整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。"
       headings={[
         { id: 'overview', text: '专题结构', level: 2 },
         { id: 'beginner', text: '入门阶段', level: 2 },
         { id: 'intermediate', text: '进阶阶段', level: 2 },
         { id: 'advanced', text: '高阶阶段', level: 2 },
         { id: 'path', text: '建议学习顺序', level: 2 },
+        { id: 'delivery', text: '交付检查', level: 2 },
         { id: 'related', text: '相关文档', level: 2 },
       ]}
     >
       <Callout tone="info" title="专题定位">
         <p>
           这个专题把电商 AI 作图相关教程按“入门、进阶、高阶”三阶段重组，适合电商、跨境、外贸、
-          小红书、TikTok 和平台详情图生产场景。内容结构参考了{' '}
-          <a href="https://huatua.com/studio/guide" target="_blank" rel="noreferrer">
-            huatua.com/studio/guide
-          </a>{' '}
-          的教程目录，但已整理成本地可长期维护的 GPT88 文档页。
+          小红书、TikTok 和平台详情图生产场景。重点不是列目录，而是把“怎么开始、怎么稳定出图、怎么批量复用、
+          怎么做成本控制”讲成一套可执行工作流。
         </p>
       </Callout>
 
@@ -334,6 +409,12 @@ export default function EcommerceToolsSpecialPage() {
 
       <h2 id="path">建议学习顺序</h2>
       <CodeBlock lang="text" filename="ecommerce-tools-learning-path" code={STARTER_FLOW} />
+
+      <h2 id="delivery">交付检查</h2>
+      <p>
+        电商图的完成标准不是“好看就行”，而是能稳定上线、能适配渠道、能复用。建议每次交付前都按同一张清单检查。
+      </p>
+      <CodeBlock lang="text" filename="ecommerce-delivery-checklist" code={DELIVERY_CHECKLIST} />
 
       <h2 id="related">相关文档</h2>
       <ul>

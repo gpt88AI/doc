@@ -200,7 +200,7 @@ export const DOCS_NAV: NavSection[] = [
       {
         title: '电商工具专题教程',
         path: '/docs/guides/ecommerce-tools-special/',
-        blurb: '把电商 AI 作图教程按入门、进阶、高阶三阶段重组，覆盖提示词、图生图、模板、工具箱、批量和计费',
+        blurb: '一套更详细的电商工具实操教程，覆盖入门、提示词、图生图、模板、工具箱、批量工作流和交付检查',
       },
       {
         title: 'GPT-Image-2 生图服务通知',

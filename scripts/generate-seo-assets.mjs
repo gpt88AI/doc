@@ -191,7 +191,7 @@ const docs = [
   {
     title: '电商工具专题教程',
     path: '/docs/guides/ecommerce-tools-special',
-    description: '参考 huatua.com/studio/guide 的教程结构，整理成一套本地电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流和计费。',
+    description: '整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。',
     section: '指南',
   },
   {
