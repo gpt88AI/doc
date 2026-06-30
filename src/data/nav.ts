@@ -198,6 +198,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '使用 agent.gpt88.cc 生成电商主图、场景图、模特图、详情页素材和批量图片',
       },
       {
+        title: '电商工具专题教程',
+        path: '/docs/guides/ecommerce-tools-special/',
+        blurb: '把电商 AI 作图教程按入门、进阶、高阶三阶段重组，覆盖提示词、图生图、模板、工具箱、批量和计费',
+      },
+      {
         title: 'GPT-Image-2 生图服务通知',
         path: '/docs/guides/gpt-image-2-service-notice/',
         blurb: 'agent.gpt88.cc 图片工作台、img.gpt88.cc 专线、原生 4K 与超分 4K 区别、价格口径和客户场景选型建议',
