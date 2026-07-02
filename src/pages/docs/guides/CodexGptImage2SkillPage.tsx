@@ -166,7 +166,7 @@ export default function CodexGptImage2SkillPage() {
       <p>
         推荐默认使用 <code>https://china.claudecoder.me/v1/images/generations</code>。
         如果你的机器在海外，也可以把 Base URL 换成{' '}
-        <code>https://aiapi.up.railway.app/v1</code> 或{' '}
+        <code>https://test1122.up.railway.app/v1</code> 或{' '}
         <code>https://ai.orbitlink.me/v1</code>。
       </p>
 

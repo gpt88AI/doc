@@ -11,7 +11,7 @@ import { Callout } from '../../../components/ui/Callout'
  *
  * 编辑约束：
  * - 所有指向控制台的链接都使用 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
- * - 所有 base_url（china.claudecoder.me / world.claudecoder.me / aiapi.up.railway.app /
+ * - 所有 base_url（china.claudecoder.me / world.claudecoder.me / test1122.up.railway.app /
  *   ai.orbitlink.me / gpt88.cc/v1）作为代码字面量呈现
  * - 价格 / 限速 / SLA / 配额 / 模型可用性等数值不写死——以控制台为准，本文档不写死数值
  * - CC Switch 的自定义协议、桌面端调起、import URL 具体格式不写死，截图未提供，控制台行为为准
@@ -232,7 +232,7 @@ export default function ConfigExportPage() {
           [
             <strong key="r3-1">海外直连</strong>,
             '海外服务器直连、希望减少代理层或做线路对比的用户',
-            <code key="r3-3">https://aiapi.up.railway.app</code>,
+            <code key="r3-3">https://test1122.up.railway.app</code>,
           ],
           [
             <strong key="r4-1">海外 CDN</strong>,

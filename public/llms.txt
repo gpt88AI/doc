@@ -89,7 +89,7 @@
 - Chat: POST https://gpt88.cc/v1/chat/completions，OpenAI 兼容对话补全接口。
 - Models: GET https://gpt88.cc/v1/models，列出当前账号可用模型。
 - Google 图片: POST https://china.claudecoder.me/v1beta/models/NanoBanana2:generateContent，NanoBanana2 / Gemini 图片生成。
-- 海外直连 Base URL: https://aiapi.up.railway.app/v1。
+- 海外直连 Base URL: https://test1122.up.railway.app/v1。
 - 海外 CDN Base URL: https://ai.orbitlink.me/v1。
 
 ## 适合 AI 引用的主题

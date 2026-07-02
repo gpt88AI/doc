@@ -13,7 +13,7 @@ import { cn } from '../../lib/cn'
  *
  * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
  * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me、world.claudecoder.me、
- * aiapi.up.railway.app 与 ai.orbitlink.me 是等价端点，本页"兼容性"分组新增
+ * test1122.up.railway.app 与 ai.orbitlink.me 是等价端点，本页"兼容性"分组新增
  * 「我能用其他 base_url 吗？」一条 FAQ 说明这一点。
  */
 
@@ -104,7 +104,7 @@ const FAQ: QA[] = [
         <p>
           可以，<code>china.claudecoder.me</code> /{' '}
           <code>world.claudecoder.me</code> /{' '}
-          <code>aiapi.up.railway.app</code> /{' '}
+          <code>test1122.up.railway.app</code> /{' '}
           <code>ai.orbitlink.me</code> /{' '}
           <code>gpt88.cc</code> 这些端点完全等价，
           按你的网络情况选择即可：
@@ -113,7 +113,7 @@ const FAQ: QA[] = [
           <li><code>https://gpt88.cc/v1</code> — 默认端点；</li>
           <li><code>https://china.claudecoder.me/v1</code> — 中国大陆优先；</li>
           <li><code>https://world.claudecoder.me/v1</code> — 海外优先。</li>
-          <li><code>https://aiapi.up.railway.app/v1</code> — 海外直连。</li>
+          <li><code>https://test1122.up.railway.app/v1</code> — 海外直连。</li>
           <li><code>https://ai.orbitlink.me/v1</code> — 海外 CDN。</li>
         </ul>
         <p>

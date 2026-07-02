@@ -22,7 +22,7 @@ Google / Gemini 图片生成
   Endpoint: /v1beta/models/{MODEL}:generateContent
 
 海外可选
-  海外直连: https://aiapi.up.railway.app/v1
+  海外直连: https://test1122.up.railway.app/v1
   海外 CDN: https://ai.orbitlink.me/v1`
 
 const CURL_SMOKE_TEST = `export GPT88_API_KEY="sk-你的-gpt88-api-key"

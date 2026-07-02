@@ -24,7 +24,7 @@ X / Twitter: https://x.com/webstarchina
 Telegram: https://t.me/+CtlYILkGaY1jYzBl
 默认 OpenAI 兼容 Base URL: https://gpt88.cc/v1
 图片加速 Base URL: https://china.claudecoder.me
-海外直连 Base URL: https://aiapi.up.railway.app/v1
+海外直连 Base URL: https://test1122.up.railway.app/v1
 海外 CDN Base URL: https://ai.orbitlink.me/v1
 ```
 

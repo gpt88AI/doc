@@ -56,7 +56,7 @@ const QUICK_CURL = `curl https://gpt88.cc/v1/chat/completions \\
 const BASE_URL_SNIPPET = `# 只需要改这一行
 base_url = "https://gpt88.cc/v1"
 
-# 海外直连: https://aiapi.up.railway.app/v1
+# 海外直连: https://test1122.up.railway.app/v1
 # 海外 CDN: https://ai.orbitlink.me/v1
 
 # model 按需切换，Claude / GPT / Gemini / DeepSeek 等都走同一个入口
@@ -191,7 +191,7 @@ export default function LandingPage() {
                 用同一套协议接入全部已开通模型。
               </p>
               <p className="mt-2 text-xs text-ink-400">
-                海外可选 <code className="font-mono text-violet-100">aiapi.up.railway.app</code> 直连
+                海外可选 <code className="font-mono text-violet-100">test1122.up.railway.app</code> 直连
                 或 <code className="font-mono text-violet-100">ai.orbitlink.me</code> CDN。
               </p>
             </div>

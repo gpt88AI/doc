@@ -9,7 +9,7 @@ const siteUrl = (process.env.SITE_URL || 'https://doc.gpt88.cc').replace(/\/$/, 
 const consoleUrl = 'https://gpt88.cc'
 const apiBaseUrl = `${consoleUrl}/v1`
 const imageBaseUrl = 'https://china.claudecoder.me'
-const overseasDirectBaseUrl = 'https://aiapi.up.railway.app/v1'
+const overseasDirectBaseUrl = 'https://test1122.up.railway.app/v1'
 const overseasCdnBaseUrl = 'https://ai.orbitlink.me/v1'
 const buildDate = new Date().toISOString().slice(0, 10)
 

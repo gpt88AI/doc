@@ -14,7 +14,7 @@ import { Callout } from '../../../components/ui/Callout'
  * - 所有指向控制台的链接都使用 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
  * - 不写死价格 / 限速 / SLA / 配额 / 模型上下文长度等数字；统一说明以控制台为准
  * - 强调等价端点：gpt88.cc / china.claudecoder.me / world.claudecoder.me /
- *   aiapi.up.railway.app / ai.orbitlink.me
+ *   test1122.up.railway.app / ai.orbitlink.me
  * - 强调 OpenAI 风格用 /v1，Claude 风格用根地址
  */
 
@@ -264,7 +264,7 @@ export default function Gpt88TutorialPage() {
         <li><code>https://gpt88.cc/v1</code></li>
         <li><code>https://china.claudecoder.me/v1</code></li>
         <li><code>https://world.claudecoder.me/v1</code></li>
-        <li><code>https://aiapi.up.railway.app/v1</code></li>
+        <li><code>https://test1122.up.railway.app/v1</code></li>
         <li><code>https://ai.orbitlink.me/v1</code></li>
       </ul>
       <p>它们共享同一套 API Key、模型和字段语义，只是网络路由不同。</p>
