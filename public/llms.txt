@@ -35,6 +35,7 @@
 - [沉浸式翻译集成](https://doc.gpt88.cc/docs/integrations/platforms/immersive-translate/): 把 gpt88.cc 接入沉浸式翻译等浏览器扩展。
 - [配置文件导出](https://doc.gpt88.cc/docs/guides/config-export/): 把 API Key、模型和线路打包给 Claude Code、Cursor、Python SDK、CC Switch 等工具。
 - [gpt88 AI 中转站](https://doc.gpt88.cc/docs/guides/gpt88-ai-proxy/): gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。
+- [gpt88 产品与文档地图](https://doc.gpt88.cc/docs/guides/gpt88-docs-map/): 把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。
 - [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
 - [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
 - [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。

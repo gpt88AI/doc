@@ -183,6 +183,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '面向搜索和 AI 引擎的 gpt88 AI 中转站介绍、接入方式、Base URL 与常见问题',
       },
       {
+        title: 'gpt88 产品与文档地图',
+        path: '/docs/guides/gpt88-docs-map/',
+        blurb: '把主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图',
+      },
+      {
         title: '通用教程',
         path: '/docs/guides/gpt88-tutorial/',
         blurb: 'Claude 与 OpenAI 通用接入、模型选择、线路选择、工具接入',

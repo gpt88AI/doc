@@ -171,6 +171,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'gpt88 产品与文档地图',
+    path: '/docs/guides/gpt88-docs-map',
+    description: '把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。',
+    section: '指南',
+  },
+  {
     title: 'gpt88.cc 通用教程',
     path: '/docs/guides/gpt88-tutorial',
     description: 'Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。',

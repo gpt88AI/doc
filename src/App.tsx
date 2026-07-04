@@ -16,6 +16,7 @@ import PythonSdkPage from './pages/docs/sdk/PythonPage'
 import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
 import ConfigExportPage from './pages/docs/guides/ConfigExportPage'
 import Gpt88AiProxyPage from './pages/docs/guides/Gpt88AiProxyPage'
+import Gpt88DocsMapPage from './pages/docs/guides/Gpt88DocsMapPage'
 import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
 import CompleteIntegrationGuidePage from './pages/docs/guides/CompleteIntegrationGuidePage'
 import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
@@ -123,6 +124,7 @@ export default function App() {
           {/* 指南：how-to 类教程 */}
           <Route path="guides/config-export" element={<ConfigExportPage />} />
           <Route path="guides/gpt88-ai-proxy" element={<Gpt88AiProxyPage />} />
+          <Route path="guides/gpt88-docs-map" element={<Gpt88DocsMapPage />} />
           <Route path="guides/gpt88-tutorial" element={<Gpt88TutorialPage />} />
           <Route path="guides/complete-integration" element={<CompleteIntegrationGuidePage />} />
           <Route path="guides/agent-image-studio" element={<AgentImageStudioGuidePage />} />
