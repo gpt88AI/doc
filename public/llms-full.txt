@@ -56,6 +56,12 @@
 - [gpt88 产品与文档地图](https://doc.gpt88.cc/docs/guides/gpt88-docs-map/): 把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。
 - [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
 - [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
+- [WorkRally Skills 总览](https://doc.gpt88.cc/docs/guides/workrally-overview/): 基于 Tencent/workrally 官方 Skill 与参考文档整理，完整说明 WorkRally CLI 的能力边界、安装方式、场景路由和各专项教程入口。
+- [WorkRally AI 生成指南](https://doc.gpt88.cc/docs/guides/workrally-ai-generation/): 详细说明 WorkRally 的图片生成、视频生成、三种视频驱动模式、画布自动占位、任务轮询和模型动态获取规则。
+- [WorkRally 无限画布指南](https://doc.gpt88.cc/docs/guides/workrally-canvas-guide/): 详细说明 WorkRally Infinite Canvas 的节点模型、画板规则、build-draft 增量合并与覆盖模式，以及项目和画布的区别。
+- [WorkRally 上传与素材管理](https://doc.gpt88.cc/docs/guides/workrally-upload-assets/): 详细说明 WorkRally 的 upload、asset、material 三层素材体系，以及上传入库、角色/道具/场景归档和画布用图流程。
+- [WorkRally 场次与剧集工作流](https://doc.gpt88.cc/docs/guides/workrally-shot-workflow/): 详细说明 WorkRally 的 project、series、shot 结构，以及场次创建、角色识别、模型配置、批量生成、结果查询和多场次工作流。
+- [WorkRally 常见坑点与错误排查](https://doc.gpt88.cc/docs/guides/workrally-common-pitfalls/): 汇总 WorkRally CLI 最容易出错的 10 类问题，帮助快速判断项目与画布、上传入库、URL、模型、资产树和节点结构问题。
 - [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
 - [电商工具专题教程](https://doc.gpt88.cc/docs/guides/ecommerce-tools-special/): 整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。
 - [GPT-Image-2 生图服务通知与选型指南](https://doc.gpt88.cc/docs/guides/gpt-image-2-service-notice/): 详细说明 img.gpt88.cc 图片加速专线、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。

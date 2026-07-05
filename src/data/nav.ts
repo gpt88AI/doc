@@ -198,6 +198,36 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '从 API Key、Base URL、客户端配置到用量核对和错误排查的端到端教程',
       },
       {
+        title: 'WorkRally Skills 总览',
+        path: '/docs/guides/workrally-overview/',
+        blurb: '基于 Tencent/workrally 官方 Skill 与 references 整理的总览页，覆盖安装、能力边界和阅读路线',
+      },
+      {
+        title: 'WorkRally AI 生成指南',
+        path: '/docs/guides/workrally-ai-generation/',
+        blurb: '图片生成、视频生成、三种视频驱动模式、模型动态获取和任务轮询',
+      },
+      {
+        title: 'WorkRally 无限画布指南',
+        path: '/docs/guides/workrally-canvas-guide/',
+        blurb: '8 种节点类型、画板规则、build-draft 增量合并与全量覆盖',
+      },
+      {
+        title: 'WorkRally 上传与素材管理',
+        path: '/docs/guides/workrally-upload-assets/',
+        blurb: 'upload、asset、material 三层素材体系与标准三步流程',
+      },
+      {
+        title: 'WorkRally 场次与剧集工作流',
+        path: '/docs/guides/workrally-shot-workflow/',
+        blurb: 'project、series、shot、角色识别、模型配置、批量生成和结果查询',
+      },
+      {
+        title: 'WorkRally 常见坑点与错误排查',
+        path: '/docs/guides/workrally-common-pitfalls/',
+        blurb: '10 类高频错误与排查顺序，重点解决项目 / 画布、上传、URL、模型和节点结构问题',
+      },
+      {
         title: 'Agent 图片工作台',
         path: '/docs/guides/agent-image-studio/',
         blurb: '使用 agent.gpt88.cc 生成电商主图、场景图、模特图、详情页素材和批量图片',

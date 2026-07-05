@@ -189,6 +189,42 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'WorkRally Skills 总览',
+    path: '/docs/guides/workrally-overview',
+    description: '基于 Tencent/workrally 官方 Skill 与参考文档整理，完整说明 WorkRally CLI 的能力边界、安装方式、场景路由和各专项教程入口。',
+    section: '指南',
+  },
+  {
+    title: 'WorkRally AI 生成指南',
+    path: '/docs/guides/workrally-ai-generation',
+    description: '详细说明 WorkRally 的图片生成、视频生成、三种视频驱动模式、画布自动占位、任务轮询和模型动态获取规则。',
+    section: '指南',
+  },
+  {
+    title: 'WorkRally 无限画布指南',
+    path: '/docs/guides/workrally-canvas-guide',
+    description: '详细说明 WorkRally Infinite Canvas 的节点模型、画板规则、build-draft 增量合并与覆盖模式，以及项目和画布的区别。',
+    section: '指南',
+  },
+  {
+    title: 'WorkRally 上传与素材管理',
+    path: '/docs/guides/workrally-upload-assets',
+    description: '详细说明 WorkRally 的 upload、asset、material 三层素材体系，以及上传入库、角色/道具/场景归档和画布用图流程。',
+    section: '指南',
+  },
+  {
+    title: 'WorkRally 场次与剧集工作流',
+    path: '/docs/guides/workrally-shot-workflow',
+    description: '详细说明 WorkRally 的 project、series、shot 结构，以及场次创建、角色识别、模型配置、批量生成、结果查询和多场次工作流。',
+    section: '指南',
+  },
+  {
+    title: 'WorkRally 常见坑点与错误排查',
+    path: '/docs/guides/workrally-common-pitfalls',
+    description: '汇总 WorkRally CLI 最容易出错的 10 类问题，帮助快速判断项目与画布、上传入库、URL、模型、资产树和节点结构问题。',
+    section: '指南',
+  },
+  {
     title: 'GPT88 Agent 图片工作台教程',
     path: '/docs/guides/agent-image-studio',
     description: '使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。',

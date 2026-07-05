@@ -19,6 +19,12 @@ import Gpt88AiProxyPage from './pages/docs/guides/Gpt88AiProxyPage'
 import Gpt88DocsMapPage from './pages/docs/guides/Gpt88DocsMapPage'
 import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
 import CompleteIntegrationGuidePage from './pages/docs/guides/CompleteIntegrationGuidePage'
+import WorkrallyOverviewPage from './pages/docs/guides/WorkrallyOverviewPage'
+import WorkrallyAiGenerationPage from './pages/docs/guides/WorkrallyAiGenerationPage'
+import WorkrallyCanvasGuidePage from './pages/docs/guides/WorkrallyCanvasGuidePage'
+import WorkrallyUploadAssetsPage from './pages/docs/guides/WorkrallyUploadAssetsPage'
+import WorkrallyShotWorkflowPage from './pages/docs/guides/WorkrallyShotWorkflowPage'
+import WorkrallyCommonPitfallsPage from './pages/docs/guides/WorkrallyCommonPitfallsPage'
 import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
 import CodexChatgptPhoneVerificationPage from './pages/docs/guides/CodexChatgptPhoneVerificationPage'
 import EccGuidePage from './pages/docs/guides/EccGuidePage'
@@ -127,6 +133,12 @@ export default function App() {
           <Route path="guides/gpt88-docs-map" element={<Gpt88DocsMapPage />} />
           <Route path="guides/gpt88-tutorial" element={<Gpt88TutorialPage />} />
           <Route path="guides/complete-integration" element={<CompleteIntegrationGuidePage />} />
+          <Route path="guides/workrally-overview" element={<WorkrallyOverviewPage />} />
+          <Route path="guides/workrally-ai-generation" element={<WorkrallyAiGenerationPage />} />
+          <Route path="guides/workrally-canvas-guide" element={<WorkrallyCanvasGuidePage />} />
+          <Route path="guides/workrally-upload-assets" element={<WorkrallyUploadAssetsPage />} />
+          <Route path="guides/workrally-shot-workflow" element={<WorkrallyShotWorkflowPage />} />
+          <Route path="guides/workrally-common-pitfalls" element={<WorkrallyCommonPitfallsPage />} />
           <Route path="guides/agent-image-studio" element={<AgentImageStudioGuidePage />} />
           <Route path="guides/ecommerce-tools-special" element={<EcommerceToolsSpecialPage />} />
           <Route path="guides/gpt-image-2-service-notice" element={<GptImage2ServiceNoticePage />} />
