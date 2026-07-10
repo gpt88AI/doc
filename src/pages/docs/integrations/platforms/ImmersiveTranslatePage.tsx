@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import ImmersiveTranslatePageEn from '../../../en/ImmersiveTranslatePageEn'
 
 const PREPARE = `1. 已安装沉浸式翻译浏览器扩展
 2. 已准备 gpt88.cc API Key
@@ -60,6 +62,10 @@ const TROUBLESHOOTING = `1. 翻译按钮没反应
    - 使用固定系统提示词`
 
 export default function ImmersiveTranslateIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <ImmersiveTranslatePageEn />
+
   return (
     <DocPage
       path="/docs/integrations/platforms/immersive-translate"

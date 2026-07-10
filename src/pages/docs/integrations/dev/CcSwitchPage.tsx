@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import CcSwitchPageEn from '../../../en/CcSwitchPageEn'
 
 const PREPARE = `1. 已安装 CC-Switch
 2. 已安装需要被路由的工具，例如 Codex CLI / Claude Code / Cursor
@@ -62,6 +64,10 @@ const TROUBLESHOOTING = `1. 工具仍然走旧地址
    - 再排查 CC-Switch 转发层`
 
 export default function CcSwitchIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CcSwitchPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/dev/cc-switch"

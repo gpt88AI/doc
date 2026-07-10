@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Check, Copy } from 'lucide-react'
 import { cn } from '../../lib/cn'
+import { useLocale } from '../../lib/locale'
 
 /**
  * 多语言代码切换器
@@ -28,6 +29,7 @@ export function CodeTabs({
   tabs: CodeTab[]
   className?: string
 }) {
+  const { locale } = useLocale()
   const [idx, setIdx] = useState(0)
   const [copied, setCopied] = useState(false)
   const active = tabs[idx]
@@ -77,7 +79,7 @@ export function CodeTabs({
         <button
           type="button"
           onClick={onCopy}
-          aria-label="复制代码"
+          aria-label={locale === 'en' ? 'Copy code' : '复制代码'}
           className="rounded p-1.5 text-ink-300 hover:bg-white/5 hover:text-ink-100"
         >
           {copied ? (

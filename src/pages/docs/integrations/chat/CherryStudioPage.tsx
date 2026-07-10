@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import CherryStudioPageEn from '../../../en/CherryStudioPageEn'
 
 const QUICK_SETUP = `1. 打开 Cherry Studio
 2. 进入模型提供商 / API 配置
@@ -41,6 +43,10 @@ const TROUBLESHOOTING = `1. 模型列表空白
    - 先关掉知识库和多轮长上下文`
 
 export default function CherryStudioPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CherryStudioPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/chat/cherry-studio"

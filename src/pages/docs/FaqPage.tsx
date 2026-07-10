@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
 import { cn } from '../../lib/cn'
+import { useLocale } from '../../lib/locale'
+import FaqPageEn from '../en/FaqPageEn'
 
 /**
  * 文档：FAQ
@@ -290,6 +292,9 @@ function FaqItem({ item, defaultOpen }: { item: QA; defaultOpen?: boolean }) {
 }
 
 export default function FaqPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <FaqPageEn />
+
   // 按 group 分组渲染
   const groups = Array.from(new Set(FAQ.map(f => f.group)))
 

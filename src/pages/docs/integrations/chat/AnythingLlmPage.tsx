@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import AnythingLlmPageEn from '../../../en/AnythingLlmPageEn'
 
 const SETUP = `Provider: OpenAI Compatible
 Base URL: https://gpt88.cc/v1
@@ -29,6 +31,10 @@ const TROUBLESHOOTING = `1. 知识库问答结果不稳定
    - 检查环境变量是否被覆盖`
 
 export default function AnythingLlmPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <AnythingLlmPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/chat/anythingllm"

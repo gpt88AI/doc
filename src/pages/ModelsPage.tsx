@@ -21,6 +21,7 @@ import {
 } from '../data/models'
 import { cn } from '../lib/cn'
 import { Seo } from '../components/seo/Seo'
+import { localizePath, useLocale } from '../lib/locale'
 
 /**
  * 模型导航主页 (M3 + Human msg-20260509-qoz7ey/jwfia3/8ivlof 全量 catalog)
@@ -46,7 +47,15 @@ const CATEGORY_ICON: Record<ModelCategory, React.ComponentType<{ className?: str
   audio: AudioLines,
 }
 
+const CATEGORY_EN: Record<ModelCategory, { title: string; subtitle: string }> = {
+  chat: { title: 'Chat', subtitle: 'General chat, reasoning, code, and agent workflows.' },
+  image: { title: 'Image', subtitle: 'Text-to-image and image-driven generation workflows.' },
+  video: { title: 'Video', subtitle: 'Video generation, animation, and cinematic outputs.' },
+  audio: { title: 'Audio', subtitle: 'Speech, transcription, and audio processing models.' },
+}
+
 export default function ModelsPage() {
+  const { locale } = useLocale()
   const [category, setCategory] = useState<ModelCategory>('chat')
   const [query, setQuery] = useState('')
 
@@ -81,11 +90,61 @@ export default function ModelsPage() {
     [featured, query],
   )
 
+  const t =
+    locale === 'en'
+      ? {
+          title: 'Models',
+          description:
+            'Browse available chat, image, video, and audio models on gpt88.cc. Copy the model ID and use it with the OpenAI-compatible API.',
+          badge: 'Model Navigation',
+          heading: 'Find the right model for your use case',
+          intro:
+            'Featured models are curated manually. The full marketplace catalog below can be filtered by name, provider, capability, or use case.',
+          search: 'Search opus / sonnet / gpt-5 / kimi / glm …',
+          featured: 'Featured Models',
+          featuredMeta: `Curated selection · ${filteredFeatured.length}/${featured.length} visible`,
+          noFeatured: `No featured model matches "${query}". Try the full catalog below.`,
+          all: 'All Models',
+          allMeta: `${nonFeatured.length} total · marketplace snapshot`,
+          current: `${filteredAll.length} matches`,
+          recommended: 'Featured',
+          vendors: 'vendors',
+          scenarios: 'Suggested use cases',
+          fallback: 'Capabilities and scenarios may vary by account',
+          empty: query
+            ? `No model matched "${query}". Try another keyword or category.`
+            : 'No model is currently available in this category.',
+          clear: 'Clear search',
+        }
+      : {
+          title: '模型导航',
+          description: '按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型，复制 Model ID 即可接入 OpenAI 兼容 API。',
+          badge: '模型导航',
+          heading: '找到适合你场景的模型',
+          intro:
+            '上方为人工主推，下方为 marketplace 全量目录（按 vendors_count 排序）。可按模型名、provider、能力或场景搜索；所有模型均通过 OpenAI 兼容协议接入，复制 model id 即可调用。',
+          search: '搜索 opus / sonnet / gpt-5 / kimi / glm …',
+          featured: '主推模型',
+          featuredMeta: `Human 运营选定 · 共 ${filteredFeatured.length}/${featured.length} 个`,
+          noFeatured: `主推模型没有匹配 “${query}”，可看下方「全部模型」的搜索结果。`,
+          all: '全部模型',
+          allMeta: `共 ${nonFeatured.length} 个 · 数据来自 marketplace 快照`,
+          current: `当前共 ${filteredAll.length} 个匹配`,
+          recommended: '推荐',
+          vendors: '家上游',
+          scenarios: '推荐场景',
+          fallback: '能力 / 场景以控制台为准',
+          empty: query ? `没有匹配 "${query}" 的模型，换个关键词或切换分类试试。` : '该分类下暂无模型，敬请期待。',
+          clear: '清空搜索',
+        }
+
+  const categoryMeta = locale === 'en' ? CATEGORY_EN : CATEGORY_META
+
   return (
     <>
       <Seo
-        title="模型导航"
-        description="按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型，复制 Model ID 即可接入 OpenAI 兼容 API。"
+        title={t.title}
+        description={t.description}
         path="/models"
       />
       <div className="relative isolate">
@@ -101,21 +160,19 @@ export default function ModelsPage() {
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-200">
             <Sparkles className="h-3.5 w-3.5" />
-            模型导航
+            {t.badge}
           </span>
           <h1 className="mt-5 text-3xl font-semibold tracking-tight text-ink-50 sm:text-4xl">
-            找到适合你场景的模型
+            {t.heading}
           </h1>
           <p className="mt-3 text-sm text-ink-300 sm:text-base">
-            上方为人工主推，下方为 marketplace 全量目录（按 vendors_count 排序）。
-            可按模型名、provider、能力或场景搜索；所有模型均通过 OpenAI 兼容协议接入，
-            复制 model id 即可调用。
+            {t.intro}
           </p>
         </div>
 
         {/* ── 全局搜索框（同时过滤主推 + 全部模型） ── */}
         <label className="relative mt-8 flex w-full max-w-md items-center">
-          <span className="sr-only">搜索模型</span>
+          <span className="sr-only">{locale === 'en' ? 'Search models' : '搜索模型'}</span>
           <Search
             className="pointer-events-none absolute left-3 h-4 w-4 text-ink-400"
             aria-hidden
@@ -124,7 +181,7 @@ export default function ModelsPage() {
             type="search"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="搜索 opus / sonnet / gpt-5 / kimi / glm …"
+            placeholder={t.search}
             className="w-full rounded-md border border-white/10 bg-white/[0.04] py-2 pl-9 pr-3 text-sm text-ink-100 placeholder:text-ink-500 outline-none transition-colors focus:border-violet-500/60 focus:bg-violet-500/[0.06] focus:ring-2 focus:ring-violet-500/20"
           />
         </label>
@@ -134,9 +191,9 @@ export default function ModelsPage() {
           <div className="flex items-baseline justify-between">
             <h2 className="flex items-center gap-2 text-lg font-semibold text-ink-50">
               <Star className="h-4 w-4 text-amber-300" />
-              主推模型
+              {t.featured}
               <span className="ml-2 text-xs font-normal text-ink-400">
-                Human 运营选定 · 共 {filteredFeatured.length}/{featured.length} 个
+                {t.featuredMeta}
               </span>
             </h2>
           </div>
@@ -150,7 +207,7 @@ export default function ModelsPage() {
             </ul>
           ) : (
             <p className="mt-4 rounded-md border border-dashed border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-ink-400">
-              主推模型没有匹配 “{query}”，可看下方「全部模型」的搜索结果。
+              {t.noFeatured}
             </p>
           )}
         </div>
@@ -162,16 +219,16 @@ export default function ModelsPage() {
         <div className="mt-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <h2 className="text-lg font-semibold text-ink-50">
-              全部模型
+              {t.all}
               <span className="ml-2 text-xs font-normal text-ink-400">
-                共 {nonFeatured.length} 个 · 数据来自 marketplace 快照
+                {t.allMeta}
               </span>
             </h2>
 
             {/* 分类切换 */}
             <div
               role="tablist"
-              aria-label="模型分类"
+              aria-label={locale === 'en' ? 'Model categories' : '模型分类'}
               className="flex flex-wrap gap-2 rounded-lg border border-white/5 bg-white/[0.02] p-1"
             >
               {CATEGORY_ORDER.map(c => {
@@ -192,7 +249,7 @@ export default function ModelsPage() {
                     )}
                   >
                     <Icon className="h-4 w-4" />
-                    {CATEGORY_META[c].title}
+                    {categoryMeta[c].title}
                     <span
                       className={cn(
                         'rounded-full px-1.5 text-[10.5px] font-semibold',
@@ -210,9 +267,9 @@ export default function ModelsPage() {
           </div>
 
           <div className="mt-4 flex items-baseline justify-between">
-            <p className="text-xs text-ink-400">{CATEGORY_META[category].subtitle}</p>
+            <p className="text-xs text-ink-400">{categoryMeta[category].subtitle}</p>
             <span className="text-xs text-ink-400">
-              当前共 {filteredAll.length} 个匹配
+              {t.current}
             </span>
           </div>
 
@@ -225,7 +282,7 @@ export default function ModelsPage() {
               ))}
             </ul>
           ) : (
-            <EmptyState query={query} onClear={() => setQuery('')} />
+            <EmptyState query={query} onClear={() => setQuery('')} emptyText={t.empty} clearLabel={t.clear} />
           )}
         </div>
       </section>
@@ -242,9 +299,14 @@ export default function ModelsPage() {
  * 卡片这里直接不渲染那两行，避免空白行。
  * ────────────────────────────────────────────────────────────────── */
 function ModelCard({ model }: { model: ModelEntry }) {
+  const { locale } = useLocale()
+  const t =
+    locale === 'en'
+      ? { featured: 'Featured', vendors: 'vendors', scenarios: 'Use cases', fallback: 'Capabilities and scenarios may vary by account' }
+      : { featured: '推荐', vendors: '家上游', scenarios: '推荐场景', fallback: '能力 / 场景以控制台为准' }
   return (
     <Link
-      to={`/models/${model.slug}/`}
+      to={localizePath(`/models/${model.slug}/`, locale)}
       className="tech-card tech-card-hover group flex h-full flex-col p-5"
     >
       <div className="flex items-start justify-between gap-3">
@@ -260,11 +322,11 @@ function ModelCard({ model }: { model: ModelEntry }) {
         </div>
         {model.featured ? (
           <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 text-[10px] font-semibold text-amber-200">
-            <Star className="h-3 w-3" /> 推荐
+            <Star className="h-3 w-3" /> {t.featured}
           </span>
         ) : (
           <span className="inline-flex shrink-0 items-center rounded-full border border-white/8 bg-white/[0.03] px-2 py-0.5 text-[10px] font-medium text-ink-300">
-            {model.vendorsCount} 家上游
+            {model.vendorsCount} {t.vendors}
           </span>
         )}
       </div>
@@ -289,10 +351,10 @@ function ModelCard({ model }: { model: ModelEntry }) {
       <div className="mt-auto flex items-center justify-between pt-4 text-[11.5px] text-ink-400">
         {model.scenarios.length > 0 ? (
           <span className="line-clamp-1">
-            推荐场景：{model.scenarios.slice(0, 2).join(' / ')}
+            {t.scenarios}: {model.scenarios.slice(0, 2).join(' / ')}
           </span>
         ) : (
-          <span className="line-clamp-1 text-ink-500">能力 / 场景以控制台为准</span>
+          <span className="line-clamp-1 text-ink-500">{t.fallback}</span>
         )}
         <ArrowRight className="h-3.5 w-3.5 text-ink-500 transition-transform group-hover:translate-x-0.5 group-hover:text-violet-300" />
       </div>
@@ -306,25 +368,25 @@ function ModelCard({ model }: { model: ModelEntry }) {
 function EmptyState({
   query,
   onClear,
+  emptyText,
+  clearLabel,
 }: {
   query: string
   onClear: () => void
+  emptyText: string
+  clearLabel: string
 }) {
   return (
     <div className="mt-8 rounded-lg border border-dashed border-white/10 bg-white/[0.02] p-10 text-center">
       <Search className="mx-auto h-6 w-6 text-ink-500" />
-      <p className="mt-3 text-sm text-ink-300">
-        {query
-          ? `没有匹配 "${query}" 的模型，换个关键词或切换分类试试。`
-          : '该分类下暂无模型，敬请期待。'}
-      </p>
+      <p className="mt-3 text-sm text-ink-300">{emptyText}</p>
       {query ? (
         <button
           type="button"
           onClick={onClear}
           className="mt-4 inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-ink-200 hover:border-violet-500/40 hover:bg-violet-500/10"
         >
-          清空搜索
+          {clearLabel}
         </button>
       ) : null}
     </div>

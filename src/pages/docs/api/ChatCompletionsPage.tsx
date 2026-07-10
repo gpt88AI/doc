@@ -5,6 +5,8 @@ import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { Callout } from '../../../components/ui/Callout'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
+import { useLocale } from '../../../lib/locale'
+import ChatCompletionsPageEn from '../../en/ChatCompletionsPageEn'
 
 /**
  * API Reference: POST /v1/chat/completions
@@ -396,6 +398,9 @@ print(resp.choices[0].message)`,
 ]
 
 export default function ChatCompletionsPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <ChatCompletionsPageEn />
+
   return (
     <DocPage
       path="/docs/api/chat-completions"

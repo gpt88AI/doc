@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import IntegrationsHubPageEn from '../../en/IntegrationsHubPageEn'
 
 const CHAT_APPS = [
   {
@@ -91,6 +93,9 @@ function CardGrid({
 }
 
 export default function IntegrationsHubPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <IntegrationsHubPageEn />
+
   return (
     <DocPage
       path="/docs/integrations"

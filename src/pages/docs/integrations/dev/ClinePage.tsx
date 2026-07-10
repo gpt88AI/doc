@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import ClinePageEn from '../../../en/ClinePageEn'
 
 const SETUP = `Provider: OpenAI Compatible
 Base URL: https://gpt88.cc/v1
@@ -26,6 +28,10 @@ const TROUBLESHOOTING = `1. Cline 不调用工具
    - 先用小模型做简单任务`
 
 export default function ClineIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <ClinePageEn />
+
   return (
     <DocPage
       path="/docs/integrations/dev/cline"

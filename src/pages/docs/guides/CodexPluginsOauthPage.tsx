@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import CodexPluginsOauthPageEn from '../../en/CodexPluginsOauthPageEn'
 
 const SYMPTOM = `你现在的状态通常是这样：
 
@@ -180,6 +182,10 @@ function DocTable({
 }
 
 export default function CodexPluginsOauthPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CodexPluginsOauthPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-plugins-oauth"

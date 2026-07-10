@@ -22,6 +22,8 @@ import {
 } from '../data/models'
 import { Seo } from '../components/seo/Seo'
 import { websiteStructuredData } from '../components/seo/structuredData'
+import { useLocale } from '../lib/locale'
+import LandingPageEn from './en/LandingPageEn'
 
 /**
  * gpt88.cc 首页（M1 首屏）
@@ -127,13 +129,16 @@ const SITE_SPLIT = [
 ] as const
 
 export default function LandingPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <LandingPageEn />
+
   return (
     <>
       <Seo
         title="gpt88.cc API 文档"
         description="gpt88.cc 开发者文档首页，一行 base_url 接入 Claude、GPT、Gemini、DeepSeek、Qwen 等模型。"
         path="/"
-        structuredData={websiteStructuredData()}
+        structuredData={websiteStructuredData('zh', '/')}
       />
       {/* ─── Hero ─── */}
       <section className="relative isolate overflow-hidden">

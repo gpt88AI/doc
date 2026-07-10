@@ -5,6 +5,8 @@ import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { Callout } from '../../../components/ui/Callout'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
+import { useLocale } from '../../../lib/locale'
+import ListModelsPageEn from '../../en/ListModelsPageEn'
 
 /**
  * API Reference: GET /v1/models
@@ -126,6 +128,9 @@ for (const m of models.data) {
 ]
 
 export default function ListModelsPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <ListModelsPageEn />
+
   return (
     <DocPage
       path="/docs/api/list-models"

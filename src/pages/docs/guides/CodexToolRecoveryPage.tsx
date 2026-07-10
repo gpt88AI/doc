@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import CodexToolRecoveryPageEn from '../../en/CodexToolRecoveryPageEn'
 
 const SYMPTOM = `你正在让 Codex 落代码，过程中突然出现这些现象：
 
@@ -52,6 +54,10 @@ const CHECKLIST = `排查清单：
 6. 是否已经把问题误判成模型故障`
 
 export default function CodexToolRecoveryPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CodexToolRecoveryPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-tool-recovery"

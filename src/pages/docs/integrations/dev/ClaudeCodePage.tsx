@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import ClaudeCodePageEn from '../../../en/ClaudeCodePageEn'
 
 const SETUP = `1. 安装 Claude Code
 2. 准备 API Key 或 OAuth 登录
@@ -28,6 +30,10 @@ const TROUBLESHOOTING = `1. 插件不可用
    - 再确认模型名`
 
 export default function ClaudeCodeIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <ClaudeCodePageEn />
+
   return (
     <DocPage
       path="/docs/integrations/dev/claude-code"

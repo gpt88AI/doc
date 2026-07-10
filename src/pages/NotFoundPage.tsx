@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom'
 import { Seo } from '../components/seo/Seo'
+import { localizePath, useLocale } from '../lib/locale'
+import NotFoundPageEn from './en/NotFoundPageEn'
 
 /**
  * 404 兜底
  * 文档站不需要复杂的错误页，给一句友好提示和回退入口即可
  */
 export default function NotFoundPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <NotFoundPageEn />
+
   return (
     <>
       <Seo
@@ -22,13 +27,13 @@ export default function NotFoundPage() {
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Link
-            to="/"
+            to={localizePath('/', locale)}
             className="rounded-md bg-violet-500 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-400"
           >
             返回首页
           </Link>
           <Link
-            to="/docs/overview/"
+            to={localizePath('/docs/overview/', locale)}
             className="rounded-md border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-ink-100 hover:border-violet-500/40"
           >
             浏览文档

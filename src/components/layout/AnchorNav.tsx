@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocale } from '../../lib/locale'
 
 /**
  * 文档右侧"On this page"锚点目录
@@ -17,6 +18,7 @@ export type Heading = {
 }
 
 export function AnchorNav({ headings }: { headings: Heading[] }) {
+  const { locale } = useLocale()
   const [active, setActive] = useState<string | null>(headings[0]?.id ?? null)
 
   useEffect(() => {
@@ -48,9 +50,9 @@ export function AnchorNav({ headings }: { headings: Heading[] }) {
   if (headings.length === 0) return null
 
   return (
-    <nav aria-label="本页目录" className="flex flex-col gap-2 text-sm">
+    <nav aria-label={locale === 'en' ? 'On this page' : '本页目录'} className="flex flex-col gap-2 text-sm">
       <h5 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">
-        本页目录
+        {locale === 'en' ? 'On this page' : '本页目录'}
       </h5>
       <ul className="flex flex-col gap-0.5 border-l border-white/10 pl-3">
         {headings.map(h => {

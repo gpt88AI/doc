@@ -424,6 +424,207 @@ const docs = [
   },
 ]
 
+const englishPages = [
+  {
+    title: 'gpt88.cc API Docs',
+    path: '/en',
+    description: 'One OpenAI-compatible base_url for Claude, GPT, Gemini, DeepSeek, Qwen, and more.',
+    priority: '0.9',
+  },
+  {
+    title: 'Overview',
+    path: '/en/docs/overview',
+    description: 'Overview of the gpt88.cc unified AI API gateway and its OpenAI-compatible integration model.',
+    priority: '0.8',
+  },
+  {
+    title: 'Quickstart',
+    path: '/en/docs/quickstart',
+    description: 'Make your first gpt88.cc API request in 5 minutes.',
+    priority: '0.8',
+  },
+  {
+    title: 'Auth & Billing',
+    path: '/en/docs/auth',
+    description: 'Bearer token authentication, API key safety, and RMB balance based billing.',
+    priority: '0.8',
+  },
+  {
+    title: 'FAQ',
+    path: '/en/docs/faq',
+    description: 'Common questions about API keys, compatibility, billing, and troubleshooting.',
+    priority: '0.7',
+  },
+  {
+    title: 'Integration Guides',
+    path: '/en/docs/integrations',
+    description: 'Browse setup guides by chat apps, developer tools, and platforms.',
+    priority: '0.7',
+  },
+  {
+    title: 'ChatBox with gpt88.cc',
+    path: '/en/docs/integrations/chat/chatbox',
+    description: 'Set up ChatBox with gpt88.cc using OpenAI-compatible routing, model IDs, verification, and troubleshooting.',
+    priority: '0.7',
+  },
+  {
+    title: 'Cherry Studio with gpt88.cc',
+    path: '/en/docs/integrations/chat/cherry-studio',
+    description: 'Connect Cherry Studio to gpt88.cc through the OpenAI-compatible route for multi-model workflows.',
+    priority: '0.7',
+  },
+  {
+    title: 'AnythingLLM with gpt88.cc',
+    path: '/en/docs/integrations/chat/anythingllm',
+    description: 'Connect gpt88.cc to AnythingLLM for chat and knowledge-base workflows.',
+    priority: '0.7',
+  },
+  {
+    title: 'Claude Code with gpt88.cc',
+    path: '/en/docs/integrations/dev/claude-code',
+    description: 'Use Claude Code with gpt88.cc for model access, OAuth login, plugins, and route selection.',
+    priority: '0.7',
+  },
+  {
+    title: 'Cursor with gpt88.cc',
+    path: '/en/docs/integrations/dev/cursor',
+    description: 'Use gpt88.cc as the OpenAI-compatible provider inside Cursor.',
+    priority: '0.7',
+  },
+  {
+    title: 'Cline with gpt88.cc',
+    path: '/en/docs/integrations/dev/cline',
+    description: 'Use gpt88.cc for model access and agent workflows inside Cline.',
+    priority: '0.7',
+  },
+  {
+    title: 'Gemini CLI with gpt88.cc',
+    path: '/en/docs/integrations/dev/gemini-cli',
+    description: 'Use Gemini CLI and Gemini image models through gpt88.cc and the native generateContent endpoint.',
+    priority: '0.7',
+  },
+  {
+    title: 'Codex CLI with gpt88.cc',
+    path: '/en/docs/integrations/dev/codex-cli',
+    description: 'Connect Codex CLI to gpt88.cc and understand API key mode, OAuth, plugin limits, and tool recovery.',
+    priority: '0.7',
+  },
+  {
+    title: 'CC-Switch with gpt88.cc',
+    path: '/en/docs/integrations/dev/cc-switch',
+    description: 'Configure CC-Switch routes for gpt88.cc, including OpenAI/Claude protocol differences and OAuth switching.',
+    priority: '0.7',
+  },
+  {
+    title: 'Dify with gpt88.cc',
+    path: '/en/docs/integrations/platforms/dify',
+    description: 'Connect gpt88.cc to Dify providers, apps, workflows, and knowledge base pipelines.',
+    priority: '0.7',
+  },
+  {
+    title: 'Immersive Translate with gpt88.cc',
+    path: '/en/docs/integrations/platforms/immersive-translate',
+    description: 'Connect the Immersive Translate browser extension to gpt88.cc through an OpenAI-compatible API.',
+    priority: '0.7',
+  },
+  {
+    title: 'POST /v1/chat/completions',
+    path: '/en/docs/api/chat-completions',
+    description: 'OpenAI-compatible chat completions endpoint for text generation, streaming, tool use, and structured output.',
+    priority: '0.7',
+  },
+  {
+    title: 'Image Generation API',
+    path: '/en/docs/api/images',
+    description: 'Correct parameter and endpoint guidance for the OpenAI image API and the Gemini generateContent image API on gpt88.cc.',
+    priority: '0.7',
+  },
+  {
+    title: 'GET /v1/models',
+    path: '/en/docs/api/list-models',
+    description: 'List all models available to the current API key on gpt88.cc.',
+    priority: '0.7',
+  },
+  {
+    title: 'Error Codes',
+    path: '/en/docs/api/errors',
+    description: 'Stable HTTP and business error mappings for retries and troubleshooting.',
+    priority: '0.7',
+  },
+  {
+    title: 'cURL Examples',
+    path: '/en/docs/sdk/curl',
+    description: 'Use cURL to validate gpt88.cc APIs, list models, stream responses, and implement simple retries.',
+    priority: '0.7',
+  },
+  {
+    title: 'Python Examples',
+    path: '/en/docs/sdk/python',
+    description: 'Use the official OpenAI Python SDK with gpt88.cc for sync, async, streaming, tools, and retries.',
+    priority: '0.7',
+  },
+  {
+    title: 'Node.js Examples',
+    path: '/en/docs/sdk/nodejs',
+    description: 'Use the official OpenAI Node SDK with gpt88.cc for streaming, tools, retries, and Edge routes.',
+    priority: '0.7',
+  },
+  {
+    title: 'gpt88 AI Relay',
+    path: '/en/docs/guides/gpt88-ai-proxy',
+    description: 'Unified API access guide for using gpt88 as a relay for OpenAI-compatible, Claude-compatible, and Gemini image workflows.',
+    priority: '0.7',
+  },
+  {
+    title: 'gpt88.cc General Integration Guide',
+    path: '/en/docs/guides/gpt88-tutorial',
+    description: 'General onboarding guide to the OpenAI-compatible and Claude-compatible mental model on gpt88.cc.',
+    priority: '0.7',
+  },
+  {
+    title: 'Complete Integration Guide',
+    path: '/en/docs/guides/complete-integration',
+    description: 'End-to-end setup guide for gpt88.cc from key creation and Base URL selection to usage checks and troubleshooting.',
+    priority: '0.7',
+  },
+  {
+    title: 'Codex Plugins and ChatGPT OAuth Login',
+    path: '/en/docs/guides/codex-plugins-oauth',
+    description: 'How to restore Codex plugin capability by switching from API key routing to ChatGPT OAuth.',
+    priority: '0.7',
+  },
+  {
+    title: 'GPT88 Agent Image Studio Guide',
+    path: '/en/docs/guides/agent-image-studio',
+    description: 'Use agent.gpt88.cc for ecommerce image drafting, batch image generation, and image-workstation workflows.',
+    priority: '0.7',
+  },
+  {
+    title: 'GPT-Image-2 Service Notice and Selection Guide',
+    path: '/en/docs/guides/gpt-image-2-service-notice',
+    description: 'Guide to the GPT88 image workstation, image acceleration route, and native 4K versus upscaled 4K strategy.',
+    priority: '0.7',
+  },
+  {
+    title: 'Image Quality and Cropping Guide',
+    path: '/en/docs/guides/agent-image-quality-crop-guide',
+    description: 'How to reduce cropping, weak detail, and unstable image composition in agent.gpt88.cc and GPT-Image-2 workflows.',
+    priority: '0.7',
+  },
+  {
+    title: 'Codex Tool Recovery Guide',
+    path: '/en/docs/guides/codex-tool-recovery',
+    description: 'How to recover when Codex loses file or edit tools and code stops landing in the repository.',
+    priority: '0.7',
+  },
+  {
+    title: 'Models',
+    path: '/en/models',
+    description: 'Browse available chat, image, video, and audio models on gpt88.cc.',
+    priority: '0.7',
+  },
+]
+
 const staticPages = [
   {
     title: 'gpt88.cc API 文档',
@@ -438,10 +639,26 @@ const staticPages = [
     priority: '0.9',
   },
   ...docs.map(page => ({ ...page, priority: '0.8' })),
+  ...englishPages,
 ]
 
 function canonicalToSlug(canonical) {
   return canonical.replaceAll('.', '-')
+}
+
+function toEnglishCategoryLabel(category) {
+  switch (category) {
+    case 'chat':
+      return 'Chat'
+    case 'image':
+      return 'Image'
+    case 'video':
+      return 'Video'
+    case 'audio':
+      return 'Audio'
+    default:
+      return 'Model'
+  }
 }
 
 function inferProvider(modelId, fallbackName = '未知') {
@@ -709,7 +926,18 @@ ${modelsMd}
 async function main() {
   await fs.mkdir(publicDir, { recursive: true })
   const modelPages = await readModels()
-  const pages = [...staticPages, ...modelPages]
+  const englishModelPages = modelPages.map(page => ({
+    title: `${page.title} API Docs`,
+    path: `/en${page.path}`,
+    description: `${page.provider} ${page.title} ${toEnglishCategoryLabel(page.category)} model. Model ID: ${page.modelId}. Endpoint: ${page.endpoint}.`,
+    category: page.category,
+    provider: page.provider,
+    modelId: page.modelId,
+    endpoint: page.endpoint,
+    vendorsCount: page.vendorsCount,
+    priority: '0.5',
+  }))
+  const pages = [...staticPages, ...modelPages, ...englishModelPages]
 
   await Promise.all([
     fs.writeFile(path.join(publicDir, 'robots.txt'), robotsTxt()),

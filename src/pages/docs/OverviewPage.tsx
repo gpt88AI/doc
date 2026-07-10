@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Boxes, Code2, Compass, Image, Zap } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
+import { useLocale } from '../../lib/locale'
+import OverviewPageEn from '../en/OverviewPageEn'
 
 /**
  * 文档：产品概览
@@ -41,6 +43,9 @@ const NEXT_STEPS = [
 ] as const
 
 export default function OverviewPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <OverviewPageEn />
+
   return (
     <DocPage
       path="/docs/overview"

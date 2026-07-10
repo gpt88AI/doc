@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import CursorPageEn from '../../../en/CursorPageEn'
 
 const SETUP = `OpenAI API
 Base URL: https://gpt88.cc/v1
@@ -29,6 +31,10 @@ const TROUBLESHOOTING = `1. 模型不可选
    - 减少一次性上下文`
 
 export default function CursorIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CursorPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/dev/cursor"

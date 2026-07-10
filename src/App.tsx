@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { SiteShell } from './components/layout/SiteShell'
 import { DocsLayout } from './components/layout/DocsLayout'
@@ -14,65 +15,67 @@ import ErrorsPage from './pages/docs/api/ErrorsPage'
 import CurlSdkPage from './pages/docs/sdk/CurlPage'
 import PythonSdkPage from './pages/docs/sdk/PythonPage'
 import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
-import ConfigExportPage from './pages/docs/guides/ConfigExportPage'
-import Gpt88AiProxyPage from './pages/docs/guides/Gpt88AiProxyPage'
-import Gpt88DocsMapPage from './pages/docs/guides/Gpt88DocsMapPage'
-import Gpt88TutorialPage from './pages/docs/guides/Gpt88TutorialPage'
-import CompleteIntegrationGuidePage from './pages/docs/guides/CompleteIntegrationGuidePage'
-import WorkrallyOverviewPage from './pages/docs/guides/WorkrallyOverviewPage'
-import WorkrallyAiGenerationPage from './pages/docs/guides/WorkrallyAiGenerationPage'
-import WorkrallyCanvasGuidePage from './pages/docs/guides/WorkrallyCanvasGuidePage'
-import WorkrallyUploadAssetsPage from './pages/docs/guides/WorkrallyUploadAssetsPage'
-import WorkrallyShotWorkflowPage from './pages/docs/guides/WorkrallyShotWorkflowPage'
-import WorkrallyCommonPitfallsPage from './pages/docs/guides/WorkrallyCommonPitfallsPage'
-import CodexPluginsOauthPage from './pages/docs/guides/CodexPluginsOauthPage'
-import CodexChatgptPhoneVerificationPage from './pages/docs/guides/CodexChatgptPhoneVerificationPage'
-import EccGuidePage from './pages/docs/guides/EccGuidePage'
-import CodexGptImage2SkillPage from './pages/docs/guides/CodexGptImage2SkillPage'
-import CodexFrontendTasteSkillPage from './pages/docs/guides/CodexFrontendTasteSkillPage'
-import CodexGpt55SystemOverviewPage from './pages/docs/guides/CodexGpt55SystemOverviewPage'
-import CodexSkillsContextEngineeringPage from './pages/docs/guides/CodexSkillsContextEngineeringPage'
-import CodexPluginsResearchWorkflowPage from './pages/docs/guides/CodexPluginsResearchWorkflowPage'
-import CodexParallelAutomationWorkflowPage from './pages/docs/guides/CodexParallelAutomationWorkflowPage'
-import CodexProjectFactoryDeliveryPage from './pages/docs/guides/CodexProjectFactoryDeliveryPage'
-import AgentImageStudioGuidePage from './pages/docs/guides/AgentImageStudioGuidePage'
-import EcommerceToolsSpecialPage from './pages/docs/guides/EcommerceToolsSpecialPage'
-import GptImage2ServiceNoticePage from './pages/docs/guides/GptImage2ServiceNoticePage'
-import AgentImageQualityCropGuidePage from './pages/docs/guides/AgentImageQualityCropGuidePage'
-import CodexToolRecoveryPage from './pages/docs/guides/CodexToolRecoveryPage'
-import LoopEngineeringGuidePage from './pages/docs/guides/LoopEngineeringGuidePage'
-import ZeroDowntimeReleasePage from './pages/docs/guides/ZeroDowntimeReleasePage'
-import GiffgaffGuidePage from './pages/docs/guides/GiffgaffGuidePage'
-import UsVirtualCardGuidePage from './pages/docs/guides/UsVirtualCardGuidePage'
-import AiVideoStoryboardGuidePage from './pages/docs/guides/AiVideoStoryboardGuidePage'
-import VideoCreatorToolsWorkflowPage from './pages/docs/guides/VideoCreatorToolsWorkflowPage'
-import VideoGenerationSkillsOverviewPage from './pages/docs/guides/VideoGenerationSkillsOverviewPage'
-import VideoGenerationSkillsInstallPage from './pages/docs/guides/VideoGenerationSkillsInstallPage'
-import VideoGenerationSkillsPromptDirectorPage from './pages/docs/guides/VideoGenerationSkillsPromptDirectorPage'
-import VideoGenerationSkillsEcommercePage from './pages/docs/guides/VideoGenerationSkillsEcommercePage'
-import VideoGenerationSkillsBrandAdCgPage from './pages/docs/guides/VideoGenerationSkillsBrandAdCgPage'
-import VideoGenerationSkillsAiVideoDirectorPage from './pages/docs/guides/VideoGenerationSkillsAiVideoDirectorPage'
-import VideoGenerationSkillsI2vPromptPage from './pages/docs/guides/VideoGenerationSkillsI2vPromptPage'
-import VideoGenerationSkillsWhiteBackgroundPage from './pages/docs/guides/VideoGenerationSkillsWhiteBackgroundPage'
-import VideoGenerationSkillsProductCgPage from './pages/docs/guides/VideoGenerationSkillsProductCgPage'
-import VideoGenerationSkillsTvcPage from './pages/docs/guides/VideoGenerationSkillsTvcPage'
-import VideoGenerationSkillsSceneConsistencyPage from './pages/docs/guides/VideoGenerationSkillsSceneConsistencyPage'
-import VideoGenerationSkillsComplexActionPage from './pages/docs/guides/VideoGenerationSkillsComplexActionPage'
-import IntegrationsHubPage from './pages/docs/integrations/IntegrationsHubPage'
-import ChatboxPage from './pages/docs/integrations/chat/ChatboxPage'
-import CherryStudioPage from './pages/docs/integrations/chat/CherryStudioPage'
-import AnythingLlmPage from './pages/docs/integrations/chat/AnythingLlmPage'
-import ClaudeCodeIntegrationPage from './pages/docs/integrations/dev/ClaudeCodePage'
-import CursorIntegrationPage from './pages/docs/integrations/dev/CursorPage'
-import ClineIntegrationPage from './pages/docs/integrations/dev/ClinePage'
-import GeminiCliIntegrationPage from './pages/docs/integrations/dev/GeminiCliPage'
-import CodexCliIntegrationPage from './pages/docs/integrations/dev/CodexCliPage'
-import CcSwitchIntegrationPage from './pages/docs/integrations/dev/CcSwitchPage'
-import DifyIntegrationPage from './pages/docs/integrations/platforms/DifyPage'
-import ImmersiveTranslateIntegrationPage from './pages/docs/integrations/platforms/ImmersiveTranslatePage'
-import ModelsPage from './pages/ModelsPage'
-import ModelDetailPage from './pages/ModelDetailPage'
 import NotFoundPage from './pages/NotFoundPage'
+import { LocaleProvider } from './lib/locale'
+
+const ConfigExportPage = lazy(() => import('./pages/docs/guides/ConfigExportPage'))
+const Gpt88AiProxyPage = lazy(() => import('./pages/docs/guides/Gpt88AiProxyPage'))
+const Gpt88DocsMapPage = lazy(() => import('./pages/docs/guides/Gpt88DocsMapPage'))
+const Gpt88TutorialPage = lazy(() => import('./pages/docs/guides/Gpt88TutorialPage'))
+const CompleteIntegrationGuidePage = lazy(() => import('./pages/docs/guides/CompleteIntegrationGuidePage'))
+const WorkrallyOverviewPage = lazy(() => import('./pages/docs/guides/WorkrallyOverviewPage'))
+const WorkrallyAiGenerationPage = lazy(() => import('./pages/docs/guides/WorkrallyAiGenerationPage'))
+const WorkrallyCanvasGuidePage = lazy(() => import('./pages/docs/guides/WorkrallyCanvasGuidePage'))
+const WorkrallyUploadAssetsPage = lazy(() => import('./pages/docs/guides/WorkrallyUploadAssetsPage'))
+const WorkrallyShotWorkflowPage = lazy(() => import('./pages/docs/guides/WorkrallyShotWorkflowPage'))
+const WorkrallyCommonPitfallsPage = lazy(() => import('./pages/docs/guides/WorkrallyCommonPitfallsPage'))
+const CodexPluginsOauthPage = lazy(() => import('./pages/docs/guides/CodexPluginsOauthPage'))
+const CodexChatgptPhoneVerificationPage = lazy(() => import('./pages/docs/guides/CodexChatgptPhoneVerificationPage'))
+const EccGuidePage = lazy(() => import('./pages/docs/guides/EccGuidePage'))
+const CodexGptImage2SkillPage = lazy(() => import('./pages/docs/guides/CodexGptImage2SkillPage'))
+const CodexFrontendTasteSkillPage = lazy(() => import('./pages/docs/guides/CodexFrontendTasteSkillPage'))
+const CodexGpt55SystemOverviewPage = lazy(() => import('./pages/docs/guides/CodexGpt55SystemOverviewPage'))
+const CodexSkillsContextEngineeringPage = lazy(() => import('./pages/docs/guides/CodexSkillsContextEngineeringPage'))
+const CodexPluginsResearchWorkflowPage = lazy(() => import('./pages/docs/guides/CodexPluginsResearchWorkflowPage'))
+const CodexParallelAutomationWorkflowPage = lazy(() => import('./pages/docs/guides/CodexParallelAutomationWorkflowPage'))
+const CodexProjectFactoryDeliveryPage = lazy(() => import('./pages/docs/guides/CodexProjectFactoryDeliveryPage'))
+const AgentImageStudioGuidePage = lazy(() => import('./pages/docs/guides/AgentImageStudioGuidePage'))
+const EcommerceToolsSpecialPage = lazy(() => import('./pages/docs/guides/EcommerceToolsSpecialPage'))
+const GptImage2ServiceNoticePage = lazy(() => import('./pages/docs/guides/GptImage2ServiceNoticePage'))
+const AgentImageQualityCropGuidePage = lazy(() => import('./pages/docs/guides/AgentImageQualityCropGuidePage'))
+const CodexToolRecoveryPage = lazy(() => import('./pages/docs/guides/CodexToolRecoveryPage'))
+const LoopEngineeringGuidePage = lazy(() => import('./pages/docs/guides/LoopEngineeringGuidePage'))
+const ZeroDowntimeReleasePage = lazy(() => import('./pages/docs/guides/ZeroDowntimeReleasePage'))
+const GiffgaffGuidePage = lazy(() => import('./pages/docs/guides/GiffgaffGuidePage'))
+const UsVirtualCardGuidePage = lazy(() => import('./pages/docs/guides/UsVirtualCardGuidePage'))
+const AiVideoStoryboardGuidePage = lazy(() => import('./pages/docs/guides/AiVideoStoryboardGuidePage'))
+const VideoCreatorToolsWorkflowPage = lazy(() => import('./pages/docs/guides/VideoCreatorToolsWorkflowPage'))
+const VideoGenerationSkillsOverviewPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsOverviewPage'))
+const VideoGenerationSkillsInstallPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsInstallPage'))
+const VideoGenerationSkillsPromptDirectorPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsPromptDirectorPage'))
+const VideoGenerationSkillsEcommercePage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsEcommercePage'))
+const VideoGenerationSkillsBrandAdCgPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsBrandAdCgPage'))
+const VideoGenerationSkillsAiVideoDirectorPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsAiVideoDirectorPage'))
+const VideoGenerationSkillsI2vPromptPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsI2vPromptPage'))
+const VideoGenerationSkillsWhiteBackgroundPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsWhiteBackgroundPage'))
+const VideoGenerationSkillsProductCgPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsProductCgPage'))
+const VideoGenerationSkillsTvcPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsTvcPage'))
+const VideoGenerationSkillsSceneConsistencyPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsSceneConsistencyPage'))
+const VideoGenerationSkillsComplexActionPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsComplexActionPage'))
+const IntegrationsHubPage = lazy(() => import('./pages/docs/integrations/IntegrationsHubPage'))
+const ChatboxPage = lazy(() => import('./pages/docs/integrations/chat/ChatboxPage'))
+const CherryStudioPage = lazy(() => import('./pages/docs/integrations/chat/CherryStudioPage'))
+const AnythingLlmPage = lazy(() => import('./pages/docs/integrations/chat/AnythingLlmPage'))
+const ClaudeCodeIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/ClaudeCodePage'))
+const CursorIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/CursorPage'))
+const ClineIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/ClinePage'))
+const GeminiCliIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/GeminiCliPage'))
+const CodexCliIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/CodexCliPage'))
+const CcSwitchIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/CcSwitchPage'))
+const DifyIntegrationPage = lazy(() => import('./pages/docs/integrations/platforms/DifyPage'))
+const ImmersiveTranslateIntegrationPage = lazy(() => import('./pages/docs/integrations/platforms/ImmersiveTranslatePage'))
+const ModelsPage = lazy(() => import('./pages/ModelsPage'))
+const ModelDetailPage = lazy(() => import('./pages/ModelDetailPage'))
 
 /**
  * gpt88.cc 文档站 - 路由树（M3 完成）
@@ -89,98 +92,111 @@ import NotFoundPage from './pages/NotFoundPage'
  * 支持 Chat / Image / Video / Audio 分类切换与按名/能力/场景搜索。
  */
 export default function App() {
-  return (
-    <Routes>
-      <Route element={<SiteShell />}>
-        {/* 首页 */}
-        <Route index element={<LandingPage />} />
+  const route = (node: React.ReactNode) => (
+    <Suspense fallback={<RouteLoading />}>{node}</Suspense>
+  )
 
-        {/* 文档区 */}
-        <Route path="docs" element={<DocsLayout />}>
-          <Route index element={<Navigate to="/docs/overview/" replace />} />
-          <Route path="overview" element={<OverviewPage />} />
-          <Route path="quickstart" element={<QuickstartPage />} />
+  const siteRoutes = (
+    <>
+      <Route index element={<LandingPage />} />
+
+      <Route path="docs" element={<DocsLayout />}>
+        <Route index element={<Navigate to="overview/" replace />} />
+        <Route path="overview" element={<OverviewPage />} />
+        <Route path="quickstart" element={<QuickstartPage />} />
         <Route path="auth" element={<AuthPage />} />
         <Route path="faq" element={<FaqPage />} />
         <Route path="changelog" element={<ChangelogPage />} />
-        <Route path="integrations" element={<IntegrationsHubPage />} />
-        <Route path="integrations/chat/chatbox" element={<ChatboxPage />} />
-        <Route path="integrations/chat/cherry-studio" element={<CherryStudioPage />} />
-        <Route path="integrations/chat/anythingllm" element={<AnythingLlmPage />} />
-        <Route path="integrations/dev/claude-code" element={<ClaudeCodeIntegrationPage />} />
-        <Route path="integrations/dev/cursor" element={<CursorIntegrationPage />} />
-        <Route path="integrations/dev/cline" element={<ClineIntegrationPage />} />
-        <Route path="integrations/dev/gemini-cli" element={<GeminiCliIntegrationPage />} />
-        <Route path="integrations/dev/codex-cli" element={<CodexCliIntegrationPage />} />
-        <Route path="integrations/dev/cc-switch" element={<CcSwitchIntegrationPage />} />
-        <Route path="integrations/platforms/dify" element={<DifyIntegrationPage />} />
-        <Route path="integrations/platforms/immersive-translate" element={<ImmersiveTranslateIntegrationPage />} />
+        <Route path="integrations" element={route(<IntegrationsHubPage />)} />
+        <Route path="integrations/chat/chatbox" element={route(<ChatboxPage />)} />
+        <Route path="integrations/chat/cherry-studio" element={route(<CherryStudioPage />)} />
+        <Route path="integrations/chat/anythingllm" element={route(<AnythingLlmPage />)} />
+        <Route path="integrations/dev/claude-code" element={route(<ClaudeCodeIntegrationPage />)} />
+        <Route path="integrations/dev/cursor" element={route(<CursorIntegrationPage />)} />
+        <Route path="integrations/dev/cline" element={route(<ClineIntegrationPage />)} />
+        <Route path="integrations/dev/gemini-cli" element={route(<GeminiCliIntegrationPage />)} />
+        <Route path="integrations/dev/codex-cli" element={route(<CodexCliIntegrationPage />)} />
+        <Route path="integrations/dev/cc-switch" element={route(<CcSwitchIntegrationPage />)} />
+        <Route path="integrations/platforms/dify" element={route(<DifyIntegrationPage />)} />
+        <Route path="integrations/platforms/immersive-translate" element={route(<ImmersiveTranslateIntegrationPage />)} />
 
-          {/* API Reference */}
-          <Route path="api/chat-completions" element={<ChatCompletionsPage />} />
-          <Route path="api/images" element={<ImagesPage />} />
-          <Route path="api/list-models" element={<ListModelsPage />} />
-          <Route path="api/errors" element={<ErrorsPage />} />
+        <Route path="api/chat-completions" element={<ChatCompletionsPage />} />
+        <Route path="api/images" element={<ImagesPage />} />
+        <Route path="api/list-models" element={<ListModelsPage />} />
+        <Route path="api/errors" element={<ErrorsPage />} />
 
-          {/* SDK */}
-          <Route path="sdk/curl" element={<CurlSdkPage />} />
-          <Route path="sdk/python" element={<PythonSdkPage />} />
-          <Route path="sdk/nodejs" element={<NodejsSdkPage />} />
+        <Route path="sdk/curl" element={<CurlSdkPage />} />
+        <Route path="sdk/python" element={<PythonSdkPage />} />
+        <Route path="sdk/nodejs" element={<NodejsSdkPage />} />
 
-          {/* 指南：how-to 类教程 */}
-          <Route path="guides/config-export" element={<ConfigExportPage />} />
-          <Route path="guides/gpt88-ai-proxy" element={<Gpt88AiProxyPage />} />
-          <Route path="guides/gpt88-docs-map" element={<Gpt88DocsMapPage />} />
-          <Route path="guides/gpt88-tutorial" element={<Gpt88TutorialPage />} />
-          <Route path="guides/complete-integration" element={<CompleteIntegrationGuidePage />} />
-          <Route path="guides/workrally-overview" element={<WorkrallyOverviewPage />} />
-          <Route path="guides/workrally-ai-generation" element={<WorkrallyAiGenerationPage />} />
-          <Route path="guides/workrally-canvas-guide" element={<WorkrallyCanvasGuidePage />} />
-          <Route path="guides/workrally-upload-assets" element={<WorkrallyUploadAssetsPage />} />
-          <Route path="guides/workrally-shot-workflow" element={<WorkrallyShotWorkflowPage />} />
-          <Route path="guides/workrally-common-pitfalls" element={<WorkrallyCommonPitfallsPage />} />
-          <Route path="guides/agent-image-studio" element={<AgentImageStudioGuidePage />} />
-          <Route path="guides/ecommerce-tools-special" element={<EcommerceToolsSpecialPage />} />
-          <Route path="guides/gpt-image-2-service-notice" element={<GptImage2ServiceNoticePage />} />
-          <Route path="guides/agent-image-quality-crop-guide" element={<AgentImageQualityCropGuidePage />} />
-          <Route path="guides/codex-plugins-oauth" element={<CodexPluginsOauthPage />} />
-          <Route path="guides/codex-chatgpt-phone-verification" element={<CodexChatgptPhoneVerificationPage />} />
-          <Route path="guides/ecc-agent-harness" element={<EccGuidePage />} />
-          <Route path="guides/codex-gpt-image-2-skill" element={<CodexGptImage2SkillPage />} />
-          <Route path="guides/codex-frontend-taste-skill" element={<CodexFrontendTasteSkillPage />} />
-          <Route path="guides/codex-gpt55-system-overview" element={<CodexGpt55SystemOverviewPage />} />
-          <Route path="guides/codex-skills-context-engineering" element={<CodexSkillsContextEngineeringPage />} />
-          <Route path="guides/codex-plugins-research-workflow" element={<CodexPluginsResearchWorkflowPage />} />
-          <Route path="guides/codex-parallel-automation-workflow" element={<CodexParallelAutomationWorkflowPage />} />
-          <Route path="guides/codex-project-factory-delivery" element={<CodexProjectFactoryDeliveryPage />} />
-          <Route path="guides/loop-engineering-harness" element={<LoopEngineeringGuidePage />} />
-          <Route path="guides/codex-tool-recovery" element={<CodexToolRecoveryPage />} />
-          <Route path="guides/zero-downtime-release" element={<ZeroDowntimeReleasePage />} />
-          <Route path="guides/giffgaff-sim-guide" element={<GiffgaffGuidePage />} />
-          <Route path="guides/us-virtual-card-guide" element={<UsVirtualCardGuidePage />} />
-          <Route path="guides/ai-video-storyboard-guide" element={<AiVideoStoryboardGuidePage />} />
-          <Route path="guides/video-creator-tools-workflow" element={<VideoCreatorToolsWorkflowPage />} />
-          <Route path="guides/video-generation-skills-overview" element={<VideoGenerationSkillsOverviewPage />} />
-          <Route path="guides/video-generation-skills-install" element={<VideoGenerationSkillsInstallPage />} />
-          <Route path="guides/video-generation-skills-prompt-director" element={<VideoGenerationSkillsPromptDirectorPage />} />
-          <Route path="guides/video-generation-skills-ecommerce" element={<VideoGenerationSkillsEcommercePage />} />
-          <Route path="guides/video-generation-skills-brand-ad-cg" element={<VideoGenerationSkillsBrandAdCgPage />} />
-          <Route path="guides/video-generation-skills-ai-video-director" element={<VideoGenerationSkillsAiVideoDirectorPage />} />
-          <Route path="guides/video-generation-skills-i2v-prompt" element={<VideoGenerationSkillsI2vPromptPage />} />
-          <Route path="guides/video-generation-skills-white-background-scaling" element={<VideoGenerationSkillsWhiteBackgroundPage />} />
-          <Route path="guides/video-generation-skills-product-cg" element={<VideoGenerationSkillsProductCgPage />} />
-          <Route path="guides/video-generation-skills-tvc-playbook" element={<VideoGenerationSkillsTvcPage />} />
-          <Route path="guides/video-generation-skills-scene-consistency" element={<VideoGenerationSkillsSceneConsistencyPage />} />
-          <Route path="guides/video-generation-skills-complex-action-storyboard" element={<VideoGenerationSkillsComplexActionPage />} />
-        </Route>
+        <Route path="guides/config-export" element={route(<ConfigExportPage />)} />
+        <Route path="guides/gpt88-ai-proxy" element={route(<Gpt88AiProxyPage />)} />
+        <Route path="guides/gpt88-docs-map" element={route(<Gpt88DocsMapPage />)} />
+        <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
+        <Route path="guides/complete-integration" element={route(<CompleteIntegrationGuidePage />)} />
+        <Route path="guides/workrally-overview" element={route(<WorkrallyOverviewPage />)} />
+        <Route path="guides/workrally-ai-generation" element={route(<WorkrallyAiGenerationPage />)} />
+        <Route path="guides/workrally-canvas-guide" element={route(<WorkrallyCanvasGuidePage />)} />
+        <Route path="guides/workrally-upload-assets" element={route(<WorkrallyUploadAssetsPage />)} />
+        <Route path="guides/workrally-shot-workflow" element={route(<WorkrallyShotWorkflowPage />)} />
+        <Route path="guides/workrally-common-pitfalls" element={route(<WorkrallyCommonPitfallsPage />)} />
+        <Route path="guides/agent-image-studio" element={route(<AgentImageStudioGuidePage />)} />
+        <Route path="guides/ecommerce-tools-special" element={route(<EcommerceToolsSpecialPage />)} />
+        <Route path="guides/gpt-image-2-service-notice" element={route(<GptImage2ServiceNoticePage />)} />
+        <Route path="guides/agent-image-quality-crop-guide" element={route(<AgentImageQualityCropGuidePage />)} />
+        <Route path="guides/codex-plugins-oauth" element={route(<CodexPluginsOauthPage />)} />
+        <Route path="guides/codex-chatgpt-phone-verification" element={route(<CodexChatgptPhoneVerificationPage />)} />
+        <Route path="guides/ecc-agent-harness" element={route(<EccGuidePage />)} />
+        <Route path="guides/codex-gpt-image-2-skill" element={route(<CodexGptImage2SkillPage />)} />
+        <Route path="guides/codex-frontend-taste-skill" element={route(<CodexFrontendTasteSkillPage />)} />
+        <Route path="guides/codex-gpt55-system-overview" element={route(<CodexGpt55SystemOverviewPage />)} />
+        <Route path="guides/codex-skills-context-engineering" element={route(<CodexSkillsContextEngineeringPage />)} />
+        <Route path="guides/codex-plugins-research-workflow" element={route(<CodexPluginsResearchWorkflowPage />)} />
+        <Route path="guides/codex-parallel-automation-workflow" element={route(<CodexParallelAutomationWorkflowPage />)} />
+        <Route path="guides/codex-project-factory-delivery" element={route(<CodexProjectFactoryDeliveryPage />)} />
+        <Route path="guides/loop-engineering-harness" element={route(<LoopEngineeringGuidePage />)} />
+        <Route path="guides/codex-tool-recovery" element={route(<CodexToolRecoveryPage />)} />
+        <Route path="guides/zero-downtime-release" element={route(<ZeroDowntimeReleasePage />)} />
+        <Route path="guides/giffgaff-sim-guide" element={route(<GiffgaffGuidePage />)} />
+        <Route path="guides/us-virtual-card-guide" element={route(<UsVirtualCardGuidePage />)} />
+        <Route path="guides/ai-video-storyboard-guide" element={route(<AiVideoStoryboardGuidePage />)} />
+        <Route path="guides/video-creator-tools-workflow" element={route(<VideoCreatorToolsWorkflowPage />)} />
+        <Route path="guides/video-generation-skills-overview" element={route(<VideoGenerationSkillsOverviewPage />)} />
+        <Route path="guides/video-generation-skills-install" element={route(<VideoGenerationSkillsInstallPage />)} />
+        <Route path="guides/video-generation-skills-prompt-director" element={route(<VideoGenerationSkillsPromptDirectorPage />)} />
+        <Route path="guides/video-generation-skills-ecommerce" element={route(<VideoGenerationSkillsEcommercePage />)} />
+        <Route path="guides/video-generation-skills-brand-ad-cg" element={route(<VideoGenerationSkillsBrandAdCgPage />)} />
+        <Route path="guides/video-generation-skills-ai-video-director" element={route(<VideoGenerationSkillsAiVideoDirectorPage />)} />
+        <Route path="guides/video-generation-skills-i2v-prompt" element={route(<VideoGenerationSkillsI2vPromptPage />)} />
+        <Route path="guides/video-generation-skills-white-background-scaling" element={route(<VideoGenerationSkillsWhiteBackgroundPage />)} />
+        <Route path="guides/video-generation-skills-product-cg" element={route(<VideoGenerationSkillsProductCgPage />)} />
+        <Route path="guides/video-generation-skills-tvc-playbook" element={route(<VideoGenerationSkillsTvcPage />)} />
+        <Route path="guides/video-generation-skills-scene-consistency" element={route(<VideoGenerationSkillsSceneConsistencyPage />)} />
+        <Route path="guides/video-generation-skills-complex-action-storyboard" element={route(<VideoGenerationSkillsComplexActionPage />)} />
+      </Route>
 
-        {/* 模型导航（M3）：列表 + 详情 */}
-        <Route path="models" element={<ModelsPage />} />
-        <Route path="models/:slug" element={<ModelDetailPage />} />
+      <Route path="models" element={route(<ModelsPage />)} />
+      <Route path="models/:slug" element={route(<ModelDetailPage />)} />
+      <Route path="*" element={<NotFoundPage />} />
+    </>
+  )
 
-        {/* 404 */}
-        <Route path="*" element={<NotFoundPage />} />
+  return (
+    <Routes>
+      <Route element={<LocaleProvider locale="zh"><SiteShell /></LocaleProvider>}>
+        {siteRoutes}
+      </Route>
+      <Route path="en" element={<LocaleProvider locale="en"><SiteShell /></LocaleProvider>}>
+        {siteRoutes}
       </Route>
     </Routes>
+  )
+}
+
+function RouteLoading() {
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-12 text-sm text-ink-400 sm:px-6 lg:px-8">
+      Loading...
+    </div>
   )
 }

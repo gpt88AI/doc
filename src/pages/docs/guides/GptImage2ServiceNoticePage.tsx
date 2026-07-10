@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import GptImage2ServiceNoticePageEn from '../../en/GptImage2ServiceNoticePageEn'
 
 const RECOMMENDED_LINES = `图片加速专线
   https://img.gpt88.cc
@@ -78,6 +80,10 @@ function DocTable({
 }
 
 export default function GptImage2ServiceNoticePage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <GptImage2ServiceNoticePageEn />
+
   return (
     <DocPage
       path="/docs/guides/gpt-image-2-service-notice"

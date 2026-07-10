@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import ChatboxPageEn from '../../../en/ChatboxPageEn'
 
 const PREPARE = `1. 已安装 ChatBox 桌面端
 2. 已注册 gpt88.cc 账号并创建 API Key
@@ -93,6 +95,10 @@ function DocTable({
 }
 
 export default function ChatboxPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <ChatboxPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/chat/chatbox"

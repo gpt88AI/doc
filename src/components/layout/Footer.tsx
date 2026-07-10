@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { localizePath, useLocale } from '../../lib/locale'
 
 /**
  * 全局底部
@@ -11,24 +12,39 @@ import { Link } from 'react-router-dom'
  * - 社区入口使用官方 X 与 Telegram 链接，统一放在全局底部，避免分散到单篇文档。
  */
 export function Footer() {
+  const { locale } = useLocale()
+  const labels =
+    locale === 'en'
+      ? {
+          slogan: 'Unified API Gateway · OpenAI Compatible',
+          docs: 'Docs',
+          quickstart: 'Quickstart',
+          models: 'Models',
+        }
+      : {
+          slogan: '统一 API 网关 · OpenAI Compatible',
+          docs: '文档',
+          quickstart: '快速开始',
+          models: '模型',
+        }
   return (
     <footer className="border-t border-white/5 bg-ink-950">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
           <span>© {new Date().getFullYear()} gpt88.cc</span>
           <span className="hidden sm:inline text-ink-600">•</span>
-          <span>统一 API 网关 · OpenAI Compatible</span>
+          <span>{labels.slogan}</span>
         </div>
         <nav className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {/* 文档/快速开始/模型导航：站内深链，使用 <Link> */}
-          <Link className="hover:text-ink-200" to="/docs/overview/">
-            文档
+          <Link className="hover:text-ink-200" to={localizePath('/docs/overview/', locale)}>
+            {labels.docs}
           </Link>
-          <Link className="hover:text-ink-200" to="/docs/quickstart/">
-            快速开始
+          <Link className="hover:text-ink-200" to={localizePath('/docs/quickstart/', locale)}>
+            {labels.quickstart}
           </Link>
-          <Link className="hover:text-ink-200" to="/models/">
-            模型
+          <Link className="hover:text-ink-200" to={localizePath('/models/', locale)}>
+            {labels.models}
           </Link>
           <a
             className="hover:text-ink-200"

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import Gpt88AiProxyPageEn from '../../en/Gpt88AiProxyPageEn'
 
 const QUICK_CONFIG = `OpenAI 兼容 Base URL:
 https://gpt88.cc/v1
@@ -118,6 +120,10 @@ function DocTable({
 }
 
 export default function Gpt88AiProxyPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <Gpt88AiProxyPageEn />
+
   return (
     <DocPage
       path="/docs/guides/gpt88-ai-proxy"

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import GeminiCliPageEn from '../../../en/GeminiCliPageEn'
 
 const SETUP = `BASE_URL=https://china.claudecoder.me
 API_KEY=你的-gpt88-api-key
@@ -25,6 +27,10 @@ const IMAGE_TEST = `curl -s -X POST \\
   }'`
 
 export default function GeminiCliIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <GeminiCliPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/dev/gemini-cli"

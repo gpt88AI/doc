@@ -9,6 +9,20 @@ const devPort = 27891
 export default defineConfig({
   base: process.env.VITE_BASE_PATH ?? '/',
   plugins: [react(), tailwindcss()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('/node_modules/')) {
+            if (id.includes('react-router')) return 'router'
+            if (id.includes('lucide-react')) return 'icons'
+            if (id.includes('@radix-ui') || id.includes('cmdk')) return 'ui'
+            return 'vendor'
+          }
+        },
+      },
+    },
+  },
   server: {
     port: devPort,
     strictPort: true,

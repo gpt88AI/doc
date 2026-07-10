@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import AgentImageQualityCropGuidePageEn from '../../en/AgentImageQualityCropGuidePageEn'
 
 const SAFE_PROMPT = `构图要求：
 - 主体必须完整出现在画面内，不裁切头部、手部、脚部、道具和衣摆
@@ -142,6 +144,10 @@ function DocTable({
 }
 
 export default function AgentImageQualityCropGuidePage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <AgentImageQualityCropGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/agent-image-quality-crop-guide"

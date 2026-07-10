@@ -4,6 +4,8 @@ import { Callout } from '../../../components/ui/Callout'
 import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
+import { useLocale } from '../../../lib/locale'
+import ImagesPageEn from '../../en/ImagesPageEn'
 
 const GEMINI_UPLOAD_TABS = [
   {
@@ -326,6 +328,10 @@ const GEMINI_FIELDS: FieldRow[] = [
 ]
 
 export default function ImagesPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <ImagesPageEn />
+
   return (
     <DocPage
       path="/docs/api/images"

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import PythonPageEn from '../../en/PythonPageEn'
 
 /**
  * SDK 示例：Python
@@ -111,6 +113,10 @@ async def main():
 asyncio.run(main())`
 
 export default function PythonSdkPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <PythonPageEn />
+
   return (
     <DocPage
       path="/docs/sdk/python"

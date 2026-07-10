@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { Sidebar } from './Sidebar'
 import { cn } from '../../lib/cn'
+import { useLocale } from '../../lib/locale'
 
 /**
  * 文档区布局
@@ -12,6 +13,11 @@ import { cn } from '../../lib/cn'
  */
 export function DocsLayout() {
   const [navOpen, setNavOpen] = useState(false)
+  const { locale } = useLocale()
+  const labels =
+    locale === 'en'
+      ? { open: 'Docs Menu', close: 'Close Menu' }
+      : { open: '文档目录', close: '关闭目录' }
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -23,7 +29,7 @@ export function DocsLayout() {
           className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-ink-200"
         >
           {navOpen ? <X className="h-3.5 w-3.5" /> : <Menu className="h-3.5 w-3.5" />}
-          {navOpen ? '关闭目录' : '文档目录'}
+          {navOpen ? labels.close : labels.open}
         </button>
       </div>
 

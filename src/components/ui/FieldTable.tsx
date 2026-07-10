@@ -1,4 +1,5 @@
 import { cn } from '../../lib/cn'
+import { useLocale } from '../../lib/locale'
 
 /**
  * 请求 / 响应字段说明表
@@ -29,6 +30,27 @@ export function FieldTable({
   rows: FieldRow[]
   className?: string
 }) {
+  const { locale } = useLocale()
+  const labels =
+    locale === 'en'
+      ? {
+          field: 'Field',
+          type: 'Type',
+          required: 'Required',
+          description: 'Description',
+          requiredBadge: 'Required',
+          optional: 'Optional',
+          defaultValue: 'Default:',
+        }
+      : {
+          field: '字段',
+          type: '类型',
+          required: '必填',
+          description: '说明',
+          requiredBadge: '必填',
+          optional: '可选',
+          defaultValue: '默认值：',
+        }
   return (
     <div
       className={cn(
@@ -40,10 +62,10 @@ export function FieldTable({
       <table className="hidden w-full text-left text-sm md:table">
         <thead className="bg-white/[0.03] text-[11px] uppercase tracking-wider text-ink-400">
           <tr>
-            <th className="px-4 py-2.5 font-medium">字段</th>
-            <th className="px-4 py-2.5 font-medium">类型</th>
-            <th className="px-4 py-2.5 font-medium">必填</th>
-            <th className="px-4 py-2.5 font-medium">说明</th>
+            <th className="px-4 py-2.5 font-medium">{labels.field}</th>
+            <th className="px-4 py-2.5 font-medium">{labels.type}</th>
+            <th className="px-4 py-2.5 font-medium">{labels.required}</th>
+            <th className="px-4 py-2.5 font-medium">{labels.description}</th>
           </tr>
         </thead>
         <tbody>
@@ -66,17 +88,17 @@ export function FieldTable({
               <td className="px-4 py-3">
                 {r.required ? (
                   <span className="rounded bg-red-500/10 px-1.5 py-0.5 text-[11px] font-medium text-red-300 ring-1 ring-red-400/30">
-                    必填
+                    {labels.requiredBadge}
                   </span>
                 ) : (
-                  <span className="text-[11px] text-ink-500">可选</span>
+                  <span className="text-[11px] text-ink-500">{labels.optional}</span>
                 )}
               </td>
               <td className="px-4 py-3 text-[13px] leading-relaxed text-ink-200">
                 {r.description}
                 {r.default ? (
                   <div className="mt-1 text-[11.5px] text-ink-400">
-                    默认值：
+                    {labels.defaultValue}
                     <code className="rounded bg-white/5 px-1 py-0.5 font-mono">
                       {r.default}
                     </code>
@@ -101,7 +123,7 @@ export function FieldTable({
               </span>
               {r.required ? (
                 <span className="rounded bg-red-500/10 px-1.5 py-0.5 text-[10px] font-medium text-red-300 ring-1 ring-red-400/30">
-                  必填
+                  {labels.requiredBadge}
                 </span>
               ) : null}
             </div>
@@ -110,7 +132,7 @@ export function FieldTable({
             </div>
             {r.default ? (
               <div className="text-[11.5px] text-ink-400">
-                默认值：
+                {labels.defaultValue}
                 <code className="rounded bg-white/5 px-1 py-0.5 font-mono">
                   {r.default}
                 </code>

@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import { DOCS_NAV } from '../../data/nav'
+import { getDocsNav } from '../../data/nav'
 import { cn } from '../../lib/cn'
+import { localizePath, stripLocalePrefix, useLocale } from '../../lib/locale'
 
 /**
  * 文档侧边导航
@@ -10,10 +11,13 @@ import { cn } from '../../lib/cn'
  */
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { pathname } = useLocation()
+  const { locale } = useLocale()
+  const docsNav = getDocsNav(locale)
+  const plainPath = stripLocalePrefix(pathname)
 
   return (
     <nav className="flex flex-col gap-6 px-2 py-4 text-sm">
-      {DOCS_NAV.map(section => (
+      {docsNav.map(section => (
         <div key={section.title} className="flex flex-col gap-1">
           <h4 className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">
             {section.title}
@@ -21,11 +25,11 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           <ul className="flex flex-col">
             {section.items.map(item => {
               // 精确匹配；overview/quickstart 等顶层路径恰好等于 path
-              const active = pathname === item.path
+              const active = plainPath === item.path
               return (
                 <li key={item.path}>
                   <NavLink
-                    to={item.path}
+                    to={localizePath(item.path, locale)}
                     onClick={onNavigate}
                     className={cn(
                       'group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors',

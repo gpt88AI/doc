@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import NodejsPageEn from '../../en/NodejsPageEn'
 
 /**
  * SDK 示例：Node.js
@@ -144,6 +146,10 @@ export async function POST(req: Request) {
 }`
 
 export default function NodejsSdkPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <NodejsPageEn />
+
   return (
     <DocPage
       path="/docs/sdk/nodejs"

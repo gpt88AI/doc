@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import CompleteIntegrationGuidePageEn from '../../en/CompleteIntegrationGuidePageEn'
 
 const FIVE_STEP_FLOW = `1. 注册并登录 gpt88.cc 控制台
 2. 创建一把 API Key，并立刻保存完整 Key
@@ -145,6 +147,10 @@ function DocTable({
 }
 
 export default function CompleteIntegrationGuidePage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CompleteIntegrationGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/complete-integration"

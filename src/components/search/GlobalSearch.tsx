@@ -2,9 +2,10 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Command } from 'cmdk'
 import { BookOpen, Boxes, FileText, Search, X } from 'lucide-react'
-import { DOCS_NAV } from '../../data/nav'
+import { getDocsNav } from '../../data/nav'
 import { MODELS } from '../../data/models'
 import { cn } from '../../lib/cn'
+import { localizePath, useLocale } from '../../lib/locale'
 
 type SearchItem = {
   id: string
@@ -20,16 +21,18 @@ function normalize(value: string) {
   return value.trim().toLowerCase()
 }
 
-function buildSearchItems(): SearchItem[] {
-  const docs = DOCS_NAV.flatMap(section =>
+function buildSearchItems(locale: 'zh' | 'en'): SearchItem[] {
+  const docs = getDocsNav(locale).flatMap(section =>
     section.items.map(item => ({
       id: `doc:${item.path}`,
       title: item.title,
-      description: item.blurb ?? section.title,
-      path: item.path,
+      description: locale === 'en' ? section.title : item.blurb ?? section.title,
+      path: localizePath(item.path, locale),
       section: section.title,
       type: 'doc' as const,
-      keywords: [item.title, item.blurb, item.path, section.title].filter(Boolean).join(' '),
+      keywords: [item.title, locale === 'en' ? undefined : item.blurb, item.path, section.title]
+        .filter(Boolean)
+        .join(' '),
     })),
   )
 
@@ -37,8 +40,8 @@ function buildSearchItems(): SearchItem[] {
     id: `model:${model.slug}`,
     title: model.name,
     description: `${model.modelId} · ${model.tagline}`,
-    path: `/models/${model.slug}/`,
-    section: `模型 · ${model.category}`,
+    path: localizePath(`/models/${model.slug}/`, locale),
+    section: locale === 'en' ? `Model · ${model.category}` : `模型 · ${model.category}`,
     type: 'model' as const,
     keywords: [
       model.name,
@@ -87,18 +90,32 @@ function SearchResults({
   items,
   query,
   onSelect,
+  locale,
 }: {
   items: SearchItem[]
   query: string
   onSelect: (path: string) => void
+  locale: 'zh' | 'en'
 }) {
+  const labels =
+    locale === 'en'
+      ? {
+          noResult: 'No results found',
+          noResultDesc: 'Try model names, API paths, Codex, image generation, ChatBox, or giffgaff.',
+          heading: query.trim() ? `Results · ${items.length}` : 'Recommended',
+        }
+      : {
+          noResult: '没有找到匹配结果',
+          noResultDesc: '可以尝试搜索模型名、接口路径、Codex、图片生成、ChatBox、giffgaff 等关键词。',
+          heading: query.trim() ? `搜索结果 · ${items.length}` : '推荐入口',
+        }
   if (items.length === 0) {
     return (
       <div className="px-5 py-10 text-center">
         <Search className="mx-auto h-6 w-6 text-ink-500" />
-        <div className="mt-3 text-sm font-medium text-ink-200">没有找到匹配结果</div>
+        <div className="mt-3 text-sm font-medium text-ink-200">{labels.noResult}</div>
         <p className="mt-1 text-xs leading-5 text-ink-500">
-          可以尝试搜索模型名、接口路径、Codex、图片生成、ChatBox、giffgaff 等关键词。
+          {labels.noResultDesc}
         </p>
       </div>
     )
@@ -107,7 +124,7 @@ function SearchResults({
   return (
     <Command.List className="max-h-[25rem] overflow-y-auto p-2">
       <Command.Group
-        heading={query.trim() ? `搜索结果 · ${items.length}` : '推荐入口'}
+        heading={labels.heading}
         className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:pb-2 [&_[cmdk-group-heading]]:pt-2 [&_[cmdk-group-heading]]:text-[11px] [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-ink-500"
       >
         {items.map(item => {
@@ -151,11 +168,28 @@ export function GlobalSearch({
   className?: string
   onNavigate?: () => void
 }) {
+  const { locale } = useLocale()
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
-  const items = useMemo(() => buildSearchItems(), [])
+  const items = useMemo(() => buildSearchItems(locale), [locale])
   const results = useMemo(() => filterItems(items, query), [items, query])
+  const labels =
+    locale === 'en'
+      ? {
+          button: 'Search Docs',
+          placeholder: 'Search APIs, models, guides, integrations...',
+          close: 'Close search',
+          footer: 'Use ↑↓ to move · Enter to open · Esc to close',
+          total: `${items.length} searchable entries`,
+        }
+      : {
+          button: '搜索文档',
+          placeholder: '搜索 API、模型、教程、集成指南...',
+          close: '关闭搜索',
+          footer: '↑↓ 选择 · Enter 打开 · Esc 关闭',
+          total: `${items.length} 个可搜索入口`,
+        }
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -201,9 +235,9 @@ export function GlobalSearch({
           'inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5 text-sm text-ink-300 transition-colors hover:border-violet-500/30 hover:bg-violet-500/10 hover:text-ink-100',
           className,
         )}
-      >
+        >
         <Search className="h-4 w-4" />
-        <span className="hidden sm:inline">搜索文档</span>
+        <span className="hidden sm:inline">{labels.button}</span>
         <kbd className="hidden rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] text-ink-500 lg:inline">
           ⌘K
         </kbd>
@@ -226,24 +260,24 @@ export function GlobalSearch({
                 value={query}
                 onValueChange={setQuery}
                 autoFocus
-                placeholder="搜索 API、模型、教程、集成指南..."
+                placeholder={labels.placeholder}
                 className="min-w-0 flex-1 bg-transparent text-sm text-ink-100 outline-none placeholder:text-ink-500"
               />
               <button
                 type="button"
                 onClick={close}
                 className="rounded-md p-1.5 text-ink-400 transition-colors hover:bg-white/5 hover:text-ink-100"
-                aria-label="关闭搜索"
+                aria-label={labels.close}
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            <SearchResults items={results} query={query} onSelect={go} />
+            <SearchResults items={results} query={query} onSelect={go} locale={locale} />
 
             <div className="flex items-center justify-between border-t border-white/10 px-4 py-2 text-[11px] text-ink-500">
-              <span>↑↓ 选择 · Enter 打开 · Esc 关闭</span>
-              <span>{items.length} 个可搜索入口</span>
+              <span>{labels.footer}</span>
+              <span>{labels.total}</span>
             </div>
           </Command>
         </div>

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import Gpt88TutorialPageEn from '../../en/Gpt88TutorialPageEn'
 
 /**
  * 文档：gpt88.cc 通用接入教程
@@ -120,6 +122,10 @@ function DocTable({
 }
 
 export default function Gpt88TutorialPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <Gpt88TutorialPageEn />
+
   return (
     <DocPage
       path="/docs/guides/gpt88-tutorial"

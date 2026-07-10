@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import DifyPageEn from '../../../en/DifyPageEn'
 
 const PREPARE = `1. 已有 Dify 管理员权限
 2. 已准备 gpt88.cc API Key
@@ -59,6 +61,10 @@ const TROUBLESHOOTING = `1. Provider 保存失败
    - 到 gpt88.cc 控制台查看人民币余额和真实扣费`
 
 export default function DifyIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <DifyPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/platforms/dify"

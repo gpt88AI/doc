@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
+import { useLocale } from '../../../../lib/locale'
+import CodexCliPageEn from '../../../en/CodexCliPageEn'
 
 const PREPARE = `1. 已安装 Codex CLI
 2. 已准备 gpt88.cc API Key
@@ -59,6 +61,10 @@ const TROUBLESHOOTING = `1. 每次新会话反复 reconnect
    - 退出 API Key 登录，改用 OAuth`
 
 export default function CodexCliIntegrationPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CodexCliPageEn />
+
   return (
     <DocPage
       path="/docs/integrations/dev/codex-cli"

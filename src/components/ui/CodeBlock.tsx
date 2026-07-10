@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Check, Copy } from 'lucide-react'
 import { cn } from '../../lib/cn'
+import { useLocale } from '../../lib/locale'
 
 /**
  * 简洁深色代码块
@@ -19,6 +20,7 @@ export function CodeBlock({
   filename?: string
   className?: string
 }) {
+  const { locale } = useLocale()
   const [copied, setCopied] = useState(false)
 
   const onCopy = async () => {
@@ -52,7 +54,7 @@ export function CodeBlock({
       <button
         type="button"
         onClick={onCopy}
-        aria-label="复制代码"
+        aria-label={locale === 'en' ? 'Copy code' : '复制代码'}
         className="absolute right-2 top-2 rounded-md border border-white/10 bg-ink-900/80 p-1.5 text-ink-300 opacity-0 transition-opacity hover:text-ink-100 group-hover:opacity-100"
       >
         {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import ErrorsPageEn from '../../en/ErrorsPageEn'
 
 /**
  * API Reference: 错误码
@@ -177,6 +179,9 @@ function StatusPill({ status }: { status: number }) {
 }
 
 export default function ErrorsPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <ErrorsPageEn />
+
   return (
     <DocPage
       path="/docs/api/errors"

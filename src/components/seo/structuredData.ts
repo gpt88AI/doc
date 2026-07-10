@@ -1,4 +1,5 @@
 const SITE_URL = 'https://doc.gpt88.cc'
+type StructuredLocale = 'zh' | 'en'
 
 function absoluteUrl(path = '/') {
   if (/^https?:\/\//.test(path)) return path
@@ -9,13 +10,18 @@ function absoluteUrl(path = '/') {
   return `${SITE_URL}${normalized}${suffix}`
 }
 
-export function docStructuredData(title: string, description: string, path: string) {
+export function docStructuredData(
+  title: string,
+  description: string,
+  path: string,
+  locale: StructuredLocale = 'zh',
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
     headline: title,
     description,
-    inLanguage: 'zh-CN',
+    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
     url: absoluteUrl(path),
     publisher: {
       '@type': 'Organization',
@@ -26,13 +32,13 @@ export function docStructuredData(title: string, description: string, path: stri
   }
 }
 
-export function websiteStructuredData() {
+export function websiteStructuredData(locale: StructuredLocale = 'zh', path = '/') {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'gpt88.cc API 文档',
-    url: `${SITE_URL}/`,
-    inLanguage: 'zh-CN',
+    name: locale === 'en' ? 'gpt88.cc API Docs' : 'gpt88.cc API 文档',
+    url: absoluteUrl(path),
+    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
     publisher: {
       '@type': 'Organization',
       name: 'gpt88.cc',
@@ -41,7 +47,7 @@ export function websiteStructuredData() {
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${SITE_URL}/models/?query={search_term_string}`,
+      target: `${SITE_URL}${locale === 'en' ? '/en' : ''}/models/?query={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   }
@@ -54,6 +60,7 @@ export function modelStructuredData({
   provider,
   category,
   modelId,
+  locale = 'zh',
 }: {
   name: string
   description: string
@@ -61,12 +68,14 @@ export function modelStructuredData({
   provider: string
   category: string
   modelId: string
+  locale?: StructuredLocale
 }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name,
     description,
+    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
     applicationCategory: `${category.toUpperCase()} AI Model`,
     url: absoluteUrl(path),
     provider: {

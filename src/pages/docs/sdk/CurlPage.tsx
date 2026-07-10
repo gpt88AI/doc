@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import CurlPageEn from '../../en/CurlPageEn'
 
 /**
  * SDK 示例：cURL
@@ -87,6 +89,10 @@ echo "Exhausted retries" >&2
 exit 1`
 
 export default function CurlSdkPage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <CurlPageEn />
+
   return (
     <DocPage
       path="/docs/sdk/curl"

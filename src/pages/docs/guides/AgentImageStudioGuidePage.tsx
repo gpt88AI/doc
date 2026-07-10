@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import AgentImageStudioGuidePageEn from '../../en/AgentImageStudioGuidePageEn'
 
 const ENTRY_POINTS = `推荐入口
   图片工作台: https://agent.gpt88.cc/
@@ -78,6 +80,10 @@ function DocTable({
 }
 
 export default function AgentImageStudioGuidePage() {
+  const { locale } = useLocale()
+
+  if (locale === 'en') return <AgentImageStudioGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/agent-image-studio"
