@@ -29,6 +29,84 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-07-10',
+    summary: '核心 API 网关完成一轮模型兼容、计费准确性、图片生成和运行稳定性更新，重点提升 Codex、GPT-5.6、Grok 及 Anthropic 请求的可用性。',
+    items: [
+      {
+        type: '新增',
+        title: '支持 OpenAI 用户级 Fast / Flex 策略',
+        detail: '增加用户级 Fast / Flex 策略配置和强制优先策略动作，便于需要更快响应或更高吞吐的工作流按用户维度进行调度。',
+        commits: ['f2966530c', 'e979990bf'],
+      },
+      {
+        type: '优化',
+        title: 'GPT-5.6 用量与缓存计费对齐',
+        detail: '按官方计费口径完善 GPT-5.6 的输入、输出和缓存写入用量处理，保留明确的缓存价格配置，减少请求用量与账户扣费之间的偏差。',
+        commits: ['4a2b10c94', '383f61d0e', '062af81fb', 'de28eba3c'],
+      },
+      {
+        type: '修复',
+        title: 'Codex 身份和客户端兼容性修复',
+        detail: '优化 Codex 上游身份标识与最终 User-Agent 的匹配，升级兼容客户端版本，并修复特定 GPT-5.6 模型返回 404 的问题。',
+        commits: ['8a51119e3', '657c4f97d'],
+      },
+      {
+        type: '新增',
+        title: '补齐 Codex 模型清单与工具调用兼容',
+        detail: '支持 Codex 客户端模型清单透传，并增加 parallel_tool_calls 等兼容映射，减少客户端模型选择和工具调用参数不一致导致的失败。',
+        commits: ['13e773ef5', 'ad8afc8a2'],
+      },
+      {
+        type: '修复',
+        title: 'Anthropic 缓存用量字段补齐',
+        detail: '完善 Responses 与 Anthropic 协议互转时的 cache_creation_input_tokens 字段，流式和非流式请求都能更完整地保留缓存创建用量。',
+        commits: ['83f169e4f', '0d28f7f90'],
+      },
+      {
+        type: '新增',
+        title: 'Grok 4.5 与多媒体能力更新',
+        detail: '接入官方 Grok 4.5 支持，优化 Grok OAuth、图片和用量流程，并完善视频按秒计费、图片与视频分开定价以及文本视频请求路由。',
+        commits: ['cccba9a82', 'b480545c1', 'd4952154f', '4d702e323', '3b2099350'],
+      },
+      {
+        type: '优化',
+        title: '图片生成尺寸与 Codex 生图请求处理',
+        detail: '修复图片生成尺寸处理和工作台任务 worker 配置，识别并清理 Codex image_gen 命名空间声明，降低错误路由和参数不兼容问题。',
+        commits: ['6440ce69e', 'd3a1835ed', 'a02700c16'],
+      },
+      {
+        type: '修复',
+        title: '流式响应错误和故障转移统一',
+        detail: '改进 OpenAI 与 Anthropic 兼容入口的 response.failed、SSE 传输错误和回退链路处理，避免所有上游错误都被笼统转换为 502。',
+        commits: ['8f97953e5', '1da3501af', '104fd2b6e', '7468427e4'],
+      },
+      {
+        type: '修复',
+        title: '压缩、心跳与连接稳定性加固',
+        detail: '修复 Responses 压缩事件、SSE 心跳、流式输出合成和 Windows WebSocket 重置相关问题，提升长连接与长任务的稳定性。',
+        commits: ['000f6dc65', 'ae9a01d85', '2cffe1cf5', '0a5f34a2e'],
+      },
+      {
+        type: '修复',
+        title: '并发计费和支付恢复加固',
+        detail: '加强并发计费、支付恢复和过期锁处理，降低高并发场景下重复扣费、状态卡住或恢复不完整的风险。',
+        commits: ['fc66a30ff', '5c15d32ff'],
+      },
+      {
+        type: '新增',
+        title: '后台用量与渠道管理增强',
+        detail: '用量页面新增延迟健康列和用户 Token 排行，支持查看分组已用额度、API Key 最近使用 IP，以及创建或修改用户角色。',
+        commits: ['1a3cc2a78', 'b062b3664', '54859022a', 'e0d149d51', '64fdc11ec'],
+      },
+      {
+        type: '修复',
+        title: '安全、国际化和依赖更新',
+        detail: '补齐英文后台语言包，统一站点名称和文档地址的安全处理，升级 Go 工具链与 AWS SDK，并修复鉴权、支付和会话相关缺陷。',
+        commits: ['e984b4e2e', 'bfb827b87', '29a5fcd25', '4a3049762', 'a4f942d8a'],
+      },
+    ],
+  },
+  {
     date: '2026-07-11',
     summary: '多语言文档、英文模型导航和搜索体验完成一轮发布级优化，同时降低首屏加载体积并补齐英文 SEO 页面资产。',
     items: [
