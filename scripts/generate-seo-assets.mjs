@@ -57,6 +57,12 @@ const docs = [
     section: 'API Reference',
   },
   {
+    title: 'Grok 视频 API',
+    path: '/docs/api/grok-video',
+    description: 'Grok 视频生成接口的模型查询、创建任务、轮询状态、参考图参数和常见错误说明。',
+    section: 'API Reference',
+  },
+  {
     title: 'List Models API',
     path: '/docs/api/list-models',
     description: '通过 GET /v1/models 列出当前账号可用模型。',

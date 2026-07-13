@@ -25,6 +25,7 @@
 
 - [Chat Completions API](https://doc.gpt88.cc/docs/api/chat-completions/): OpenAI 兼容的 POST /v1/chat/completions 对话补全接口，支持流式、工具调用与多模态内容。
 - [Google 图片生成 API](https://doc.gpt88.cc/docs/api/images/): 使用 gpt88.cc 的 Google / Gemini 图片生成能力，包含 NanoBanana2 文生图和图生图示例。
+- [Grok 视频 API](https://doc.gpt88.cc/docs/api/grok-video/): Grok 视频生成接口的模型查询、创建任务、轮询状态、参考图参数和常见错误说明。
 - [List Models API](https://doc.gpt88.cc/docs/api/list-models/): 通过 GET /v1/models 列出当前账号可用模型。
 - [错误码](https://doc.gpt88.cc/docs/api/errors/): HTTP 状态码与业务错误码排查说明。
 

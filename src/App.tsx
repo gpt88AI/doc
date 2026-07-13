@@ -19,6 +19,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import { LocaleProvider } from './lib/locale'
 
 const ConfigExportPage = lazy(() => import('./pages/docs/guides/ConfigExportPage'))
+const GrokVideoPage = lazy(() => import('./pages/docs/api/GrokVideoPage'))
 const Gpt88AiProxyPage = lazy(() => import('./pages/docs/guides/Gpt88AiProxyPage'))
 const Gpt88DocsMapPage = lazy(() => import('./pages/docs/guides/Gpt88DocsMapPage'))
 const Gpt88TutorialPage = lazy(() => import('./pages/docs/guides/Gpt88TutorialPage'))
@@ -122,6 +123,7 @@ export default function App() {
 
         <Route path="api/chat-completions" element={<ChatCompletionsPage />} />
         <Route path="api/images" element={<ImagesPage />} />
+        <Route path="api/grok-video" element={route(<GrokVideoPage />)} />
         <Route path="api/list-models" element={<ListModelsPage />} />
         <Route path="api/errors" element={<ErrorsPage />} />
 

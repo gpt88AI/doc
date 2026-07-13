@@ -82,6 +82,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'Google / Gemini 图片生成接口，支持 NanoBanana2 文生图与图生图',
       },
       {
+        title: 'Grok 视频 API',
+        path: '/docs/api/grok-video/',
+        blurb: 'Grok 视频生成接口、任务轮询、图生视频参数与错误排查',
+      },
+      {
         title: 'GET /v1/models',
         path: '/docs/api/list-models/',
         blurb: '列出可用模型',

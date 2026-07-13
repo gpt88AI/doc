@@ -62,6 +62,7 @@ const DOC_CATEGORIES = [
     items: [
       { label: 'Chat Completions', href: '/docs/api/chat-completions/' },
       { label: 'Google 图片生成 API', href: '/docs/api/images/' },
+      { label: 'Grok 视频 API', href: '/docs/api/grok-video/' },
       { label: '模型导航', href: '/models/' },
       { label: '错误码', href: '/docs/api/errors/' },
     ],
