@@ -48,10 +48,10 @@ const POLL_RESPONSE_ROWS: FieldRow[] = [
   { name: 'data.fail_reason', type: 'string', description: <>失败原因。</> },
 ]
 
-const MODEL_LIST_CURL = String.raw`curl -X GET "https://api.119337.xyz/v1/models" \
+const MODEL_LIST_CURL = String.raw`curl -X GET "https://img.gpt88.cc/v1/models" \
   -H "Authorization: Bearer <YOUR_API_KEY>"`
 
-const CREATE_TASK_CURL = String.raw`curl -X POST "https://api.119337.xyz/v1/video/generations" \
+const CREATE_TASK_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -62,7 +62,7 @@ const CREATE_TASK_CURL = String.raw`curl -X POST "https://api.119337.xyz/v1/vide
     "resolution": "720p"
   }'`
 
-const SINGLE_IMAGE_CURL = String.raw`curl -X POST "https://api.119337.xyz/v1/video/generations" \
+const SINGLE_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -76,7 +76,7 @@ const SINGLE_IMAGE_CURL = String.raw`curl -X POST "https://api.119337.xyz/v1/vid
     ]
   }'`
 
-const MULTI_IMAGE_CURL = String.raw`curl -X POST "https://api.119337.xyz/v1/video/generations" \
+const MULTI_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -91,7 +91,7 @@ const MULTI_IMAGE_CURL = String.raw`curl -X POST "https://api.119337.xyz/v1/vide
     ]
   }'`
 
-const SINGLE_V1_CURL = String.raw`curl -X POST "https://api.119337.xyz/v1/video/generations" \
+const SINGLE_V1_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -151,7 +151,7 @@ const POLL_FAILURE = String.raw`{
   }
 }`
 
-const JS_EXAMPLE = String.raw`const BASE_URL = 'https://api.119337.xyz'
+const JS_EXAMPLE = String.raw`const BASE_URL = 'https://img.gpt88.cc'
 const API_KEY = process.env.NEWAPI_API_KEY
 
 function sleep(ms) {
@@ -276,13 +276,13 @@ export default function GrokVideoPage() {
       </Callout>
 
       <h2 id="intro">基础信息</h2>
-      <EndpointBadge method="GET" path="https://api.119337.xyz/v1/models" />
-      <EndpointBadge method="POST" path="https://api.119337.xyz/v1/video/generations" />
-      <EndpointBadge method="GET" path="https://api.119337.xyz/v1/video/generations/{task_id}" />
+      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/models" />
+      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/video/generations" />
+      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/video/generations/{task_id}" />
 
       <FieldTable
         rows={[
-          { name: 'Base URL', type: 'string', required: true, description: <><code>https://api.119337.xyz</code>。</> },
+          { name: 'Base URL', type: 'string', required: true, description: <><code>https://img.gpt88.cc</code>。</> },
           { name: '鉴权方式', type: 'string', required: true, description: <><code>Authorization: Bearer &lt;YOUR_API_KEY&gt;</code>。</> },
           { name: '请求格式', type: 'string', required: true, description: <><code>application/json</code>。</> },
           { name: '响应格式', type: 'string', required: true, description: <>JSON。</> },
@@ -321,7 +321,7 @@ export default function GrokVideoPage() {
 
       <h2 id="create">创建视频任务</h2>
       <p>接口：</p>
-      <EndpointBadge method="POST" path="https://api.119337.xyz/v1/video/generations" />
+      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/video/generations" />
       <FieldTable rows={REQUEST_ROWS} />
       <Callout tone="info" title="字段兼容规则">
         <p>
@@ -412,7 +412,7 @@ export default function GrokVideoPage() {
       <CodeBlock
         lang="bash"
         filename="poll-task.sh"
-        code={String.raw`curl -X GET "https://api.119337.xyz/v1/video/generations/task_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
+        code={String.raw`curl -X GET "https://img.gpt88.cc/v1/video/generations/task_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
   -H "Authorization: Bearer <YOUR_API_KEY>"`}
       />
       <p>典型处理中响应：</p>
