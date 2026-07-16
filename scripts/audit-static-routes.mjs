@@ -21,6 +21,10 @@ function readFile(file) {
   return fs.readFileSync(file, 'utf8')
 }
 
+function hasNoindex(html) {
+  return /<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*\bnoindex\b/i.test(html)
+}
+
 function parseSitemapRoutes(xml) {
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => normalizeRoute(new URL(match[1]).pathname || '/'))
 }
@@ -72,6 +76,10 @@ function main() {
 
   const missingDistRoutes = sitemapRoutes.filter(route => !fs.existsSync(routeToFile(route)))
   const navMissingFromSitemap = navRoutes.filter(route => route !== '/docs/' && !sitemapSet.has(route))
+  const sitemapNoindexRoutes = sitemapRoutes.filter(route => {
+    const file = routeToFile(route)
+    return fs.existsSync(file) && hasNoindex(readFile(file))
+  })
 
   const localModelPatches = parseCatalogBlockNames(modelsSource, 'const LOCAL_CATALOG_ROWS')
   const seoLocalPatches = parseCatalogBlockNames(seoSource, 'const localCatalog')
@@ -80,6 +88,9 @@ function main() {
   const failures = []
   if (missingDistRoutes.length) {
     failures.push(`Missing prerendered files for ${missingDistRoutes.length} sitemap routes:\n${missingDistRoutes.join('\n')}`)
+  }
+  if (sitemapNoindexRoutes.length) {
+    failures.push('Sitemap routes marked noindex:\n' + sitemapNoindexRoutes.join('\n'))
   }
   if (navMissingFromSitemap.length) {
     failures.push(`Routes present in nav but missing from sitemap:\n${navMissingFromSitemap.join('\n')}`)

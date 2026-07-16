@@ -23,32 +23,43 @@ function absoluteUrl(path = '/') {
 
 function setMeta(attribute: 'name' | 'property', key: string, content?: string) {
   if (!content) return
-  let element = document.head.querySelector<HTMLMetaElement>(
-    `meta[${attribute}="${key}"][data-gpt88-seo="true"]`,
-  )
+  let element =
+    Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta')).find(
+      candidate =>
+        candidate.getAttribute(attribute) === key &&
+        candidate.getAttribute('data-gpt88-seo') === 'true',
+    ) ?? null
+  if (!element) {
+    element =
+      Array.from(document.head.querySelectorAll<HTMLMetaElement>('meta')).find(
+        candidate => candidate.getAttribute(attribute) === key,
+      ) ?? null
+  }
   if (!element) {
     element = document.createElement('meta')
     element.setAttribute(attribute, key)
-    element.setAttribute('data-gpt88-seo', 'true')
     document.head.appendChild(element)
   }
+  element.setAttribute('data-gpt88-seo', 'true')
   element.content = content
 }
 
 function setCanonical(url: string) {
   let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"][data-gpt88-seo="true"]')
   if (!link) {
+    link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+  }
+  if (!link) {
     link = document.createElement('link')
     link.rel = 'canonical'
-    link.setAttribute('data-gpt88-seo', 'true')
     document.head.appendChild(link)
   }
+  link.setAttribute('data-gpt88-seo', 'true')
   link.href = url
 }
 
 function setAlternateLinks(entries: Array<{ hrefLang: string; href: string }>) {
-  const selector = 'link[rel="alternate"][data-gpt88-seo="true"]'
-  document.head.querySelectorAll(selector).forEach(node => node.remove())
+  document.head.querySelectorAll('link[rel="alternate"]').forEach(node => node.remove())
   entries.forEach(entry => {
     const link = document.createElement('link')
     link.rel = 'alternate'
@@ -62,6 +73,11 @@ function setAlternateLinks(entries: Array<{ hrefLang: string; href: string }>) {
 function setStructuredData(data?: Record<string, unknown>) {
   const id = 'gpt88-jsonld'
   let script = document.getElementById(id) as HTMLScriptElement | null
+  if (!script) {
+    script = document.head.querySelector<HTMLScriptElement>(
+      'script[type="application/ld+json"][data-gpt88-seo="true"]',
+    )
+  }
   if (!data) {
     script?.remove()
     return
@@ -92,6 +108,7 @@ export function Seo({
   const resolvedDescription = description ?? defaultDescription
   const fullTitle = title.includes('gpt88.cc') ? title : `${title} · ${siteName}`
   const translated = isTranslatedPath(locale, path)
+  const hasEnglishTranslation = isTranslatedPath('en', path)
   const localizedUrl = absoluteUrl(localizePath(path, locale))
   const zhUrl = absoluteUrl(localizePath(path, 'zh'))
   const enUrl = absoluteUrl(localizePath(path, 'en'))
@@ -104,7 +121,7 @@ export function Seo({
     setCanonical(url)
     setAlternateLinks([
       { hrefLang: 'zh-CN', href: zhUrl },
-      { hrefLang: 'en', href: enUrl },
+      ...(hasEnglishTranslation ? [{ hrefLang: 'en', href: enUrl }] : []),
       { hrefLang: 'x-default', href: zhUrl },
     ])
     setMeta('name', 'description', resolvedDescription)
@@ -118,29 +135,45 @@ export function Seo({
     setMeta('name', 'twitter:title', fullTitle)
     setMeta('name', 'twitter:description', resolvedDescription)
     setStructuredData(structuredData)
-  }, [enUrl, fullTitle, locale, resolvedDescription, robots, siteName, structuredData, type, url, zhUrl])
+  }, [
+    enUrl,
+    fullTitle,
+    hasEnglishTranslation,
+    locale,
+    resolvedDescription,
+    robots,
+    siteName,
+    structuredData,
+    type,
+    url,
+    zhUrl,
+  ])
 
   if (typeof document === 'undefined') {
     return (
       <>
         <title>{fullTitle}</title>
-        <link rel="canonical" href={url} />
-        <link rel="alternate" hrefLang="zh-CN" href={zhUrl} />
-        <link rel="alternate" hrefLang="en" href={enUrl} />
-        <link rel="alternate" hrefLang="x-default" href={zhUrl} />
-        <meta name="description" content={resolvedDescription} />
-        <meta name="robots" content={robots} />
-        <meta property="og:title" content={fullTitle} />
-        <meta property="og:description" content={resolvedDescription} />
-        <meta property="og:type" content={type} />
-        <meta property="og:url" content={url} />
-        <meta property="og:site_name" content={siteName} />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={fullTitle} />
-        <meta name="twitter:description" content={resolvedDescription} />
+        <link rel="canonical" href={url} data-gpt88-seo="true" />
+        <link rel="alternate" hrefLang="zh-CN" href={zhUrl} data-gpt88-seo="true" />
+        {hasEnglishTranslation ? (
+          <link rel="alternate" hrefLang="en" href={enUrl} data-gpt88-seo="true" />
+        ) : null}
+        <link rel="alternate" hrefLang="x-default" href={zhUrl} data-gpt88-seo="true" />
+        <meta name="description" content={resolvedDescription} data-gpt88-seo="true" />
+        <meta name="robots" content={robots} data-gpt88-seo="true" />
+        <meta property="og:title" content={fullTitle} data-gpt88-seo="true" />
+        <meta property="og:description" content={resolvedDescription} data-gpt88-seo="true" />
+        <meta property="og:type" content={type} data-gpt88-seo="true" />
+        <meta property="og:url" content={url} data-gpt88-seo="true" />
+        <meta property="og:site_name" content={siteName} data-gpt88-seo="true" />
+        <meta name="twitter:card" content="summary" data-gpt88-seo="true" />
+        <meta name="twitter:title" content={fullTitle} data-gpt88-seo="true" />
+        <meta name="twitter:description" content={resolvedDescription} data-gpt88-seo="true" />
         {structuredData ? (
           <script
+            id="gpt88-jsonld"
             type="application/ld+json"
+            data-gpt88-seo="true"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
           />
         ) : null}

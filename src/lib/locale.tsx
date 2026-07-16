@@ -38,6 +38,7 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   '/docs/sdk/curl/',
   '/docs/sdk/python/',
   '/docs/sdk/nodejs/',
+  '/models/',
   '/docs/guides/gpt88-ai-proxy/',
   '/docs/guides/gpt88-tutorial/',
   '/docs/guides/complete-integration/',

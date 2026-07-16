@@ -658,21 +658,6 @@ function canonicalToSlug(canonical) {
   return canonical.replaceAll('.', '-')
 }
 
-function toEnglishCategoryLabel(category) {
-  switch (category) {
-    case 'chat':
-      return 'Chat'
-    case 'image':
-      return 'Image'
-    case 'video':
-      return 'Video'
-    case 'audio':
-      return 'Audio'
-    default:
-      return 'Model'
-  }
-}
-
 function inferProvider(modelId, fallbackName = '未知') {
   const id = modelId.toLowerCase()
   if (id === 'nanobanana2' || id.startsWith('google-') || id.startsWith('imagen-')) return 'Google'
@@ -938,18 +923,9 @@ ${modelsMd}
 async function main() {
   await fs.mkdir(publicDir, { recursive: true })
   const modelPages = await readModels()
-  const englishModelPages = modelPages.map(page => ({
-    title: `${page.title} API Docs`,
-    path: `/en${page.path}`,
-    description: `${page.provider} ${page.title} ${toEnglishCategoryLabel(page.category)} model. Model ID: ${page.modelId}. Endpoint: ${page.endpoint}.`,
-    category: page.category,
-    provider: page.provider,
-    modelId: page.modelId,
-    endpoint: page.endpoint,
-    vendorsCount: page.vendorsCount,
-    priority: '0.5',
-  }))
-  const pages = [...staticPages, ...modelPages, ...englishModelPages]
+  // English model detail pages are not fully translated. Keep them out of the
+  // sitemap until they have an indexable English content contract.
+  const pages = [...staticPages, ...modelPages]
 
   await Promise.all([
     fs.writeFile(path.join(publicDir, 'robots.txt'), robotsTxt()),
