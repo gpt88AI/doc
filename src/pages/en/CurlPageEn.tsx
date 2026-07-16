@@ -9,14 +9,14 @@ export GPT88_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx
 
 # 2. Check authentication and network reachability
 curl -s -o /dev/null -w "%{http_code}\\n" \\
-  https://gpt88.cc/v1/models \\
+  https://api.gpt88.cc/v1/models \\
   -H "Authorization: Bearer $GPT88_API_KEY"
 # expected: 200`
 
-const LIST = `curl https://gpt88.cc/v1/models \\
+const LIST = `curl https://api.gpt88.cc/v1/models \\
   -H "Authorization: Bearer $GPT88_API_KEY" | jq '.data[].id'`
 
-const CHAT = `curl https://gpt88.cc/v1/chat/completions \\
+const CHAT = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -28,7 +28,7 @@ const CHAT = `curl https://gpt88.cc/v1/chat/completions \\
   }'`
 
 const STREAM = `# -N disables output buffering so SSE arrives in real time
-curl -N https://gpt88.cc/v1/chat/completions \\
+curl -N https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -42,7 +42,7 @@ set -euo pipefail
 
 call() {
   curl -sS -w "\\n%{http_code}" \\
-    https://gpt88.cc/v1/chat/completions \\
+    https://api.gpt88.cc/v1/chat/completions \\
     -H "Authorization: Bearer $GPT88_API_KEY" \\
     -H "Content-Type: application/json" \\
     -d "$1"

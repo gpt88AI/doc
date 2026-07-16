@@ -13,19 +13,19 @@ const PREPARE = `1. 已安装 ChatBox 桌面端
 
 const OPENAI_CONFIG = `Provider: OpenAI API
 API Key: sk-你的-gpt88-api-key
-API Host / API Domain: https://gpt88.cc/v1
+API Host / API Domain: https://api.gpt88.cc
 Model: claude-haiku-4-5-20251001 或 gpt-5-2-chat-latest`
 
 const CLAUDE_CONFIG = `如果你的 ChatBox 版本提供 Claude API 选项：
 
 Provider: Claude API
 API Key: sk-你的-gpt88-api-key
-API Host / API Domain: https://gpt88.cc
+API Host / API Domain: https://api.gpt88.cc
 Model: claude-sonnet-4-6 或 claude-haiku-4-5-20251001`
 
 const SMOKE_TEST = `export GPT88_API_KEY="sk-你的-gpt88-api-key"
 
-curl https://gpt88.cc/v1/chat/completions \\
+curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -36,7 +36,7 @@ curl https://gpt88.cc/v1/chat/completions \\
   }'`
 
 const TROUBLESHOOTING = `1. 连不上服务
-   - 检查是否写成了 https://gpt88.cc 而不是 https://gpt88.cc/v1
+   - 检查 Base URL 是否为 https://api.gpt88.cc
    - 检查 API Key 是否完整
    - 先用 curl 验证，再回到 ChatBox
 
@@ -122,7 +122,7 @@ export default function ChatboxPage() {
       <Callout tone="info" title="ChatBox 里最稳的接法">
         <p>
           绝大多数场景下，直接把 ChatBox 的 OpenAI 兼容配置指向
-          <code>https://gpt88.cc/v1</code> 就够了。只要模型 ID 选对，
+          <code>https://api.gpt88.cc</code> 就够了。只要模型 ID 选对，
         你基本可以不改聊天工作流。
         </p>
       </Callout>
@@ -155,7 +155,7 @@ export default function ChatboxPage() {
           ],
           [
             <strong key="k4">Base URL</strong>,
-            'OpenAI 风格用 https://gpt88.cc/v1',
+            'OpenAI 风格用 https://api.gpt88.cc',
             '这是 ChatBox 最通用、最少配置的接法。',
           ],
         ]}
@@ -163,8 +163,8 @@ export default function ChatboxPage() {
 
       <Callout tone="warn" title="先决定你走哪种协议">
         <p>
-          如果你当前要接的是 OpenAI 风格模型，优先按 <code>https://gpt88.cc/v1</code> 配置；
-          如果你明确要走 Claude 风格，再切换到根地址。不要把两种风格混填。
+          OpenAI 和 Claude 风格都统一填写 <code>https://api.gpt88.cc</code>，
+          协议差异通过请求路径、请求头和请求体字段处理。
         </p>
       </Callout>
 
@@ -198,15 +198,15 @@ export default function ChatboxPage() {
         headers={['配置项', 'OpenAI 风格', 'Claude 风格']}
         rows={[
           ['API Key', '填写 gpt88.cc 控制台生成的 Key', '同样填写 gpt88.cc 控制台生成的 Key'],
-          ['API Host / Domain', 'https://gpt88.cc/v1', 'https://gpt88.cc'],
+          ['API Host / Domain', 'https://api.gpt88.cc', 'https://api.gpt88.cc'],
           ['模型选择', 'gpt-5-2-chat-latest / gpt-4o-mini', 'claude-sonnet-4-6 / claude-haiku-4-5-20251001'],
         ]}
       />
 
       <Callout tone="warn" title="不要把路径填错">
         <p>
-          OpenAI 风格通常需要 <code>/v1</code>；Claude 风格通常使用根地址。
-          这类错误会直接表现为连接失败、404 或无法拉取模型列表。
+          OpenAI 和 Claude 风格都使用 <code>https://api.gpt88.cc</code>；
+          Base URL 写错会直接表现为连接失败、404 或无法拉取模型列表。
         </p>
       </Callout>
 
@@ -264,7 +264,7 @@ export default function ChatboxPage() {
       <h2 id="faq">常见问题</h2>
       <p><strong>Q1: 无法连接到 gpt88.cc？</strong></p>
       <ul>
-        <li>先确认 API Host 是否写成了 <code>https://gpt88.cc/v1</code>。</li>
+        <li>先确认 API Host 是否写成了 <code>https://api.gpt88.cc</code>。</li>
         <li>确认 API Key 是否完整，且前缀和控制台一致。</li>
         <li>先用 cURL 验证接口，再回到 ChatBox 排查客户端设置。</li>
       </ul>

@@ -5,14 +5,14 @@ import { Callout } from '../../components/ui/Callout'
 import { localizePath } from '../../lib/locale'
 
 const SETUP = `OpenAI API
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-your-gpt88-api-key
 Model: claude-sonnet-4-6 or gpt-5-2-chat-latest`
 
 const STEPS = `1. Open Cursor settings
 2. Find Models / API Keys / OpenAI Compatible settings
 3. Paste the gpt88.cc API key
-4. Set Base URL to https://gpt88.cc/v1
+4. Set Base URL to https://api.gpt88.cc
 5. Add the model ID manually
 6. Save and test in Composer or Chat`
 
@@ -46,7 +46,7 @@ export default function CursorPageEn() {
       <Callout tone="info" title="Use the OpenAI-compatible route">
         <p>
           The core Cursor setup is just two items: a real API key and
-          <code> https://gpt88.cc/v1</code>.
+          <code> https://api.gpt88.cc</code>.
         </p>
       </Callout>
 

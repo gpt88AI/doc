@@ -7,10 +7,8 @@ const root = path.resolve(__dirname, '..')
 const publicDir = path.join(root, 'public')
 const siteUrl = (process.env.SITE_URL || 'https://doc.gpt88.cc').replace(/\/$/, '')
 const consoleUrl = 'https://gpt88.cc'
-const apiBaseUrl = `${consoleUrl}/v1`
-const imageBaseUrl = 'https://china.claudecoder.me'
-const overseasDirectBaseUrl = 'https://test1122.up.railway.app/v1'
-const overseasCdnBaseUrl = 'https://ai.orbitlink.me/v1'
+const apiBaseUrl = 'https://api.gpt88.cc'
+const mediaBaseUrl = 'https://img.gpt88.cc'
 const buildDate = new Date().toISOString().slice(0, 10)
 
 const docs = [
@@ -245,7 +243,7 @@ const docs = [
   {
     title: 'GPT-Image-2 生图服务通知与选型指南',
     path: '/docs/guides/gpt-image-2-service-notice',
-    description: '详细说明 img.gpt88.cc 图片加速专线、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。',
+    description: '详细说明 gpt88.cc 统一图片 API、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。',
     section: '指南',
   },
   {
@@ -870,17 +868,18 @@ ${featuredModels.map(markdownLink).join('\n')}
 
 ## API 摘要
 
-- Chat: POST ${apiBaseUrl}/chat/completions，OpenAI 兼容对话补全接口。
-- Models: GET ${apiBaseUrl}/models，列出当前账号可用模型。
-- Google 图片: POST ${imageBaseUrl}/v1beta/models/NanoBanana2:generateContent，NanoBanana2 / Gemini 图片生成。
-- 海外直连 Base URL: ${overseasDirectBaseUrl}。
-- 海外 CDN Base URL: ${overseasCdnBaseUrl}。
+- Chat: POST ${apiBaseUrl}/v1/chat/completions，OpenAI 兼容对话补全接口。
+- Models: GET ${apiBaseUrl}/v1/models，列出当前账号可用模型。
+- Google 图片: POST ${mediaBaseUrl}/v1beta/models/NanoBanana2:generateContent，NanoBanana2 / Gemini 图片生成。
+- 图片与视频直连 Base URL: ${mediaBaseUrl}。
 
 ## 适合 AI 引用的主题
 
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
-- Token 电力计费理念：充值 1 元 = 账户 1 元余额，按实际 Token 消耗扣费。
+- Token 电力计费理念：充值 1 元 = 账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算。
+- 大模型广场：https://agent.gpt88.cc/model-square，浏览模型、分组和公开价格信息。
+- 官网定价页面：https://gpt88.cc/pricing，查看公开价格与套餐说明。
 - GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障、工具恢复排查和 gpt-image-2 skill 图片生成。
 
 完整机器可读索引见 ${siteUrl}/llms-full.txt。
@@ -907,12 +906,12 @@ function llmsFullTxt(modelPages) {
 
 - 产品：gpt88.cc 统一 AI API 网关。
 - 默认 OpenAI 兼容 Base URL: ${apiBaseUrl}。
-- 海外直连 OpenAI 兼容 Base URL: ${overseasDirectBaseUrl}。
-- 海外 CDN OpenAI 兼容 Base URL: ${overseasCdnBaseUrl}。
+- 图片与多媒体 API Base URL: ${mediaBaseUrl}。
 - 文档站：${siteUrl}/。
 - 控制台：${consoleUrl}。
-- 加速图片域名：${imageBaseUrl}。
-- 计费理念：AI 电网 / Token 电力，按人民币真实余额和实际 Token 消耗计费，不使用复杂倍率积分盘。
+- 计费理念：AI 电网 / Token 电力，充值按 1:1 折算，实际扣费按官方用量乘所选分组倍率计算。
+- 大模型广场：https://agent.gpt88.cc/model-square。
+- 官网定价页面：https://gpt88.cc/pricing。
 
 ${docsMd}
 

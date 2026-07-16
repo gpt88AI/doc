@@ -12,24 +12,22 @@ const FIVE_STEP_FLOW = `1. 注册并登录 gpt88.cc 控制台
 5. 发一条最小请求，再到控制台核对用量与扣费`
 
 const BASE_URL_RULES = `OpenAI 兼容工具
-  Base URL: https://gpt88.cc/v1
+  Base URL: https://api.gpt88.cc
   典型工具: OpenAI SDK、Codex CLI、Cursor、OpenCode、cURL
 
 Claude / Anthropic 兼容工具
-  Base URL: https://gpt88.cc
+  Base URL: https://api.gpt88.cc
   典型工具: Claude Code、Anthropic SDK、OpenClaw
 
 Google / Gemini 图片生成
-  Base URL: https://china.claudecoder.me
+  Base URL: https://img.gpt88.cc
   Endpoint: /v1beta/models/{MODEL}:generateContent
 
-海外可选
-  海外直连: https://test1122.up.railway.app/v1
-  海外 CDN: https://ai.orbitlink.me/v1`
+标准 API 与图片 / 视频直连分别使用以上首页地址，协议差异通过 endpoint 和请求格式处理`
 
 const CURL_SMOKE_TEST = `export GPT88_API_KEY="sk-你的-gpt88-api-key"
 
-curl https://gpt88.cc/v1/chat/completions \\
+curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -41,11 +39,11 @@ curl https://gpt88.cc/v1/chat/completions \\
 
 const OPENAI_ENV = `# OpenAI 风格客户端常见环境变量
 export OPENAI_API_KEY="$GPT88_API_KEY"
-export OPENAI_BASE_URL="https://gpt88.cc/v1"`
+export OPENAI_BASE_URL="https://api.gpt88.cc"`
 
 const CLAUDE_ENV = `# Claude / Anthropic 风格客户端常见环境变量
 export ANTHROPIC_AUTH_TOKEN="$GPT88_API_KEY"
-export ANTHROPIC_BASE_URL="https://gpt88.cc"
+export ANTHROPIC_BASE_URL="https://api.gpt88.cc"
 
 # 如果客户端读取 ANTHROPIC_API_KEY，也可以同步设置
 export ANTHROPIC_API_KEY="$GPT88_API_KEY"`
@@ -58,14 +56,14 @@ model_reasoning_effort = "high"
 
 [model_providers.OpenAI]
 name = "OpenAI"
-base_url = "https://gpt88.cc/v1"
+base_url = "https://api.gpt88.cc"
 wire_api = "responses"
 requires_openai_auth = true`
 
 const CLAUDE_CODE_CONFIG = `// ~/.claude/settings.json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://gpt88.cc",
+    "ANTHROPIC_BASE_URL": "https://api.gpt88.cc",
     "ANTHROPIC_AUTH_TOKEN": "你的 gpt88.cc API Key",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
@@ -210,8 +208,8 @@ export default function CompleteIntegrationGuidePage() {
           ],
           [
             <strong key="c3">Base URL</strong>,
-            'OpenAI 风格通常带 /v1；Claude / Anthropic 风格通常用根地址。',
-            '把 /v1 填到 Claude Code，或把根地址填到 OpenAI SDK，是最常见配置错误。',
+            '标准 API 使用 https://api.gpt88.cc；图片和视频直连使用 https://img.gpt88.cc。OpenAI 与 Claude / Anthropic 还会在路径和请求格式上有所不同。',
+            '不要为不同协议切换 Base URL，按工具要求选择对应 endpoint 和请求字段。',
           ],
           [
             <strong key="c4">模型 ID</strong>,
@@ -220,8 +218,8 @@ export default function CompleteIntegrationGuidePage() {
           ],
           [
             <strong key="c5">Token 电力</strong>,
-            'gpt88.cc 更偏向按真实人民币余额和实际 Token 消耗计费。',
-            '不要用传统积分盘的倍率思维理解每次请求成本。',
+            'gpt88.cc 按官方 API 用量乘所选分组倍率计算人民币扣费。',
+            '请求前查看 API 密钥页面的分组倍率和对应上游线路。',
           ],
           [
             <strong key="c6">Request ID</strong>,
@@ -242,12 +240,12 @@ export default function CompleteIntegrationGuidePage() {
       <DocTable
         headers={['客户端', '接口风格', '推荐 Base URL', '关键配置']}
         rows={[
-          ['cURL', 'OpenAI 兼容', <code key="curl">https://gpt88.cc/v1</code>, '最快验证连通性，适合排查 Key 和模型。'],
-          ['OpenAI Python / Node SDK', 'OpenAI 兼容', <code key="sdk">https://gpt88.cc/v1</code>, '只改 base_url / baseURL 和 api_key。'],
-          ['Codex CLI', 'OpenAI 兼容', <code key="codex">https://gpt88.cc/v1</code>, '配置 ~/.codex/config.toml 和 ~/.codex/auth.json。'],
-          ['Cursor / OpenCode', 'OpenAI 兼容', <code key="cursor">https://gpt88.cc/v1</code>, '选择 OpenAI compatible provider，填 gpt88 Key。'],
-          ['Claude Code', 'Claude 兼容', <code key="claude">https://gpt88.cc</code>, '设置 ANTHROPIC_BASE_URL 和 ANTHROPIC_AUTH_TOKEN。'],
-          ['Gemini 图片生成', 'Gemini 原生', <code key="gemini">https://china.claudecoder.me</code>, '调用 /v1beta/models/:generateContent。'],
+          ['cURL', 'OpenAI 兼容', <code key="curl">https://api.gpt88.cc</code>, '最快验证连通性，适合排查 Key 和模型。'],
+          ['OpenAI Python / Node SDK', 'OpenAI 兼容', <code key="sdk">https://api.gpt88.cc</code>, '只改 base_url / baseURL 和 api_key。'],
+          ['Codex CLI', 'OpenAI 兼容', <code key="codex">https://api.gpt88.cc</code>, '配置 ~/.codex/config.toml 和 ~/.codex/auth.json。'],
+          ['Cursor / OpenCode', 'OpenAI 兼容', <code key="cursor">https://api.gpt88.cc</code>, '选择 OpenAI compatible provider，填 gpt88 Key。'],
+          ['Claude Code', 'Claude 兼容', <code key="claude">https://api.gpt88.cc</code>, '设置 ANTHROPIC_BASE_URL 和 ANTHROPIC_AUTH_TOKEN。'],
+          ['Gemini 图片生成', 'Gemini 原生', <code key="gemini">https://img.gpt88.cc</code>, '调用 /v1beta/models/:generateContent。'],
         ]}
       />
 
@@ -261,7 +259,8 @@ export default function CompleteIntegrationGuidePage() {
 
       <h3 id="claude-code">Claude Code</h3>
       <p>
-        Claude Code 使用 Anthropic 风格接口，Base URL 不带 <code>/v1</code>。
+        Claude Code 使用 Anthropic 风格接口，Base URL 填写 <code>https://api.gpt88.cc</code>；图片和视频任务请使用
+        <code>https://img.gpt88.cc</code>。
         如果你发现它仍然要求 OAuth 登录，先确认是否读到了自定义环境变量。
       </p>
       <CodeBlock lang="json" filename="~/.claude/settings.json" code={CLAUDE_CODE_CONFIG} />

@@ -8,7 +8,7 @@ import CodexCliPageEn from '../../../en/CodexCliPageEn'
 const PREPARE = `1. 已安装 Codex CLI
 2. 已准备 gpt88.cc API Key
 3. 已确认当前要走 API Key 模式还是 OAuth 模式
-4. 已确认 OpenAI 兼容 Base URL: https://gpt88.cc/v1
+4. 已确认 OpenAI 兼容 Base URL: https://api.gpt88.cc
 5. 已准备一个最小验证任务，例如“创建一个 hello.txt”`
 
 const INSTALL = `# macOS / Linux
@@ -19,7 +19,7 @@ codex --version`
 
 const API_CONFIG = `[model_providers.OpenAI]
 name = "OpenAI"
-base_url = "https://gpt88.cc/v1"
+base_url = "https://api.gpt88.cc"
 wire_api = "responses"
 requires_openai_auth = true
 
@@ -28,7 +28,7 @@ model_provider = "OpenAI"
 model = "gpt-5-2-chat-latest"`
 
 const ENV = `export OPENAI_API_KEY="sk-你的-gpt88-api-key"
-export OPENAI_BASE_URL="https://gpt88.cc/v1"`
+export OPENAI_BASE_URL="https://api.gpt88.cc"`
 
 const VERIFY = `codex --profile gpt88
 
@@ -102,7 +102,7 @@ export default function CodexCliIntegrationPage() {
       <h2 id="overview">先看结论</h2>
       <p>
         Codex CLI 作为开发工具接入 gpt88.cc 时，核心是三件事：安装 CLI、配置
-        <code>https://gpt88.cc/v1</code>、用一个会写文件的最小任务验证工具链。
+        <code>https://api.gpt88.cc</code>、用一个会写文件的最小任务验证工具链。
         如果遇到插件不可用，要先判断自己是不是还在 API Key 模式。
       </p>
 

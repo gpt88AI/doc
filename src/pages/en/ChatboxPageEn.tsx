@@ -12,19 +12,19 @@ const PREPARE = `1. Install the ChatBox desktop app
 
 const OPENAI_CONFIG = `Provider: OpenAI API
 API Key: sk-your-gpt88-api-key
-API Host / API Domain: https://gpt88.cc/v1
+API Host / API Domain: https://api.gpt88.cc
 Model: claude-haiku-4-5-20251001 or gpt-5-2-chat-latest`
 
 const CLAUDE_CONFIG = `If your ChatBox build exposes a Claude API option:
 
 Provider: Claude API
 API Key: sk-your-gpt88-api-key
-API Host / API Domain: https://gpt88.cc
+API Host / API Domain: https://api.gpt88.cc
 Model: claude-sonnet-4-6 or claude-haiku-4-5-20251001`
 
 const SMOKE_TEST = `export GPT88_API_KEY="sk-your-gpt88-api-key"
 
-curl https://gpt88.cc/v1/chat/completions \\
+curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -35,7 +35,7 @@ curl https://gpt88.cc/v1/chat/completions \\
   }'`
 
 const TROUBLESHOOTING = `1. Cannot connect
-   - Make sure you used https://gpt88.cc/v1, not just https://gpt88.cc
+   - Make sure the Base URL is https://api.gpt88.cc
    - Make sure the API key is complete
    - Verify with curl before going back to ChatBox
 
@@ -116,7 +116,7 @@ export default function ChatboxPageEn() {
     >
       <Callout tone="info" title="Most reliable ChatBox setup">
         <p>
-          In most cases, point ChatBox to <code>https://gpt88.cc/v1</code> through its OpenAI-compatible
+          In most cases, point ChatBox to <code>https://api.gpt88.cc</code> through its OpenAI-compatible
           settings. If the model ID is correct, you usually do not need to change your chat workflow.
         </p>
       </Callout>
@@ -149,7 +149,7 @@ export default function ChatboxPageEn() {
           ],
           [
             <strong key="k4">Base URL</strong>,
-            'For OpenAI style, use https://gpt88.cc/v1',
+            'For OpenAI style, use https://api.gpt88.cc',
             'This is the most universal and lowest-friction path in ChatBox.',
           ],
         ]}
@@ -157,8 +157,8 @@ export default function ChatboxPageEn() {
 
       <Callout tone="warn" title="Choose the protocol first">
         <p>
-          If you are using an OpenAI-style model, start with <code>https://gpt88.cc/v1</code>. If you
-          explicitly need Claude-style routing, then switch to the root host. Do not mix the two formats.
+          OpenAI-style and Claude-style configurations both use <code>https://api.gpt88.cc</code>;
+          keep the Base URL unchanged and use the required request format.
         </p>
       </Callout>
 
@@ -192,15 +192,15 @@ export default function ChatboxPageEn() {
         headers={['Field', 'OpenAI style', 'Claude style']}
         rows={[
           ['API Key', 'Use the key generated in gpt88.cc', 'Use the same gpt88.cc key'],
-          ['API Host / Domain', 'https://gpt88.cc/v1', 'https://gpt88.cc'],
+          ['API Host / Domain', 'https://api.gpt88.cc', 'https://api.gpt88.cc'],
           ['Model', 'gpt-5-2-chat-latest / gpt-4o-mini', 'claude-sonnet-4-6 / claude-haiku-4-5-20251001'],
         ]}
       />
 
       <Callout tone="warn" title="Do not miss the path suffix">
         <p>
-          OpenAI-compatible routing usually requires <code>/v1</code>; Claude-style routing usually uses the
-          root host. Getting this wrong typically leads to connection errors, 404 responses, or empty model
+          OpenAI-compatible and Claude-style routing both use <code>https://api.gpt88.cc</code>.
+          Getting the Base URL wrong typically leads to connection errors, 404 responses, or empty model
           lists.
         </p>
       </Callout>

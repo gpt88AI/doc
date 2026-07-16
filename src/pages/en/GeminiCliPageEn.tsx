@@ -4,14 +4,14 @@ import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
 import { localizePath } from '../../lib/locale'
 
-const SETUP = `BASE_URL=https://china.claudecoder.me
+const SETUP = `BASE_URL=https://img.gpt88.cc
 API_KEY=your-gpt88-api-key
 MODEL=gemini-3-pro-image-preview
 
 Image generation uses the native Gemini generateContent endpoint.`
 
 const IMAGE_TEST = `curl -s -X POST \\
-  "https://china.claudecoder.me/v1beta/models/gemini-3-pro-image-preview:generateContent" \\
+  "https://img.gpt88.cc/v1beta/models/gemini-3-pro-image-preview:generateContent" \\
   -H "Authorization: Bearer $API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -53,7 +53,7 @@ export default function GeminiCliPageEn() {
 
       <h2 id="notes">Notes</h2>
       <ul>
-        <li>For image generation, use the accelerated domain <code>https://china.claudecoder.me</code>.</li>
+        <li>For image generation, use the media Base URL <code>https://img.gpt88.cc</code>.</li>
         <li>Aspect ratios must use Gemini-supported values such as <code>1:1</code>, <code>16:9</code>, or <code>9:16</code>.</li>
         <li>Image sizes use uppercase values such as <code>1K</code>, <code>2K</code>, and <code>4K</code>.</li>
       </ul>

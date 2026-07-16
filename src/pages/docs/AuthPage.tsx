@@ -38,9 +38,9 @@ const BILLING_COMPARE = [
   },
   {
     name: 'gpt88.cc',
-    type: '人民币余额 / Token 电力',
+    type: '官方用量 / 分组倍率',
     required: true,
-    description: '充值 1 元就是账户 1 元余额，模型实际消耗多少就扣多少，成本以人民币清晰呈现。',
+    description: '充值 1 元就是账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算，成本以人民币清晰呈现。',
   },
 ]
 
@@ -119,13 +119,38 @@ export default function AuthPage() {
         </p>
       </Callout>
 
+      <Callout tone="danger" title="重要说明：分组倍率决定实际扣费">
+        <p>
+          <strong>倍率</strong>是指：您每消耗 <strong>$1</strong> 的官方 API 额度，平台从您的余额中扣除的人民币金额。
+          实际扣费（元）= 官方用量（美元）× 该分组倍率。
+        </p>
+        <ul className="list-disc pl-5">
+          <li>分组倍率为 2.0：消耗 $1 官方额度，扣除 ¥2.0。</li>
+          <li>分组倍率为 0.5：消耗 $1 官方额度，扣除 ¥0.5。</li>
+          <li>倍率越低，单位用量越便宜。</li>
+        </ul>
+        <p>
+          各分组的倍率显示在「API 密钥」页面的分组选择处。不同分组对应不同的上游线路与稳定性，倍率随之不同，您可按需切换。
+        </p>
+        <p>
+          查找模型和价格时，可先查看
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">大模型广场</a>，
+          再通过
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://gpt88.cc/pricing" target="_blank" rel="noreferrer">官网定价页面</a>了解公开价格与套餐。
+          账户实际可用模型、分组倍率和最终扣费仍以控制台当前显示为准。
+        </p>
+        <p>
+          充值为 1:1 折算：充值 ¥1 = 余额 1.00。页面以 <code>$</code> 符号显示时，实际单位仍为人民币。
+        </p>
+      </Callout>
+
       <h2 id="token-power">AI 电网与 Token 电力</h2>
       <p>
         很多用户从其他中转站迁移过来时，会习惯先问：
         <strong>倍率多少</strong>、<strong>1 块等于多少刀</strong>、
         <strong>额度怎么算</strong>、<strong>有没有积分体系</strong>。
-        gpt88.cc 的计费思路和传统「积分盘」不太一样。我们更愿意把它理解成
-        <strong>AI 电网</strong>：Token 就像 AI 世界里的电力，按真实消耗计费，而不是先把人民币换成一层空气积分。
+        gpt88.cc 的计费思路是把 Token 看成 AI 世界里的电力：官方用量是实际消耗，
+        分组倍率是不同上游线路对应的换算系数，最终从人民币余额中扣费。
       </p>
 
       <div className="my-6 rounded-xl border border-sky-400/20 bg-sky-400/[0.06] p-5">
@@ -133,11 +158,11 @@ export default function AuthPage() {
           AI Grid
         </div>
         <p className="mt-2 text-lg font-semibold text-ink-50">
-          我们卖的不是「积分」，而是稳定的 AI Token 电力。
+          我们提供的是可按官方用量核算的 AI Token 电力。
         </p>
         <p className="mt-2 text-sm leading-7 text-ink-300">
-          就像用电按度计费、用水按吨计费，AI 使用也应该回到真实资源消耗：
-          你实际用了多少 Token，就清楚看到花了多少钱。
+          就像不同供电线路可能有不同服务成本，AI 分组也可能有不同倍率：
+          你可以在 API 密钥页面查看当前分组倍率，再按官方用量核算实际扣费。
         </p>
       </div>
 
@@ -148,47 +173,47 @@ export default function AuthPage() {
       <h3 id="billing-model">我们的计费方式</h3>
       <ul>
         <li>
-          <strong>按人民币真实计价</strong>：充值 1 元 = 账户 1 元余额。
+          <strong>充值按 1:1 折算</strong>：充值 ¥1 = 余额 1.00；页面的 <code>$</code> 符号不代表美元余额。
         </li>
         <li>
-          <strong>按模型实际消耗扣费</strong>：模型实际消耗多少 Token，就按对应实时单价扣多少。
+          <strong>按官方用量与分组倍率扣费</strong>：实际扣费（元）= 官方用量（美元）× 所选分组倍率。
         </li>
         <li>
-          <strong>不玩复杂倍率</strong>：不需要研究 0.5x、2x、组倍率或虚拟额度换算。
+          <strong>分组影响单位成本</strong>：倍率越低，单位用量越便宜；不同分组对应不同上游线路与稳定性。
         </li>
         <li>
-          <strong>成本透明可追踪</strong>：每次请求都能看到 token usage，用量、扣费和排障都围绕真实数据展开。
+          <strong>成本透明可追踪</strong>：分组倍率在「API 密钥」页面展示，每次请求的 Token usage 和扣费以控制台记录为准。
         </li>
       </ul>
 
       <Callout tone="info" title="像看电费一样看 AI 成本">
         <p>
-          家里用电时，你不会问「电的倍率是多少」，只会看用了多少度电、花了多少钱。
-          AI 未来也会越来越像这样：Token 是 AI 的电力，账户余额是你的电费余额。
+          先确认所选分组的倍率，再结合官方用量判断成本。账户余额是你的人民币余额，
+          充值到账和页面显示都按 1:1 处理。
         </p>
       </Callout>
 
       <h2 id="billing-questions">用户常问：倍率、额度、积分</h2>
       <p>
         如果你之前使用的是「充值 → 换额度 / 刀 / 积分 → 再按模型倍率扣除」的中转站，
-        可以用下面的方式理解 gpt88.cc：
+        可以按下面的口径理解 gpt88.cc：
       </p>
       <ul>
         <li>
           <strong>你们倍率多少？</strong>
-          没有传统积分盘里的复杂倍率。不同模型有不同实际单价，最终以人民币余额扣费。
+          倍率按分组显示在「API 密钥」页面的分组选择处，不同分组对应不同上游线路与稳定性。
         </li>
         <li>
           <strong>1 块等于多少刀？</strong>
-          1 元就是账户 1 元余额，不再先折算成虚拟美元额度或空气积分。
+          充值 ¥1 = 余额 1.00。页面以 <code>$</code> 符号展示时，实际单位仍为人民币；官方用量美元仅用于扣费公式换算。
         </li>
         <li>
           <strong>额度怎么算？</strong>
-          额度就是人民币余额和模型实际消耗。看 Token 用量、看人民币扣费，不需要二次换算。
+          先读取官方 API 用量，再乘以所选分组倍率得到人民币扣费；倍率越低，单位用量越便宜。
         </li>
         <li>
           <strong>有没有积分体系？</strong>
-          核心计费不依赖积分体系。我们更偏向「电费模式」：透明、简单、可长期开发。
+          充值余额不是积分。实际扣费只需要关注官方用量、所选分组倍率和控制台记录。
         </li>
       </ul>
 

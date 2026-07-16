@@ -13,10 +13,7 @@ import FaqPageEn from '../en/FaqPageEn'
  * 用一个轻量的可展开列表（不依赖 details/summary 的 marker 难定制问题），
  * 同时仍保持纯静态 + 可服务端渲染。
  *
- * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
- * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me、world.claudecoder.me、
- * test1122.up.railway.app 与 ai.orbitlink.me 是等价端点，本页"兼容性"分组新增
- * 「我能用其他 base_url 吗？」一条 FAQ 说明这一点。
+ * 所有文档示例统一使用网站首页展示的 https://api.gpt88.cc。
  */
 
 type QA = { q: string; a: React.ReactNode; group: string }
@@ -75,7 +72,7 @@ const FAQ: QA[] = [
         <p>
           兼容 OpenAI 的请求结构、错误外形和流式协议。任何官方 / 社区
           OpenAI SDK 把 <code>base_url</code> 改为
-          <code>https://gpt88.cc/v1</code> 即可使用。
+          <code>https://api.gpt88.cc</code> 即可使用。
         </p>
         <p>
           细节差异：<code>/v1/models</code> 返回多了
@@ -94,36 +91,18 @@ const FAQ: QA[] = [
       <p>
         可以。任何兼容 OpenAI 协议的上层框架都能直接用：把 provider 配置改为
         OpenAI compatible，<code>base_url</code> 设置为
-        <code>https://gpt88.cc/v1</code>，<code>api_key</code> 用 gpt88 Key。
+        <code>https://api.gpt88.cc</code>，<code>api_key</code> 用 gpt88 Key。
       </p>
     ),
   },
   {
     group: '兼容性',
-    q: '我能用其他 base_url 吗？',
+    q: '文档统一使用哪个 base_url？',
     a: (
-      <>
-        <p>
-          可以，<code>china.claudecoder.me</code> /{' '}
-          <code>world.claudecoder.me</code> /{' '}
-          <code>test1122.up.railway.app</code> /{' '}
-          <code>ai.orbitlink.me</code> /{' '}
-          <code>gpt88.cc</code> 这些端点完全等价，
-          按你的网络情况选择即可：
-        </p>
-        <ul className="list-disc pl-5">
-          <li><code>https://gpt88.cc/v1</code> — 默认端点；</li>
-          <li><code>https://china.claudecoder.me/v1</code> — 中国大陆优先；</li>
-          <li><code>https://world.claudecoder.me/v1</code> — 海外优先。</li>
-          <li><code>https://test1122.up.railway.app/v1</code> — 海外直连。</li>
-          <li><code>https://ai.orbitlink.me/v1</code> — 海外 CDN。</li>
-        </ul>
-        <p>
-          API Key、模型清单、字段语义在这些端点上保持一致，<strong>无需重新生成 Key</strong>。
-          详细说明见{' '}
-          <Link to="/docs/quickstart/#endpoints">快速开始 · 可选服务端点</Link>。
-        </p>
-      </>
+      <p>
+        统一使用网站首页展示的 <code>https://api.gpt88.cc</code>。
+        其他协议差异通过请求路径、请求头和请求体字段处理，不需要切换 Base URL。
+      </p>
     ),
   },
   {
@@ -180,13 +159,14 @@ const FAQ: QA[] = [
     a: (
       <>
         <p>
-          gpt88.cc 不采用传统「积分盘」逻辑。我们更像 AI 电网：Token 是 AI 世界里的电力，
-          充值 1 元就是账户 1 元余额，模型实际消耗多少就按人民币余额扣多少。
+          倍率是官方 API 用量换算成人民币扣费的分组系数：实际扣费（元）=
+          官方用量（美元）× 所选分组倍率。比如倍率 2.0 时，消耗 $1 官方额度扣除 ¥2.0；
+          倍率 0.5 时扣除 ¥0.5，倍率越低单位用量越便宜。
         </p>
         <p>
-          所以你不需要每天研究模型倍率、组倍率、虚拟额度或真假积分，只需要关注实际用了多少
-          Token、实际花了多少钱。详细说明见{' '}
-          <Link to="/docs/auth/#token-power">AI 电网与 Token 电力</Link>。
+          分组倍率显示在「API 密钥」页面的分组选择处，不同分组对应不同上游线路与稳定性。
+          充值为 1:1 折算，即充值 ¥1 = 余额 1.00；页面以 <code>$</code> 符号显示时，实际单位仍为人民币。
+          详细说明见 <Link to="/docs/auth/#billing">认证与计费</Link>。
         </p>
       </>
     ),

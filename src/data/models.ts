@@ -165,7 +165,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
     integrationNotes: [
       '如果使用 Google 官方模型 ID，优先参考 Gemini 官方命名，例如 gemini-3.1-flash-image。',
       '如果使用 gpt88.cc 平台别名 NanoBanana2，保留平台控制台里的模型名，但接口仍然按 Gemini generateContent 形态组织。',
-      '请求时优先使用加速域名 https://china.claudecoder.me；如果 Authorization: Bearer 不被接受，可改用 x-goog-api-key。',
+      '请求时优先使用图片与多媒体 Base URL https://img.gpt88.cc；如果 Authorization: Bearer 不被接受，可改用 x-goog-api-key。',
     ],
     caveats: [
       'Gemini 图片接口里，比例值和像素尺寸不要混用；比例用 1:1、16:9、9:16、4:3、3:4、auto，清晰度用 1K、2K、4K。',
@@ -197,7 +197,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '需要先用少量高价值任务验证 GPT-5.6 系列能力上限时',
     ],
     integrationNotes: [
-      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 gpt-5.6-sol。',
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 gpt-5.6-sol。',
       '建议先调用 GET /v1/models 或在控制台确认账号已开放该模型，再把生产流量切入。',
       '如果已有 gpt-5.5 或 gpt-5.4 链路，先用同一批评测样本灰度对比质量、速度和费用，再决定是否替换默认模型。',
       '对于 Agent 工作流，先从非流式最小请求验证连通性，再逐步开启 streaming、tools、JSON 输出和多轮上下文。',
@@ -227,7 +227,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '希望先体验 GPT-5.6 系列，同时控制单次调用成本和延迟时',
     ],
     integrationNotes: [
-      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 gpt-5.6-terra。',
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 gpt-5.6-terra。',
       '建议把 Terra 作为默认候选，把 Sol 作为复杂任务升级路径，把 Luna 作为高频轻量任务路径。',
       '如果接入 Cursor、OpenCode、Codex CLI、ChatBox 或自研服务，配置方式与其他 GPT 模型一致，只需替换 model。',
       '生产接入前建议准备一组固定评测样本，比较 gpt-5.6-terra、gpt-5.5、gpt-5.4 的质量和成本。',
@@ -256,7 +256,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '需要和 Terra / Sol 组成分层路由，把复杂任务再升级到更高档模型时',
     ],
     integrationNotes: [
-      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 gpt-5.6-luna。',
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 gpt-5.6-luna。',
       '建议在路由层设置升级策略：Luna 处理简单任务，遇到长上下文、复杂推理或高价值输出时切到 Terra 或 Sol。',
       '批量任务上线前先压测并发、超时和重试策略，避免把失败重试成本放大。',
     ],
@@ -286,8 +286,8 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '希望把 Claude 路线里的最新公开模型作为默认试验对象时',
     ],
     integrationNotes: [
-      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 claude-fable-5。',
-      'Claude / Anthropic 风格工具通常使用根地址 https://gpt88.cc，再按工具要求填写模型 ID。',
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 claude-fable-5。',
+      'Claude / Anthropic 风格工具统一使用 Base URL https://api.gpt88.cc，再按工具要求填写模型 ID。',
       '如果你不确定当前账号是否已开通，先调用 GET /v1/models 或在控制台查看模型权限，再把默认模型切到 claude-fable-5。',
       '已有 Claude Opus 4.8 或 Claude Opus 4.7 的项目，可先灰度验证一批复杂任务，再决定是否把默认模型切换到 Fable 5。',
     ],
@@ -315,8 +315,8 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '需要专业知识工作输出更少返工、更强自检和更高结构化质量时',
     ],
     integrationNotes: [
-      'OpenAI 兼容工具可使用 https://gpt88.cc/v1，并把请求体 model 设置为 claude-opus-4-8。',
-      'Claude / Anthropic 风格工具通常使用根地址 https://gpt88.cc，再按工具要求填写模型 ID。',
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 claude-opus-4-8。',
+      'Claude / Anthropic 风格工具统一使用 Base URL https://api.gpt88.cc，再按工具要求填写模型 ID。',
       'Claude Opus 4.8 默认 effort 为 high；如果你的客户端显式设置 effort，则以客户端设置为准。',
       '模型支持 adaptive thinking；简单任务可直接响应，复杂多步骤问题会按需触发推理。',
       '它继承 Claude Opus 4.7 的工具和平台能力，并新增 mid-conversation system messages、公开 refusal stop_details、fast mode research preview、更低的 prompt cache 最小长度等能力。',
@@ -346,8 +346,8 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '需要兼顾文本与图像理解的高质量多模态场景时',
     ],
     integrationNotes: [
-      '如果你的工具是 OpenAI 风格（如 OpenAI SDK、Cursor、OpenCode），优先从 https://gpt88.cc/v1 起步。',
-      '如果你的工具是 Claude / Anthropic 风格（如 Claude Code、Anthropic SDK），优先使用根地址，让工具自己拼接 Claude 风格路径。',
+      '如果你的工具是 OpenAI 风格（如 OpenAI SDK、Cursor、OpenCode），优先从 https://api.gpt88.cc 起步。',
+      '如果你的工具是 Claude / Anthropic 风格（如 Claude Code、Anthropic SDK），统一使用 Base URL https://api.gpt88.cc，并按工具要求发送 Claude 风格请求。',
       '建议先用最小请求验证 API Key、模型名与线路，再扩展到长文档或复杂 Agent 工作流。',
     ],
     caveats: [
@@ -372,8 +372,8 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '需要 function calling 的多步骤任务',
     ],
     integrationNotes: [
-      'OpenAI 兼容工具可直接把 base_url 指到 https://gpt88.cc/v1，再把 model 写成 claude-opus-4-6。',
-      'Claude 风格工具更适合直接走根地址配置，减少路径判断错误。',
+      'OpenAI 兼容工具可直接把 base_url 指到 https://api.gpt88.cc，再把 model 写成 claude-opus-4-6。',
+      'Claude 风格工具同样使用 Base URL https://api.gpt88.cc，减少路径配置差异。',
       '第一次接入建议先用一条最小请求确认模型名和 Key 都有效，再进入正式业务。',
     ],
     caveats: [
@@ -450,7 +450,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '团队已有 OpenAI 工具链，希望最低摩擦接入时',
     ],
     integrationNotes: [
-      'OpenAI 风格工具优先从 https://gpt88.cc/v1 起步，这是最接近原生体验的接法。',
+      'OpenAI 风格工具优先从 https://api.gpt88.cc 起步，这是最接近原生体验的接法。',
       '如果只是要验证连通性，可以先用一条 chat/completions 最小请求，再逐步加上 tools / JSON Mode。',
       '做产品化接入时，建议把模型名、线路与 Key 分开管理，方便按环境切换。',
     ],
@@ -476,7 +476,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '把 GPT 系列作为默认主力，再按需要切向更强或更轻量的模型',
     ],
     integrationNotes: [
-      '如果你的工程已经使用 OpenAI Python / Node SDK，把 base_url 改成 https://gpt88.cc/v1 即可起步。',
+      '如果你的工程已经使用 OpenAI Python / Node SDK，把 base_url 改成 https://api.gpt88.cc 即可起步。',
       '建议在正式接入前先跑一次 streaming 与非 streaming 两条请求，确认工具路径都没配错。',
       '做工作流自动化时，可先固定模型名与线路，再在不同环境里切换 API Key。',
     ],
@@ -530,7 +530,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
     integrationNotes: [
       '在 OpenAI 风格 SDK 与开发工具里最容易接入，适合作为代码类默认模型。',
       '建议先用一个最小代码任务验证输出风格，再决定是否固定为团队默认代码模型。',
-      '如果你的工具偏 Claude 风格，也可以通过根地址接入，但仍要确认工具支持的请求结构。',
+      '如果你的工具偏 Claude 风格，也统一通过 Base URL https://api.gpt88.cc 接入，但仍要确认工具支持的请求结构。',
     ],
     caveats: [
       '代码模型的行为会受提示词、工具调用方式和上下文拼接影响，实际效果需结合你的代码库验证。',
@@ -559,7 +559,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
     ],
     integrationNotes: [
       'Claude 风格工具通常更适合作为 thinking 变体的第一接入面，尤其是在开发助手工作流中。',
-      'OpenAI 风格 SDK 也可以走 https://gpt88.cc/v1，只需把 model 指向 claude-opus-4-6-thinking。',
+      'OpenAI 风格 SDK 也可以走 https://api.gpt88.cc，只需把 model 指向 claude-opus-4-6-thinking。',
       '先用短提示验证路径，再逐步扩展到多步推理任务。',
     ],
     caveats: [
@@ -612,7 +612,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '对输出一致性要求较高的企业内部任务',
     ],
     integrationNotes: [
-      '接入方式与其他 Claude 系模型一致：OpenAI 风格用 /v1，Claude 风格用根地址。',
+      '接入方式与其他 Claude 系模型一致：所有工具统一使用 Base URL https://api.gpt88.cc。',
       '若你已有基于 Opus 4.5 的提示词资产，建议先在小样本上验证迁移成本。',
     ],
     caveats: [
@@ -717,7 +717,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '希望快速验证 Google 系列模型接入时',
     ],
     integrationNotes: [
-      '如果你用 OpenAI 风格工具，先走 https://gpt88.cc/v1 再把 model 切到 gemini-3-flash-preview。',
+      '如果你用 OpenAI 风格工具，先走 https://api.gpt88.cc 再把 model 切到 gemini-3-flash-preview。',
       '多模态请求建议先从单一图片或最小输入起步，验证字段格式。',
     ],
     caveats: [
@@ -795,7 +795,7 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '想用 GPT 路线但不想一开始就上最高阶模型时',
     ],
     integrationNotes: [
-      '最适合直接放入现有 OpenAI SDK 工作流，通过 https://gpt88.cc/v1 接入。',
+      '最适合直接放入现有 OpenAI SDK 工作流，通过 https://api.gpt88.cc 接入。',
       '建议和 gpt-5.4 / gpt-5.5 做小范围对比，确认质量与成本平衡点。',
     ],
     caveats: [
@@ -1123,14 +1123,18 @@ function buildLongTailDetail(
       break
   }
 
-  const integrationNotes = usesGeminiGenerateContentImage(model.modelId)
+  const integrationNotes = model.category === 'image' || model.category === 'video'
     ? [
-        'Google/Gemini 图片模型请优先使用加速根地址 https://china.claudecoder.me。',
+        usesGeminiGenerateContentImage(model.modelId)
+          ? 'Google/Gemini 图片模型统一使用图片与多媒体 Base URL https://img.gpt88.cc。'
+          : '图片与视频模型统一使用图片与多媒体 Base URL https://img.gpt88.cc。',
         `第一次接入时，建议先用 ${model.endpoint.path} 验证 API Key、模型名 ${model.modelId} 和当前线路是否匹配。`,
-        '请求体使用 Gemini 原生 contents / generationConfig 结构，返回图片通常在 inlineData.data 中。',
+        ...(usesGeminiGenerateContentImage(model.modelId)
+          ? ['请求体使用 Gemini 原生 contents / generationConfig 结构，返回图片通常在 inlineData.data 中。']
+          : []),
       ]
     : [
-        `OpenAI 风格工具优先从 https://gpt88.cc${model.endpoint.path.startsWith('/v1') ? '/v1' : ''} 起步；Claude 风格工具优先使用根地址。`,
+        `标准 API 使用 Base URL https://api.gpt88.cc，再按工具类型使用对应 endpoint。`,
         `第一次接入时，建议先用一条最小请求验证 API Key、模型名 ${model.modelId} 和当前线路是否匹配。`,
       ]
   if (model.category === 'chat') {
@@ -1145,7 +1149,7 @@ function buildLongTailDetail(
 
   const caveats = [
     '价格、限速、SLA、上下文长度、是否开放多模态等动态值以 gpt88.cc 控制台为准。',
-    '如果当前线路延迟偏高或连接不稳定，可切换到中国调用 / 海外全球加速等价端点重新测试。',
+    '如果请求延迟偏高或连接不稳定，请先检查 API Key、模型、endpoint 和请求格式。',
   ]
   if (model.category === 'image' && usesGeminiGenerateContentImage(model.modelId)) {
     caveats.unshift(
@@ -1175,7 +1179,7 @@ function buildLongTailDetail(
 /* ──────────────────────────────────────────────────────────────────
  * 请求示例：按分类生成 cURL / Python / Node.js 三段
  *
- * base_url 默认 https://gpt88.cc/v1（task t-20260509-7vh34r 已替换全站；
+ * base_url 默认 https://api.gpt88.cc（task t-20260509-7vh34r 已替换全站；
  * 此处直接写当前默认端点的新值，不要再生成旧的历史 API 域名字面量。
  * 旧域名连注释都不应保留，以避免 QA grep 误报，并避免维护者把历史迁移痕迹
  * 误解成仍应继续兼容的运行时地址）。
@@ -1188,7 +1192,7 @@ function buildExamples(modelId: string, endpoint: ModelEndpoint): ModelExample[]
         label: 'Gemini cURL',
         lang: 'bash',
         code: `export API_KEY="YOUR_GPT88_API_KEY"
-export BASE_URL="https://china.claudecoder.me"
+export BASE_URL="https://img.gpt88.cc"
 export MODEL="${modelId}"
 
 curl -s -X POST \\
@@ -1227,7 +1231,7 @@ jq -r '.. | objects | .inlineData?.data? | select(.)' response.json | head -n 1 
         code: `import fs from "node:fs";
 
 const API_KEY = process.env.API_KEY;
-const BASE_URL = "https://china.claudecoder.me";
+const BASE_URL = "https://img.gpt88.cc";
 const MODEL = "${modelId}";
 
 const res = await fetch(
@@ -1281,7 +1285,7 @@ console.log("saved output.png");`,
   }
 
   if (endpoint.path === '/v1/images/generations') {
-    const imageBaseUrl = 'https://china.claudecoder.me'
+    const imageBaseUrl = 'https://img.gpt88.cc'
     const ratioSizeModel = usesRatioImageSize(modelId)
     const prompt = ratioSizeModel ? '月光下的竹林小径' : '极简风格的 API 文档站封面'
     const editPrompt = ratioSizeModel
@@ -1409,7 +1413,7 @@ console.log(await resp.json());`,
       {
         label: 'cURL',
         lang: 'bash',
-        code: `curl https://gpt88.cc${endpoint.path} \\
+        code: `curl https://img.gpt88.cc${endpoint.path} \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -1426,7 +1430,7 @@ console.log(await resp.json());`,
 import requests
 
 resp = requests.post(
-    "https://gpt88.cc${endpoint.path}",
+    "https://img.gpt88.cc${endpoint.path}",
     headers={"Authorization": "Bearer YOUR_GPT88_API_KEY"},
     json={
         "model": "${modelId}",
@@ -1441,7 +1445,7 @@ print(resp.json())`,
         label: 'Node.js',
         lang: 'typescript',
         code: `const resp = await fetch(
-  "https://gpt88.cc${endpoint.path}",
+  "https://img.gpt88.cc${endpoint.path}",
   {
     method: "POST",
     headers: {
@@ -1477,7 +1481,7 @@ console.log(await resp.json());`,
         code: `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -1496,7 +1500,7 @@ print(resp.text)`,
 import fs from "node:fs";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -1528,7 +1532,7 @@ console.log(resp.text);`,
         code: `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -1544,7 +1548,7 @@ print(resp.data[0].embedding[:8])`,
         code: `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -1577,7 +1581,7 @@ console.log(resp.data[0].embedding.slice(0, 8));`,
       code: `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -1593,7 +1597,7 @@ print(resp.choices[0].message.content)`,
       code: `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 

@@ -8,12 +8,12 @@ import CherryStudioPageEn from '../../../en/CherryStudioPageEn'
 const QUICK_SETUP = `1. 打开 Cherry Studio
 2. 进入模型提供商 / API 配置
 3. 选择 OpenAI Compatible
-4. Base URL 填 https://gpt88.cc/v1
+4. Base URL 填 https://api.gpt88.cc
 5. API Key 填 gpt88.cc 控制台生成的 Key
 6. 模型先选一个稳定可用的聊天模型
 7. 发送一条最小消息测试连通性`
 
-const EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
+const EXAMPLE = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -22,7 +22,7 @@ const EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
   }'`
 
 const CHECKLIST = `1. 先把 Provider 选成 OpenAI Compatible
-2. Base URL 一定要写成 https://gpt88.cc/v1
+2. Base URL 一定要写成 https://api.gpt88.cc
 3. API Key 使用控制台生成的真实 Key
 4. 先选一个已知稳定的聊天模型
 5. 发一条最小消息验证
@@ -64,7 +64,7 @@ export default function CherryStudioPage() {
       ]}
     >
       <Callout tone="info" title="最稳接法">
-        <p>Cherry Studio 直接按 OpenAI Compatible 接入即可，先用 <code>https://gpt88.cc/v1</code> 跑通，再切模型。</p>
+        <p>Cherry Studio 直接按 OpenAI Compatible 接入即可，先用 <code>https://api.gpt88.cc</code> 跑通，再切模型。</p>
       </Callout>
 
       <p>

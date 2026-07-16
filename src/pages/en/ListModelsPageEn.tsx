@@ -38,14 +38,14 @@ const TABS = [
   {
     label: 'cURL',
     lang: 'bash',
-    code: `curl https://gpt88.cc/v1/models \\
+    code: `curl https://api.gpt88.cc/v1/models \\
   -H "Authorization: Bearer $GPT88_API_KEY"`,
   },
   {
     label: 'Python',
     lang: 'python',
     code: `from openai import OpenAI
-client = OpenAI(base_url="https://gpt88.cc/v1", api_key="YOUR_GPT88_API_KEY")
+client = OpenAI(base_url="https://api.gpt88.cc", api_key="YOUR_GPT88_API_KEY")
 models = client.models.list()
 for m in models.data:
     print(m.id, m.owned_by)`,
@@ -66,7 +66,7 @@ export default function ListModelsPageEn() {
       ]}
     >
       <h2 id="endpoint">Endpoint</h2>
-      <EndpointBadge method="GET" path="https://gpt88.cc/v1/models" />
+      <EndpointBadge method="GET" path="https://api.gpt88.cc/v1/models" />
       <p>
         The returned model list is permission-filtered. Different keys may see different subsets based
         on console permissions.

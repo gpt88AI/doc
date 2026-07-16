@@ -8,7 +8,7 @@ import CodexPluginsOauthPageEn from '../../en/CodexPluginsOauthPageEn'
 const SYMPTOM = `你现在的状态通常是这样：
 
 1. 用 CC Switch 把 Codex 切到了 gpt88.cc 中转站 API
-2. Base URL 类似 https://gpt88.cc/v1 或 https://china.claudecoder.me/v1
+2. API Key 模式使用 https://api.gpt88.cc；OAuth 模式不配置 API Base URL
 3. API Key 是 gpt88.cc 控制台创建的 sk-...
 4. 模型调用可以工作
 5. 但是 Codex 里的插件 / Plugin / App 能力不可用或不显示`
@@ -58,7 +58,7 @@ const CC_SWITCH_FLOW = `1. 打开 CC Switch
 4. 先关闭或取消激活这个 API Key 路由
 5. 新建一个 ChatGPT OAuth profile，例如 chatgpt-oauth
 6. Auth / 登录方式选择 ChatGPT OAuth / Sign in with ChatGPT
-7. Base URL 保持官方默认，不要填 gpt88.cc/v1
+7. Base URL 保持官方默认；OAuth 模式不要填 API Base URL
 8. 打开 Route / Router / Enable / 启用路由 开关
 9. 目标工具选择 Codex，并保存 / Apply / Activate
 10. 在浏览器中完成 ChatGPT 登录与授权
@@ -80,8 +80,7 @@ route status:
 
 base url:
   使用官方默认
-  不要填 https://gpt88.cc/v1
-  不要填 https://china.claudecoder.me/v1
+  不要填 https://api.gpt88.cc 或 https://img.gpt88.cc
 
 api key:
   留空
@@ -313,8 +312,8 @@ export default function CodexPluginsOauthPage() {
       <Callout tone="warn" title="OAuth 路由不要填 gpt88.cc Base URL">
         <p>
           这个 profile 的目标是恢复 Codex 插件能力，所以它应当走 ChatGPT OAuth。
-          gpt88.cc 的 <code>https://gpt88.cc/v1</code>、<code>china.claudecoder.me</code>
-          等地址继续留给 API Key profile 使用，不要混到 OAuth profile 里。
+          gpt88.cc 的 <code>https://api.gpt88.cc</code> 仅用于 API Key profile，
+          不要把 API Key Base URL 混到 OAuth profile 里。
         </p>
       </Callout>
 

@@ -649,15 +649,15 @@ function ApiQuickFacts({ model }: { model: ModelEntry }) {
       ? chatBaseUrlHint(model, locale)
       : isGeminiImageModel(model)
         ? locale === 'en'
-          ? 'Gemini-native image endpoints use the root base URL, for example https://china.claudecoder.me.'
-          : 'Gemini 原生兼容接口使用根地址，例如 https://china.claudecoder.me。'
+          ? 'Gemini-native image endpoints use the media Base URL https://img.gpt88.cc.'
+          : 'Gemini 原生兼容接口使用图片与多媒体 Base URL https://img.gpt88.cc。'
       : model.category === 'image'
         ? locale === 'en'
-          ? 'Image endpoints use the accelerated base URL https://china.claudecoder.me/v1.'
-          : '图片接口使用加速域名 https://china.claudecoder.me/v1。'
+          ? 'Image endpoints use the media Base URL https://img.gpt88.cc.'
+          : '图片接口使用图片与多媒体 Base URL https://img.gpt88.cc。'
       : locale === 'en'
-        ? 'Media endpoints use https://gpt88.cc/v1 and submit requests to the matching endpoint path.'
-        : '媒体类接口使用 https://gpt88.cc/v1，并按对应 endpoint 提交请求。'
+        ? 'Media endpoints use https://img.gpt88.cc and submit requests to the matching endpoint path.'
+        : '媒体类接口使用 https://img.gpt88.cc，并按对应 endpoint 提交请求。'
   const endpointValue =
     model.category === 'chat' && isAnthropicModel(model)
       ? locale === 'en'
@@ -705,10 +705,9 @@ function QuickFact({
 }
 
 function apiOriginForModel(model: ModelEntry): string {
-  if (model.category === 'image') {
-    return 'https://china.claudecoder.me'
-  }
-  return 'https://gpt88.cc'
+  return model.category === 'image' || model.category === 'video'
+    ? 'https://img.gpt88.cc'
+    : 'https://api.gpt88.cc'
 }
 
 function localizedCategoryTitle(category: ModelEntry['category'], locale: 'zh' | 'en') {
@@ -813,17 +812,17 @@ function isGeminiImageModel(model: ModelEntry): boolean {
 function chatBaseUrlHint(model: ModelEntry, locale: 'zh' | 'en'): string {
   if (isAnthropicModel(model)) {
     return locale === 'en'
-      ? 'Use https://gpt88.cc for Claude Code / Anthropic SDK, and https://gpt88.cc/v1 for OpenAI SDK / Cursor.'
-      : 'Claude Code / Anthropic SDK 用 https://gpt88.cc；OpenAI SDK / Cursor 用 https://gpt88.cc/v1。'
+      ? 'Use https://api.gpt88.cc for Claude Code / Anthropic SDK, OpenAI SDK, Cursor, and cURL.'
+      : 'Claude Code / Anthropic SDK、OpenAI SDK、Cursor、cURL 统一使用 https://api.gpt88.cc。'
   }
   if (isOpenAIModel(model)) {
     return locale === 'en'
-      ? 'Use https://gpt88.cc/v1 for OpenAI SDK, Cursor, and cURL.'
-      : 'OpenAI SDK / Cursor / cURL 用 https://gpt88.cc/v1。'
+      ? 'Use https://api.gpt88.cc for OpenAI SDK, Cursor, and cURL.'
+      : 'OpenAI SDK / Cursor / cURL 用 https://api.gpt88.cc。'
   }
   return locale === 'en'
-    ? 'Use https://gpt88.cc/v1 for OpenAI-compatible tools. If a Claude-style client explicitly supports this model, use the root base URL.'
-    : 'OpenAI 兼容工具用 https://gpt88.cc/v1；Claude 风格工具如支持该模型则用根地址。'
+    ? 'Use https://api.gpt88.cc for OpenAI-compatible and Claude-style tools.'
+    : 'OpenAI 兼容工具和 Claude 风格工具统一使用 https://api.gpt88.cc。'
 }
 
 function ChatProtocolGuide({ model }: { model: ModelEntry }) {
@@ -841,14 +840,14 @@ function ChatProtocolGuide({ model }: { model: ModelEntry }) {
         <ProtocolCard
           title={locale === 'en' ? 'OpenAI Compatible' : 'OpenAI 兼容'}
           endpoint="POST /v1/chat/completions"
-          baseUrl="https://gpt88.cc/v1"
+          baseUrl="https://api.gpt88.cc"
           body={`{ "model": "${model.modelId}", "messages": [...] }`}
           recommended={!anthropic}
         />
         <ProtocolCard
           title="Anthropic / Claude"
           endpoint="POST /v1/messages"
-          baseUrl="https://gpt88.cc"
+          baseUrl="https://api.gpt88.cc"
           body={`{ "model": "${model.modelId}", "messages": [...] }`}
           recommended={anthropic}
         />
@@ -1210,7 +1209,7 @@ function statusCodeRows(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[] {
     {
       name: '5xx',
       type: 'Upstream Error',
-      description: locale === 'en' ? <>Upstream or routing failure. Retry on an equivalent route and keep the request ID for debugging.</> : <>上游或线路异常。可切换等价线路重试，并保留请求 ID 便于排查。</>,
+      description: locale === 'en' ? <>Upstream or request failure. Retry with the same Base URL and keep the request ID for debugging.</> : <>上游或请求异常。保持统一 Base URL 重试，并保留请求 ID 便于排查。</>,
     },
   ]
 }
@@ -1309,8 +1308,8 @@ function ErrorChecklist({ model }: { model: ModelEntry }) {
         </li>
         <li>
           {locale === 'en'
-            ? <><code>5xx</code>: retry on an equivalent route first and keep the request ID for debugging.</>
-            : <><code>5xx</code>：优先切换等价线路重试，并记录请求 ID 方便排障。</>}
+            ? <><code>5xx</code>: retry with the same Base URL and keep the request ID for debugging.</>
+            : <><code>5xx</code>：保持统一 Base URL 重试，并记录请求 ID 方便排障。</>}
         </li>
       </ul>
     </div>

@@ -12,7 +12,7 @@ export GPT88_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx`
 const BASIC = `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -43,7 +43,7 @@ print()`
 const ERROR = `import time
 from openai import OpenAI, RateLimitError, APIStatusError
 
-client = OpenAI(base_url="https://gpt88.cc/v1")
+client = OpenAI(base_url="https://api.gpt88.cc")
 
 def call_with_retry(messages, model="claude-opus-4-8", max_retries=3):
     for attempt in range(max_retries):
@@ -88,7 +88,7 @@ if tc:
 const ASYNC = `import asyncio
 from openai import AsyncOpenAI
 
-client = AsyncOpenAI(base_url="https://gpt88.cc/v1")
+client = AsyncOpenAI(base_url="https://api.gpt88.cc")
 
 async def main():
     resp = await client.chat.completions.create(
@@ -130,7 +130,7 @@ export default function PythonPageEn() {
       <Callout tone="info" title="Higher-level frameworks also work">
         <p>
           Any OpenAI-compatible framework such as LangChain or LiteLLM can work here. Point
-          <code>base_url</code> to <code>https://gpt88.cc/v1</code> and use your gpt88 API key.
+          <code>base_url</code> to <code>https://api.gpt88.cc</code> and use your gpt88 API key.
         </p>
       </Callout>
 

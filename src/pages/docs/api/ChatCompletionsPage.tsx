@@ -260,7 +260,7 @@ const TABS_BASIC = [
   {
     label: 'cURL',
     lang: 'bash',
-    code: `curl https://gpt88.cc/v1/chat/completions \\
+    code: `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -276,7 +276,7 @@ const TABS_BASIC = [
     code: `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -292,7 +292,7 @@ print(resp.choices[0].message.content)`,
     code: `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -308,7 +308,7 @@ const TABS_STREAM = [
   {
     label: 'cURL',
     lang: 'bash',
-    code: `curl -N https://gpt88.cc/v1/chat/completions \\
+    code: `curl -N https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -348,7 +348,7 @@ const TABS_TOOLS = [
   {
     label: 'cURL',
     lang: 'bash',
-    code: `curl https://gpt88.cc/v1/chat/completions \\
+    code: `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -419,7 +419,7 @@ export default function ChatCompletionsPage() {
       ]}
     >
       <h2 id="endpoint">端点与认证</h2>
-      <EndpointBadge method="POST" path="https://gpt88.cc/v1/chat/completions" />
+      <EndpointBadge method="POST" path="https://api.gpt88.cc/v1/chat/completions" />
 
       {/*
        * Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。

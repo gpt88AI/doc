@@ -7,7 +7,7 @@ import { localizePath } from '../../lib/locale'
 const PREPARE = `1. Install Codex CLI
 2. Prepare a gpt88.cc API key
 3. Decide whether you need API key mode or OAuth mode
-4. Confirm the OpenAI-compatible Base URL: https://gpt88.cc/v1
+4. Confirm the OpenAI-compatible Base URL: https://api.gpt88.cc
 5. Prepare one minimal verification task, such as "create hello.txt"`
 
 const INSTALL = `# macOS / Linux
@@ -18,7 +18,7 @@ codex --version`
 
 const API_CONFIG = `[model_providers.OpenAI]
 name = "OpenAI"
-base_url = "https://gpt88.cc/v1"
+base_url = "https://api.gpt88.cc"
 wire_api = "responses"
 requires_openai_auth = true
 
@@ -27,7 +27,7 @@ model_provider = "OpenAI"
 model = "gpt-5-2-chat-latest"`
 
 const ENV = `export OPENAI_API_KEY="sk-your-gpt88-api-key"
-export OPENAI_BASE_URL="https://gpt88.cc/v1"`
+export OPENAI_BASE_URL="https://api.gpt88.cc"`
 
 const VERIFY = `codex --profile gpt88
 
@@ -95,7 +95,7 @@ export default function CodexCliPageEn() {
 
       <h2 id="overview">Bottom line first</h2>
       <p>
-        The core path is simple: install the CLI, point it at <code>https://gpt88.cc/v1</code>, and verify
+        The core path is simple: install the CLI, point it at <code>https://api.gpt88.cc</code>, and verify
         the toolchain with a task that actually reads and writes files. If plugin capability is missing, first
         check whether you are still in API key mode.
       </p>

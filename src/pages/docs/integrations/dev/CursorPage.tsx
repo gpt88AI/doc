@@ -6,14 +6,14 @@ import { useLocale } from '../../../../lib/locale'
 import CursorPageEn from '../../../en/CursorPageEn'
 
 const SETUP = `OpenAI API
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-你的-gpt88-api-key
 Model: claude-sonnet-4-6 或 gpt-5-2-chat-latest`
 
 const STEPS = `1. 打开 Cursor 设置
 2. 找到 Models / API Keys / OpenAI Compatible 配置
 3. 填入 gpt88.cc API Key
-4. Base URL 填 https://gpt88.cc/v1
+4. Base URL 填 https://api.gpt88.cc
 5. 手动添加模型 ID
 6. 保存后在 Composer 或 Chat 里发起测试`
 
@@ -49,7 +49,7 @@ export default function CursorIntegrationPage() {
       ]}
     >
       <Callout tone="info" title="Cursor 推荐用 OpenAI Compatible">
-        <p>Cursor 接 gpt88.cc 的核心就是两项：<code>API Key</code> 和 <code>https://gpt88.cc/v1</code>。</p>
+        <p>Cursor 接 gpt88.cc 的核心就是两项：<code>API Key</code> 和 <code>https://api.gpt88.cc</code>。</p>
       </Callout>
 
       <h2 id="prepare">准备工作</h2>

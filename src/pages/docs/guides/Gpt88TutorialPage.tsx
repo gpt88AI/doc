@@ -15,9 +15,7 @@ import Gpt88TutorialPageEn from '../../en/Gpt88TutorialPageEn'
  * 编辑约束：
  * - 所有指向控制台的链接都使用 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
  * - 不写死价格 / 限速 / SLA / 配额 / 模型上下文长度等数字；统一说明以控制台为准
- * - 强调等价端点：gpt88.cc / china.claudecoder.me / world.claudecoder.me /
- *   test1122.up.railway.app / ai.orbitlink.me
- * - 强调 OpenAI 风格用 /v1，Claude 风格用根地址
+ * - 所有工具统一使用网站首页展示的 https://api.gpt88.cc
  */
 
 const PREP_CHECKLIST = `1. 前往 gpt88.cc 控制台创建一把 API Key
@@ -26,7 +24,7 @@ const PREP_CHECKLIST = `1. 前往 gpt88.cc 控制台创建一把 API Key
 4. 识别你当前工具属于 OpenAI 风格还是 Claude / Anthropic 风格
 5. 先发一条最小请求验证连通性`
 
-const OPENAI_EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
+const OPENAI_EXAMPLE = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -40,7 +38,7 @@ const PYTHON_EXAMPLE = `from openai import OpenAI
 
 # OpenAI 风格工具 / SDK：base_url 以 /v1 结尾
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -54,7 +52,7 @@ const NODE_EXAMPLE = `import OpenAI from "openai";
 
 // OpenAI 风格工具 / SDK：baseURL 以 /v1 结尾
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -64,18 +62,15 @@ const resp = await client.chat.completions.create({
 });
 console.log(resp.choices[0].message.content);`
 
-const CLAUDE_MINDSET = `OpenAI 风格工具 / SDK
-  → Base URL：以 /v1 结尾
-  → 例：https://gpt88.cc/v1
-  → 典型：OpenAI Python / Node SDK、Cursor、OpenCode、cURL、Hermes
+const CLAUDE_MINDSET = `标准 API 工具 / SDK
+  → Base URL 使用：https://api.gpt88.cc
+  → 典型：OpenAI SDK、Claude Code、Cursor、OpenCode、cURL
 
-Claude / Anthropic 风格工具 / SDK
-  → Base URL：根地址，不带 /v1
-  → 例：https://gpt88.cc
-  → 典型：Claude Code、Anthropic SDK、OpenClaw
+图片 / 视频直连
+  → Base URL 使用：https://img.gpt88.cc
 
-你真正要记住的一句话
-  → OpenAI 风格用 /v1，Claude 风格用根地址。`
+OpenAI / Claude / Anthropic 协议差异
+  → 保持对应 Base URL 不变，按协议选择 endpoint 路径和请求格式`
 
 function DocTable({
   headers,
@@ -167,12 +162,13 @@ export default function Gpt88TutorialPage() {
       <h2 id="what-is-gpt88">什么是 gpt88.cc</h2>
       <p>
         gpt88.cc 是一个面向开发者的统一大模型 API 网关。你不需要为每个模型单独维护一套接入方式，
-        只要把请求指向 gpt88.cc，就可以在同一套协议下切换不同模型、不同线路和不同工具。
+        标准文本与 Claude API 把 Base URL 指向 <code>https://api.gpt88.cc</code>，图片和视频直连任务使用
+        <code>https://img.gpt88.cc</code>，再在不同工具中切换模型。
       </p>
       <p>从使用者角度看，它解决的是三类问题：</p>
       <ul>
         <li><strong>把多家模型统一成一套接口</strong>：你可以在 OpenAI 兼容工具里接入，也可以在 Claude / Anthropic 风格工具里接入。</li>
-        <li><strong>把网络选择统一成一个开关</strong>：中国调用、海外全球加速、主域都可以作为等价端点使用。</li>
+        <li><strong>使用首页官方入口</strong>：标准 API 使用 <code>https://api.gpt88.cc</code>，图片 / 视频使用 <code>https://img.gpt88.cc</code>。</li>
         <li><strong>把配置打包成可导出的文件</strong>：在控制台里选好 API Key、模型、调用线路和目标工具后，就能直接导出或一键导入。</li>
       </ul>
       <p>
@@ -186,12 +182,12 @@ export default function Gpt88TutorialPage() {
         <li>第一次接入 gpt88.cc，想先建立整体心智；</li>
         <li>已经在用 OpenAI SDK，想最低成本迁移；</li>
         <li>已经在用 Claude Code / Anthropic SDK，想把同一套配置换到 gpt88.cc；</li>
-        <li>团队里有多种工具（Claude Code、Cursor、OpenCode、cURL、Python、Node.js），希望统一成一套 Base URL 和一组模型。</li>
+        <li>团队里有多种工具（Claude Code、Cursor、OpenCode、cURL、Python、Node.js），希望统一标准 API 配置并正确分流媒体接口。</li>
       </ul>
       <p>你看完后应该能做到：</p>
       <ul>
         <li>理解 <strong>OpenAI 兼容</strong> 和 <strong>Claude 兼容</strong> 的区别；</li>
-        <li>知道什么时候用 <code>https://gpt88.cc/v1</code>，什么时候用根地址；</li>
+        <li>知道标准 API 和图片 / 视频直连分别使用哪个首页 Base URL；</li>
         <li>会用 API Key + 模型 + 线路 + 工具这四个变量组合成一套可用配置；</li>
         <li>能在 cURL、Python、Node.js、Claude Code、Cursor 里跑通第一次请求；</li>
         <li>遇到 401、404、429、超时等常见问题时知道先查什么。</li>
@@ -205,14 +201,14 @@ export default function Gpt88TutorialPage() {
           [
             <strong key="m1">OpenAI 兼容</strong>,
             'OpenAI Python / Node SDK、Cursor、OpenCode、cURL、Hermes、很多第三方框架',
-            <code key="m3">https://gpt88.cc/v1</code>,
+            <code key="m3">https://api.gpt88.cc</code>,
             '只改 base_url 和 api_key，其余尽量不动',
           ],
           [
             <strong key="m5">Claude / Anthropic 兼容</strong>,
             'Claude Code、Anthropic SDK、OpenClaw',
-            <code key="m7">https://gpt88.cc</code>,
-            '只改 base_url / endpoint 路径，让工具按 Claude 风格发请求',
+            <code key="m7">https://api.gpt88.cc</code>,
+            '统一使用同一个 base_url，再让工具按 Claude 风格发送请求',
           ],
         ]}
       />
@@ -220,14 +216,12 @@ export default function Gpt88TutorialPage() {
       <ul>
         <li><strong>同一个 API Key</strong> 可以同时用于多种工具；</li>
         <li><strong>同一个模型</strong> 可以在不同工具里复用；</li>
-        <li><strong>同一组端点</strong> 在中国调用、海外全球加速和主域之间是等价的；</li>
-        <li>你真正需要关心的，通常只有 <strong>工具类型</strong>、<strong>Base URL</strong>、<strong>默认模型</strong>、<strong>网络线路</strong>。</li>
+        <li><strong>按接口类型选择 Base URL</strong>：标准 API 用 <code>https://api.gpt88.cc</code>，媒体 API 用 <code>https://img.gpt88.cc</code>；</li>
+        <li>你真正需要关心的，通常只有 <strong>工具类型</strong>、<strong>请求路径</strong>、<strong>默认模型</strong> 和 <strong>API Key</strong>。</li>
       </ul>
 
       {/*
-       * OpenAI 兼容 / Claude 兼容 / 三个端点等价是本页的核心心智，
-       * 用一个 text 代码块把规则压缩成三行，便于读者复制到脑中：
-       * OpenAI 风格用 /v1，Claude 风格用根地址；三个端点作用相同。
+       * 标准 API 使用 https://api.gpt88.cc；图片 / 视频使用 https://img.gpt88.cc。
        */}
       <CodeBlock lang="text" filename="mental model" code={CLAUDE_MINDSET} />
 
@@ -263,17 +257,9 @@ export default function Gpt88TutorialPage() {
 
       <h3 id="prepare-route">选对线路</h3>
       <p>
-        如果你在中国大陆网络环境，优先选择中国调用；如果你在海外服务器、海外团队或跨境网络里工作，优先选择海外全球加速。
+        标准 API 使用 <code>https://api.gpt88.cc</code>，图片 / 视频直连使用 <code>https://img.gpt88.cc</code>。
+        遇到连接问题时优先检查 API Key、模型、endpoint 和请求格式。
       </p>
-      <p>这些端点是等价的：</p>
-      <ul>
-        <li><code>https://gpt88.cc/v1</code></li>
-        <li><code>https://china.claudecoder.me/v1</code></li>
-        <li><code>https://world.claudecoder.me/v1</code></li>
-        <li><code>https://test1122.up.railway.app/v1</code></li>
-        <li><code>https://ai.orbitlink.me/v1</code></li>
-      </ul>
-      <p>它们共享同一套 API Key、模型和字段语义，只是网络路由不同。</p>
 
       <h2 id="flow">逐步接入流程</h2>
       <p>下面是最稳妥的顺序：</p>
@@ -308,8 +294,8 @@ export default function Gpt88TutorialPage() {
       <h3 id="tool-python">Python SDK</h3>
       <p>如果你写的是 Python 服务，通常有两种情况：</p>
       <ul>
-        <li><strong>OpenAI SDK 风格</strong>：直接把 <code>base_url</code> 换成 <code>https://gpt88.cc/v1</code>；</li>
-        <li><strong>Claude / Anthropic 风格</strong>：把 SDK 的 endpoint 指向根地址，并保持 Claude 风格请求结构。</li>
+        <li><strong>OpenAI SDK 风格</strong>：直接把 <code>base_url</code> 换成 <code>https://api.gpt88.cc</code>；</li>
+        <li><strong>Claude / Anthropic 风格</strong>：继续使用 <code>https://api.gpt88.cc</code>，并保持 Claude 风格请求结构。</li>
       </ul>
       <p>适合：Web 服务、脚本、数据分析、Agent 原型。</p>
       <CodeBlock lang="python" filename="python-openai-compatible.py" code={PYTHON_EXAMPLE} />
@@ -335,7 +321,7 @@ export default function Gpt88TutorialPage() {
         <li>创建 PR；</li>
         <li>做持续性开发任务。</li>
       </ul>
-      <p>这类工具通常走 Claude / Anthropic 风格配置，所以你要优先确认根地址和目标模型是否匹配。</p>
+      <p>这类工具通常走 Claude / Anthropic 风格配置，所以你要确认标准 API Base URL、请求路径和目标模型是否匹配。</p>
 
       <h3 id="tool-others">Cursor / OpenCode / OpenClaw / Hermes</h3>
       <p>这类工具通常已经提供了某种“兼容 OpenAI 或 Claude”的输入项。你要做的事情就是：</p>
@@ -352,8 +338,8 @@ export default function Gpt88TutorialPage() {
 
       <Callout tone="tip" title="一个最容易成功的起步方式">
         <p>
-          路线 A：OpenAI 风格起步 → 先用 <code>https://gpt88.cc/v1</code> + OpenAI SDK / cURL 跑一条最小请求；
-          路线 B：Claude 风格起步 → 先用根地址 + Claude Code / Anthropic SDK 跑通一次。两条路线共用同一把 API Key。
+          不论是 OpenAI 风格还是 Claude 风格，都先用 <code>https://api.gpt88.cc</code> + 对应 SDK 跑一条最小请求。
+          两种协议共用同一把 API Key，差异只在请求路径和请求格式。
         </p>
       </Callout>
 
@@ -362,7 +348,7 @@ export default function Gpt88TutorialPage() {
       <p>如果你已经在多个工具之间切换，就会反复遇到这些问题：</p>
       <ul>
         <li>每个工具配置项名字不一样；</li>
-        <li>有的工具要 <code>/v1</code>，有的工具不要；</li>
+        <li>不同工具的请求路径和字段命名不一样；</li>
         <li>有的工具要单独的模型名映射；</li>
         <li>有的工具需要导入链接，有的工具需要配置文件。</li>
       </ul>
@@ -406,7 +392,7 @@ export default function Gpt88TutorialPage() {
       <ul>
         <li>当前线路是否适合你的网络；</li>
         <li>是不是本地网络到网关慢，还是网关到上游慢；</li>
-        <li>是否需要切换线路重新导出配置。</li>
+        <li>是否需要重新确认 API Key、模型、endpoint 和请求格式。</li>
       </ul>
 
       <h3>模型不可用 / model not found</h3>
@@ -434,7 +420,7 @@ export default function Gpt88TutorialPage() {
       <h2 id="best-practices">最佳实践</h2>
       <ul>
         <li><strong>先验证，再扩展</strong>：先用 cURL 或最小 SDK 调通，再上到复杂工具。</li>
-        <li><strong>先统一，再分流</strong>：团队内先统一默认模型和默认 Base URL，再根据地区切线路。</li>
+        <li><strong>先统一，再分流</strong>：团队内先统一标准 API 配置，再为图片 / 视频任务使用首页媒体 Base URL。</li>
         <li><strong>Key 和模型分开管理</strong>：一个项目一把 Key，一个场景一个默认模型。</li>
         <li><strong>不要把 Key 写进前端</strong>：浏览器和客户端都不能作为 secret 的最终存放地。</li>
         <li><strong>保留排障证据</strong>：出问题时保留 request_id、时间、模型名、线路和错误码。</li>

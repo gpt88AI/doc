@@ -6,14 +6,14 @@ import { useLocale } from '../../../../lib/locale'
 import AnythingLlmPageEn from '../../../en/AnythingLlmPageEn'
 
 const SETUP = `Provider: OpenAI Compatible
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-你的-gpt88-api-key
 Model: gpt-5-2-chat-latest
 
 如果你做知识库问答，先确认 embedding 和 chat 模型分别配置清楚。`
 
 const CHECKLIST = `1. 先准备好 API Key
-2. Base URL 用 https://gpt88.cc/v1
+2. Base URL 用 https://api.gpt88.cc
 3. 聊天模型和 embedding 模型分开看
 4. 先跑一条最小问答
 5. 再导入知识库文档`
@@ -51,7 +51,7 @@ export default function AnythingLlmPage() {
       ]}
     >
       <Callout tone="info" title="接法">
-        <p>AnythingLLM 通常可以直接按 OpenAI Compatible 接入，Base URL 使用 <code>https://gpt88.cc/v1</code>。</p>
+        <p>AnythingLLM 通常可以直接按 OpenAI Compatible 接入，Base URL 使用 <code>https://api.gpt88.cc</code>。</p>
       </Callout>
 
       <p>

@@ -6,7 +6,7 @@ import { useLocale } from '../../../../lib/locale'
 import ClinePageEn from '../../../en/ClinePageEn'
 
 const SETUP = `Provider: OpenAI Compatible
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-你的-gpt88-api-key
 Model: claude-sonnet-4-6`
 

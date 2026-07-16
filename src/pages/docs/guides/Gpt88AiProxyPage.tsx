@@ -5,24 +5,17 @@ import { Callout } from '../../../components/ui/Callout'
 import { useLocale } from '../../../lib/locale'
 import Gpt88AiProxyPageEn from '../../en/Gpt88AiProxyPageEn'
 
-const QUICK_CONFIG = `OpenAI 兼容 Base URL:
-https://gpt88.cc/v1
+const QUICK_CONFIG = `标准 API Base URL:
+https://api.gpt88.cc
 
-Claude / Anthropic 兼容 Base URL:
-https://gpt88.cc
+图片 / 视频直连 Base URL:
+https://img.gpt88.cc
 
-Google / Gemini 图片生成 Base URL:
-https://china.claudecoder.me
-
-海外直连:
-https://test1122.up.railway.app/v1
-
-海外 CDN:
-https://ai.orbitlink.me/v1`
+标准 API 使用 /v1/...；Gemini 原生图片使用 /v1beta/...`
 
 const CURL_EXAMPLE = `export GPT88_API_KEY="sk-你的-gpt88-api-key"
 
-curl https://gpt88.cc/v1/chat/completions \\
+curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -37,17 +30,18 @@ const COST_MINDSET = `传统积分盘：
 
 gpt88.cc：
 充值 1 元 = 账户 1 元余额
-模型实际消耗多少，就按真实人民币余额扣多少
-不需要每天研究倍率、积分和虚拟额度`
+实际扣费（元）= 官方用量（美元）× 所选分组倍率
+分组倍率显示在「API 密钥」页面的分组选择处
+不同分组对应不同上游线路与稳定性，倍率越低单位用量越便宜`
 
 const TOOL_MAP = `OpenAI SDK / Cursor / Cline / ChatBox / Cherry Studio:
-  Base URL: https://gpt88.cc/v1
+  Base URL: https://api.gpt88.cc
 
 Claude Code / Anthropic SDK:
-  Base URL: https://gpt88.cc
+  Base URL: https://api.gpt88.cc
 
 Gemini 图片生成 / NanoBanana2:
-  Base URL: https://china.claudecoder.me
+  Base URL: https://img.gpt88.cc
   Endpoint: /v1beta/models/{MODEL}:generateContent`
 
 const CHECKLIST = `接入前检查：
@@ -64,19 +58,19 @@ const FAQ = `Q: gpt88 AI 中转站是不是只能转 OpenAI？
 A: 不是。gpt88.cc 面向多模型统一接入，文档示例默认使用 OpenAI 兼容协议，同时也覆盖 Claude / Anthropic 风格、Google / Gemini 图片生成等接入方式。
 
 Q: OpenAI 兼容工具应该填哪个 Base URL？
-A: 通常填 https://gpt88.cc/v1。
+A: 通常填 https://api.gpt88.cc。
 
 Q: Claude Code 应该填哪个 Base URL？
-A: Claude / Anthropic 风格通常填 https://gpt88.cc，不要额外加 /v1。
+A: 统一填 https://api.gpt88.cc，接口路径和请求格式按 Claude / Anthropic 兼容要求配置。
 
-Q: 1 元等于多少刀或多少积分？
-A: gpt88.cc 不采用传统积分盘心智。充值 1 元就是账户 1 元余额，模型实际消耗多少就扣多少，具体用量和扣费以控制台为准。
+Q: 1 元等于多少刀或多少积分？倍率怎么算？
+A: 充值 1 元就是账户 1 元余额。实际扣费（元）= 官方用量（美元）× 所选分组倍率；分组倍率在 API 密钥页面的分组选择处查看，具体用量和扣费以控制台为准。
 
 Q: 模型价格、限速和上下文长度能不能写死？
 A: 不建议。模型政策、上游能力和账号权限会变化，准确值应以 gpt88.cc 控制台当前配置为准。
 
-Q: 为什么文档里同时出现 gpt88.cc、china.claudecoder.me、test1122.up.railway.app、ai.orbitlink.me？
-A: 它们用于不同线路或协议场景。默认 OpenAI 兼容接入先使用 https://gpt88.cc/v1；图片生成和海外线路按具体教程选择。`
+Q: 文档中的 Base URL 应该使用哪个？
+A: 标准文本、Claude、音频等 API 使用 https://api.gpt88.cc；图片和视频直连使用 https://img.gpt88.cc。其他协议差异通过 endpoint、请求头和请求体字段处理。`
 
 function DocTable({
   headers,
@@ -196,18 +190,19 @@ export default function Gpt88AiProxyPage() {
 
       <h2 id="features">核心能力</h2>
       <ul>
-        <li><strong>OpenAI API 中转</strong>：支持常见 OpenAI 兼容 SDK 和工具，把 <code>base_url</code> 指向 <code>https://gpt88.cc/v1</code>。</li>
-        <li><strong>Claude API 中转</strong>：Claude / Anthropic 风格工具通常使用根地址 <code>https://gpt88.cc</code>。</li>
+        <li><strong>OpenAI API 中转</strong>：支持常见 OpenAI 兼容 SDK 和工具，把 <code>base_url</code> 指向 <code>https://api.gpt88.cc</code>。</li>
+        <li><strong>Claude API 中转</strong>：Claude / Anthropic 风格工具也统一使用 <code>https://api.gpt88.cc</code>，按对应 endpoint 发送请求。</li>
         <li><strong>Gemini 图片生成</strong>：Google / Gemini 图片生成、NanoBanana2 等图片模型按专用图片接口接入。</li>
         <li><strong>多模型导航</strong>：通过 <Link to="/models/">模型导航</Link> 浏览 Chat、Image、Video、Audio 分类模型。</li>
         <li><strong>工具集成教程</strong>：提供 ChatBox、Cherry Studio、AnythingLLM、Claude Code、Cursor、Cline、Codex CLI、Dify 等教程。</li>
-        <li><strong>透明用量心智</strong>：不使用复杂积分倍率表达，具体用量、扣费、权限和限速以控制台为准。</li>
+        <li><strong>透明用量心智</strong>：按官方用量乘分组倍率计算人民币扣费，具体用量、扣费、权限和限速以控制台为准。</li>
       </ul>
 
       <h2 id="base-url">Base URL 选择</h2>
       <p>
         搜索“gpt88 AI 中转站怎么接入”时，最常见的问题就是 Base URL 填错。
-        简单规则是：OpenAI 兼容工具一般带 <code>/v1</code>，Claude 风格工具一般使用根地址。
+        标准文本与 Claude 兼容工具使用 <code>https://api.gpt88.cc</code>；图片和视频直连使用
+        <code>https://img.gpt88.cc</code>。协议差异仍通过 endpoint 路径和请求格式处理。
       </p>
       <CodeBlock lang="text" filename="base-url-map" code={QUICK_CONFIG} />
       <CodeBlock lang="text" filename="tool-map" code={TOOL_MAP} />
@@ -229,13 +224,18 @@ export default function Gpt88AiProxyPage() {
         rows={[
           [
             'OpenAI SDK / cURL / Cursor / Cline',
-            <code key="openai">https://gpt88.cc/v1</code>,
+            <code key="openai">https://api.gpt88.cc</code>,
             '按 OpenAI 兼容协议接入，通常只改 base_url 和 api_key。',
           ],
           [
             'Claude Code / Anthropic SDK',
-            <code key="claude">https://gpt88.cc</code>,
-            '按 Claude / Anthropic 风格接入，避免把 /v1 填到根地址后面。',
+            <code key="claude">https://api.gpt88.cc</code>,
+            '按 Claude / Anthropic 风格接入，Base URL 使用标准 API 地址。',
+          ],
+          [
+            'Gemini 图片 / Image / Video',
+            <code key="media">https://img.gpt88.cc</code>,
+            '使用图片与多媒体直连地址，并按接口文档填写 /v1 或 /v1beta 路径。',
           ],
           [
             'ChatBox / Cherry Studio / AnythingLLM',
@@ -256,16 +256,28 @@ export default function Gpt88AiProxyPage() {
       />
 
       <h2 id="pricing">Token 电力计费心智</h2>
-      <Callout tone="tip" title="不是传统积分盘">
+      <Callout tone="danger" title="重要：分组倍率决定实际扣费">
         <p>
-          很多用户从其他中转站迁移过来，会习惯问“倍率多少”“1 块等于多少刀”“额度怎么算”。
-          gpt88.cc 更推荐用“AI 电网 / Token 电力”的方式理解：AI 使用成本应该像电费一样透明。
+          倍率表示每消耗 $1 官方 API 额度时，从余额扣除的人民币金额。
+          实际扣费（元）= 官方用量（美元）× 该分组倍率；倍率 2.0 扣 ¥2.0，倍率 0.5 扣 ¥0.5。
+          分组倍率越低，单位用量越便宜。
+        </p>
+        <p>
+          倍率在「API 密钥」页面的分组选择处查看。不同分组对应不同上游线路与稳定性，
+          可按需要切换。充值为 1:1 折算，充值 ¥1 = 余额 1.00；页面以 <code>$</code> 符号显示时，实际单位为人民币。
+        </p>
+        <p>
+          查找模型和价格时，可查看
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">大模型广场</a>，
+          或打开
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://gpt88.cc/pricing" target="_blank" rel="noreferrer">官网定价页面</a>。
+          账户实际可用模型、分组倍率和最终扣费仍以控制台为准。
         </p>
       </Callout>
       <CodeBlock lang="text" filename="token-power" code={COST_MINDSET} />
       <p>
-        这意味着你不需要把时间花在复杂倍率、积分包和虚拟额度换算上。
-        你更应该关注：实际用了多少 Token、请求使用了哪个模型、控制台显示扣费是多少。
+        你需要关注三个信息：官方用了多少额度、当前 API Key 选择了哪个分组、控制台记录了多少人民币扣费。
+        充值余额不是积分，页面的 <code>$</code> 符号也不改变其人民币计价口径。
       </p>
 
       <h2 id="seo-questions">搜索常见问题</h2>

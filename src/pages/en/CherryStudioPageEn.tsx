@@ -7,12 +7,12 @@ import { localizePath } from '../../lib/locale'
 const QUICK_SETUP = `1. Open Cherry Studio
 2. Go to model provider / API settings
 3. Choose OpenAI Compatible
-4. Set Base URL to https://gpt88.cc/v1
+4. Set Base URL to https://api.gpt88.cc
 5. Paste the API key from the gpt88.cc console
 6. Start with one stable chat model
 7. Send one minimal test message`
 
-const EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
+const EXAMPLE = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -21,7 +21,7 @@ const EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
   }'`
 
 const CHECKLIST = `1. Set the provider to OpenAI Compatible
-2. Make sure Base URL is exactly https://gpt88.cc/v1
+2. Make sure Base URL is exactly https://api.gpt88.cc
 3. Use a real API key from the console
 4. Start with a known stable chat model
 5. Send one minimal message to verify
@@ -61,7 +61,7 @@ export default function CherryStudioPageEn() {
       <Callout tone="info" title="Most reliable setup">
         <p>
           Cherry Studio usually works best through the OpenAI-compatible path. First make
-          <code> https://gpt88.cc/v1 </code>
+          <code> https://api.gpt88.cc </code>
           work, then expand to more models.
         </p>
       </Callout>

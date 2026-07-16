@@ -30,7 +30,7 @@ export default function OverviewPageEn() {
         <code>base_url</code> and your API key.
       </p>
       <p>
-        The default OpenAI-compatible endpoint is <code>https://gpt88.cc/v1</code>. Equivalent
+        The default OpenAI-compatible endpoint is <code>https://api.gpt88.cc</code>. Equivalent
         regional endpoints are also available for China and overseas routing.
       </p>
 

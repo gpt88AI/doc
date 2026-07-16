@@ -61,7 +61,7 @@ export default function GptImage2ServiceNoticePageEn() {
       <CodeBlock lang="text" filename="recommended-lines" code={RECOMMENDED_LINES} />
       <ul>
         <li><code>agent.gpt88.cc</code> is the visual image workstation.</li>
-        <li><code>img.gpt88.cc</code> is the image-optimized API route.</li>
+        <li><code>https://img.gpt88.cc</code> is the unified image API Base URL.</li>
       </ul>
 
       <h2 id="account">Separate account system note</h2>
@@ -94,7 +94,7 @@ export default function GptImage2ServiceNoticePageEn() {
       <h2 id="api">API integration suggestion</h2>
       <p>
         For code-driven image generation, route OpenAI-compatible image requests to
-        <code>https://img.gpt88.cc/v1</code> and use the official <code>gpt-image-2</code> image endpoint family.
+        <code>https://img.gpt88.cc</code> and use the official <code>gpt-image-2</code> image endpoint family.
       </p>
       <CodeBlock lang="bash" filename="gpt-image-2-generate.sh" code={DIRECT_CURL} />
       <ul>
@@ -106,7 +106,7 @@ export default function GptImage2ServiceNoticePageEn() {
       <ol>
         <li>Draft manually in <code>agent.gpt88.cc</code>.</li>
         <li>Lock the prompt and composition direction.</li>
-        <li>Move stable prompts into API scripts via <code>img.gpt88.cc</code>.</li>
+        <li>Move stable prompts into API scripts via <code>https://img.gpt88.cc</code>.</li>
         <li>Use cheaper / faster modes for batch support assets and higher-quality modes for covers, ads, and hero images.</li>
       </ol>
     </DocPage>

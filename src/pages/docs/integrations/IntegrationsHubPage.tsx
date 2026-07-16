@@ -115,8 +115,8 @@ export default function IntegrationsHubPage() {
       </p>
       <p>
         如果你不确定该从哪里开始：普通聊天先看 ChatBox，开发工具先看 Codex CLI 或 Claude Code，
-        平台应用先看 Dify。OpenAI 兼容工具通常使用 <code>https://gpt88.cc/v1</code>，
-        Claude 风格工具通常使用 <code>https://gpt88.cc</code>。
+        平台应用先看 Dify。OpenAI 兼容工具通常使用 <code>https://api.gpt88.cc</code>，
+        OpenAI 兼容和 Claude 风格工具统一使用 <code>https://api.gpt88.cc</code>。
       </p>
 
       <h2 id="chat-apps">聊天应用</h2>

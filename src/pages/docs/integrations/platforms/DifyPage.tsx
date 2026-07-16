@@ -13,7 +13,7 @@ const PREPARE = `1. 已有 Dify 管理员权限
 
 const PROVIDER_SETUP = `Provider: OpenAI Compatible
 API Key: sk-你的-gpt88-api-key
-API Base URL: https://gpt88.cc/v1
+API Base URL: https://api.gpt88.cc
 Model Type: LLM
 Model Name: gpt-5-2-chat-latest 或 claude-sonnet-4-6`
 
@@ -21,7 +21,7 @@ const APP_SETUP = `1. 打开 Dify 控制台
 2. 进入 Settings / Model Provider
 3. 新增 OpenAI Compatible Provider
 4. 填入 gpt88.cc API Key
-5. Base URL 填 https://gpt88.cc/v1
+5. Base URL 填 https://api.gpt88.cc
 6. 保存后进入应用
 7. 在应用模型设置里选择刚才添加的模型
 8. 发起一次最小对话测试`
@@ -41,7 +41,7 @@ Rerank Model: 负责结果重排，可按需要配置
 不要只配置聊天模型就直接导入大量知识库。先用 1-2 个短文档验证切块、召回和回答效果。`
 
 const TROUBLESHOOTING = `1. Provider 保存失败
-   - 检查 Base URL 是否为 https://gpt88.cc/v1
+   - 检查 Base URL 是否为 https://api.gpt88.cc
    - 检查 API Key 是否完整
 
 2. 应用里看不到模型
@@ -85,7 +85,7 @@ export default function DifyIntegrationPage() {
       <Callout tone="info" title="Dify 推荐接法">
         <p>
           Dify 使用 OpenAI Compatible Provider 接入 gpt88.cc，Base URL 填
-          <code>https://gpt88.cc/v1</code>。聊天模型、embedding 模型和知识库参数要分开验证。
+          <code>https://api.gpt88.cc</code>。聊天模型、embedding 模型和知识库参数要分开验证。
         </p>
       </Callout>
 

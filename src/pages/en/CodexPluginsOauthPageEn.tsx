@@ -7,7 +7,7 @@ import { localizePath } from '../../lib/locale'
 const SYMPTOM = `Typical state:
 
 1. You routed Codex through gpt88.cc with CC-Switch
-2. Base URL looks like https://gpt88.cc/v1 or https://china.claudecoder.me/v1
+2. API-key mode uses https://api.gpt88.cc; OAuth mode does not configure an API Base URL
 3. The API key is a gpt88.cc sk-... key
 4. Model calls work
 5. But plugin / app capability is missing or unavailable`
@@ -109,7 +109,7 @@ export default function CodexPluginsOauthPageEn() {
       <CodeBlock lang="text" filename="cc-switch-flow" code={CC_SWITCH_FLOW} />
       <p>
         The OAuth profile should use the official default login flow. Do not point the OAuth profile itself at
-        <code>https://gpt88.cc/v1</code>.
+        <code>https://api.gpt88.cc</code>.
       </p>
 
       <h2 id="switch">Switch to ChatGPT OAuth</h2>

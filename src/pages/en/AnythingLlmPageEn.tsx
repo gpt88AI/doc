@@ -5,14 +5,14 @@ import { Callout } from '../../components/ui/Callout'
 import { localizePath } from '../../lib/locale'
 
 const SETUP = `Provider: OpenAI Compatible
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-your-gpt88-api-key
 Model: gpt-5-2-chat-latest
 
 If you use a knowledge base, configure embedding and chat models separately.`
 
 const CHECKLIST = `1. Prepare an API key
-2. Use https://gpt88.cc/v1 as the Base URL
+2. Use https://api.gpt88.cc as the Base URL
 3. Treat chat and embedding models separately
 4. Run one minimal Q&A test first
 5. Import knowledge documents only after that`
@@ -48,7 +48,7 @@ export default function AnythingLlmPageEn() {
       <Callout tone="info" title="Recommended route">
         <p>
           AnythingLLM usually works directly through the OpenAI-compatible path with
-          <code> https://gpt88.cc/v1</code>.
+          <code> https://api.gpt88.cc</code>.
         </p>
       </Callout>
 

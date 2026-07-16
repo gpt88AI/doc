@@ -4,7 +4,7 @@ import { Seo } from '../../components/seo/Seo'
 import { websiteStructuredData } from '../../components/seo/structuredData'
 import { localizePath } from '../../lib/locale'
 
-const CURL_EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
+const CURL_EXAMPLE = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -33,12 +33,12 @@ export default function LandingPageEn() {
             Unified API Gateway · OpenAI Compatible
           </span>
           <h1 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-ink-50 sm:text-5xl lg:text-6xl">
-            One <code className="rounded-md border border-violet-400/30 bg-violet-400/10 px-2 py-0.5 text-[0.86em] text-violet-100">base_url</code>
+            Official <code className="rounded-md border border-violet-400/30 bg-violet-400/10 px-2 py-0.5 text-[0.86em] text-violet-100">Base URLs</code>
             {' '}for all models on gpt88.cc
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-8 text-ink-300 sm:text-lg">
-            Point your existing OpenAI-compatible SDK to <code>https://gpt88.cc/v1</code>,
-            then switch models through the <code>model</code> field. No vendor-by-vendor rewrite.
+            Point your existing OpenAI-compatible SDK to <code>https://api.gpt88.cc</code>;
+            use <code>https://img.gpt88.cc</code> for direct image and video tasks. No vendor-by-vendor rewrite.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
@@ -81,7 +81,7 @@ export default function LandingPageEn() {
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
               <div className="text-sm font-semibold text-ink-50">Transparent billing</div>
               <p className="mt-2 text-sm leading-6 text-ink-300">
-                RMB balance and real token usage. No multiplier game, no opaque points system.
+                RMB balance with official usage and group multiplier shown in the API Keys selector.
               </p>
             </div>
           </div>

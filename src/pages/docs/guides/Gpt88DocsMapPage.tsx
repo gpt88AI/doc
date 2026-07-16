@@ -36,11 +36,11 @@ const PRODUCT_ENTRIES = [
     desc: '官方文档入口。适合 API 接入、模型选型、集成配置、教程查阅和排障。',
   },
   {
-    title: 'img.gpt88.cc',
-    href: 'https://img.gpt88.cc/',
+    title: '统一图片 API',
+    href: 'https://img.gpt88.cc',
     external: true,
     icon: Sparkles,
-    desc: '图片优选加速域名。适合 GPT-Image-2 批量生图、自动化对接和更低延迟的图片请求。',
+    desc: '统一 API Base URL。适合 GPT-Image-2 批量生图和自动化对接。',
   },
 ] as const
 

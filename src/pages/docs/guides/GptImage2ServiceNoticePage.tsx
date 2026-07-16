@@ -88,7 +88,7 @@ export default function GptImage2ServiceNoticePage() {
     <DocPage
       path="/docs/guides/gpt-image-2-service-notice"
       title="GPT-Image-2 生图服务通知与选型指南"
-      description="详细说明 agent.gpt88.cc 的 GPT-Image-2 生图工作台、img.gpt88.cc 图片加速域名、原生 4K 与超分 4K 区别、价格策略和适用场景。"
+      description="详细说明 agent.gpt88.cc 的 GPT-Image-2 生图工作台、https://img.gpt88.cc 图片 API、原生 4K 与超分 4K 区别、价格策略和适用场景。"
       headings={[
         { id: 'overview', text: '推荐入口', level: 2 },
         { id: 'line', text: '为什么单独用图片专线', level: 2 },
@@ -111,7 +111,8 @@ export default function GptImage2ServiceNoticePage() {
       <h2 id="overview">推荐入口</h2>
       <p>
         这套文档只覆盖图片体系。<code>agent.gpt88.cc</code> 是图片工作台，
-        <code>img.gpt88.cc</code> 是图片加速专线。文本大模型站是另一套独立网站，不在本文范围内。
+        <code>https://img.gpt88.cc</code> 是图片与多媒体 API 入口；标准文本 API 使用
+        <code>https://api.gpt88.cc</code>，本文只聚焦图片能力。
       </p>
       <CodeBlock lang="text" filename="recommended-lines" code={RECOMMENDED_LINES} />
       <ul>
@@ -119,7 +120,7 @@ export default function GptImage2ServiceNoticePage() {
           <code>agent.gpt88.cc</code>：图片工作台，适合手动生成海报、电商图、场景图、模特图和批量素材。
         </li>
         <li>
-          <code>img.gpt88.cc</code>：图片加速域名，适合程序调用 <code>gpt-image-2</code> 图片接口。
+          <code>https://img.gpt88.cc</code>：统一 API Base URL，适合程序调用 <code>gpt-image-2</code> 图片接口。
         </li>
       </ul>
 
@@ -169,7 +170,7 @@ export default function GptImage2ServiceNoticePage() {
       />
       <Callout tone="info" title="定位区别">
         <p>
-          <code>agent.gpt88.cc</code> 负责“图片工作台”，<code>img.gpt88.cc</code> 负责“图片接口优先”。
+          <code>agent.gpt88.cc</code> 负责“图片工作台”，<code>https://img.gpt88.cc</code> 负责统一 API 调用。
           文本大模型网站和图片站是两套独立产品，不要混在一篇教程里理解。
         </p>
       </Callout>
@@ -251,7 +252,7 @@ export default function GptImage2ServiceNoticePage() {
       <h2 id="api">API 对接建议</h2>
       <p>
         如果你的目标是把图片生成接入程序、自动化脚本或工作流，优先把 Base URL 指向
-        <code>https://img.gpt88.cc/v1</code>，并使用 <code>gpt-image-2</code> 官方图片接口。
+        <code>https://img.gpt88.cc</code>，并使用 <code>gpt-image-2</code> 官方图片接口。
       </p>
       <CodeBlock lang="bash" filename="gpt-image-2-generate.sh" code={DIRECT_CURL} />
       <ul>
@@ -271,7 +272,7 @@ export default function GptImage2ServiceNoticePage() {
       <h2 id="workflow">推荐工作流</h2>
       <ol>
         <li>先在 <code>agent.gpt88.cc</code> 手动打样，验证 prompt、构图、风格和商品一致性。</li>
-        <li>确认方向后，再把稳定的 prompt 模板迁移到 `img.gpt88.cc` 的 API 流程。</li>
+        <li>确认方向后，再把稳定的 prompt 模板迁移到 `https://img.gpt88.cc` 的 API 流程。</li>
         <li>批量素材优先用高性价比方案，封面图、主图、广告图优先用高质量方案。</li>
         <li>需要后期排版的图，先生成无文字底图，再交给设计工具或前端模板加文案。</li>
         <li>生成完成后，到控制台核对实际用量，形成自己的单图成本基线。</li>
@@ -286,7 +287,7 @@ export default function GptImage2ServiceNoticePage() {
             '不是。高频批量内容更应该优先考虑效率；真正需要细节和后期空间的图，再用原生 4K。',
           ],
           [
-            '为什么要单独提供 img.gpt88.cc？',
+            '为什么图片 API 使用独立的媒体 Base URL？',
             '因为图片生成和文本调用的链路特征不同，单独优化更利于时延、稳定性和批量任务表现。',
           ],
           [

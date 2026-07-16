@@ -11,7 +11,7 @@ const GEMINI_UPLOAD_TABS = [
     label: 'cURL',
     lang: 'bash',
     code: `export API_KEY="YOUR_GPT88_API_KEY"
-export BASE_URL="https://china.claudecoder.me"
+export BASE_URL="https://img.gpt88.cc"
 export MODEL="gemini-3.1-flash-image"
 
 # Upload the reference image first
@@ -59,7 +59,7 @@ async function uploadReferenceImage(filePath: string) {
   form.append("file", new Blob([fs.readFileSync(filePath)]), "reference.png");
   form.append("mimeType", "image/png");
 
-  const res = await fetch("https://china.claudecoder.me/upload/v1/files", {
+  const res = await fetch("https://img.gpt88.cc/upload/v1/files", {
     method: "POST",
     headers: {
       "x-goog-api-key": process.env.GPT88_API_KEY!,
@@ -74,7 +74,7 @@ async function uploadReferenceImage(filePath: string) {
 
 const fileUri = await uploadReferenceImage("reference.png");
 
-const res = await fetch("https://china.claudecoder.me/v1/models/gemini-3.1-flash-image:generateContent", {
+const res = await fetch("https://img.gpt88.cc/v1/models/gemini-3.1-flash-image:generateContent", {
   method: "POST",
   headers: {
     "x-goog-api-key": process.env.GPT88_API_KEY!,
@@ -117,7 +117,7 @@ import fs from "node:fs";
 
 const client = new OpenAI({
   apiKey: process.env.GPT88_API_KEY,
-  baseURL: "https://china.claudecoder.me/v1",
+  baseURL: "https://img.gpt88.cc",
 });
 
 const result = await client.images.generate({
@@ -138,7 +138,7 @@ import base64
 
 client = OpenAI(
     api_key="YOUR_GPT88_API_KEY",
-    base_url="https://china.claudecoder.me/v1",
+    base_url="https://img.gpt88.cc",
 )
 
 result = client.images.generate(
@@ -155,7 +155,7 @@ with open("otter.png", "wb") as f:
   {
     label: 'cURL',
     lang: 'bash',
-    code: `curl -s https://china.claudecoder.me/v1/images/generations \\
+    code: `curl -s https://img.gpt88.cc/v1/images/generations \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -178,7 +178,7 @@ from openai import OpenAI
 
 client = OpenAI(
     api_key="YOUR_GPT88_API_KEY",
-    base_url="https://china.claudecoder.me/v1",
+    base_url="https://img.gpt88.cc",
 )
 
 prompt = """
@@ -212,7 +212,7 @@ import fs from "node:fs";
 
 const client = new OpenAI({
   apiKey: process.env.GPT88_API_KEY,
-  baseURL: "https://china.claudecoder.me/v1",
+  baseURL: "https://img.gpt88.cc",
 });
 
 const result = await client.images.edit({
@@ -238,7 +238,7 @@ const GEMINI_TEXT_TABS = [
     label: 'cURL',
     lang: 'bash',
     code: `export API_KEY="YOUR_GPT88_API_KEY"
-export BASE_URL="https://china.claudecoder.me"
+export BASE_URL="https://img.gpt88.cc"
 export MODEL="gemini-3.1-flash-image"
 
 curl -s -X POST \\
@@ -270,7 +270,7 @@ jq -r '.. | objects | .inlineData?.data? | select(.)' response.json | head -n 1 
     code: `import fs from "node:fs";
 
 const API_KEY = process.env.GPT88_API_KEY;
-const BASE_URL = "https://china.claudecoder.me";
+const BASE_URL = "https://img.gpt88.cc";
 const MODEL = "gemini-3.1-flash-image";
 
 const res = await fetch(\`\${BASE_URL}/v1/models/\${MODEL}:generateContent\`, {
@@ -364,7 +364,7 @@ export default function ImagesPageEn() {
       </Callout>
 
       <h2 id="openai">OpenAI official image API</h2>
-      <EndpointBadge method="POST" path="https://china.claudecoder.me/v1/images/generations" />
+      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/images/generations" />
       <p>
         Use the OpenAI image API for direct text-to-image generation. The official API distinguishes clearly
         between <code>generations</code> and <code>edits</code>.
@@ -379,7 +379,7 @@ export default function ImagesPageEn() {
       </Callout>
 
       <h2 id="openai-edit">OpenAI image editing</h2>
-      <EndpointBadge method="POST" path="https://china.claudecoder.me/v1/images/edits" />
+      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/images/edits" />
       <p>
         The official edit endpoint supports editing existing images, generating from references, and localized
         edits with masks. Do not rewrite this as Gemini-style <code>contents.parts.fileData</code>, because
@@ -388,7 +388,7 @@ export default function ImagesPageEn() {
       <CodeTabs tabs={OPENAI_EDIT_TABS} />
 
       <h2 id="gemini">Gemini official image API</h2>
-      <EndpointBadge method="POST" path="https://china.claudecoder.me/v1/models/gemini-3.1-flash-image:generateContent" />
+      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/models/gemini-3.1-flash-image:generateContent" />
       <p>
         Gemini image generation uses <code>generateContent</code>. In current Google documentation, Nano
         Banana 2 maps to <code>gemini-3.1-flash-image</code>, while Nano Banana Pro maps to

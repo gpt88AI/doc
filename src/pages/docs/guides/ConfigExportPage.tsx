@@ -11,8 +11,7 @@ import { Callout } from '../../../components/ui/Callout'
  *
  * 编辑约束：
  * - 所有指向控制台的链接都使用 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
- * - 所有 base_url（china.claudecoder.me / world.claudecoder.me / test1122.up.railway.app /
- *   ai.orbitlink.me / gpt88.cc/v1）作为代码字面量呈现
+ * - 标准 API base_url 使用 https://api.gpt88.cc，图片 / 视频直连使用 https://img.gpt88.cc
  * - 价格 / 限速 / SLA / 配额 / 模型可用性等数值不写死——以控制台为准，本文档不写死数值
  * - CC Switch 的自定义协议、桌面端调起、import URL 具体格式不写死，截图未提供，控制台行为为准
  */
@@ -21,23 +20,23 @@ const QUICK_FLOW = `1. 在控制台「API Keys」中创建或选择一个 API Ke
 2. 打开「配置文件导出」页面
 3. 选择 API Key（默认列出你账号下的所有 Key）
 4. 选择模型（如 claude-haiku-4-5-20251001 / claude-opus-4-7 / gpt-5.4 等）
-5. 选择调用线路（中国大陆 → 中国调用；海外/跨境 → 海外全球加速、海外直连或海外 CDN）
+5. 确认 Base URL：标准 API 使用 https://api.gpt88.cc，图片 / 视频使用 https://img.gpt88.cc
 6. 选择要接入的工具 tab（Claude Code / Cursor / Python SDK …）
 7a. 复制 Base URL + 复制工具对应的配置片段，粘贴到目标工具的设置中；
     或
 7b. 选择 CC Switch 导入目标，点击「一键导入到 CC Switch」
 8. 在目标工具中触发一次请求，确认接入成功`
 
-const BASE_URL_RULES = `OpenAI 兼容工具 / SDK
-  → Base URL：以 /v1 结尾
-  → 例：https://china.claudecoder.me/v1
+const BASE_URL_RULES = `标准 API 工具 / SDK
+  → Base URL：https://api.gpt88.cc
+  → OpenAI / Claude / 音频等标准 API 按 endpoint 路径、请求头和请求体字段接入
 
-Anthropic / Claude 工具 / SDK
-  → Base URL：根地址，不带 /v1
-  → 例：https://china.claudecoder.me
+图片 / 视频直连
+  → Base URL：https://img.gpt88.cc
+  → 图片与视频 endpoint 按对应 API 文档使用 /v1 或 /v1beta 路径
 
 任何工具
-  → 优先使用页面顶部「当前工具推荐 Base URL」给出的值，已经按线路 + 工具 tab 拼好`
+  → 不要手动拼接第二个 /v1`
 
 /* ──────────────────────────────────────────────────────────────────
  * 表格：调用线路 / Base URL 风格 / 工具 tab / 导入目标差异 / 排障
@@ -214,73 +213,50 @@ export default function ConfigExportPage() {
         </li>
       </ul>
 
-      <h3 id="field-route">3.3 选择调用线路</h3>
-      <p>页面提供多个等价的服务端点，作用完全相同，只是网络路由不同。请按你的网络环境选：</p>
-      <DocTable
-        headers={['线路', '推荐场景', '示例地址']}
-        rows={[
-          [
-            <strong key="r1-1">中国调用</strong>,
-            '国内办公网络、中国大陆 IDC、个人开发机走中国出口',
-            <code key="r1-3">https://china.claudecoder.me</code>,
-          ],
-          [
-            <strong key="r2-1">海外全球加速</strong>,
-            '海外服务器、海外团队、跨境网络、走 VPN 的用户',
-            <code key="r2-3">https://world.claudecoder.me</code>,
-          ],
-          [
-            <strong key="r3-1">海外直连</strong>,
-            '海外服务器直连、希望减少代理层或做线路对比的用户',
-            <code key="r3-3">https://test1122.up.railway.app</code>,
-          ],
-          [
-            <strong key="r4-1">海外 CDN</strong>,
-            '海外访问希望优先走 CDN 边缘节点的团队或生产服务',
-            <code key="r4-3">https://ai.orbitlink.me</code>,
-          ],
-        ]}
-      />
+      <h3 id="field-route">3.3 统一 API 入口</h3>
+      <p>标准 API 与图片 / 视频直连分别使用网站首页展示的 Base URL：</p>
+      <p><code>https://api.gpt88.cc</code>（标准 API）</p>
+      <p><code>https://img.gpt88.cc</code>（图片 / 视频直连）</p>
       <ul>
+        <li>API Key、模型和鉴权方式在所有工具中保持同一套配置。</li>
+        <li>协议差异通过 endpoint 路径、请求头和请求体字段处理。</li>
         <li>
-          主域 <code>https://gpt88.cc</code> 同样作为等价 API 端点可用，
-          文档站默认在示例代码中使用 <code>https://gpt88.cc/v1</code>。
-        </li>
-        <li>切换线路只影响 Base URL，不影响 API Key、模型或鉴权方式。</li>
-        <li>
-          <strong>何时切换线路</strong>：请求延迟显著偏高、连接被重置或超时、工具下载配置时被卡住，
-          可以切到另一条线路重新生成配置再试。
+          <strong>排查连接问题</strong>：先确认接口类型对应了正确的 Base URL，再检查 API Key、模型、endpoint 和请求格式。
         </li>
       </ul>
 
       <h3 id="field-baseurl">3.4 API 接入地址</h3>
-      <p>页面会根据所选「调用线路」实时显示推荐 Base URL，并以两张卡片形式给出两种风格：</p>
+      <p>页面按接口类型显示首页中的官方 Base URL，协议风格还会影响 endpoint 和配置字段：</p>
       <DocTable
         headers={['风格', '路径形态', '适用场景']}
         rows={[
           [
             <strong key="b1-1">OpenAI 兼容 Base URL</strong>,
-            <code key="b1-2">https://china.claudecoder.me/v1</code>,
+            <code key="b1-2">https://api.gpt88.cc</code>,
             'OpenAI 风格 SDK / 工具（OpenAI Python SDK、OpenAI Node.js SDK、Cursor、OpenCode、按 OpenAI 协议写的 cURL、Hermes 等）',
           ],
           [
             <strong key="b2-1">Anthropic / Claude Base URL</strong>,
-            <code key="b2-2">https://china.claudecoder.me</code>,
+            <code key="b2-2">https://api.gpt88.cc</code>,
             'Anthropic 风格 SDK / 工具（Claude Code、OpenClaw、Anthropic Python / TypeScript SDK 等）',
+          ],
+          [
+            <strong key="b3-1">图片 / 视频 Base URL</strong>,
+            <code key="b3-2">https://img.gpt88.cc</code>,
+            '图片生成、视频生成和 Gemini 原生图片接口，按文档使用 /v1 或 /v1beta endpoint',
           ],
         ]}
       />
       <ul>
         <li>
-          两个地址对应同一组上游服务，路由规则不同：OpenAI 风格的 SDK 期望最终 URL 是
-          {' '}<code>…/v1/chat/completions</code>，所以 Base URL 末尾加 <code>/v1</code>；
-          Anthropic 风格 SDK 自己会拼 <code>/v1/messages</code>，所以 Base URL 不带 <code>/v1</code>。
+          标准文本与 Claude 协议共用 <code>https://api.gpt88.cc</code>；媒体请求使用
+          <code>https://img.gpt88.cc</code>。
         </li>
         <li>
           <strong>拼错的典型症状</strong>：404 Not Found、
           <code>unknown route /v1/v1/...</code>、
           <code>unknown route /messages</code>。
-          出现这些错误时，先确认你用的 SDK 是 OpenAI 还是 Anthropic 风格，并对照上表的路径形态。
+          出现这些错误时，先确认 endpoint 路径、请求头和请求体字段，不要更换 Base URL。
         </li>
         <li>
           点击地址或右上角「复制当前工具地址」按钮可一键复制；当前工具地址会随上方
@@ -393,12 +369,12 @@ export default function ConfigExportPage() {
 
       <h3>6.2 线路选择建议</h3>
       <ul>
-        <li>默认按你的物理位置选：中国大陆 → 中国调用；其他地区 → 海外全球加速。</li>
+        <li>标准 API 使用 <code>https://api.gpt88.cc</code>，图片 / 视频直连使用 <code>https://img.gpt88.cc</code>。</li>
         <li>
-          如果当前线路出现连续失败、超时或下载缓慢，
-          <strong>先切到另一条线路再排查其他原因</strong>——线路切换是最便宜的修复尝试。
+          如果请求失败或超时，<strong>先检查 endpoint、API Key、模型和请求格式</strong>，
+          不要通过更换 Base URL 规避问题。
         </li>
-        <li>不要在生产环境频繁切线路；切换会改变 Base URL，使所有已部署服务的请求路径变化。</li>
+        <li>生产环境始终固定使用同一个 Base URL，避免配置漂移。</li>
       </ul>
 
       <h3>6.3 常见问题与处理</h3>
@@ -412,8 +388,8 @@ export default function ConfigExportPage() {
           ],
           [
             <>请求返回 <strong>404 Not Found</strong> 或 <code>unknown route</code></>,
-            <>OpenAI 风格 SDK 用了不带 <code>/v1</code> 的 Base URL，或 Anthropic 风格 SDK 用了带 <code>/v1</code> 的 Base URL</>,
-            '对照本文 §3.4 的「路径形态」表选对版本',
+            <>Base URL 与接口类型不匹配，或 endpoint 路径和协议格式不匹配</>,
+            '先选择与接口类型匹配的 Base URL，再检查 endpoint、请求头和请求体字段',
           ],
           [
             <>请求返回 <strong>429</strong></>,
@@ -423,7 +399,7 @@ export default function ConfigExportPage() {
           [
             <><strong>网络超时 / Connection reset</strong></>,
             '当前线路在你的网络下不稳定',
-            '切换调用线路重新生成配置',
+            '固定使用与接口类型匹配的 Base URL，重新确认 API Key、模型、endpoint 和请求格式',
           ],
           [
             <>模型调用返回 <strong>model not found</strong></>,

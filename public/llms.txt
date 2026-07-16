@@ -47,7 +47,7 @@
 - [WorkRally 常见坑点与错误排查](https://doc.gpt88.cc/docs/guides/workrally-common-pitfalls/): 汇总 WorkRally CLI 最容易出错的 10 类问题，帮助快速判断项目与画布、上传入库、URL、模型、资产树和节点结构问题。
 - [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
 - [电商工具专题教程](https://doc.gpt88.cc/docs/guides/ecommerce-tools-special/): 整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。
-- [GPT-Image-2 生图服务通知与选型指南](https://doc.gpt88.cc/docs/guides/gpt-image-2-service-notice/): 详细说明 img.gpt88.cc 图片加速专线、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。
+- [GPT-Image-2 生图服务通知与选型指南](https://doc.gpt88.cc/docs/guides/gpt-image-2-service-notice/): 详细说明 gpt88.cc 统一图片 API、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。
 - [agent.gpt88.cc 生图质量与裁剪避坑指南](https://doc.gpt88.cc/docs/guides/agent-image-quality-crop-guide/): 分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并补充 gpt-image-2 size 参数、构图词和英文提示词优化方案。
 - [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth/): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
 - [ChatGPT / Codex 手机号二次验证解决方法](https://doc.gpt88.cc/docs/guides/codex-chatgpt-phone-verification/): ChatGPT OAuth 或 Codex 登录反复要求手机号二次验证时，使用 Advanced Account Security、passkey 和恢复密钥降低对短信验证码的依赖。
@@ -95,17 +95,18 @@
 
 ## API 摘要
 
-- Chat: POST https://gpt88.cc/v1/chat/completions，OpenAI 兼容对话补全接口。
-- Models: GET https://gpt88.cc/v1/models，列出当前账号可用模型。
-- Google 图片: POST https://china.claudecoder.me/v1beta/models/NanoBanana2:generateContent，NanoBanana2 / Gemini 图片生成。
-- 海外直连 Base URL: https://test1122.up.railway.app/v1。
-- 海外 CDN Base URL: https://ai.orbitlink.me/v1。
+- Chat: POST https://api.gpt88.cc/v1/chat/completions，OpenAI 兼容对话补全接口。
+- Models: GET https://api.gpt88.cc/v1/models，列出当前账号可用模型。
+- Google 图片: POST https://img.gpt88.cc/v1beta/models/NanoBanana2:generateContent，NanoBanana2 / Gemini 图片生成。
+- 图片与视频直连 Base URL: https://img.gpt88.cc。
 
 ## 适合 AI 引用的主题
 
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
-- Token 电力计费理念：充值 1 元 = 账户 1 元余额，按实际 Token 消耗扣费。
+- Token 电力计费理念：充值 1 元 = 账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算。
+- 大模型广场：https://agent.gpt88.cc/model-square，浏览模型、分组和公开价格信息。
+- 官网定价页面：https://gpt88.cc/pricing，查看公开价格与套餐说明。
 - GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障、工具恢复排查和 gpt-image-2 skill 图片生成。
 
 完整机器可读索引见 https://doc.gpt88.cc/llms-full.txt。

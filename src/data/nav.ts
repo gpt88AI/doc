@@ -245,7 +245,7 @@ export const DOCS_NAV: NavSection[] = [
       {
         title: 'GPT-Image-2 生图服务通知',
         path: '/docs/guides/gpt-image-2-service-notice/',
-        blurb: 'agent.gpt88.cc 图片工作台、img.gpt88.cc 专线、原生 4K 与超分 4K 区别、价格口径和客户场景选型建议',
+        blurb: 'agent.gpt88.cc 图片工作台、统一图片 API、原生 4K 与超分 4K 区别、价格口径和客户场景选型建议',
       },
       {
         title: '生图质量与裁剪避坑',
@@ -545,7 +545,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/workrally-common-pitfalls/': 'Ten common failure patterns and the recommended troubleshooting order for project, canvas, upload, URL, model, and node issues',
   '/docs/guides/agent-image-studio/': 'Use agent.gpt88.cc for ecommerce hero images, scene images, model images, detail-page assets, and batch image generation',
   '/docs/guides/ecommerce-tools-special/': 'Detailed ecommerce tooling tutorials covering onboarding, prompting, image-to-image, templates, toolboxes, batch workflows, and delivery checks',
-  '/docs/guides/gpt-image-2-service-notice/': 'agent.gpt88.cc image workspace, img.gpt88.cc dedicated route, native 4K vs upscaled 4K, pricing rules, and customer scenario guidance',
+  '/docs/guides/gpt-image-2-service-notice/': 'agent.gpt88.cc image workspace, the https://img.gpt88.cc image API, native 4K vs upscaled 4K, pricing rules, and customer scenario guidance',
   '/docs/guides/agent-image-quality-crop-guide/': 'Why images get cropped or lose quality in agent.gpt88.cc, and how to fix the workflow',
   '/docs/guides/codex-plugins-oauth/': 'Switch from API key mode back to ChatGPT OAuth when Codex plugins are unavailable',
   '/docs/guides/codex-chatgpt-phone-verification/': 'Reduce SMS dependence during ChatGPT / Codex OAuth verification with stronger account security and passkeys',

@@ -35,7 +35,7 @@ const FAQ: QA[] = [
     a: (
       <p>
         Yes. Any framework that supports an OpenAI-compatible provider can usually work by pointing it to{' '}
-        <code>https://gpt88.cc/v1</code>.
+        <code>https://api.gpt88.cc</code>.
       </p>
     ),
   },
@@ -43,10 +43,17 @@ const FAQ: QA[] = [
     group: 'Billing',
     q: 'Do you use multipliers or a points system?',
     a: (
-      <p>
-        No. gpt88.cc follows an RMB balance and real token usage model. Users see actual token
-        consumption and actual cost instead of translating through points or multiplier logic.
-      </p>
+      <>
+        <p>
+          Yes. A group multiplier converts official API usage into the RMB deduction:
+          actual deduction (RMB) = official usage (USD) x the selected group multiplier.
+          A 2.0 multiplier deducts RMB 2.0 for $1 of usage, while 0.5 deducts RMB 0.5.
+        </p>
+        <p>
+          The multiplier appears in the group selector on the API Keys page. Groups use different upstream routes
+          and may have different stability. Top-ups are 1:1: RMB 1 = 1.00 balance, even when the page uses a $ symbol.
+        </p>
+      </>
     ),
   },
   {

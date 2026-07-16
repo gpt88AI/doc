@@ -11,24 +11,22 @@ const FIVE_STEP_FLOW = `1. Sign in to the gpt88.cc console
 5. Send one minimal request, then verify usage and billing in the console`
 
 const BASE_URL_RULES = `OpenAI-compatible tools
-  Base URL: https://gpt88.cc/v1
+  Base URL: https://api.gpt88.cc
   Typical tools: OpenAI SDK, Codex CLI, Cursor, OpenCode, cURL
 
 Claude / Anthropic-compatible tools
-  Base URL: https://gpt88.cc
+  Base URL: https://api.gpt88.cc
   Typical tools: Claude Code, Anthropic SDK, OpenClaw
 
 Google / Gemini image generation
-  Base URL: https://china.claudecoder.me
+  Base URL: https://img.gpt88.cc
   Endpoint: /v1beta/models/{MODEL}:generateContent
 
-Optional overseas routes
-  Direct: https://test1122.up.railway.app/v1
-  CDN: https://ai.orbitlink.me/v1`
+Use the standard API URL for normal APIs and the media URL for image/video requests; protocol differences are handled by endpoint paths and request formats`
 
 const CURL_SMOKE_TEST = `export GPT88_API_KEY="sk-your-gpt88-api-key"
 
-curl https://gpt88.cc/v1/chat/completions \\
+curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -39,10 +37,10 @@ curl https://gpt88.cc/v1/chat/completions \\
   }'`
 
 const OPENAI_ENV = `export OPENAI_API_KEY="$GPT88_API_KEY"
-export OPENAI_BASE_URL="https://gpt88.cc/v1"`
+export OPENAI_BASE_URL="https://api.gpt88.cc"`
 
 const CLAUDE_ENV = `export ANTHROPIC_AUTH_TOKEN="$GPT88_API_KEY"
-export ANTHROPIC_BASE_URL="https://gpt88.cc"
+export ANTHROPIC_BASE_URL="https://api.gpt88.cc"
 export ANTHROPIC_API_KEY="$GPT88_API_KEY"`
 
 const CODEX_CONFIG = `model_provider = "OpenAI"
@@ -52,13 +50,13 @@ model_reasoning_effort = "high"
 
 [model_providers.OpenAI]
 name = "OpenAI"
-base_url = "https://gpt88.cc/v1"
+base_url = "https://api.gpt88.cc"
 wire_api = "responses"
 requires_openai_auth = true`
 
 const CLAUDE_CODE_CONFIG = `{
   "env": {
-    "ANTHROPIC_BASE_URL": "https://gpt88.cc",
+    "ANTHROPIC_BASE_URL": "https://api.gpt88.cc",
     "ANTHROPIC_AUTH_TOKEN": "your gpt88.cc API key",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
@@ -155,7 +153,8 @@ export default function CompleteIntegrationGuidePageEn() {
 
       <h3 id="claude-code">Claude Code</h3>
       <p>
-        Claude Code follows the Anthropic-style path. The Base URL should be the root host, not a <code>/v1</code> path.
+        Claude Code follows the Anthropic-style path with <code>https://api.gpt88.cc</code>. Use
+        <code>https://img.gpt88.cc</code> for image and video requests.
       </p>
       <CodeBlock lang="json" filename="~/.claude/settings.json" code={CLAUDE_CODE_CONFIG} />
       <CodeBlock lang="bash" filename="anthropic-env" code={CLAUDE_ENV} />

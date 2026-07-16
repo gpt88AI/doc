@@ -13,7 +13,7 @@ const PREPARE = `1. 已安装沉浸式翻译浏览器扩展
 
 const SETUP = `服务类型: OpenAI Compatible / 自定义 OpenAI
 API Key: sk-你的-gpt88-api-key
-API URL / Base URL: https://gpt88.cc/v1
+API URL / Base URL: https://api.gpt88.cc
 Model: gpt-5-2-chat-latest
 Temperature: 0.2 - 0.5`
 
@@ -22,7 +22,7 @@ const FLOW = `1. 打开浏览器扩展管理页
 3. 找到 AI 翻译服务 / OpenAI 设置
 4. 选择 OpenAI Compatible 或自定义 OpenAI
 5. 填入 API Key
-6. Base URL 填 https://gpt88.cc/v1
+6. Base URL 填 https://api.gpt88.cc
 7. 模型名填 gpt-5-2-chat-latest
 8. 保存配置
 9. 打开一篇短网页测试翻译`
@@ -50,7 +50,7 @@ const TROUBLESHOOTING = `1. 翻译按钮没反应
    - 确认 Key 没有复制多余空格
 
 3. API 报 404
-   - Base URL 应为 https://gpt88.cc/v1
+   - Base URL 应为 https://api.gpt88.cc
    - 模型 ID 必须是真实可用模型
 
 4. 翻译太慢

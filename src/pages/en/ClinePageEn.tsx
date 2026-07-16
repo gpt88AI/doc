@@ -5,7 +5,7 @@ import { Callout } from '../../components/ui/Callout'
 import { localizePath } from '../../lib/locale'
 
 const SETUP = `Provider: OpenAI Compatible
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-your-gpt88-api-key
 Model: claude-sonnet-4-6`
 

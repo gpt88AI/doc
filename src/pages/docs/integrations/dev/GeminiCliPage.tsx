@@ -5,14 +5,14 @@ import { Callout } from '../../../../components/ui/Callout'
 import { useLocale } from '../../../../lib/locale'
 import GeminiCliPageEn from '../../../en/GeminiCliPageEn'
 
-const SETUP = `BASE_URL=https://china.claudecoder.me
+const SETUP = `BASE_URL=https://img.gpt88.cc
 API_KEY=你的-gpt88-api-key
 MODEL=gemini-3-pro-image-preview
 
 图片生成走 Gemini 原生 generateContent 接口。`
 
 const IMAGE_TEST = `curl -s -X POST \\
-  "https://china.claudecoder.me/v1beta/models/gemini-3-pro-image-preview:generateContent" \\
+  "https://img.gpt88.cc/v1beta/models/gemini-3-pro-image-preview:generateContent" \\
   -H "Authorization: Bearer $API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -55,7 +55,7 @@ export default function GeminiCliIntegrationPage() {
 
       <h2 id="notes">注意事项</h2>
       <ul>
-        <li>图片模型建议使用 <code>https://china.claudecoder.me</code> 加速域名。</li>
+        <li>图片模型建议使用 <code>https://api.gpt88.cc</code> 加速域名。</li>
         <li>比例使用 <code>1:1</code>、<code>16:9</code>、<code>9:16</code> 等 Gemini 支持的枚举。</li>
         <li>尺寸使用 <code>1K</code>、<code>2K</code>、<code>4K</code> 这种大写格式。</li>
       </ul>

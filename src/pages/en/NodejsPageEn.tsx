@@ -11,7 +11,7 @@ pnpm add openai`
 const BASIC = `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -67,7 +67,7 @@ if (call) {
 const RETRY = `import OpenAI, { APIError, RateLimitError } from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   maxRetries: 0,
 });
 
@@ -97,7 +97,7 @@ const EDGE = `import OpenAI from "openai";
 export const runtime = "edge";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 

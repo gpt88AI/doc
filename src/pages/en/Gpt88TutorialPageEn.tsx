@@ -10,7 +10,7 @@ const PREP_CHECKLIST = `1. Create an API key in the gpt88.cc console
 4. Identify whether your tool is OpenAI-style or Claude / Anthropic-style
 5. Send one minimal request first`
 
-const OPENAI_EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
+const OPENAI_EXAMPLE = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -23,7 +23,7 @@ const OPENAI_EXAMPLE = `curl https://gpt88.cc/v1/chat/completions \\
 const PYTHON_EXAMPLE = `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -36,7 +36,7 @@ print(resp.choices[0].message.content)`
 const NODE_EXAMPLE = `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -46,16 +46,14 @@ const resp = await client.chat.completions.create({
 });
 console.log(resp.choices[0].message.content);`
 
-const MINDSET = `OpenAI-style tools / SDKs
-  Base URL ends with /v1
-  Example: https://gpt88.cc/v1
+const MINDSET = `Standard APIs
+  Use the Base URL: https://api.gpt88.cc
 
-Claude / Anthropic-style tools / SDKs
-  Base URL is the root host
-  Example: https://gpt88.cc
+Direct image / video APIs
+  Use the Base URL: https://img.gpt88.cc
 
-One sentence to remember
-  OpenAI style uses /v1, Claude style uses the root host.`
+OpenAI / Claude / Anthropic protocol differences
+  Keep the selected Base URL and use the endpoint path and request format required by the protocol.`
 
 export default function Gpt88TutorialPageEn() {
   return (

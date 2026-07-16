@@ -10,9 +10,7 @@ import OverviewPageEn from '../en/OverviewPageEn'
  * 入口型页面：解释 gpt88.cc 是什么、能做什么、和读者最相关的下一步路径。
  * 此页面不包含真实计费/SLA 数字，避免传达不准确信息。
  *
- * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
- * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me、world.claudecoder.me、
- * test1122.up.railway.app 与 ai.orbitlink.me 是等价端点，本页"一句话介绍"段落附带提到这一点。
+ * 所有文档示例统一使用网站首页展示的 https://api.gpt88.cc。
  */
 
 const NEXT_STEPS = [
@@ -61,7 +59,7 @@ export default function OverviewPage() {
       <h2 id="what-is-it">一句话介绍</h2>
       <p>
         <strong>gpt88.cc</strong> 是一个统一 API 网关，开发者只需将 base_url 指向
-        <code>https://gpt88.cc/v1</code>，即可使用一套 OpenAI 兼容协议调用多家厂商和自托管的大模型。
+        <code>https://api.gpt88.cc</code>，即可使用一套 OpenAI 兼容协议调用多家厂商和自托管的大模型。
       </p>
       <div className="not-prose my-6 grid gap-3 md:grid-cols-2">
         <a
@@ -90,13 +88,10 @@ export default function OverviewPage() {
         </a>
       </div>
       <p>
-        所有接口都通过 <code>https://gpt88.cc/v1</code> 提供（也可使用等价端点{' '}
-        <code>china.claudecoder.me</code> /{' '}
-        <code>world.claudecoder.me</code> /{' '}
-        <code>test1122.up.railway.app</code> /{' '}
-        <code>ai.orbitlink.me</code>）。
-        这些端点完全等价，详见{' '}
-        <Link to="/docs/quickstart/#endpoints">快速开始 · 可选服务端点</Link>。
+        标准 API 通过网站首页展示的 <code>https://api.gpt88.cc</code> 提供；图片和视频直连使用
+        <code>https://img.gpt88.cc</code>。
+        不同协议使用不同请求路径和字段，详见{' '}
+        <Link to="/docs/quickstart/#endpoints">快速开始 · 统一服务端点</Link>。
       </p>
       {/*
        * Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。

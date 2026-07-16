@@ -22,7 +22,7 @@ const BASIC = `from openai import OpenAI
 
 # 唯一的差异：base_url 指向 gpt88.cc
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",  # 或读 os.environ["GPT88_API_KEY"]
 )
 
@@ -53,7 +53,7 @@ print()  # 换行`
 const ERROR = `import time
 from openai import OpenAI, RateLimitError, APIStatusError
 
-client = OpenAI(base_url="https://gpt88.cc/v1")
+client = OpenAI(base_url="https://api.gpt88.cc")
 
 def call_with_retry(messages, model="claude-opus-4-7", max_retries=3):
     """简易退避重试包装：仅对可重试错误退避。"""
@@ -101,7 +101,7 @@ if tc:
 const ASYNC = `import asyncio
 from openai import AsyncOpenAI
 
-client = AsyncOpenAI(base_url="https://gpt88.cc/v1")
+client = AsyncOpenAI(base_url="https://api.gpt88.cc")
 
 async def main():
     resp = await client.chat.completions.create(
@@ -157,7 +157,7 @@ export default function PythonSdkPage() {
       <Callout tone="info" title="也可以用 langchain / litellm 等上层框架">
         <p>
           任何兼容 OpenAI 协议的框架都能直接用：把 <code>base_url</code> 或
-          provider 配置改成 <code>https://gpt88.cc/v1</code>，再设置
+          provider 配置改成 <code>https://api.gpt88.cc</code>，再设置
           <code>OPENAI_API_KEY</code> 为你的 gpt88 Key 即可。
         </p>
       </Callout>

@@ -91,7 +91,7 @@ const TABS = [
   {
     label: 'cURL',
     lang: 'bash',
-    code: `curl https://gpt88.cc/v1/chat/completions \\
+    code: `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '${REQUEST_BODY}'`,
@@ -102,7 +102,7 @@ const TABS = [
     code: `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -118,7 +118,7 @@ print(resp.choices[0].message.content)`,
     code: `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -144,7 +144,7 @@ export default function ChatCompletionsPageEn() {
       ]}
     >
       <h2 id="endpoint">Endpoint</h2>
-      <EndpointBadge method="POST" path="https://gpt88.cc/v1/chat/completions" />
+      <EndpointBadge method="POST" path="https://api.gpt88.cc/v1/chat/completions" />
       <p>
         This is the primary OpenAI-compatible text generation endpoint on gpt88.cc.
         Most existing OpenAI SDK integrations can keep the same request shape.

@@ -12,7 +12,7 @@ const PREPARE = `1. Admin access to Dify
 
 const PROVIDER_SETUP = `Provider: OpenAI Compatible
 API Key: sk-your-gpt88-api-key
-API Base URL: https://gpt88.cc/v1
+API Base URL: https://api.gpt88.cc
 Model Type: LLM
 Model Name: gpt-5-2-chat-latest or claude-sonnet-4-6`
 
@@ -20,7 +20,7 @@ const APP_SETUP = `1. Open the Dify console
 2. Go to Settings / Model Provider
 3. Add a new OpenAI Compatible provider
 4. Fill in the gpt88.cc API key
-5. Set Base URL to https://gpt88.cc/v1
+5. Set Base URL to https://api.gpt88.cc
 6. Save, then open an application
 7. Select the model you just added
 8. Run one minimal chat test`
@@ -41,7 +41,7 @@ Do not configure only the chat model and then immediately import a large knowled
 Start with one or two short documents and validate chunking, retrieval, and answer quality first.`
 
 const TROUBLESHOOTING = `1. Provider save fails
-   - Check that the Base URL is https://gpt88.cc/v1
+   - Check that the Base URL is https://api.gpt88.cc
    - Check that the API key is complete
 
 2. Model does not appear in the app
@@ -80,7 +80,7 @@ export default function DifyPageEn() {
     >
       <Callout tone="info" title="Recommended Dify setup">
         <p>
-          In Dify, use an OpenAI Compatible provider pointing to <code>https://gpt88.cc/v1</code>. Validate
+          In Dify, use an OpenAI Compatible provider pointing to <code>https://api.gpt88.cc</code>. Validate
           chat models, embedding models, and knowledge settings separately instead of changing everything at once.
         </p>
       </Callout>

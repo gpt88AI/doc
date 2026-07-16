@@ -12,7 +12,7 @@ const PREPARE = `1. Install the Immersive Translate browser extension
 
 const SETUP = `Service Type: OpenAI Compatible / Custom OpenAI
 API Key: sk-your-gpt88-api-key
-API URL / Base URL: https://gpt88.cc/v1
+API URL / Base URL: https://api.gpt88.cc
 Model: gpt-5-2-chat-latest
 Temperature: 0.2 - 0.5`
 
@@ -21,7 +21,7 @@ const FLOW = `1. Open the browser extension management page
 3. Find AI translation service / OpenAI settings
 4. Choose OpenAI Compatible or Custom OpenAI
 5. Paste the API key
-6. Set Base URL to https://gpt88.cc/v1
+6. Set Base URL to https://api.gpt88.cc
 7. Set the model name to gpt-5-2-chat-latest
 8. Save
 9. Open a short webpage and test translation`
@@ -49,7 +49,7 @@ const TROUBLESHOOTING = `1. The translate button does nothing
    - Remove accidental spaces around the key
 
 3. 404 response
-   - Base URL should be https://gpt88.cc/v1
+   - Base URL should be https://api.gpt88.cc
    - The model ID must be a real supported model
 
 4. Translation is too slow

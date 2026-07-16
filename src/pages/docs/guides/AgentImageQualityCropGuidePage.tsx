@@ -369,7 +369,7 @@ export default function AgentImageQualityCropGuidePage() {
       <h2 id="prompt-optimization">用大模型优化英文提示词</h2>
       <p>
         如果你不是每天写生图 prompt，建议先把中文需求交给大模型整理，再把优化后的英文提示词用于
-        <code>agent.gpt88.cc</code> 或 <code>img.gpt88.cc</code>。这样做的重点不是“翻译”，而是让大模型帮你补全构图、
+        <code>agent.gpt88.cc</code> 或统一 API Base URL <code>https://img.gpt88.cc</code>。这样做的重点不是“翻译”，而是让大模型帮你补全构图、
         镜头距离、主体占比、安全留白、材质和负面限制。
       </p>
       <DocTable
@@ -493,7 +493,7 @@ export default function AgentImageQualityCropGuidePage() {
       <h2 id="api">API 批量对接建议</h2>
       <p>
         批量生图时，先用 <code>agent.gpt88.cc</code> 手动打样，确认构图模板稳定后，再把同一套提示词迁移到
-        <code>img.gpt88.cc</code> 图片专线。API 参数以站内 <Link to="/docs/api/images/">图片 API 文档</Link> 为准。
+        统一使用 <code>https://img.gpt88.cc</code> 图片 API。API 参数以站内 <Link to="/docs/api/images/">图片 API 文档</Link> 为准。
       </p>
       <CodeBlock lang="bash" filename="safe-image-generation.sh" code={API_SAFE_CURL} />
       <p>

@@ -10,18 +10,13 @@ import QuickstartPageEn from '../en/QuickstartPageEn'
  * 目标：访客打开后 5 分钟内能跑通一次成功的请求。
  * 因此结构必须线性、命令必须可直接复制、一定要给出预期返回片段。
  *
- * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
- * base_url 默认 https://gpt88.cc/v1；china.claudecoder.me、world.claudecoder.me、
- * test1122.up.railway.app 与 ai.orbitlink.me 是等价端点，文档示例使用默认端点，
- * 并在「可选服务端点」段落把它们一起列出。
- *
  * Human 历史决策：站内主推模型口径已切到 Claude/GPT 系列，
  * 文档默认示例需与产品导向一致；长尾模型仍保留于模型导航，不作为默认示例。
  *
  * 注意：M2 任务会扩展更全的 SDK 章节（Python / Node 完整示例 + 错误处理）。
  */
 
-const CURL_REQ = `curl https://gpt88.cc/v1/chat/completions \\
+const CURL_REQ = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -58,7 +53,7 @@ const CURL_RESP = `{
 const PY = `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -74,7 +69,7 @@ print(resp.choices[0].message.content)`
 const NODE = `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -159,43 +154,23 @@ export default function QuickstartPage() {
         提示：所有调用都通过统一域名 <code>gpt88.cc</code>，端口 443，HTTPS。
       </p>
 
-      {/*
-       * Human msg-20260509-jwfia3 + msg-20260509-qoz7ey 确认：
-       * 多个端点完全等价，文档默认使用 https://gpt88.cc/v1；
-       * china.claudecoder.me 服务于中国大陆访问，
-       * world.claudecoder.me / test1122.up.railway.app / ai.orbitlink.me 服务于海外访问。
-       */}
-      <h2 id="endpoints">可选服务端点</h2>
+      <h2 id="endpoints">统一服务端点</h2>
       <p>
-        gpt88.cc 提供多个完全等价的服务端点，挑选一个最适合你网络环境的即可，
-        本文档默认使用 <code>https://gpt88.cc/v1</code>。
+        标准 API 示例使用网站首页展示的 Base URL：<code>https://api.gpt88.cc</code>。
+        图片和视频直连任务使用首页同时展示的 <code>https://img.gpt88.cc</code>。
       </p>
       <ul>
         <li>
-          <code>https://gpt88.cc/v1</code>{' '}
-          <span className="text-ink-400">— 默认端点，全球可达。</span>
+          <code>https://api.gpt88.cc</code>{' '}
+          <span className="text-ink-400">— 标准 OpenAI、Claude、Gemini、音频等 API。</span>
         </li>
         <li>
-          <code>https://china.claudecoder.me/v1</code>{' '}
-          <span className="text-ink-400">— 中国大陆优先线路。</span>
-        </li>
-        <li>
-          <code>https://world.claudecoder.me/v1</code>{' '}
-          <span className="text-ink-400">— 海外优先线路。</span>
-        </li>
-        <li>
-          <code>https://test1122.up.railway.app/v1</code>{' '}
-          <span className="text-ink-400">— 海外直连线路。</span>
-        </li>
-        <li>
-          <code>https://ai.orbitlink.me/v1</code>{' '}
-          <span className="text-ink-400">— 海外 CDN 线路。</span>
+          <code>https://img.gpt88.cc</code>{' '}
+          <span className="text-ink-400">— 图片和视频直连 API。</span>
         </li>
       </ul>
       <p>
-        这些端点完全等价：<strong>API Key、模型、协议、字段都一致</strong>，
-        只是接入网络不同。如需切换，只要把 <code>base_url</code>（或 cURL URL 前缀）
-        改成对应域名即可，<strong>无需重新生成 API Key</strong>。
+        协议差异体现在请求路径、请求头和请求体字段；图片和视频任务还需要选择对应的媒体 Base URL。
       </p>
 
       <h2 id="curl">使用 cURL 发送请求</h2>
@@ -208,7 +183,7 @@ export default function QuickstartPage() {
       <h2 id="sdk">使用官方 SDK</h2>
       <p>
         gpt88.cc 完全兼容 OpenAI 协议。任何支持 OpenAI 的官方/社区 SDK，
-        只要把 <code>base_url</code> 指向 <code>https://gpt88.cc/v1</code> 即可使用。
+        只要把 <code>base_url</code> 指向 <code>https://api.gpt88.cc</code> 即可使用。
       </p>
 
       <h3 id="python">Python</h3>

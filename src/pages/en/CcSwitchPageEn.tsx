@@ -12,20 +12,20 @@ const PREPARE = `1. Install CC-Switch
 
 const ROUTES = `OpenAI-compatible route
 Name: gpt88-openai
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-your-gpt88-api-key
 Default Model: gpt-5-2-chat-latest
 
 Claude-compatible route
 Name: gpt88-claude
-Base URL: https://gpt88.cc
+Base URL: https://api.gpt88.cc
 API Key: sk-your-gpt88-api-key
 Default Model: claude-sonnet-4-6`
 
 const FLOW = `1. Open CC-Switch
 2. Go to Routes / Providers / API route settings
 3. Create the gpt88-openai route
-4. Set Base URL to https://gpt88.cc/v1
+4. Set Base URL to https://api.gpt88.cc
 5. Paste the API key
 6. Fill in one default chat model
 7. Save the route
@@ -38,7 +38,7 @@ const OAUTH_FLOW = `1. If the target is Codex or ChatGPT plugin capability, sign
 4. Confirm the CC-Switch route is enabled
 5. Start a clean session and verify that plugins are visible`
 
-const VERIFY = `curl https://gpt88.cc/v1/chat/completions \\
+const VERIFY = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -52,7 +52,7 @@ const TROUBLESHOOTING = `1. The tool still uses the old route
 
 2. 404 response
    - OpenAI-compatible routes must include /v1
-   - Claude-compatible routes usually use the root host
+   - Claude-compatible routes also use https://api.gpt88.cc
 
 3. Plugins are unavailable
    - Do not keep debugging inside API key mode

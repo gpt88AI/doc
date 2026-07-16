@@ -93,7 +93,7 @@ const TABS = [
   {
     label: 'cURL',
     lang: 'bash',
-    code: `curl https://gpt88.cc/v1/models \\
+    code: `curl https://api.gpt88.cc/v1/models \\
   -H "Authorization: Bearer $GPT88_API_KEY"`,
   },
   {
@@ -102,7 +102,7 @@ const TABS = [
     code: `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -116,7 +116,7 @@ for m in models.data:
     code: `import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -145,7 +145,7 @@ export default function ListModelsPage() {
       ]}
     >
       <h2 id="endpoint">端点与认证</h2>
-      <EndpointBadge method="GET" path="https://gpt88.cc/v1/models" />
+      <EndpointBadge method="GET" path="https://api.gpt88.cc/v1/models" />
       {/*
        * Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。
        * 在 list-models 鉴权说明里加一处控制台外链，与 ChatCompletionsPage 风格一致。

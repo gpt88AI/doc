@@ -45,7 +45,7 @@ import LandingPageEn from './en/LandingPageEn'
  * （取代旧的 deepseek-v4-pro 默认入口；deepseek-v4-pro 仍作为 marketplace 长尾保留）。
  */
 
-const QUICK_CURL = `curl https://gpt88.cc/v1/chat/completions \\
+const QUICK_CURL = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -56,19 +56,19 @@ const QUICK_CURL = `curl https://gpt88.cc/v1/chat/completions \\
   }'`
 
 const BASE_URL_SNIPPET = `# 只需要改这一行
-base_url = "https://gpt88.cc/v1"
+base_url = "https://api.gpt88.cc"
 
-# 海外直连: https://test1122.up.railway.app/v1
-# 海外 CDN: https://ai.orbitlink.me/v1
+# 图片 / 视频直连任务使用这个地址
+media_base_url = "https://img.gpt88.cc"
 
-# model 按需切换，Claude / GPT / Gemini / DeepSeek 等都走同一个入口
+# model 按需切换，Claude / GPT / Gemini / DeepSeek 等标准 API 走统一入口
 model = "gpt-5.6-sol"`
 
 const FEATURES = [
   {
     icon: Globe,
     title: '一行 base_url',
-    desc: '把现有 OpenAI 兼容 SDK 的 base_url 指到 gpt88.cc/v1，业务代码基本不用动。',
+    desc: '把现有 OpenAI 兼容 SDK 的 base_url 指到 api.gpt88.cc，业务代码基本不用动。',
   },
   {
     icon: Zap,
@@ -162,7 +162,7 @@ export default function LandingPage() {
 
           {/* 主标题 */}
           <h1 className="text-center text-4xl font-extrabold tracking-tight text-ink-50 sm:text-5xl lg:text-6xl">
-            一行 <code className="rounded-md border border-violet-400/30 bg-violet-400/10 px-2 py-0.5 font-mono text-[0.86em] text-violet-100">base_url</code>
+            官方 <code className="rounded-md border border-violet-400/30 bg-violet-400/10 px-2 py-0.5 font-mono text-[0.86em] text-violet-100">Base URL</code>
             <br className="hidden sm:block" />
             接入 <span className="text-gradient-violet">gpt88.cc</span> 全部模型
           </h1>
@@ -192,12 +192,11 @@ export default function LandingPage() {
                 After
               </div>
               <p className="mt-2 text-sm text-ink-100">
-                一行 <code className="font-mono text-violet-100">https://gpt88.cc/v1</code>，
-                用同一套协议接入全部已开通模型。
+                标准 API 用 <code className="font-mono text-violet-100">https://api.gpt88.cc</code>，
+                图片 / 视频直连用 <code className="font-mono text-violet-100">https://img.gpt88.cc</code>。
               </p>
               <p className="mt-2 text-xs text-ink-400">
-                海外可选 <code className="font-mono text-violet-100">test1122.up.railway.app</code> 直连
-                或 <code className="font-mono text-violet-100">ai.orbitlink.me</code> CDN。
+                两个地址均来自网站首页，具体 endpoint 路径按接口类型选择。
               </p>
             </div>
           </div>

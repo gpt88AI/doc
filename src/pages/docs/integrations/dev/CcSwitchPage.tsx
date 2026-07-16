@@ -13,20 +13,20 @@ const PREPARE = `1. 已安装 CC-Switch
 
 const ROUTES = `OpenAI 兼容路由
 Name: gpt88-openai
-Base URL: https://gpt88.cc/v1
+Base URL: https://api.gpt88.cc
 API Key: sk-你的-gpt88-api-key
 Default Model: gpt-5-2-chat-latest
 
 Claude 兼容路由
 Name: gpt88-claude
-Base URL: https://gpt88.cc
+Base URL: https://api.gpt88.cc
 API Key: sk-你的-gpt88-api-key
 Default Model: claude-sonnet-4-6`
 
 const FLOW = `1. 打开 CC-Switch
 2. 进入 Routes / Providers / API 路由配置
 3. 新建 gpt88-openai 路由
-4. Base URL 填 https://gpt88.cc/v1
+4. Base URL 填 https://api.gpt88.cc
 5. API Key 填 gpt88.cc 控制台生成的 Key
 6. 填一个默认聊天模型
 7. 保存路由
@@ -39,7 +39,7 @@ const OAUTH_FLOW = `1. 如果目标是 Codex / ChatGPT 插件能力，先退出 
 4. 确认 CC-Switch 路由开启
 5. 重新开一个干净会话测试插件是否可见`
 
-const VERIFY = `curl https://gpt88.cc/v1/chat/completions \\
+const VERIFY = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -53,7 +53,7 @@ const TROUBLESHOOTING = `1. 工具仍然走旧地址
 
 2. 404
    - OpenAI 兼容路由必须带 /v1
-   - Claude 兼容路由通常使用根地址
+   - Claude 兼容路由同样使用 https://api.gpt88.cc
 
 3. 插件不可用
    - 不要继续在 API Key 模式排查

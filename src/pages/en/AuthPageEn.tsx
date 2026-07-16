@@ -41,13 +41,37 @@ export default function AuthPageEn() {
       </Callout>
 
       <h2 id="billing">Billing model</h2>
+      <Callout tone="danger" title="Important: group multipliers determine the deduction">
+        <p>
+          A multiplier is the RMB amount deducted from your balance for each $1 of official API usage.
+          Actual deduction (RMB) = official usage (USD) x the selected group multiplier.
+        </p>
+        <ul className="list-disc pl-5">
+          <li>A 2.0 group multiplier deducts RMB 2.0 for $1 of official usage.</li>
+          <li>A 0.5 group multiplier deducts RMB 0.5 for $1 of official usage.</li>
+          <li>A lower multiplier means a lower unit cost.</li>
+        </ul>
+        <p>
+          Group multipliers are shown in the group selector on the API Keys page. Groups may use different upstream
+          routes and have different stability characteristics, so choose the group that fits your needs.
+        </p>
+        <p>
+          For model and price discovery, browse the{' '}
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">Model Square</a>{' '}
+          and the{' '}
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://gpt88.cc/pricing" target="_blank" rel="noreferrer">website pricing page</a>.
+          The currently available models, group multiplier, and final deduction for your account still follow the live console.
+        </p>
+        <p>Top-ups are 1:1: RMB 1 topped up = 1.00 balance. If the page shows a $ symbol, the actual unit is still RMB.</p>
+      </Callout>
       <p>
-        gpt88.cc uses RMB balance and real token usage instead of a multiplier-based points system.
-        In practice, that means users track actual token consumption and actual cost directly.
+        gpt88.cc uses RMB balance and official usage multiplied by the selected group multiplier.
+        Pricing and group settings are controlled dynamically in the console.
       </p>
       <ul>
         <li>Top-up 1 RMB = 1 RMB in account balance.</li>
-        <li>The model deducts real usage based on current pricing.</li>
+        <li>Actual deduction = official usage in USD x the selected group multiplier.</li>
+        <li>Lower group multipliers reduce the cost per unit of usage.</li>
         <li>Pricing and quota values are read from the console and may change with upstream vendors.</li>
       </ul>
     </DocPage>

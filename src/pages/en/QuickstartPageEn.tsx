@@ -3,7 +3,7 @@ import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { localizePath } from '../../lib/locale'
 
-const CURL_REQ = `curl https://gpt88.cc/v1/chat/completions \\
+const CURL_REQ = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -14,7 +14,7 @@ const CURL_REQ = `curl https://gpt88.cc/v1/chat/completions \\
 const PY = `from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://gpt88.cc/v1",
+    base_url="https://api.gpt88.cc",
     api_key="YOUR_GPT88_API_KEY",
 )
 
@@ -46,12 +46,13 @@ export default function QuickstartPageEn() {
       <CodeBlock lang="bash" code={`export GPT88_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx`} />
 
       <h2 id="endpoints">Endpoints</h2>
+      <p>
+        Standard API examples in this documentation use the Base URL shown on the website homepage:
+        <code>https://api.gpt88.cc</code>. Use the media URL shown on the homepage for direct image and video tasks.
+      </p>
       <ul>
-        <li><code>https://gpt88.cc/v1</code> — default global endpoint</li>
-        <li><code>https://china.claudecoder.me/v1</code> — China-priority route</li>
-        <li><code>https://world.claudecoder.me/v1</code> — overseas-priority route</li>
-        <li><code>https://test1122.up.railway.app/v1</code> — overseas direct route</li>
-        <li><code>https://ai.orbitlink.me/v1</code> — overseas CDN route</li>
+        <li><code>https://api.gpt88.cc</code> — standard OpenAI, Claude, Gemini, and audio APIs.</li>
+        <li><code>https://img.gpt88.cc</code> — direct image and video APIs.</li>
       </ul>
 
       <h2 id="curl">cURL request</h2>
@@ -59,7 +60,7 @@ export default function QuickstartPageEn() {
 
       <h2 id="sdk">Official SDK</h2>
       <p>
-        Any OpenAI-compatible SDK can be used by pointing <code>base_url</code> to <code>https://gpt88.cc/v1</code>.
+        Any OpenAI-compatible SDK can be used by pointing <code>base_url</code> to <code>https://api.gpt88.cc</code>.
       </p>
       <CodeBlock lang="python" filename="main.py" code={PY} />
 

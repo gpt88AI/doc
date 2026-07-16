@@ -27,7 +27,7 @@ tools: Bash
 ## 默认配置
 
 - Model: gpt-image-2
-- Base URL: https://china.claudecoder.me/v1
+- Base URL: https://img.gpt88.cc
 - Endpoint: /images/generations
 - size: 1024x1024
 - quality: high
@@ -50,7 +50,7 @@ mkdir -p output/imagegen
 PROMPT="赛博朋克风格的未来城市夜景，霓虹灯，雨夜，电影感，高细节，无文字，无水印"
 OUT="output/imagegen/generated.png"
 
-curl -s https://china.claudecoder.me/v1/images/generations \\
+curl -s https://img.gpt88.cc/v1/images/generations \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d "{
@@ -79,11 +79,11 @@ export GPT88_API_KEY="sk-你的-gpt88-api-key"
 
 # 可选：如果你的 skill 使用 OPENAI_API_KEY / OPENAI_BASE_URL 风格
 export OPENAI_API_KEY="$GPT88_API_KEY"
-export OPENAI_BASE_URL="https://china.claudecoder.me/v1"`
+export OPENAI_BASE_URL="https://img.gpt88.cc"`
 
 const DIRECT_TEST = `mkdir -p output/imagegen
 
-curl -s https://china.claudecoder.me/v1/images/generations \\
+curl -s https://img.gpt88.cc/v1/images/generations \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -164,10 +164,8 @@ export default function CodexGptImage2SkillPage() {
         <code>b64_json</code> 解码成图片文件。
       </p>
       <p>
-        推荐默认使用 <code>https://china.claudecoder.me/v1/images/generations</code>。
-        如果你的机器在海外，也可以把 Base URL 换成{' '}
-        <code>https://test1122.up.railway.app/v1</code> 或{' '}
-        <code>https://ai.orbitlink.me/v1</code>。
+        推荐统一使用 Base URL <code>https://img.gpt88.cc</code>，图片请求路径为
+        <code>/images/generations</code>。
       </p>
 
       <h2 id="prepare">准备 API Key</h2>

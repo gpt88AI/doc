@@ -20,7 +20,7 @@ const BASIC = `// basic.ts
 import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 
@@ -79,7 +79,7 @@ const RETRY = `// retry.ts
 import OpenAI, { APIError, RateLimitError } from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   // SDK 默认会做有限重试；这里关掉走我们自己的策略
   maxRetries: 0,
 });
@@ -115,7 +115,7 @@ import OpenAI from "openai";
 export const runtime = "edge"; // 也可以是 "nodejs"
 
 const client = new OpenAI({
-  baseURL: "https://gpt88.cc/v1",
+  baseURL: "https://api.gpt88.cc",
   apiKey: process.env.GPT88_API_KEY,
 });
 

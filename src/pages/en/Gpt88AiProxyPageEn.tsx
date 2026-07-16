@@ -4,24 +4,17 @@ import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
 import { localizePath } from '../../lib/locale'
 
-const QUICK_CONFIG = `OpenAI-compatible Base URL:
-https://gpt88.cc/v1
+const QUICK_CONFIG = `Standard API Base URL:
+https://api.gpt88.cc
 
-Claude / Anthropic-compatible Base URL:
-https://gpt88.cc
+Direct image / video Base URL:
+https://img.gpt88.cc
 
-Google / Gemini image generation Base URL:
-https://china.claudecoder.me
-
-Overseas direct:
-https://test1122.up.railway.app/v1
-
-Overseas CDN:
-https://ai.orbitlink.me/v1`
+Standard APIs use /v1/...; native Gemini image APIs use /v1beta/...`
 
 const CURL_EXAMPLE = `export GPT88_API_KEY="sk-your-gpt88-api-key"
 
-curl https://gpt88.cc/v1/chat/completions \\
+curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -36,8 +29,9 @@ top up → convert to virtual credits / points → apply multipliers → manuall
 
 gpt88.cc:
 1 RMB topped up = 1 RMB balance
-real model usage deducts from real RMB balance
-no daily multiplier math, no virtual quota game`
+actual deduction (RMB) = official usage (USD) x selected group multiplier
+group multipliers are shown in the API Keys group selector
+lower multipliers mean lower unit cost`
 
 export default function Gpt88AiProxyPageEn() {
   return (
@@ -83,9 +77,9 @@ export default function Gpt88AiProxyPageEn() {
 
       <h2 id="features">Core capabilities</h2>
       <ul>
-        <li>OpenAI-compatible routing at <code>https://gpt88.cc/v1</code>.</li>
-        <li>Claude / Anthropic-compatible routing at <code>https://gpt88.cc</code>.</li>
-        <li>Gemini image generation through the dedicated image route.</li>
+        <li>OpenAI-compatible routing at <code>https://api.gpt88.cc</code>.</li>
+        <li>Claude / Anthropic-compatible routing through the standard API Base URL.</li>
+        <li>Gemini image generation and video generation through the dedicated media route at <code>https://img.gpt88.cc</code>.</li>
         <li><Link to={localizePath('/models/', 'en')}>Model navigation</Link> across chat, image, video, and audio categories.</li>
         <li>Integration docs for ChatBox, Cherry Studio, Claude Code, Codex CLI, Cursor, Cline, Dify, and more.</li>
       </ul>
@@ -108,17 +102,29 @@ export default function Gpt88AiProxyPageEn() {
 
       <h2 id="tools">Which tools it fits</h2>
       <ul>
-        <li>OpenAI SDK, cURL, Cursor, and Cline through <code>https://gpt88.cc/v1</code>.</li>
-        <li>Claude Code and Anthropic-style SDKs through <code>https://gpt88.cc</code>.</li>
+        <li>OpenAI SDK, cURL, Cursor, and Cline through <code>https://api.gpt88.cc</code>.</li>
+        <li>Claude Code and Anthropic-style SDKs through <code>https://api.gpt88.cc</code>.</li>
         <li>Gemini / NanoBanana image flows through the dedicated Gemini image API route.</li>
         <li>Workflow systems such as Dify through the OpenAI-compatible provider path.</li>
       </ul>
 
       <h2 id="pricing">Token power billing mindset</h2>
-      <Callout tone="tip" title="Not a traditional points board">
+      <Callout tone="danger" title="Important: group multipliers determine the deduction">
         <p>
-          Many users arrive expecting multiplier math. gpt88.cc is better understood as transparent token-power
-          billing: use what you use, and deduct real cost from real RMB balance.
+          A multiplier is the RMB amount deducted for each $1 of official API usage.
+          Actual deduction (RMB) = official usage (USD) x the selected group multiplier.
+          Group multipliers are visible in the API Keys group selector, and lower multipliers mean lower unit cost.
+        </p>
+        <p>
+          Groups may use different upstream routes and have different stability characteristics. Top-ups are 1:1:
+          RMB 1 topped up = 1.00 balance. A $ symbol in the page does not change the actual RMB unit.
+        </p>
+        <p>
+          Browse the{' '}
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">Model Square</a>{' '}
+          or the{' '}
+          <a className="text-cyan-300 hover:text-cyan-200" href="https://gpt88.cc/pricing" target="_blank" rel="noreferrer">website pricing page</a>{' '}
+          for public model and pricing information. Your account's live console remains authoritative.
         </p>
       </Callout>
       <CodeBlock lang="text" filename="token-power" code={COST_MINDSET} />
