@@ -15,6 +15,7 @@ import ErrorsPage from './pages/docs/api/ErrorsPage'
 import CurlSdkPage from './pages/docs/sdk/CurlPage'
 import PythonSdkPage from './pages/docs/sdk/PythonPage'
 import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
+import ClaudeCodeCompactionErrorPage from './pages/docs/guides/ClaudeCodeCompactionErrorPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { LocaleProvider } from './lib/locale'
 
@@ -158,6 +159,7 @@ export default function App() {
         <Route path="guides/codex-project-factory-delivery" element={route(<CodexProjectFactoryDeliveryPage />)} />
         <Route path="guides/loop-engineering-harness" element={route(<LoopEngineeringGuidePage />)} />
         <Route path="guides/codex-tool-recovery" element={route(<CodexToolRecoveryPage />)} />
+        <Route path="guides/claude-code-compaction-error" element={<ClaudeCodeCompactionErrorPage />} />
         <Route path="guides/zero-downtime-release" element={route(<ZeroDowntimeReleasePage />)} />
         <Route path="guides/giffgaff-sim-guide" element={route(<GiffgaffGuidePage />)} />
         <Route path="guides/us-virtual-card-guide" element={route(<UsVirtualCardGuidePage />)} />
