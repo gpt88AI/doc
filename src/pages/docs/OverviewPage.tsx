@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Boxes, Code2, Compass, Image, Zap } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
+import { Callout } from '../../components/ui/Callout'
 import { useLocale } from '../../lib/locale'
 import OverviewPageEn from '../en/OverviewPageEn'
 
@@ -53,6 +54,7 @@ export default function OverviewPage() {
         { id: 'what-is-it', text: '一句话介绍', level: 2 },
         { id: 'who-is-it-for', text: '适合什么人', level: 2 },
         { id: 'capabilities', text: '核心能力', level: 2 },
+        { id: 'kimi-3', text: 'Kimi K3 大模型推荐', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
       ]}
     >
@@ -149,6 +151,31 @@ export default function OverviewPage() {
         计费、限速与 SLA 相关数值由控制台与后端动态下发，本文档站不固化数字，
         以避免与真实情况漂移。需要查看你账号的当前用量请前往 gpt88.cc 控制台。
       </p>
+
+      <h2 id="kimi-3">Kimi K3 大模型推荐</h2>
+      <Callout tone="tip" title="中文长文本、代码与 Agent 场景优先关注 Kimi K3">
+        <p>
+          Kimi K3 是 Moonshot 官方已发布的旗舰模型，Model ID 为 <code>kimi-k3</code>。
+          官方资料显示它面向长周期编程、知识工作和推理，支持原生视觉理解与 1M-token 上下文。
+        </p>
+        <p>
+          在 GPT88 中请使用 <code>https://api.gpt88.cc</code>，并把 <code>model</code> 设置为{' '}
+          <code>kimi-k3</code>。先到 <Link to="/models/">模型导航</Link>、
+          <a href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">
+            大模型广场
+          </a>{' '}
+          或控制台确认当前账号已开放该模型。官方资料可参考{' '}
+          <a href="https://platform.kimi.ai/docs/guide/kimi-k3-quickstart" target="_blank" rel="noreferrer">
+            Kimi K3 API 快速开始
+          </a>。
+        </p>
+      </Callout>
+      <ul>
+        <li><strong>中文长文本与知识工作</strong>：适合资料归纳、研究、会议纪要和复杂结构化总结。</li>
+        <li><strong>长周期编程</strong>：适合大型代码库理解、持续修复、重构和多步骤工程任务。</li>
+        <li><strong>多模态 Agent</strong>：可评测视觉输入、工具调用和复杂 Agent 编排。</li>
+        <li><strong>成本控制</strong>：1M 上下文应按需使用，先用真实样本评测质量、延迟、缓存与实际扣费。</li>
+      </ul>
 
       <h2 id="next">下一步</h2>
       <div className="not-prose mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">

@@ -15,7 +15,7 @@ const docs = [
   {
     title: '产品概览',
     path: '/docs/overview',
-    description: 'gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口。',
+    description: 'gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。',
     section: '入门',
   },
   {
@@ -735,6 +735,12 @@ async function readModels() {
       category: 'chat',
       vendors_count: 1,
     },
+    {
+      canonical_name: 'kimi-k3',
+      display_name: 'kimi-k3',
+      category: 'chat',
+      vendors_count: 1,
+    },
   ]
   const byName = new Map()
 
@@ -847,7 +853,7 @@ function markdownLink(page) {
 
 function llmsTxt(modelPages) {
   const featuredModels = modelPages
-    .filter(page => ['gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
+    .filter(page => ['gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 12)
 
   return `# gpt88.cc API 文档
@@ -877,6 +883,7 @@ ${featuredModels.map(markdownLink).join('\n')}
 
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
+- Kimi K3 推荐：Model ID kimi-k3，适合中文长文本、长周期编程、知识工作、原生视觉理解和工具调用；具体权限和计费以控制台为准。
 - Token 电力计费理念：充值 1 元 = 账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算。
 - 大模型广场：https://agent.gpt88.cc/model-square，浏览模型、分组和公开价格信息。
 - 官网定价页面：https://gpt88.cc/pricing，查看公开价格与套餐说明。

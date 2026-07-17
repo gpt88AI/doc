@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Boxes, Code2, Compass, Image, Zap } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
+import { Callout } from '../../components/ui/Callout'
 import { localizePath } from '../../lib/locale'
 
 const NEXT_STEPS = [
@@ -20,6 +21,7 @@ export default function OverviewPageEn() {
         { id: 'what-is-it', text: 'What it is', level: 2 },
         { id: 'who-is-it-for', text: 'Who it is for', level: 2 },
         { id: 'capabilities', text: 'Core capabilities', level: 2 },
+        { id: 'kimi-3', text: 'Kimi K3 recommendation', level: 2 },
         { id: 'next', text: 'Next steps', level: 2 },
       ]}
     >
@@ -57,6 +59,31 @@ export default function OverviewPageEn() {
         <li>
           <strong>Unified error handling</strong> so client-side retries and debugging stay consistent.
         </li>
+      </ul>
+
+      <h2 id="kimi-3">Kimi K3 recommendation</h2>
+      <Callout tone="tip" title="Prioritize Kimi K3 for long-context coding and knowledge work">
+        <p>
+          Kimi K3 is Moonshot's launched flagship model. Its official API documentation lists model ID{' '}
+          <code>kimi-k3</code>, 1M-token context, native visual understanding, long-horizon coding,
+          knowledge work, reasoning, and tool calling.
+        </p>
+        <p>
+          In GPT88, use <code>https://api.gpt88.cc</code> and set <code>model</code> to <code>kimi-k3</code>.
+          Check <Link to={localizePath('/models/', 'en')}>model navigation</Link>, the{' '}
+          <a href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">model square</a>,
+          or the console to confirm account access. See the{' '}
+          <a href="https://platform.kimi.ai/docs/guide/kimi-k3-quickstart" target="_blank" rel="noreferrer">
+            official Kimi K3 quickstart
+          </a>{' '}
+          for the upstream reference.
+        </p>
+      </Callout>
+      <ul>
+        <li><strong>Chinese long-context knowledge work</strong>: Summarization, research, meeting notes, and structured synthesis.</li>
+        <li><strong>Long-horizon coding</strong>: Large-codebase analysis, multi-step fixes, refactoring, and engineering workflows.</li>
+        <li><strong>Multimodal agents</strong>: Evaluate visual input, tool calling, and multi-step agent orchestration.</li>
+        <li><strong>Cost control</strong>: Treat the 1M-token window as capacity, not a target; benchmark quality, latency, caching, and actual deductions.</li>
       </ul>
 
       <h2 id="next">Next steps</h2>

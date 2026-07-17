@@ -40,6 +40,17 @@ const FAQ: QA[] = [
     ),
   },
   {
+    group: 'Models',
+    q: 'Is Kimi K3 available, and what is it good for?',
+    a: (
+      <p>
+        Kimi K3 (Model ID <code>kimi-k3</code>) is a strong candidate for long-context coding, knowledge work,
+        reasoning, native visual understanding, and tool-calling workflows. In GPT88, use{' '}
+        <code>https://api.gpt88.cc</code> and confirm account access and live pricing in model navigation or the console.
+      </p>
+    ),
+  },
+  {
     group: 'Billing',
     q: 'Do you use multipliers or a points system?',
     a: (

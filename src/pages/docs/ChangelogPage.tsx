@@ -29,6 +29,54 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-07-17',
+    summary: '补充已发布的 Moonshot Kimi K3 推荐与接入资料，帮助开发者快速判断长上下文、编程和 Agent 场景的适配性。',
+    items: [
+      {
+        type: '新增',
+        title: '增加 Kimi K3 大模型推荐',
+        detail: '模型导航新增 kimi-k3 目录和独立详情页，Overview、FAQ、英文文档及机器可读 SEO 索引同步补充 Kimi K3 的 1M-token 上下文、长周期编程、知识工作、原生视觉理解和工具调用说明。GPT88 接入统一使用 https://api.gpt88.cc，Model ID 为 kimi-k3。',
+        commits: [],
+      },
+    ],
+  },
+  {
+    date: '2026-07-16',
+    summary: '开发者文档完成一轮 API 入口、计费说明、媒体接口、SEO 索引和 Claude Code 排障更新，减少接入时的地址歧义与搜索收录问题。',
+    items: [
+      {
+        type: '新增',
+        title: '补充 Claude Code compaction 恢复指南',
+        detail: '新增从历史会话较早位置 fork，再执行 /compact 恢复上下文的排障文档，并补充上下文过长、错误 fork 位置和恢复后验证步骤，帮助用户处理 Input exceeds the model context window 错误。',
+        commits: ['2a1ddbf'],
+      },
+      {
+        type: '修复',
+        title: '移除 sitemap 中的 noindex 页面',
+        detail: '更新 SEO 生成和静态路由审计逻辑，避免把带 noindex 标记的页面继续放入 sitemap，并增加构建期检查，减少搜索引擎将页面标记为排除的情况。',
+        commits: ['d43e042'],
+      },
+      {
+        type: '调整',
+        title: '统一首页展示的 API Base URL',
+        detail: '普通文本、Claude、音频等标准 API 文档统一使用 https://api.gpt88.cc；图片和视频直连使用 https://img.gpt88.cc。/v1 与 /v1beta 仅作为 endpoint 路径保留，模型详情、SDK、集成教程和中英文示例同步更新。',
+        commits: ['fe52aee', '4c92fed'],
+      },
+      {
+        type: '优化',
+        title: '补充倍率计费与充值说明',
+        detail: '在认证与计费、FAQ、AI 中转站和英文文档中明确实际扣费公式：官方用量（美元）× 分组倍率；补充倍率 2.0、0.5 示例、分组选择位置、充值 1:1 说明，并链接大模型广场和官网定价页面。',
+        commits: ['4c92fed'],
+      },
+      {
+        type: '新增',
+        title: '完善 Grok 视频 API 文档',
+        detail: '新增模型查询、视频任务创建、参考图、多图输入、异步状态轮询和错误处理示例，视频请求统一使用图片与多媒体直连地址。',
+        commits: ['3569acb', 'fe52aee'],
+      },
+    ],
+  },
+  {
     date: '2026-07-10',
     summary: '核心 API 网关完成一轮模型兼容、计费准确性、图片生成和运行稳定性更新，重点提升 Codex、GPT-5.6、Grok 及 Anthropic 请求的可用性。',
     items: [

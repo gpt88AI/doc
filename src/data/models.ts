@@ -126,6 +126,7 @@ export const FEATURED_SLUGS = [
   'gpt-5-5',
   'gpt-5-4',
   'gpt-5-4-mini',
+  'kimi-k3',
   'gpt-5-3-codex',
 ] as const
 
@@ -855,6 +856,33 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '作为长尾可选模型保留，不代表当前站内默认主推口径。',
     ],
   },
+  // 来源：Moonshot 官方 Kimi K3 API 快速开始与官网，2026-07-17 核验。
+  // slug=kimi-k3 ←→ modelId=kimi-k3
+  'kimi-k3': {
+    provider: 'Moonshot',
+    tagline: 'Kimi K3，面向长周期编程、知识工作和复杂 Agent 任务的 Moonshot 旗舰模型。',
+    capabilities: ['1M 上下文', '长周期编程', '知识工作', '原生视觉理解', 'Tool Calling'],
+    scenarios: ['大型代码库分析', '长文档与知识整理', '复杂推理', '多步骤 Agent'],
+    overview: [
+      'Kimi K3 是 Moonshot 官方 Kimi API Platform 已发布的旗舰模型，Model ID 为 kimi-k3。',
+      '官方资料显示它采用 2.8T 参数规模，支持原生视觉理解和 1M-token 上下文，重点面向长周期编程、知识工作和推理。',
+    ],
+    whenToUse: [
+      '需要理解大型代码库、持续执行多步骤工程任务时',
+      '需要处理长文档、知识整理、研究和复杂结构化输出时',
+      '需要结合视觉输入、工具调用或 Agent 流程评测时',
+    ],
+    integrationNotes: [
+      'GPT88 统一 API 使用 Base URL https://api.gpt88.cc，Model ID 填 kimi-k3，请求路径为 /v1/chat/completions。',
+      'Kimi K3 可按 OpenAI 兼容 SDK、cURL 或 Agent 工具接入；首次使用前建议先调用 GET /v1/models 确认账号权限。',
+      'Moonshot 官方直连文档使用 https://api.moonshot.ai/v1；在 GPT88 中应使用 GPT88 官方首页展示的统一 Base URL。',
+    ],
+    caveats: [
+      'Model ID、可用线路、价格、限速和权限以 GPT88 控制台当前配置为准。',
+      '1M 上下文不代表每个请求都应发送完整上下文；建议按任务拆分、复用缓存并观察实际延迟和成本。',
+      '正式采用前请使用真实代码库、长文档和工具调用样本做小流量评测。',
+    ],
+  },
   // 来源：智谱 GLM 官方网站与开源仓库；5 系列（含 5.1）面向通用对话；
   // 网上查找补充于 2026-05-09。
   // slug=glm-5-1 ←→ modelId=glm-5.1
@@ -1469,7 +1497,7 @@ console.log(await resp.json());`,
       {
         label: 'cURL',
         lang: 'bash',
-        code: `curl https://gpt88.cc${endpoint.path} \\
+        code: `curl https://api.gpt88.cc${endpoint.path} \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -F "model=${modelId}" \\
   -F "file=@meeting.mp3" \\
@@ -1518,7 +1546,7 @@ console.log(resp.text);`,
       {
         label: 'cURL',
         lang: 'bash',
-        code: `curl https://gpt88.cc${endpoint.path} \\
+        code: `curl https://api.gpt88.cc${endpoint.path} \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -1565,7 +1593,7 @@ console.log(resp.data[0].embedding.slice(0, 8));`,
     {
       label: 'cURL',
       lang: 'bash',
-      code: `curl https://gpt88.cc${endpoint.path} \\
+      code: `curl https://api.gpt88.cc${endpoint.path} \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -1668,6 +1696,14 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     vendors_count: 1,
     upstream_samples: ['claude-opus-4-8'],
     descriptions_sample: ['gpt88.cc 新上主推模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'kimi-k3',
+    display_name: 'kimi-k3',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['kimi-k3'],
+    descriptions_sample: ['Moonshot Kimi K3 旗舰模型，支持 1M-token 上下文、长周期编程、知识工作和工具调用，具体价格、权限和线路以控制台为准。'],
   },
 ]
 

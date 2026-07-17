@@ -15,7 +15,7 @@
 
 ## 入门
 
-- [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口。
+- [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。
 - [快速开始](https://doc.gpt88.cc/docs/quickstart/): 5 分钟内完成第一次 gpt88.cc 模型调用，只需替换 base_url 与 API Key。
 - [认证与计费](https://doc.gpt88.cc/docs/auth/): API Key、人民币余额、Token 电力计费、用量与配额说明。
 - [GPT88 更新日志](https://doc.gpt88.cc/docs/changelog/): 持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。
@@ -291,6 +291,7 @@
 - [kimi-k2.6](https://doc.gpt88.cc/models/kimi-k2-6/): Moonshot kimi-k2.6 · CHAT 模型，Model ID: kimi-k2.6，接口路径: /v1/chat/completions。
 - [kimi-k2-instruct](https://doc.gpt88.cc/models/kimi-k2-instruct/): Moonshot kimi-k2-instruct · CHAT 模型，Model ID: kimi-k2-instruct，接口路径: /v1/chat/completions。
 - [kimi-k2-thinking](https://doc.gpt88.cc/models/kimi-k2-thinking/): Moonshot kimi-k2-thinking · CHAT 模型，Model ID: kimi-k2-thinking，接口路径: /v1/chat/completions。
+- [kimi-k3](https://doc.gpt88.cc/models/kimi-k3/): Moonshot kimi-k3 · CHAT 模型，Model ID: kimi-k3，接口路径: /v1/chat/completions。
 - [minimax-m2](https://doc.gpt88.cc/models/minimax-m2/): MiniMax minimax-m2 · CHAT 模型，Model ID: minimax-m2，接口路径: /v1/chat/completions。
 - [MiniMax-M2.5](https://doc.gpt88.cc/models/minimax-m2-5/): MiniMax MiniMax-M2.5 · CHAT 模型，Model ID: minimax-m2.5，接口路径: /v1/chat/completions。
 - [MiniMax-M2.7](https://doc.gpt88.cc/models/minimax-m2-7/): MiniMax MiniMax-M2.7 · CHAT 模型，Model ID: minimax-m2.7，接口路径: /v1/chat/completions。

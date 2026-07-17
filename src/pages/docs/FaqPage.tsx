@@ -114,8 +114,9 @@ const FAQ: QA[] = [
         <code>gpt-5.4</code> 起步。轻量任务可选{' '}
         <code>claude-haiku-4-5-20251001</code> 或{' '}
         <code>gpt-5.4-mini</code>；如果你更偏好开源 / 高性价比路线，
-        <code>deepseek-v4-pro</code> 等模型也仍是可选补充，但不再作为默认首推。
-        模型导航页提供按场景挑选的视图。
+        <code>deepseek-v4-pro</code> 等模型也仍是可选补充。中文长文本、知识整理、长周期编程、
+        代码分析和 Agent 工作流可以重点评测 <code>kimi-k3</code>；具体是否对当前账号开放，
+        以模型导航和控制台为准。模型导航页提供按场景挑选的视图。
       </p>
     ),
   },

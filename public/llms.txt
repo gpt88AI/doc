@@ -9,7 +9,7 @@
 
 ## 文档入口
 
-- [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口。
+- [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。
 - [快速开始](https://doc.gpt88.cc/docs/quickstart/): 5 分钟内完成第一次 gpt88.cc 模型调用，只需替换 base_url 与 API Key。
 - [认证与计费](https://doc.gpt88.cc/docs/auth/): API Key、人民币余额、Token 电力计费、用量与配额说明。
 - [GPT88 更新日志](https://doc.gpt88.cc/docs/changelog/): 持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。
@@ -91,6 +91,7 @@
 - [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
 - [gpt-5.6-sol](https://doc.gpt88.cc/models/gpt-5-6-sol/): OpenAI gpt-5.6-sol · CHAT 模型，Model ID: gpt-5.6-sol，接口路径: /v1/chat/completions。
 - [gpt-5.6-terra](https://doc.gpt88.cc/models/gpt-5-6-terra/): OpenAI gpt-5.6-terra · CHAT 模型，Model ID: gpt-5.6-terra，接口路径: /v1/chat/completions。
+- [kimi-k3](https://doc.gpt88.cc/models/kimi-k3/): Moonshot kimi-k3 · CHAT 模型，Model ID: kimi-k3，接口路径: /v1/chat/completions。
 - [NanoBanana2](https://doc.gpt88.cc/models/nanobanana2/): Google NanoBanana2 · IMAGE 模型，Model ID: NanoBanana2，接口路径: /v1beta/models/NanoBanana2:generateContent。
 
 ## API 摘要
@@ -104,6 +105,7 @@
 
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
+- Kimi K3 推荐：Model ID kimi-k3，适合中文长文本、长周期编程、知识工作、原生视觉理解和工具调用；具体权限和计费以控制台为准。
 - Token 电力计费理念：充值 1 元 = 账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算。
 - 大模型广场：https://agent.gpt88.cc/model-square，浏览模型、分组和公开价格信息。
 - 官网定价页面：https://gpt88.cc/pricing，查看公开价格与套餐说明。
