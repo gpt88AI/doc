@@ -302,6 +302,19 @@ function DetailContent({ model }: { model: ModelEntry }) {
               <DetailBulletList field={t.overview} items={model.overview} />
             </Section>
 
+            {model.slug === 'kimi-k3' ? (
+              <Callout tone="info" title={locale === 'en' ? 'Third-party practical review' : '第三方实战评测参考'}>
+                <p>
+                  {locale === 'en'
+                    ? 'A public review covers benchmark comparisons and seven real projects. Treat its scores as time-bound observations, then validate your own workload.'
+                    : '公开评测文章整理了基准对比和 7 个真实项目。文章分数属于特定时间和测试条件下的观察，正式采用前仍应验证自己的业务样本。'}{' '}
+                  <Link to={localizePath('/docs/guides/kimi-k3-review/', locale)}>
+                    {locale === 'en' ? 'Read the review summary' : '查看评测整理'}
+                  </Link>
+                </p>
+              </Callout>
+            ) : null}
+
             <Section icon={Target} title={t.whenToUse}>
               <DetailBulletList field={t.whenToUse} items={model.whenToUse} />
             </Section>

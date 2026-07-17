@@ -169,6 +169,10 @@ export default function OverviewPage() {
             Kimi K3 API 快速开始
           </a>。
         </p>
+        <p>
+          想看公开基准和真实项目横评，可阅读{' '}
+          <Link to="/docs/guides/kimi-k3-review/">Kimi K3 实战评测与模型对比</Link>。
+        </p>
       </Callout>
       <ul>
         <li><strong>中文长文本与知识工作</strong>：适合资料归纳、研究、会议纪要和复杂结构化总结。</li>

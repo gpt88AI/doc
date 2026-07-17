@@ -16,6 +16,7 @@ import CurlSdkPage from './pages/docs/sdk/CurlPage'
 import PythonSdkPage from './pages/docs/sdk/PythonPage'
 import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
 import ClaudeCodeCompactionErrorPage from './pages/docs/guides/ClaudeCodeCompactionErrorPage'
+import KimiK3ReviewPage from './pages/docs/guides/KimiK3ReviewPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { LocaleProvider } from './lib/locale'
 
@@ -136,6 +137,7 @@ export default function App() {
         <Route path="guides/gpt88-ai-proxy" element={route(<Gpt88AiProxyPage />)} />
         <Route path="guides/gpt88-docs-map" element={route(<Gpt88DocsMapPage />)} />
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
+        <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
         <Route path="guides/complete-integration" element={route(<CompleteIntegrationGuidePage />)} />
         <Route path="guides/workrally-overview" element={route(<WorkrallyOverviewPage />)} />
         <Route path="guides/workrally-ai-generation" element={route(<WorkrallyAiGenerationPage />)} />

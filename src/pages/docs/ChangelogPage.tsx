@@ -38,6 +38,12 @@ const CHANGELOG: ChangeGroup[] = [
         detail: '模型导航新增 kimi-k3 目录和独立详情页，Overview、FAQ、英文文档及机器可读 SEO 索引同步补充 Kimi K3 的 1M-token 上下文、长周期编程、知识工作、原生视觉理解和工具调用说明。GPT88 接入统一使用 https://api.gpt88.cc，Model ID 为 kimi-k3。',
         commits: [],
       },
+      {
+        type: '新增',
+        title: '补充 Kimi K3 第三方实战评测整理',
+        detail: '新增公开评测参考页，整理 Arena.ai、Terminal-Bench 2.1、Program Bench 的文章记录，以及交互动画、3D 讲解、网页 PPT、足球游戏、肉鸽游戏和全栈 AI IDE 等 7 个项目案例，并明确第三方数据不等于官方性能或 GPT88 实时价格承诺。',
+        commits: [],
+      },
     ],
   },
   {

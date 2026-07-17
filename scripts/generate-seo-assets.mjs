@@ -187,6 +187,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Kimi K3 实战评测与模型对比',
+    path: '/docs/guides/kimi-k3-review',
+    description: '整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。',
+    section: '指南',
+  },
+  {
     title: '完整接入手册',
     path: '/docs/guides/complete-integration',
     description: '从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。',
