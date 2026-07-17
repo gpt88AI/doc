@@ -78,6 +78,9 @@ export function localizePath(path: string, locale: Locale) {
 export function isTranslatedPath(locale: Locale, path: string) {
   const basePath = stripLocalePrefix(path)
   if (locale === 'zh') return true
+  // Kimi K3 has an English indexable page contract. Other dynamic model pages
+  // remain on the existing noindex fallback until their copy is translated.
+  if (basePath === '/models/kimi-k3/') return true
   return EN_TRANSLATED_BASE_PATHS.has(basePath)
 }
 

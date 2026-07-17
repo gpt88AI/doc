@@ -82,6 +82,19 @@ function main() {
   const modelsSource = readFile(path.join(root, 'src/data/models.ts'))
 
   const missingDistRoutes = sitemapRoutes.filter(route => !fs.existsSync(routeToFile(route)))
+  const indexableEnglishModelRoutes = ['/models/kimi-k3/']
+  const englishModelRoutes = new Set(sitemapRoutes.filter(route => /^\/en\/models\/[^/]+\/$/.test(route)))
+  const englishModelRoutePaths = indexableEnglishModelRoutes.map(route => `/en${route}`)
+  const missingEnglishModelRoutes = englishModelRoutePaths.filter(route => !englishModelRoutes.has(route))
+  const missingEnglishModelDistRoutes = indexableEnglishModelRoutes
+    .map(route => `/en${route}`)
+    .filter(route => !fs.existsSync(routeToFile(route)))
+  const englishModelNoindexRoutes = indexableEnglishModelRoutes
+    .map(route => `/en${route}`)
+    .filter(route => {
+      const file = routeToFile(route)
+      return fs.existsSync(file) && hasNoindex(readFile(file))
+    })
   const navMissingFromSitemap = navRoutes.filter(route => route !== '/docs/' && !sitemapSet.has(route))
   const sitemapNoindexRoutes = sitemapRoutes.filter(route => {
     const file = routeToFile(route)
@@ -99,6 +112,15 @@ function main() {
   const failures = []
   if (missingDistRoutes.length) {
     failures.push(`Missing prerendered files for ${missingDistRoutes.length} sitemap routes:\n${missingDistRoutes.join('\n')}`)
+  }
+  if (missingEnglishModelRoutes.length) {
+    failures.push(`Missing English model routes in sitemap for ${missingEnglishModelRoutes.length} models:\n${missingEnglishModelRoutes.join('\n')}`)
+  }
+  if (missingEnglishModelDistRoutes.length) {
+    failures.push(`Missing prerendered English model files for ${missingEnglishModelDistRoutes.length} models:\n${missingEnglishModelDistRoutes.join('\n')}`)
+  }
+  if (englishModelNoindexRoutes.length) {
+    failures.push(`English model routes marked noindex:\n${englishModelNoindexRoutes.join('\n')}`)
   }
   if (sitemapNoindexRoutes.length) {
     failures.push('Sitemap routes marked noindex:\n' + sitemapNoindexRoutes.join('\n'))

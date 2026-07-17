@@ -29,6 +29,18 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-07-18',
+    summary: '修复英文模型详情页被 Google 检查工具抓取为 404 的问题，并补齐英文模型页面的静态预渲染、索引和路由回归检查。',
+    items: [
+      {
+        type: '修复',
+        title: '修复 Kimi K3 英文模型页抓取 404',
+        detail: '模型详情路由为 Kimi K3 生成英文静态 HTML，英文 Kimi K3 页面可直接被 GitHub Pages 和 Google 检查工具抓取；同时为该页面设置 index,follow，并增加 sitemap、预渲染文件和 noindex 回归检查。',
+        commits: [],
+      },
+    ],
+  },
+  {
     date: '2026-07-17',
     summary: '补充已发布的 Moonshot Kimi K3 推荐与接入资料，帮助开发者快速判断长上下文、编程和 Agent 场景的适配性。',
     items: [

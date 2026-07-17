@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://doc.gpt88.cc/docs/changelog/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1886,7 +1886,7 @@
   </url>
   <url>
     <loc>https://doc.gpt88.cc/models/kimi-k3/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2055,6 +2055,12 @@
   <url>
     <loc>https://doc.gpt88.cc/models/whisper-1/</loc>
     <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/models/kimi-k3/</loc>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

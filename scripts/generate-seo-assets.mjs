@@ -803,7 +803,7 @@ function sitemapXml(pages) {
     .map(page => `  <url>
     <loc>${xmlEscape(absoluteUrl(page.path))}</loc>
     <lastmod>${page.lastmod || buildDate}</lastmod>
-    <changefreq>${page.path.startsWith('/models/') ? 'weekly' : 'monthly'}</changefreq>
+    <changefreq>${/^(?:\/models|\/en\/models)\//.test(page.path) ? 'weekly' : 'monthly'}</changefreq>
     <priority>${page.priority}</priority>
   </url>`)
     .join('\n')
@@ -935,9 +935,15 @@ ${modelsMd}
 async function main() {
   await fs.mkdir(publicDir, { recursive: true })
   const modelPages = await readModels()
-  // English model detail pages are not fully translated. Keep them out of the
-  // sitemap until they have an indexable English content contract.
-  const pages = [...staticPages, ...modelPages]
+  // Kimi K3 has an indexable English content contract. Keep other dynamic
+  // model pages out of the English sitemap until their copy is translated.
+  const englishModelPages = modelPages.filter(page => page.modelId === 'kimi-k3').map(page => ({
+    ...page,
+    title: `${page.title} API Docs`,
+    path: `/en${page.path}`,
+    description: `English model reference for ${page.title}. Model ID: ${page.modelId}, endpoint: ${page.endpoint}.`,
+  }))
+  const pages = [...staticPages, ...modelPages, ...englishModelPages]
 
   await Promise.all([
     fs.writeFile(path.join(publicDir, 'robots.txt'), robotsTxt()),
