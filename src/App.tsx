@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react'
+import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { SiteShell } from './components/layout/SiteShell'
 import { DocsLayout } from './components/layout/DocsLayout'
@@ -19,66 +19,67 @@ import ClaudeCodeCompactionErrorPage from './pages/docs/guides/ClaudeCodeCompact
 import KimiK3ReviewPage from './pages/docs/guides/KimiK3ReviewPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { LocaleProvider } from './lib/locale'
-
-const ConfigExportPage = lazy(() => import('./pages/docs/guides/ConfigExportPage'))
-const GrokVideoPage = lazy(() => import('./pages/docs/api/GrokVideoPage'))
-const Gpt88AiProxyPage = lazy(() => import('./pages/docs/guides/Gpt88AiProxyPage'))
-const Gpt88DocsMapPage = lazy(() => import('./pages/docs/guides/Gpt88DocsMapPage'))
-const Gpt88TutorialPage = lazy(() => import('./pages/docs/guides/Gpt88TutorialPage'))
-const CompleteIntegrationGuidePage = lazy(() => import('./pages/docs/guides/CompleteIntegrationGuidePage'))
-const WorkrallyOverviewPage = lazy(() => import('./pages/docs/guides/WorkrallyOverviewPage'))
-const WorkrallyAiGenerationPage = lazy(() => import('./pages/docs/guides/WorkrallyAiGenerationPage'))
-const WorkrallyCanvasGuidePage = lazy(() => import('./pages/docs/guides/WorkrallyCanvasGuidePage'))
-const WorkrallyUploadAssetsPage = lazy(() => import('./pages/docs/guides/WorkrallyUploadAssetsPage'))
-const WorkrallyShotWorkflowPage = lazy(() => import('./pages/docs/guides/WorkrallyShotWorkflowPage'))
-const WorkrallyCommonPitfallsPage = lazy(() => import('./pages/docs/guides/WorkrallyCommonPitfallsPage'))
-const CodexPluginsOauthPage = lazy(() => import('./pages/docs/guides/CodexPluginsOauthPage'))
-const CodexChatgptPhoneVerificationPage = lazy(() => import('./pages/docs/guides/CodexChatgptPhoneVerificationPage'))
-const EccGuidePage = lazy(() => import('./pages/docs/guides/EccGuidePage'))
-const CodexGptImage2SkillPage = lazy(() => import('./pages/docs/guides/CodexGptImage2SkillPage'))
-const CodexFrontendTasteSkillPage = lazy(() => import('./pages/docs/guides/CodexFrontendTasteSkillPage'))
-const CodexGpt55SystemOverviewPage = lazy(() => import('./pages/docs/guides/CodexGpt55SystemOverviewPage'))
-const CodexSkillsContextEngineeringPage = lazy(() => import('./pages/docs/guides/CodexSkillsContextEngineeringPage'))
-const CodexPluginsResearchWorkflowPage = lazy(() => import('./pages/docs/guides/CodexPluginsResearchWorkflowPage'))
-const CodexParallelAutomationWorkflowPage = lazy(() => import('./pages/docs/guides/CodexParallelAutomationWorkflowPage'))
-const CodexProjectFactoryDeliveryPage = lazy(() => import('./pages/docs/guides/CodexProjectFactoryDeliveryPage'))
-const AgentImageStudioGuidePage = lazy(() => import('./pages/docs/guides/AgentImageStudioGuidePage'))
-const EcommerceToolsSpecialPage = lazy(() => import('./pages/docs/guides/EcommerceToolsSpecialPage'))
-const GptImage2ServiceNoticePage = lazy(() => import('./pages/docs/guides/GptImage2ServiceNoticePage'))
-const AgentImageQualityCropGuidePage = lazy(() => import('./pages/docs/guides/AgentImageQualityCropGuidePage'))
-const CodexToolRecoveryPage = lazy(() => import('./pages/docs/guides/CodexToolRecoveryPage'))
-const LoopEngineeringGuidePage = lazy(() => import('./pages/docs/guides/LoopEngineeringGuidePage'))
-const ZeroDowntimeReleasePage = lazy(() => import('./pages/docs/guides/ZeroDowntimeReleasePage'))
-const GiffgaffGuidePage = lazy(() => import('./pages/docs/guides/GiffgaffGuidePage'))
-const UsVirtualCardGuidePage = lazy(() => import('./pages/docs/guides/UsVirtualCardGuidePage'))
-const AiVideoStoryboardGuidePage = lazy(() => import('./pages/docs/guides/AiVideoStoryboardGuidePage'))
-const VideoCreatorToolsWorkflowPage = lazy(() => import('./pages/docs/guides/VideoCreatorToolsWorkflowPage'))
-const VideoGenerationSkillsOverviewPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsOverviewPage'))
-const VideoGenerationSkillsInstallPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsInstallPage'))
-const VideoGenerationSkillsPromptDirectorPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsPromptDirectorPage'))
-const VideoGenerationSkillsEcommercePage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsEcommercePage'))
-const VideoGenerationSkillsBrandAdCgPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsBrandAdCgPage'))
-const VideoGenerationSkillsAiVideoDirectorPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsAiVideoDirectorPage'))
-const VideoGenerationSkillsI2vPromptPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsI2vPromptPage'))
-const VideoGenerationSkillsWhiteBackgroundPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsWhiteBackgroundPage'))
-const VideoGenerationSkillsProductCgPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsProductCgPage'))
-const VideoGenerationSkillsTvcPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsTvcPage'))
-const VideoGenerationSkillsSceneConsistencyPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsSceneConsistencyPage'))
-const VideoGenerationSkillsComplexActionPage = lazy(() => import('./pages/docs/guides/VideoGenerationSkillsComplexActionPage'))
-const IntegrationsHubPage = lazy(() => import('./pages/docs/integrations/IntegrationsHubPage'))
-const ChatboxPage = lazy(() => import('./pages/docs/integrations/chat/ChatboxPage'))
-const CherryStudioPage = lazy(() => import('./pages/docs/integrations/chat/CherryStudioPage'))
-const AnythingLlmPage = lazy(() => import('./pages/docs/integrations/chat/AnythingLlmPage'))
-const ClaudeCodeIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/ClaudeCodePage'))
-const CursorIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/CursorPage'))
-const ClineIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/ClinePage'))
-const GeminiCliIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/GeminiCliPage'))
-const CodexCliIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/CodexCliPage'))
-const CcSwitchIntegrationPage = lazy(() => import('./pages/docs/integrations/dev/CcSwitchPage'))
-const DifyIntegrationPage = lazy(() => import('./pages/docs/integrations/platforms/DifyPage'))
-const ImmersiveTranslateIntegrationPage = lazy(() => import('./pages/docs/integrations/platforms/ImmersiveTranslatePage'))
-const ModelsPage = lazy(() => import('./pages/ModelsPage'))
-const ModelDetailPage = lazy(() => import('./pages/ModelDetailPage'))
+import {
+  AgentImageQualityCropGuidePage,
+  AgentImageStudioGuidePage,
+  AiVideoStoryboardGuidePage,
+  AnythingLlmPage,
+  CcSwitchIntegrationPage,
+  ChatboxPage,
+  CherryStudioPage,
+  ClaudeCodeIntegrationPage,
+  ClineIntegrationPage,
+  CodexChatgptPhoneVerificationPage,
+  CodexCliIntegrationPage,
+  CodexFrontendTasteSkillPage,
+  CodexGpt55SystemOverviewPage,
+  CodexGptImage2SkillPage,
+  CodexParallelAutomationWorkflowPage,
+  CodexPluginsOauthPage,
+  CodexPluginsResearchWorkflowPage,
+  CodexProjectFactoryDeliveryPage,
+  CodexSkillsContextEngineeringPage,
+  CodexToolRecoveryPage,
+  CompleteIntegrationGuidePage,
+  ConfigExportPage,
+  CursorIntegrationPage,
+  DifyIntegrationPage,
+  EcommerceToolsSpecialPage,
+  EccGuidePage,
+  GeminiCliIntegrationPage,
+  GiffgaffGuidePage,
+  Gpt88AiProxyPage,
+  Gpt88DocsMapPage,
+  Gpt88TutorialPage,
+  GptImage2ServiceNoticePage,
+  GrokVideoPage,
+  ImmersiveTranslateIntegrationPage,
+  IntegrationsHubPage,
+  LoopEngineeringGuidePage,
+  ModelDetailPage,
+  ModelsPage,
+  UsVirtualCardGuidePage,
+  VideoCreatorToolsWorkflowPage,
+  VideoGenerationSkillsAiVideoDirectorPage,
+  VideoGenerationSkillsBrandAdCgPage,
+  VideoGenerationSkillsComplexActionPage,
+  VideoGenerationSkillsEcommercePage,
+  VideoGenerationSkillsI2vPromptPage,
+  VideoGenerationSkillsInstallPage,
+  VideoGenerationSkillsOverviewPage,
+  VideoGenerationSkillsProductCgPage,
+  VideoGenerationSkillsPromptDirectorPage,
+  VideoGenerationSkillsSceneConsistencyPage,
+  VideoGenerationSkillsTvcPage,
+  VideoGenerationSkillsWhiteBackgroundPage,
+  WorkrallyAiGenerationPage,
+  WorkrallyCanvasGuidePage,
+  WorkrallyCommonPitfallsPage,
+  WorkrallyOverviewPage,
+  WorkrallyShotWorkflowPage,
+  WorkrallyUploadAssetsPage,
+  ZeroDowntimeReleasePage,
+} from '@route-pages'
 
 /**
  * gpt88.cc 文档站 - 路由树（M3 完成）

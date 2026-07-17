@@ -7,6 +7,10 @@
     "module": "ESNext",
     "types": ["vite/client"],
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@route-pages": ["./src/routePages.client.ts"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

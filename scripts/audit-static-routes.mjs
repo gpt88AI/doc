@@ -25,6 +25,13 @@ function hasNoindex(html) {
   return /<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*\bnoindex\b/i.test(html)
 }
 
+function hasIncompleteSsr(html) {
+  return (
+    html.includes('Switched to client rendering because the server rendering aborted') ||
+    />Loading\.\.\.<\/div>/.test(html)
+  )
+}
+
 function parseSitemapRoutes(xml) {
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => normalizeRoute(new URL(match[1]).pathname || '/'))
 }
@@ -80,6 +87,10 @@ function main() {
     const file = routeToFile(route)
     return fs.existsSync(file) && hasNoindex(readFile(file))
   })
+  const incompleteSsrRoutes = sitemapRoutes.filter(route => {
+    const file = routeToFile(route)
+    return fs.existsSync(file) && hasIncompleteSsr(readFile(file))
+  })
 
   const localModelPatches = parseCatalogBlockNames(modelsSource, 'const LOCAL_CATALOG_ROWS')
   const seoLocalPatches = parseCatalogBlockNames(seoSource, 'const localCatalog')
@@ -91,6 +102,11 @@ function main() {
   }
   if (sitemapNoindexRoutes.length) {
     failures.push('Sitemap routes marked noindex:\n' + sitemapNoindexRoutes.join('\n'))
+  }
+  if (incompleteSsrRoutes.length) {
+    failures.push(
+      `Routes with incomplete Suspense SSR (${incompleteSsrRoutes.length}):\n${incompleteSsrRoutes.join('\n')}`,
+    )
   }
   if (navMissingFromSitemap.length) {
     failures.push(`Routes present in nav but missing from sitemap:\n${navMissingFromSitemap.join('\n')}`)
@@ -106,7 +122,7 @@ function main() {
   }
 
   console.log(
-    `Static route audit passed: ${sitemapRoutes.length} sitemap routes, ${navRoutes.length} nav routes, ${localModelPatches.length} local model patches checked.`,
+    `Static route audit passed: ${sitemapRoutes.length} sitemap routes, ${navRoutes.length} nav routes, ${localModelPatches.length} local model patches, complete Suspense SSR checked.`,
   )
 }
 

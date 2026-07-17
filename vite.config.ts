@@ -1,14 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { fileURLToPath } from 'node:url'
 
 // 开发端口固定为 27891，避免与常见 3000/5173 冲突。
 // 文档站不依赖任何后端代理，所以不再配置 /api 转发。
 const devPort = 27891
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   base: process.env.VITE_BASE_PATH ?? '/',
   plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@route-pages': fileURLToPath(
+        new URL(isSsrBuild ? './src/routePages.ssr.ts' : './src/routePages.client.ts', import.meta.url),
+      ),
+    },
+  },
   build: {
     rollupOptions: {
       output: {
@@ -31,4 +39,4 @@ export default defineConfig({
     port: devPort,
     strictPort: true,
   },
-})
+}))
