@@ -789,6 +789,11 @@ function absoluteUrl(routePath) {
   return `${siteUrl}${normalized}${suffix}`
 }
 
+function normalizeRoute(routePath) {
+  if (routePath === '/') return '/'
+  return routePath.endsWith('/') ? routePath : `${routePath}/`
+}
+
 function xmlEscape(value) {
   return value
     .replaceAll('&', '&amp;')
@@ -944,17 +949,26 @@ async function main() {
     description: `English model reference for ${page.title}. Model ID: ${page.modelId}, endpoint: ${page.endpoint}.`,
   }))
   const pages = [...staticPages, ...modelPages, ...englishModelPages]
+  const prerenderRoutes = [...new Set([
+    ...pages.map(page => normalizeRoute(page.path)),
+    ...docs.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
+    ...modelPages.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
+  ])]
 
   await Promise.all([
     fs.writeFile(path.join(publicDir, 'robots.txt'), robotsTxt()),
     fs.writeFile(path.join(publicDir, 'sitemap.xml'), sitemapXml(pages)),
     fs.writeFile(path.join(publicDir, 'sitemap-pages.xml'), sitemapXml(pages)),
     fs.writeFile(path.join(publicDir, 'sitemap-index.xml'), sitemapIndexXml()),
+    fs.writeFile(
+      path.join(publicDir, 'prerender-routes.json'),
+      `${JSON.stringify({ routes: prerenderRoutes }, null, 2)}\n`,
+    ),
     fs.writeFile(path.join(publicDir, 'llms.txt'), llmsTxt(modelPages)),
     fs.writeFile(path.join(publicDir, 'llms-full.txt'), llmsFullTxt(modelPages)),
   ])
 
-  console.log(`Generated SEO/GEO assets for ${pages.length} URLs at ${siteUrl}`)
+  console.log(`Generated SEO/GEO assets for ${pages.length} indexable URLs and ${prerenderRoutes.length} prerender routes at ${siteUrl}`)
 }
 
 main().catch(error => {

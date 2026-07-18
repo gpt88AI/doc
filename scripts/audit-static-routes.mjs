@@ -32,8 +32,48 @@ function hasIncompleteSsr(html) {
   )
 }
 
+function readMetaContent(html, name) {
+  const pattern = new RegExp(`<meta\\b[^>]*name=["']${name}["'][^>]*content=["']([^"']+)["']`, 'i')
+  return html.match(pattern)?.[1]?.trim() || ''
+}
+
+function readCanonicalRoute(html) {
+  const match = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)
+  if (!match) return ''
+  try {
+    const url = new URL(match[1], 'https://doc.gpt88.cc')
+    if (url.origin !== 'https://doc.gpt88.cc') return ''
+    return normalizeRoute(url.pathname || '/')
+  } catch {
+    return ''
+  }
+}
+
 function parseSitemapRoutes(xml) {
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => normalizeRoute(new URL(match[1]).pathname || '/'))
+}
+
+function parsePrerenderRoutes(json) {
+  const manifest = JSON.parse(json)
+  if (!Array.isArray(manifest.routes)) return []
+  return [...new Set(manifest.routes.map(normalizeRoute))]
+}
+
+function parseInternalPageLinks(html) {
+  const routes = []
+  for (const match of html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["']/gi)) {
+    const href = match[1]
+    let url
+    try {
+      url = new URL(href, 'https://doc.gpt88.cc')
+    } catch {
+      continue
+    }
+    if (url.origin !== 'https://doc.gpt88.cc') continue
+    if (path.extname(url.pathname) || url.pathname.startsWith('/assets/')) continue
+    routes.push(normalizeRoute(url.pathname || '/'))
+  }
+  return routes
 }
 
 function parseNavRoutes(source) {
@@ -76,12 +116,15 @@ function parseCatalogBlockNames(source, startMarker) {
 
 function main() {
   const sitemapRoutes = parseSitemapRoutes(readFile(path.join(publicDir, 'sitemap.xml')))
+  const prerenderRoutes = parsePrerenderRoutes(readFile(path.join(publicDir, 'prerender-routes.json')))
   const sitemapSet = new Set(sitemapRoutes)
+  const prerenderSet = new Set(prerenderRoutes)
   const navRoutes = parseNavRoutes(readFile(path.join(root, 'src/data/nav.ts')))
   const seoSource = readFile(path.join(root, 'scripts/generate-seo-assets.mjs'))
   const modelsSource = readFile(path.join(root, 'src/data/models.ts'))
 
   const missingDistRoutes = sitemapRoutes.filter(route => !fs.existsSync(routeToFile(route)))
+  const missingPrerenderRoutes = prerenderRoutes.filter(route => !fs.existsSync(routeToFile(route)))
   const indexableEnglishModelRoutes = ['/models/kimi-k3/']
   const englishModelRoutes = new Set(sitemapRoutes.filter(route => /^\/en\/models\/[^/]+\/$/.test(route)))
   const englishModelRoutePaths = indexableEnglishModelRoutes.map(route => `/en${route}`)
@@ -100,10 +143,30 @@ function main() {
     const file = routeToFile(route)
     return fs.existsSync(file) && hasNoindex(readFile(file))
   })
-  const incompleteSsrRoutes = sitemapRoutes.filter(route => {
+  const incompleteSsrRoutes = prerenderRoutes.filter(route => {
     const file = routeToFile(route)
     return fs.existsSync(file) && hasIncompleteSsr(readFile(file))
   })
+  const missingSeoRoutes = []
+  const sitemapCanonicalMismatches = []
+  const brokenInternalLinks = new Map()
+  for (const route of prerenderRoutes) {
+    const file = routeToFile(route)
+    if (!fs.existsSync(file)) continue
+    const html = readFile(file)
+    if (!/<title>[^<]+<\/title>/i.test(html) || !readMetaContent(html, 'description') || !readCanonicalRoute(html)) {
+      missingSeoRoutes.push(route)
+    }
+    if (sitemapSet.has(route) && readCanonicalRoute(html) !== route) {
+      sitemapCanonicalMismatches.push(`${route} -> ${readCanonicalRoute(html) || '(missing canonical)'}`)
+    }
+    for (const linkedRoute of parseInternalPageLinks(html)) {
+      if (prerenderSet.has(linkedRoute)) continue
+      const sources = brokenInternalLinks.get(linkedRoute) || []
+      sources.push(route)
+      brokenInternalLinks.set(linkedRoute, sources)
+    }
+  }
 
   const localModelPatches = parseCatalogBlockNames(modelsSource, 'const LOCAL_CATALOG_ROWS')
   const seoLocalPatches = parseCatalogBlockNames(seoSource, 'const localCatalog')
@@ -112,6 +175,9 @@ function main() {
   const failures = []
   if (missingDistRoutes.length) {
     failures.push(`Missing prerendered files for ${missingDistRoutes.length} sitemap routes:\n${missingDistRoutes.join('\n')}`)
+  }
+  if (missingPrerenderRoutes.length) {
+    failures.push(`Missing prerendered files for ${missingPrerenderRoutes.length} valid routes:\n${missingPrerenderRoutes.join('\n')}`)
   }
   if (missingEnglishModelRoutes.length) {
     failures.push(`Missing English model routes in sitemap for ${missingEnglishModelRoutes.length} models:\n${missingEnglishModelRoutes.join('\n')}`)
@@ -130,6 +196,19 @@ function main() {
       `Routes with incomplete Suspense SSR (${incompleteSsrRoutes.length}):\n${incompleteSsrRoutes.join('\n')}`,
     )
   }
+  if (brokenInternalLinks.size) {
+    failures.push(
+      `Broken internal page links (${brokenInternalLinks.size}):\n${[...brokenInternalLinks]
+        .map(([route, sources]) => `${route} <- ${[...new Set(sources)].slice(0, 3).join(', ')}`)
+        .join('\n')}`,
+    )
+  }
+  if (missingSeoRoutes.length) {
+    failures.push(`Prerendered routes missing title, description, or canonical (${missingSeoRoutes.length}):\n${missingSeoRoutes.join('\n')}`)
+  }
+  if (sitemapCanonicalMismatches.length) {
+    failures.push(`Sitemap routes with mismatched canonical URLs:\n${sitemapCanonicalMismatches.join('\n')}`)
+  }
   if (navMissingFromSitemap.length) {
     failures.push(`Routes present in nav but missing from sitemap:\n${navMissingFromSitemap.join('\n')}`)
   }
@@ -144,7 +223,7 @@ function main() {
   }
 
   console.log(
-    `Static route audit passed: ${sitemapRoutes.length} sitemap routes, ${navRoutes.length} nav routes, ${localModelPatches.length} local model patches, complete Suspense SSR checked.`,
+    `Static route audit passed: ${sitemapRoutes.length} sitemap routes, ${prerenderRoutes.length} prerender routes, ${navRoutes.length} nav routes, ${localModelPatches.length} local model patches, internal links and Suspense SSR checked.`,
   )
 }
 

@@ -71,6 +71,7 @@ npm run seo
 
 - `public/robots.txt`：允许抓取并声明 sitemap。
 - `public/sitemap.xml`：包含首页、文档页和模型详情页 URL。
+- `public/prerender-routes.json`：记录所有有效站内路由的静态预渲染清单；其中未完成翻译的英文页面会生成 `noindex` fallback，但不会进入 sitemap。
 - `public/llms.txt`：面向 AI 搜索和开发者 Agent 的精简索引。
 - `public/llms-full.txt`：面向 LLM 的完整文档与模型索引。
 
@@ -83,7 +84,7 @@ npm run build:ssr
 npm run prerender
 ```
 
-预渲染会根据 `sitemap.xml` 为首页、文档页和模型详情页生成真实 HTML，并额外生成 `dist/404.html`。这样搜索引擎和 AI 抓取器即使不执行 JavaScript，也能读取页面标题、正文、canonical、Open Graph 与 JSON-LD。
+预渲染会根据 `prerender-routes.json` 为所有有效中文/英文站内路由生成真实 HTML，并额外生成 `dist/404.html`。sitemap 只保留可索引内容，未完成翻译的英文页面仍可被直接访问，但通过 `noindex` 和中文 canonical 避免产生重复或低质量索引。构建审计还会检查每个预渲染页面的站内链接、canonical、sitemap/noindex 冲突和 Suspense SSR 完整性。
 
 ## GitHub Pages
 

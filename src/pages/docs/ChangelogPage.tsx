@@ -38,6 +38,12 @@ const CHANGELOG: ChangeGroup[] = [
         detail: '模型详情路由为 Kimi K3 生成英文静态 HTML，英文 Kimi K3 页面可直接被 GitHub Pages 和 Google 检查工具抓取；同时为该页面设置 index,follow，并增加 sitemap、预渲染文件和 noindex 回归检查。',
         commits: [],
       },
+      {
+        type: '修复',
+        title: '补齐其它英文路由的静态预渲染',
+        detail: '所有有效的英文文档 fallback 和英文模型详情链接现在都会生成静态 HTML，避免语言切换、模型导航或搜索结果直接打开时出现 404；未完成英文翻译的页面继续使用 noindex 和中文 canonical，不会误进入 sitemap。',
+        commits: [],
+      },
     ],
   },
   {

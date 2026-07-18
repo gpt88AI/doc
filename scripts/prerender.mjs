@@ -13,12 +13,17 @@ function routeToFile(routePath) {
   return path.join(distDir, routePath.replace(/^\//, ''), 'index.html')
 }
 
-function parseSitemap(xml) {
-  const matches = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)]
-  return matches.map(match => {
-    const url = new URL(match[1])
-    return url.pathname || '/'
-  })
+function normalizeRoute(routePath) {
+  if (routePath === '/') return '/'
+  return routePath.endsWith('/') ? routePath : `${routePath}/`
+}
+
+function parsePrerenderRoutes(json) {
+  const manifest = JSON.parse(json)
+  if (!Array.isArray(manifest.routes)) {
+    throw new Error('prerender-routes.json must contain a routes array')
+  }
+  return [...new Set(manifest.routes.map(normalizeRoute))]
 }
 
 function extractHead(html) {
@@ -62,16 +67,16 @@ function injectIntoTemplate(template, rendered) {
 }
 
 async function main() {
-  const sitemapPath = path.join(distDir, 'sitemap.xml')
+  const prerenderRoutesPath = path.join(distDir, 'prerender-routes.json')
   const templatePath = path.join(distDir, 'index.html')
   const serverEntryPath = path.join(serverDir, 'main.ssr.js')
 
-  const [sitemap, template] = await Promise.all([
-    fs.readFile(sitemapPath, 'utf8'),
+  const [prerenderRoutesJson, template] = await Promise.all([
+    fs.readFile(prerenderRoutesPath, 'utf8'),
     fs.readFile(templatePath, 'utf8'),
   ])
   const { render } = await import(pathToFileURL(serverEntryPath).href)
-  const routes = parseSitemap(sitemap)
+  const routes = parsePrerenderRoutes(prerenderRoutesJson)
 
   for (const route of routes) {
     const html = injectIntoTemplate(template, render(route))
