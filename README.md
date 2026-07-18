@@ -23,9 +23,7 @@ Agent 图片工作台: https://agent.gpt88.cc/
 X / Twitter: https://x.com/webstarchina
 Telegram: https://t.me/+CtlYILkGaY1jYzBl
 默认 OpenAI 兼容 Base URL: https://gpt88.cc/v1
-图片加速 Base URL: https://china.claudecoder.me
-海外直连 Base URL: https://test1122.up.railway.app/v1
-海外 CDN Base URL: https://ai.orbitlink.me/v1
+图片加速 Base URL: https://img.gpt88.cc
 ```
 
 ## 核心理念
@@ -175,7 +173,7 @@ src/
 ## 维护约定
 
 - 不在静态文档中写死真实价格、限速、SLA 等强时效信息；这些内容应指向控制台或后端动态配置。
-- 示例 Base URL 默认展示 `https://gpt88.cc/v1`，Google 图片生成示例使用 `https://china.claudecoder.me`，配置文件导出页面可展示按线路生成的地址。
+- 示例 Base URL 默认展示 `https://gpt88.cc/v1`，Google 图片生成示例使用 `https://img.gpt88.cc`，配置文件导出页面可展示按线路生成的地址。
 - API Key、截图和日志中必须脱敏，禁止提交真实密钥。
 - 新增模型时优先更新 `src/data/models.ts`，再补对应文档或详情页说明。
 - 新增文档入口时同步更新 `src/data/nav.ts`、`src/App.tsx` 和 `scripts/generate-seo-assets.mjs`，然后执行 `npm run seo`。
