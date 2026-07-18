@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react'
 import { Sidebar } from './Sidebar'
 import { cn } from '../../lib/cn'
 import { useLocale } from '../../lib/locale'
+import { getLocaleCopy } from '../../lib/localeCopy'
 
 /**
  * 文档区布局
@@ -14,10 +15,9 @@ import { useLocale } from '../../lib/locale'
 export function DocsLayout() {
   const [navOpen, setNavOpen] = useState(false)
   const { locale } = useLocale()
-  const labels =
-    locale === 'en'
-      ? { open: 'Docs Menu', close: 'Close Menu' }
-      : { open: '文档目录', close: '关闭目录' }
+  const labels = locale === 'zh'
+    ? { open: '文档目录', close: '关闭目录' }
+    : { open: `${getLocaleCopy(locale).nav.docs} Menu`, close: 'Close Menu' }
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">

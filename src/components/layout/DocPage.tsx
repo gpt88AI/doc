@@ -5,7 +5,7 @@ import { AnchorNav, type Heading } from './AnchorNav'
 import { getDocsFlat } from '../../data/nav'
 import { Seo } from '../seo/Seo'
 import { docStructuredData } from '../seo/structuredData'
-import { isTranslatedPath, localizePath, useLocale } from '../../lib/locale'
+import { isTranslatedPath, localizedContentPath, useLocale } from '../../lib/locale'
 
 type DocPageProps = {
   /** 页面在 DOCS_FLAT 中的 path，用于 prev/next */
@@ -30,7 +30,7 @@ export function DocPage({ path, title, description, headings = [], children }: D
     description ??
     (locale === 'en' ? `${title} - gpt88.cc API Docs.` : `${title} - gpt88.cc API 文档。`)
   const docsFlat = useMemo(() => getDocsFlat(locale), [locale])
-  const englishFallback = locale === 'en' && !isTranslatedPath(locale, path)
+  const translationFallback = locale !== 'zh' && !isTranslatedPath(locale, path)
 
   // 翻页导航：从扁平结构中找上一/下一篇
   const { prev, next } = useMemo(() => {
@@ -66,10 +66,11 @@ export function DocPage({ path, title, description, headings = [], children }: D
           ) : null}
         </header>
 
-        {englishFallback ? (
+        {translationFallback ? (
           <div className="not-prose mb-6 rounded-lg border border-amber-400/20 bg-amber-400/[0.08] p-4 text-sm text-amber-100">
-            This page is accessible in English navigation, but the full body has not been translated yet.
-            The original Chinese content is kept below for accuracy.
+            {locale === 'en'
+              ? 'This page is accessible in English navigation, but the full body has not been translated yet. The original Chinese content is kept below for accuracy.'
+              : 'This page is available through the multilingual navigation, but a full translation is still in progress. The original documentation is kept below for accuracy.'}
           </div>
         ) : null}
 
@@ -82,7 +83,7 @@ export function DocPage({ path, title, description, headings = [], children }: D
         >
           {prev ? (
             <Link
-              to={localizePath(prev.path, locale)}
+              to={localizedContentPath(prev.path, locale)}
               className="group flex flex-col items-start rounded-lg border border-white/5 p-4 transition-colors hover:border-violet-500/40 hover:bg-violet-500/5"
             >
               <span className="flex items-center gap-1 text-[11px] uppercase tracking-wider text-ink-500">
@@ -97,7 +98,7 @@ export function DocPage({ path, title, description, headings = [], children }: D
           )}
           {next ? (
             <Link
-              to={localizePath(next.path, locale)}
+              to={localizedContentPath(next.path, locale)}
               className="group flex flex-col items-end rounded-lg border border-white/5 p-4 text-right transition-colors hover:border-violet-500/40 hover:bg-violet-500/5 sm:col-start-2"
             >
               <span className="flex items-center gap-1 text-[11px] uppercase tracking-wider text-ink-500">

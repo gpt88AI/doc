@@ -5,8 +5,9 @@ import { Logo } from '../ui/Logo'
 import { GlobalSearch } from '../search/GlobalSearch'
 import { getTopNav } from '../../data/nav'
 import { cn } from '../../lib/cn'
-import { localizePath, stripLocalePrefix, useLocale } from '../../lib/locale'
+import { localizedContentPath, localizePath, stripLocalePrefix, useLocale } from '../../lib/locale'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { getLocaleCopy } from '../../lib/localeCopy'
 
 const COMMUNITY_LINKS = [
   { titleZh: 'X 社区', titleEn: 'X Community', href: 'https://x.com/webstarchina' },
@@ -30,20 +31,13 @@ export function TopNav() {
   const [open, setOpen] = useState(false)
   const topNav = getTopNav(locale)
   const plainPath = stripLocalePrefix(pathname)
-  const labels =
-    locale === 'en'
-      ? {
-          home: 'gpt88.cc Home',
-          getStarted: 'Get Started',
-          community: 'Community',
-          toggle: 'Toggle menu',
-        }
-      : {
-          home: 'gpt88.cc 首页',
-          getStarted: '开始使用',
-          community: '社区',
-          toggle: '切换菜单',
-        }
+  const copy = getLocaleCopy(locale)
+  const labels = {
+    home: `${copy.siteName} Home`,
+    getStarted: copy.nav.getStarted,
+    community: copy.nav.community,
+    toggle: locale === 'zh' ? '切换菜单' : locale === 'en' ? 'Toggle menu' : copy.menu,
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
@@ -59,7 +53,7 @@ export function TopNav() {
             return (
               <NavLink
                 key={item.match}
-                to={localizePath(item.href, locale)}
+                to={localizedContentPath(item.href, locale)}
                 className={cn(
                   'rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
                   active
@@ -122,7 +116,7 @@ export function TopNav() {
               return (
                 <NavLink
                   key={item.match}
-                  to={localizePath(item.href, locale)}
+                  to={localizedContentPath(item.href, locale)}
                   onClick={() => setOpen(false)}
                   className={cn(
                     'rounded-md px-3 py-2 text-sm font-medium transition-colors',

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { isTranslatedPath, localizePath, useLocale } from '../../lib/locale'
+import { isTranslatedPath, LOCALE_CONFIG, localizePath, SUPPORTED_LOCALES, useLocale } from '../../lib/locale'
+import { getLocaleCopy } from '../../lib/localeCopy'
 
 const SITE_URL = 'https://doc.gpt88.cc'
 
@@ -100,7 +101,7 @@ export function Seo({
   structuredData,
 }: SeoProps) {
   const { locale } = useLocale()
-  const siteName = locale === 'en' ? 'gpt88.cc API Docs' : 'gpt88.cc API 文档'
+  const siteName = getLocaleCopy(locale).siteName
   const defaultDescription =
     locale === 'en'
       ? 'gpt88.cc is a unified API gateway with OpenAI-compatible access and one-click multi-model integration. The docs cover quickstart, API reference, SDK examples, and the model catalog.'
@@ -108,20 +109,22 @@ export function Seo({
   const resolvedDescription = description ?? defaultDescription
   const fullTitle = title.includes('gpt88.cc') ? title : `${title} · ${siteName}`
   const translated = isTranslatedPath(locale, path)
-  const hasEnglishTranslation = isTranslatedPath('en', path)
   const localizedUrl = absoluteUrl(localizePath(path, locale))
   const zhUrl = absoluteUrl(localizePath(path, 'zh'))
   const enUrl = absoluteUrl(localizePath(path, 'en'))
-  const url = locale === 'en' && !translated ? zhUrl : localizedUrl
-  const robots = noindex || (locale === 'en' && !translated) ? 'noindex,follow' : 'index,follow'
+  const url = locale !== 'zh' && !translated ? enUrl : localizedUrl
+  const robots = noindex || (locale !== 'zh' && !translated) ? 'noindex,follow' : 'index,follow'
+  const alternateEntries = SUPPORTED_LOCALES
+    .filter(target => isTranslatedPath(target, path))
+    .map(target => ({ hrefLang: LOCALE_CONFIG[target].hrefLang, href: absoluteUrl(localizePath(path, target)) }))
 
   useEffect(() => {
     document.title = fullTitle
-    document.documentElement.lang = locale === 'en' ? 'en' : 'zh-CN'
+    document.documentElement.lang = LOCALE_CONFIG[locale].hrefLang
+    document.documentElement.dir = LOCALE_CONFIG[locale].direction
     setCanonical(url)
     setAlternateLinks([
-      { hrefLang: 'zh-CN', href: zhUrl },
-      ...(hasEnglishTranslation ? [{ hrefLang: 'en', href: enUrl }] : []),
+      ...alternateEntries,
       { hrefLang: 'x-default', href: zhUrl },
     ])
     setMeta('name', 'description', resolvedDescription)
@@ -138,7 +141,7 @@ export function Seo({
   }, [
     enUrl,
     fullTitle,
-    hasEnglishTranslation,
+    alternateEntries,
     locale,
     resolvedDescription,
     robots,
@@ -154,10 +157,9 @@ export function Seo({
       <>
         <title>{fullTitle}</title>
         <link rel="canonical" href={url} data-gpt88-seo="true" />
-        <link rel="alternate" hrefLang="zh-CN" href={zhUrl} data-gpt88-seo="true" />
-        {hasEnglishTranslation ? (
-          <link rel="alternate" hrefLang="en" href={enUrl} data-gpt88-seo="true" />
-        ) : null}
+        {alternateEntries.map(entry => (
+          <link key={entry.hrefLang} rel="alternate" hrefLang={entry.hrefLang} href={entry.href} data-gpt88-seo="true" />
+        ))}
         <link rel="alternate" hrefLang="x-default" href={zhUrl} data-gpt88-seo="true" />
         <meta name="description" content={resolvedDescription} data-gpt88-seo="true" />
         <meta name="robots" content={robots} data-gpt88-seo="true" />

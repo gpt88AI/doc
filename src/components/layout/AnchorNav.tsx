@@ -50,9 +50,9 @@ export function AnchorNav({ headings }: { headings: Heading[] }) {
   if (headings.length === 0) return null
 
   return (
-    <nav aria-label={locale === 'en' ? 'On this page' : '本页目录'} className="flex flex-col gap-2 text-sm">
+    <nav aria-label={locale === 'zh' ? '本页目录' : 'On this page'} className="flex flex-col gap-2 text-sm">
       <h5 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">
-        {locale === 'en' ? 'On this page' : '本页目录'}
+        {locale === 'zh' ? '本页目录' : 'On this page'}
       </h5>
       <ul className="flex flex-col gap-0.5 border-l border-white/10 pl-3">
         {headings.map(h => {

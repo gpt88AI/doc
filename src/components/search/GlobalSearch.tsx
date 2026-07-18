@@ -5,7 +5,8 @@ import { BookOpen, Boxes, FileText, Search, X } from 'lucide-react'
 import { getDocsNav } from '../../data/nav'
 import { MODELS } from '../../data/models'
 import { cn } from '../../lib/cn'
-import { localizePath, useLocale } from '../../lib/locale'
+import { localizedContentPath, useLocale } from '../../lib/locale'
+import type { Locale } from '../../lib/locale'
 
 type SearchItem = {
   id: string
@@ -21,16 +22,16 @@ function normalize(value: string) {
   return value.trim().toLowerCase()
 }
 
-function buildSearchItems(locale: 'zh' | 'en'): SearchItem[] {
+function buildSearchItems(locale: Locale): SearchItem[] {
   const docs = getDocsNav(locale).flatMap(section =>
     section.items.map(item => ({
       id: `doc:${item.path}`,
       title: item.title,
-      description: locale === 'en' ? section.title : item.blurb ?? section.title,
-      path: localizePath(item.path, locale),
+      description: locale === 'zh' ? item.blurb ?? section.title : section.title,
+      path: localizedContentPath(item.path, locale),
       section: section.title,
       type: 'doc' as const,
-      keywords: [item.title, locale === 'en' ? undefined : item.blurb, item.path, section.title]
+      keywords: [item.title, locale === 'zh' ? item.blurb : undefined, item.path, section.title]
         .filter(Boolean)
         .join(' '),
     })),
@@ -40,7 +41,7 @@ function buildSearchItems(locale: 'zh' | 'en'): SearchItem[] {
     id: `model:${model.slug}`,
     title: model.name,
     description: `${model.modelId} · ${model.tagline}`,
-    path: localizePath(`/models/${model.slug}/`, locale),
+    path: localizedContentPath(`/models/${model.slug}/`, locale),
     section: locale === 'en' ? `Model · ${model.category}` : `模型 · ${model.category}`,
     type: 'model' as const,
     keywords: [
@@ -95,7 +96,7 @@ function SearchResults({
   items: SearchItem[]
   query: string
   onSelect: (path: string) => void
-  locale: 'zh' | 'en'
+  locale: Locale
 }) {
   const labels =
     locale === 'en'

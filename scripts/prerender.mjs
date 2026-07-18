@@ -56,6 +56,25 @@ function canonicalizeInternalHrefs(html) {
   })
 }
 
+function applyLocaleAttributes(html, route) {
+  const prefix = route.split('/')[1]
+  const attributes = {
+    en: ['en', 'ltr'],
+    'zh-tw': ['zh-TW', 'ltr'],
+    es: ['es', 'ltr'],
+    'pt-br': ['pt-BR', 'ltr'],
+    fr: ['fr', 'ltr'],
+    de: ['de', 'ltr'],
+    ar: ['ar', 'rtl'],
+    ja: ['ja', 'ltr'],
+    id: ['id', 'ltr'],
+    ru: ['ru', 'ltr'],
+    ko: ['ko', 'ltr'],
+    vi: ['vi', 'ltr'],
+  }[prefix] ?? ['zh-CN', 'ltr']
+  return html.replace(/<html lang="[^"]*">/i, `<html lang="${attributes[0]}" dir="${attributes[1]}">`)
+}
+
 function injectIntoTemplate(template, rendered) {
   const { head, body } = extractHead(rendered)
   let html = template
@@ -79,13 +98,13 @@ async function main() {
   const routes = parsePrerenderRoutes(prerenderRoutesJson)
 
   for (const route of routes) {
-    const html = injectIntoTemplate(template, render(route))
+    const html = applyLocaleAttributes(injectIntoTemplate(template, render(route)), route)
     const filePath = routeToFile(route)
     await fs.mkdir(path.dirname(filePath), { recursive: true })
     await fs.writeFile(filePath, html)
   }
 
-  await fs.writeFile(path.join(distDir, '404.html'), injectIntoTemplate(template, render('/404')))
+  await fs.writeFile(path.join(distDir, '404.html'), applyLocaleAttributes(injectIntoTemplate(template, render('/404')), '/404'))
 
   await fs.rm(serverDir, { recursive: true, force: true })
   console.log(`Prerendered ${routes.length} routes plus 404 for ${siteUrl}`)

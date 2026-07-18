@@ -3,6 +3,7 @@ import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { useLocale } from '../../lib/locale'
 import QuickstartPageEn from '../en/QuickstartPageEn'
+import LocalizedQuickstartPage from '../LocalizedQuickstartPage'
 
 /**
  * 文档：快速开始
@@ -83,6 +84,7 @@ console.log(resp.choices[0].message.content);`
 export default function QuickstartPage() {
   const { locale } = useLocale()
   if (locale === 'en') return <QuickstartPageEn />
+  if (locale !== 'zh') return <LocalizedQuickstartPage />
 
   return (
     <DocPage

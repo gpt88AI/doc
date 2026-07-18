@@ -4,6 +4,7 @@ import { DocPage } from '../../components/layout/DocPage'
 import { Callout } from '../../components/ui/Callout'
 import { useLocale } from '../../lib/locale'
 import OverviewPageEn from '../en/OverviewPageEn'
+import LocalizedCorePage from '../LocalizedCorePage'
 
 /**
  * 文档：产品概览
@@ -44,6 +45,7 @@ const NEXT_STEPS = [
 export default function OverviewPage() {
   const { locale } = useLocale()
   if (locale === 'en') return <OverviewPageEn />
+  if (locale !== 'zh') return <LocalizedCorePage kind="overview" />
 
   return (
     <DocPage

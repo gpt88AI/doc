@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { localizePath, useLocale } from '../../lib/locale'
+import { localizedContentPath, localizePath, useLocale } from '../../lib/locale'
+import { getLocaleCopy } from '../../lib/localeCopy'
 
 /**
  * 全局底部
@@ -13,20 +14,13 @@ import { localizePath, useLocale } from '../../lib/locale'
  */
 export function Footer() {
   const { locale } = useLocale()
-  const labels =
-    locale === 'en'
-      ? {
-          slogan: 'Unified API Gateway · OpenAI Compatible',
-          docs: 'Docs',
-          quickstart: 'Quickstart',
-          models: 'Models',
-        }
-      : {
-          slogan: '统一 API 网关 · OpenAI Compatible',
-          docs: '文档',
-          quickstart: '快速开始',
-          models: '模型',
-        }
+  const copy = getLocaleCopy(locale)
+  const labels = {
+    slogan: locale === 'zh' ? '统一 API 网关 · OpenAI Compatible' : copy.home.eyebrow,
+    docs: copy.nav.docs,
+    quickstart: copy.nav.quickstart,
+    models: copy.nav.models,
+  }
   return (
     <footer className="border-t border-white/5 bg-ink-950">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
@@ -43,7 +37,7 @@ export function Footer() {
           <Link className="hover:text-ink-200" to={localizePath('/docs/quickstart/', locale)}>
             {labels.quickstart}
           </Link>
-          <Link className="hover:text-ink-200" to={localizePath('/models/', locale)}>
+          <Link className="hover:text-ink-200" to={localizedContentPath('/models/', locale)}>
             {labels.models}
           </Link>
           <a

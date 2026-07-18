@@ -32,7 +32,7 @@ export function FieldTable({
 }) {
   const { locale } = useLocale()
   const labels =
-    locale === 'en'
+    locale !== 'zh'
       ? {
           field: 'Field',
           type: 'Type',

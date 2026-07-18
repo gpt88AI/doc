@@ -641,6 +641,28 @@ const englishPages = [
   },
 ]
 
+const additionalLocaleSeo = {
+  'zh-tw': { language: '繁體中文', home: 'gpt88.cc API 文件', overview: '產品概覽', quickstart: '快速開始', auth: '認證與計費', faq: '常見問題' },
+  es: { language: 'Español', home: 'Documentación API de gpt88.cc', overview: 'Descripción general', quickstart: 'Inicio rápido', auth: 'Auth y facturación', faq: 'Preguntas frecuentes' },
+  'pt-br': { language: 'Português (Brasil)', home: 'Documentação da API gpt88.cc', overview: 'Visão geral', quickstart: 'Início rápido', auth: 'Autenticação e cobrança', faq: 'Perguntas frequentes' },
+  fr: { language: 'Français', home: 'Documentation API gpt88.cc', overview: 'Vue d’ensemble', quickstart: 'Démarrage rapide', auth: 'Auth et facturation', faq: 'FAQ' },
+  de: { language: 'Deutsch', home: 'gpt88.cc API-Dokumentation', overview: 'Überblick', quickstart: 'Schnellstart', auth: 'Auth und Abrechnung', faq: 'FAQ' },
+  ar: { language: 'العربية', home: 'وثائق API ‏gpt88.cc', overview: 'نظرة عامة', quickstart: 'البدء السريع', auth: 'المصادقة والفوترة', faq: 'الأسئلة الشائعة' },
+  ja: { language: '日本語', home: 'gpt88.cc API ドキュメント', overview: '概要', quickstart: 'クイックスタート', auth: '認証と課金', faq: 'よくある質問' },
+  id: { language: 'Bahasa Indonesia', home: 'Dokumentasi API gpt88.cc', overview: 'Ringkasan', quickstart: 'Mulai cepat', auth: 'Auth dan penagihan', faq: 'Pertanyaan umum' },
+  ru: { language: 'Русский', home: 'Документация API gpt88.cc', overview: 'Обзор', quickstart: 'Быстрый старт', auth: 'Авторизация и оплата', faq: 'Частые вопросы' },
+  ko: { language: '한국어', home: 'gpt88.cc API 문서', overview: '개요', quickstart: '빠른 시작', auth: '인증 및 과금', faq: '자주 묻는 질문' },
+  vi: { language: 'Tiếng Việt', home: 'Tài liệu API gpt88.cc', overview: 'Tổng quan', quickstart: 'Bắt đầu nhanh', auth: 'Xác thực và tính phí', faq: 'Câu hỏi thường gặp' },
+}
+
+const localizedPages = Object.entries(additionalLocaleSeo).flatMap(([prefix, copy]) => [
+  { title: copy.home, path: `/${prefix}`, description: `gpt88.cc API documentation in ${copy.language}. OpenAI-compatible access to multiple AI models.`, priority: '0.9' },
+  { title: copy.overview, path: `/${prefix}/docs/overview`, description: `Overview of the gpt88.cc unified AI API gateway in ${copy.language}.`, priority: '0.8' },
+  { title: copy.quickstart, path: `/${prefix}/docs/quickstart`, description: 'Make your first gpt88.cc API request in five minutes.', priority: '0.8' },
+  { title: copy.auth, path: `/${prefix}/docs/auth`, description: 'Authentication, API key safety, usage-based billing, and quota guidance.', priority: '0.8' },
+  { title: copy.faq, path: `/${prefix}/docs/faq`, description: 'Common gpt88.cc API compatibility, route, billing, and troubleshooting questions.', priority: '0.7' },
+])
+
 const staticPages = [
   {
     title: 'gpt88.cc API 文档',
@@ -656,6 +678,7 @@ const staticPages = [
   },
   ...docs.map(page => ({ ...page, priority: '0.8' })),
   ...englishPages,
+  ...localizedPages,
 ]
 
 function canonicalToSlug(canonical) {

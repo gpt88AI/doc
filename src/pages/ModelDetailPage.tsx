@@ -29,6 +29,7 @@ import {
 import { Seo } from '../components/seo/Seo'
 import { modelStructuredData } from '../components/seo/structuredData'
 import { localizePath, useLocale } from '../lib/locale'
+import type { Locale } from '../lib/locale'
 
 /**
  * 模型详情页 (M3 + Human msg-20260509-qoz7ey/jwfia3/8ivlof 全量 catalog)
@@ -723,7 +724,7 @@ function apiOriginForModel(model: ModelEntry): string {
     : 'https://api.gpt88.cc'
 }
 
-function localizedCategoryTitle(category: ModelEntry['category'], locale: 'zh' | 'en') {
+function localizedCategoryTitle(category: ModelEntry['category'], locale: Locale) {
   if (locale === 'en') {
     switch (category) {
       case 'chat':
@@ -742,7 +743,7 @@ function localizedCategoryTitle(category: ModelEntry['category'], locale: 'zh' |
   return CATEGORY_META[category].title
 }
 
-function buildModelSeoDescription(model: ModelEntry, locale: 'zh' | 'en') {
+function buildModelSeoDescription(model: ModelEntry, locale: Locale) {
   const category = localizedCategoryTitle(model.category, locale)
   const overview = model.overview[0] ?? model.tagline
   const trimmedOverview =
@@ -768,7 +769,7 @@ function apiReferencePathForModel(model: ModelEntry): string {
   }
 }
 
-function apiReferenceLabelForModel(model: ModelEntry, locale: 'zh' | 'en'): string {
+function apiReferenceLabelForModel(model: ModelEntry, locale: Locale): string {
   switch (model.category) {
     case 'image':
       return locale === 'en' ? 'Images API' : '图片生成 API'
@@ -782,7 +783,7 @@ function apiReferenceLabelForModel(model: ModelEntry, locale: 'zh' | 'en'): stri
   }
 }
 
-function protocolHintForModel(model: ModelEntry, locale: 'zh' | 'en'): string {
+function protocolHintForModel(model: ModelEntry, locale: Locale): string {
   switch (model.category) {
     case 'image':
       if (isGeminiImageModel(model)) {
@@ -822,7 +823,7 @@ function isGeminiImageModel(model: ModelEntry): boolean {
   return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview' || id === 'gemini-3.1-flash-image' || id === 'gemini-3-pro-image'
 }
 
-function chatBaseUrlHint(model: ModelEntry, locale: 'zh' | 'en'): string {
+function chatBaseUrlHint(model: ModelEntry, locale: Locale): string {
   if (isAnthropicModel(model)) {
     return locale === 'en'
       ? 'Use https://api.gpt88.cc for Claude Code / Anthropic SDK, OpenAI SDK, Cursor, and cURL.'
@@ -920,7 +921,7 @@ function ProtocolCard({
   )
 }
 
-function requestFieldsForModel(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[] {
+function requestFieldsForModel(model: ModelEntry, locale: Locale): FieldRow[] {
   switch (model.category) {
     case 'image':
       if (isGeminiImageModel(model)) {
@@ -1068,7 +1069,7 @@ function requestFieldsForModel(model: ModelEntry, locale: 'zh' | 'en'): FieldRow
   }
 }
 
-function headerFieldsForModel(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[] {
+function headerFieldsForModel(model: ModelEntry, locale: Locale): FieldRow[] {
   const contentType =
     model.category === 'audio' ? 'multipart/form-data' : 'application/json'
   const headers: FieldRow[] = [
@@ -1106,7 +1107,7 @@ function headerFieldsForModel(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[
   return headers
 }
 
-function responseFieldsForModel(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[] {
+function responseFieldsForModel(model: ModelEntry, locale: Locale): FieldRow[] {
   switch (model.category) {
     case 'image':
       if (isGeminiImageModel(model)) {
@@ -1179,7 +1180,7 @@ function responseFieldsForModel(model: ModelEntry, locale: 'zh' | 'en'): FieldRo
   }
 }
 
-function statusCodeRows(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[] {
+function statusCodeRows(model: ModelEntry, locale: Locale): FieldRow[] {
   return [
     {
       name: '200',
@@ -1227,7 +1228,7 @@ function statusCodeRows(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[] {
   ]
 }
 
-function geminiImageRequestFields(model: ModelEntry, locale: 'zh' | 'en'): FieldRow[] {
+function geminiImageRequestFields(model: ModelEntry, locale: Locale): FieldRow[] {
   return [
     {
       name: 'contents',
@@ -1280,7 +1281,7 @@ function geminiImageRequestFields(model: ModelEntry, locale: 'zh' | 'en'): Field
   ]
 }
 
-function modelField(model: ModelEntry, locale: 'zh' | 'en'): FieldRow {
+function modelField(model: ModelEntry, locale: Locale): FieldRow {
   return {
     name: 'model',
     type: 'string',
@@ -1405,7 +1406,7 @@ function ExpectedResponse({ model }: { model: ModelEntry }) {
   )
 }
 
-function buildExpectedResponse(model: ModelEntry, locale: 'zh' | 'en'): string {
+function buildExpectedResponse(model: ModelEntry, locale: Locale): string {
   switch (model.category) {
     case 'chat':
       return `{
@@ -1479,7 +1480,7 @@ function buildExpectedResponse(model: ModelEntry, locale: 'zh' | 'en'): string {
   }
 }
 
-function localizeExampleTabs(tabs: CodeTab[], locale: 'zh' | 'en'): CodeTab[] {
+function localizeExampleTabs(tabs: CodeTab[], locale: Locale): CodeTab[] {
   if (locale !== 'en') return tabs
 
   return tabs.map(tab => ({

@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { getDocsNav } from '../../data/nav'
 import { cn } from '../../lib/cn'
-import { localizePath, stripLocalePrefix, useLocale } from '../../lib/locale'
+import { localizedContentPath, stripLocalePrefix, useLocale } from '../../lib/locale'
 
 /**
  * 文档侧边导航
@@ -29,7 +29,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
               return (
                 <li key={item.path}>
                   <NavLink
-                    to={localizePath(item.path, locale)}
+                    to={localizedContentPath(item.path, locale)}
                     onClick={onNavigate}
                     className={cn(
                       'group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors',

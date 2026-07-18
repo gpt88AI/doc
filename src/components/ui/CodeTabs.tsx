@@ -79,7 +79,7 @@ export function CodeTabs({
         <button
           type="button"
           onClick={onCopy}
-          aria-label={locale === 'en' ? 'Copy code' : '复制代码'}
+          aria-label={locale === 'zh' ? '复制代码' : 'Copy code'}
           className="rounded p-1.5 text-ink-300 hover:bg-white/5 hover:text-ink-100"
         >
           {copied ? (

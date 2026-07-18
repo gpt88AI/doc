@@ -586,19 +586,32 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/faq/': 'Frequently asked questions',
 }
 
-export function getTopNav(locale: 'zh' | 'en') {
+export function getTopNav(locale: Locale) {
   if (locale === 'zh') return TOP_NAV
-  return TOP_NAV.map(item => ({
-    ...item,
-    title: TOP_NAV_EN_BY_HREF[item.href] ?? item.title,
-  }))
+  const labels = getLocaleCopy(locale).nav
+  const titles = [labels.docs, labels.quickstart, labels.api, labels.models]
+  return TOP_NAV.map((item, index) => ({ ...item, title: titles[index] ?? TOP_NAV_EN_BY_HREF[item.href] ?? item.title }))
 }
 
-export function getDocsNav(locale: 'zh' | 'en') {
+const SECTION_TITLE_BY_LOCALE: Partial<Record<Locale, Record<string, string>>> = {
+  'zh-TW': { 入门: '入門', 'SDK 与集成': 'SDK 與整合', 集成指南: '整合指南', 指南: '指南' },
+  es: { 入门: 'Primeros pasos', 'SDK 与集成': 'SDK e integración', 集成指南: 'Guías de integración', 指南: 'Guías' },
+  'pt-BR': { 入门: 'Primeiros passos', 'SDK 与集成': 'SDK e integração', 集成指南: 'Guias de integração', 指南: 'Guias' },
+  fr: { 入门: 'Premiers pas', 'SDK 与集成': 'SDK et intégration', 集成指南: 'Guides d’intégration', 指南: 'Guides' },
+  de: { 入门: 'Erste Schritte', 'SDK 与集成': 'SDK und Integration', 集成指南: 'Integrationsleitfäden', 指南: 'Anleitungen' },
+  ar: { 入门: 'البدء', 'SDK 与集成': 'SDK والتكامل', 集成指南: 'أدلة التكامل', 指南: 'الأدلة' },
+  ja: { 入门: '入門', 'SDK 与集成': 'SDK と統合', 集成指南: '統合ガイド', 指南: 'ガイド' },
+  id: { 入门: 'Memulai', 'SDK 与集成': 'SDK dan integrasi', 集成指南: 'Panduan integrasi', 指南: 'Panduan' },
+  ru: { 入门: 'Начало работы', 'SDK 与集成': 'SDK и интеграция', 集成指南: 'Руководства по интеграции', 指南: 'Руководства' },
+  ko: { 入门: '시작하기', 'SDK 与集成': 'SDK 및 통합', 集成指南: '통합 가이드', 指南: '가이드' },
+  vi: { 入门: 'Bắt đầu', 'SDK 与集成': 'SDK và tích hợp', 集成指南: 'Hướng dẫn tích hợp', 指南: 'Hướng dẫn' },
+}
+
+export function getDocsNav(locale: Locale) {
   if (locale === 'zh') return DOCS_NAV
   return DOCS_NAV.map(section => ({
     ...section,
-    title: SECTION_TITLE_EN_BY_ZH[section.title] ?? section.title,
+    title: SECTION_TITLE_BY_LOCALE[locale]?.[section.title] ?? SECTION_TITLE_EN_BY_ZH[section.title] ?? section.title,
     items: section.items.map(item => ({
       ...item,
       title: NAV_TITLE_EN_BY_PATH[item.path] ?? item.title,
@@ -607,6 +620,8 @@ export function getDocsNav(locale: 'zh' | 'en') {
   }))
 }
 
-export function getDocsFlat(locale: 'zh' | 'en') {
+export function getDocsFlat(locale: Locale) {
   return getDocsNav(locale).flatMap(section => section.items)
 }
+import type { Locale } from '../lib/locale'
+import { getLocaleCopy } from '../lib/localeCopy'

@@ -5,6 +5,7 @@ import { Callout } from '../../components/ui/Callout'
 import { FieldTable } from '../../components/ui/FieldTable'
 import { useLocale } from '../../lib/locale'
 import AuthPageEn from '../en/AuthPageEn'
+import LocalizedCorePage from '../LocalizedCorePage'
 
 /**
  * 文档：认证与计费
@@ -47,6 +48,7 @@ const BILLING_COMPARE = [
 export default function AuthPage() {
   const { locale } = useLocale()
   if (locale === 'en') return <AuthPageEn />
+  if (locale !== 'zh') return <LocalizedCorePage kind="auth" />
 
   return (
     <DocPage

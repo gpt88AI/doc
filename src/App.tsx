@@ -2,7 +2,6 @@ import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { SiteShell } from './components/layout/SiteShell'
 import { DocsLayout } from './components/layout/DocsLayout'
-import LandingPage from './pages/LandingPage'
 import OverviewPage from './pages/docs/OverviewPage'
 import QuickstartPage from './pages/docs/QuickstartPage'
 import AuthPage from './pages/docs/AuthPage'
@@ -18,7 +17,8 @@ import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
 import ClaudeCodeCompactionErrorPage from './pages/docs/guides/ClaudeCodeCompactionErrorPage'
 import KimiK3ReviewPage from './pages/docs/guides/KimiK3ReviewPage'
 import NotFoundPage from './pages/NotFoundPage'
-import { LocaleProvider } from './lib/locale'
+import LocalizedLandingPage from './pages/LocalizedLandingPage'
+import { LOCALE_CONFIG, LocaleProvider, SUPPORTED_LOCALES } from './lib/locale'
 import {
   AgentImageQualityCropGuidePage,
   AgentImageStudioGuidePage,
@@ -102,7 +102,7 @@ export default function App() {
 
   const siteRoutes = (
     <>
-      <Route index element={<LandingPage />} />
+      <Route index element={<LocalizedLandingPage />} />
 
       <Route path="docs" element={<DocsLayout />}>
         <Route index element={<Navigate to="overview/" replace />} />
@@ -193,9 +193,15 @@ export default function App() {
       <Route element={<LocaleProvider locale="zh"><SiteShell /></LocaleProvider>}>
         {siteRoutes}
       </Route>
-      <Route path="en" element={<LocaleProvider locale="en"><SiteShell /></LocaleProvider>}>
-        {siteRoutes}
-      </Route>
+      {SUPPORTED_LOCALES.filter(locale => locale !== 'zh').map(locale => (
+        <Route
+          key={locale}
+          path={LOCALE_CONFIG[locale].pathPrefix.slice(1)}
+          element={<LocaleProvider locale={locale}><SiteShell /></LocaleProvider>}
+        >
+          {siteRoutes}
+        </Route>
+      ))}
     </Routes>
   )
 }

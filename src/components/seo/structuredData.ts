@@ -1,5 +1,8 @@
+import { LOCALE_CONFIG, localizePath } from '../../lib/locale'
+import type { Locale } from '../../lib/locale'
+
 const SITE_URL = 'https://doc.gpt88.cc'
-type StructuredLocale = 'zh' | 'en'
+type StructuredLocale = Locale
 
 function absoluteUrl(path = '/') {
   if (/^https?:\/\//.test(path)) return path
@@ -21,8 +24,8 @@ export function docStructuredData(
     '@type': 'TechArticle',
     headline: title,
     description,
-    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
-    url: absoluteUrl(path),
+    inLanguage: LOCALE_CONFIG[locale].hrefLang,
+    url: absoluteUrl(localizePath(path, locale)),
     publisher: {
       '@type': 'Organization',
       name: 'gpt88.cc',
@@ -36,9 +39,9 @@ export function websiteStructuredData(locale: StructuredLocale = 'zh', path = '/
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: locale === 'en' ? 'gpt88.cc API Docs' : 'gpt88.cc API 文档',
-    url: absoluteUrl(path),
-    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
+    name: locale === 'zh' ? 'gpt88.cc API 文档' : `gpt88.cc API Docs · ${LOCALE_CONFIG[locale].nativeName}`,
+    url: absoluteUrl(localizePath(path, locale)),
+    inLanguage: LOCALE_CONFIG[locale].hrefLang,
     publisher: {
       '@type': 'Organization',
       name: 'gpt88.cc',
@@ -47,7 +50,7 @@ export function websiteStructuredData(locale: StructuredLocale = 'zh', path = '/
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${SITE_URL}${locale === 'en' ? '/en' : ''}/models/?query={search_term_string}`,
+      target: `${SITE_URL}${localizePath('/models/', locale)}?query={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   }
@@ -75,9 +78,9 @@ export function modelStructuredData({
     '@type': 'SoftwareApplication',
     name,
     description,
-    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
+    inLanguage: LOCALE_CONFIG[locale].hrefLang,
     applicationCategory: `${category.toUpperCase()} AI Model`,
-    url: absoluteUrl(path),
+    url: absoluteUrl(localizePath(path, locale)),
     provider: {
       '@type': 'Organization',
       name: provider,
