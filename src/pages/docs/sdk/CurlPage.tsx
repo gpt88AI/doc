@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
 import CurlPageEn from '../../en/CurlPageEn'
 
@@ -93,6 +94,13 @@ export default function CurlSdkPage() {
 
   if (locale === 'en') return <CurlPageEn />
 
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'sdk_curl_setup',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/sdk/curl"
@@ -115,12 +123,12 @@ export default function CurlSdkPage() {
       <p className="text-sm text-ink-400">
         将下方脚本里的 <code>sk-xxx</code> 替换为你在{' '}
         <a
-          href="https://gpt88.cc"
+          href={keyUrl}
           target="_blank"
           rel="noreferrer"
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台创建的 API Key。
       </p>

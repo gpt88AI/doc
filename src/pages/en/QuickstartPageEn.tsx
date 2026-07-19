@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { localizePath } from '../../lib/locale'
+import { ActivationQuickStarts } from '../../components/activation/ActivationQuickStarts'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 
 const CURL_REQ = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
@@ -25,6 +27,13 @@ resp = client.chat.completions.create(
 print(resp.choices[0].message.content)`
 
 export default function QuickstartPageEn() {
+  const keyUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'quickstart_body',
+    intent: 'api_access',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/quickstart"
@@ -38,9 +47,11 @@ export default function QuickstartPageEn() {
         { id: 'next', text: 'Next steps', level: 2 },
       ]}
     >
+      <ActivationQuickStarts surface="quickstart" />
+
       <h2 id="prereq">Get an API key</h2>
       <p>
-        Go to <a href="https://gpt88.cc" target="_blank" rel="noreferrer">gpt88.cc</a>, create an API key,
+        Open <a href={keyUrl}>Agent API Keys</a>, create an API key,
         and export it into your shell environment.
       </p>
       <CodeBlock lang="bash" code={`export GPT88_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx`} />

@@ -24,12 +24,14 @@ import {
   CATEGORY_META,
   MODELS,
   findModel,
+  localizeModelEntry,
   type ModelEntry,
 } from '../data/models'
 import { Seo } from '../components/seo/Seo'
 import { modelStructuredData } from '../components/seo/structuredData'
-import { localizePath, useLocale } from '../lib/locale'
+import { isTranslatedPath, localizePath, useLocale } from '../lib/locale'
 import type { Locale } from '../lib/locale'
+import { buildAgentActivationUrl, type ActivationIntent } from '../lib/activationLinks'
 
 /**
  * 模型详情页 (M3 + Human msg-20260509-qoz7ey/jwfia3/8ivlof 全量 catalog)
@@ -69,6 +71,7 @@ import type { Locale } from '../lib/locale'
 export default function ModelDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const model = slug ? findModel(slug) : undefined
+  const { locale } = useLocale()
 
   // 路由切换时回到顶部，避免承接上一篇详情的滚动位置
   useEffect(() => {
@@ -81,7 +84,7 @@ export default function ModelDetailPage() {
     return <ModelNotFound slug={slug} />
   }
 
-  return <DetailContent model={model} />
+  return <DetailContent model={localizeModelEntry(model, locale)} />
 }
 
 function DetailContent({ model }: { model: ModelEntry }) {
@@ -89,6 +92,18 @@ function DetailContent({ model }: { model: ModelEntry }) {
   const seoPath = `/models/${model.slug}`
   const seoDescription = buildModelSeoDescription(model, locale)
   const categoryTitle = localizedCategoryTitle(model.category, locale)
+  const activationIntent: ActivationIntent =
+    model.category === 'image' || model.category === 'video'
+      ? 'image_api'
+      : isAnthropicModel(model)
+        ? 'claude_api'
+        : 'openai_api'
+  const getKeyUrl = buildAgentActivationUrl({
+    locale,
+    surface: `model_${model.slug}`,
+    intent: activationIntent,
+    destination: 'keys',
+  })
   const t =
     locale === 'en'
       ? {
@@ -203,15 +218,20 @@ function DetailContent({ model }: { model: ModelEntry }) {
         description={seoDescription}
         path={seoPath}
         type="article"
-        structuredData={modelStructuredData({
-          name: model.name,
-          description: seoDescription,
-          path: seoPath,
-          provider: model.provider,
-          category: model.category,
-          modelId: model.modelId,
-          locale,
-        })}
+        structuredData={
+          isTranslatedPath(locale, seoPath)
+            ? modelStructuredData({
+                name: model.name,
+                description: seoDescription,
+                path: seoPath,
+                provider: model.provider,
+                category: model.category,
+                modelId: model.modelId,
+                locale,
+                collectionName: t.breadcrumb,
+              })
+            : undefined
+        }
       />
       <div className="relative isolate">
       {/* 背景光晕 */}
@@ -222,7 +242,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
 
       <section className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
         {/* 面包屑 */}
-        <nav className="text-xs text-ink-400" aria-label="面包屑">
+        <nav className="text-xs text-ink-400" aria-label={locale === 'en' ? 'Breadcrumb' : '面包屑'}>
           <Link to={localizePath('/models/', locale)} className="inline-flex items-center gap-1 hover:text-ink-200">
             <ArrowLeft className="h-3 w-3" />
             {t.breadcrumb}
@@ -270,7 +290,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
              * 真实跳转，不要试图用 <Link>。
              */}
             <a
-              href="https://gpt88.cc"
+              href={getKeyUrl}
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-violet-500 to-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition-transform hover:scale-[1.02]"
@@ -380,7 +400,7 @@ function DetailContent({ model }: { model: ModelEntry }) {
                   <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-violet-200">
                     Authorization: Bearer &lt;API_KEY&gt;
                   </code>
-                  。 {t.authReferencePrefix}{' '}
+                  {locale === 'en' ? '. ' : '。 '}{t.authReferencePrefix}{' '}
                   <Link to={localizePath(apiReferencePathForModel(model), locale)} className="text-violet-300 hover:text-violet-200">
                     {apiReferenceLabelForModel(model, locale)}
                   </Link>
@@ -1093,7 +1113,12 @@ function headerFieldsForModel(model: ModelEntry, locale: Locale): FieldRow[] {
     {
       name: 'Accept',
       type: 'string',
-      default: model.category === 'chat' ? 'application/json 或 text/event-stream' : 'application/json',
+      default:
+        model.category === 'chat'
+          ? locale === 'en'
+            ? 'application/json or text/event-stream'
+            : 'application/json 或 text/event-stream'
+          : 'application/json',
       description: locale === 'en' ? <>Non-streaming requests return JSON; streaming chat requests return SSE chunks.</> : <>非流式接口返回 JSON；Chat 流式请求会返回 SSE 数据流。</>,
     },
   ]

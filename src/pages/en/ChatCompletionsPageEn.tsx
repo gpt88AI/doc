@@ -5,6 +5,7 @@ import { CodeTabs } from '../../components/ui/CodeTabs'
 import { Callout } from '../../components/ui/Callout'
 import { EndpointBadge } from '../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../components/ui/FieldTable'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { localizePath } from '../../lib/locale'
 
 const REQ_BODY: FieldRow[] = [
@@ -130,6 +131,13 @@ const resp = await client.chat.completions.create({
 ]
 
 export default function ChatCompletionsPageEn() {
+  const keyUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'api_chat_completions_auth',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/api/chat-completions"
@@ -147,7 +155,8 @@ export default function ChatCompletionsPageEn() {
       <EndpointBadge method="POST" path="https://api.gpt88.cc/v1/chat/completions" />
       <p>
         This is the primary OpenAI-compatible text generation endpoint on gpt88.cc.
-        Most existing OpenAI SDK integrations can keep the same request shape.
+        Most existing OpenAI SDK integrations can keep the same request shape. Create a key in{' '}
+        <a href={keyUrl} target="_blank" rel="noreferrer">Agent API Keys</a> before running the examples.
       </p>
 
       <h2 id="request">Request body</h2>

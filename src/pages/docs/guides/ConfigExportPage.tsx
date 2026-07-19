@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
+import { useLocale } from '../../../lib/locale'
 
 /**
  * 文档：配置文件导出
@@ -10,7 +12,7 @@ import { Callout } from '../../../components/ui/Callout'
  * 内容映射 PM 草稿 (config-export-doc.md) 的 8 个章节，章节标题与 Markdown 严格对齐。
  *
  * 编辑约束：
- * - 所有指向控制台的链接都使用 <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
+ * - 配置导出与密钥管理操作直达 Agent API Keys；泛化的说明文字不伪装成操作链接
  * - 标准 API base_url 使用 https://api.gpt88.cc，图片 / 视频直连使用 https://img.gpt88.cc
  * - 价格 / 限速 / SLA / 配额 / 模型可用性等数值不写死——以控制台为准，本文档不写死数值
  * - CC Switch 的自定义协议、桌面端调起、import URL 具体格式不写死，截图未提供，控制台行为为准
@@ -90,6 +92,26 @@ function DocTable({
 }
 
 export default function ConfigExportPage() {
+  const { locale } = useLocale()
+  const configEntryUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'config_export_entry',
+    intent: 'api_access',
+    destination: 'keys',
+  })
+  const keyRotationUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'config_export_rotation',
+    intent: 'api_access',
+    destination: 'keys',
+  })
+  const keySecurityUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'config_export_security',
+    intent: 'api_access',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/guides/config-export"
@@ -117,7 +139,7 @@ export default function ConfigExportPage() {
           本文档面向 gpt88.cc API 用户与开发者，说明
           {' '}
           <a
-            href="https://gpt88.cc"
+            href={configEntryUrl}
             target="_blank"
             rel="noreferrer"
           >
@@ -185,7 +207,7 @@ export default function ConfigExportPage() {
         <li>在做技术分享或写文档时，请把 Key 中段替换为 <code>***</code>，例如 <code>sk-F9flH0n***ABC1</code>。</li>
         <li>
           如果误泄漏了 Key，请立刻在{' '}
-          <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
+          <a href={keyRotationUrl} target="_blank" rel="noreferrer">
             控制台
           </a>{' '}
           「API Keys」中<strong>禁用并重新生成</strong>。
@@ -360,7 +382,7 @@ export default function ConfigExportPage() {
         <li>导出的配置文件本身就含完整 Key，等同于密码：传输用私聊或加密通道，存档用受限目录。</li>
         <li>
           当怀疑 Key 已泄漏：进入{' '}
-          <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
+          <a href={keySecurityUrl} target="_blank" rel="noreferrer">
             控制台
           </a>{' '}
           禁用旧 Key、生成新 Key、回到本页面重新导出配置、在所有用到的工具里更新。
@@ -425,11 +447,8 @@ export default function ConfigExportPage() {
          * 都以控制台为准，本文档不写死任何数字以避免与控制台不同步。
          */}
         <p>
-          具体数值（每分钟请求数、单 Key 月度上限、并发上限、SLA 等）以你登录的{' '}
-          <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
-            gpt88.cc 控制台
-          </a>{' '}
-          为准。本页面不写死任何数字以避免与控制台不同步。
+          具体数值（每分钟请求数、单 Key 月度上限、并发上限、SLA 等）以你登录的 Agent
+          控制台为准。本页面不写死任何数字以避免与控制台不同步。
         </p>
       </Callout>
 
@@ -454,18 +473,11 @@ export default function ConfigExportPage() {
       <h2 id="feedback">反馈渠道</h2>
       <ul>
         <li>
-          若发现本文档与{' '}
-          <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
-            控制台
-          </a>{' '}
-          实际行为不符，请通过控制台内的反馈入口反馈，并附上「线路 + 工具 tab + 期望 vs 实际」三项最小信息。
+          若发现本文档与 Agent 控制台实际行为不符，请通过控制台内的反馈入口反馈，并附上
+          「线路 + 工具 tab + 期望 vs 实际」三项最小信息。
         </li>
         <li>
-          文档站本身的纠错、补充建议，欢迎在{' '}
-          <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
-            gpt88.cc
-          </a>{' '}
-          控制台或仓库 issue 中提出。
+          文档站本身的纠错、补充建议，欢迎在 Agent 控制台或仓库 issue 中提出。
         </li>
       </ul>
     </DocPage>

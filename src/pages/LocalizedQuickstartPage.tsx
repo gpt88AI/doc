@@ -3,6 +3,8 @@ import { DocPage } from '../components/layout/DocPage'
 import { CodeBlock } from '../components/ui/CodeBlock'
 import { localizedContentPath, localizePath, useLocale } from '../lib/locale'
 import { getLocaleCopy } from '../lib/localeCopy'
+import { ActivationQuickStarts } from '../components/activation/ActivationQuickStarts'
+import { buildAgentActivationUrl } from '../lib/activationLinks'
 
 const CURL_REQ = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
@@ -28,6 +30,12 @@ print(response.choices[0].message.content)`
 export default function LocalizedQuickstartPage() {
   const { locale } = useLocale()
   const copy = getLocaleCopy(locale).quickstart
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'quickstart_body',
+    intent: 'api_access',
+    destination: 'keys',
+  })
 
   return (
     <DocPage
@@ -42,8 +50,10 @@ export default function LocalizedQuickstartPage() {
         { id: 'next', text: copy.headings.next, level: 2 },
       ]}
     >
+      <ActivationQuickStarts surface="quickstart" />
+
       <h2 id="key">{copy.headings.key}</h2>
-      <p>{copy.keyBody} <a href="https://gpt88.cc" target="_blank" rel="noreferrer">gpt88.cc</a>.</p>
+      <p><a href={keyUrl}>{getLocaleCopy(locale).home.getKey}</a>. {copy.keyBody}</p>
       <CodeBlock lang="bash" code="export GPT88_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx" />
 
       <h2 id="endpoints">{copy.headings.endpoints}</h2>

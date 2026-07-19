@@ -2,10 +2,19 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
+import { reactNodeToPlainText } from '../../components/seo/structuredData'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { cn } from '../../lib/cn'
 import { localizePath } from '../../lib/locale'
 
 type QA = { q: string; a: React.ReactNode; group: string }
+
+const getKeyUrl = buildAgentActivationUrl({
+  locale: 'en',
+  surface: 'faq_get_key',
+  intent: 'api_access',
+  destination: 'keys',
+})
 
 const FAQ: QA[] = [
   {
@@ -13,7 +22,7 @@ const FAQ: QA[] = [
     q: 'Where do I get an API key?',
     a: (
       <p>
-        Go to <a href="https://gpt88.cc" target="_blank" rel="noreferrer">https://gpt88.cc</a>,
+        Open <a href={getKeyUrl} target="_blank" rel="noreferrer">Agent API Keys</a>,
         create a new key in the API Keys area, then export it as <code>GPT88_API_KEY</code> and follow the{' '}
         <Link to={localizePath('/docs/quickstart/', 'en')}>Quickstart</Link>.
       </p>
@@ -91,23 +100,30 @@ const FAQ: QA[] = [
   },
 ]
 
+const FAQ_STRUCTURED_ENTRIES = FAQ.map(item => ({
+  question: item.q,
+  answer: reactNodeToPlainText(item.a),
+}))
+
 function FaqItem({ item, defaultOpen }: { item: QA; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(Boolean(defaultOpen))
   return (
-    <div className="overflow-hidden rounded-lg border border-white/5 bg-white/[0.015]">
+    <div data-faq-item="true" className="overflow-hidden rounded-lg border border-white/5 bg-white/[0.015]">
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
         className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-sm font-medium text-ink-100 hover:bg-white/[0.025]"
       >
         <span>{item.q}</span>
         <ChevronDown className={cn('h-4 w-4 shrink-0 text-ink-400 transition-transform', open && 'rotate-180')} />
       </button>
-      {open ? (
-        <div className="space-y-2 border-t border-white/5 px-4 py-3 text-sm leading-relaxed text-ink-200 [&_a]:text-violet-300 hover:[&_a]:text-violet-200 [&_code]:rounded [&_code]:bg-white/5 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-violet-200">
-          {item.a}
-        </div>
-      ) : null}
+      <div
+        hidden={!open}
+        className="space-y-2 border-t border-white/5 px-4 py-3 text-sm leading-relaxed text-ink-200 [&_a]:text-violet-300 hover:[&_a]:text-violet-200 [&_code]:rounded [&_code]:bg-white/5 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-violet-200"
+      >
+        {item.a}
+      </div>
     </div>
   )
 }
@@ -120,6 +136,7 @@ export default function FaqPageEn() {
       title="FAQ"
       description="Common questions about compatibility, API keys, billing, and troubleshooting for gpt88.cc."
       headings={groups.map(g => ({ id: `g-${g}`, text: g, level: 2 }))}
+      faqEntries={FAQ_STRUCTURED_ENTRIES}
     >
       {groups.map((group, gi) => (
         <section key={group}>

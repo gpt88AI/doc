@@ -29,6 +29,8 @@
  */
 
 import snapshot from '../../public/marketplace-snapshot.json'
+import type { Locale } from '../lib/locale'
+import indexableEnglishModels from './indexableEnglishModels.json'
 
 /* ──────────────────────────────────────────────────────────────────
  * 类型定义
@@ -1801,6 +1803,491 @@ function buildCatalog(): ModelEntry[] {
 }
 
 export const MODELS: ModelEntry[] = buildCatalog()
+
+type LocalizedModelDetail = Pick<
+  ModelEntry,
+  'tagline' | 'capabilities' | 'scenarios' | 'overview' | 'whenToUse' | 'integrationNotes' | 'caveats'
+>
+
+const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
+  'gpt-5-6-sol': {
+    tagline:
+      'Quality-first tier in the GPT-5.6 preview family for demanding reasoning, multi-tool agents, and high-value production work.',
+    capabilities: [
+      'GPT-5.6 preview',
+      'Complex reasoning',
+      'Tool use',
+      'Multimodal workflows',
+    ],
+    scenarios: [
+      'Advanced agent workflows',
+      'Complex software engineering',
+      'Research and analysis',
+      'Long-running automation',
+    ],
+    overview: [
+      'GPT-5.6 Sol is the quality-first tier in the GPT-5.6 preview family represented in the current GPT88 catalog.',
+      'It is intended for complex reasoning, long-running agents, difficult software work, and research tasks where output quality matters more than minimum latency or cost.',
+      'This page summarizes the current catalog positioning without treating third-party commentary as an official capability, availability, or pricing commitment.',
+    ],
+    whenToUse: [
+      'Choose it when quality and task-completion reliability matter more than the lowest latency or cost',
+      'Evaluate it for multi-step planning, large codebases, long-document research, or multi-tool agent work',
+      'Use it to test GPT-5.6 preview behavior in an existing OpenAI-compatible SDK, Cursor, Codex CLI, or internal agent',
+      'Start with a small set of high-value tasks to measure the upper end of the GPT-5.6 family',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.6-sol in OpenAI-compatible requests.',
+      'Call GET /v1/models or check the console before sending traffic, because model access can differ by API key and route.',
+      'Compare Sol, Terra, GPT-5.5, and GPT-5.4 on the same representative evaluation set before changing a default model.',
+      'For agent workflows, validate a minimal non-streaming request first, then add streaming, tools, structured output, and multi-turn context one feature at a time.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, vision support, and tool support are determined by the current GPT88 console configuration.',
+      'GPT-5.6 Sol is a preview model. Behavior, availability, and supported parameters may change, so use a staged rollout instead of replacing every production default at once.',
+      'For frequent short requests such as classification, summaries, and routing, compare Terra, Luna, or a mini-tier model before choosing Sol.',
+      'Validate quality, latency, failure modes, and usage on your own workload before expanding production traffic.',
+    ],
+  },
+  'gpt-5-6-terra': {
+    tagline:
+      'Balanced tier in the GPT-5.6 preview family for production assistants, SaaS integrations, and routine agent workflows.',
+    capabilities: [
+      'GPT-5.6 preview',
+      'Function calling',
+      'Structured output',
+      'Streaming responses',
+    ],
+    scenarios: [
+      'Product default candidate',
+      'SaaS integrations',
+      'Workflow automation',
+      'Multi-turn assistants',
+    ],
+    overview: [
+      'GPT-5.6 Terra is the balanced tier in the GPT-5.6 preview family represented in the current GPT88 catalog.',
+      'Its positioning favors routine product integration, SaaS assistants, internal workflows, and multi-turn conversations rather than using the highest tier for every request.',
+      'Actual parameter support, model access, latency, and usage charges remain dynamic and should be verified in the GPT88 console.',
+    ],
+    whenToUse: [
+      'Use it when a lightweight model is not strong enough but the highest tier is unnecessary for every request',
+      'Evaluate it for OpenAI-compatible SDKs, tool calls, structured output, and streaming in normal business workflows',
+      'Consider it as a default candidate for support, knowledge-base, content, and internal-assistant applications',
+      'Use a representative evaluation set when comparing it with GPT-5.5, GPT-5.4, Sol, or Luna',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.6-terra in OpenAI-compatible requests.',
+      'A practical routing design is Terra for the default path, Sol for difficult escalations, and Luna for frequent lightweight work.',
+      'Cursor, OpenCode, Codex CLI, ChatBox, and internal services can use the same OpenAI-compatible configuration while changing only the model ID.',
+      'Call GET /v1/models before rollout and record quality, latency, errors, and usage against a fixed evaluation set.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, and feature support are determined by the current GPT88 console configuration.',
+      'GPT-5.6 Terra is a preview model. Supported behavior and parameters may change, so introduce it through a monitored canary or staged rollout.',
+      'Do not route requests from the model name alone; account for task complexity, failure cost, latency targets, and budget.',
+      'If tool calls or structured output are unreliable on a workload, simplify the prompt and tool set before testing an escalation to Sol.',
+    ],
+  },
+  'gpt-5-6-luna': {
+    tagline:
+      'Lightweight tier in the GPT-5.6 preview family for frequent short requests, preprocessing, classification, and agent subtasks.',
+    capabilities: [
+      'GPT-5.6 preview',
+      'Low-latency positioning',
+      'High-throughput positioning',
+      'Function calling',
+    ],
+    scenarios: [
+      'Batch classification',
+      'Log summarization',
+      'Agent subtasks',
+      'Content triage',
+    ],
+    overview: [
+      'GPT-5.6 Luna is the lightweight tier in the GPT-5.6 preview family represented in the current GPT88 catalog.',
+      'It is positioned for frequent, shorter, latency-sensitive, and cost-sensitive tasks such as routing, preprocessing, summaries, classification, and intermediate agent steps.',
+      'Luna should be evaluated as one layer in a model-routing strategy rather than assumed to replace stronger tiers on every complex task.',
+    ],
+    whenToUse: [
+      'Use it for short-text classification, tagging, summaries, formatting, and lower-risk content generation',
+      'Assign it bounded agent subtasks such as intent detection, tool selection, field extraction, or intermediate planning',
+      'Evaluate it for interactive requests where low latency matters and the cost of an individual error is limited',
+      'Pair it with Terra or Sol so difficult, long-context, or high-value tasks can be escalated',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.6-luna in OpenAI-compatible requests.',
+      'Define explicit escalation rules so Luna handles bounded tasks while longer or more complex work moves to Terra or Sol.',
+      'Load-test concurrency, timeout, and retry behavior before using it for batch automation.',
+      'Call GET /v1/models or check the console to confirm that the current API key can access the model.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, and tool support are determined by the current GPT88 console configuration.',
+      'GPT-5.6 Luna is a preview model. Its behavior and supported parameters may change, so validate it through a staged rollout with an escalation path.',
+      'Do not use a lightweight tier as the only model for complex research, important code changes, or high-risk decisions.',
+      'If quality is inconsistent, first check prompt length and task scope, then compare the same request with Terra or Sol.',
+    ],
+  },
+  'claude-fable-5': {
+    tagline:
+      'Mythos-class Claude entry in the current GPT88 catalog for long-running agents, software work, and complex knowledge tasks.',
+    capabilities: [
+      'Mythos-class positioning',
+      'Long-running agents',
+      'Tool use',
+      'Visual understanding',
+    ],
+    scenarios: [
+      'Long-running coding agents',
+      'Complex knowledge work',
+      'Multi-step reasoning',
+      'Research and analysis',
+    ],
+    overview: [
+      'Claude Fable 5 is represented in the current GPT88 catalog as a high-capability Claude model for longer and more complex work.',
+      'The catalog positioning emphasizes software engineering, knowledge work, visual tasks, and agent workflows that must continue across multiple files, tools, or stages.',
+      'Treat this page as an integration guide for the current GPT88 route, not as a promise of account access, fixed performance, or a fixed commercial tier.',
+    ],
+    whenToUse: [
+      'Evaluate it when a model must keep advancing across multiple turns, files, tools, or workflow stages',
+      'Use representative migrations, refactors, test repairs, and long-running coding tasks during evaluation',
+      'Test it on workflows that combine long documents, structured data, images, and multi-stage context',
+      'Compare it with an existing Claude Opus route before selecting a new default for complex Claude workloads',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to claude-fable-5 in OpenAI-compatible requests.',
+      'Claude- or Anthropic-style tools should also use the GPT88 Base URL and send the model ID in the format required by that client.',
+      'Call GET /v1/models or check the console before switching a default, because model access can differ by API key and route.',
+      'Run the same difficult workload against Claude Fable 5 and the current Claude Opus model before expanding traffic.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'The current catalog notes stricter safeguards for some high-risk requests; refusals or conservative handling should be included in acceptance testing.',
+      'Do not infer a fixed price or guaranteed performance tier from the model name or this positioning summary.',
+      'Use a staged rollout and keep a validated fallback route until production behavior is established on your own workload.',
+    ],
+  },
+  'claude-opus-4-8': {
+    tagline:
+      'High-capability Opus model for long-running coding agents, complex reasoning, and professional knowledge work.',
+    capabilities: [
+      'Long-context workflows',
+      'Large-output workflows',
+      'Adaptive thinking',
+      'Tool use',
+    ],
+    scenarios: [
+      'Long-running coding agents',
+      'Large codebase changes',
+      'Complex document analysis',
+      'Professional knowledge work',
+    ],
+    overview: [
+      'Claude Opus 4.8 is represented in the current GPT88 catalog as a high-capability Opus model for agentic coding, complex reasoning, professional knowledge work, and reliable tool use.',
+      'The source material behind the current catalog describes platform-dependent long-context support and large outputs. Confirm the context and output limits available to your GPT88 account before designing around them.',
+      'It is best evaluated on sustained, multi-stage work where fewer corrections and stronger self-checking can matter more than minimum response time.',
+    ],
+    whenToUse: [
+      'Evaluate it for migrations, refactors, bug sweeps, test repair, and cross-file review in large codebases',
+      'Use it for long-running agent workflows that coordinate multiple tools and recover from intermediate failures',
+      'Test it on long financial, legal, research, and structured materials that span multiple stages',
+      'Choose it for professional outputs where consistency, structure, and reduced rework are important',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to claude-opus-4-8 in OpenAI-compatible requests.',
+      'Claude- or Anthropic-style tools should use the same GPT88 Base URL and their native request format.',
+      'The current catalog describes adaptive thinking and a high default effort; verify how the selected client and route expose those controls before relying on them.',
+      'Start with a minimal request, then add tools, long context, caching, or advanced thinking controls separately so failures remain diagnosable.',
+    ],
+    caveats: [
+      'Availability, pricing, context and output limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'If Claude Opus 4.7 is already stable in production, canary Claude Opus 4.8 on representative tasks before widening traffic.',
+      'The current catalog notes parameter restrictions and adaptive-thinking differences in native Messages API flows; omit unsupported sampling controls and verify the route-specific request format.',
+      'Keep a tested fallback until quality, latency, usage, and tool behavior are established in production-like conditions.',
+    ],
+  },
+  'claude-opus-4-7': {
+    tagline:
+      'Quality-first Claude model for complex reasoning, long documents, agent decisions, and careful code review.',
+    capabilities: [
+      'Long-context workflows',
+      'Quality-first reasoning',
+      'Function calling',
+      'Visual understanding',
+    ],
+    scenarios: [
+      'Complex agent decisions',
+      'Long-document analysis',
+      'Research synthesis',
+      'Code review',
+    ],
+    overview: [
+      'Claude Opus 4.7 is positioned in the current GPT88 catalog as a flagship Claude model for complex reasoning, long-document understanding, and difficult task decomposition.',
+      'It is a quality-first candidate when complex inputs, logical completeness, and reduced rework matter more than receiving the fastest response.',
+      'Model access and the exact limits of context, vision, tools, and sampling parameters must still be confirmed for the current GPT88 route.',
+    ],
+    whenToUse: [
+      'Use it for long materials, long-running conversations, or multi-turn planning',
+      'Evaluate it when output quality, logical completeness, and clear explanations are important',
+      'Place it in agent or tool-use workflows that require difficult decisions',
+      'Test it on quality-sensitive workflows that combine text and image inputs',
+    ],
+    integrationNotes: [
+      'OpenAI-compatible tools can use https://api.gpt88.cc with model set to claude-opus-4-7.',
+      'Claude- or Anthropic-style tools such as Claude Code should use the same GPT88 Base URL and the request format expected by that client.',
+      'Call GET /v1/models and send a minimal request before adding long documents, images, or a large tool set.',
+      'Use a fixed evaluation set when comparing Claude Opus 4.7 with Opus 4.8 or a lighter Claude model.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'A flagship positioning does not guarantee the best latency or usage profile for every workload; compare a lighter model where throughput matters.',
+      'Introduce model changes through a staged rollout and measure errors, tool-call reliability, quality, latency, and usage before expanding traffic.',
+    ],
+  },
+  'claude-opus-4-6': {
+    tagline:
+      'Quality-focused Opus model for long documents, polished writing, reasoning, and enterprise agent workflows.',
+    capabilities: [
+      'Long-context workflows',
+      'High-quality writing',
+      'Function calling',
+      'Visual understanding',
+    ],
+    scenarios: [
+      'Long-document analysis',
+      'Product and professional writing',
+      'High-quality translation',
+      'Agent decisions',
+    ],
+    overview: [
+      'Claude Opus 4.6 is represented in the current GPT88 catalog as a strong reasoning model for stable quality and mature written output.',
+      'Compared with lighter models, its positioning favors more complex work, especially long-document analysis, high-quality content, and enterprise agent workflows.',
+      'The exact capabilities available through a route can vary, so validate the current account and model configuration before production use.',
+    ],
+    whenToUse: [
+      'Use it for long-document interpretation, report summaries, and research synthesis',
+      'Evaluate it for professional writing, rewriting, translation, and content organization',
+      'Test it in enterprise knowledge assistants and complex process-oriented agents',
+      'Use it for multi-step workflows that depend on function calling',
+    ],
+    integrationNotes: [
+      'OpenAI-compatible tools can use https://api.gpt88.cc with model set to claude-opus-4-6.',
+      'Claude- or Anthropic-style tools should use the same GPT88 Base URL and their expected native request format.',
+      'Validate the API key and exact model ID with a minimal request before adding production prompts, tools, or long context.',
+      'Keep model ID, API key, and route configuration separate so each environment can be changed independently.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'If real-time response speed matters more than maximum quality, compare Sonnet or Haiku on the same workload.',
+      'Use a staged rollout and measure quality, latency, errors, and usage before changing an established production default.',
+    ],
+  },
+  'claude-sonnet-4-6': {
+    tagline:
+      'Balanced Claude model for responsive production assistants, SaaS integrations, and tool-enabled workflows.',
+    capabilities: [
+      'Responsive interactions',
+      'Function calling',
+      'Visual understanding',
+      'Streaming responses',
+    ],
+    scenarios: [
+      'General assistants',
+      'Support and ticket analysis',
+      'Content review',
+      'Production SaaS',
+    ],
+    overview: [
+      'Claude Sonnet 4.6 is positioned in the current GPT88 catalog as a balance between response speed and model quality for common production workloads.',
+      'It is lighter than an Opus-tier model while retaining a general-purpose reasoning and tool-use profile suited to assistants, support workflows, and SaaS products.',
+      'Use this positioning as a starting hypothesis and confirm actual route behavior with representative requests.',
+    ],
+    whenToUse: [
+      'Use it for frequent conversations, support, and ticket-processing workflows',
+      'Evaluate it when a SaaS product needs a practical balance of quality and responsiveness',
+      'Test it for image understanding or tool use when an Opus-tier model may be unnecessary',
+      'Start with it as a team default, then route more difficult or lighter tasks to a different tier',
+    ],
+    integrationNotes: [
+      'OpenAI-compatible tools can use https://api.gpt88.cc with model set to claude-sonnet-4-6.',
+      'Claude- or Anthropic-style tools such as Claude Code should use the same GPT88 Base URL and their native request format.',
+      'Validate streaming and tool use with a minimal request and confirm the model is available to the current API key.',
+      'Record task-level quality and latency before selecting Sonnet as a default route.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'A balanced default is not ideal for every task; compare Opus for difficult long-context work and Haiku for bounded high-volume work.',
+      'Use a staged rollout and retain a tested fallback until production behavior is established.',
+    ],
+  },
+  'gpt-5-5': {
+    tagline:
+      'Flagship-tier GPT model for general agents, structured outputs, tool calling, and multimodal application workflows.',
+    capabilities: [
+      'Function calling',
+      'Visual understanding',
+      'Structured output',
+      'Long-context workflows',
+    ],
+    scenarios: [
+      'General-purpose agents',
+      'Production SaaS',
+      'Multimodal assistants',
+      'Complex workflows',
+    ],
+    overview: [
+      'GPT-5.5 is positioned in the current GPT88 catalog as a flagship-tier OpenAI model for general-purpose applications, tools, and multimodal workflows.',
+      'It is a practical candidate for teams already using OpenAI-compatible SDKs and looking for a low-friction way to evaluate a higher-capability default.',
+      'The exact route, feature access, and operational limits remain specific to the current GPT88 console configuration.',
+    ],
+    whenToUse: [
+      'Evaluate it for general-purpose agents, production SaaS, and complex workflows',
+      'Use it for workloads that need structured output, JSON parsing, or function calling',
+      'Test it on tasks that combine image understanding with text reasoning',
+      'Choose it when the team already uses an OpenAI-compatible toolchain and wants minimal integration changes',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.5 in OpenAI-compatible requests.',
+      'Start with a minimal /v1/chat/completions request, then add tools, structured output, streaming, or image inputs separately.',
+      'Keep the model ID, API key, and route configuration separate so staging and production can change independently.',
+      'Call GET /v1/models or check the console before rollout to confirm access for the current API key.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'If latency or usage is more important than maximum capability, compare a lighter GPT tier on the same evaluation set.',
+      'Use a staged rollout and measure output quality, errors, tool calls, latency, and usage before changing the production default.',
+    ],
+  },
+  'gpt-5-4': {
+    tagline:
+      'Practical GPT model for general chat, SaaS integrations, streaming, structured output, and workflow automation.',
+    capabilities: [
+      'Function calling',
+      'Structured output',
+      'Streaming responses',
+    ],
+    scenarios: [
+      'SaaS integrations',
+      'General chat',
+      'Workflow automation',
+      'Support operations',
+    ],
+    overview: [
+      'GPT-5.4 is positioned in the current GPT88 catalog as a practical OpenAI-compatible model for stable, cost-aware application workloads.',
+      'It can serve as a starting candidate for general chat, ticket routing, and business automation while retaining tool-calling and structured-output workflows.',
+      'Its role as a practical default should be validated against your own quality, latency, and usage requirements rather than inferred from the model name alone.',
+    ],
+    whenToUse: [
+      'Use it for general chat, ticket routing, and business process automation',
+      'Evaluate it when a SaaS team wants a straightforward OpenAI-compatible integration',
+      'Test it for medium-complexity work that uses structured output, streaming, or function calling',
+      'Use it as a default candidate while routing harder or lighter tasks to an appropriate tier',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.4 in OpenAI-compatible requests.',
+      'Validate both streaming and non-streaming requests before enabling a complete workflow.',
+      'Keep the model ID, API key, and route configuration separate so environments can be changed independently.',
+      'Call GET /v1/models or check the console to confirm access for the current API key.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'More complex long-document or multimodal tasks may need a higher-capability model after workload-specific evaluation.',
+      'Use a staged rollout and measure quality, errors, latency, and usage before adopting it as a production default.',
+    ],
+  },
+  'kimi-k3': {
+    tagline: 'Moonshot flagship model for long-horizon coding, knowledge work, and complex agent tasks.',
+    capabilities: ['1M-token context', 'Long-horizon coding', 'Knowledge work', 'Native vision', 'Tool calling'],
+    scenarios: ['Large codebase analysis', 'Long documents and research', 'Complex reasoning', 'Multi-step agents'],
+    overview: [
+      'Kimi K3 is a flagship model available through Moonshot’s Kimi API Platform. Its model ID is kimi-k3.',
+      'Moonshot describes a 2.8T-parameter architecture with native visual understanding and a 1M-token context window, aimed at long-horizon coding, knowledge work, and reasoning.',
+    ],
+    whenToUse: [
+      'Understanding large codebases and carrying out multi-step engineering work',
+      'Processing long documents, research material, and structured knowledge tasks',
+      'Evaluating visual inputs, tool calls, or agent workflows',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc, model ID kimi-k3, and endpoint /v1/chat/completions.',
+      'Kimi K3 works with OpenAI-compatible SDKs, cURL, and agent tools. Call GET /v1/models first to confirm access for the current API key.',
+      'Moonshot’s direct API documentation uses https://api.moonshot.ai/v1. GPT88 integrations should use the unified Base URL published by GPT88.',
+    ],
+    caveats: [
+      'Model availability, routes, pricing, rate limits, and permissions are determined by the current GPT88 console configuration.',
+      'A 1M-token context window does not mean every request should send the full context. Split work by task, reuse cached context, and monitor latency and cost.',
+      'Validate the model on representative codebases, long documents, and tool-calling workloads before a production rollout.',
+    ],
+  },
+}
+
+const ENGLISH_DETAIL_ARRAY_FIELDS = [
+  'capabilities',
+  'scenarios',
+  'overview',
+  'whenToUse',
+  'integrationNotes',
+  'caveats',
+] as const satisfies readonly (keyof LocalizedModelDetail)[]
+
+for (const slug of indexableEnglishModels) {
+  const detail = ENGLISH_MODEL_DETAILS[slug]
+  const incomplete =
+    !detail ||
+    !detail.tagline.trim() ||
+    ENGLISH_DETAIL_ARRAY_FIELDS.some(field => detail[field].length === 0)
+  if (incomplete) {
+    throw new Error(`Indexable English model detail is incomplete: ${slug}`)
+  }
+}
+
+export function localizeModelEntry(model: ModelEntry, locale: Locale): ModelEntry {
+  if (locale !== 'en') return model
+
+  const detail = ENGLISH_MODEL_DETAILS[model.slug]
+  const parentheticalProvider = model.provider.match(/\(([^()]*(?:[A-Za-z])[^()]*)\)\s*$/)?.[1]
+  const providerWithoutHan = model.provider
+    .replaceAll(/\p{Script=Han}/gu, '')
+    .replace(/^[\s()（）-]+|[\s()（）-]+$/g, '')
+  const provider = parentheticalProvider?.trim() || providerWithoutHan || 'Unknown provider'
+  const category = model.category === 'chat'
+    ? 'chat and reasoning'
+    : model.category === 'image'
+      ? 'image generation'
+      : model.category === 'video'
+        ? 'video generation'
+        : 'audio'
+  const localizedDetail: LocalizedModelDetail = detail || {
+    tagline: `${provider} ${category} model available through the GPT88 unified API.`,
+    capabilities: [],
+    scenarios: [],
+    overview: [
+      `${model.name} is listed in the current GPT88 model catalog with model ID ${model.modelId}.`,
+      'This route uses a generic English integration profile because a model-specific editorial profile has not been published. Confirm current access and behavior before production use.',
+    ],
+    whenToUse: [
+      `Evaluate it when you need a ${category} model and want to keep an existing GPT88 integration.`,
+      'Compare it with a model that already performs well on the same representative workload before changing a production default.',
+    ],
+    integrationNotes: [
+      `Keep the exact model ID ${model.modelId} in the request body and use the endpoint displayed on this page.`,
+      'Call GET /v1/models or check the GPT88 console first to confirm that the current API key can access the model.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'Generic catalog copy is not a model capability guarantee. Validate output quality, errors, latency, and usage on your own workload.',
+    ],
+  }
+
+  return {
+    ...model,
+    provider,
+    ...localizedDetail,
+    examples: model.examples.map(example => ({
+      ...example,
+      code: example.code.replaceAll('用一句话介绍 gpt88.cc', 'Introduce gpt88.cc in one sentence.'),
+    })),
+  }
+}
 
 /* ──────────────────────────────────────────────────────────────────
  * 元数据：分类与查询助手

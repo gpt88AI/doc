@@ -885,7 +885,7 @@ function markdownLink(page) {
   return `- [${page.title}](${absoluteUrl(page.path)}): ${page.description}`
 }
 
-function llmsTxt(modelPages) {
+function llmsTxt(modelPages, englishModelPages) {
   const featuredModels = modelPages
     .filter(page => ['gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 12)
@@ -905,6 +905,10 @@ ${docs.map(markdownLink).join('\n')}
 ## 重点模型
 
 ${featuredModels.map(markdownLink).join('\n')}
+
+## English model API references
+
+${englishModelPages.map(markdownLink).join('\n')}
 
 ## API 摘要
 
@@ -927,7 +931,7 @@ ${featuredModels.map(markdownLink).join('\n')}
 `
 }
 
-function llmsFullTxt(modelPages) {
+function llmsFullTxt(modelPages, englishModelPages) {
   const docsBySection = groupBy(docs, 'section')
   const modelsByCategory = groupBy(modelPages, 'category')
   const docsMd = Object.entries(docsBySection)
@@ -954,6 +958,10 @@ function llmsFullTxt(modelPages) {
 - 大模型广场：https://agent.gpt88.cc/model-square。
 - 官网定价页面：https://gpt88.cc/pricing。
 
+## English model API references
+
+${englishModelPages.map(markdownLink).join('\n')}
+
 ${docsMd}
 
 ${modelsMd}
@@ -962,15 +970,25 @@ ${modelsMd}
 
 async function main() {
   await fs.mkdir(publicDir, { recursive: true })
-  const modelPages = await readModels()
-  // Kimi K3 has an indexable English content contract. Keep other dynamic
-  // model pages out of the English sitemap until their copy is translated.
-  const englishModelPages = modelPages.filter(page => page.modelId === 'kimi-k3').map(page => ({
-    ...page,
-    title: `${page.title} API Docs`,
-    path: `/en${page.path}`,
-    description: `English model reference for ${page.title}. Model ID: ${page.modelId}, endpoint: ${page.endpoint}.`,
-  }))
+  const [modelPages, indexableEnglishModelSlugs] = await Promise.all([
+    readModels(),
+    fs
+      .readFile(path.join(root, 'src/data/indexableEnglishModels.json'), 'utf8')
+      .then(value => JSON.parse(value)),
+  ])
+  const modelPagesBySlug = new Map(
+    modelPages.map(page => [page.path.split('/').filter(Boolean).at(-1), page]),
+  )
+  const englishModelPages = indexableEnglishModelSlugs.map(slug => {
+    const page = modelPagesBySlug.get(slug)
+    if (!page) throw new Error(`Indexable English model is missing from the catalog: ${slug}`)
+    return {
+      ...page,
+      title: `${page.title} API Docs`,
+      path: `/en${page.path}`,
+      description: `English API reference for ${page.title}. Model ID: ${page.modelId}. OpenAI-compatible endpoint: ${page.endpoint}.`,
+    }
+  })
   const pages = [...staticPages, ...modelPages, ...englishModelPages]
   const prerenderRoutes = [...new Set([
     ...pages.map(page => normalizeRoute(page.path)),
@@ -987,8 +1005,8 @@ async function main() {
       path.join(publicDir, 'prerender-routes.json'),
       `${JSON.stringify({ routes: prerenderRoutes }, null, 2)}\n`,
     ),
-    fs.writeFile(path.join(publicDir, 'llms.txt'), llmsTxt(modelPages)),
-    fs.writeFile(path.join(publicDir, 'llms-full.txt'), llmsFullTxt(modelPages)),
+    fs.writeFile(path.join(publicDir, 'llms.txt'), llmsTxt(modelPages, englishModelPages)),
+    fs.writeFile(path.join(publicDir, 'llms-full.txt'), llmsFullTxt(modelPages, englishModelPages)),
   ])
 
   console.log(`Generated SEO/GEO assets for ${pages.length} indexable URLs and ${prerenderRoutes.length} prerender routes at ${siteUrl}`)

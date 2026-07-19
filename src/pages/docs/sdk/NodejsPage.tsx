@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
 import NodejsPageEn from '../../en/NodejsPageEn'
 
@@ -150,6 +151,13 @@ export default function NodejsSdkPage() {
 
   if (locale === 'en') return <NodejsPageEn />
 
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'sdk_nodejs_setup',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/sdk/nodejs"
@@ -172,12 +180,12 @@ export default function NodejsSdkPage() {
       <p className="text-sm text-ink-400">
         将代码中的 <code>process.env.GPT88_API_KEY</code> 指向你在{' '}
         <a
-          href="https://gpt88.cc"
+          href={keyUrl}
           target="_blank"
           rel="noreferrer"
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台「API Keys」页面创建的 Key（建议用环境变量而非硬编码）。
       </p>

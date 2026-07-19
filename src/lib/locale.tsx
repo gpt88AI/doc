@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react'
+import indexableEnglishModels from '../data/indexableEnglishModels.json'
 
 export const SUPPORTED_LOCALES = [
   'zh',
@@ -76,7 +77,7 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   '/docs/sdk/python/',
   '/docs/sdk/nodejs/',
   '/models/',
-  '/models/kimi-k3/',
+  ...indexableEnglishModels.map(slug => `/models/${slug}/`),
   '/docs/guides/gpt88-ai-proxy/',
   '/docs/guides/gpt88-tutorial/',
   '/docs/guides/complete-integration/',

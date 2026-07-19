@@ -16,39 +16,41 @@ export BASE_URL="https://img.gpt88.cc"
 export MODEL="gemini-3.1-flash-image"
 
 # 先把本地参考图上传成可复用文件
-curl -s -X POST "$BASE_URL/upload/v1/files" \
-  -H "x-goog-api-key: $API_KEY" \
-  -F "file=@reference.png" \
+curl -s -X POST "$BASE_URL/upload/v1/files" \\
+  -H "x-goog-api-key: $API_KEY" \\
+  -F "file=@reference.png" \\
   -F "mimeType=image/png" > upload.json
 
 FILE_URI=$(jq -r '.file.uri // .uri // .name' upload.json)
 
-curl -s -X POST \
-  "$BASE_URL/v1/models/$MODEL:generateContent" \
-  -H "x-goog-api-key: $API_KEY" \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"contents\": [{
-      \"parts\": [
-        { \"text\": \"Keep the main subject, change the background to a moonlit bamboo path\" },
-        {
-          \"fileData\": {
-            \"mimeType\": \"image/png\",
-            \"fileUri\": \"$FILE_URI\"
-          }
-        }
-      ]
-    }],
-    \"generationConfig\": {
-      \"responseModalities\": [\"TEXT\", \"IMAGE\"],
-      \"responseFormat\": {
-        \"image\": {
-          \"aspectRatio\": \"1:1\",
-          \"imageSize\": \"1K\"
+jq -n --arg file_uri "$FILE_URI" '{
+  contents: [{
+    parts: [
+      { text: "Keep the main subject, change the background to a moonlit bamboo path" },
+      {
+        fileData: {
+          mimeType: "image/png",
+          fileUri: $file_uri
         }
       }
+    ]
+  }],
+  generationConfig: {
+    responseModalities: ["TEXT", "IMAGE"],
+    responseFormat: {
+      image: {
+        aspectRatio: "1:1",
+        imageSize: "1K"
+      }
     }
-  }" > response.json`,
+  }
+}' > request.json
+
+curl -s -X POST \\
+  "$BASE_URL/v1/models/$MODEL:generateContent" \\
+  -H "x-goog-api-key: $API_KEY" \\
+  -H "Content-Type: application/json" \\
+  --data-binary @request.json > response.json`,
   },
   {
     label: 'Node.js',

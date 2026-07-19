@@ -32,8 +32,8 @@ function extractHead(html) {
   const patterns = [
     /<title[^>]*>[\s\S]*?<\/title>/gi,
     /<meta\s+[^>]*>/gi,
-    /<link\s+rel="canonical"[^>]*>/gi,
-    /<script\s+type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi,
+    /<link\b(?=[^>]*\bdata-gpt88-seo=["']true["'])[^>]*>/gi,
+    /<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi,
   ]
 
   for (const pattern of patterns) {

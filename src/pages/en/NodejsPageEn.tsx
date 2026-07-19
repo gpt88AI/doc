@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { localizePath } from '../../lib/locale'
 
 const INSTALL = `npm i openai
@@ -127,6 +128,13 @@ export async function POST(req: Request) {
 }`
 
 export default function NodejsPageEn() {
+  const keyUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'sdk_nodejs_setup',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/sdk/nodejs"
@@ -144,8 +152,8 @@ export default function NodejsPageEn() {
       <h2 id="install">Install and configure</h2>
       <p className="text-sm text-ink-400">
         Point <code>process.env.GPT88_API_KEY</code> at the key created in the{' '}
-        <a href="https://gpt88.cc" target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
-          gpt88.cc console
+        <a href={keyUrl} target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
+          Agent API Keys
         </a>.
       </p>
       <CodeBlock lang="bash" code={INSTALL} />

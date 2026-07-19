@@ -5,6 +5,7 @@ import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { Callout } from '../../../components/ui/Callout'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
 import ChatCompletionsPageEn from '../../en/ChatCompletionsPageEn'
 
@@ -401,6 +402,13 @@ export default function ChatCompletionsPage() {
   const { locale } = useLocale()
   if (locale === 'en') return <ChatCompletionsPageEn />
 
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'api_chat_completions_auth',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/api/chat-completions"
@@ -430,12 +438,12 @@ export default function ChatCompletionsPage() {
         所有请求需在 HTTP Header 中携带{' '}
         <code>Authorization: Bearer &lt;API_KEY&gt;</code>。请在{' '}
         <a
-          href="https://gpt88.cc"
+          href={keyUrl}
           target="_blank"
           rel="noreferrer"
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台「API Keys」页面创建一把 Key 后填入。
       </p>

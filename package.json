@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
     "seo": "node scripts/generate-seo-assets.mjs",
@@ -10,6 +13,9 @@
     "build:ssr": "vite build --ssr src/main.ssr.tsx --outDir dist/server",
     "prerender": "node scripts/prerender.mjs",
     "audit:routes": "node scripts/audit-static-routes.mjs",
+    "test:attribution": "node --experimental-strip-types --test scripts/activation-attribution.test.mjs",
+    "test:docs-analytics": "node --experimental-strip-types --test scripts/docs-analytics.test.mjs",
+    "release:check": "npm run lint && npm run test:attribution && npm run test:docs-analytics && npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

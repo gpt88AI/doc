@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Globe, KeyRound, Rocket, Zap } from 'lucide-react'
 import { Seo } from '../components/seo/Seo'
 import { websiteStructuredData } from '../components/seo/structuredData'
+import { ActivationQuickStarts } from '../components/activation/ActivationQuickStarts'
+import { buildAgentActivationUrl } from '../lib/activationLinks'
 import { localizedContentPath, localizePath, useLocale } from '../lib/locale'
 import { getLocaleCopy } from '../lib/localeCopy'
 
@@ -16,6 +18,12 @@ const CURL_EXAMPLE = `curl https://api.gpt88.cc/v1/chat/completions \\
 export default function LocalizedLandingPage() {
   const { locale } = useLocale()
   const copy = getLocaleCopy(locale)
+  const getKeyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'home_primary',
+    intent: 'api_access',
+    destination: 'keys',
+  })
 
   return (
     <>
@@ -46,12 +54,16 @@ export default function LocalizedLandingPage() {
             <Link to={localizePath('/docs/quickstart/', locale)} className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-violet-500 to-violet-600 px-5 py-2.5 text-sm font-semibold text-white">
               <Rocket className="h-4 w-4" /> {copy.home.quickstart}
             </Link>
-            <a href="https://gpt88.cc" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-violet-500/40 bg-violet-500/10 px-5 py-2.5 text-sm font-semibold text-violet-100">
+            <a href={getKeyUrl} className="inline-flex items-center gap-2 rounded-md border border-violet-500/40 bg-violet-500/10 px-5 py-2.5 text-sm font-semibold text-violet-100">
               <KeyRound className="h-4 w-4" /> {copy.home.getKey}
             </a>
             <Link to={localizedContentPath('/docs/api/chat-completions/', locale)} className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-ink-100">
               {copy.home.apiReference}
             </Link>
+          </div>
+
+          <div className="mt-8">
+            <ActivationQuickStarts surface="home" />
           </div>
 
           <div className="mt-10 grid gap-4 lg:grid-cols-3">

@@ -5,6 +5,7 @@ import { CodeTabs } from '../../components/ui/CodeTabs'
 import { Callout } from '../../components/ui/Callout'
 import { EndpointBadge } from '../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../components/ui/FieldTable'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { localizePath } from '../../lib/locale'
 
 const RESP_FIELDS: FieldRow[] = [
@@ -53,6 +54,13 @@ for m in models.data:
 ]
 
 export default function ListModelsPageEn() {
+  const keyUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'api_list_models_auth',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/api/list-models"
@@ -68,8 +76,9 @@ export default function ListModelsPageEn() {
       <h2 id="endpoint">Endpoint</h2>
       <EndpointBadge method="GET" path="https://api.gpt88.cc/v1/models" />
       <p>
-        The returned model list is permission-filtered. Different keys may see different subsets based
-        on console permissions.
+        Create a key in <a href={keyUrl} target="_blank" rel="noreferrer">Agent API Keys</a> before running
+        the examples. The returned model list is permission-filtered, so different keys may see different
+        subsets based on console permissions.
       </p>
 
       <h2 id="examples">Examples</h2>

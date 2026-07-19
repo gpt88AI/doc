@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import {
   ArrowRight,
   AudioLines,
@@ -15,6 +15,7 @@ import {
   CATEGORY_ORDER,
   MODELS,
   getFeaturedModels,
+  localizeModelEntry,
   searchModels,
   type ModelCategory,
   type ModelEntry,
@@ -57,17 +58,34 @@ const CATEGORY_EN: Record<ModelCategory, { title: string; subtitle: string }> = 
 export default function ModelsPage() {
   const { locale } = useLocale()
   const [category, setCategory] = useState<ModelCategory>('chat')
-  const [query, setQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const query = (searchParams.get('query') || '').slice(0, 200)
+  const searchActive = query.trim().length > 0
 
-  const featured = useMemo(() => getFeaturedModels(), [])
+  const setQuery = (value: string) => {
+    const nextParams = new URLSearchParams(searchParams)
+    const nextQuery = value.slice(0, 200)
+    if (nextQuery) nextParams.set('query', nextQuery)
+    else nextParams.delete('query')
+    setSearchParams(nextParams, { replace: true })
+  }
+
+  const featured = useMemo(
+    () => getFeaturedModels().map(model => localizeModelEntry(model, locale)),
+    [locale],
+  )
+  const localizedModels = useMemo(
+    () => MODELS.map(model => localizeModelEntry(model, locale)),
+    [locale],
+  )
 
   // 「全部模型」= MODELS 排除 featured；按 vendors_count 降序优先
   const nonFeatured = useMemo(() => {
     const featuredSlugs = new Set(featured.map(m => m.slug))
-    return MODELS.filter(m => !featuredSlugs.has(m.slug)).sort(
+    return localizedModels.filter(m => !featuredSlugs.has(m.slug)).sort(
       (a, b) => b.vendorsCount - a.vendorsCount,
     )
-  }, [featured])
+  }, [featured, localizedModels])
 
   // 分类计数（基于 nonFeatured，让"全部模型"右侧 Tab 数字与展示一致）
   const counts = useMemo(() => {
@@ -80,9 +98,11 @@ export default function ModelsPage() {
 
   // 当前分类 + 搜索过滤后的模型
   const filteredAll = useMemo<ModelEntry[]>(() => {
-    const inCategory = nonFeatured.filter(m => m.category === category)
-    return searchModels(inCategory, query)
-  }, [nonFeatured, category, query])
+    const searchScope = searchActive
+      ? nonFeatured
+      : nonFeatured.filter(m => m.category === category)
+    return searchModels(searchScope, query)
+  }, [nonFeatured, category, query, searchActive])
 
   // 搜索状态下，主推模型也参与匹配
   const filteredFeatured = useMemo<ModelEntry[]>(
@@ -107,6 +127,7 @@ export default function ModelsPage() {
           all: 'All Models',
           allMeta: `${nonFeatured.length} total · marketplace snapshot`,
           current: `${filteredAll.length} matches`,
+          searchingAll: 'Searching across every model category',
           recommended: 'Featured',
           vendors: 'vendors',
           scenarios: 'Suggested use cases',
@@ -130,6 +151,7 @@ export default function ModelsPage() {
           all: '全部模型',
           allMeta: `共 ${nonFeatured.length} 个 · 数据来自 marketplace 快照`,
           current: `当前共 ${filteredAll.length} 个匹配`,
+          searchingAll: '正在搜索全部模型分类',
           recommended: '推荐',
           vendors: '家上游',
           scenarios: '推荐场景',
@@ -171,20 +193,28 @@ export default function ModelsPage() {
         </div>
 
         {/* ── 全局搜索框（同时过滤主推 + 全部模型） ── */}
-        <label className="relative mt-8 flex w-full max-w-md items-center">
-          <span className="sr-only">{locale === 'en' ? 'Search models' : '搜索模型'}</span>
-          <Search
-            className="pointer-events-none absolute left-3 h-4 w-4 text-ink-400"
-            aria-hidden
-          />
-          <input
-            type="search"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            placeholder={t.search}
-            className="w-full rounded-md border border-white/10 bg-white/[0.04] py-2 pl-9 pr-3 text-sm text-ink-100 placeholder:text-ink-500 outline-none transition-colors focus:border-violet-500/60 focus:bg-violet-500/[0.06] focus:ring-2 focus:ring-violet-500/20"
-          />
-        </label>
+        <form
+          action={localizePath('/models/', locale)}
+          method="get"
+          role="search"
+          className="mt-8 w-full max-w-md"
+        >
+          <label className="relative flex items-center">
+            <span className="sr-only">{locale === 'en' ? 'Search models' : '搜索模型'}</span>
+            <Search
+              className="pointer-events-none absolute left-3 h-4 w-4 text-ink-400"
+              aria-hidden
+            />
+            <input
+              type="search"
+              name="query"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder={t.search}
+              className="w-full rounded-md border border-white/10 bg-white/[0.04] py-2 pl-9 pr-3 text-sm text-ink-100 placeholder:text-ink-500 outline-none transition-colors focus:border-violet-500/60 focus:bg-violet-500/[0.06] focus:ring-2 focus:ring-violet-500/20"
+            />
+          </label>
+        </form>
 
         {/* ── 主推区 ── */}
         <div className="mt-10">
@@ -233,14 +263,17 @@ export default function ModelsPage() {
             >
               {CATEGORY_ORDER.map(c => {
                 const Icon = CATEGORY_ICON[c]
-                const active = c === category
+                const active = !searchActive && c === category
                 return (
                   <button
                     key={c}
                     role="tab"
                     aria-selected={active}
                     type="button"
-                    onClick={() => setCategory(c)}
+                    onClick={() => {
+                      setCategory(c)
+                      if (searchActive) setQuery('')
+                    }}
                     className={cn(
                       'inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
                       active
@@ -267,7 +300,9 @@ export default function ModelsPage() {
           </div>
 
           <div className="mt-4 flex items-baseline justify-between">
-            <p className="text-xs text-ink-400">{categoryMeta[category].subtitle}</p>
+            <p className="text-xs text-ink-400">
+              {searchActive ? t.searchingAll : categoryMeta[category].subtitle}
+            </p>
             <span className="text-xs text-ink-400">
               {t.current}
             </span>

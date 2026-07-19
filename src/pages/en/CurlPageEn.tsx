@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { localizePath } from '../../lib/locale'
 
 const CHECK = `# 1. Export your API key
@@ -75,6 +76,13 @@ echo "Exhausted retries" >&2
 exit 1`
 
 export default function CurlPageEn() {
+  const keyUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'sdk_curl_setup',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/sdk/curl"
@@ -92,8 +100,8 @@ export default function CurlPageEn() {
       <p>Prepare the environment first and confirm both the API key and the network path are valid.</p>
       <p className="text-sm text-ink-400">
         Replace <code>sk-xxx</code> below with the key created in the{' '}
-        <a href="https://gpt88.cc" target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
-          gpt88.cc console
+        <a href={keyUrl} target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
+          Agent API Keys
         </a>.
       </p>
       <CodeBlock lang="bash" filename="check.sh" code={CHECK} />

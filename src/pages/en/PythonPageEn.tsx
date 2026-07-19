@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { localizePath } from '../../lib/locale'
 
 const INSTALL = `pip install openai>=1.40.0
@@ -100,6 +101,13 @@ async def main():
 asyncio.run(main())`
 
 export default function PythonPageEn() {
+  const keyUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'sdk_python_setup',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/sdk/python"
@@ -121,8 +129,8 @@ export default function PythonPageEn() {
       </p>
       <p className="text-sm text-ink-400">
         Replace <code>sk-xxx</code> with the key created in the{' '}
-        <a href="https://gpt88.cc" target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
-          gpt88.cc console
+        <a href={keyUrl} target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
+          Agent API Keys
         </a>.
       </p>
       <CodeBlock lang="bash" code={INSTALL} />

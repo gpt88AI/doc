@@ -5,6 +5,7 @@ import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { Callout } from '../../../components/ui/Callout'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
 import ListModelsPageEn from '../../en/ListModelsPageEn'
 
@@ -131,6 +132,13 @@ export default function ListModelsPage() {
   const { locale } = useLocale()
   if (locale === 'en') return <ListModelsPageEn />
 
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'api_list_models_auth',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/api/list-models"
@@ -155,12 +163,12 @@ export default function ListModelsPage() {
         <code>Authorization: Bearer &lt;API_KEY&gt;</code>，
         其中 Key 由你在{' '}
         <a
-          href="https://gpt88.cc"
+          href={keyUrl}
           target="_blank"
           rel="noreferrer"
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台「API Keys」页面创建。返回的列表是「该 API Key 当前可调用的模型」，
         权限受控制台分配影响。

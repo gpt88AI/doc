@@ -2,6 +2,8 @@ import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { SiteShell } from './components/layout/SiteShell'
 import { DocsLayout } from './components/layout/DocsLayout'
+import { ActivationAttributionRelay } from './components/activation/ActivationAttributionRelay'
+import { DocsAnalytics } from './components/analytics/DocsAnalytics'
 import OverviewPage from './pages/docs/OverviewPage'
 import QuickstartPage from './pages/docs/QuickstartPage'
 import AuthPage from './pages/docs/AuthPage'
@@ -189,20 +191,24 @@ export default function App() {
   )
 
   return (
-    <Routes>
-      <Route element={<LocaleProvider locale="zh"><SiteShell /></LocaleProvider>}>
-        {siteRoutes}
-      </Route>
-      {SUPPORTED_LOCALES.filter(locale => locale !== 'zh').map(locale => (
-        <Route
-          key={locale}
-          path={LOCALE_CONFIG[locale].pathPrefix.slice(1)}
-          element={<LocaleProvider locale={locale}><SiteShell /></LocaleProvider>}
-        >
+    <>
+      <ActivationAttributionRelay />
+      <DocsAnalytics />
+      <Routes>
+        <Route element={<LocaleProvider locale="zh"><SiteShell /></LocaleProvider>}>
           {siteRoutes}
         </Route>
-      ))}
-    </Routes>
+        {SUPPORTED_LOCALES.filter(locale => locale !== 'zh').map(locale => (
+          <Route
+            key={locale}
+            path={LOCALE_CONFIG[locale].pathPrefix.slice(1)}
+            element={<LocaleProvider locale={locale}><SiteShell /></LocaleProvider>}
+          >
+            {siteRoutes}
+          </Route>
+        ))}
+      </Routes>
+    </>
   )
 }
 

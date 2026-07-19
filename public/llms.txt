@@ -95,6 +95,20 @@
 - [kimi-k3](https://doc.gpt88.cc/models/kimi-k3/): Moonshot kimi-k3 · CHAT 模型，Model ID: kimi-k3，接口路径: /v1/chat/completions。
 - [NanoBanana2](https://doc.gpt88.cc/models/nanobanana2/): Google NanoBanana2 · IMAGE 模型，Model ID: NanoBanana2，接口路径: /v1beta/models/NanoBanana2:generateContent。
 
+## English model API references
+
+- [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-luna/): English API reference for gpt-5.6-luna. Model ID: gpt-5.6-luna. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-fable-5 API Docs](https://doc.gpt88.cc/en/models/claude-fable-5/): English API reference for claude-fable-5. Model ID: claude-fable-5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-8 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-8/): English API reference for claude-opus-4-8. Model ID: claude-opus-4-8. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-7 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-7/): English API reference for claude-opus-4-7. Model ID: claude-opus-4-7. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-6/): English API reference for claude-opus-4-6. Model ID: claude-opus-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-sonnet-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-sonnet-4-6/): English API reference for claude-sonnet-4-6. Model ID: claude-sonnet-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.5 API Docs](https://doc.gpt88.cc/en/models/gpt-5-5/): English API reference for gpt-5.5. Model ID: gpt-5.5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.4 API Docs](https://doc.gpt88.cc/en/models/gpt-5-4/): English API reference for gpt-5.4. Model ID: gpt-5.4. OpenAI-compatible endpoint: /v1/chat/completions.
+- [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
+
 ## API 摘要
 
 - Chat: POST https://api.gpt88.cc/v1/chat/completions，OpenAI 兼容对话补全接口。

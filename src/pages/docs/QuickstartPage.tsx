@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { useLocale } from '../../lib/locale'
+import { ActivationQuickStarts } from '../../components/activation/ActivationQuickStarts'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import QuickstartPageEn from '../en/QuickstartPageEn'
 import LocalizedQuickstartPage from '../LocalizedQuickstartPage'
 
@@ -86,6 +88,19 @@ export default function QuickstartPage() {
   if (locale === 'en') return <QuickstartPageEn />
   if (locale !== 'zh') return <LocalizedQuickstartPage />
 
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'quickstart_body',
+    intent: 'api_access',
+    destination: 'keys',
+  })
+  const imageStudioUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'quickstart_body',
+    intent: 'image_api',
+    destination: 'image-studio',
+  })
+
   return (
     <DocPage
       path="/docs/quickstart"
@@ -101,6 +116,8 @@ export default function QuickstartPage() {
         { id: 'next', text: '下一步', level: 2 },
       ]}
     >
+      <ActivationQuickStarts surface="quickstart" />
+
       <h2 id="prereq">准备 API Key</h2>
       {/*
        * Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。
@@ -110,21 +127,17 @@ export default function QuickstartPage() {
       <p>
         请前往{' '}
         <a
-          href="https://gpt88.cc"
-          target="_blank"
-          rel="noreferrer"
+          href={keyUrl}
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台注册并创建 API Key，再回到本页把它粘贴到下面的环境变量里使用。
       </p>
       <p>
         说明：<code>gpt88.cc</code> 主推文本大模型与 API 接入；如果你主要是直接做生图工作台使用，优先访问{' '}
         <a
-          href="https://agent.gpt88.cc/"
-          target="_blank"
-          rel="noreferrer"
+          href={imageStudioUrl}
           className="text-cyan-300 hover:text-cyan-200"
         >
           agent.gpt88.cc
@@ -135,12 +148,10 @@ export default function QuickstartPage() {
         <li>
           登录{' '}
           <a
-            href="https://gpt88.cc"
-            target="_blank"
-            rel="noreferrer"
+            href={keyUrl}
             className="text-violet-300 hover:text-violet-200"
           >
-            gpt88.cc
+            Agent
           </a>{' '}
           控制台，前往「API Keys」页面创建一把新的密钥；
         </li>

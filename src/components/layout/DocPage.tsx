@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { AnchorNav, type Heading } from './AnchorNav'
 import { getDocsFlat } from '../../data/nav'
 import { Seo } from '../seo/Seo'
-import { docStructuredData } from '../seo/structuredData'
+import { docStructuredData, type StructuredFaqEntry } from '../seo/structuredData'
 import { isTranslatedPath, localizedContentPath, useLocale } from '../../lib/locale'
 
 type DocPageProps = {
@@ -16,6 +16,8 @@ type DocPageProps = {
   description?: string
   /** 锚点目录数据，由具体页面手动维护，避免运行时遍历 DOM 出错 */
   headings?: Heading[]
+  /** FAQ entries derived from the same rendered questions and answers. */
+  faqEntries?: StructuredFaqEntry[]
   children: React.ReactNode
 }
 
@@ -24,7 +26,7 @@ type DocPageProps = {
  * - 标题区 + 主内容（prose 排版）+ Prev/Next 翻页 + 右侧锚点目录
  * - 内容由父组件传入，可以是任意 JSX；若有标题需要被锚点跟踪，需自行加 id 并在 headings 中登记
  */
-export function DocPage({ path, title, description, headings = [], children }: DocPageProps) {
+export function DocPage({ path, title, description, headings = [], faqEntries = [], children }: DocPageProps) {
   const { locale } = useLocale()
   const seoDescription =
     description ??
@@ -53,7 +55,11 @@ export function DocPage({ path, title, description, headings = [], children }: D
         description={seoDescription}
         path={path}
         type="article"
-        structuredData={docStructuredData(title, seoDescription, path, locale)}
+        structuredData={
+          translationFallback
+            ? undefined
+            : docStructuredData(title, seoDescription, path, locale, faqEntries)
+        }
       />
       <div className="flex gap-10">
       <article className="prose prose-invert min-w-0 flex-1 max-w-none prose-headings:scroll-mt-20 prose-headings:font-semibold prose-h1:text-3xl prose-h1:tracking-tight prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-3 prose-h2:border-b prose-h2:border-white/5 prose-h2:pb-2 prose-h3:text-base prose-h3:mt-8 prose-p:text-ink-200 prose-p:leading-7 prose-a:text-violet-300 hover:prose-a:text-violet-200 prose-strong:text-ink-50 prose-code:text-violet-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-ink-900/80 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-lg prose-li:text-ink-200">

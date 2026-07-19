@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
 import PythonPageEn from '../../en/PythonPageEn'
 
@@ -117,6 +118,13 @@ export default function PythonSdkPage() {
 
   if (locale === 'en') return <PythonPageEn />
 
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'sdk_python_setup',
+    intent: 'openai_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/sdk/python"
@@ -143,12 +151,12 @@ export default function PythonSdkPage() {
       <p className="text-sm text-ink-400">
         请将下方脚本中的 <code>sk-xxx</code> 替换为你在{' '}
         <a
-          href="https://gpt88.cc"
+          href={keyUrl}
           target="_blank"
           rel="noreferrer"
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台「API Keys」页面创建的 Key。
       </p>

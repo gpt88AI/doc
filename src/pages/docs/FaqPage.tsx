@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
+import { reactNodeToPlainText } from '../../components/seo/structuredData'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { cn } from '../../lib/cn'
 import { useLocale } from '../../lib/locale'
 import FaqPageEn from '../en/FaqPageEn'
@@ -19,6 +21,20 @@ import LocalizedCorePage from '../LocalizedCorePage'
 
 type QA = { q: string; a: React.ReactNode; group: string }
 
+const getKeyUrl = buildAgentActivationUrl({
+  locale: 'zh',
+  surface: 'faq_get_key',
+  intent: 'api_access',
+  destination: 'keys',
+})
+
+const configExportUrl = buildAgentActivationUrl({
+  locale: 'zh',
+  surface: 'faq_config_export',
+  intent: 'api_access',
+  destination: 'keys',
+})
+
 const FAQ: QA[] = [
   {
     // Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。
@@ -29,12 +45,12 @@ const FAQ: QA[] = [
       <p>
         访问{' '}
         <a
-          href="https://gpt88.cc"
+          href={getKeyUrl}
           target="_blank"
           rel="noreferrer"
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台 → 「API Keys」页面 → 创建新的 Key。复制后注入到环境变量
         <code>GPT88_API_KEY</code>，再按照{' '}
@@ -52,12 +68,12 @@ const FAQ: QA[] = [
       <p>
         可以。在{' '}
         <a
-          href="https://gpt88.cc"
+          href={configExportUrl}
           target="_blank"
           rel="noreferrer"
           className="text-violet-300 hover:text-violet-200"
         >
-          https://gpt88.cc
+          Agent API Keys
         </a>{' '}
         控制台进入「配置文件导出」，选择 API Key、模型、调用线路和目标工具后即可复制配置或一键导入到 CC Switch；
         详见站内文档{' '}
@@ -247,13 +263,19 @@ const FAQ: QA[] = [
   },
 ]
 
+const FAQ_STRUCTURED_ENTRIES = FAQ.map(item => ({
+  question: item.q,
+  answer: reactNodeToPlainText(item.a),
+}))
+
 function FaqItem({ item, defaultOpen }: { item: QA; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(Boolean(defaultOpen))
   return (
-    <div className="overflow-hidden rounded-lg border border-white/5 bg-white/[0.015]">
+    <div data-faq-item="true" className="overflow-hidden rounded-lg border border-white/5 bg-white/[0.015]">
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
         className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-sm font-medium text-ink-100 hover:bg-white/[0.025]"
       >
         <span>{item.q}</span>
@@ -264,11 +286,12 @@ function FaqItem({ item, defaultOpen }: { item: QA; defaultOpen?: boolean }) {
           )}
         />
       </button>
-      {open ? (
-        <div className="space-y-2 border-t border-white/5 px-4 py-3 text-sm leading-relaxed text-ink-200 [&_a]:text-violet-300 hover:[&_a]:text-violet-200 [&_code]:rounded [&_code]:bg-white/5 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-violet-200">
-          {item.a}
-        </div>
-      ) : null}
+      <div
+        hidden={!open}
+        className="space-y-2 border-t border-white/5 px-4 py-3 text-sm leading-relaxed text-ink-200 [&_a]:text-violet-300 hover:[&_a]:text-violet-200 [&_code]:rounded [&_code]:bg-white/5 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-violet-200"
+      >
+        {item.a}
+      </div>
     </div>
   )
 }
@@ -291,6 +314,7 @@ export default function FaqPage() {
         text: g,
         level: 2,
       }))}
+      faqEntries={FAQ_STRUCTURED_ENTRIES}
     >
       {groups.map((group, gi) => (
         <section key={group}>

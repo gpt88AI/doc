@@ -5,6 +5,7 @@ import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { localizePath, useLocale } from '../../../lib/locale'
 
 const MODEL_ROWS: FieldRow[] = [
@@ -245,6 +246,13 @@ async function createVideo({
 
 export default function GrokVideoPage() {
   const { locale } = useLocale()
+  const keyUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'api_grok_video_auth',
+    intent: 'image_api',
+    destination: 'keys',
+  })
+
   return (
     <DocPage
       path="/docs/api/grok-video/"
@@ -299,7 +307,8 @@ export default function GrokVideoPage() {
 
       <h2 id="key">获取 API Key</h2>
       <p>
-        请在你的控制台创建或复制 API Key。调用时放入请求头：
+        请在 <a href={keyUrl} target="_blank" rel="noreferrer">Agent API Keys</a>{' '}
+        创建或复制 API Key。调用时放入请求头：
       </p>
       <CodeBlock lang="bash" filename="auth-header" code={`Authorization: Bearer <YOUR_API_KEY>`} />
       <p>

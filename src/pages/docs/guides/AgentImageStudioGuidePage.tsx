@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
 import AgentImageStudioGuidePageEn from '../../en/AgentImageStudioGuidePageEn'
 
@@ -84,6 +85,19 @@ export default function AgentImageStudioGuidePage() {
 
   if (locale === 'en') return <AgentImageStudioGuidePageEn />
 
+  const studioIntroUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'agent_image_studio_intro',
+    intent: 'image_api',
+    destination: 'image-studio',
+  })
+  const studioRelatedUrl = buildAgentActivationUrl({
+    locale,
+    surface: 'agent_image_studio_related',
+    intent: 'image_api',
+    destination: 'image-studio',
+  })
+
   return (
     <DocPage
       path="/docs/guides/agent-image-studio"
@@ -106,7 +120,7 @@ export default function AgentImageStudioGuidePage() {
       <Callout tone="info" title="适合非代码图片生产，也适合 API 用户先打样">
         <p>
           <a
-            href="https://agent.gpt88.cc/"
+            href={studioIntroUrl}
             target="_blank"
             rel="noreferrer"
             className="text-violet-300 hover:text-violet-200"
@@ -220,7 +234,7 @@ export default function AgentImageStudioGuidePage() {
       <DocTable
         headers={['需求', '推荐入口', '说明']}
         rows={[
-          ['手动做图、快速打样', <a href="https://agent.gpt88.cc/" target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">agent.gpt88.cc</a>, '直接使用图片工作台，适合运营和设计。'],
+          ['手动做图、快速打样', <a href={studioRelatedUrl} target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">打开 Agent 图片工作台</a>, '直接使用图片工作台，适合运营和设计。'],
           ['代码调用图片生成', <Link to="/docs/api/images/">图片生成 API</Link>, 'OpenAI gpt-image-2 与 Gemini 图片 API 的官方接口说明。'],
           ['Codex 自动生成图片文件', <Link to="/docs/guides/codex-gpt-image-2-skill/">Codex gpt-image-2 Skill</Link>, '适合让 Codex 在项目里直接生成封面、海报和素材。'],
           ['模型能力与接口路径', <Link to="/models/">模型导航</Link>, '查看模型 ID、分类、供应商和接口路径。'],

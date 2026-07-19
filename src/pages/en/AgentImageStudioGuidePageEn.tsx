@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
+import { buildAgentActivationUrl } from '../../lib/activationLinks'
 import { localizePath } from '../../lib/locale'
 
 const ENTRY_POINTS = `Recommended entry points
@@ -38,6 +39,19 @@ const BATCH_CHECKLIST = `Before batch generation:
 5. Batch task names are clear enough for download, filtering, and reuse`
 
 export default function AgentImageStudioGuidePageEn() {
+  const studioIntroUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'agent_image_studio_intro',
+    intent: 'image_api',
+    destination: 'image-studio',
+  })
+  const studioRelatedUrl = buildAgentActivationUrl({
+    locale: 'en',
+    surface: 'agent_image_studio_related',
+    intent: 'image_api',
+    destination: 'image-studio',
+  })
+
   return (
     <DocPage
       path="/docs/guides/agent-image-studio"
@@ -57,8 +71,8 @@ export default function AgentImageStudioGuidePageEn() {
     >
       <Callout tone="info" title="Good for non-code production and for API users doing visual drafts first">
         <p>
-          <a href="https://agent.gpt88.cc/" target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
-            agent.gpt88.cc
+          <a href={studioIntroUrl} target="_blank" rel="noreferrer" className="text-violet-300 hover:text-violet-200">
+            Agent Image Studio
           </a>{' '}
           is the GPT88 image workstation. It combines <code>gpt-image-2</code>, Gemini image models, ecommerce
           image templates, and batch workflows in one visual interface.
@@ -127,7 +141,7 @@ export default function AgentImageStudioGuidePageEn() {
 
       <h2 id="api-skill">Relation to API and Codex skill flows</h2>
       <ul>
-        <li><a href="https://agent.gpt88.cc/" target="_blank" rel="noreferrer">agent.gpt88.cc</a> for manual drafting and visual review.</li>
+        <li><a href={studioRelatedUrl} target="_blank" rel="noreferrer">Open Agent Image Studio</a> for manual drafting and visual review.</li>
         <li><Link to={localizePath('/docs/api/images/', 'en')}>Image Generation API</Link> for direct programmatic use.</li>
         <li><Link to={localizePath('/docs/guides/codex-gpt-image-2-skill/', 'en')}>Codex gpt-image-2 Skill</Link> for file-producing Codex automation.</li>
         <li><Link to={localizePath('/models/', 'en')}>Models</Link> for model IDs and protocol references.</li>
