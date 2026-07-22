@@ -337,6 +337,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Windows Codex 工具调用 524 与 PowerShell 7 修复教程',
+    path: '/docs/guides/codex-windows-powershell7-timeout',
+    description: 'Windows 上 Codex 调用工具时出现 Reconnecting、HTTP 524、中文乱码或 responses stream finished without usable output 时，验证 PowerShell 7、UTF-8 编码、Agent 启动方式和上游线路。',
+    section: '指南',
+  },
+  {
     title: 'Claude Code compaction 上下文超限恢复教程',
     path: '/docs/guides/claude-code-compaction-error',
     description: "解决 Claude Code 执行 /compact 时出现 400 Input exceeds the model's context window：从历史会话较早位置 Fork / Branch 后重新压缩。",

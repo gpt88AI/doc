@@ -28,6 +28,7 @@ export const EcommerceToolsSpecialPage = lazy(() => import('./pages/docs/guides/
 export const GptImage2ServiceNoticePage = lazy(() => import('./pages/docs/guides/GptImage2ServiceNoticePage'))
 export const AgentImageQualityCropGuidePage = lazy(() => import('./pages/docs/guides/AgentImageQualityCropGuidePage'))
 export const CodexToolRecoveryPage = lazy(() => import('./pages/docs/guides/CodexToolRecoveryPage'))
+export const CodexWindowsPowershell7TimeoutPage = lazy(() => import('./pages/docs/guides/CodexWindowsPowershell7TimeoutPage'))
 export const LoopEngineeringGuidePage = lazy(() => import('./pages/docs/guides/LoopEngineeringGuidePage'))
 export const ZeroDowntimeReleasePage = lazy(() => import('./pages/docs/guides/ZeroDowntimeReleasePage'))
 export const GiffgaffGuidePage = lazy(() => import('./pages/docs/guides/GiffgaffGuidePage'))

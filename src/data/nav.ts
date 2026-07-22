@@ -323,6 +323,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'Codex 执行中工具失效时，先检查文件工具是否可用，恢复后从第一步重新落代码',
       },
       {
+        title: 'Windows Codex 524 与 PowerShell 7',
+        path: '/docs/guides/codex-windows-powershell7-timeout/',
+        blurb: 'Windows 上 Codex 调工具出现 524、中文乱码或流式输出异常时，切换并验证 PowerShell 7',
+      },
+      {
         title: 'Claude Code 上下文超限恢复',
         path: '/docs/guides/claude-code-compaction-error/',
         blurb: '解决 /compact 报 400 上下文超限：从历史会话较早位置 Fork / Branch 后重新压缩',
@@ -500,6 +505,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/codex-project-factory-delivery/': 'Codex Project Factory Delivery',
   '/docs/guides/loop-engineering-harness/': 'Loop Engineering & Harness',
   '/docs/guides/codex-tool-recovery/': 'Codex Tool Recovery',
+  '/docs/guides/codex-windows-powershell7-timeout/': 'Windows Codex 524 & PowerShell 7',
   '/docs/guides/claude-code-compaction-error/': 'Claude Code Context Recovery',
   '/docs/guides/zero-downtime-release/': 'Zero-Downtime Release',
   '/docs/guides/giffgaff-sim-guide/': 'giffgaff SIM Guide',
@@ -571,6 +577,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/codex-project-factory-delivery/': 'A Codex delivery system for apps, websites, videos, decks, courses, and other outputs',
   '/docs/guides/loop-engineering-harness/': 'Why Loop Engineering follows Harness and how to apply that pattern inside Codex workflows',
   '/docs/guides/codex-tool-recovery/': 'When Codex tools fail mid-run, check file tools first, then restart code implementation from step one',
+  '/docs/guides/codex-windows-powershell7-timeout/': 'Fix Windows Codex tool-call 524 errors, Chinese encoding failures, and unusable streams by verifying PowerShell 7',
   '/docs/guides/claude-code-compaction-error/': 'Fix Claude Code compaction context errors by branching from an earlier session point before running /compact again',
   '/docs/guides/zero-downtime-release/': 'Production release playbook using blue-green slots, health checks, reverse-proxy traffic switching, and fast rollback',
   '/docs/guides/giffgaff-sim-guide/': 'Detailed guide to activating, retaining, checking, changing, and converting a UK giffgaff SIM to eSIM',

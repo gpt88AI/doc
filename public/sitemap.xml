@@ -337,6 +337,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/guides/codex-windows-powershell7-timeout/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/guides/claude-code-compaction-error/</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>

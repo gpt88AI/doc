@@ -63,6 +63,7 @@
 - [把 Codex 变成项目工厂的交付系统](https://doc.gpt88.cc/docs/guides/codex-project-factory-delivery/): 把 skills、研究、并行和自动化收束成完整交付系统，让同一个 Codex 环境持续产出 App、网站、视频、Deck 和课程。
 - [Loop Engineering 是什么：Harness 之后的下一步](https://doc.gpt88.cc/docs/guides/loop-engineering-harness/): 结合 Smith 铜匠关于 Loop Engineering 的文章主题，解释它和 Prompt Engineering、Harness、Skill、Codex 工作流之间的关系，以及如何在工程实践中落地。
 - [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
+- [Windows Codex 工具调用 524 与 PowerShell 7 修复教程](https://doc.gpt88.cc/docs/guides/codex-windows-powershell7-timeout/): Windows 上 Codex 调用工具时出现 Reconnecting、HTTP 524、中文乱码或 responses stream finished without usable output 时，验证 PowerShell 7、UTF-8 编码、Agent 启动方式和上游线路。
 - [Claude Code compaction 上下文超限恢复教程](https://doc.gpt88.cc/docs/guides/claude-code-compaction-error/): 解决 Claude Code 执行 /compact 时出现 400 Input exceeds the model's context window：从历史会话较早位置 Fork / Branch 后重新压缩。
 - [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
 - [giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程](https://doc.gpt88.cc/docs/guides/giffgaff-sim-guide/): 详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。

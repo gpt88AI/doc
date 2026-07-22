@@ -26,6 +26,7 @@ export { default as EcommerceToolsSpecialPage } from './pages/docs/guides/Ecomme
 export { default as GptImage2ServiceNoticePage } from './pages/docs/guides/GptImage2ServiceNoticePage'
 export { default as AgentImageQualityCropGuidePage } from './pages/docs/guides/AgentImageQualityCropGuidePage'
 export { default as CodexToolRecoveryPage } from './pages/docs/guides/CodexToolRecoveryPage'
+export { default as CodexWindowsPowershell7TimeoutPage } from './pages/docs/guides/CodexWindowsPowershell7TimeoutPage'
 export { default as LoopEngineeringGuidePage } from './pages/docs/guides/LoopEngineeringGuidePage'
 export { default as ZeroDowntimeReleasePage } from './pages/docs/guides/ZeroDowntimeReleasePage'
 export { default as GiffgaffGuidePage } from './pages/docs/guides/GiffgaffGuidePage'

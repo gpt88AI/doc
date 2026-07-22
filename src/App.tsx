@@ -42,6 +42,7 @@ import {
   CodexProjectFactoryDeliveryPage,
   CodexSkillsContextEngineeringPage,
   CodexToolRecoveryPage,
+  CodexWindowsPowershell7TimeoutPage,
   CompleteIntegrationGuidePage,
   ConfigExportPage,
   CursorIntegrationPage,
@@ -166,6 +167,7 @@ export default function App() {
         <Route path="guides/codex-project-factory-delivery" element={route(<CodexProjectFactoryDeliveryPage />)} />
         <Route path="guides/loop-engineering-harness" element={route(<LoopEngineeringGuidePage />)} />
         <Route path="guides/codex-tool-recovery" element={route(<CodexToolRecoveryPage />)} />
+        <Route path="guides/codex-windows-powershell7-timeout" element={route(<CodexWindowsPowershell7TimeoutPage />)} />
         <Route path="guides/claude-code-compaction-error" element={<ClaudeCodeCompactionErrorPage />} />
         <Route path="guides/zero-downtime-release" element={route(<ZeroDowntimeReleasePage />)} />
         <Route path="guides/giffgaff-sim-guide" element={route(<GiffgaffGuidePage />)} />
