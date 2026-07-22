@@ -52,6 +52,7 @@ import {
   GiffgaffGuidePage,
   Gpt88AiProxyPage,
   Gpt88DocsMapPage,
+  Gpt88MigrationGuidePage,
   Gpt88TutorialPage,
   GptImage2ServiceNoticePage,
   GrokVideoPage,
@@ -139,6 +140,7 @@ export default function App() {
         <Route path="guides/config-export" element={route(<ConfigExportPage />)} />
         <Route path="guides/gpt88-ai-proxy" element={route(<Gpt88AiProxyPage />)} />
         <Route path="guides/gpt88-docs-map" element={route(<Gpt88DocsMapPage />)} />
+        <Route path="guides/gpt88-migration" element={route(<Gpt88MigrationGuidePage />)} />
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
         <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
         <Route path="guides/complete-integration" element={route(<CompleteIntegrationGuidePage />)} />

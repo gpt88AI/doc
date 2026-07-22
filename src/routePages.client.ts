@@ -4,6 +4,7 @@ export const ConfigExportPage = lazy(() => import('./pages/docs/guides/ConfigExp
 export const GrokVideoPage = lazy(() => import('./pages/docs/api/GrokVideoPage'))
 export const Gpt88AiProxyPage = lazy(() => import('./pages/docs/guides/Gpt88AiProxyPage'))
 export const Gpt88DocsMapPage = lazy(() => import('./pages/docs/guides/Gpt88DocsMapPage'))
+export const Gpt88MigrationGuidePage = lazy(() => import('./pages/docs/guides/Gpt88MigrationGuidePage'))
 export const Gpt88TutorialPage = lazy(() => import('./pages/docs/guides/Gpt88TutorialPage'))
 export const CompleteIntegrationGuidePage = lazy(() => import('./pages/docs/guides/CompleteIntegrationGuidePage'))
 export const WorkrallyOverviewPage = lazy(() => import('./pages/docs/guides/WorkrallyOverviewPage'))

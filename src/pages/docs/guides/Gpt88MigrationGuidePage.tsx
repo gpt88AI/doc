@@ -1,0 +1,344 @@
+import { Link } from 'react-router-dom'
+import { DocPage } from '../../../components/layout/DocPage'
+import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { Callout } from '../../../components/ui/Callout'
+
+const NEW_SITE_LINKS = `新站首页       https://agent.gpt88.cc/home
+注册入口       https://agent.gpt88.cc/register
+登录入口       https://agent.gpt88.cc/login
+API Keys       https://agent.gpt88.cc/keys      # 需要登录
+模型广场       https://agent.gpt88.cc/model-square
+价格对比       https://agent.gpt88.cc/pricing
+技术文档       https://doc.gpt88.cc`
+
+const MIGRATION_FLOW = `1. 打开旧站，确认是否看到“新站已上线”的迁移提示
+2. 前往 https://agent.gpt88.cc
+3. 新用户注册，老用户在新站登录
+4. 登录后核对账户、余额和可用入口
+5. 需要开发接入时，再进入 API Keys 和技术文档`
+
+const CONSOLE_FLOW = `登录成功
+  ├─ 仪表盘 /dashboard       核对账户状态、余额和快捷入口
+  ├─ 充值/订阅 /purchase      充值余额或查看订阅方案
+  ├─ API 密钥 /keys           创建 Key，选择分组并确认 API 端点
+  ├─ 模型广场 /model-square   比较公开分组、倍率和模型范围
+  ├─ 使用记录 /usage          检查请求、用量、消费和筛选条件
+  └─ 技术文档 doc.gpt88.cc    配置 Codex、Claude Code 和其他工具`
+
+const DONE_CHECKLIST = `[ ] 我知道 gpt88.cc 旧站和 agent.gpt88.cc 新站的职责差异
+[ ] 我已在新站完成注册或登录
+[ ] 我已阅读并同意新站当前服务条款（如页面要求）
+[ ] 我能在新站找到账户和余额入口
+[ ] 我知道 API Keys 需要登录后访问
+[ ] 我知道标准 API 使用 https://api.gpt88.cc
+[ ] 我知道图片 / 视频直连使用 https://img.gpt88.cc
+[ ] 我已把 doc.gpt88.cc 保存为技术文档入口`
+
+function GuideFigure({
+  src,
+  alt,
+  caption,
+}: {
+  src: string
+  alt: string
+  caption: string
+}) {
+  return (
+    <figure className="not-prose my-7 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+      <img src={src} alt={alt} loading="lazy" className="w-full object-cover" />
+      <figcaption className="border-t border-white/10 px-4 py-3 text-xs leading-5 text-ink-400">
+        {caption}
+      </figcaption>
+    </figure>
+  )
+}
+
+function SiteTable() {
+  const rows = [
+    ['gpt88.cc', '旧站入口 / 迁移公告', '看到迁移提示后，账户、余额和新服务以新站为准。'],
+    ['agent.gpt88.cc', '新站账户与产品入口', '注册、登录、账户、余额、图片工作台和新站公告。'],
+    ['agent.gpt88.cc/keys', 'API Key 管理', '登录后创建、查看和管理 API Key。未登录会回到登录页。'],
+    ['agent.gpt88.cc/model-square', '公开模型广场', '查看公开分组、倍率、模型范围和模型类型。'],
+    ['agent.gpt88.cc/pricing', '价格对比', '查看公开报价和预算估算；实时数值以页面当前显示为准。'],
+    ['doc.gpt88.cc', '技术文档', '快速开始、API、SDK、Codex、Claude Code 和其他工具接入。'],
+    ['api.gpt88.cc', '标准 API', 'OpenAI / Claude 等标准 API 的统一调用地址。'],
+    ['img.gpt88.cc', '图片 / 视频直连', '图片和视频长任务使用的媒体 API 地址。'],
+  ]
+
+  return (
+    <div className="not-prose my-7 overflow-x-auto rounded-xl border border-white/10">
+      <table className="w-full min-w-[46rem] text-left text-sm">
+        <thead className="bg-white/[0.04] text-xs uppercase tracking-wide text-ink-400">
+          <tr>
+            <th className="px-4 py-3 font-medium">入口</th>
+            <th className="px-4 py-3 font-medium">负责什么</th>
+            <th className="px-4 py-3 font-medium">新手怎么理解</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(([entry, role, note], index) => (
+            <tr key={entry} className={index % 2 ? 'border-t border-white/10 bg-white/[0.015]' : 'border-t border-white/10'}>
+              <td className="px-4 py-3 align-top font-mono text-xs text-cyan-200">{entry}</td>
+              <td className="px-4 py-3 align-top font-medium text-ink-100">{role}</td>
+              <td className="px-4 py-3 align-top leading-6 text-ink-300">{note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+function ConsoleEntryTable() {
+  const rows = [
+    ['仪表盘', '/dashboard', '确认登录状态、账户信息、余额概览和快捷操作。'],
+    ['充值/订阅', '/purchase', '选择充值或订阅，查看金额输入、支付方式和当前计费状态。'],
+    ['API 密钥', '/keys', '创建和管理 Key，选择分组，查看标准 API 与图片/视频长任务端点。'],
+    ['模型广场', '/model-square', '按平台、分组名或模型名比较公开分组、倍率和模型范围。'],
+    ['使用记录', '/usage', '按时间、Key、模型、分组和计费类型核对请求与消费。'],
+  ]
+
+  return (
+    <div className="not-prose my-7 overflow-x-auto rounded-xl border border-white/10">
+      <table className="w-full min-w-[46rem] text-left text-sm">
+        <thead className="bg-white/[0.04] text-xs uppercase tracking-wide text-ink-400">
+          <tr>
+            <th className="px-4 py-3 font-medium">控制台入口</th>
+            <th className="px-4 py-3 font-medium">地址</th>
+            <th className="px-4 py-3 font-medium">登录后用来做什么</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(([name, path, note], index) => (
+            <tr key={path} className={index % 2 ? 'border-t border-white/10 bg-white/[0.015]' : 'border-t border-white/10'}>
+              <td className="px-4 py-3 align-top font-medium text-ink-100">{name}</td>
+              <td className="px-4 py-3 align-top font-mono text-xs text-cyan-200">agent.gpt88.cc{path}</td>
+              <td className="px-4 py-3 align-top leading-6 text-ink-300">{note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+export default function Gpt88MigrationGuidePage() {
+  return (
+    <DocPage
+      path="/docs/guides/gpt88-migration"
+      title="gpt88.cc 迁移新站新手教程"
+      description="从旧站迁移到 agent.gpt88.cc：认识新旧入口、完成注册或登录、核对账户入口，并找到 API、模型广场和技术文档。"
+      headings={[
+        { id: 'goal', text: '先看结论', level: 2 },
+        { id: 'migration-flow', text: '5 步完成迁移', level: 2 },
+        { id: 'old-site', text: '第一步：识别旧站迁移提示', level: 2 },
+        { id: 'new-site', text: '第二步：进入 agent.gpt88.cc', level: 2 },
+        { id: 'register', text: '第三步：新用户注册', level: 2 },
+        { id: 'login', text: '第四步：老用户登录', level: 2 },
+        { id: 'logged-in', text: '登录后：按任务进入控制台', level: 2 },
+        { id: 'site-map', text: '第五步：记住新站入口地图', level: 2 },
+        { id: 'after-migration', text: '迁移后检查清单', level: 2 },
+        { id: 'pitfalls', text: '常见误区', level: 2 },
+        { id: 'next', text: '下一步阅读顺序', level: 2 },
+      ]}
+    >
+      <Callout tone="info" title="这篇教程只解决一个问题：从旧站正确迁移到新站">
+        <p>
+          现在访问 <code>gpt88.cc</code>，页面会提示前往{' '}
+          <a href="https://agent.gpt88.cc/home" target="_blank" rel="noreferrer">
+            agent.gpt88.cc
+          </a>{' '}
+          继续使用最新的账户、余额和 AI 服务。新手先完成迁移，再继续看 API Key、充值和工具接入教程。
+        </p>
+      </Callout>
+
+      <h2 id="goal">先看结论</h2>
+      <p>
+        不要把“旧站还能打开”理解成“旧站仍然是所有操作的入口”。当前最稳妥的思路是：
+        <strong>旧站负责告诉你迁移，新站负责账户和服务，文档站负责技术接入。</strong>
+      </p>
+      <p>
+        迁移完成的判断标准是：你能在新站注册或登录，能找到账户相关入口，并且知道下一步应该去哪个页面。
+        登录后的充值、创建 API Key、选择模型分组和 Codex 配置属于后续操作，按下面的顺序进行更容易排查问题。
+      </p>
+
+      <h2 id="migration-flow">5 步完成迁移</h2>
+      <CodeBlock lang="text" filename="migration-flow" code={MIGRATION_FLOW} />
+      <p>
+        迁移时不要同时排查模型、线路、客户端和 API Key。先确认站点入口正确，再做账户操作，最后才进入技术接入。
+      </p>
+
+      <h2 id="old-site">第一步：识别旧站迁移提示</h2>
+      <p>
+        打开 <a href="https://gpt88.cc/" target="_blank" rel="noreferrer">gpt88.cc</a> 后，
+        如果看到顶部的“新站已上线”提示，就不要继续在旧站寻找新的注册或账户入口。
+        点击提示中的“前往新站”，或者直接打开 <code>https://agent.gpt88.cc</code>。
+      </p>
+      <GuideFigure
+        src="/images/guides/gpt88-onboarding/legacy-site-migration.png"
+        alt="gpt88.cc 旧站顶部的新站迁移提示"
+        caption="旧站页面会把用户引导到 agent.gpt88.cc；账户、余额和新服务以新站当前页面为准。"
+      />
+      <Callout tone="warn" title="服务区域和条款以新站当前公告为准">
+        <p>
+          新注册、充值和生成式 AI 服务可能受支持地区、服务条款或账户资格限制。遇到无法注册、无法充值或入口不可见时，
+          先查看新站当前公告和{' '}
+          <a href="https://agent.gpt88.cc/legal/supported-regions" target="_blank" rel="noreferrer">
+            支持地区
+          </a>{' '}
+          页面，不要反复刷新旧站。
+        </p>
+      </Callout>
+
+      <h2 id="new-site">第二步：进入 agent.gpt88.cc</h2>
+      <p>
+        新站首页会把大模型广场、价格对比、登录和图片工作台放在同一套入口里。你现在只需要记住两个按钮：
+        新用户点“免费注册使用”，已有账户点“登录”。
+      </p>
+      <GuideFigure
+        src="/images/guides/gpt88-onboarding/agent-home.png"
+        alt="agent.gpt88.cc 新站首页"
+        caption="新站首页：从这里进入注册、登录、模型广场和价格对比。"
+      />
+      <CodeBlock lang="text" filename="new-site-entries" code={NEW_SITE_LINKS} />
+
+      <h2 id="register">第三步：新用户注册</h2>
+      <p>
+        打开{' '}
+        <a href="https://agent.gpt88.cc/register" target="_blank" rel="noreferrer">
+          agent.gpt88.cc/register
+        </a>{' '}
+        注册页面，按页面要求填写邮箱和密码。当前注册页还可能提供可选优惠码。
+      </p>
+      <GuideFigure
+        src="/images/guides/gpt88-onboarding/agent-register-terms.png"
+        alt="agent.gpt88.cc 注册页面"
+        caption="注册页面会显示邮箱、密码和可选优惠码；完整表单以新站当前页面为准。"
+      />
+      <ol>
+        <li>输入你能正常收信的邮箱，后续账户验证和找回密码需要用到它。</li>
+        <li>设置至少 6 个字符的密码，不要复用邮箱密码或其他平台密码。</li>
+        <li>先打开并阅读最新服务条款、隐私政策和支持地区说明。</li>
+        <li>同意条款后，继续按钮和其他登录方式才会启用。</li>
+        <li>完成注册后，确认页面已进入新站账户或按提示完成邮箱验证。</li>
+      </ol>
+      <Callout tone="tip" title="为什么按钮一开始不能点？">
+        <p>
+          当前页面在未同意最新条款前，会暂时禁用邮箱、密码和快捷登录控件。这是页面状态，不是浏览器或账号故障；
+          先阅读条款并按页面完成同意，再继续注册。
+        </p>
+      </Callout>
+
+      <h2 id="login">第四步：老用户登录</h2>
+      <p>
+        已有账户直接打开{' '}
+        <a href="https://agent.gpt88.cc/login" target="_blank" rel="noreferrer">
+          agent.gpt88.cc/login
+        </a>{' '}
+        登录。不要把密码、验证码或 API Key 粘贴到公开文档、截图或聊天中。
+      </p>
+      <GuideFigure
+        src="/images/guides/gpt88-onboarding/agent-login-terms.png"
+        alt="agent.gpt88.cc 登录页面"
+        caption="登录页面：输入新站账户邮箱和密码；如果页面要求先同意最新条款，按页面提示完成。"
+      />
+      <ol>
+        <li>确认地址栏是 <code>agent.gpt88.cc</code>，不是相似域名。</li>
+        <li>输入新站账户邮箱和密码。</li>
+        <li>如果登录页提示条款更新，先查看相关文档并按页面完成确认。</li>
+        <li>登录成功后，观察是否回到了你原本要访问的页面；例如访问 API Keys 时会回到 Key 管理页。</li>
+      </ol>
+      <p>
+        旧站和新站的账户状态不要凭感觉判断。登录成功后，以新站当前显示的账户、余额和可用入口为准；
+        如果无法登录，先用“忘记密码”流程或联系客服，不要连续创建多个重复账户。
+      </p>
+
+      <h2 id="logged-in">登录后：按任务进入控制台</h2>
+      <p>
+        我已用登录后的控制台核对过以下入口。控制台页面会显示你的账户专属数据，因此教程只记录页面结构和操作顺序，
+        不展示任何用户名、余额、完整 API Key 或订单信息。
+      </p>
+      <CodeBlock lang="text" filename="logged-in-console-flow" code={CONSOLE_FLOW} />
+      <ConsoleEntryTable />
+      <h3>先充值，还是先创建 Key？</h3>
+      <ol>
+        <li>
+          <strong>只想熟悉界面：</strong>先打开{' '}
+          <a href="https://agent.gpt88.cc/dashboard" target="_blank" rel="noreferrer">仪表盘</a>、
+          <a href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">模型广场</a>和{' '}
+          <a href="https://agent.gpt88.cc/pricing" target="_blank" rel="noreferrer">价格对比</a>，这些页面可以先用于认路和选型。
+        </li>
+        <li>
+          <strong>准备调用 API：</strong>先在{' '}
+          <a href="https://agent.gpt88.cc/purchase" target="_blank" rel="noreferrer">充值/订阅</a>确认账户有可用额度，
+          再打开 <a href="https://agent.gpt88.cc/keys" target="_blank" rel="noreferrer">API 密钥</a>创建一个按项目命名的 Key。
+        </li>
+        <li>
+          <strong>准备配置 Codex：</strong>先完成 Key 创建和一次最短 API 请求，再按照{' '}
+          <Link to="/docs/integrations/dev/codex-cli/">Codex CLI 接入</Link>配置工具。这样可以判断问题来自账户、Key、模型分组，还是本地配置。
+        </li>
+      </ol>
+      <h3>API 密钥页面怎么看？</h3>
+      <p>
+        登录后打开 <code>/keys</code>，页面顶部有“创建密钥”、刷新、列设置、名称或 Key 搜索，以及分组和状态筛选。
+        页面同时给出两个常用端点：标准 API 使用 <code>https://api.gpt88.cc</code>，图片和视频等长任务使用{' '}
+        <code>https://img.gpt88.cc</code>。创建 Key 后，只在生成当下保存完整密钥；日后页面通常只显示脱敏值。
+      </p>
+      <h3>模型分组和用量怎么核对？</h3>
+      <p>
+        <a href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">模型广场</a>是公开目录，
+        可按平台、分组名、渠道名或模型名定位分组，并比较倍率、模型数量和模型范围。选定分组后，回到 API 密钥页面确认 Key 使用的分组，
+        再到 <a href="https://agent.gpt88.cc/usage" target="_blank" rel="noreferrer">使用记录</a>按时间、API Key、模型、分组、类型和计费类型筛选，
+        检查请求是否真正落到了预期线路。
+      </p>
+      <Callout tone="warn" title="登录后的页面不要直接截图公开">
+        <p>
+          余额、用户名、订单和 API Key 都是账户数据。分享排障截图前，先遮住完整 Key、邮箱、用户标识、余额和支付信息；
+          复制端点时也要确认没有把认证请求头一起复制出来。
+        </p>
+      </Callout>
+
+      <h2 id="site-map">第五步：记住新站入口地图</h2>
+      <SiteTable />
+      <p>
+        这里有一个容易混淆的点：<code>agent.gpt88.cc</code> 是账户和产品入口，
+        <code>api.gpt88.cc</code> 是程序调用地址。不要把 API 地址当成浏览器登录页面，也不要把网页登录密码当成 API Key。
+      </p>
+
+      <h2 id="after-migration">迁移后检查清单</h2>
+      <p>完成注册或登录后，按下面顺序检查。每一步都应该得到一个明确结果：</p>
+      <ol>
+        <li><strong>账户：</strong>确认登录的是正确邮箱，个人菜单或账户区域可以正常打开。</li>
+        <li><strong>余额：</strong>找到新站余额或计费入口；具体金额和可用套餐以当前控制台为准。</li>
+        <li><strong>模型：</strong>打开模型广场，先按平台、分组名或模型名搜索，不要凭记忆手打模型 ID。</li>
+        <li><strong>文档：</strong>需要 API 接入时打开 <Link to="/docs/quickstart/">快速开始</Link>，不要从旧站公告反推参数。</li>
+        <li><strong>工具：</strong>需要 Codex、Claude Code、Cursor 或 CC-Switch 时，进入对应的集成教程。</li>
+      </ol>
+
+      <h2 id="pitfalls">常见误区</h2>
+      <ul>
+        <li><strong>误区 1：旧站能打开，所以继续在旧站充值。</strong>先看是否有迁移提示；账户和余额操作以新站为准。</li>
+        <li><strong>误区 2：把 agent.gpt88.cc 当成 API Base URL。</strong>它是网站入口，标准 API 应使用 <code>https://api.gpt88.cc</code>。</li>
+        <li><strong>误区 3：把网页登录密码当成 API Key。</strong>API Key 要在登录后的 API Keys 页面单独创建和管理。</li>
+        <li><strong>误区 4：一上来就创建很多 Key。</strong>先完成迁移和账户确认，再按项目或工具用途创建独立 Key。</li>
+        <li><strong>误区 5：看到模型广场的公开分组就认为账号一定有权限。</strong>公开分组是选型参考，最终可用模型和权限以你的 Key/控制台为准。</li>
+      </ul>
+
+      <h2 id="next">下一步阅读顺序</h2>
+      <p>迁移完成后，建议按下面顺序继续：</p>
+      <ol>
+        <li><Link to="/docs/auth/">认证与计费</Link>：理解 API Key、余额、用量和分组倍率。</li>
+        <li><Link to="/docs/guides/complete-integration/">完整接入手册</Link>：从 Key、Base URL 到第一次请求。</li>
+        <li><Link to="/docs/guides/config-export/">配置文件导出</Link>：把 Key、模型和线路打包给不同工具。</li>
+        <li><Link to="/docs/integrations/dev/codex-cli/">Codex CLI 接入</Link>：配置 API Key 模式并验证文件工具。</li>
+      </ol>
+      <CodeBlock lang="text" filename="migration-done" code={DONE_CHECKLIST} />
+      <Callout tone="tip" title="迁移完成的最小标准">
+        <p>
+          你已经能在新站完成注册或登录，知道账户和 API 的入口分别在哪里，并能从文档站继续完成后续接入。
+          这时再做充值、创建 API Key 或配置 Codex，排障成本最低。
+        </p>
+      </Callout>
+    </DocPage>
+  )
+}

@@ -181,6 +181,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'gpt88.cc 迁移新站新手教程',
+    path: '/docs/guides/gpt88-migration',
+    description: '从旧站迁移到 agent.gpt88.cc，完成注册、登录、账户入口核对，并找到 API、模型广场和技术文档。',
+    section: '指南',
+  },
+  {
     title: 'gpt88.cc 通用教程',
     path: '/docs/guides/gpt88-tutorial',
     description: 'Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。',

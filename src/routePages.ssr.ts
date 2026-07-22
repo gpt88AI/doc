@@ -2,6 +2,7 @@ export { default as ConfigExportPage } from './pages/docs/guides/ConfigExportPag
 export { default as GrokVideoPage } from './pages/docs/api/GrokVideoPage'
 export { default as Gpt88AiProxyPage } from './pages/docs/guides/Gpt88AiProxyPage'
 export { default as Gpt88DocsMapPage } from './pages/docs/guides/Gpt88DocsMapPage'
+export { default as Gpt88MigrationGuidePage } from './pages/docs/guides/Gpt88MigrationGuidePage'
 export { default as Gpt88TutorialPage } from './pages/docs/guides/Gpt88TutorialPage'
 export { default as CompleteIntegrationGuidePage } from './pages/docs/guides/CompleteIntegrationGuidePage'
 export { default as WorkrallyOverviewPage } from './pages/docs/guides/WorkrallyOverviewPage'

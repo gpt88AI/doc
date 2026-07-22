@@ -193,6 +193,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '把主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图',
       },
       {
+        title: '迁移新站新手教程',
+        path: '/docs/guides/gpt88-migration/',
+        blurb: '从旧站迁移到 agent.gpt88.cc，完成注册、登录和入口核对',
+      },
+      {
         title: '通用教程',
         path: '/docs/guides/gpt88-tutorial/',
         blurb: 'Claude 与 OpenAI 通用接入、模型选择、线路选择、工具接入',
@@ -470,6 +475,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/config-export/': 'Config Export',
   '/docs/guides/gpt88-ai-proxy/': 'gpt88 AI Gateway',
   '/docs/guides/gpt88-docs-map/': 'gpt88 Docs Map',
+  '/docs/guides/gpt88-migration/': 'gpt88 New-Site Migration Guide',
   '/docs/guides/gpt88-tutorial/': 'General Tutorial',
   '/docs/guides/complete-integration/': 'Complete Integration Guide',
   '/docs/guides/workrally-overview/': 'WorkRally Skills Overview',
@@ -540,6 +546,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/config-export/': 'Package API keys, models, and routes for Claude Code, Cursor, Python SDK, and similar tools',
   '/docs/guides/gpt88-ai-proxy/': 'Search- and AI-engine-friendly introduction to the gpt88 AI gateway, integration flow, base URLs, and common questions',
   '/docs/guides/gpt88-docs-map/': 'A complete map of the main site, image workspace, docs site, accelerated image domains, and tutorial categories',
+  '/docs/guides/gpt88-migration/': 'Beginner guide for moving from the legacy site to agent.gpt88.cc, including registration, login, and entry-point checks',
   '/docs/guides/gpt88-tutorial/': 'General Claude and OpenAI integration, model choice, route choice, and tool setup',
   '/docs/guides/complete-integration/': 'End-to-end guide from API key and base URL setup to usage verification and troubleshooting',
   '/docs/guides/workrally-overview/': 'Overview of Tencent/workrally skills and references, including install flow, capability boundaries, and reading order',
