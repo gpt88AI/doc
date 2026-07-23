@@ -24,6 +24,7 @@ import { LOCALE_CONFIG, LocaleProvider, SUPPORTED_LOCALES } from './lib/locale'
 import {
   AgentImageQualityCropGuidePage,
   AgentImageStudioGuidePage,
+  ApiKeyFirstRequestFailedPage,
   AiVideoStoryboardGuidePage,
   AnythingLlmPage,
   CcSwitchIntegrationPage,
@@ -36,6 +37,7 @@ import {
   CodexFrontendTasteSkillPage,
   CodexGpt55SystemOverviewPage,
   CodexGptImage2SkillPage,
+  CodexKnowledgeWorkGuidePage,
   CodexParallelAutomationWorkflowPage,
   CodexPluginsOauthPage,
   CodexPluginsResearchWorkflowPage,
@@ -62,6 +64,8 @@ import {
   LoopEngineeringGuidePage,
   ModelDetailPage,
   ModelsPage,
+  ModelPriceComparisonPage,
+  OpenaiSdkSeoPage,
   UsVirtualCardGuidePage,
   VideoCreatorToolsWorkflowPage,
   VideoGenerationSkillsAiVideoDirectorPage,
@@ -135,6 +139,7 @@ export default function App() {
         <Route path="api/errors" element={<ErrorsPage />} />
 
         <Route path="sdk/curl" element={<CurlSdkPage />} />
+        <Route path="sdk/openai-sdk" element={route(<OpenaiSdkSeoPage />)} />
         <Route path="sdk/python" element={<PythonSdkPage />} />
         <Route path="sdk/nodejs" element={<NodejsSdkPage />} />
 
@@ -142,6 +147,8 @@ export default function App() {
         <Route path="guides/gpt88-ai-proxy" element={route(<Gpt88AiProxyPage />)} />
         <Route path="guides/gpt88-docs-map" element={route(<Gpt88DocsMapPage />)} />
         <Route path="guides/gpt88-migration" element={route(<Gpt88MigrationGuidePage />)} />
+        <Route path="guides/model-price-comparison" element={route(<ModelPriceComparisonPage />)} />
+        <Route path="guides/api-key-first-request-failed" element={route(<ApiKeyFirstRequestFailedPage />)} />
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
         <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
         <Route path="guides/complete-integration" element={route(<CompleteIntegrationGuidePage />)} />
@@ -161,6 +168,7 @@ export default function App() {
         <Route path="guides/codex-gpt-image-2-skill" element={route(<CodexGptImage2SkillPage />)} />
         <Route path="guides/codex-frontend-taste-skill" element={route(<CodexFrontendTasteSkillPage />)} />
         <Route path="guides/codex-gpt55-system-overview" element={route(<CodexGpt55SystemOverviewPage />)} />
+        <Route path="guides/codex-knowledge-work" element={route(<CodexKnowledgeWorkGuidePage />)} />
         <Route path="guides/codex-skills-context-engineering" element={route(<CodexSkillsContextEngineeringPage />)} />
         <Route path="guides/codex-plugins-research-workflow" element={route(<CodexPluginsResearchWorkflowPage />)} />
         <Route path="guides/codex-parallel-automation-workflow" element={route(<CodexParallelAutomationWorkflowPage />)} />

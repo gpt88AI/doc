@@ -3,6 +3,8 @@ import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
 import { useLocale } from '../../../lib/locale'
+import { SeoIntentSections } from '../../../components/seo/SeoIntentSections'
+import { seoIntentHeadings } from '../../../components/seo/SeoIntentMeta'
 import ErrorsPageEn from '../../en/ErrorsPageEn'
 
 /**
@@ -185,13 +187,14 @@ export default function ErrorsPage() {
   return (
     <DocPage
       path="/docs/api/errors"
-      title="错误码"
-      description="gpt88.cc 把上游 provider 的错误统一映射为稳定的 HTTP 状态与业务 code，方便客户端做统一处理。"
+      title="OpenAI 兼容接口常见错误排查"
+      description="从 HTTP 状态、错误 code、request_id 和重试策略定位 OpenAI 兼容接口问题。"
       headings={[
         { id: 'shape', text: '错误响应结构', level: 2 },
         { id: 'http', text: 'HTTP 状态对照', level: 2 },
         { id: 'retry', text: '重试策略', level: 2 },
         { id: 'request-id', text: '排障：使用 request_id', level: 2 },
+        ...seoIntentHeadings('openai-compatible-errors'),
       ]}
     >
       <h2 id="shape">错误响应结构</h2>
@@ -305,6 +308,7 @@ export default function ErrorsPage() {
         <Link to="/docs/faq/">FAQ</Link>
         提到的任何排查流程中都需要这个 ID——它能让我们直接定位到具体一次请求的链路日志。
       </p>
+      <SeoIntentSections intent="openai-compatible-errors" />
     </DocPage>
   )
 }

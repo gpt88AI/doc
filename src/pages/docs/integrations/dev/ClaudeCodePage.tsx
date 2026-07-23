@@ -3,6 +3,8 @@ import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
 import { useLocale } from '../../../../lib/locale'
+import { SeoIntentSections } from '../../../../components/seo/SeoIntentSections'
+import { seoIntentHeadings } from '../../../../components/seo/SeoIntentMeta'
 import ClaudeCodePageEn from '../../../en/ClaudeCodePageEn'
 
 const SETUP = `1. 安装 Claude Code
@@ -37,8 +39,8 @@ export default function ClaudeCodeIntegrationPage() {
   return (
     <DocPage
       path="/docs/integrations/dev/claude-code"
-      title="Claude Code 接入 gpt88.cc"
-      description="Claude Code 通过 gpt88.cc 走模型调用、OAuth 与插件能力的接入说明。"
+      title="Claude Code 使用 GPT88 API"
+      description="把 Claude Code 配置为 OpenAI 兼容 API，快速验证 API Key、模型和端点。"
       headings={[
         { id: 'overview', text: '先理解这页讲什么', level: 2 },
         { id: 'prepare', text: '准备工作', level: 2 },
@@ -47,6 +49,7 @@ export default function ClaudeCodeIntegrationPage() {
         { id: 'verify', text: '验证方法', level: 2 },
         { id: 'troubleshoot', text: '排障清单', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
+        ...seoIntentHeadings('claude-code'),
       ]}
     >
       <Callout tone="warn" title="先分清两种模式">
@@ -91,6 +94,7 @@ export default function ClaudeCodeIntegrationPage() {
         <li><Link to="/docs/guides/codex-plugins-oauth/">查看 Codex 插件 OAuth 教程</Link></li>
         <li><Link to="/docs/integrations/">返回集成总览</Link></li>
       </ul>
+      <SeoIntentSections intent="claude-code" />
     </DocPage>
   )
 }

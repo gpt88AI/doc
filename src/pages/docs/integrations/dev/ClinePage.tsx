@@ -3,6 +3,8 @@ import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
 import { useLocale } from '../../../../lib/locale'
+import { SeoIntentSections } from '../../../../components/seo/SeoIntentSections'
+import { seoIntentHeadings } from '../../../../components/seo/SeoIntentMeta'
 import ClinePageEn from '../../../en/ClinePageEn'
 
 const SETUP = `Provider: OpenAI Compatible
@@ -35,13 +37,14 @@ export default function ClineIntegrationPage() {
   return (
     <DocPage
       path="/docs/integrations/dev/cline"
-      title="Cline 接入 gpt88.cc"
-      description="Cline 的模型接入与 Agent 工作流配置说明。"
+      title="Cline 配置 OpenAI 兼容 API"
+      description="Cline 自定义 OpenAI 兼容提供商的配置、最短请求和常见错误排查。"
       headings={[
         { id: 'setup', text: '配置方法', level: 2 },
         { id: 'verify', text: '验证方式', level: 2 },
         { id: 'troubleshoot', text: '排障清单', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
+        ...seoIntentHeadings('cline'),
       ]}
     >
       <Callout tone="info" title="先跑通小任务">
@@ -66,6 +69,7 @@ export default function ClineIntegrationPage() {
       <ul>
         <li><Link to="/docs/integrations/">返回集成总览</Link></li>
       </ul>
+      <SeoIntentSections intent="cline" />
     </DocPage>
   )
 }

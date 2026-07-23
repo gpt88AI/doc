@@ -3,6 +3,8 @@ import { DocPage } from '../../../../components/layout/DocPage'
 import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { Callout } from '../../../../components/ui/Callout'
 import { useLocale } from '../../../../lib/locale'
+import { SeoIntentSections } from '../../../../components/seo/SeoIntentSections'
+import { seoIntentHeadings } from '../../../../components/seo/SeoIntentMeta'
 import CursorPageEn from '../../../en/CursorPageEn'
 
 const SETUP = `OpenAI API
@@ -38,14 +40,15 @@ export default function CursorIntegrationPage() {
   return (
     <DocPage
       path="/docs/integrations/dev/cursor"
-      title="Cursor 接入 gpt88.cc"
-      description="在 Cursor 中使用 gpt88.cc 作为 OpenAI Compatible 提供商。"
+      title="Cursor 配置 GPT88 API"
+      description="在 Cursor 中使用 GPT88 的 OpenAI 兼容接口，避免把网页登录密码当作 API Key。"
       headings={[
         { id: 'prepare', text: '准备工作', level: 2 },
         { id: 'setup', text: '配置方法', level: 2 },
         { id: 'verify', text: '验证方法', level: 2 },
         { id: 'troubleshoot', text: '排障清单', level: 2 },
         { id: 'next', text: '下一步', level: 2 },
+        ...seoIntentHeadings('cursor'),
       ]}
     >
       <Callout tone="info" title="Cursor 推荐用 OpenAI Compatible">
@@ -78,6 +81,7 @@ export default function CursorIntegrationPage() {
       <ul>
         <li><Link to="/docs/integrations/">返回集成总览</Link></li>
       </ul>
+      <SeoIntentSections intent="cursor" />
     </DocPage>
   )
 }

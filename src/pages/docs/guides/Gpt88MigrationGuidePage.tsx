@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import { SeoIntentSections } from '../../../components/seo/SeoIntentSections'
+import { seoIntentHeadings } from '../../../components/seo/SeoIntentMeta'
 
 const NEW_SITE_LINKS = `新站首页       https://agent.gpt88.cc/home
 注册入口       https://agent.gpt88.cc/register
@@ -126,8 +128,8 @@ export default function Gpt88MigrationGuidePage() {
   return (
     <DocPage
       path="/docs/guides/gpt88-migration"
-      title="gpt88.cc 迁移新站新手教程"
-      description="从旧站迁移到 agent.gpt88.cc：认识新旧入口、完成注册或登录、核对账户入口，并找到 API、模型广场和技术文档。"
+      title="旧 gpt88.cc 账户迁移到 Agent"
+      description="从旧 gpt88.cc 入口迁移到 Agent，完成登录、API Key 创建和第一次成功请求。"
       headings={[
         { id: 'goal', text: '先看结论', level: 2 },
         { id: 'migration-flow', text: '5 步完成迁移', level: 2 },
@@ -140,6 +142,7 @@ export default function Gpt88MigrationGuidePage() {
         { id: 'after-migration', text: '迁移后检查清单', level: 2 },
         { id: 'pitfalls', text: '常见误区', level: 2 },
         { id: 'next', text: '下一步阅读顺序', level: 2 },
+        ...seoIntentHeadings('legacy-migration'),
       ]}
     >
       <Callout tone="info" title="这篇教程只解决一个问题：从旧站正确迁移到新站">
@@ -339,6 +342,7 @@ export default function Gpt88MigrationGuidePage() {
           这时再做充值、创建 API Key 或配置 Codex，排障成本最低。
         </p>
       </Callout>
+      <SeoIntentSections intent="legacy-migration" />
     </DocPage>
   )
 }

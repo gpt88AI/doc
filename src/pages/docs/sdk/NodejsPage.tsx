@@ -4,6 +4,8 @@ import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
 import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
+import { SeoIntentSections } from '../../../components/seo/SeoIntentSections'
+import { seoIntentHeadings } from '../../../components/seo/SeoIntentMeta'
 import NodejsPageEn from '../../en/NodejsPageEn'
 
 /**
@@ -161,8 +163,8 @@ export default function NodejsSdkPage() {
   return (
     <DocPage
       path="/docs/sdk/nodejs"
-      title="Node.js 示例"
-      description="使用 OpenAI 官方 Node SDK，base_url 指向 gpt88.cc 即可。给出同步、流式、function calling、退避重试与 Next.js Edge 路由模板。"
+      title="Node.js 调用 GPT88 API 完整示例"
+      description="在 Node.js 中使用 OpenAI SDK 调用 GPT88 API，包含环境变量、流式响应和重试。"
       headings={[
         { id: 'install', text: '安装与配置', level: 2 },
         { id: 'basic', text: '基础调用', level: 2 },
@@ -170,6 +172,7 @@ export default function NodejsSdkPage() {
         { id: 'tools', text: 'function calling', level: 2 },
         { id: 'retry', text: '退避重试', level: 2 },
         { id: 'edge', text: 'Next.js Edge / serverless', level: 2 },
+        ...seoIntentHeadings('nodejs'),
       ]}
     >
       <h2 id="install">安装与配置</h2>
@@ -231,6 +234,7 @@ export default function NodejsSdkPage() {
           以及在反向代理层关闭对 SSE 的缓冲。
         </p>
       </Callout>
+      <SeoIntentSections intent="nodejs" />
     </DocPage>
   )
 }

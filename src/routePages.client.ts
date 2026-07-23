@@ -2,6 +2,9 @@ import { lazy } from 'react'
 
 export const ConfigExportPage = lazy(() => import('./pages/docs/guides/ConfigExportPage'))
 export const GrokVideoPage = lazy(() => import('./pages/docs/api/GrokVideoPage'))
+export const OpenaiSdkSeoPage = lazy(() => import('./pages/docs/OpenaiSdkSeoPage'))
+export const ModelPriceComparisonPage = lazy(() => import('./pages/docs/ModelPriceComparisonPage'))
+export const ApiKeyFirstRequestFailedPage = lazy(() => import('./pages/docs/ApiKeyFirstRequestFailedPage'))
 export const Gpt88AiProxyPage = lazy(() => import('./pages/docs/guides/Gpt88AiProxyPage'))
 export const Gpt88DocsMapPage = lazy(() => import('./pages/docs/guides/Gpt88DocsMapPage'))
 export const Gpt88MigrationGuidePage = lazy(() => import('./pages/docs/guides/Gpt88MigrationGuidePage'))
@@ -19,6 +22,7 @@ export const EccGuidePage = lazy(() => import('./pages/docs/guides/EccGuidePage'
 export const CodexGptImage2SkillPage = lazy(() => import('./pages/docs/guides/CodexGptImage2SkillPage'))
 export const CodexFrontendTasteSkillPage = lazy(() => import('./pages/docs/guides/CodexFrontendTasteSkillPage'))
 export const CodexGpt55SystemOverviewPage = lazy(() => import('./pages/docs/guides/CodexGpt55SystemOverviewPage'))
+export const CodexKnowledgeWorkGuidePage = lazy(() => import('./pages/docs/guides/CodexKnowledgeWorkGuidePage'))
 export const CodexSkillsContextEngineeringPage = lazy(() => import('./pages/docs/guides/CodexSkillsContextEngineeringPage'))
 export const CodexPluginsResearchWorkflowPage = lazy(() => import('./pages/docs/guides/CodexPluginsResearchWorkflowPage'))
 export const CodexParallelAutomationWorkflowPage = lazy(() => import('./pages/docs/guides/CodexParallelAutomationWorkflowPage'))

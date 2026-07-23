@@ -4,6 +4,8 @@ import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
 import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
+import { SeoIntentSections } from '../../../components/seo/SeoIntentSections'
+import { seoIntentHeadings } from '../../../components/seo/SeoIntentMeta'
 import PythonPageEn from '../../en/PythonPageEn'
 
 /**
@@ -128,8 +130,8 @@ export default function PythonSdkPage() {
   return (
     <DocPage
       path="/docs/sdk/python"
-      title="Python 示例"
-      description="使用 OpenAI 官方 Python SDK，把 base_url 指向 gpt88.cc 即可调用。提供同步、异步、流式、function calling 与重试范式。"
+      title="Python 调用 GPT88 API 完整示例"
+      description="用 OpenAI 官方 Python SDK 调用 GPT88 API，包含同步、流式和错误排查示例。"
       headings={[
         { id: 'install', text: '安装与配置', level: 2 },
         { id: 'basic', text: '基础调用', level: 2 },
@@ -137,6 +139,7 @@ export default function PythonSdkPage() {
         { id: 'tools', text: 'function calling', level: 2 },
         { id: 'errors', text: '错误处理与重试', level: 2 },
         { id: 'async', text: '异步用法', level: 2 },
+        ...seoIntentHeadings('python'),
       ]}
     >
       <h2 id="install">安装与配置</h2>
@@ -195,6 +198,7 @@ export default function PythonSdkPage() {
         高并发或在 FastAPI / asyncio 应用中，建议直接使用 <code>AsyncOpenAI</code>：
       </p>
       <CodeBlock lang="python" filename="async.py" code={ASYNC} />
+      <SeoIntentSections intent="python" />
     </DocPage>
   )
 }

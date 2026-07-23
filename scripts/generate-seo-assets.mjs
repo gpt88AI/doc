@@ -79,6 +79,12 @@ const docs = [
     section: 'SDK 与集成',
   },
   {
+    title: 'OpenAI SDK 如何接入 GPT88 API',
+    path: '/docs/sdk/openai-sdk',
+    description: '使用 OpenAI 兼容接口接入 GPT88 API，只需替换 base_url、API Key 和模型名。',
+    section: 'SDK 与集成',
+  },
+  {
     title: 'Python SDK 示例',
     path: '/docs/sdk/python',
     description: 'OpenAI 官方 Python SDK 接入 gpt88.cc 的同步、异步、流式和 function calling 示例。',
@@ -184,6 +190,18 @@ const docs = [
     title: 'gpt88.cc 迁移新站新手教程',
     path: '/docs/guides/gpt88-migration',
     description: '从旧站迁移到 agent.gpt88.cc，完成注册、登录、账户入口核对，并找到 API、模型广场和技术文档。',
+    section: '指南',
+  },
+  {
+    title: 'GPT、Claude、Gemini API 价格对比',
+    path: '/docs/guides/model-price-comparison',
+    description: '用统一口径比较 GPT、Claude、Gemini API 的模型倍率、输入输出成本和实际用量。',
+    section: '指南',
+  },
+  {
+    title: 'API Key 创建后第一次请求失败怎么办',
+    path: '/docs/guides/api-key-first-request-failed',
+    description: '按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。',
     section: '指南',
   },
   {
@@ -298,6 +316,12 @@ const docs = [
     title: 'Codex + GPT-5.5 实战拆解总览',
     path: '/docs/guides/codex-gpt55-system-overview',
     description: '根据公开视频里可见的操作界面和工作流，还原一套把 Codex 从聊天窗口升级成稳定交付系统的方法。',
+    section: '指南',
+  },
+  {
+    title: 'Codex 如何应用于办公和知识工作',
+    path: '/docs/guides/codex-knowledge-work',
+    description: '根据 Gorden Sun 的文章整理 Codex 在办公和知识场景中的使用方法，覆盖工作空间、五步工作法、五个使用等级、工作流模板、审阅边界和 7 天上手计划。',
     section: '指南',
   },
   {

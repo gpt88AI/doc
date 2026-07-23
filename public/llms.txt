@@ -20,6 +20,7 @@
 - [List Models API](https://doc.gpt88.cc/docs/api/list-models/): 通过 GET /v1/models 列出当前账号可用模型。
 - [错误码](https://doc.gpt88.cc/docs/api/errors/): HTTP 状态码与业务错误码排查说明。
 - [cURL SDK 示例](https://doc.gpt88.cc/docs/sdk/curl/): 用 cURL 调用 gpt88.cc API，适合快速验证、Shell 脚本和 CI 健康检查。
+- [OpenAI SDK 如何接入 GPT88 API](https://doc.gpt88.cc/docs/sdk/openai-sdk/): 使用 OpenAI 兼容接口接入 GPT88 API，只需替换 base_url、API Key 和模型名。
 - [Python SDK 示例](https://doc.gpt88.cc/docs/sdk/python/): OpenAI 官方 Python SDK 接入 gpt88.cc 的同步、异步、流式和 function calling 示例。
 - [Node.js SDK 示例](https://doc.gpt88.cc/docs/sdk/nodejs/): OpenAI 官方 Node SDK 接入 gpt88.cc 的同步、流式、function calling 和重试示例。
 - [集成总览](https://doc.gpt88.cc/docs/integrations/): 按聊天应用、开发工具、应用平台分类浏览 gpt88.cc 的所有集成教程。
@@ -38,6 +39,8 @@
 - [gpt88 AI 中转站](https://doc.gpt88.cc/docs/guides/gpt88-ai-proxy/): gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。
 - [gpt88 产品与文档地图](https://doc.gpt88.cc/docs/guides/gpt88-docs-map/): 把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。
 - [gpt88.cc 迁移新站新手教程](https://doc.gpt88.cc/docs/guides/gpt88-migration/): 从旧站迁移到 agent.gpt88.cc，完成注册、登录、账户入口核对，并找到 API、模型广场和技术文档。
+- [GPT、Claude、Gemini API 价格对比](https://doc.gpt88.cc/docs/guides/model-price-comparison/): 用统一口径比较 GPT、Claude、Gemini API 的模型倍率、输入输出成本和实际用量。
+- [API Key 创建后第一次请求失败怎么办](https://doc.gpt88.cc/docs/guides/api-key-first-request-failed/): 按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。
 - [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
 - [Kimi K3 实战评测与模型对比](https://doc.gpt88.cc/docs/guides/kimi-k3-review/): 整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。
 - [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
@@ -57,6 +60,7 @@
 - [Codex gpt-image-2 Skill 生成图片](https://doc.gpt88.cc/docs/guides/codex-gpt-image-2-skill/): 直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。
 - [Codex 前端设计 Skill](https://doc.gpt88.cc/docs/guides/codex-frontend-taste-skill/): 使用 Taste Skill 为 Codex 增强前端设计判断力，改善 AI 生成页面的排版、动效、设计系统、反模板化检查和最终交付质量。
 - [Codex + GPT-5.5 实战拆解总览](https://doc.gpt88.cc/docs/guides/codex-gpt55-system-overview/): 根据公开视频里可见的操作界面和工作流，还原一套把 Codex 从聊天窗口升级成稳定交付系统的方法。
+- [Codex 如何应用于办公和知识工作](https://doc.gpt88.cc/docs/guides/codex-knowledge-work/): 根据 Gorden Sun 的文章整理 Codex 在办公和知识场景中的使用方法，覆盖工作空间、五步工作法、五个使用等级、工作流模板、审阅边界和 7 天上手计划。
 - [Codex Skills 与上下文工程教程](https://doc.gpt88.cc/docs/guides/codex-skills-context-engineering/): 讲清楚 skills、上下文、权限、任务边界和 worklog 如何共同作用，让 Codex 变得更稳定、更可恢复。
 - [Codex 插件与研究工作流教程](https://doc.gpt88.cc/docs/guides/codex-plugins-research-workflow/): 从研究型任务界面出发，拆解 Codex 如何结合插件、资料搜集和结构化报告，把查资料升级成可复用工作流。
 - [Codex 并行任务与自动化工作流教程](https://doc.gpt88.cc/docs/guides/codex-parallel-automation-workflow/): 分析 Codex 如何同时推进多个任务，并通过 worklog、自动化和任务拆分保持执行稳定。
