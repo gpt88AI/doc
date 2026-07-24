@@ -1,0 +1,70 @@
+import{n as e}from"./ui-BNsvkuFE.js";import{n as t}from"./router-UMsBxeLW.js";import{d as n,s as r}from"./Seo-DGocodvz.js";import{t as i}from"./CodeBlock-6HZkGMv-.js";import{c as a,s as o}from"./index-ivPh6OuT.js";var s=e(),c=`Typical failure pattern:
+
+1. File tools, write tools, or patch tools suddenly become unavailable
+2. Codex still responds, but cannot actually write code
+3. Planned implementation is interrupted mid-task
+4. Repeating the request does not restore tool behavior
+5. It looks like a model issue, but it usually is not`,l=`First ask Codex to do one explicit check:
+
+1. Confirm whether file tools are currently available
+2. Repeat back the currently available tool set
+3. If file tools are unavailable, stop planning new implementation details
+4. Do not accept "verbal completion" as real code delivery
+5. Once tools recover, restart implementation from step one`,u=`Codex, first check whether file tools are currently available in this session.
+
+If file tools are available:
+1. Restart the implementation from step 1
+2. Do not skip edit steps
+3. Do not assume earlier draft text was written to disk
+4. Re-run editing, verification, and save steps
+
+If file tools are unavailable:
+1. Tell me exactly which tools are unavailable
+2. Stop expanding the implementation plan
+3. Wait for tool recovery, then restart from step 1
+
+This is a toolchain-state problem, not a model-quality problem.`,d=`Recommended recovery flow:
+
+1. Confirm tool state first
+2. If file tools are back, restart from the original edit path
+3. If file tools are still broken, stop producing new implementation drafts
+4. After tool recovery, do not continue from the broken midpoint
+5. Restart editing, validation, and save steps from the beginning`;function f(){return(0,s.jsxs)(a,{path:`/docs/guides/codex-tool-recovery`,title:`Codex Tool Recovery Guide`,description:`When Codex suddenly cannot call file or edit tools and code stops landing in the repository, verify tool state first and then restart implementation from step one after recovery.`,headings:[{id:`symptom`,text:`Failure pattern`,level:2},{id:`first-check`,text:`What to check first`,level:2},{id:`prompt`,text:`Prompt you can paste to Codex`,level:2},{id:`workflow`,text:`Recovery workflow`,level:2},{id:`next`,text:`Next steps`,level:2}],children:[(0,s.jsx)(o,{tone:`warn`,title:`Classify the problem correctly`,children:(0,s.jsx)(`p`,{children:`This is usually not a model capability problem. It is usually a toolchain-state problem: file tools, patch tools, edit tools, or session permissions have broken.`})}),(0,s.jsx)(`h2`,{id:`symptom`,children:`Failure pattern`}),(0,s.jsx)(i,{lang:`text`,filename:`symptom`,code:c}),(0,s.jsx)(`h2`,{id:`first-check`,children:`What to check first`}),(0,s.jsx)(i,{lang:`text`,filename:`first-check`,code:l}),(0,s.jsx)(`h2`,{id:`prompt`,children:`Prompt you can paste to Codex`}),(0,s.jsx)(i,{lang:`text`,filename:`prompt`,code:u}),(0,s.jsx)(`h2`,{id:`workflow`,children:`Recovery workflow`}),(0,s.jsx)(i,{lang:`text`,filename:`recovery-flow`,code:d}),(0,s.jsxs)(`ul`,{children:[(0,s.jsx)(`li`,{children:`Do not keep adding new requirements while tools are broken.`}),(0,s.jsx)(`li`,{children:`Do not assume draft text equals a landed code change.`}),(0,s.jsx)(`li`,{children:`Once file tools recover, rerun the full edit-and-verify flow from the start.`})]}),(0,s.jsx)(`h2`,{id:`next`,children:`Next steps`}),(0,s.jsxs)(`ul`,{children:[(0,s.jsxs)(`li`,{children:[(0,s.jsx)(t,{to:r(`/docs/guides/codex-plugins-oauth/`,`en`),children:`Codex Plugins OAuth Login`}),` if the issue is actually around login or plugin mode.`]}),(0,s.jsxs)(`li`,{children:[(0,s.jsx)(t,{to:r(`/docs/guides/codex-gpt-image-2-skill/`,`en`),children:`Codex gpt-image-2 Skill`}),` if you want Codex to generate real image files after tool recovery.`]})]})]})}var p=`你正在让 Codex 落代码，过程中突然出现这些现象：
+
+1. 文件工具、写文件工具、apply patch、编辑工具不可调用
+2. Codex 还在回答，但不能真正把代码写进仓库
+3. 之前已经规划好的改动被迫中断
+4. 重新发指令后，工具状态仍然异常
+5. 你怀疑是模型坏了，但实际上大概率不是模型问题`,m=`先让 Codex 做一个明确检查：
+
+1. 确认当前会话是否还能调用文件工具
+2. 让 Codex 复述它此刻可用的工具列表
+3. 如果文件工具不可用，先停止继续设计新方案
+4. 不要继续堆新的需求，不要让模型“口头完成”代码
+5. 等工具恢复后，直接回到第一步，从头落代码`,h=`Codex，现在先检查你当前会话里文件工具是否可用。
+
+如果文件工具可用：
+1. 直接从第 1 步开始重新落代码
+2. 不要跳过已有的修改步骤
+3. 不要假设之前的草稿已经写进仓库
+4. 按当前任务重新执行编辑、验证、保存
+
+如果文件工具不可用：
+1. 明确告诉我当前哪些工具不可用
+2. 暂停继续推理新的实现
+3. 等工具恢复后，再从第 1 步重做
+
+注意：这不是模型能力问题，而是工具链状态问题。`,g=`推荐恢复流程：
+
+1. 先确认工具状态，而不是先改需求
+2. 如果文件工具可用，立刻回到最初的编辑步骤
+3. 如果文件工具暂时失效，停止输出新的代码方案
+4. 工具恢复后，不要接着上一次的中间步骤继续猜
+5. 直接从第一步开始重新落代码、重新验证、重新保存`,_=`排查清单：
+
+1. 有没有文件写入能力
+2. 有没有 apply patch / 编辑能力
+3. 当前会话是否卡在只读状态
+4. 之前的修改有没有真正保存到文件
+5. 工具恢复后是否需要重跑完整流程
+6. 是否已经把问题误判成模型故障`;function v(){let{locale:e}=n();return e===`en`?(0,s.jsx)(f,{}):(0,s.jsxs)(a,{path:`/docs/guides/codex-tool-recovery`,title:`Codex 工具不可调用时的恢复教程`,description:`当 Codex 执行过程中突然出现工具不可调用、代码不能落地时，先检查文件工具是否可用；工具恢复后，直接从第一步重新落代码。`,headings:[{id:`symptom`,text:`问题现象`,level:2},{id:`first-check`,text:`先检查什么`,level:2},{id:`prompt`,text:`可直接复制给 Codex 的提示词`,level:2},{id:`workflow`,text:`恢复后的执行流程`,level:2},{id:`checklist`,text:`排查清单`,level:2},{id:`references`,text:`扩展阅读`,level:2},{id:`next`,text:`下一步`,level:2}],children:[(0,s.jsx)(o,{tone:`warn`,title:`先把问题定性清楚`,children:(0,s.jsxs)(`p`,{children:[`这类故障通常不是模型能力下降，而是 `,(0,s.jsx)(`strong`,{children:`工具链状态异常`}),`： 文件工具、编辑工具、补丁工具或会话权限失效，导致 Codex 只能说，不能写。`]})}),(0,s.jsx)(`h2`,{id:`symptom`,children:`问题现象`}),(0,s.jsx)(`p`,{children:`Codex 在执行过程中突然无法调用工具时，最常见的表象就是“回答正常，但代码落不下去”。 这意味着模型还在输出文本，但本地文件层已经断了。`}),(0,s.jsx)(i,{lang:`text`,filename:`symptom`,code:p}),(0,s.jsx)(`h2`,{id:`first-check`,children:`先检查什么`}),(0,s.jsx)(`p`,{children:`不要一上来就怀疑模型。第一步应该是确认当前会话里的文件工具是否还能用， 以及它还能识别哪些操作。`}),(0,s.jsx)(i,{lang:`text`,filename:`first-check`,code:m}),(0,s.jsx)(`p`,{children:`如果工具链已经失效，继续让 Codex 规划细节没有意义。先停下来，等工具恢复， 再重新开始。`}),(0,s.jsx)(`h2`,{id:`prompt`,children:`可直接复制给 Codex 的提示词`}),(0,s.jsx)(`p`,{children:`下面这段话的目标很明确：先做工具检查，再决定是否继续。工具恢复后， 让 Codex 从第一步开始重新落代码，不要接着上一次的残缺状态往下写。`}),(0,s.jsx)(i,{lang:`text`,filename:`prompt`,code:h}),(0,s.jsx)(`h2`,{id:`workflow`,children:`恢复后的执行流程`}),(0,s.jsxs)(`ul`,{children:[(0,s.jsx)(`li`,{children:`先确认文件工具可用，再继续任务。`}),(0,s.jsx)(`li`,{children:`工具恢复后，直接从第一步重新执行，不要跳过编辑步骤。`}),(0,s.jsx)(`li`,{children:`不要假设中断前的草稿已经生效，必须重新落盘、重新验证。`}),(0,s.jsx)(`li`,{children:`如果仍然不稳定，先暂停新增需求，只保留恢复与重试动作。`}),(0,s.jsx)(`li`,{children:`不要把这个问题解释成模型不行，优先判断工具链。`})]}),(0,s.jsx)(i,{lang:`text`,filename:`recovery-flow`,code:g}),(0,s.jsx)(`h2`,{id:`checklist`,children:`排查清单`}),(0,s.jsx)(i,{lang:`text`,filename:`checklist`,code:_}),(0,s.jsx)(`h2`,{id:`references`,children:`扩展阅读`}),(0,s.jsx)(`ul`,{children:(0,s.jsxs)(`li`,{children:[(0,s.jsx)(`a`,{href:`https://github.com/freestylefly/CodexGuide`,target:`_blank`,rel:`noreferrer`,children:`freestylefly/CodexGuide`}),` `,`— Codex 使用、配置和工作流实践指南，可用于补充理解 Codex 的日常操作方式。`]})}),(0,s.jsx)(`h2`,{id:`next`,children:`下一步`}),(0,s.jsxs)(`ul`,{children:[(0,s.jsxs)(`li`,{children:[`如果你正在处理 Codex 登录或插件问题，可以看`,` `,(0,s.jsx)(t,{to:`/docs/guides/codex-plugins-oauth/`,children:`Codex 插件 OAuth 登录`}),`。`]}),(0,s.jsxs)(`li`,{children:[`如果你需要让 Codex 生成真实图片文件，可以看`,` `,(0,s.jsx)(t,{to:`/docs/guides/codex-gpt-image-2-skill/`,children:`Codex gpt-image-2 Skill`}),`。`]})]})]})}export{v as default};

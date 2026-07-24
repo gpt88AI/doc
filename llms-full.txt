@@ -1,0 +1,370 @@
+# gpt88.cc API 文档完整索引
+
+> 面向 LLM、AI 搜索引擎、开发者代理和文档抓取器的机器可读索引。优先引用 canonical URL: https://doc.gpt88.cc/。
+
+## 站点摘要
+
+- 产品：gpt88.cc 统一 AI API 网关。
+- 默认 OpenAI 兼容 Base URL: https://api.gpt88.cc。
+- 图片与多媒体 API Base URL: https://img.gpt88.cc。
+- 文档站：https://doc.gpt88.cc/。
+- 控制台：https://gpt88.cc。
+- 计费理念：AI 电网 / Token 电力，充值按 1:1 折算，实际扣费按官方用量乘所选分组倍率计算。
+- 大模型广场：https://agent.gpt88.cc/model-square。
+- 官网定价页面：https://gpt88.cc/pricing。
+
+## English model API references
+
+- [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-luna/): English API reference for gpt-5.6-luna. Model ID: gpt-5.6-luna. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-fable-5 API Docs](https://doc.gpt88.cc/en/models/claude-fable-5/): English API reference for claude-fable-5. Model ID: claude-fable-5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-8 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-8/): English API reference for claude-opus-4-8. Model ID: claude-opus-4-8. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-7 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-7/): English API reference for claude-opus-4-7. Model ID: claude-opus-4-7. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-6/): English API reference for claude-opus-4-6. Model ID: claude-opus-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-sonnet-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-sonnet-4-6/): English API reference for claude-sonnet-4-6. Model ID: claude-sonnet-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.5 API Docs](https://doc.gpt88.cc/en/models/gpt-5-5/): English API reference for gpt-5.5. Model ID: gpt-5.5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.4 API Docs](https://doc.gpt88.cc/en/models/gpt-5-4/): English API reference for gpt-5.4. Model ID: gpt-5.4. OpenAI-compatible endpoint: /v1/chat/completions.
+- [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
+
+## 入门
+
+- [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。
+- [快速开始](https://doc.gpt88.cc/docs/quickstart/): 5 分钟内完成第一次 gpt88.cc 模型调用，只需替换 base_url 与 API Key。
+- [认证与计费](https://doc.gpt88.cc/docs/auth/): API Key、人民币余额、Token 电力计费、用量与配额说明。
+- [GPT88 更新日志](https://doc.gpt88.cc/docs/changelog/): 持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。
+- [FAQ](https://doc.gpt88.cc/docs/faq/): gpt88.cc 兼容性、安全、计费、可靠性和排障常见问题。
+
+## API Reference
+
+- [Chat Completions API](https://doc.gpt88.cc/docs/api/chat-completions/): OpenAI 兼容的 POST /v1/chat/completions 对话补全接口，支持流式、工具调用与多模态内容。
+- [Google 图片生成 API](https://doc.gpt88.cc/docs/api/images/): 使用 gpt88.cc 的 Google / Gemini 图片生成能力，包含 NanoBanana2 文生图和图生图示例。
+- [Grok 视频 API](https://doc.gpt88.cc/docs/api/grok-video/): Grok 视频生成接口的模型查询、创建任务、轮询状态、参考图参数和常见错误说明。
+- [List Models API](https://doc.gpt88.cc/docs/api/list-models/): 通过 GET /v1/models 列出当前账号可用模型。
+- [错误码](https://doc.gpt88.cc/docs/api/errors/): HTTP 状态码与业务错误码排查说明。
+
+## SDK 与集成
+
+- [cURL SDK 示例](https://doc.gpt88.cc/docs/sdk/curl/): 用 cURL 调用 gpt88.cc API，适合快速验证、Shell 脚本和 CI 健康检查。
+- [OpenAI SDK 如何接入 GPT88 API](https://doc.gpt88.cc/docs/sdk/openai-sdk/): 使用 OpenAI 兼容接口接入 GPT88 API，只需替换 base_url、API Key 和模型名。
+- [Python SDK 示例](https://doc.gpt88.cc/docs/sdk/python/): OpenAI 官方 Python SDK 接入 gpt88.cc 的同步、异步、流式和 function calling 示例。
+- [Node.js SDK 示例](https://doc.gpt88.cc/docs/sdk/nodejs/): OpenAI 官方 Node SDK 接入 gpt88.cc 的同步、流式、function calling 和重试示例。
+
+## 集成指南
+
+- [集成总览](https://doc.gpt88.cc/docs/integrations/): 按聊天应用、开发工具、应用平台分类浏览 gpt88.cc 的所有集成教程。
+- [ChatBox 集成](https://doc.gpt88.cc/docs/integrations/chat/chatbox/): 在 ChatBox 中配置 gpt88.cc 的 OpenAI 兼容接入、模型、线路和常见问题排查。
+- [Cherry Studio 集成](https://doc.gpt88.cc/docs/integrations/chat/cherry-studio/): Cherry Studio 接入 gpt88.cc 的多模型工作流、模型切换和配置说明。
+- [AnythingLLM 集成](https://doc.gpt88.cc/docs/integrations/chat/anythingllm/): AnythingLLM 接入 gpt88.cc 的知识库问答与聊天配置教程。
+- [Claude Code 集成](https://doc.gpt88.cc/docs/integrations/dev/claude-code/): Claude Code 使用 gpt88.cc 时的 OAuth、API Key、插件和路由配置指南。
+- [Cursor 集成](https://doc.gpt88.cc/docs/integrations/dev/cursor/): Cursor 编辑器里接入 gpt88.cc 的模型、Base URL 和工作流配置说明。
+- [Cline 集成](https://doc.gpt88.cc/docs/integrations/dev/cline/): Cline Agent 接入 gpt88.cc 的配置、模型切换与排障教程。
+- [Gemini CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/gemini-cli/): Gemini CLI 通过 gpt88.cc 使用 Gemini 模型和图片接口的教程。
+- [Codex CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/codex-cli/): Codex CLI 接入 gpt88.cc 的模型、插件和工具恢复流程。
+- [CC-Switch 集成](https://doc.gpt88.cc/docs/integrations/dev/cc-switch/): CC-Switch 的路由、OAuth、API Key 与 Codex 插件切换教程。
+- [Dify 集成](https://doc.gpt88.cc/docs/integrations/platforms/dify/): 把 gpt88.cc 接入 Dify 平台、工作流和知识库应用。
+- [沉浸式翻译集成](https://doc.gpt88.cc/docs/integrations/platforms/immersive-translate/): 把 gpt88.cc 接入沉浸式翻译等浏览器扩展。
+
+## 指南
+
+- [配置文件导出](https://doc.gpt88.cc/docs/guides/config-export/): 把 API Key、模型和线路打包给 Claude Code、Cursor、Python SDK、CC Switch 等工具。
+- [gpt88 AI 中转站](https://doc.gpt88.cc/docs/guides/gpt88-ai-proxy/): gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。
+- [gpt88 产品与文档地图](https://doc.gpt88.cc/docs/guides/gpt88-docs-map/): 把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。
+- [gpt88.cc 迁移新站新手教程](https://doc.gpt88.cc/docs/guides/gpt88-migration/): 从旧站迁移到 agent.gpt88.cc，完成注册、登录、账户入口核对，并找到 API、模型广场和技术文档。
+- [GPT、Claude、Gemini API 价格对比](https://doc.gpt88.cc/docs/guides/model-price-comparison/): 用统一口径比较 GPT、Claude、Gemini API 的模型倍率、输入输出成本和实际用量。
+- [人民币余额与 USD 充值结算](https://doc.gpt88.cc/docs/guides/billing-units/): 解释 1:1 人民币余额、USD 充值换算、官方用量、分组倍率和模型实际扣费，帮助中外用户理解平台结算口径。
+- [API Key 创建后第一次请求失败怎么办](https://doc.gpt88.cc/docs/guides/api-key-first-request-failed/): 按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。
+- [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
+- [Kimi K3 实战评测与模型对比](https://doc.gpt88.cc/docs/guides/kimi-k3-review/): 整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。
+- [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
+- [WorkRally Skills 总览](https://doc.gpt88.cc/docs/guides/workrally-overview/): 基于 Tencent/workrally 官方 Skill 与参考文档整理，完整说明 WorkRally CLI 的能力边界、安装方式、场景路由和各专项教程入口。
+- [WorkRally AI 生成指南](https://doc.gpt88.cc/docs/guides/workrally-ai-generation/): 详细说明 WorkRally 的图片生成、视频生成、三种视频驱动模式、画布自动占位、任务轮询和模型动态获取规则。
+- [WorkRally 无限画布指南](https://doc.gpt88.cc/docs/guides/workrally-canvas-guide/): 详细说明 WorkRally Infinite Canvas 的节点模型、画板规则、build-draft 增量合并与覆盖模式，以及项目和画布的区别。
+- [WorkRally 上传与素材管理](https://doc.gpt88.cc/docs/guides/workrally-upload-assets/): 详细说明 WorkRally 的 upload、asset、material 三层素材体系，以及上传入库、角色/道具/场景归档和画布用图流程。
+- [WorkRally 场次与剧集工作流](https://doc.gpt88.cc/docs/guides/workrally-shot-workflow/): 详细说明 WorkRally 的 project、series、shot 结构，以及场次创建、角色识别、模型配置、批量生成、结果查询和多场次工作流。
+- [WorkRally 常见坑点与错误排查](https://doc.gpt88.cc/docs/guides/workrally-common-pitfalls/): 汇总 WorkRally CLI 最容易出错的 10 类问题，帮助快速判断项目与画布、上传入库、URL、模型、资产树和节点结构问题。
+- [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
+- [电商工具专题教程](https://doc.gpt88.cc/docs/guides/ecommerce-tools-special/): 整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。
+- [GPT-Image-2 生图服务通知与选型指南](https://doc.gpt88.cc/docs/guides/gpt-image-2-service-notice/): 详细说明 gpt88.cc 统一图片 API、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。
+- [agent.gpt88.cc 生图质量与裁剪避坑指南](https://doc.gpt88.cc/docs/guides/agent-image-quality-crop-guide/): 分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并补充 gpt-image-2 size 参数、构图词和英文提示词优化方案。
+- [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth/): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
+- [ChatGPT / Codex 手机号二次验证解决方法](https://doc.gpt88.cc/docs/guides/codex-chatgpt-phone-verification/): ChatGPT OAuth 或 Codex 登录反复要求手机号二次验证时，使用 Advanced Account Security、passkey 和恢复密钥降低对短信验证码的依赖。
+- [ECC Agent 工作流教程](https://doc.gpt88.cc/docs/guides/ecc-agent-harness/): 基于 affaan-m/ECC 的详细教程，讲清 ECC 是什么、如何选择插件或手动安装路径、如何避免重复安装，以及如何和 gpt88.cc、Codex、Claude Code 工作流配合。
+- [Codex gpt-image-2 Skill 生成图片](https://doc.gpt88.cc/docs/guides/codex-gpt-image-2-skill/): 直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。
+- [Codex 前端设计 Skill](https://doc.gpt88.cc/docs/guides/codex-frontend-taste-skill/): 使用 Taste Skill 为 Codex 增强前端设计判断力，改善 AI 生成页面的排版、动效、设计系统、反模板化检查和最终交付质量。
+- [Codex + GPT-5.5 实战拆解总览](https://doc.gpt88.cc/docs/guides/codex-gpt55-system-overview/): 根据公开视频里可见的操作界面和工作流，还原一套把 Codex 从聊天窗口升级成稳定交付系统的方法。
+- [Codex 如何应用于办公和知识工作](https://doc.gpt88.cc/docs/guides/codex-knowledge-work/): 根据 Gorden Sun 的文章整理 Codex 在办公和知识场景中的使用方法，覆盖工作空间、五步工作法、五个使用等级、工作流模板、审阅边界和 7 天上手计划。
+- [Codex Skills 与上下文工程教程](https://doc.gpt88.cc/docs/guides/codex-skills-context-engineering/): 讲清楚 skills、上下文、权限、任务边界和 worklog 如何共同作用，让 Codex 变得更稳定、更可恢复。
+- [Codex 插件与研究工作流教程](https://doc.gpt88.cc/docs/guides/codex-plugins-research-workflow/): 从研究型任务界面出发，拆解 Codex 如何结合插件、资料搜集和结构化报告，把查资料升级成可复用工作流。
+- [Codex 并行任务与自动化工作流教程](https://doc.gpt88.cc/docs/guides/codex-parallel-automation-workflow/): 分析 Codex 如何同时推进多个任务，并通过 worklog、自动化和任务拆分保持执行稳定。
+- [把 Codex 变成项目工厂的交付系统](https://doc.gpt88.cc/docs/guides/codex-project-factory-delivery/): 把 skills、研究、并行和自动化收束成完整交付系统，让同一个 Codex 环境持续产出 App、网站、视频、Deck 和课程。
+- [Loop Engineering 是什么：Harness 之后的下一步](https://doc.gpt88.cc/docs/guides/loop-engineering-harness/): 结合 Smith 铜匠关于 Loop Engineering 的文章主题，解释它和 Prompt Engineering、Harness、Skill、Codex 工作流之间的关系，以及如何在工程实践中落地。
+- [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
+- [Windows Codex 工具调用 524 与 PowerShell 7 修复教程](https://doc.gpt88.cc/docs/guides/codex-windows-powershell7-timeout/): Windows 上 Codex 调用工具时出现 Reconnecting、HTTP 524、中文乱码或 responses stream finished without usable output 时，验证 PowerShell 7、UTF-8 编码、Agent 启动方式和上游线路。
+- [Claude Code compaction 上下文超限恢复教程](https://doc.gpt88.cc/docs/guides/claude-code-compaction-error/): 解决 Claude Code 执行 /compact 时出现 400 Input exceeds the model's context window：从历史会话较早位置 Fork / Branch 后重新压缩。
+- [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
+- [giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程](https://doc.gpt88.cc/docs/guides/giffgaff-sim-guide/): 详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。
+- [美区虚拟卡自助开卡教程](https://doc.gpt88.cc/docs/guides/us-virtual-card-guide/): 一篇面向 AI 平台和海外订阅场景的详细教程：自己注册、自助开卡、首充 10U、可绑定支付宝消费，并长期维护可持续使用的美区虚拟卡。
+- [AI 视频分镜与提示词教程](https://doc.gpt88.cc/docs/guides/ai-video-storyboard-guide/): 把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流，适合短视频剧情片、情绪片和口播叙事片。
+- [6 个视频创作工具与工作流](https://doc.gpt88.cc/docs/guides/video-creator-tools-workflow/): 整理 Excalidraw、Screen Studio、Rotato、Jacky Illustration、Jacky Motion、MD Publish 六个视频创作工具的定位、适用场景和组合工作流。
+- [video-generation-skills 总览](https://doc.gpt88.cc/docs/guides/video-generation-skills-overview/): 基于 adoin/video-generation-skills 仓库整理的系列文档总览，讲清 4 个 AI 视频生成 skill 的定位、边界、组合方式和适用场景。
+- [video-generation-skills 安装与使用教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-install/): 把 adoin/video-generation-skills 安装到 Cursor、Claude Code、Codex 等 Agent 的详细步骤，包括按需安装、全量安装、验证和本地开发。
+- [prompt-director 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-prompt-director/): 讲清 video-generation-skills 里的 prompt-director 怎么把小说、剧本、情节和创意 brief 转成分镜草案与 AI 图像 / 视频 Prompt。
+- [ecommerce 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ecommerce/): 讲清 video-generation-skills 里的 ecommerce skill 如何处理电商主图、详情页、UGC、种草视频，以及服装、3C、美妆等垂类素材工作流。
+- [brand-ad-cg 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-brand-ad-cg/): 讲清 video-generation-skills 里的 brand-ad-cg skill 如何处理品牌广告、TVC、产品 CG、大牌既视感和风格化商业视觉。
+- [ai-video-director 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ai-video-director/): 讲清 video-generation-skills 里的 ai-video-director 如何处理短剧、漫剧、分镜、故事板、场景一致性和复杂动作视频。
+- [图生视频提示词专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-i2v-prompt/): 讲清图生视频提示词怎么写，如何控制动作、镜头、节奏与风格，并减少动作混乱、运镜冲突和提示词堆砌。
+- [电商白底图裂变专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-white-background-scaling/): 讲清如何把白底产品图扩成主图、场景图、详情页、广告图和短视频首帧，并建立稳定的电商素材生产流程。
+- [产品 CG 工作流专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-product-cg/): 讲清产品关键帧、材质特写、动态镜头和商业级产品视觉的制作方法，适合硬件、消费电子和质感商品展示。
+- [TVC 广告片专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-tvc-playbook/): 讲清 15 到 30 秒 TVC 的脚本、分镜、关键帧、单镜头视频和后期拼接工作流，适合品牌广告和商业投放。
+- [场景一致性专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-scene-consistency/): 讲清九宫格、俯视图、环绕截图和全景图如何解决场景穿帮，并提升 AI 视频的连续性与统一感。
+- [复杂动作与分镜专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-complex-action-storyboard/): 讲清 12 宫格分镜法、参考视频替换法和复杂动作镜头拆解方法，适合打斗、奔跑、群像和高动作密度视频。
+
+## CHAT 模型
+
+- [claude-0pus-4-5-20251101](https://doc.gpt88.cc/models/claude-0pus-4-5-20251101/): Anthropic claude-0pus-4-5-20251101 · CHAT 模型，Model ID: claude-0pus-4-5-20251101，接口路径: /v1/chat/completions。
+- [claude-3-5-haiku-20241022](https://doc.gpt88.cc/models/claude-3-5-haiku-20241022/): Anthropic claude-3-5-haiku-20241022 · CHAT 模型，Model ID: claude-3-5-haiku-20241022，接口路径: /v1/chat/completions。
+- [claude-fable-5](https://doc.gpt88.cc/models/claude-fable-5/): Anthropic claude-fable-5 · CHAT 模型，Model ID: claude-fable-5，接口路径: /v1/chat/completions。
+- [claude-haiku-3-5](https://doc.gpt88.cc/models/claude-haiku-3-5/): Anthropic claude-haiku-3-5 · CHAT 模型，Model ID: claude-haiku-3-5，接口路径: /v1/chat/completions。
+- [claude-haiku-4-5](https://doc.gpt88.cc/models/claude-haiku-4-5/): Anthropic claude-haiku-4-5 · CHAT 模型，Model ID: claude-haiku-4-5，接口路径: /v1/chat/completions。
+- [claude-haiku-4-5-20251001](https://doc.gpt88.cc/models/claude-haiku-4-5-20251001/): Anthropic claude-haiku-4-5-20251001 · CHAT 模型，Model ID: claude-haiku-4-5-20251001，接口路径: /v1/chat/completions。
+- [claude-haiku-4-5-20251001-thinking](https://doc.gpt88.cc/models/claude-haiku-4-5-20251001-thinking/): Anthropic claude-haiku-4-5-20251001-thinking · CHAT 模型，Model ID: claude-haiku-4-5-20251001-thinking，接口路径: /v1/chat/completions。
+- [claude-opus-4-1](https://doc.gpt88.cc/models/claude-opus-4-1/): Anthropic claude-opus-4-1 · CHAT 模型，Model ID: claude-opus-4-1，接口路径: /v1/chat/completions。
+- [claude-opus-4-1-20250805](https://doc.gpt88.cc/models/claude-opus-4-1-20250805/): Anthropic claude-opus-4-1-20250805 · CHAT 模型，Model ID: claude-opus-4-1-20250805，接口路径: /v1/chat/completions。
+- [claude-opus-4-20250514](https://doc.gpt88.cc/models/claude-opus-4-20250514/): Anthropic claude-opus-4-20250514 · CHAT 模型，Model ID: claude-opus-4-20250514，接口路径: /v1/chat/completions。
+- [claude-opus-4-5-20251101](https://doc.gpt88.cc/models/claude-opus-4-5-20251101/): Anthropic claude-opus-4-5-20251101 · CHAT 模型，Model ID: claude-opus-4-5-20251101，接口路径: /v1/chat/completions。
+- [claude-opus-4-5-20251101-thinking](https://doc.gpt88.cc/models/claude-opus-4-5-20251101-thinking/): Anthropic claude-opus-4-5-20251101-thinking · CHAT 模型，Model ID: claude-opus-4-5-20251101-thinking，接口路径: /v1/chat/completions。
+- [claude-opus-4-6](https://doc.gpt88.cc/models/claude-opus-4-6/): Anthropic claude-opus-4-6 · CHAT 模型，Model ID: claude-opus-4-6，接口路径: /v1/chat/completions。
+- [claude-opus-4-6-20260205](https://doc.gpt88.cc/models/claude-opus-4-6-20260205/): Anthropic claude-opus-4-6-20260205 · CHAT 模型，Model ID: claude-opus-4-6-20260205，接口路径: /v1/chat/completions。
+- [claude-opus-4-6-agentic](https://doc.gpt88.cc/models/claude-opus-4-6-agentic/): Anthropic claude-opus-4-6-agentic · CHAT 模型，Model ID: claude-opus-4-6-agentic，接口路径: /v1/chat/completions。
+- [claude-opus-4-6-thinking](https://doc.gpt88.cc/models/claude-opus-4-6-thinking/): Anthropic claude-opus-4-6-thinking · CHAT 模型，Model ID: claude-opus-4-6-thinking，接口路径: /v1/chat/completions。
+- [claude-opus-4-7](https://doc.gpt88.cc/models/claude-opus-4-7/): Anthropic claude-opus-4-7 · CHAT 模型，Model ID: claude-opus-4-7，接口路径: /v1/chat/completions。
+- [claude-opus-4-7-agentic](https://doc.gpt88.cc/models/claude-opus-4-7-agentic/): Anthropic claude-opus-4-7-agentic · CHAT 模型，Model ID: claude-opus-4-7-agentic，接口路径: /v1/chat/completions。
+- [claude-opus-4-7-thinking](https://doc.gpt88.cc/models/claude-opus-4-7-thinking/): Anthropic claude-opus-4-7-thinking · CHAT 模型，Model ID: claude-opus-4-7-thinking，接口路径: /v1/chat/completions。
+- [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8/): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-20250514](https://doc.gpt88.cc/models/claude-sonnet-4-20250514/): Anthropic claude-sonnet-4-20250514 · CHAT 模型，Model ID: claude-sonnet-4-20250514，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-5-20250929](https://doc.gpt88.cc/models/claude-sonnet-4-5-20250929/): Anthropic claude-sonnet-4-5-20250929 · CHAT 模型，Model ID: claude-sonnet-4-5-20250929，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-5-20250929-thinking](https://doc.gpt88.cc/models/claude-sonnet-4-5-20250929-thinking/): Anthropic claude-sonnet-4-5-20250929-thinking · CHAT 模型，Model ID: claude-sonnet-4-5-20250929-thinking，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-6](https://doc.gpt88.cc/models/claude-sonnet-4-6/): Anthropic claude-sonnet-4-6 · CHAT 模型，Model ID: claude-sonnet-4-6，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-6-agentic](https://doc.gpt88.cc/models/claude-sonnet-4-6-agentic/): Anthropic claude-sonnet-4-6-agentic · CHAT 模型，Model ID: claude-sonnet-4-6-agentic，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-6-thinking](https://doc.gpt88.cc/models/claude-sonnet-4-6-thinking/): Anthropic claude-sonnet-4-6-thinking · CHAT 模型，Model ID: claude-sonnet-4-6-thinking，接口路径: /v1/chat/completions。
+- [Claude opus 4-6](https://doc.gpt88.cc/models/claudeopus4-6/): Claude opus 4-6 Claude opus 4-6 · CHAT 模型，Model ID: claudeopus4-6，接口路径: /v1/chat/completions。
+- [deepseek-r1](https://doc.gpt88.cc/models/deepseek-r1/): DeepSeek deepseek-r1 · CHAT 模型，Model ID: deepseek-r1，接口路径: /v1/chat/completions。
+- [deepseek-r1-0528](https://doc.gpt88.cc/models/deepseek-r1-0528/): DeepSeek deepseek-r1-0528 · CHAT 模型，Model ID: deepseek-r1-0528，接口路径: /v1/chat/completions。
+- [deepseek-v3](https://doc.gpt88.cc/models/deepseek-v3/): DeepSeek deepseek-v3 · CHAT 模型，Model ID: deepseek-v3，接口路径: /v1/chat/completions。
+- [deepseek-v3-0324](https://doc.gpt88.cc/models/deepseek-v3-0324/): DeepSeek deepseek-v3-0324 · CHAT 模型，Model ID: deepseek-v3-0324，接口路径: /v1/chat/completions。
+- [deepseek-v3.1](https://doc.gpt88.cc/models/deepseek-v3-1/): DeepSeek deepseek-v3.1 · CHAT 模型，Model ID: deepseek-v3.1，接口路径: /v1/chat/completions。
+- [DeepSeek-V3.2](https://doc.gpt88.cc/models/deepseek-v3-2/): DeepSeek DeepSeek-V3.2 · CHAT 模型，Model ID: deepseek-v3.2，接口路径: /v1/chat/completions。
+- [deepseek-v4-flash](https://doc.gpt88.cc/models/deepseek-v4-flash/): DeepSeek deepseek-v4-flash · CHAT 模型，Model ID: deepseek-v4-flash，接口路径: /v1/chat/completions。
+- [deepseek-v4-pro](https://doc.gpt88.cc/models/deepseek-v4-pro/): DeepSeek deepseek-v4-pro · CHAT 模型，Model ID: deepseek-v4-pro，接口路径: /v1/chat/completions。
+- [deepseek-v4-pro-search](https://doc.gpt88.cc/models/deepseek-v4-pro-search/): DeepSeek deepseek-v4-pro-search · CHAT 模型，Model ID: deepseek-v4-pro-search，接口路径: /v1/chat/completions。
+- [doubao-seed-1-6-vision-250815](https://doc.gpt88.cc/models/doubao-seed-1-6-vision-250815/): 字节跳动 (ByteDance) doubao-seed-1-6-vision-250815 · CHAT 模型，Model ID: doubao-seed-1-6-vision-250815，接口路径: /v1/chat/completions。
+- [doubao-seed-2-0-pro-260215](https://doc.gpt88.cc/models/doubao-seed-2-0-pro-260215/): 字节跳动 (ByteDance) doubao-seed-2-0-pro-260215 · CHAT 模型，Model ID: doubao-seed-2-0-pro-260215，接口路径: /v1/chat/completions。
+- [doubao-seedance-1-0-pro-250528](https://doc.gpt88.cc/models/doubao-seedance-1-0-pro-250528/): 字节跳动 (ByteDance) doubao-seedance-1-0-pro-250528 · CHAT 模型，Model ID: doubao-seedance-1-0-pro-250528，接口路径: /v1/chat/completions。
+- [doubao-seedance-1-5-pro-251215](https://doc.gpt88.cc/models/doubao-seedance-1-5-pro-251215/): 字节跳动 (ByteDance) doubao-seedance-1-5-pro-251215 · CHAT 模型，Model ID: doubao-seedance-1-5-pro-251215，接口路径: /v1/chat/completions。
+- [doubao-seedream-4-0-250828](https://doc.gpt88.cc/models/doubao-seedream-4-0-250828/): 字节跳动 (ByteDance) doubao-seedream-4-0-250828 · CHAT 模型，Model ID: doubao-seedream-4-0-250828，接口路径: /v1/chat/completions。
+- [ERNIE-3.5-8K](https://doc.gpt88.cc/models/ernie-3-5-8k/): Baidu ERNIE-3.5-8K · CHAT 模型，Model ID: ernie-3.5-8k，接口路径: /v1/chat/completions。
+- [ERNIE-4.0-8K](https://doc.gpt88.cc/models/ernie-4-0-8k/): Baidu ERNIE-4.0-8K · CHAT 模型，Model ID: ernie-4.0-8k，接口路径: /v1/chat/completions。
+- [ERNIE-Speed-128K](https://doc.gpt88.cc/models/ernie-speed-128k/): Baidu ERNIE-Speed-128K · CHAT 模型，Model ID: ernie-speed-128k，接口路径: /v1/chat/completions。
+- [ERNIE-Speed-8K](https://doc.gpt88.cc/models/ernie-speed-8k/): Baidu ERNIE-Speed-8K · CHAT 模型，Model ID: ernie-speed-8k，接口路径: /v1/chat/completions。
+- [ERNIE-Tiny-8K](https://doc.gpt88.cc/models/ernie-tiny-8k/): Baidu ERNIE-Tiny-8K · CHAT 模型，Model ID: ernie-tiny-8k，接口路径: /v1/chat/completions。
+- [gemini-2.5-flash](https://doc.gpt88.cc/models/gemini-2-5-flash/): Google gemini-2.5-flash · CHAT 模型，Model ID: gemini-2.5-flash，接口路径: /v1/chat/completions。
+- [gemini-2.5-flash-lite](https://doc.gpt88.cc/models/gemini-2-5-flash-lite/): Google gemini-2.5-flash-lite · CHAT 模型，Model ID: gemini-2.5-flash-lite，接口路径: /v1/chat/completions。
+- [gemini-2.5-pro](https://doc.gpt88.cc/models/gemini-2-5-pro/): Google gemini-2.5-pro · CHAT 模型，Model ID: gemini-2.5-pro，接口路径: /v1/chat/completions。
+- [gemini-2.5-pro-nothinking](https://doc.gpt88.cc/models/gemini-2-5-pro-nothinking/): Google gemini-2.5-pro-nothinking · CHAT 模型，Model ID: gemini-2.5-pro-nothinking，接口路径: /v1/chat/completions。
+- [gemini-2.5-pro-thinking](https://doc.gpt88.cc/models/gemini-2-5-pro-thinking/): Google gemini-2.5-pro-thinking · CHAT 模型，Model ID: gemini-2.5-pro-thinking，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image](https://doc.gpt88.cc/models/gemini-3-1-flash-image/): Google gemini-3.1-flash-image · CHAT 模型，Model ID: gemini-3.1-flash-image，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-16x9](https://doc.gpt88.cc/models/gemini-3-1-flash-image-16x9/): Google gemini-3.1-flash-image-16x9 · CHAT 模型，Model ID: gemini-3.1-flash-image-16x9，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-21x9](https://doc.gpt88.cc/models/gemini-3-1-flash-image-21x9/): Google gemini-3.1-flash-image-21x9 · CHAT 模型，Model ID: gemini-3.1-flash-image-21x9，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k/): Google gemini-3.1-flash-image-2k · CHAT 模型，Model ID: gemini-3.1-flash-image-2k，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-16x9](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-16x9/): Google gemini-3.1-flash-image-2k-16x9 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-16x9，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-21x9](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-21x9/): Google gemini-3.1-flash-image-2k-21x9 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-21x9，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-2x3](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-2x3/): Google gemini-3.1-flash-image-2k-2x3 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-2x3，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-3x2](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-3x2/): Google gemini-3.1-flash-image-2k-3x2 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-3x2，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-3x4](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-3x4/): Google gemini-3.1-flash-image-2k-3x4 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-3x4，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-4x3](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-4x3/): Google gemini-3.1-flash-image-2k-4x3 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-4x3，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-4x5](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-4x5/): Google gemini-3.1-flash-image-2k-4x5 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-4x5，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-5x4](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-5x4/): Google gemini-3.1-flash-image-2k-5x4 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-5x4，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2k-9x16](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2k-9x16/): Google gemini-3.1-flash-image-2k-9x16 · CHAT 模型，Model ID: gemini-3.1-flash-image-2k-9x16，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-2x3](https://doc.gpt88.cc/models/gemini-3-1-flash-image-2x3/): Google gemini-3.1-flash-image-2x3 · CHAT 模型，Model ID: gemini-3.1-flash-image-2x3，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-3x2](https://doc.gpt88.cc/models/gemini-3-1-flash-image-3x2/): Google gemini-3.1-flash-image-3x2 · CHAT 模型，Model ID: gemini-3.1-flash-image-3x2，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-3x4](https://doc.gpt88.cc/models/gemini-3-1-flash-image-3x4/): Google gemini-3.1-flash-image-3x4 · CHAT 模型，Model ID: gemini-3.1-flash-image-3x4，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k/): Google gemini-3.1-flash-image-4k · CHAT 模型，Model ID: gemini-3.1-flash-image-4k，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-16x9](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-16x9/): Google gemini-3.1-flash-image-4k-16x9 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-16x9，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-21x9](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-21x9/): Google gemini-3.1-flash-image-4k-21x9 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-21x9，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-2x3](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-2x3/): Google gemini-3.1-flash-image-4k-2x3 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-2x3，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-3x2](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-3x2/): Google gemini-3.1-flash-image-4k-3x2 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-3x2，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-3x4](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-3x4/): Google gemini-3.1-flash-image-4k-3x4 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-3x4，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-4x3](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-4x3/): Google gemini-3.1-flash-image-4k-4x3 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-4x3，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-4x5](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-4x5/): Google gemini-3.1-flash-image-4k-4x5 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-4x5，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-5x4](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-5x4/): Google gemini-3.1-flash-image-4k-5x4 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-5x4，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4k-9x16](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4k-9x16/): Google gemini-3.1-flash-image-4k-9x16 · CHAT 模型，Model ID: gemini-3.1-flash-image-4k-9x16，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4x3](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4x3/): Google gemini-3.1-flash-image-4x3 · CHAT 模型，Model ID: gemini-3.1-flash-image-4x3，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-4x5](https://doc.gpt88.cc/models/gemini-3-1-flash-image-4x5/): Google gemini-3.1-flash-image-4x5 · CHAT 模型，Model ID: gemini-3.1-flash-image-4x5，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-5x4](https://doc.gpt88.cc/models/gemini-3-1-flash-image-5x4/): Google gemini-3.1-flash-image-5x4 · CHAT 模型，Model ID: gemini-3.1-flash-image-5x4，接口路径: /v1/chat/completions。
+- [gemini-3.1-flash-image-9x16](https://doc.gpt88.cc/models/gemini-3-1-flash-image-9x16/): Google gemini-3.1-flash-image-9x16 · CHAT 模型，Model ID: gemini-3.1-flash-image-9x16，接口路径: /v1/chat/completions。
+- [gemini-3.1-pro](https://doc.gpt88.cc/models/gemini-3-1-pro/): Google gemini-3.1-pro · CHAT 模型，Model ID: gemini-3.1-pro，接口路径: /v1/chat/completions。
+- [gemini-3.1-pro-preview](https://doc.gpt88.cc/models/gemini-3-1-pro-preview/): Google gemini-3.1-pro-preview · CHAT 模型，Model ID: gemini-3.1-pro-preview，接口路径: /v1/chat/completions。
+- [gemini-3-flash](https://doc.gpt88.cc/models/gemini-3-flash/): Google gemini-3-flash · CHAT 模型，Model ID: gemini-3-flash，接口路径: /v1/chat/completions。
+- [gemini-3-flash-preview](https://doc.gpt88.cc/models/gemini-3-flash-preview/): Google gemini-3-flash-preview · CHAT 模型，Model ID: gemini-3-flash-preview，接口路径: /v1/chat/completions。
+- [gemini-3-flash-preview-nothinking](https://doc.gpt88.cc/models/gemini-3-flash-preview-nothinking/): Google gemini-3-flash-preview-nothinking · CHAT 模型，Model ID: gemini-3-flash-preview-nothinking，接口路径: /v1/chat/completions。
+- [gemini-3-flash-preview-thinking](https://doc.gpt88.cc/models/gemini-3-flash-preview-thinking/): Google gemini-3-flash-preview-thinking · CHAT 模型，Model ID: gemini-3-flash-preview-thinking，接口路径: /v1/chat/completions。
+- [gemini-3-pro](https://doc.gpt88.cc/models/gemini-3-pro/): Google gemini-3-pro · CHAT 模型，Model ID: gemini-3-pro，接口路径: /v1/chat/completions。
+- [gemini-3-pro-high](https://doc.gpt88.cc/models/gemini-3-pro-high/): Google gemini-3-pro-high · CHAT 模型，Model ID: gemini-3-pro-high，接口路径: /v1/chat/completions。
+- [gemini-3-pro-preview](https://doc.gpt88.cc/models/gemini-3-pro-preview/): Google gemini-3-pro-preview · CHAT 模型，Model ID: gemini-3-pro-preview，接口路径: /v1/chat/completions。
+- [gemini-3-pro-preview-thinking](https://doc.gpt88.cc/models/gemini-3-pro-preview-thinking/): Google gemini-3-pro-preview-thinking · CHAT 模型，Model ID: gemini-3-pro-preview-thinking，接口路径: /v1/chat/completions。
+- [gemini-flash-latest](https://doc.gpt88.cc/models/gemini-flash-latest/): Google gemini-flash-latest · CHAT 模型，Model ID: gemini-flash-latest，接口路径: /v1/chat/completions。
+- [gemma-3-12b-it](https://doc.gpt88.cc/models/gemma-3-12b-it/): gemma-3-12b-it gemma-3-12b-it · CHAT 模型，Model ID: gemma-3-12b-it，接口路径: /v1/chat/completions。
+- [gemma-3-27b-it](https://doc.gpt88.cc/models/gemma-3-27b-it/): gemma-3-27b-it gemma-3-27b-it · CHAT 模型，Model ID: gemma-3-27b-it，接口路径: /v1/chat/completions。
+- [gemma-3-4b-it](https://doc.gpt88.cc/models/gemma-3-4b-it/): gemma-3-4b-it gemma-3-4b-it · CHAT 模型，Model ID: gemma-3-4b-it，接口路径: /v1/chat/completions。
+- [gemma-4-31b-it](https://doc.gpt88.cc/models/gemma-4-31b-it/): gemma-4-31b-it gemma-4-31b-it · CHAT 模型，Model ID: gemma-4-31b-it，接口路径: /v1/chat/completions。
+- [GLM-4.7](https://doc.gpt88.cc/models/glm-4-7/): 智谱 (Zhipu) GLM-4.7 · CHAT 模型，Model ID: glm-4.7，接口路径: /v1/chat/completions。
+- [GLM-4-Flash](https://doc.gpt88.cc/models/glm-4-flash/): 智谱 (Zhipu) GLM-4-Flash · CHAT 模型，Model ID: glm-4-flash，接口路径: /v1/chat/completions。
+- [glm-5](https://doc.gpt88.cc/models/glm-5/): 智谱 (Zhipu) glm-5 · CHAT 模型，Model ID: glm-5，接口路径: /v1/chat/completions。
+- [glm-5.1](https://doc.gpt88.cc/models/glm-5-1/): 智谱 (Zhipu) glm-5.1 · CHAT 模型，Model ID: glm-5.1，接口路径: /v1/chat/completions。
+- [GLM-5-Turbo](https://doc.gpt88.cc/models/glm-5-turbo/): 智谱 (Zhipu) GLM-5-Turbo · CHAT 模型，Model ID: glm-5-turbo，接口路径: /v1/chat/completions。
+- [gpt-3.5-turbo](https://doc.gpt88.cc/models/gpt-3-5-turbo/): OpenAI gpt-3.5-turbo · CHAT 模型，Model ID: gpt-3.5-turbo，接口路径: /v1/chat/completions。
+- [gpt-4](https://doc.gpt88.cc/models/gpt-4/): OpenAI gpt-4 · CHAT 模型，Model ID: gpt-4，接口路径: /v1/chat/completions。
+- [gpt-4-0613](https://doc.gpt88.cc/models/gpt-4-0613/): OpenAI gpt-4-0613 · CHAT 模型，Model ID: gpt-4-0613，接口路径: /v1/chat/completions。
+- [gpt-4.1](https://doc.gpt88.cc/models/gpt-4-1/): OpenAI gpt-4.1 · CHAT 模型，Model ID: gpt-4.1，接口路径: /v1/chat/completions。
+- [gpt-4.1-2025-04-14](https://doc.gpt88.cc/models/gpt-4-1-2025-04-14/): OpenAI gpt-4.1-2025-04-14 · CHAT 模型，Model ID: gpt-4.1-2025-04-14，接口路径: /v1/chat/completions。
+- [gpt-4.1-mini](https://doc.gpt88.cc/models/gpt-4-1-mini/): OpenAI gpt-4.1-mini · CHAT 模型，Model ID: gpt-4.1-mini，接口路径: /v1/chat/completions。
+- [gpt-4.1-mini-2025-04-14](https://doc.gpt88.cc/models/gpt-4-1-mini-2025-04-14/): OpenAI gpt-4.1-mini-2025-04-14 · CHAT 模型，Model ID: gpt-4.1-mini-2025-04-14，接口路径: /v1/chat/completions。
+- [gpt-4.1-nano](https://doc.gpt88.cc/models/gpt-4-1-nano/): OpenAI gpt-4.1-nano · CHAT 模型，Model ID: gpt-4.1-nano，接口路径: /v1/chat/completions。
+- [gpt-4.1-nano-2025-04-14](https://doc.gpt88.cc/models/gpt-4-1-nano-2025-04-14/): OpenAI gpt-4.1-nano-2025-04-14 · CHAT 模型，Model ID: gpt-4.1-nano-2025-04-14，接口路径: /v1/chat/completions。
+- [gpt-4-turbo](https://doc.gpt88.cc/models/gpt-4-turbo/): OpenAI gpt-4-turbo · CHAT 模型，Model ID: gpt-4-turbo，接口路径: /v1/chat/completions。
+- [gpt-4-turbo-2024-04-09](https://doc.gpt88.cc/models/gpt-4-turbo-2024-04-09/): OpenAI gpt-4-turbo-2024-04-09 · CHAT 模型，Model ID: gpt-4-turbo-2024-04-09，接口路径: /v1/chat/completions。
+- [gpt-4o](https://doc.gpt88.cc/models/gpt-4o/): OpenAI gpt-4o · CHAT 模型，Model ID: gpt-4o，接口路径: /v1/chat/completions。
+- [gpt-4o-mini](https://doc.gpt88.cc/models/gpt-4o-mini/): OpenAI gpt-4o-mini · CHAT 模型，Model ID: gpt-4o-mini，接口路径: /v1/chat/completions。
+- [gpt-4o-mini-2024-07-18](https://doc.gpt88.cc/models/gpt-4o-mini-2024-07-18/): OpenAI gpt-4o-mini-2024-07-18 · CHAT 模型，Model ID: gpt-4o-mini-2024-07-18，接口路径: /v1/chat/completions。
+- [gpt-4o-mini-tts](https://doc.gpt88.cc/models/gpt-4o-mini-tts/): OpenAI gpt-4o-mini-tts · CHAT 模型，Model ID: gpt-4o-mini-tts，接口路径: /v1/chat/completions。
+- [gpt-4o-search-preview](https://doc.gpt88.cc/models/gpt-4o-search-preview/): OpenAI gpt-4o-search-preview · CHAT 模型，Model ID: gpt-4o-search-preview，接口路径: /v1/chat/completions。
+- [gpt-4o-transcribe](https://doc.gpt88.cc/models/gpt-4o-transcribe/): OpenAI gpt-4o-transcribe · CHAT 模型，Model ID: gpt-4o-transcribe，接口路径: /v1/chat/completions。
+- [gpt-5](https://doc.gpt88.cc/models/gpt-5/): OpenAI gpt-5 · CHAT 模型，Model ID: gpt-5，接口路径: /v1/chat/completions。
+- [gpt-5.1](https://doc.gpt88.cc/models/gpt-5-1/): OpenAI gpt-5.1 · CHAT 模型，Model ID: gpt-5.1，接口路径: /v1/chat/completions。
+- [gpt-5.1-2025-11-13](https://doc.gpt88.cc/models/gpt-5-1-2025-11-13/): OpenAI gpt-5.1-2025-11-13 · CHAT 模型，Model ID: gpt-5.1-2025-11-13，接口路径: /v1/chat/completions。
+- [gpt-5.1-chat](https://doc.gpt88.cc/models/gpt-5-1-chat/): OpenAI gpt-5.1-chat · CHAT 模型，Model ID: gpt-5.1-chat，接口路径: /v1/chat/completions。
+- [gpt-5.1-chat-latest](https://doc.gpt88.cc/models/gpt-5-1-chat-latest/): OpenAI gpt-5.1-chat-latest · CHAT 模型，Model ID: gpt-5.1-chat-latest，接口路径: /v1/chat/completions。
+- [gpt-5.1-codex](https://doc.gpt88.cc/models/gpt-5-1-codex/): OpenAI gpt-5.1-codex · CHAT 模型，Model ID: gpt-5.1-codex，接口路径: /v1/chat/completions。
+- [gpt-5.1-codex-max](https://doc.gpt88.cc/models/gpt-5-1-codex-max/): OpenAI gpt-5.1-codex-max · CHAT 模型，Model ID: gpt-5.1-codex-max，接口路径: /v1/chat/completions。
+- [gpt-5.1-codex-max-xhigh](https://doc.gpt88.cc/models/gpt-5-1-codex-max-xhigh/): OpenAI gpt-5.1-codex-max-xhigh · CHAT 模型，Model ID: gpt-5.1-codex-max-xhigh，接口路径: /v1/chat/completions。
+- [gpt-5.1-codex-mini](https://doc.gpt88.cc/models/gpt-5-1-codex-mini/): OpenAI gpt-5.1-codex-mini · CHAT 模型，Model ID: gpt-5.1-codex-mini，接口路径: /v1/chat/completions。
+- [gpt-5.1-high](https://doc.gpt88.cc/models/gpt-5-1-high/): OpenAI gpt-5.1-high · CHAT 模型，Model ID: gpt-5.1-high，接口路径: /v1/chat/completions。
+- [gpt-5.2](https://doc.gpt88.cc/models/gpt-5-2/): OpenAI gpt-5.2 · CHAT 模型，Model ID: gpt-5.2，接口路径: /v1/chat/completions。
+- [gpt-5.2-2025-12-11](https://doc.gpt88.cc/models/gpt-5-2-2025-12-11/): OpenAI gpt-5.2-2025-12-11 · CHAT 模型，Model ID: gpt-5.2-2025-12-11，接口路径: /v1/chat/completions。
+- [gpt-5.2-chat](https://doc.gpt88.cc/models/gpt-5-2-chat/): OpenAI gpt-5.2-chat · CHAT 模型，Model ID: gpt-5.2-chat，接口路径: /v1/chat/completions。
+- [gpt-5.2-chat-latest](https://doc.gpt88.cc/models/gpt-5-2-chat-latest/): OpenAI gpt-5.2-chat-latest · CHAT 模型，Model ID: gpt-5.2-chat-latest，接口路径: /v1/chat/completions。
+- [gpt-5.2-codex](https://doc.gpt88.cc/models/gpt-5-2-codex/): OpenAI gpt-5.2-codex · CHAT 模型，Model ID: gpt-5.2-codex，接口路径: /v1/chat/completions。
+- [gpt-5.2-codex-xhigh](https://doc.gpt88.cc/models/gpt-5-2-codex-xhigh/): OpenAI gpt-5.2-codex-xhigh · CHAT 模型，Model ID: gpt-5.2-codex-xhigh，接口路径: /v1/chat/completions。
+- [gpt-5.2-xhigh](https://doc.gpt88.cc/models/gpt-5-2-xhigh/): OpenAI gpt-5.2-xhigh · CHAT 模型，Model ID: gpt-5.2-xhigh，接口路径: /v1/chat/completions。
+- [gpt-5.3-chat](https://doc.gpt88.cc/models/gpt-5-3-chat/): OpenAI gpt-5.3-chat · CHAT 模型，Model ID: gpt-5.3-chat，接口路径: /v1/chat/completions。
+- [gpt-5.3-chat-latest](https://doc.gpt88.cc/models/gpt-5-3-chat-latest/): OpenAI gpt-5.3-chat-latest · CHAT 模型，Model ID: gpt-5.3-chat-latest，接口路径: /v1/chat/completions。
+- [gpt-5.3-codex](https://doc.gpt88.cc/models/gpt-5-3-codex/): OpenAI gpt-5.3-codex · CHAT 模型，Model ID: gpt-5.3-codex，接口路径: /v1/chat/completions。
+- [gpt-5.3-codex-high](https://doc.gpt88.cc/models/gpt-5-3-codex-high/): OpenAI gpt-5.3-codex-high · CHAT 模型，Model ID: gpt-5.3-codex-high，接口路径: /v1/chat/completions。
+- [gpt-5.3-codex-spark](https://doc.gpt88.cc/models/gpt-5-3-codex-spark/): OpenAI gpt-5.3-codex-spark · CHAT 模型，Model ID: gpt-5.3-codex-spark，接口路径: /v1/chat/completions。
+- [gpt-5.3-codex-xhigh](https://doc.gpt88.cc/models/gpt-5-3-codex-xhigh/): OpenAI gpt-5.3-codex-xhigh · CHAT 模型，Model ID: gpt-5.3-codex-xhigh，接口路径: /v1/chat/completions。
+- [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4/): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
+- [gpt-5.4-2026-03-05](https://doc.gpt88.cc/models/gpt-5-4-2026-03-05/): OpenAI gpt-5.4-2026-03-05 · CHAT 模型，Model ID: gpt-5.4-2026-03-05，接口路径: /v1/chat/completions。
+- [gpt-5.4-mini](https://doc.gpt88.cc/models/gpt-5-4-mini/): OpenAI gpt-5.4-mini · CHAT 模型，Model ID: gpt-5.4-mini，接口路径: /v1/chat/completions。
+- [gpt-5.4-pro](https://doc.gpt88.cc/models/gpt-5-4-pro/): OpenAI gpt-5.4-pro · CHAT 模型，Model ID: gpt-5.4-pro，接口路径: /v1/chat/completions。
+- [gpt-5.4-xhigh](https://doc.gpt88.cc/models/gpt-5-4-xhigh/): OpenAI gpt-5.4-xhigh · CHAT 模型，Model ID: gpt-5.4-xhigh，接口路径: /v1/chat/completions。
+- [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5/): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
+- [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
+- [gpt-5.6-sol](https://doc.gpt88.cc/models/gpt-5-6-sol/): OpenAI gpt-5.6-sol · CHAT 模型，Model ID: gpt-5.6-sol，接口路径: /v1/chat/completions。
+- [gpt-5.6-terra](https://doc.gpt88.cc/models/gpt-5-6-terra/): OpenAI gpt-5.6-terra · CHAT 模型，Model ID: gpt-5.6-terra，接口路径: /v1/chat/completions。
+- [gpt-5-chat](https://doc.gpt88.cc/models/gpt-5-chat/): OpenAI gpt-5-chat · CHAT 模型，Model ID: gpt-5-chat，接口路径: /v1/chat/completions。
+- [gpt-5-codex](https://doc.gpt88.cc/models/gpt-5-codex/): OpenAI gpt-5-codex · CHAT 模型，Model ID: gpt-5-codex，接口路径: /v1/chat/completions。
+- [gpt-5-codex-mini](https://doc.gpt88.cc/models/gpt-5-codex-mini/): OpenAI gpt-5-codex-mini · CHAT 模型，Model ID: gpt-5-codex-mini，接口路径: /v1/chat/completions。
+- [gpt-5-mini](https://doc.gpt88.cc/models/gpt-5-mini/): OpenAI gpt-5-mini · CHAT 模型，Model ID: gpt-5-mini，接口路径: /v1/chat/completions。
+- [gpt-5-nano](https://doc.gpt88.cc/models/gpt-5-nano/): OpenAI gpt-5-nano · CHAT 模型，Model ID: gpt-5-nano，接口路径: /v1/chat/completions。
+- [gpt-oss-120b](https://doc.gpt88.cc/models/gpt-oss-120b/): OpenAI gpt-oss-120b · CHAT 模型，Model ID: gpt-oss-120b，接口路径: /v1/chat/completions。
+- [gpt-oss-120b-turbo](https://doc.gpt88.cc/models/gpt-oss-120b-turbo/): OpenAI gpt-oss-120b-turbo · CHAT 模型，Model ID: gpt-oss-120b-turbo，接口路径: /v1/chat/completions。
+- [gpt-oss-20b](https://doc.gpt88.cc/models/gpt-oss-20b/): OpenAI gpt-oss-20b · CHAT 模型，Model ID: gpt-oss-20b，接口路径: /v1/chat/completions。
+- [gpt-oss-safeguard-20b](https://doc.gpt88.cc/models/gpt-oss-safeguard-20b/): OpenAI gpt-oss-safeguard-20b · CHAT 模型，Model ID: gpt-oss-safeguard-20b，接口路径: /v1/chat/completions。
+- [grok-4-0709](https://doc.gpt88.cc/models/grok-4-0709/): xAI grok-4-0709 · CHAT 模型，Model ID: grok-4-0709，接口路径: /v1/chat/completions。
+- [grok-4-1-fast-non-reasoning](https://doc.gpt88.cc/models/grok-4-1-fast-non-reasoning/): xAI grok-4-1-fast-non-reasoning · CHAT 模型，Model ID: grok-4-1-fast-non-reasoning，接口路径: /v1/chat/completions。
+- [grok-4-1-fast-reasoning](https://doc.gpt88.cc/models/grok-4-1-fast-reasoning/): xAI grok-4-1-fast-reasoning · CHAT 模型，Model ID: grok-4-1-fast-reasoning，接口路径: /v1/chat/completions。
+- [grok-4.20-beta-0309-non-reasoning](https://doc.gpt88.cc/models/grok-4-20-beta-0309-non-reasoning/): xAI grok-4.20-beta-0309-non-reasoning · CHAT 模型，Model ID: grok-4.20-beta-0309-non-reasoning，接口路径: /v1/chat/completions。
+- [grok-4.20-beta-0309-reasoning](https://doc.gpt88.cc/models/grok-4-20-beta-0309-reasoning/): xAI grok-4.20-beta-0309-reasoning · CHAT 模型，Model ID: grok-4.20-beta-0309-reasoning，接口路径: /v1/chat/completions。
+- [grok-4.20-multi-agent-beta-0309](https://doc.gpt88.cc/models/grok-4-20-multi-agent-beta-0309/): xAI grok-4.20-multi-agent-beta-0309 · CHAT 模型，Model ID: grok-4.20-multi-agent-beta-0309，接口路径: /v1/chat/completions。
+- [grok-4.3](https://doc.gpt88.cc/models/grok-4-3/): xAI grok-4.3 · CHAT 模型，Model ID: grok-4.3，接口路径: /v1/chat/completions。
+- [grok-4-fast-non-reasoning](https://doc.gpt88.cc/models/grok-4-fast-non-reasoning/): xAI grok-4-fast-non-reasoning · CHAT 模型，Model ID: grok-4-fast-non-reasoning，接口路径: /v1/chat/completions。
+- [grok-4-fast-reasoning](https://doc.gpt88.cc/models/grok-4-fast-reasoning/): xAI grok-4-fast-reasoning · CHAT 模型，Model ID: grok-4-fast-reasoning，接口路径: /v1/chat/completions。
+- [grok-code-fast-1](https://doc.gpt88.cc/models/grok-code-fast-1/): xAI grok-code-fast-1 · CHAT 模型，Model ID: grok-code-fast-1，接口路径: /v1/chat/completions。
+- [hunyuan-a13b](https://doc.gpt88.cc/models/hunyuan-a13b/): hunyuan-a13b hunyuan-a13b · CHAT 模型，Model ID: hunyuan-a13b，接口路径: /v1/chat/completions。
+- [hunyuan-code](https://doc.gpt88.cc/models/hunyuan-code/): hunyuan-code hunyuan-code · CHAT 模型，Model ID: hunyuan-code，接口路径: /v1/chat/completions。
+- [hunyuan-functioncall](https://doc.gpt88.cc/models/hunyuan-functioncall/): hunyuan-functioncall hunyuan-functioncall · CHAT 模型，Model ID: hunyuan-functioncall，接口路径: /v1/chat/completions。
+- [hunyuan-large](https://doc.gpt88.cc/models/hunyuan-large/): hunyuan-large hunyuan-large · CHAT 模型，Model ID: hunyuan-large，接口路径: /v1/chat/completions。
+- [hunyuan-large-longcontext](https://doc.gpt88.cc/models/hunyuan-large-longcontext/): hunyuan-large-longcontext hunyuan-large-longcontext · CHAT 模型，Model ID: hunyuan-large-longcontext，接口路径: /v1/chat/completions。
+- [hunyuan-large-role](https://doc.gpt88.cc/models/hunyuan-large-role/): hunyuan-large-role hunyuan-large-role · CHAT 模型，Model ID: hunyuan-large-role，接口路径: /v1/chat/completions。
+- [hunyuan-lite](https://doc.gpt88.cc/models/hunyuan-lite/): hunyuan-lite hunyuan-lite · CHAT 模型，Model ID: hunyuan-lite，接口路径: /v1/chat/completions。
+- [hunyuan-pro](https://doc.gpt88.cc/models/hunyuan-pro/): hunyuan-pro hunyuan-pro · CHAT 模型，Model ID: hunyuan-pro，接口路径: /v1/chat/completions。
+- [hunyuan-role](https://doc.gpt88.cc/models/hunyuan-role/): hunyuan-role hunyuan-role · CHAT 模型，Model ID: hunyuan-role，接口路径: /v1/chat/completions。
+- [hunyuan-standard](https://doc.gpt88.cc/models/hunyuan-standard/): hunyuan-standard hunyuan-standard · CHAT 模型，Model ID: hunyuan-standard，接口路径: /v1/chat/completions。
+- [hunyuan-standard-256K](https://doc.gpt88.cc/models/hunyuan-standard-256k/): hunyuan-standard-256K hunyuan-standard-256K · CHAT 模型，Model ID: hunyuan-standard-256k，接口路径: /v1/chat/completions。
+- [hunyuan-t1-20250403](https://doc.gpt88.cc/models/hunyuan-t1-20250403/): hunyuan-t1-20250403 hunyuan-t1-20250403 · CHAT 模型，Model ID: hunyuan-t1-20250403，接口路径: /v1/chat/completions。
+- [hunyuan-t1-vision](https://doc.gpt88.cc/models/hunyuan-t1-vision/): hunyuan-t1-vision hunyuan-t1-vision · CHAT 模型，Model ID: hunyuan-t1-vision，接口路径: /v1/chat/completions。
+- [hunyuan-turbo](https://doc.gpt88.cc/models/hunyuan-turbo/): hunyuan-turbo hunyuan-turbo · CHAT 模型，Model ID: hunyuan-turbo，接口路径: /v1/chat/completions。
+- [hunyuan-turbos-vision](https://doc.gpt88.cc/models/hunyuan-turbos-vision/): hunyuan-turbos-vision hunyuan-turbos-vision · CHAT 模型，Model ID: hunyuan-turbos-vision，接口路径: /v1/chat/completions。
+- [hunyuan-vision](https://doc.gpt88.cc/models/hunyuan-vision/): hunyuan-vision hunyuan-vision · CHAT 模型，Model ID: hunyuan-vision，接口路径: /v1/chat/completions。
+- [kimi-k2](https://doc.gpt88.cc/models/kimi-k2/): Moonshot kimi-k2 · CHAT 模型，Model ID: kimi-k2，接口路径: /v1/chat/completions。
+- [kimi-k2-0711-preview](https://doc.gpt88.cc/models/kimi-k2-0711-preview/): Moonshot kimi-k2-0711-preview · CHAT 模型，Model ID: kimi-k2-0711-preview，接口路径: /v1/chat/completions。
+- [kimi-k2.5](https://doc.gpt88.cc/models/kimi-k2-5/): Moonshot kimi-k2.5 · CHAT 模型，Model ID: kimi-k2.5，接口路径: /v1/chat/completions。
+- [kimi-k2.6](https://doc.gpt88.cc/models/kimi-k2-6/): Moonshot kimi-k2.6 · CHAT 模型，Model ID: kimi-k2.6，接口路径: /v1/chat/completions。
+- [kimi-k2-instruct](https://doc.gpt88.cc/models/kimi-k2-instruct/): Moonshot kimi-k2-instruct · CHAT 模型，Model ID: kimi-k2-instruct，接口路径: /v1/chat/completions。
+- [kimi-k2-thinking](https://doc.gpt88.cc/models/kimi-k2-thinking/): Moonshot kimi-k2-thinking · CHAT 模型，Model ID: kimi-k2-thinking，接口路径: /v1/chat/completions。
+- [kimi-k3](https://doc.gpt88.cc/models/kimi-k3/): Moonshot kimi-k3 · CHAT 模型，Model ID: kimi-k3，接口路径: /v1/chat/completions。
+- [minimax-m2](https://doc.gpt88.cc/models/minimax-m2/): MiniMax minimax-m2 · CHAT 模型，Model ID: minimax-m2，接口路径: /v1/chat/completions。
+- [MiniMax-M2.5](https://doc.gpt88.cc/models/minimax-m2-5/): MiniMax MiniMax-M2.5 · CHAT 模型，Model ID: minimax-m2.5，接口路径: /v1/chat/completions。
+- [MiniMax-M2.7](https://doc.gpt88.cc/models/minimax-m2-7/): MiniMax MiniMax-M2.7 · CHAT 模型，Model ID: minimax-m2.7，接口路径: /v1/chat/completions。
+- [MiniMax-M2.7-highspeed](https://doc.gpt88.cc/models/minimax-m2-7-highspeed/): MiniMax MiniMax-M2.7-highspeed · CHAT 模型，Model ID: minimax-m2.7-highspeed，接口路径: /v1/chat/completions。
+- [mistral-large-latest](https://doc.gpt88.cc/models/mistral-large-latest/): mistral-large-latest mistral-large-latest · CHAT 模型，Model ID: mistral-large-latest，接口路径: /v1/chat/completions。
+- [mistral-small-latest](https://doc.gpt88.cc/models/mistral-small-latest/): mistral-small-latest mistral-small-latest · CHAT 模型，Model ID: mistral-small-latest，接口路径: /v1/chat/completions。
+- [o1-mini](https://doc.gpt88.cc/models/o1-mini/): OpenAI o1-mini · CHAT 模型，Model ID: o1-mini，接口路径: /v1/chat/completions。
+- [o1-mini-2024-09-12](https://doc.gpt88.cc/models/o1-mini-2024-09-12/): OpenAI o1-mini-2024-09-12 · CHAT 模型，Model ID: o1-mini-2024-09-12，接口路径: /v1/chat/completions。
+- [o3-mini](https://doc.gpt88.cc/models/o3-mini/): OpenAI o3-mini · CHAT 模型，Model ID: o3-mini，接口路径: /v1/chat/completions。
+- [qwen-max](https://doc.gpt88.cc/models/qwen-max/): Alibaba qwen-max · CHAT 模型，Model ID: qwen-max，接口路径: /v1/chat/completions。
+- [qwen-plus](https://doc.gpt88.cc/models/qwen-plus/): Alibaba qwen-plus · CHAT 模型，Model ID: qwen-plus，接口路径: /v1/chat/completions。
+- [qwen-turbo](https://doc.gpt88.cc/models/qwen-turbo/): Alibaba qwen-turbo · CHAT 模型，Model ID: qwen-turbo，接口路径: /v1/chat/completions。
+- [qwen3-235b-a22b](https://doc.gpt88.cc/models/qwen3-235b-a22b/): Alibaba qwen3-235b-a22b · CHAT 模型，Model ID: qwen3-235b-a22b，接口路径: /v1/chat/completions。
+- [qwen3.5-9b](https://doc.gpt88.cc/models/qwen3-5-9b/): Alibaba qwen3.5-9b · CHAT 模型，Model ID: qwen3.5-9b，接口路径: /v1/chat/completions。
+- [Qwen3.5-Plus](https://doc.gpt88.cc/models/qwen3-5-plus/): Alibaba Qwen3.5-Plus · CHAT 模型，Model ID: qwen3.5-plus，接口路径: /v1/chat/completions。
+- [qwen3.6-27b](https://doc.gpt88.cc/models/qwen3-6-27b/): Alibaba qwen3.6-27b · CHAT 模型，Model ID: qwen3.6-27b，接口路径: /v1/chat/completions。
+- [qwen3-max](https://doc.gpt88.cc/models/qwen3-max/): Alibaba qwen3-max · CHAT 模型，Model ID: qwen3-max，接口路径: /v1/chat/completions。
+- [SparkDesk-v1.1](https://doc.gpt88.cc/models/sparkdesk-v1-1/): 科大讯飞 (iFlytek) SparkDesk-v1.1 · CHAT 模型，Model ID: sparkdesk-v1.1，接口路径: /v1/chat/completions。
+- [SparkDesk-v2.1](https://doc.gpt88.cc/models/sparkdesk-v2-1/): 科大讯飞 (iFlytek) SparkDesk-v2.1 · CHAT 模型，Model ID: sparkdesk-v2.1，接口路径: /v1/chat/completions。
+- [SparkDesk-v3.1](https://doc.gpt88.cc/models/sparkdesk-v3-1/): 科大讯飞 (iFlytek) SparkDesk-v3.1 · CHAT 模型，Model ID: sparkdesk-v3.1，接口路径: /v1/chat/completions。
+- [SparkDesk-v3.5](https://doc.gpt88.cc/models/sparkdesk-v3-5/): 科大讯飞 (iFlytek) SparkDesk-v3.5 · CHAT 模型，Model ID: sparkdesk-v3.5，接口路径: /v1/chat/completions。
+- [text-embedding-v1](https://doc.gpt88.cc/models/text-embedding-v1/): OpenAI text-embedding-v1 · CHAT 模型，Model ID: text-embedding-v1，接口路径: /v1/chat/completions。
+
+## VIDEO 模型
+
+- [Doubao-Seedance-2.0](https://doc.gpt88.cc/models/doubao-seedance-2-0/): 字节跳动 (ByteDance) Doubao-Seedance-2.0 · VIDEO 模型，Model ID: doubao-seedance-2.0，接口路径: /v1/videos/generations。
+- [doubao-seedance-2.0-face](https://doc.gpt88.cc/models/doubao-seedance-2-0-face/): 字节跳动 (ByteDance) doubao-seedance-2.0-face · VIDEO 模型，Model ID: doubao-seedance-2.0-face，接口路径: /v1/videos/generations。
+- [doubao-seedance-2.0-fast](https://doc.gpt88.cc/models/doubao-seedance-2-0-fast/): 字节跳动 (ByteDance) doubao-seedance-2.0-fast · VIDEO 模型，Model ID: doubao-seedance-2.0-fast，接口路径: /v1/videos/generations。
+- [doubao-seedance-2.0-fast-face](https://doc.gpt88.cc/models/doubao-seedance-2-0-fast-face/): 字节跳动 (ByteDance) doubao-seedance-2.0-fast-face · VIDEO 模型，Model ID: doubao-seedance-2.0-fast-face，接口路径: /v1/videos/generations。
+
+## IMAGE 模型
+
+- [doubao-seedream-4-5-251128](https://doc.gpt88.cc/models/doubao-seedream-4-5-251128/): 字节跳动 (ByteDance) doubao-seedream-4-5-251128 · IMAGE 模型，Model ID: doubao-seedream-4-5-251128，接口路径: /v1/images/generations。
+- [gemini-2.5-flash-image](https://doc.gpt88.cc/models/gemini-2-5-flash-image/): Google gemini-2.5-flash-image · IMAGE 模型，Model ID: gemini-2.5-flash-image，接口路径: /v1/images/generations。
+- [gemini-3.1-flash-image-preview](https://doc.gpt88.cc/models/gemini-3-1-flash-image-preview/): Google gemini-3.1-flash-image-preview · IMAGE 模型，Model ID: gemini-3.1-flash-image-preview，接口路径: /v1/images/generations。
+- [gemini-3-flash-image-preview](https://doc.gpt88.cc/models/gemini-3-flash-image-preview/): Google gemini-3-flash-image-preview · IMAGE 模型，Model ID: gemini-3-flash-image-preview，接口路径: /v1/images/generations。
+- [gemini-3-pro-image-preview](https://doc.gpt88.cc/models/gemini-3-pro-image-preview/): Google gemini-3-pro-image-preview · IMAGE 模型，Model ID: gemini-3-pro-image-preview，接口路径: /v1beta/models/gemini-3-pro-image-preview:generateContent。
+- [google-image-4](https://doc.gpt88.cc/models/google-image-4/): Google google-image-4 · IMAGE 模型，Model ID: google-image-4，接口路径: /v1/images/generations。
+- [gpt-image-2](https://doc.gpt88.cc/models/gpt-image-2/): OpenAI gpt-image-2 · IMAGE 模型，Model ID: gpt-image-2，接口路径: /v1/images/generations。
+- [gpt-image-2-1k](https://doc.gpt88.cc/models/gpt-image-2-1k/): OpenAI gpt-image-2-1k · IMAGE 模型，Model ID: gpt-image-2-1k，接口路径: /v1/images/generations。
+- [gpt-image-2-2k](https://doc.gpt88.cc/models/gpt-image-2-2k/): OpenAI gpt-image-2-2k · IMAGE 模型，Model ID: gpt-image-2-2k，接口路径: /v1/images/generations。
+- [gpt-image-2-4k](https://doc.gpt88.cc/models/gpt-image-2-4k/): OpenAI gpt-image-2-4k · IMAGE 模型，Model ID: gpt-image-2-4k，接口路径: /v1/images/generations。
+- [grok-4.1-image](https://doc.gpt88.cc/models/grok-4-1-image/): xAI grok-4.1-image · IMAGE 模型，Model ID: grok-4.1-image，接口路径: /v1/images/generations。
+- [grok-4.2-image](https://doc.gpt88.cc/models/grok-4-2-image/): xAI grok-4.2-image · IMAGE 模型，Model ID: grok-4.2-image，接口路径: /v1/images/generations。
+- [imagen-3.0-generate-002](https://doc.gpt88.cc/models/imagen-3-0-generate-002/): Google imagen-3.0-generate-002 · IMAGE 模型，Model ID: imagen-3.0-generate-002，接口路径: /v1/images/generations。
+- [NanoBanana2](https://doc.gpt88.cc/models/nanobanana2/): Google NanoBanana2 · IMAGE 模型，Model ID: NanoBanana2，接口路径: /v1beta/models/NanoBanana2:generateContent。
+- [qwen-image-max](https://doc.gpt88.cc/models/qwen-image-max/): Alibaba qwen-image-max · IMAGE 模型，Model ID: qwen-image-max，接口路径: /v1/images/generations。
+- [wan2.6-t2i](https://doc.gpt88.cc/models/wan2-6-t2i/): wan2.6-t2i wan2.6-t2i · IMAGE 模型，Model ID: wan2.6-t2i，接口路径: /v1/images/generations。
+- [wan2.7-image](https://doc.gpt88.cc/models/wan2-7-image/): wan2.7-image wan2.7-image · IMAGE 模型，Model ID: wan2.7-image，接口路径: /v1/images/generations。
+- [wan2.7-image-pro](https://doc.gpt88.cc/models/wan2-7-image-pro/): wan2.7-image-pro wan2.7-image-pro · IMAGE 模型，Model ID: wan2.7-image-pro，接口路径: /v1/images/generations。
+
+## AUDIO 模型
+
+- [whisper-1](https://doc.gpt88.cc/models/whisper-1/): OpenAI whisper-1 · AUDIO 模型，Model ID: whisper-1，接口路径: /v1/audio/transcriptions。

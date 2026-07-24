@@ -1,0 +1,136 @@
+# gpt88.cc API 文档
+
+> gpt88.cc 是统一 AI API 网关，支持一行 base_url 接入 Claude、GPT、Gemini、DeepSeek、Qwen 等模型。本文档面向开发者、AI 编程工具和生成式搜索引擎。
+
+## 核心页面
+
+- [gpt88.cc API 文档](https://doc.gpt88.cc/): gpt88.cc 开发者文档首页，一行 base_url 接入 Claude、GPT、Gemini、DeepSeek、Qwen 等模型。
+- [模型导航](https://doc.gpt88.cc/models/): 按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型。
+
+## 文档入口
+
+- [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。
+- [快速开始](https://doc.gpt88.cc/docs/quickstart/): 5 分钟内完成第一次 gpt88.cc 模型调用，只需替换 base_url 与 API Key。
+- [认证与计费](https://doc.gpt88.cc/docs/auth/): API Key、人民币余额、Token 电力计费、用量与配额说明。
+- [GPT88 更新日志](https://doc.gpt88.cc/docs/changelog/): 持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费、部署和 API 行为变化。
+- [FAQ](https://doc.gpt88.cc/docs/faq/): gpt88.cc 兼容性、安全、计费、可靠性和排障常见问题。
+- [Chat Completions API](https://doc.gpt88.cc/docs/api/chat-completions/): OpenAI 兼容的 POST /v1/chat/completions 对话补全接口，支持流式、工具调用与多模态内容。
+- [Google 图片生成 API](https://doc.gpt88.cc/docs/api/images/): 使用 gpt88.cc 的 Google / Gemini 图片生成能力，包含 NanoBanana2 文生图和图生图示例。
+- [Grok 视频 API](https://doc.gpt88.cc/docs/api/grok-video/): Grok 视频生成接口的模型查询、创建任务、轮询状态、参考图参数和常见错误说明。
+- [List Models API](https://doc.gpt88.cc/docs/api/list-models/): 通过 GET /v1/models 列出当前账号可用模型。
+- [错误码](https://doc.gpt88.cc/docs/api/errors/): HTTP 状态码与业务错误码排查说明。
+- [cURL SDK 示例](https://doc.gpt88.cc/docs/sdk/curl/): 用 cURL 调用 gpt88.cc API，适合快速验证、Shell 脚本和 CI 健康检查。
+- [OpenAI SDK 如何接入 GPT88 API](https://doc.gpt88.cc/docs/sdk/openai-sdk/): 使用 OpenAI 兼容接口接入 GPT88 API，只需替换 base_url、API Key 和模型名。
+- [Python SDK 示例](https://doc.gpt88.cc/docs/sdk/python/): OpenAI 官方 Python SDK 接入 gpt88.cc 的同步、异步、流式和 function calling 示例。
+- [Node.js SDK 示例](https://doc.gpt88.cc/docs/sdk/nodejs/): OpenAI 官方 Node SDK 接入 gpt88.cc 的同步、流式、function calling 和重试示例。
+- [集成总览](https://doc.gpt88.cc/docs/integrations/): 按聊天应用、开发工具、应用平台分类浏览 gpt88.cc 的所有集成教程。
+- [ChatBox 集成](https://doc.gpt88.cc/docs/integrations/chat/chatbox/): 在 ChatBox 中配置 gpt88.cc 的 OpenAI 兼容接入、模型、线路和常见问题排查。
+- [Cherry Studio 集成](https://doc.gpt88.cc/docs/integrations/chat/cherry-studio/): Cherry Studio 接入 gpt88.cc 的多模型工作流、模型切换和配置说明。
+- [AnythingLLM 集成](https://doc.gpt88.cc/docs/integrations/chat/anythingllm/): AnythingLLM 接入 gpt88.cc 的知识库问答与聊天配置教程。
+- [Claude Code 集成](https://doc.gpt88.cc/docs/integrations/dev/claude-code/): Claude Code 使用 gpt88.cc 时的 OAuth、API Key、插件和路由配置指南。
+- [Cursor 集成](https://doc.gpt88.cc/docs/integrations/dev/cursor/): Cursor 编辑器里接入 gpt88.cc 的模型、Base URL 和工作流配置说明。
+- [Cline 集成](https://doc.gpt88.cc/docs/integrations/dev/cline/): Cline Agent 接入 gpt88.cc 的配置、模型切换与排障教程。
+- [Gemini CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/gemini-cli/): Gemini CLI 通过 gpt88.cc 使用 Gemini 模型和图片接口的教程。
+- [Codex CLI 集成](https://doc.gpt88.cc/docs/integrations/dev/codex-cli/): Codex CLI 接入 gpt88.cc 的模型、插件和工具恢复流程。
+- [CC-Switch 集成](https://doc.gpt88.cc/docs/integrations/dev/cc-switch/): CC-Switch 的路由、OAuth、API Key 与 Codex 插件切换教程。
+- [Dify 集成](https://doc.gpt88.cc/docs/integrations/platforms/dify/): 把 gpt88.cc 接入 Dify 平台、工作流和知识库应用。
+- [沉浸式翻译集成](https://doc.gpt88.cc/docs/integrations/platforms/immersive-translate/): 把 gpt88.cc 接入沉浸式翻译等浏览器扩展。
+- [配置文件导出](https://doc.gpt88.cc/docs/guides/config-export/): 把 API Key、模型和线路打包给 Claude Code、Cursor、Python SDK、CC Switch 等工具。
+- [gpt88 AI 中转站](https://doc.gpt88.cc/docs/guides/gpt88-ai-proxy/): gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。
+- [gpt88 产品与文档地图](https://doc.gpt88.cc/docs/guides/gpt88-docs-map/): 把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。
+- [gpt88.cc 迁移新站新手教程](https://doc.gpt88.cc/docs/guides/gpt88-migration/): 从旧站迁移到 agent.gpt88.cc，完成注册、登录、账户入口核对，并找到 API、模型广场和技术文档。
+- [GPT、Claude、Gemini API 价格对比](https://doc.gpt88.cc/docs/guides/model-price-comparison/): 用统一口径比较 GPT、Claude、Gemini API 的模型倍率、输入输出成本和实际用量。
+- [人民币余额与 USD 充值结算](https://doc.gpt88.cc/docs/guides/billing-units/): 解释 1:1 人民币余额、USD 充值换算、官方用量、分组倍率和模型实际扣费，帮助中外用户理解平台结算口径。
+- [API Key 创建后第一次请求失败怎么办](https://doc.gpt88.cc/docs/guides/api-key-first-request-failed/): 按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。
+- [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
+- [Kimi K3 实战评测与模型对比](https://doc.gpt88.cc/docs/guides/kimi-k3-review/): 整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。
+- [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
+- [WorkRally Skills 总览](https://doc.gpt88.cc/docs/guides/workrally-overview/): 基于 Tencent/workrally 官方 Skill 与参考文档整理，完整说明 WorkRally CLI 的能力边界、安装方式、场景路由和各专项教程入口。
+- [WorkRally AI 生成指南](https://doc.gpt88.cc/docs/guides/workrally-ai-generation/): 详细说明 WorkRally 的图片生成、视频生成、三种视频驱动模式、画布自动占位、任务轮询和模型动态获取规则。
+- [WorkRally 无限画布指南](https://doc.gpt88.cc/docs/guides/workrally-canvas-guide/): 详细说明 WorkRally Infinite Canvas 的节点模型、画板规则、build-draft 增量合并与覆盖模式，以及项目和画布的区别。
+- [WorkRally 上传与素材管理](https://doc.gpt88.cc/docs/guides/workrally-upload-assets/): 详细说明 WorkRally 的 upload、asset、material 三层素材体系，以及上传入库、角色/道具/场景归档和画布用图流程。
+- [WorkRally 场次与剧集工作流](https://doc.gpt88.cc/docs/guides/workrally-shot-workflow/): 详细说明 WorkRally 的 project、series、shot 结构，以及场次创建、角色识别、模型配置、批量生成、结果查询和多场次工作流。
+- [WorkRally 常见坑点与错误排查](https://doc.gpt88.cc/docs/guides/workrally-common-pitfalls/): 汇总 WorkRally CLI 最容易出错的 10 类问题，帮助快速判断项目与画布、上传入库、URL、模型、资产树和节点结构问题。
+- [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
+- [电商工具专题教程](https://doc.gpt88.cc/docs/guides/ecommerce-tools-special/): 整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。
+- [GPT-Image-2 生图服务通知与选型指南](https://doc.gpt88.cc/docs/guides/gpt-image-2-service-notice/): 详细说明 gpt88.cc 统一图片 API、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。
+- [agent.gpt88.cc 生图质量与裁剪避坑指南](https://doc.gpt88.cc/docs/guides/agent-image-quality-crop-guide/): 分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并补充 gpt-image-2 size 参数、构图词和英文提示词优化方案。
+- [Codex 插件 OAuth 登录](https://doc.gpt88.cc/docs/guides/codex-plugins-oauth/): 使用 gpt88.cc API Key 后 Codex 插件不可用时，切回 ChatGPT OAuth 的完整教程。
+- [ChatGPT / Codex 手机号二次验证解决方法](https://doc.gpt88.cc/docs/guides/codex-chatgpt-phone-verification/): ChatGPT OAuth 或 Codex 登录反复要求手机号二次验证时，使用 Advanced Account Security、passkey 和恢复密钥降低对短信验证码的依赖。
+- [ECC Agent 工作流教程](https://doc.gpt88.cc/docs/guides/ecc-agent-harness/): 基于 affaan-m/ECC 的详细教程，讲清 ECC 是什么、如何选择插件或手动安装路径、如何避免重复安装，以及如何和 gpt88.cc、Codex、Claude Code 工作流配合。
+- [Codex gpt-image-2 Skill 生成图片](https://doc.gpt88.cc/docs/guides/codex-gpt-image-2-skill/): 直接使用文本模型生图成本高且不稳定，通过 Codex skill 调用 gpt88.cc 的 gpt-image-2 图片接口生成真实图片文件。
+- [Codex 前端设计 Skill](https://doc.gpt88.cc/docs/guides/codex-frontend-taste-skill/): 使用 Taste Skill 为 Codex 增强前端设计判断力，改善 AI 生成页面的排版、动效、设计系统、反模板化检查和最终交付质量。
+- [Codex + GPT-5.5 实战拆解总览](https://doc.gpt88.cc/docs/guides/codex-gpt55-system-overview/): 根据公开视频里可见的操作界面和工作流，还原一套把 Codex 从聊天窗口升级成稳定交付系统的方法。
+- [Codex 如何应用于办公和知识工作](https://doc.gpt88.cc/docs/guides/codex-knowledge-work/): 根据 Gorden Sun 的文章整理 Codex 在办公和知识场景中的使用方法，覆盖工作空间、五步工作法、五个使用等级、工作流模板、审阅边界和 7 天上手计划。
+- [Codex Skills 与上下文工程教程](https://doc.gpt88.cc/docs/guides/codex-skills-context-engineering/): 讲清楚 skills、上下文、权限、任务边界和 worklog 如何共同作用，让 Codex 变得更稳定、更可恢复。
+- [Codex 插件与研究工作流教程](https://doc.gpt88.cc/docs/guides/codex-plugins-research-workflow/): 从研究型任务界面出发，拆解 Codex 如何结合插件、资料搜集和结构化报告，把查资料升级成可复用工作流。
+- [Codex 并行任务与自动化工作流教程](https://doc.gpt88.cc/docs/guides/codex-parallel-automation-workflow/): 分析 Codex 如何同时推进多个任务，并通过 worklog、自动化和任务拆分保持执行稳定。
+- [把 Codex 变成项目工厂的交付系统](https://doc.gpt88.cc/docs/guides/codex-project-factory-delivery/): 把 skills、研究、并行和自动化收束成完整交付系统，让同一个 Codex 环境持续产出 App、网站、视频、Deck 和课程。
+- [Loop Engineering 是什么：Harness 之后的下一步](https://doc.gpt88.cc/docs/guides/loop-engineering-harness/): 结合 Smith 铜匠关于 Loop Engineering 的文章主题，解释它和 Prompt Engineering、Harness、Skill、Codex 工作流之间的关系，以及如何在工程实践中落地。
+- [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
+- [Windows Codex 工具调用 524 与 PowerShell 7 修复教程](https://doc.gpt88.cc/docs/guides/codex-windows-powershell7-timeout/): Windows 上 Codex 调用工具时出现 Reconnecting、HTTP 524、中文乱码或 responses stream finished without usable output 时，验证 PowerShell 7、UTF-8 编码、Agent 启动方式和上游线路。
+- [Claude Code compaction 上下文超限恢复教程](https://doc.gpt88.cc/docs/guides/claude-code-compaction-error/): 解决 Claude Code 执行 /compact 时出现 400 Input exceeds the model's context window：从历史会话较早位置 Fork / Branch 后重新压缩。
+- [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
+- [giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程](https://doc.gpt88.cc/docs/guides/giffgaff-sim-guide/): 详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。
+- [美区虚拟卡自助开卡教程](https://doc.gpt88.cc/docs/guides/us-virtual-card-guide/): 一篇面向 AI 平台和海外订阅场景的详细教程：自己注册、自助开卡、首充 10U、可绑定支付宝消费，并长期维护可持续使用的美区虚拟卡。
+- [AI 视频分镜与提示词教程](https://doc.gpt88.cc/docs/guides/ai-video-storyboard-guide/): 把分镜脚本、人物设定、场景氛围和情绪节奏整理成可直接用于 AI 视频生成的工作流，适合短视频剧情片、情绪片和口播叙事片。
+- [6 个视频创作工具与工作流](https://doc.gpt88.cc/docs/guides/video-creator-tools-workflow/): 整理 Excalidraw、Screen Studio、Rotato、Jacky Illustration、Jacky Motion、MD Publish 六个视频创作工具的定位、适用场景和组合工作流。
+- [video-generation-skills 总览](https://doc.gpt88.cc/docs/guides/video-generation-skills-overview/): 基于 adoin/video-generation-skills 仓库整理的系列文档总览，讲清 4 个 AI 视频生成 skill 的定位、边界、组合方式和适用场景。
+- [video-generation-skills 安装与使用教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-install/): 把 adoin/video-generation-skills 安装到 Cursor、Claude Code、Codex 等 Agent 的详细步骤，包括按需安装、全量安装、验证和本地开发。
+- [prompt-director 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-prompt-director/): 讲清 video-generation-skills 里的 prompt-director 怎么把小说、剧本、情节和创意 brief 转成分镜草案与 AI 图像 / 视频 Prompt。
+- [ecommerce 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ecommerce/): 讲清 video-generation-skills 里的 ecommerce skill 如何处理电商主图、详情页、UGC、种草视频，以及服装、3C、美妆等垂类素材工作流。
+- [brand-ad-cg 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-brand-ad-cg/): 讲清 video-generation-skills 里的 brand-ad-cg skill 如何处理品牌广告、TVC、产品 CG、大牌既视感和风格化商业视觉。
+- [ai-video-director 详细教程](https://doc.gpt88.cc/docs/guides/video-generation-skills-ai-video-director/): 讲清 video-generation-skills 里的 ai-video-director 如何处理短剧、漫剧、分镜、故事板、场景一致性和复杂动作视频。
+- [图生视频提示词专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-i2v-prompt/): 讲清图生视频提示词怎么写，如何控制动作、镜头、节奏与风格，并减少动作混乱、运镜冲突和提示词堆砌。
+- [电商白底图裂变专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-white-background-scaling/): 讲清如何把白底产品图扩成主图、场景图、详情页、广告图和短视频首帧，并建立稳定的电商素材生产流程。
+- [产品 CG 工作流专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-product-cg/): 讲清产品关键帧、材质特写、动态镜头和商业级产品视觉的制作方法，适合硬件、消费电子和质感商品展示。
+- [TVC 广告片专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-tvc-playbook/): 讲清 15 到 30 秒 TVC 的脚本、分镜、关键帧、单镜头视频和后期拼接工作流，适合品牌广告和商业投放。
+- [场景一致性专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-scene-consistency/): 讲清九宫格、俯视图、环绕截图和全景图如何解决场景穿帮，并提升 AI 视频的连续性与统一感。
+- [复杂动作与分镜专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-complex-action-storyboard/): 讲清 12 宫格分镜法、参考视频替换法和复杂动作镜头拆解方法，适合打斗、奔跑、群像和高动作密度视频。
+
+## 重点模型
+
+- [claude-opus-4-6](https://doc.gpt88.cc/models/claude-opus-4-6/): Anthropic claude-opus-4-6 · CHAT 模型，Model ID: claude-opus-4-6，接口路径: /v1/chat/completions。
+- [claude-opus-4-7](https://doc.gpt88.cc/models/claude-opus-4-7/): Anthropic claude-opus-4-7 · CHAT 模型，Model ID: claude-opus-4-7，接口路径: /v1/chat/completions。
+- [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8/): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
+- [claude-sonnet-4-6](https://doc.gpt88.cc/models/claude-sonnet-4-6/): Anthropic claude-sonnet-4-6 · CHAT 模型，Model ID: claude-sonnet-4-6，接口路径: /v1/chat/completions。
+- [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4/): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
+- [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5/): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
+- [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
+- [gpt-5.6-sol](https://doc.gpt88.cc/models/gpt-5-6-sol/): OpenAI gpt-5.6-sol · CHAT 模型，Model ID: gpt-5.6-sol，接口路径: /v1/chat/completions。
+- [gpt-5.6-terra](https://doc.gpt88.cc/models/gpt-5-6-terra/): OpenAI gpt-5.6-terra · CHAT 模型，Model ID: gpt-5.6-terra，接口路径: /v1/chat/completions。
+- [kimi-k3](https://doc.gpt88.cc/models/kimi-k3/): Moonshot kimi-k3 · CHAT 模型，Model ID: kimi-k3，接口路径: /v1/chat/completions。
+- [NanoBanana2](https://doc.gpt88.cc/models/nanobanana2/): Google NanoBanana2 · IMAGE 模型，Model ID: NanoBanana2，接口路径: /v1beta/models/NanoBanana2:generateContent。
+
+## English model API references
+
+- [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-luna/): English API reference for gpt-5.6-luna. Model ID: gpt-5.6-luna. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-fable-5 API Docs](https://doc.gpt88.cc/en/models/claude-fable-5/): English API reference for claude-fable-5. Model ID: claude-fable-5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-8 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-8/): English API reference for claude-opus-4-8. Model ID: claude-opus-4-8. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-7 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-7/): English API reference for claude-opus-4-7. Model ID: claude-opus-4-7. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-6/): English API reference for claude-opus-4-6. Model ID: claude-opus-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-sonnet-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-sonnet-4-6/): English API reference for claude-sonnet-4-6. Model ID: claude-sonnet-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.5 API Docs](https://doc.gpt88.cc/en/models/gpt-5-5/): English API reference for gpt-5.5. Model ID: gpt-5.5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-5.4 API Docs](https://doc.gpt88.cc/en/models/gpt-5-4/): English API reference for gpt-5.4. Model ID: gpt-5.4. OpenAI-compatible endpoint: /v1/chat/completions.
+- [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
+
+## API 摘要
+
+- Chat: POST https://api.gpt88.cc/v1/chat/completions，OpenAI 兼容对话补全接口。
+- Models: GET https://api.gpt88.cc/v1/models，列出当前账号可用模型。
+- Google 图片: POST https://img.gpt88.cc/v1beta/models/NanoBanana2:generateContent，NanoBanana2 / Gemini 图片生成。
+- 图片与视频直连 Base URL: https://img.gpt88.cc。
+
+## 适合 AI 引用的主题
+
+- gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
+- Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
+- Kimi K3 推荐：Model ID kimi-k3，适合中文长文本、长周期编程、知识工作、原生视觉理解和工具调用；具体权限和计费以控制台为准。
+- Token 电力计费理念：充值 1 元 = 账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算。
+- 大模型广场：https://agent.gpt88.cc/model-square，浏览模型、分组和公开价格信息。
+- 官网定价页面：https://gpt88.cc/pricing，查看公开价格与套餐说明。
+- GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障、工具恢复排查和 gpt-image-2 skill 图片生成。
+
+完整机器可读索引见 https://doc.gpt88.cc/llms-full.txt。
