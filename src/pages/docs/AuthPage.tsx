@@ -193,6 +193,11 @@ export default function AuthPage() {
           先确认所选分组的倍率，再结合官方用量判断成本。账户余额是你的人民币余额，
           充值到账和页面显示都按 1:1 处理。
         </p>
+        <p>
+          如果你第一次看到美元价格或页面上的 <code>$</code> 符号，请继续阅读
+          <Link to="/docs/guides/billing-units/">人民币余额与 USD 充值结算新手指南</Link>，
+          先分清支付货币、账户余额和官方用量。
+        </p>
       </Callout>
 
       <h2 id="billing-questions">用户常问：倍率、额度、积分</h2>

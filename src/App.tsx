@@ -27,6 +27,7 @@ import {
   ApiKeyFirstRequestFailedPage,
   AiVideoStoryboardGuidePage,
   AnythingLlmPage,
+  BillingUnitsGuidePage,
   CcSwitchIntegrationPage,
   ChatboxPage,
   CherryStudioPage,
@@ -149,6 +150,7 @@ export default function App() {
         <Route path="guides/gpt88-migration" element={route(<Gpt88MigrationGuidePage />)} />
         <Route path="guides/model-price-comparison" element={route(<ModelPriceComparisonPage />)} />
         <Route path="guides/api-key-first-request-failed" element={route(<ApiKeyFirstRequestFailedPage />)} />
+        <Route path="guides/billing-units" element={route(<BillingUnitsGuidePage />)} />
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
         <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
         <Route path="guides/complete-integration" element={route(<CompleteIntegrationGuidePage />)} />

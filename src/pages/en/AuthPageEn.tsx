@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { CodeBlock } from '../../components/ui/CodeBlock'
 import { Callout } from '../../components/ui/Callout'
+import { localizePath } from '../../lib/locale'
 
 const HEADER = `Authorization: Bearer $GPT88_API_KEY
 Content-Type: application/json
@@ -67,6 +69,11 @@ export default function AuthPageEn() {
       <p>
         gpt88.cc uses RMB balance and official usage multiplied by the selected group multiplier.
         Pricing and group settings are controlled dynamically in the console.
+      </p>
+      <p>
+        If USD pricing or a <code>$</code> symbol is confusing, read the{' '}
+        <Link to={localizePath('/docs/guides/billing-units/', 'en')}>RMB Balance &amp; USD Top-Up Billing Guide</Link>{' '}
+        for the difference between payment currency, account balance, and official usage.
       </p>
       <ul>
         <li>Top-up 1 RMB = 1 RMB in account balance.</li>

@@ -199,6 +199,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: '人民币余额与 USD 充值结算',
+    path: '/docs/guides/billing-units',
+    description: '解释 1:1 人民币余额、USD 充值换算、官方用量、分组倍率和模型实际扣费，帮助中外用户理解平台结算口径。',
+    section: '指南',
+  },
+  {
     title: 'API Key 创建后第一次请求失败怎么办',
     path: '/docs/guides/api-key-first-request-failed',
     description: '按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。',

@@ -40,6 +40,7 @@
 - [gpt88 产品与文档地图](https://doc.gpt88.cc/docs/guides/gpt88-docs-map/): 把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。
 - [gpt88.cc 迁移新站新手教程](https://doc.gpt88.cc/docs/guides/gpt88-migration/): 从旧站迁移到 agent.gpt88.cc，完成注册、登录、账户入口核对，并找到 API、模型广场和技术文档。
 - [GPT、Claude、Gemini API 价格对比](https://doc.gpt88.cc/docs/guides/model-price-comparison/): 用统一口径比较 GPT、Claude、Gemini API 的模型倍率、输入输出成本和实际用量。
+- [人民币余额与 USD 充值结算](https://doc.gpt88.cc/docs/guides/billing-units/): 解释 1:1 人民币余额、USD 充值换算、官方用量、分组倍率和模型实际扣费，帮助中外用户理解平台结算口径。
 - [API Key 创建后第一次请求失败怎么办](https://doc.gpt88.cc/docs/guides/api-key-first-request-failed/): 按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。
 - [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
 - [Kimi K3 实战评测与模型对比](https://doc.gpt88.cc/docs/guides/kimi-k3-review/): 整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。

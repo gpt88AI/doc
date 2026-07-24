@@ -208,6 +208,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '用统一口径比较模型倍率、输入输出成本和实际用量',
       },
       {
+        title: '人民币余额与 USD 充值结算',
+        path: '/docs/guides/billing-units/',
+        blurb: '解释 1:1 余额、美元充值换算、分组倍率和人民币实际扣费',
+      },
+      {
         title: 'API Key 首次请求失败排查',
         path: '/docs/guides/api-key-first-request-failed/',
         blurb: '按端点、认证头、模型、余额和错误码定位第一次失败',
@@ -503,6 +508,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/gpt88-docs-map/': 'gpt88 Docs Map',
   '/docs/guides/gpt88-migration/': 'gpt88 New-Site Migration Guide',
   '/docs/guides/model-price-comparison/': 'GPT, Claude & Gemini Price Comparison',
+  '/docs/guides/billing-units/': 'RMB Balance & USD Top-Up Billing',
   '/docs/guides/api-key-first-request-failed/': 'First API Request Failed',
   '/docs/guides/gpt88-tutorial/': 'General Tutorial',
   '/docs/guides/complete-integration/': 'Complete Integration Guide',
@@ -580,6 +586,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/gpt88-docs-map/': 'A complete map of the main site, image workspace, docs site, accelerated image domains, and tutorial categories',
   '/docs/guides/gpt88-migration/': 'Beginner guide for moving from the legacy site to agent.gpt88.cc, including registration, login, and entry-point checks',
   '/docs/guides/model-price-comparison/': 'Compare GPT, Claude, and Gemini costs with one input, output, and usage measurement',
+  '/docs/guides/billing-units/': 'Beginner guide to RMB balance, USD top-up conversion, group multipliers, and actual model deductions',
   '/docs/guides/api-key-first-request-failed/': 'Diagnose the first failed request after creating an API key',
   '/docs/guides/gpt88-tutorial/': 'General Claude and OpenAI integration, model choice, route choice, and tool setup',
   '/docs/guides/complete-integration/': 'End-to-end guide from API key and base URL setup to usage verification and troubleshooting',
