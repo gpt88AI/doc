@@ -18,6 +18,7 @@ import PythonSdkPage from './pages/docs/sdk/PythonPage'
 import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
 import ClaudeCodeCompactionErrorPage from './pages/docs/guides/ClaudeCodeCompactionErrorPage'
 import KimiK3ReviewPage from './pages/docs/guides/KimiK3ReviewPage'
+import KimiK3GuidePage from './pages/docs/guides/KimiK3GuidePage'
 import NotFoundPage from './pages/NotFoundPage'
 import LocalizedLandingPage from './pages/LocalizedLandingPage'
 import { LOCALE_CONFIG, LocaleProvider, SUPPORTED_LOCALES } from './lib/locale'
@@ -152,6 +153,7 @@ export default function App() {
         <Route path="guides/api-key-first-request-failed" element={route(<ApiKeyFirstRequestFailedPage />)} />
         <Route path="guides/billing-units" element={route(<BillingUnitsGuidePage />)} />
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
+        <Route path="guides/kimi-k3-guide" element={<KimiK3GuidePage />} />
         <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
         <Route path="guides/complete-integration" element={route(<CompleteIntegrationGuidePage />)} />
         <Route path="guides/workrally-overview" element={route(<WorkrallyOverviewPage />)} />

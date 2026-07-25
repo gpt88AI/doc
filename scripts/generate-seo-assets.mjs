@@ -217,6 +217,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Kimi K3 使用教程：Base URL、Claude Code 与 Codex 配置',
+    path: '/docs/guides/kimi-k3-guide',
+    description: '使用 gpt88.cc 接入 Kimi K3 的完整教程，包含 API 验证、Base URL 选择、Claude Code、Codex CLI 配置和 FailedToOpenSocket 排查。',
+    section: '指南',
+  },
+  {
     title: 'Kimi K3 实战评测与模型对比',
     path: '/docs/guides/kimi-k3-review',
     description: '整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。',
@@ -643,6 +649,18 @@ const englishPages = [
     title: 'Complete Integration Guide',
     path: '/en/docs/guides/complete-integration',
     description: 'End-to-end setup guide for gpt88.cc from key creation and Base URL selection to usage checks and troubleshooting.',
+    priority: '0.7',
+  },
+  {
+    title: 'RMB Balance & USD Top-Up Billing',
+    path: '/en/docs/guides/billing-units',
+    description: 'Beginner guide to RMB balance, USD top-up conversion, official API usage, group multipliers, and actual model deductions.',
+    priority: '0.7',
+  },
+  {
+    title: 'Kimi K3 Practical Review',
+    path: '/en/docs/guides/kimi-k3-review',
+    description: 'English summary of a public Kimi K3 review covering benchmarks, seven practical projects, coding strengths, stability, cost, and limitations.',
     priority: '0.7',
   },
   {

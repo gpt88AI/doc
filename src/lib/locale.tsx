@@ -81,6 +81,8 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   '/docs/guides/gpt88-ai-proxy/',
   '/docs/guides/gpt88-tutorial/',
   '/docs/guides/complete-integration/',
+  '/docs/guides/billing-units/',
+  '/docs/guides/kimi-k3-review/',
   '/docs/guides/codex-plugins-oauth/',
   '/docs/guides/agent-image-studio/',
   '/docs/guides/gpt-image-2-service-notice/',

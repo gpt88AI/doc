@@ -223,6 +223,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'Claude 与 OpenAI 通用接入、模型选择、线路选择、工具接入',
       },
       {
+        title: 'Kimi K3 使用教程',
+        path: '/docs/guides/kimi-k3-guide/',
+        blurb: '配置 Base URL、Claude Code、Codex CLI，并排查 FailedToOpenSocket',
+      },
+      {
         title: 'Kimi K3 实战评测',
         path: '/docs/guides/kimi-k3-review/',
         blurb: '整理公开基准、7 个真实项目、编程能力、稳定性和成本观察',

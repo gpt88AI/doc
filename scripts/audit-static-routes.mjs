@@ -252,6 +252,9 @@ function main() {
   const prerenderSet = new Set(prerenderRoutes)
   const navRoutes = parseNavRoutes(readFile(path.join(root, 'src/data/nav.ts')))
   const seoSource = readFile(path.join(root, 'scripts/generate-seo-assets.mjs'))
+  const englishDocRoutes = [...new Set(
+    [...seoSource.matchAll(/path:\s*'(\/en\/docs\/[^']+)'/g)].map(match => normalizeRoute(match[1])),
+  )]
   const modelsSource = readFile(path.join(root, 'src/data/models.ts'))
   const modelsPageSource = readFile(path.join(root, 'src/pages/ModelsPage.tsx'))
   const structuredDataSource = readFile(path.join(root, 'src/components/seo/structuredData.ts'))
@@ -324,6 +327,11 @@ function main() {
   })
   const navMissingFromSitemap = navRoutes.filter(route => route !== '/docs/' && !sitemapSet.has(route))
   const sitemapNoindexRoutes = sitemapRoutes.filter(route => {
+    const file = routeToFile(route)
+    return fs.existsSync(file) && hasNoindex(readFile(file))
+  })
+  const englishDocMissingFromSitemap = englishDocRoutes.filter(route => !sitemapSet.has(route))
+  const englishDocNoindexRoutes = englishDocRoutes.filter(route => {
     const file = routeToFile(route)
     return fs.existsSync(file) && hasNoindex(readFile(file))
   })
@@ -781,6 +789,12 @@ function main() {
   }
   if (sitemapNoindexRoutes.length) {
     failures.push('Sitemap routes marked noindex:\n' + sitemapNoindexRoutes.join('\n'))
+  }
+  if (englishDocMissingFromSitemap.length) {
+    failures.push(`English docs missing from sitemap (${englishDocMissingFromSitemap.length}):\n${englishDocMissingFromSitemap.join('\n')}`)
+  }
+  if (englishDocNoindexRoutes.length) {
+    failures.push(`English docs marked noindex (${englishDocNoindexRoutes.length}):\n${englishDocNoindexRoutes.join('\n')}`)
   }
   if (incompleteSsrRoutes.length) {
     failures.push(
