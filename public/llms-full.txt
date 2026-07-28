@@ -19,6 +19,7 @@
 - [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-luna/): English API reference for gpt-5.6-luna. Model ID: gpt-5.6-luna. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-fable-5 API Docs](https://doc.gpt88.cc/en/models/claude-fable-5/): English API reference for claude-fable-5. Model ID: claude-fable-5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-opus-5 API Docs](https://doc.gpt88.cc/en/models/claude-opus-5/): English API reference for claude-opus-5. Model ID: claude-opus-5. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-8 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-8/): English API reference for claude-opus-4-8. Model ID: claude-opus-4-8. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-7 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-7/): English API reference for claude-opus-4-7. Model ID: claude-opus-4-7. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-6/): English API reference for claude-opus-4-6. Model ID: claude-opus-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
@@ -143,6 +144,7 @@
 - [claude-opus-4-7-agentic](https://doc.gpt88.cc/models/claude-opus-4-7-agentic/): Anthropic claude-opus-4-7-agentic · CHAT 模型，Model ID: claude-opus-4-7-agentic，接口路径: /v1/chat/completions。
 - [claude-opus-4-7-thinking](https://doc.gpt88.cc/models/claude-opus-4-7-thinking/): Anthropic claude-opus-4-7-thinking · CHAT 模型，Model ID: claude-opus-4-7-thinking，接口路径: /v1/chat/completions。
 - [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8/): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
+- [claude-opus-5](https://doc.gpt88.cc/models/claude-opus-5/): Anthropic claude-opus-5 · CHAT 模型，Model ID: claude-opus-5，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-20250514](https://doc.gpt88.cc/models/claude-sonnet-4-20250514/): Anthropic claude-sonnet-4-20250514 · CHAT 模型，Model ID: claude-sonnet-4-20250514，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-5-20250929](https://doc.gpt88.cc/models/claude-sonnet-4-5-20250929/): Anthropic claude-sonnet-4-5-20250929 · CHAT 模型，Model ID: claude-sonnet-4-5-20250929，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-5-20250929-thinking](https://doc.gpt88.cc/models/claude-sonnet-4-5-20250929-thinking/): Anthropic claude-sonnet-4-5-20250929-thinking · CHAT 模型，Model ID: claude-sonnet-4-5-20250929-thinking，接口路径: /v1/chat/completions。
