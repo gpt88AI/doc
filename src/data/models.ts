@@ -1,0 +1,2410 @@
+/**
+ * 模型导航数据源（主推模型 + subrouter 全量 catalog + 本地上新补丁）
+ *
+ * 数据源：
+ * - 静态 JSON `public/marketplace-snapshot.json`，由 PM 在 2026-05-09 抓取
+ *   subrouter.ai marketplace 接口并按 (canonical_name, category) 去重得到 239 条 catalog。
+ * - 运行时**不**直接打 https://subrouter.ai/api/marketplace/models —— 该接口没有 CORS 头，
+ *   浏览器侧会因 Same-Origin 报错；要更新数据需重新生成快照后落库。
+ * - 快照位于 public/，Vite 构建期能直接 `import` JSON（tsconfig 已开启 resolveJsonModule）；
+ *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
+ *
+ * 主推顺序：
+ *   gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
+ *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
+ *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → gpt-5.3-codex
+ *
+ * Catalog 处理：
+ * - completion 7 条全部 canonical_name 与 chat 重名（snapshot 内同名条目分类为 chat 与 completion 两份），
+ *   按 PM 决策"completion 暂归入 chat 待 human 确认"，本文件按 (canonical_name) 去重时优先保留 chat 那一份；
+ *   没有 chat 同名兜底（理论上 snapshot 不会出现这种情况，做保险即可）。
+ * - embedding 1 条（text-embedding-3-small）暂不展示（任务要求）。
+ * - image / video / audio 全部保留。
+ *
+ * 为什么把"主推模型的能力/场景/中文 tagline"写在前端代码里，而不是放在 snapshot：
+ * - snapshot 只有 vendors_count / descriptions_sample（vendor 卖点宣传，文案不一致），
+ *   不能直接展示给开发者读者；
+ * - 主推模型是人工运营展示位，由 human 决定中文文案；其他长尾模型一律标注「以控制台为准」，
+ *   避免文档站说"我说能做 X"但实际后端没暴露的偏差。
+ */
+
+import snapshot from '../../public/marketplace-snapshot.json'
+import type { Locale } from '../lib/locale'
+import indexableEnglishModels from './indexableEnglishModels.json'
+
+/* ──────────────────────────────────────────────────────────────────
+ * 类型定义
+ * ────────────────────────────────────────────────────────────────── */
+
+export type ModelCategory = 'chat' | 'image' | 'video' | 'audio'
+
+export type ModelEndpoint = {
+  method: 'GET' | 'POST'
+  path: string
+}
+
+export type ModelExample = {
+  /** Tab 标题：cURL / Python / Node.js */
+  label: string
+  /** highlight 用的语言名 */
+  lang: string
+  code: string
+}
+
+export type ModelEntry = {
+  /** URL 片段，canonical_name 中的 . 替换为 - 后得到 */
+  slug: string
+  /** 展示名 */
+  name: string
+  /** 调用 API 时 body.model 写的字符串；少数市场别名会保留官方大小写 */
+  modelId: string
+  /** Provider 推断结果，无法识别时显示 "未知" */
+  provider: string
+  /** 分类 */
+  category: ModelCategory
+  /** 是否置顶（来自 FEATURED_SLUGS） */
+  featured: boolean
+  /** 卡片用一句话；featured / 次主推模型用人工 tagline，长尾模型走模板兜底 */
+  tagline: string
+  /** 紧凑标签层：能力标签（主推 21 个有人工值；长尾通常为空） */
+  capabilities: string[]
+  /** 紧凑标签层：推荐场景（主推 21 个有人工值；长尾通常为空） */
+  scenarios: string[]
+  /**
+   * 详细说明层（参考 apimart 详情页的信息架构心智，但不是字段数据源）：
+   * - overview：这个模型是什么，适合什么方向
+   * - whenToUse：更具体的任务类型
+   * - integrationNotes：接入路径、工具风格、从哪个 endpoint 起步
+   * - caveats：注意事项 / 以控制台为准的边界
+   *
+   * 这不是厂商官方白皮书，而是面向接入者的说明层；
+   * 价格 / 限速 / SLA / 上下文等动态值仍以控制台为准，本文档不写死。
+   */
+  overview: string[]
+  whenToUse: string[]
+  integrationNotes: string[]
+  caveats: string[]
+  /** 该模型在 marketplace 上的上游 vendor 数量 */
+  vendorsCount: number
+  /** 该模型按分类映射的接口路径 */
+  endpoint: ModelEndpoint
+  /** 详情页"请求示例"——按 Tab 顺序展示 */
+  examples: ModelExample[]
+  /** 原始上游卖点样本，当前不直接渲染；保留供未来扩展（如 vendor 卖点区） */
+  descriptionsSample: string[]
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * FEATURED_DETAILS：人工运营的能力 / 场景 / tagline 字典
+ *
+ * Human msg-20260509-4q7t82：缺失字段网上查找；查不到回退占位
+ * （ConsoleAuthoritativeNote 「以控制台为准」由 ModelDetailPage 渲染）。
+ *
+ * 范围演进：原本仅覆盖 FEATURED_SLUGS 的主推模型。本轮扩展到 21 条——
+ * 在主推模型之外，把 marketplace vendors_count >= 4 的非主推 chat 模型
+ * 也补上中文 capabilities / scenarios / tagline；运行时由 buildCatalog
+ * 按 slug 查表（无论是否在 FEATURED_SLUGS 中），命中即采用人工文案，
+ * 未命中（或字段为空）则在详情页回退「以控制台为准」占位。
+ *
+ * 重要约束：
+ * - FEATURED_SLUGS 控制 ModelsPage 主推区块、首页精选模型卡
+ * - 部分次主推模型只补字典数据，不进 FEATURED_SLUGS
+ * - 任何无法在公开来源查到的字段填空数组，让 UI 回退「以控制台为准」
+ *
+ * 注意：FEATURED_SLUGS 是"已转 - 之后"的 slug；FEATURED_DETAILS key 与之对应。
+ *       canonical_name 与 slug 的对应关系见每条上方注释。
+ * ────────────────────────────────────────────────────────────────── */
+
+export const FEATURED_SLUGS = [
+  'gpt-5-6-sol',
+  'gpt-5-6-terra',
+  'gpt-5-6-luna',
+  'claude-fable-5',
+  'claude-opus-4-8',
+  'claude-opus-4-7',
+  'claude-opus-4-6',
+  'claude-sonnet-4-6',
+  'claude-haiku-4-5-20251001',
+  'gpt-5-5',
+  'gpt-5-4',
+  'gpt-5-4-mini',
+  'deepseek-v4-pro',
+  'deepseek-v4-flash',
+  'kimi-k3',
+  'gpt-5-3-codex',
+] as const
+
+type FeaturedDetail = {
+  provider: string
+  tagline: string
+  capabilities: string[]
+  scenarios: string[]
+  /** 详细说明层：模型概览 */
+  overview: string[]
+  /** 详细说明层：更具体的适用任务 */
+  whenToUse: string[]
+  /** 详细说明层：接入说明（OpenAI / Claude 风格、endpoint、工具建议） */
+  integrationNotes: string[]
+  /** 详细说明层：使用提醒（preview / thinking / 以控制台为准 等） */
+  caveats: string[]
+}
+
+const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
+  // slug=nanobanana2 ←→ modelId=NanoBanana2
+  // gpt88.cc 平台别名，对应 Google Gemini 图片模型能力。
+  nanobanana2: {
+    provider: 'Google',
+    tagline: 'Google Gemini 图片生成入口，走 generateContent，并支持比例与清晰度控制。',
+    capabilities: ['Google Gemini', '文生图', '图生图', '4K 输出'],
+    scenarios: ['视觉素材生成', '图像编辑', '产品概念图', '社媒配图'],
+    overview: [
+      'NanoBanana2 是 gpt88.cc 控制台里的平台别名，实际按 Google Gemini 图片生成接口调用。',
+      '请求体使用 Gemini 官方 generateContent 结构，文字提示放在 contents[].parts[].text，参考图可用 fileData 或 inlineData，返回图片通常在 candidates[].content.parts[].inlineData.data 中。',
+    ],
+    whenToUse: [
+      '需要快速生成海报、电商图、概念图、社媒配图等视觉素材时',
+      '需要通过 fileData.fileUri 传参考图做图生图或局部风格迁移时',
+      '希望按 Google 官方图片接口调用，并保持和 Gemini 文档一致时',
+      '需要用比例 + 清晰度组合控制输出时',
+    ],
+    integrationNotes: [
+      '如果使用 Google 官方模型 ID，优先参考 Gemini 官方命名，例如 gemini-3.1-flash-image。',
+      '如果使用 gpt88.cc 平台别名 NanoBanana2，保留平台控制台里的模型名，但接口仍然按 Gemini generateContent 形态组织。',
+      '请求时优先使用图片与多媒体 Base URL https://img.gpt88.cc；如果 Authorization: Bearer 不被接受，可改用 x-goog-api-key。',
+    ],
+    caveats: [
+      'Gemini 图片接口里，比例值和像素尺寸不要混用；比例用 1:1、16:9、9:16、4:3、3:4、auto，清晰度用 1K、2K、4K。',
+      '参考图需要是服务端可访问的 URL 或可解析的 inlineData；图生图失败时先检查可达性与 mimeType。',
+      '价格、限速、可用线路与返回格式以 gpt88.cc 控制台当前配置为准。',
+    ],
+  },
+
+  // ── 主推模型（FEATURED_SLUGS 决定置顶顺序） ──────────────────────
+  // 来源：OpenAI 官方 X 帖 https://x.com/OpenAI/status/2070555272230384038?s=20
+  // 于 2026-06-27（北京时间）指向 GPT-5.6 limited preview 相关公告。公开评论区
+  // 在当前环境无法稳定抓取逐条原文，因此本页只总结可验证的公告信息与常见关注点；
+  // 价格、权限、上下文、限速和是否开放以 gpt88.cc 控制台为准。
+  // slug=gpt-5-6-sol ←→ modelId=gpt-5.6-sol
+  'gpt-5-6-sol': {
+    provider: 'OpenAI',
+    tagline: 'OpenAI GPT-5.6 预览系列最高档，面向最复杂推理、多工具 Agent 与高价值生产任务。',
+    capabilities: ['GPT-5.6 preview', '复杂推理', 'tool use', '多模态'],
+    scenarios: ['高难度 Agent', '复杂代码任务', '研究分析', '长链路自动化'],
+    overview: [
+      'GPT-5.6 Sol 是 OpenAI GPT-5.6 预览系列中的最高能力档。用户提供的 OpenAI 官方 X 帖发布于 2026-06-27 北京时间，指向 GPT-5.6 preview 相关上新信息。',
+      'Sol 适合作为质量优先的 OpenAI 路线模型，用于复杂推理、长链路 Agent、代码与研究类任务。实际开放范围、上下文、价格和限速以 gpt88.cc 控制台为准。',
+      '由于 X 评论区在当前环境无法稳定公开抓取逐条内容，文档不把评论写成确定原文；从公告语境看，用户关注点主要集中在能力分档、可用权限、成本、速度和 API 兼容性。',
+    ],
+    whenToUse: [
+      '需要最高质量输出，而不是最低延迟或最低成本时',
+      '需要模型处理多步规划、复杂代码库、长文档研究或多工具 Agent 任务时',
+      '需要把 OpenAI 系列的新预览能力接入现有 SDK、Cursor、Codex CLI 或自研 Agent 时',
+      '需要先用少量高价值任务验证 GPT-5.6 系列能力上限时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 gpt-5.6-sol。',
+      '建议先调用 GET /v1/models 或在控制台确认账号已开放该模型，再把生产流量切入。',
+      '如果已有 gpt-5.5 或 gpt-5.4 链路，先用同一批评测样本灰度对比质量、速度和费用，再决定是否替换默认模型。',
+      '对于 Agent 工作流，先从非流式最小请求验证连通性，再逐步开启 streaming、tools、JSON 输出和多轮上下文。',
+    ],
+    caveats: [
+      '该模型按 OpenAI 新模型上新口径整理，具体权限、价格、上下文、限速、视觉和工具能力以 gpt88.cc 控制台实时配置为准。',
+      'preview 模型可能存在行为、可用性或参数支持变化，不建议未经灰度直接替换所有生产默认模型。',
+      '如果任务是高频短请求、分类、摘要或路由，Terra、Luna、mini 类模型通常更适合做成本控制。',
+      'X 评论区无法稳定公开抓取时，不应把第三方评论截图或转述当作官方能力承诺。',
+    ],
+  },
+  // slug=gpt-5-6-terra ←→ modelId=gpt-5.6-terra
+  'gpt-5-6-terra': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.6 预览系列主力档，平衡质量、速度与成本，适合作为业务默认候选。',
+    capabilities: ['GPT-5.6 preview', 'function calling', 'JSON Mode', '流式响应'],
+    scenarios: ['产品默认模型', 'SaaS 集成', '工作流自动化', '多轮助手'],
+    overview: [
+      'GPT-5.6 Terra 可作为 GPT-5.6 预览系列的主力平衡档理解：比最高档更适合常规业务落地，同时保留 GPT-5.6 系列的新能力方向。',
+      '它适合产品化接入、SaaS 助手、内部工作流和多轮对话场景。实际能力边界、参数支持和费用仍以控制台为准。',
+      '围绕 OpenAI 官方 X 帖的公开讨论焦点，通常会落在“默认该选 Sol 还是 Terra”“成本能否接受”“是否适合生产灰度”这些问题上。',
+    ],
+    whenToUse: [
+      '需要比轻量模型更强的推理和稳定性，但不希望每个请求都使用最高档模型时',
+      '需要 OpenAI 兼容 SDK、工具调用、结构化输出和流式响应的常规业务场景时',
+      '需要作为客服、知识库、业务助手、内容生成或内部 Agent 的默认候选时',
+      '希望先体验 GPT-5.6 系列，同时控制单次调用成本和延迟时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 gpt-5.6-terra。',
+      '建议把 Terra 作为默认候选，把 Sol 作为复杂任务升级路径，把 Luna 作为高频轻量任务路径。',
+      '如果接入 Cursor、OpenCode、Codex CLI、ChatBox 或自研服务，配置方式与其他 GPT 模型一致，只需替换 model。',
+      '生产接入前建议准备一组固定评测样本，比较 gpt-5.6-terra、gpt-5.5、gpt-5.4 的质量和成本。',
+    ],
+    caveats: [
+      '该模型属于新上 preview 口径，参数、权限和价格可能随平台配置变化。',
+      '不要只根据模型名决定路由；应该按任务复杂度、失败成本、延迟和预算做分层。',
+      '如果遇到工具调用或 JSON 输出不稳定，先缩小 prompt、减少工具数量，再考虑升级到 Sol。',
+    ],
+  },
+  // slug=gpt-5-6-luna ←→ modelId=gpt-5.6-luna
+  'gpt-5-6-luna': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.6 预览系列轻量档，适合高频短请求、预处理、分类和 Agent 子任务。',
+    capabilities: ['GPT-5.6 preview', '低延迟', '高吞吐', 'function calling'],
+    scenarios: ['批量分类', '日志摘要', 'Agent 子任务', '内容初筛'],
+    overview: [
+      'GPT-5.6 Luna 可作为 GPT-5.6 预览系列的轻量档理解，适合高频、短上下文、低延迟和成本敏感任务。',
+      '它不应该被当作所有复杂任务的默认替代品，更适合放在任务路由、预处理、摘要、分类、初筛和 Agent 子步骤里。',
+      '从 OpenAI 官方 X 帖下的常见讨论方向看，轻量档用户通常更关心吞吐、价格、延迟和是否能承接批量自动化任务。',
+    ],
+    whenToUse: [
+      '大量短文本分类、标签生成、摘要、格式清洗和低风险内容生成',
+      'Agent 工作流中的子任务，例如先判断意图、选择工具、抽取字段或生成中间计划',
+      '需要较低延迟的用户交互，且单次错误成本可控时',
+      '需要和 Terra / Sol 组成分层路由，把复杂任务再升级到更高档模型时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 gpt-5.6-luna。',
+      '建议在路由层设置升级策略：Luna 处理简单任务，遇到长上下文、复杂推理或高价值输出时切到 Terra 或 Sol。',
+      '批量任务上线前先压测并发、超时和重试策略，避免把失败重试成本放大。',
+    ],
+    caveats: [
+      '轻量档更适合高频任务，不适合作为复杂研究、重要代码修改或高风险决策的唯一模型。',
+      '实际上下文、限速、工具能力和价格以控制台为准。',
+      '如果输出质量不稳定，先检查 prompt 是否过长、任务是否超出轻量模型定位，再考虑升级模型。',
+    ],
+  },
+  // 来源：Anthropic 于 2026-06-09 公开发布 Claude Fable 5；下列定位结合官方公开发布
+  // 与当日公开报道整理，文档不固化价格、限速与权限，以控制台为准。
+  // slug=claude-fable-5 ←→ modelId=claude-fable-5
+  'claude-fable-5': {
+    provider: 'Anthropic',
+    tagline: 'Anthropic 最新公开发布的 Mythos 级 Claude，主打长任务、代码、复杂知识工作与高强度 Agent 协作。',
+    capabilities: ['Mythos-class', '长周期 Agent', 'tool use', '视觉理解'],
+    scenarios: ['长周期 Agent 编码', '复杂知识工作', '高难度多步推理', '研究与分析任务'],
+    overview: [
+      'Claude Fable 5 是 Anthropic 在 2026-06-09 公开发布的 Claude 新模型；公开报道普遍将其描述为首个面向广泛可用的 Mythos 级 Claude。',
+      '公开信息显示，它在软件工程、知识工作、视觉任务以及更长、更复杂的任务上表现突出，可以看作 Anthropic 当前公开发布序列里的最高能力档之一。',
+      '对 gpt88.cc 文档站来说，它适合作为新的 Claude 主推入口：如果你想先试 Anthropic 的最新公开能力，优先从这个模型开始。',
+    ],
+    whenToUse: [
+      '需要模型在多轮、多文件、多步骤任务里持续推进，而不是只回答一个短问题时',
+      '需要做高复杂度代码工作，例如大型代码库迁移、复杂重构、测试修复或长链路 Agent 编码时',
+      '需要综合长文档、结构化资料、图像信息和多阶段上下文做判断时',
+      '希望把 Claude 路线里的最新公开模型作为默认试验对象时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 claude-fable-5。',
+      'Claude / Anthropic 风格工具统一使用 Base URL https://api.gpt88.cc，再按工具要求填写模型 ID。',
+      '如果你不确定当前账号是否已开通，先调用 GET /v1/models 或在控制台查看模型权限，再把默认模型切到 claude-fable-5。',
+      '已有 Claude Opus 4.8 或 Claude Opus 4.7 的项目，可先灰度验证一批复杂任务，再决定是否把默认模型切换到 Fable 5。',
+    ],
+    caveats: [
+      '公开报道显示，Claude Fable 5 带有更严格的高风险安全护栏；涉及部分网络安全、生物或化学高风险请求时，系统可能回退到更保守的 Claude Opus 4.8 路径。',
+      '公开报道还将其描述为高于 Claude Opus 4.8 的定价档，但 gpt88.cc 文档站不固化价格；实际计费、可用线路、上下文和限速以控制台当前配置为准。',
+      '如果你的任务主要是轻量问答或高频批量处理，Haiku、Sonnet 或 GPT mini 一类模型往往更划算，不必默认全量切到 Fable 5。',
+    ],
+  },
+  // slug=claude-opus-4-8 ←→ modelId=claude-opus-4-8
+  'claude-opus-4-8': {
+    provider: 'Anthropic',
+    tagline: 'Anthropic 当前最强通用可用 Opus 模型，面向长周期 Agent 编码、复杂推理和专业知识工作。',
+    capabilities: ['1M 上下文', '128k 输出', 'adaptive thinking', 'tool use'],
+    scenarios: ['长周期 Agent 编码', '大型代码库迁移', '复杂文档分析', '企业知识工作'],
+    overview: [
+      'Claude Opus 4.8 是 Anthropic 在 2026-05-28 发布的 Opus 系列模型，官方定位为当前最强的 generally available model。',
+      '它建立在 Claude Opus 4.7 之上，重点增强长周期 agentic coding、复杂推理、专业知识工作、工具调用可靠性和长上下文任务稳定性。',
+      '官方文档显示，Claude Opus 4.8 在 Claude API、Amazon Bedrock 和 Vertex AI 上默认支持 1M token context window；Microsoft Foundry 为 200k context。最大输出为 128k tokens。',
+    ],
+    whenToUse: [
+      '需要模型在大型代码库里做迁移、重构、bug sweep、测试修复或跨文件代码审查时',
+      '需要长周期 Agent 工作流持续推进、多工具协作、遇到阻碍后自动恢复时',
+      '需要综合长文档、财报、法律材料、研究资料、表格和多阶段项目上下文时',
+      '需要专业知识工作输出更少返工、更强自检和更高结构化质量时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 claude-opus-4-8。',
+      'Claude / Anthropic 风格工具统一使用 Base URL https://api.gpt88.cc，再按工具要求填写模型 ID。',
+      'Claude Opus 4.8 默认 effort 为 high；如果你的客户端显式设置 effort，则以客户端设置为准。',
+      '模型支持 adaptive thinking；简单任务可直接响应，复杂多步骤问题会按需触发推理。',
+      '它继承 Claude Opus 4.7 的工具和平台能力，并新增 mid-conversation system messages、公开 refusal stop_details、fast mode research preview、更低的 prompt cache 最小长度等能力。',
+    ],
+    caveats: [
+      '新上模型的价格、限速、上下文、权限和可用线路以 gpt88.cc 控制台当前配置为准。',
+      '如果业务已有 claude-opus-4-7 稳定链路，可先灰度切换到 claude-opus-4-8，再扩大使用范围。',
+      '与 Claude Opus 4.7 一样，Messages API 下不支持把 temperature、top_p、top_k 设置为非默认值；相关参数请省略，并用提示词控制输出风格。',
+      '如果走 Claude 原生 Messages API，adaptive thinking 需要显式设置 thinking: {type: "adaptive"}；未设置时 thinking 不会自动开启。',
+      'Claude Opus 4.8 不支持旧式 extended thinking budget；需要思考模式时使用 adaptive thinking 和 effort 参数。',
+    ],
+  },
+  // slug=claude-opus-4-7 ←→ modelId=claude-opus-4-7
+  'claude-opus-4-7': {
+    provider: 'Anthropic',
+    tagline: 'Anthropic Claude 系列旗舰，复杂推理与长文档处理顶配。',
+    capabilities: ['长上下文', '高质量推理', 'function calling', '视觉理解'],
+    scenarios: ['复杂 Agent 决策', '长文档分析', '研究综述', '代码评审'],
+    overview: [
+      'Claude Opus 4.7 是当前 Claude 系列中的旗舰定位模型，偏向高质量推理、长文档理解与复杂任务拆解。',
+      '如果你的需求不是“最快”，而是“在复杂输入下尽量稳定、尽量少返工”，它通常是最值得先试的一档。',
+    ],
+    whenToUse: [
+      '需要处理长篇材料、长上下文对话或多轮任务规划时',
+      '对输出质量、逻辑完整性和解释性要求较高时',
+      '需要把模型放进 Agent / tool use 工作流做复杂决策时',
+      '需要兼顾文本与图像理解的高质量多模态场景时',
+    ],
+    integrationNotes: [
+      '如果你的工具是 OpenAI 风格（如 OpenAI SDK、Cursor、OpenCode），优先从 https://api.gpt88.cc 起步。',
+      '如果你的工具是 Claude / Anthropic 风格（如 Claude Code、Anthropic SDK），统一使用 Base URL https://api.gpt88.cc，并按工具要求发送 Claude 风格请求。',
+      '建议先用最小请求验证 API Key、模型名与线路，再扩展到长文档或复杂 Agent 工作流。',
+    ],
+    caveats: [
+      '旗舰模型通常更适合质量优先场景；价格、可用性、上下文与速率限制以控制台为准。',
+      '如果你更看重吞吐或延迟，可先用 Haiku / mini / flash 一类模型验证链路。',
+    ],
+  },
+  // slug=claude-opus-4-6 ←→ modelId=claude-opus-4-6
+  'claude-opus-4-6': {
+    provider: 'Anthropic',
+    tagline: 'Claude 4.6 Opus，写作与推理稳定，适合企业级 Agent。',
+    capabilities: ['长上下文', '高质量写作', 'function calling', '视觉理解'],
+    scenarios: ['长文档分析', '产品文案', '高质量翻译', 'Agent 决策'],
+    overview: [
+      'Claude Opus 4.6 是 Opus 系列的强推理版本，适合需要质量稳定、输出风格成熟的任务。',
+      '与偏轻量的模型相比，它更像“复杂任务的主力机型”，尤其适合长文档和高质量文本生成。',
+    ],
+    whenToUse: [
+      '长文档解读、报告总结、研究综述',
+      '高质量写作、改写、翻译与内容整理',
+      '企业内部知识助手或复杂流程型 Agent',
+      '需要 function calling 的多步骤任务',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可直接把 base_url 指到 https://api.gpt88.cc，再把 model 写成 claude-opus-4-6。',
+      'Claude 风格工具同样使用 Base URL https://api.gpt88.cc，减少路径配置差异。',
+      '第一次接入建议先用一条最小请求确认模型名和 Key 都有效，再进入正式业务。',
+    ],
+    caveats: [
+      '不同账号是否开放、默认线路表现如何，以 gpt88.cc 控制台当前配置为准。',
+      '如果你更在意实时响应速度，可考虑 Sonnet / Haiku 等更轻量的 Claude 变体。',
+    ],
+  },
+  // slug=claude-sonnet-4-6 ←→ modelId=claude-sonnet-4-6
+  'claude-sonnet-4-6': {
+    provider: 'Anthropic',
+    tagline: 'Sonnet 4.6，速度/质量平衡，主流业务集成首选。',
+    capabilities: ['快速响应', 'function calling', '视觉理解', '流式响应'],
+    scenarios: ['通用对话', '客服 / 工单分析', '内容审核', '生产 SaaS'],
+    overview: [
+      'Claude Sonnet 4.6 是 Claude 系列里速度与质量平衡感很强的一档，适合作为很多业务的默认主力模型。',
+      '它通常比旗舰型 Opus 更轻、更快，但仍保留了较好的推理与工具调用体验。',
+    ],
+    whenToUse: [
+      '通用对话、客服、工单处理等高频请求场景',
+      '希望兼顾模型质量与响应速度的 SaaS 产品',
+      '需要图像理解或工具调用，但不一定要用最重型模型时',
+      '作为团队默认模型起步，再按需求切换到更强或更轻量的型号',
+    ],
+    integrationNotes: [
+      'OpenAI 风格工具可以把它当作通用聊天模型直接使用，最适合快速验证一整条业务链路。',
+      'Claude 风格工具（如 Claude Code）也很适合作为默认工作模型，兼顾成本、速度与稳定性。',
+      '如果你要做 streaming 或 tool use，建议先用最小请求确认模型在当前 Key 上已开放。',
+    ],
+    caveats: [
+      '“默认主力”不代表适合所有场景；复杂长文档可升级到 Opus，轻量批量任务可降到 Haiku。',
+      '价格、限速、是否支持视觉等实时能力以控制台为准。',
+    ],
+  },
+  // slug=claude-haiku-4-5-20251001 ←→ modelId=claude-haiku-4-5-20251001
+  'claude-haiku-4-5-20251001': {
+    provider: 'Anthropic',
+    tagline: 'Claude Haiku 4.5（2025-10-01 版本），低延迟高吞吐，分类与抽取首选。',
+    capabilities: ['低延迟', '高吞吐', 'function calling'],
+    scenarios: ['批量分类', '客服问答', '信息抽取', '审核辅助'],
+    overview: [
+      'Claude Haiku 4.5 是偏轻量与高吞吐的一档，适合把“每次请求都很快”放在优先级更高的位置。',
+      '如果你已经验证过接入链路，想进一步控制响应时间或承载更高并发，它通常是更稳妥的起点。',
+    ],
+    whenToUse: [
+      '分类、抽取、审核等结构化任务',
+      '客服问答、批量生成、轻量助手',
+      '作为 Agent 子步骤模型而非最终高质量输出模型',
+      '需要低延迟与高吞吐的后台工作流',
+    ],
+    integrationNotes: [
+      'OpenAI 风格与 Claude 风格工具都能接入；优先按你现有工具生态选择路径，不必为了模型切协议。',
+      '建议把它作为默认轻量模型，而不是直接拿来替代所有复杂任务。',
+      '如果你的业务里同时存在“轻量请求 + 少量高复杂请求”，可以把 Haiku 与 Opus / GPT 主力组合使用。',
+    ],
+    caveats: [
+      '轻量模型并不适合所有高复杂度任务；遇到多步规划、超长输入时建议升级。',
+      '实际速度、费用与可用模型范围以控制台为准。',
+    ],
+  },
+  // slug=gpt-5-5 ←→ modelId=gpt-5.5
+  'gpt-5-5': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.5，OpenAI 最新旗舰，多模态与工具调用稳定。',
+    capabilities: ['function calling', '视觉理解', 'JSON Mode', '长上下文'],
+    scenarios: ['通用智能体', '产品化 SaaS', '多模态助手'],
+    overview: [
+      'GPT-5.5 是 OpenAI 系列的旗舰档，适合把通用性、工具调用能力和多模态扩展一起考虑的场景。',
+      '如果你的团队原本就熟悉 OpenAI 风格 SDK，把默认示例切到 GPT-5.5 往往上手最顺。',
+    ],
+    whenToUse: [
+      '通用智能体、产品化 SaaS、复杂工作流',
+      '需要 JSON 输出、结构化解析或 function calling 的场景',
+      '需要兼顾图像理解与文本推理的多模态任务',
+      '团队已有 OpenAI 工具链，希望最低摩擦接入时',
+    ],
+    integrationNotes: [
+      'OpenAI 风格工具优先从 https://api.gpt88.cc 起步，这是最接近原生体验的接法。',
+      '如果只是要验证连通性，可以先用一条 chat/completions 最小请求，再逐步加上 tools / JSON Mode。',
+      '做产品化接入时，建议把模型名、线路与 Key 分开管理，方便按环境切换。',
+    ],
+    caveats: [
+      '是否开放视觉、上下文上限、可用线路与计费策略以控制台实时配置为准。',
+      '若你更看重低延迟或预算，可考虑同系列更轻量的 mini / 低阶模型。',
+    ],
+  },
+  // slug=gpt-5-4 ←→ modelId=gpt-5.4
+  'gpt-5-4': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.4，可用性高、价格友好的主力对话模型。',
+    capabilities: ['function calling', 'JSON Mode', '流式响应'],
+    scenarios: ['SaaS 集成', '通用对话', '工作流自动化'],
+    overview: [
+      'GPT-5.4 是兼顾稳定性、可用性与成本感知的主力对话模型，适合作为很多应用的默认 OpenAI 路线起点。',
+      '它比旗舰型更容易作为业务默认值落地，同时仍保留较好的工具调用和结构化输出体验。',
+    ],
+    whenToUse: [
+      '通用对话、工单流转、业务自动化',
+      '希望快速接入 OpenAI 兼容生态的 SaaS 团队',
+      '需要 JSON Mode / 流式输出 / function calling 的中等复杂任务',
+      '把 GPT 系列作为默认主力，再按需要切向更强或更轻量的模型',
+    ],
+    integrationNotes: [
+      '如果你的工程已经使用 OpenAI Python / Node SDK，把 base_url 改成 https://api.gpt88.cc 即可起步。',
+      '建议在正式接入前先跑一次 streaming 与非 streaming 两条请求，确认工具路径都没配错。',
+      '做工作流自动化时，可先固定模型名与线路，再在不同环境里切换 API Key。',
+    ],
+    caveats: [
+      '价格、可用模型范围、线路表现与功能开关以控制台为准。',
+      '面对更复杂的长文档或多模态需求时，可能需要升级到更高阶模型。',
+    ],
+  },
+  // slug=gpt-5-4-mini ←→ modelId=gpt-5.4-mini
+  'gpt-5-4-mini': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.4 mini，低成本高吞吐版本，适合大量短请求。',
+    capabilities: ['低延迟', '高吞吐', 'function calling'],
+    scenarios: ['日志摘要', '分类标注', '智能体子任务'],
+    overview: [
+      'GPT-5.4 mini 是 GPT 系列里的轻量版本，更适合大量短请求、批量任务和低延迟工作流。',
+      '它适合作为“先跑通业务，再看是否升级模型”的低门槛起点。',
+    ],
+    whenToUse: [
+      '日志摘要、分类标注、批量审核',
+      'Agent 子任务、工具调度前的预处理',
+      '对响应速度与吞吐更敏感的后台服务',
+      '需要较低成本验证业务闭环时',
+    ],
+    integrationNotes: [
+      '在 OpenAI 风格 SDK 中可直接作为 chat/completions 的默认 model。',
+      '如果你已经有高质量模型做最终输出，可以把 mini 放在预处理、路由或筛选阶段。',
+      '先用最小请求压一遍并发和时延，再决定是否需要提升到更高阶模型。',
+    ],
+    caveats: [
+      '轻量模型更适合高频短请求；复杂推理或长文档任务可能需要升级。',
+      '实际计费、限速和可用模型范围以控制台为准。',
+    ],
+  },
+  // slug=gpt-5-3-codex ←→ modelId=gpt-5.3-codex
+  'gpt-5-3-codex': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.3 Codex，针对代码场景优化的代码生成模型。',
+    capabilities: ['代码生成', '代码补全', 'function calling'],
+    scenarios: ['代码助手', '代码审查', '测试生成', '脚本编写'],
+    overview: [
+      'GPT-5.3 Codex 面向代码生成、补全、重构和自动化开发场景，是偏工程生产力的一档模型。',
+      '如果你想把 gpt88.cc 接到代码工具、脚本工具或开发工作流里，它是很自然的优先候选。',
+    ],
+    whenToUse: [
+      '生成代码片段、测试、脚本与工具封装',
+      '做代码审查、重构建议和自动化开发辅助',
+      '把模型嵌入 IDE / CLI / Agent 开发链路中',
+      '需要 function calling 配合代码工作流时',
+    ],
+    integrationNotes: [
+      '在 OpenAI 风格 SDK 与开发工具里最容易接入，适合作为代码类默认模型。',
+      '建议先用一个最小代码任务验证输出风格，再决定是否固定为团队默认代码模型。',
+      '如果你的工具偏 Claude 风格，也统一通过 Base URL https://api.gpt88.cc 接入，但仍要确认工具支持的请求结构。',
+    ],
+    caveats: [
+      '代码模型的行为会受提示词、工具调用方式和上下文拼接影响，实际效果需结合你的代码库验证。',
+      '可用性、限速、价格与模型开放范围以控制台为准。',
+    ],
+  },
+
+  // ── 次主推：Anthropic 系列（含 -thinking 变体） ────────────────────
+  // 来源：Anthropic 官网 model cards（claude.com/news 与 docs.anthropic.com 公开页）；
+  // -thinking 强调延迟换深度推理，思考链可作为 capability 标签；
+  // 网上查找补充于 2026-05-09。
+  // slug=claude-opus-4-6-thinking ←→ modelId=claude-opus-4-6-thinking
+  'claude-opus-4-6-thinking': {
+    provider: 'Anthropic',
+    tagline: 'Claude Opus 4.6 思考模式，延迟换深度推理，复杂规划首选。',
+    capabilities: ['思考链', '长上下文', 'function calling', '视觉理解'],
+    scenarios: ['复杂规划', '科研推理', '深度代码评审', '多步 Agent'],
+    overview: [
+      'Claude Opus 4.6 Thinking 可理解为 Opus 4.6 的深度推理变体，更强调思考过程和复杂任务拆解。',
+      '它适合在“回答要慢一点没关系，但尽量更稳、更完整”这种诉求下使用。',
+    ],
+    whenToUse: [
+      '复杂规划、科研推理、多步问题求解',
+      '需要先推理再决定工具调用顺序的 Agent',
+      '高复杂度代码分析和架构评审',
+    ],
+    integrationNotes: [
+      'Claude 风格工具通常更适合作为 thinking 变体的第一接入面，尤其是在开发助手工作流中。',
+      'OpenAI 风格 SDK 也可以走 https://api.gpt88.cc，只需把 model 指向 claude-opus-4-6-thinking。',
+      '先用短提示验证路径，再逐步扩展到多步推理任务。',
+    ],
+    caveats: [
+      'thinking 变体通常意味着更高延迟；速度、价格与是否开放以控制台为准。',
+      '如果只做轻量对话或批量任务，不一定比非 thinking 版本更划算。',
+    ],
+  },
+  // 来源：Anthropic Claude 4.5 Sonnet 官方说明，2025-09-29 发布；
+  // 网上查找补充于 2026-05-09。
+  // slug=claude-sonnet-4-5-20250929 ←→ modelId=claude-sonnet-4-5-20250929
+  'claude-sonnet-4-5-20250929': {
+    provider: 'Anthropic',
+    tagline: 'Claude Sonnet 4.5（2025-09-29 版本），均衡型主力，工具与视觉稳定。',
+    capabilities: ['function calling', '视觉理解', '流式响应', '中等延迟'],
+    scenarios: ['通用对话', '工单分析', '内容审核', 'Agent 子任务'],
+    overview: [
+      'Claude Sonnet 4.5 是较成熟的一代 Sonnet 版本，适合追求稳定与兼容性的团队继续沿用。',
+      '如果你不打算立即切到最新版本，它仍是可靠的平衡型方案。',
+    ],
+    whenToUse: [
+      '通用对话、客服和内容审核',
+      '需要视觉理解或工具调用但不追求旗舰级复杂推理时',
+      '已经围绕 Sonnet 4.5 做过内部验证的老项目',
+    ],
+    integrationNotes: [
+      '对已有 Claude 系工作流而言，迁移摩擦通常较小。',
+      '如果你的团队使用 OpenAI 兼容 SDK，也可以通过 /v1 路径直接接入。',
+      '建议和最新 Sonnet 版本做一轮小样本对比，再决定是否升级。',
+    ],
+    caveats: [
+      '历史版本的行为和开放策略可能会随平台调整变化，以控制台为准。',
+      '新接入项目通常优先考虑更新版本，再把 4.5 作为兼容性备选。',
+    ],
+  },
+  // 来源：Anthropic Claude 4.5 Opus 官方说明，2025-11-01 发布；
+  // 网上查找补充于 2026-05-09。
+  // slug=claude-opus-4-5-20251101 ←→ modelId=claude-opus-4-5-20251101
+  'claude-opus-4-5-20251101': {
+    provider: 'Anthropic',
+    tagline: 'Claude Opus 4.5（2025-11-01 版本），复杂任务上一代旗舰。',
+    capabilities: ['长上下文', '高质量写作', 'function calling', '视觉理解'],
+    scenarios: ['长文档分析', '复杂决策', '高质量翻译', 'Agent 决策'],
+    overview: [
+      'Claude Opus 4.5 是上一代高质量旗舰版本，适合重质量、重稳定性的复杂任务。',
+      '如果你在迁移旧工作流或对比新旧 Opus 表现，它是很有参考价值的一档。',
+    ],
+    whenToUse: [
+      '复杂决策、长文档分析、高质量文本生成',
+      '旧版 Claude 工作流的平滑迁移与对比',
+      '对输出一致性要求较高的企业内部任务',
+    ],
+    integrationNotes: [
+      '接入方式与其他 Claude 系模型一致：所有工具统一使用 Base URL https://api.gpt88.cc。',
+      '若你已有基于 Opus 4.5 的提示词资产，建议先在小样本上验证迁移成本。',
+    ],
+    caveats: [
+      '作为上一代版本，是否开放、表现是否稳定、价格如何，以控制台为准。',
+      '新项目若无历史包袱，通常优先从更新版本开始试。',
+    ],
+  },
+  // 来源：Anthropic 官方对 -thinking 变体的描述：思考链增强、延迟更高；
+  // 网上查找补充于 2026-05-09。
+  // slug=claude-sonnet-4-5-20250929-thinking ←→ modelId=claude-sonnet-4-5-20250929-thinking
+  'claude-sonnet-4-5-20250929-thinking': {
+    provider: 'Anthropic',
+    tagline: 'Sonnet 4.5 思考模式，平衡型推理增强变体。',
+    capabilities: ['思考链', 'function calling', '视觉理解', '中等延迟'],
+    scenarios: ['推理任务', '逻辑题求解', '工具规划', '可解释决策'],
+    overview: [
+      '这是 Sonnet 4.5 的 thinking 变体，适合把“更愿意多想一步”放在优先级前面的任务。',
+      '它通常比标准 Sonnet 更偏复杂推理，而不是纯速度导向。',
+    ],
+    whenToUse: [
+      '逻辑题、结构化推理、多步分析',
+      '需要先判断再决定调用哪个工具的流程',
+      '希望在 Sonnet 速度档位里拿到更强推理能力时',
+    ],
+    integrationNotes: [
+      '建议先在少量复杂样本上验证，确认 thinking 变体带来的收益是否值得。',
+      '如果你的工具可以直接切模型名，不必重构接口，只需替换默认 model。',
+    ],
+    caveats: [
+      'thinking 变体通常延迟更高，真实体验和可用性以控制台为准。',
+      '对于高并发、短请求场景，普通 Sonnet 可能更合适。',
+    ],
+  },
+  // 来源：同上；网上查找补充于 2026-05-09。
+  // slug=claude-sonnet-4-6-thinking ←→ modelId=claude-sonnet-4-6-thinking
+  'claude-sonnet-4-6-thinking': {
+    provider: 'Anthropic',
+    tagline: 'Sonnet 4.6 思考模式，最新平衡型推理增强变体。',
+    capabilities: ['思考链', 'function calling', '视觉理解', '流式响应'],
+    scenarios: ['推理任务', 'Agent 规划', '代码审查', '复杂客服'],
+    overview: [
+      'Sonnet 4.6 Thinking 结合了较新的 Sonnet 基座与 thinking 增强，适合平衡型复杂任务。',
+      '它通常比标准 Sonnet 更适合多步推理和 Agent 规划，但不追求极致低延迟。',
+    ],
+    whenToUse: [
+      '复杂客服分析、工具规划、代码审查',
+      '想要比普通 Sonnet 更强的推理，但又不一定上 Opus 时',
+      '需要边流式输出边做结构化思考的场景',
+    ],
+    integrationNotes: [
+      '在 Claude Code、Anthropic SDK、Agent 框架中都适合作为“中高复杂度工作模型”。',
+      '接入路径与其他 Claude 模型一致，不需要为 thinking 版本改接口结构。',
+    ],
+    caveats: [
+      '延迟、费用、功能开关和模型开放范围以控制台为准。',
+      '如果你的请求主要是轻量对话，Haiku / 标准 Sonnet 可能更合适。',
+    ],
+  },
+  // 来源：同上；网上查找补充于 2026-05-09。
+  // slug=claude-opus-4-5-20251101-thinking ←→ modelId=claude-opus-4-5-20251101-thinking
+  'claude-opus-4-5-20251101-thinking': {
+    provider: 'Anthropic',
+    tagline: 'Claude Opus 4.5 思考模式（2025-11-01），上一代旗舰深度推理变体。',
+    capabilities: ['思考链', '长上下文', 'function calling', '视觉理解'],
+    scenarios: ['深度推理', '复杂规划', '法律 / 金融分析', '多步 Agent'],
+    overview: [
+      '这是 Opus 4.5 的 thinking 版本，面向更深的推理过程和更复杂的问题拆解。',
+      '它适合在“宁愿慢一点，也要尽量推理完整”的要求下使用。',
+    ],
+    whenToUse: [
+      '法律、金融、研究等高复杂度分析',
+      '多步 Agent、复杂规划、审慎型决策',
+      '需要把长上下文与思考过程结合时',
+    ],
+    integrationNotes: [
+      '优先用少量高价值样本验证，而不是先拿它跑高频批量任务。',
+      '如果已有 Opus 4.5 工作流，可以在同样的接口结构下直接切模型做对比。',
+    ],
+    caveats: [
+      'thinking 变体常常意味着更高延迟与不同的使用成本；以控制台为准。',
+      '是否比非 thinking 版本更适合你的任务，需要实测而不是预设。',
+    ],
+  },
+
+  // ── 次主推：Google + OpenAI + 国产开源系列 ─────────────────────────
+  // 来源：Google Gemini 官网（gemini.google.com / ai.google.dev）公开介绍：
+  // Flash 强调低延迟、Pro 强调高质量、preview 表示预览版；
+  // 网上查找补充于 2026-05-09。
+  // slug=gemini-3-flash-preview ←→ modelId=gemini-3-flash-preview
+  'gemini-3-flash-preview': {
+    provider: 'Google',
+    tagline: 'Gemini 3 Flash 预览版，Google 低延迟多模态主力。',
+    capabilities: ['低延迟', '视觉理解', 'function calling', '流式响应'],
+    scenarios: ['实时对话', '多模态助手', '图像问答', '语音交互前端'],
+    overview: [
+      'Gemini 3 Flash Preview 面向低延迟多模态交互，适合先追求“快”和“多模态能跑通”的场景。',
+      '如果你需要做图像问答、实时助手或前端交互，它通常比更重型的 Pro 版本更容易落地。',
+    ],
+    whenToUse: [
+      '实时对话、图像问答、多模态助手',
+      '对响应速度敏感的交互式产品',
+      '希望快速验证 Google 系列模型接入时',
+    ],
+    integrationNotes: [
+      '如果你用 OpenAI 风格工具，先走 https://api.gpt88.cc 再把 model 切到 gemini-3-flash-preview。',
+      '多模态请求建议先从单一图片或最小输入起步，验证字段格式。',
+    ],
+    caveats: [
+      'preview 版本的可用性、稳定性和功能边界以控制台为准。',
+      '低延迟不等于适合复杂长文档推理；更复杂场景可对比 Pro 版本。',
+    ],
+  },
+  // 来源：同上；preview 阶段 Pro 版本面向高质量推理；
+  // 网上查找补充于 2026-05-09。
+  // slug=gemini-3-pro-preview ←→ modelId=gemini-3-pro-preview
+  'gemini-3-pro-preview': {
+    provider: 'Google',
+    tagline: 'Gemini 3 Pro 预览版，Google 高质量多模态推理模型。',
+    capabilities: ['长上下文', '视觉理解', 'function calling', '高质量推理'],
+    scenarios: ['长文档分析', '多模态推理', '研究综述', '复杂 Agent'],
+    overview: [
+      'Gemini 3 Pro Preview 更偏高质量推理与多模态综合能力，适合作为 Google 系高阶选项。',
+      '如果你既要文本推理，也要图片理解和更完整的输出，它通常比 Flash 更适合深入验证。',
+    ],
+    whenToUse: [
+      '长文档分析、多模态推理、复杂 Agent',
+      '需要综合文本与图像信息的产品流程',
+      '想评估 Google 系高质量模型上限时',
+    ],
+    integrationNotes: [
+      '建议先用最小 chat/completions 跑通，再逐步增加图片、多轮或工具调用。',
+      'OpenAI 风格 SDK 通常是最自然的接入起点；字段命名更接近现有工程习惯。',
+    ],
+    caveats: [
+      'preview 版本的行为与开放策略可能变化；是否开放视觉与上下文边界以控制台为准。',
+      '相比 Flash，它更适合质量优先而非纯低延迟任务。',
+    ],
+  },
+  // 来源：Google Gemini 3.1 Pro preview（公开日志公布的小版本迭代）；
+  // 网上查找补充于 2026-05-09。
+  // slug=gemini-3-1-pro-preview ←→ modelId=gemini-3.1-pro-preview
+  'gemini-3-1-pro-preview': {
+    provider: 'Google',
+    tagline: 'Gemini 3.1 Pro 预览版，3 系列稳定性增强迭代。',
+    capabilities: ['长上下文', '视觉理解', 'function calling', '高质量推理'],
+    scenarios: ['长文档分析', '多模态推理', '科研综述', 'Agent 决策'],
+    overview: [
+      'Gemini 3.1 Pro Preview 可以理解为 3 系列 Pro 方向的迭代版本，侧重稳定性与质量延续。',
+      '如果你在比较同系列预览版差异，它适合作为 Google 多模态高阶路线的一个候选。',
+    ],
+    whenToUse: [
+      '多模态推理、长文档分析、研究综述',
+      '希望在 Google 系列里比较不同 Pro 迭代版本',
+      '对图像理解与推理质量有较高要求时',
+    ],
+    integrationNotes: [
+      '接入方式与其他 OpenAI 兼容模型一致，不需要为了小版本迭代重做接口。',
+      '建议在你已有提示词集上做 A/B 对比，而不是凭名称直接切生产默认值。',
+    ],
+    caveats: [
+      'preview / 小版本迭代的可用性和能力边界以控制台为准。',
+      '如果你的首要目标是速度，Flash 版本通常更合适。',
+    ],
+  },
+  // 来源：OpenAI GPT-5 系列公开博客说明：5.2 与 5.5 同代但容量较小、
+  // cost-effective 偏向；网上查找补充于 2026-05-09。
+  // slug=gpt-5-2 ←→ modelId=gpt-5.2
+  'gpt-5-2': {
+    provider: 'OpenAI',
+    tagline: 'GPT-5.2，与 5 系列同代的成本友好版本。',
+    capabilities: ['function calling', 'JSON Mode', '流式响应'],
+    scenarios: ['通用对话', '客服问答', '内容生成', '中量级 SaaS'],
+    overview: [
+      'GPT-5.2 是 GPT-5 系列中的更轻量成员，适合把通用性保留下来，同时兼顾更平衡的资源消耗。',
+      '如果你不一定需要旗舰档，但又希望继续走 GPT 系列生态，它是自然的中间位选择。',
+    ],
+    whenToUse: [
+      '通用对话、客服问答、内容生成',
+      '中量级 SaaS、工作流自动化、批量任务',
+      '想用 GPT 路线但不想一开始就上最高阶模型时',
+    ],
+    integrationNotes: [
+      '最适合直接放入现有 OpenAI SDK 工作流，通过 https://api.gpt88.cc 接入。',
+      '建议和 gpt-5.4 / gpt-5.5 做小范围对比，确认质量与成本平衡点。',
+    ],
+    caveats: [
+      '不同账号是否开放、限速如何、价格如何，以控制台为准。',
+      '如果任务偏复杂推理或多模态上限，可继续往更高阶 GPT 模型试。',
+    ],
+  },
+  // 来源：DeepSeek 开源 GitHub README 与官网（v4 系列：flash 偏快速、pro 偏完整能力）；
+  // 网上查找补充于 2026-05-09。
+  // slug=deepseek-v4-flash ←→ modelId=deepseek-v4-flash
+  'deepseek-v4-flash': {
+    provider: 'DeepSeek',
+    tagline: 'DeepSeek V4 Flash，开源系性价比对话模型，低延迟版本。',
+    capabilities: ['低延迟', '中英双语', 'function calling', '流式响应'],
+    scenarios: ['客服问答', '内容生成', '智能体子任务', '本地化助手'],
+    overview: [
+      'DeepSeek V4 Flash 是 V4 系列里更偏快速与性价比的一档，适合作为轻量对话或批量任务入口。',
+      '如果你更看重低延迟、中文体验或开源系路线，它通常是一个友好的试水点。',
+    ],
+    whenToUse: [
+      '客服问答、内容生成、批量处理',
+      '中文或双语任务、轻量 Agent 子任务',
+      '需要先验证开源系模型在你业务里的适配性时',
+    ],
+    integrationNotes: [
+      'OpenAI 风格 SDK 可以最快接入；先用最小 chat/completions 请求跑通。',
+      '如果你在中国大陆网络里工作，也可以先对比不同线路的时延差异。',
+    ],
+    caveats: [
+      '实际可用性、价格、限速与上下文边界以控制台为准。',
+      '对于复杂长文档或代码质量要求更高的场景，可对比 Pro 版本。',
+    ],
+  },
+  // 来源：同上；pro 版本支持长上下文与函数调用；
+  // 网上查找补充于 2026-05-09。
+  // slug=deepseek-v4-pro ←→ modelId=deepseek-v4-pro
+  'deepseek-v4-pro': {
+    provider: 'DeepSeek',
+    tagline: 'DeepSeek V4 Pro，开源系完整能力对话模型，长上下文 + function calling。',
+    capabilities: ['长上下文', 'function calling', '中英双语', '代码生成'],
+    scenarios: ['代码助手', '通用 Agent', '长文档处理', '本地化方案'],
+    overview: [
+      'DeepSeek V4 Pro 是 DeepSeek V4 系列里更完整的一档，适合作为开源系主力对话模型使用。',
+      '如果你既关心中文表现，又希望具备较好的代码与工具调用能力，它通常值得进入对比名单。',
+    ],
+    whenToUse: [
+      '长文档处理、通用 Agent、代码助手',
+      '中文优先或中英双语任务',
+      '想在开源系路线里兼顾能力完整性与接入成本时',
+    ],
+    integrationNotes: [
+      '在 OpenAI 风格工具中最容易落地，最适合用现有 SDK 先快速验证。',
+      '如果你正在从其他中文模型迁移，可优先用同一批业务样本对比指令跟随与工具调用表现。',
+    ],
+    caveats: [
+      '是否开放、上下文边界、线路表现与价格以控制台为准。',
+      '作为长尾可选模型保留，不代表当前站内默认主推口径。',
+    ],
+  },
+  // 来源：Moonshot 官方 Kimi K3 API 快速开始与官网，2026-07-17 核验。
+  // slug=kimi-k3 ←→ modelId=kimi-k3
+  'kimi-k3': {
+    provider: 'Moonshot',
+    tagline: 'Kimi K3，面向长周期编程、知识工作和复杂 Agent 任务的 Moonshot 旗舰模型。',
+    capabilities: ['1M 上下文', '长周期编程', '知识工作', '原生视觉理解', 'Tool Calling'],
+    scenarios: ['大型代码库分析', '长文档与知识整理', '复杂推理', '多步骤 Agent'],
+    overview: [
+      'Kimi K3 是 Moonshot 官方 Kimi API Platform 已发布的旗舰模型，Model ID 为 kimi-k3。',
+      '官方资料显示它采用 2.8T 参数规模，支持原生视觉理解和 1M-token 上下文，重点面向长周期编程、知识工作和推理。',
+    ],
+    whenToUse: [
+      '需要理解大型代码库、持续执行多步骤工程任务时',
+      '需要处理长文档、知识整理、研究和复杂结构化输出时',
+      '需要结合视觉输入、工具调用或 Agent 流程评测时',
+    ],
+    integrationNotes: [
+      'GPT88 统一 API 使用 Base URL https://api.gpt88.cc，Model ID 填 kimi-k3，请求路径为 /v1/chat/completions。',
+      'Kimi K3 可按 OpenAI 兼容 SDK、cURL 或 Agent 工具接入；首次使用前建议先调用 GET /v1/models 确认账号权限。',
+      'Moonshot 官方直连文档使用 https://api.moonshot.ai/v1；在 GPT88 中应使用 GPT88 官方首页展示的统一 Base URL。',
+    ],
+    caveats: [
+      'Model ID、可用线路、价格、限速和权限以 GPT88 控制台当前配置为准。',
+      '1M 上下文不代表每个请求都应发送完整上下文；建议按任务拆分、复用缓存并观察实际延迟和成本。',
+      '正式采用前请使用真实代码库、长文档和工具调用样本做小流量评测。',
+    ],
+  },
+  // 来源：智谱 GLM 官方网站与开源仓库；5 系列（含 5.1）面向通用对话；
+  // 网上查找补充于 2026-05-09。
+  // slug=glm-5-1 ←→ modelId=glm-5.1
+  'glm-5-1': {
+    provider: '智谱 (Zhipu)',
+    tagline: '智谱 GLM 5.1，国产通用对话模型，中文场景表现稳定。',
+    capabilities: ['中文优势', 'function calling', '流式响应'],
+    scenarios: ['中文客服', '本地化助手', '内容生成', '问答系统'],
+    overview: [
+      'GLM 5.1 是智谱系的通用对话模型，偏向中文体验与通用业务接入。',
+      '如果你的业务主要面向中文用户，或者想在国产模型路线里做通用接入，它是值得试的一档。',
+    ],
+    whenToUse: [
+      '中文客服、本地化助手、内容生成',
+      '希望用国产路线先验证通用对话链路时',
+      '需要 function calling 但不想一开始就切到更复杂的模型组合时',
+    ],
+    integrationNotes: [
+      '建议先通过 OpenAI 风格路径验证连通性，再按业务需求决定是否进入正式工作流。',
+      '如果团队里已有 GLM 相关提示词或内部评测数据，迁移摩擦通常较小。',
+    ],
+    caveats: [
+      '中文体验、可用模型范围、上下文边界与费用策略以控制台为准。',
+      '若业务更偏多模态或长文档复杂推理，可同步对比其他供应商模型。',
+    ],
+  },
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * 工具：slug 转换 + provider 推断 + 接口路径推断
+ *
+ * 这些函数都是"展示推断"，不是权威：
+ * - canonical_name → slug：仅替换 .，避免被 react-router 当成嵌套路径
+ *   （注意 canonical_name 中没有 / 或空格，验证过）
+ * - provider 推断：根据常见前缀简单 map；推断不出时返回 display_name 兜底，
+ *   避免 UI 上空白；后续如果 marketplace 加了 owned_by 字段，可以替换为权威来源
+ * - category → endpoint：按 OpenAI 兼容协议惯例做映射；completion 走 chat
+ * ────────────────────────────────────────────────────────────────── */
+
+/** canonical_name → URL safe slug；唯一变换是把 . 换成 - */
+export function canonicalToSlug(canonical: string): string {
+  return canonical.replaceAll('.', '-')
+}
+
+/**
+ * 从 modelId 前缀推断 provider；推断不出时回退到 fallbackName（一般是 display_name）。
+ *
+ * 这是"展示推断"——marketplace 没有权威 provider 字段，
+ * 大多数模型 ID 仍能透露厂商系列（claude- / gpt- / gemini- / glm- 等）。
+ */
+export function inferProvider(modelId: string, fallbackName?: string): string {
+  const id = modelId.toLowerCase()
+  if (id.startsWith('gpt-') || id.startsWith('gpt5-') || id.startsWith('gpt-5-') || id.startsWith('o1-') || id.startsWith('o3-') || id.startsWith('o4-')) return 'OpenAI'
+  if (id.startsWith('claude-')) return 'Anthropic'
+  if (id.startsWith('gemini-')) return 'Google'
+  if (id.startsWith('deepseek-')) return 'DeepSeek'
+  if (id.startsWith('glm-')) return '智谱 (Zhipu)'
+  if (id.startsWith('kimi-')) return 'Moonshot'
+  if (id.startsWith('qwen') || id.startsWith('qwen3-') || id.startsWith('qwen-')) return 'Alibaba'
+  if (id.startsWith('minimax-') || id.startsWith('abab-')) return 'MiniMax'
+  if (id.startsWith('doubao-')) return '字节跳动 (ByteDance)'
+  if (id.startsWith('sparkdesk-') || id.startsWith('spark-')) return '科大讯飞 (iFlytek)'
+  if (id.startsWith('ernie-') || id.startsWith('wenxin-')) return 'Baidu'
+  if (id.startsWith('whisper-')) return 'OpenAI'
+  if (id.startsWith('flux-') || id.startsWith('flux.')) return 'Black Forest Labs'
+  if (id.startsWith('sd-') || id.startsWith('sd3-') || id.startsWith('stable-')) return 'Stability AI'
+  if (id.startsWith('runway-') || id.startsWith('gen-3') || id.startsWith('gen3-')) return 'Runway'
+  if (id.startsWith('kling-')) return '快手 (Kling)'
+  if (id.startsWith('text-embedding-')) return 'OpenAI'
+  if (id.startsWith('grok-')) return 'xAI'
+  return fallbackName ?? '未知'
+}
+
+/**
+ * 按 category 映射默认接口路径；completion 视为 chat（PM 决策合并）。
+ */
+function endpointFromCategory(category: string): ModelEndpoint {
+  switch (category) {
+    case 'image':
+      return { method: 'POST', path: '/v1/images/generations' }
+    case 'video':
+      return { method: 'POST', path: '/v1/videos/generations' }
+    case 'audio':
+      return { method: 'POST', path: '/v1/audio/transcriptions' }
+    case 'embedding':
+      return { method: 'POST', path: '/v1/embeddings' }
+    case 'chat':
+    case 'completion':
+    default:
+      return { method: 'POST', path: '/v1/chat/completions' }
+  }
+}
+
+function endpointForModel(category: string, modelId: string): ModelEndpoint {
+  if (usesGeminiGenerateContentImage(modelId)) {
+    return { method: 'POST', path: `/v1beta/models/${modelId}:generateContent` }
+  }
+  return endpointFromCategory(category)
+}
+
+/*
+ * marketplace 快照里的 canonical_name 偏向机器归一化；少数模型真实可调用的
+ * body.model 需要保留官方大小写。例如 NanoBanana2 如果写成 nanobanana2，
+ * 用户复制示例后会因为模型 ID 大小写不一致而失败。
+ */
+const API_MODEL_ID_OVERRIDES: Record<string, string> = {
+  nanobanana2: 'NanoBanana2',
+}
+
+function apiModelIdFromRow(row: CatalogRow): string {
+  return API_MODEL_ID_OVERRIDES[row.canonical_name] ?? row.canonical_name
+}
+
+const IMAGE_SIZE_RATIOS = [
+  '16:9',
+  '1:1',
+  '21:9',
+  '2:3',
+  '3:2',
+  '3:4',
+  '4:3',
+  '4:5',
+  '5:4',
+  '9:16',
+  'auto',
+]
+
+function usesRatioImageSize(modelId: string): boolean {
+  const id = modelId.toLowerCase()
+  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
+}
+
+function usesGeminiGenerateContentImage(modelId: string): boolean {
+  const id = modelId.toLowerCase()
+  return id === 'nanobanana2' || id === 'gemini-3-pro-image-preview'
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * 长尾模型详情模板生成器
+ *
+ * 参考来源：apimart 详情页的"信息架构心智"（模型概览 / 适用场景 / 调用说明 / 使用建议），
+ * 但不是字段源头。这里不试图为 239 个模型逐个写成白皮书，而是基于
+ * provider + category + slug 关键词生成一套保守、可用、面向接入者的说明层。
+ *
+ * 约束：
+ * - 不写死价格 / SLA / 限速 / 上下文长度数字
+ * - 不承诺控制台未确认的能力边界
+ * - 写法尽量保守：用「通常 / 更适合 / 建议 / 以控制台为准」而不是硬承诺
+ * ────────────────────────────────────────────────────────────────── */
+
+function pickVariantHints(model: Pick<ModelEntry, 'slug' | 'modelId' | 'category'>) {
+  const id = `${model.slug} ${model.modelId}`.toLowerCase()
+  return {
+    thinking: id.includes('thinking'),
+    flash: id.includes('flash'),
+    mini: id.includes('mini'),
+    pro: id.includes('pro') || id.includes('opus'),
+    coder: id.includes('codex') || id.includes('coder'),
+    vision: id.includes('vision'),
+  }
+}
+
+function categoryOverview(category: ModelCategory): string {
+  switch (category) {
+    case 'image':
+      return '这是一个图像生成模型，适合把文本提示词转成静态图片或视觉素材。'
+    case 'video':
+      return '这是一个视频生成模型，适合把文本或素材生成短视频片段。'
+    case 'audio':
+      return '这是一个音频处理模型，适合语音识别、转写或相关媒体处理任务。'
+    case 'chat':
+    default:
+      return '这是一个对话 / 推理类模型，适合通过统一的 chat/completions 接口接入。'
+  }
+}
+
+function providerOverview(provider: string): string {
+  if (provider.includes('Anthropic')) {
+    return '它属于 Claude / Anthropic 路线，通常更适合需要长文档理解、复杂推理或 Agent 协作的场景。'
+  }
+  if (provider.includes('OpenAI')) {
+    return '它属于 OpenAI 路线，通常更适合直接接入现有 OpenAI SDK、工具调用和结构化输出工作流。'
+  }
+  if (provider.includes('Google')) {
+    return '它属于 Google Gemini 路线，通常更适合多模态理解、图像输入或综合推理任务。'
+  }
+  if (provider.includes('DeepSeek')) {
+    return '它属于 DeepSeek 路线，通常兼顾中英双语、代码与通用对话场景，适合做开源系方案比较。'
+  }
+  if (provider.includes('智谱')) {
+    return '它属于智谱 GLM 路线，通常更适合中文业务、本地化助手与通用问答系统。'
+  }
+  if (provider.includes('Moonshot')) {
+    return '它属于 Moonshot / Kimi 路线，通常更适合长文本理解、知识整理与信息归纳。'
+  }
+  if (provider.includes('Alibaba')) {
+    return '它属于阿里 Qwen 路线，通常更适合中文与多语言任务，尤其在通用对话与代码方向表现稳定。'
+  }
+  if (provider.includes('MiniMax')) {
+    return '它属于 MiniMax 路线，通常更适合语音、多模态与交互式内容场景。'
+  }
+  if (provider.includes('Black Forest Labs') || provider.includes('Stability') || provider.includes('Runway') || provider.includes('Kling')) {
+    return '它属于媒体生成路线，接入时更需要先确认输出介质、文件格式和任务接口是否与你的工具匹配。'
+  }
+  return '它是一个可通过 gpt88.cc 统一接口接入的模型，具体能力边界建议结合控制台实时配置确认。'
+}
+
+function buildLongTailDetail(
+  model: Pick<ModelEntry, 'slug' | 'modelId' | 'name' | 'provider' | 'category' | 'endpoint'>,
+): Pick<ModelEntry, 'overview' | 'whenToUse' | 'integrationNotes' | 'caveats'> {
+  const hints = pickVariantHints(model)
+  const overview = [categoryOverview(model.category), providerOverview(model.provider)]
+
+  if (hints.thinking) {
+    overview.push('名称中的 thinking 变体通常意味着它更偏深度推理与多步规划，而不是极致低延迟。')
+  } else if (hints.flash || hints.mini) {
+    overview.push('名称中的 flash / mini 变体通常更偏低延迟、高吞吐或轻量任务。')
+  } else if (hints.pro) {
+    overview.push('名称中的 pro / opus 通常表示它更偏质量优先、复杂任务或更完整能力。')
+  } else if (hints.coder) {
+    overview.push('名称中的 codex / coder 通常表示它更偏代码生成、重构与自动化开发场景。')
+  }
+
+  let whenToUse: string[]
+  switch (model.category) {
+    case 'image':
+      whenToUse = [
+        '需要把文案或提示词转换成图片素材时',
+        '做海报、电商主图、品牌概念图或社媒配图时',
+        '先用一条最小 prompt 验证输出风格，再扩展到批量生成时',
+      ]
+      break
+    case 'video':
+      whenToUse = [
+        '需要根据文本生成短视频片段时',
+        '做广告概念、镜头预演或产品演示素材时',
+        '先验证异步作业链路，再扩展到更复杂的视频工作流时',
+      ]
+      break
+    case 'audio':
+      whenToUse = [
+        '做语音转写、字幕、会议纪要或音频理解时',
+        '先验证文件上传与返回结构，再接入正式媒体工作流时',
+        '需要把音频能力和现有 OpenAI 风格工具统一起来时',
+      ]
+      break
+    case 'chat':
+    default:
+      whenToUse = [
+        '通用对话、知识问答、内容生成或智能助手场景',
+        '需要先用统一接口快速验证模型风格与可用性时',
+        '希望把模型接入现有 SDK、CLI、IDE 或 Agent 工作流时',
+      ]
+      if (hints.coder) {
+        whenToUse.unshift('代码生成、脚本编写、测试生成与开发自动化场景')
+      }
+      if (hints.thinking) {
+        whenToUse.unshift('复杂推理、多步规划、需要先想清楚再输出的任务')
+      }
+      if (hints.flash || hints.mini) {
+        whenToUse.unshift('轻量对话、批量任务、对延迟与吞吐更敏感的场景')
+      }
+      if (hints.pro) {
+        whenToUse.unshift('长文档分析、复杂决策、质量优先的输出场景')
+      }
+      break
+  }
+
+  const integrationNotes = model.category === 'image' || model.category === 'video'
+    ? [
+        usesGeminiGenerateContentImage(model.modelId)
+          ? 'Google/Gemini 图片模型统一使用图片与多媒体 Base URL https://img.gpt88.cc。'
+          : '图片与视频模型统一使用图片与多媒体 Base URL https://img.gpt88.cc。',
+        `第一次接入时，建议先用 ${model.endpoint.path} 验证 API Key、模型名 ${model.modelId} 和当前线路是否匹配。`,
+        ...(usesGeminiGenerateContentImage(model.modelId)
+          ? ['请求体使用 Gemini 原生 contents / generationConfig 结构，返回图片通常在 inlineData.data 中。']
+          : []),
+      ]
+    : [
+        `标准 API 使用 Base URL https://api.gpt88.cc，再按工具类型使用对应 endpoint。`,
+        `第一次接入时，建议先用一条最小请求验证 API Key、模型名 ${model.modelId} 和当前线路是否匹配。`,
+      ]
+  if (model.category === 'chat') {
+    integrationNotes.push(`如果你的工具支持 chat/completions，请优先从 ${model.endpoint.path} 这条最稳定的主路径开始验证。`)
+  }
+  if (hints.coder) {
+    integrationNotes.push('代码类模型更适合接入 IDE、CLI、测试生成或开发 Agent 场景，建议先用最小代码任务做评估。')
+  }
+  if (model.category === 'image' || model.category === 'video' || model.category === 'audio') {
+    integrationNotes.push('媒体类模型通常先验证上传 / 返回结构，再扩展到正式的素材或媒体管线。')
+  }
+
+  const caveats = [
+    '价格、限速、SLA、上下文长度、是否开放多模态等动态值以 gpt88.cc 控制台为准。',
+    '如果请求延迟偏高或连接不稳定，请先检查 API Key、模型、endpoint 和请求格式。',
+  ]
+  if (model.category === 'image' && usesGeminiGenerateContentImage(model.modelId)) {
+    caveats.unshift(
+      `该 Google 图片模型使用 generationConfig.imageConfig.aspectRatio 控制画幅比例，支持 ${IMAGE_SIZE_RATIOS.join(' / ')}；不要传 "1024x1024" 这类像素尺寸，清晰度请使用 imageConfig.imageSize，例如 "1K"。`,
+    )
+  } else if (model.category === 'image' && usesRatioImageSize(model.modelId)) {
+    caveats.unshift(
+      `该图像模型使用 size 控制画幅比例，支持 ${IMAGE_SIZE_RATIOS.join(' / ')}；不要传 "1024x1024" 这类像素尺寸，推荐同时传 resolution，例如 "1K"。`,
+    )
+  }
+  if (hints.thinking) {
+    caveats.unshift('thinking 变体通常更偏深度推理，实际延迟可能高于普通版本；是否值得切换请结合真实任务验证。')
+  } else if (hints.flash || hints.mini) {
+    caveats.unshift('flash / mini 变体更适合轻量任务；面对复杂长文档或高质量推理时，可能需要升级到更高阶模型。')
+  } else if (hints.pro) {
+    caveats.unshift('pro / opus 更偏质量优先；如果你更看重吞吐和低延迟，可先比较轻量模型。')
+  }
+
+  return {
+    overview,
+    whenToUse,
+    integrationNotes,
+    caveats,
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * 请求示例：按分类生成 cURL / Python / Node.js 三段
+ *
+ * base_url 默认 https://api.gpt88.cc（task t-20260509-7vh34r 已替换全站；
+ * 此处直接写当前默认端点的新值，不要再生成旧的历史 API 域名字面量。
+ * 旧域名连注释都不应保留，以避免 QA grep 误报，并避免维护者把历史迁移痕迹
+ * 误解成仍应继续兼容的运行时地址）。
+ * ────────────────────────────────────────────────────────────────── */
+
+function buildExamples(modelId: string, endpoint: ModelEndpoint): ModelExample[] {
+  if (usesGeminiGenerateContentImage(modelId)) {
+    return [
+      {
+        label: 'Gemini cURL',
+        lang: 'bash',
+        code: `export API_KEY="YOUR_GPT88_API_KEY"
+export BASE_URL="https://img.gpt88.cc"
+export MODEL="${modelId}"
+
+curl -s -X POST \\
+  "$BASE_URL/v1/models/$MODEL:generateContent" \\
+  -H "x-goog-api-key: $API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "contents": [{
+      "parts": [{
+        "text": "Create a cinematic 16:9 cyberpunk city at night with neon lights and rain."
+      }]
+    }],
+    "generationConfig": {
+      "responseModalities": ["IMAGE"],
+      "responseFormat": {
+        "image": {
+          "aspectRatio": "16:9",
+          "imageSize": "2K"
+        }
+      }
+    }
+  }' > response.json
+
+jq -r '.. | objects | .inlineData?.data? | select(.)' response.json | head -n 1 | base64 -d > output.png`,
+      },
+      {
+        label: 'macOS base64',
+        lang: 'bash',
+        code: `jq -r '.. | objects | (.inlineData?.data // .inline_data?.data)? | select(.)' response.json \\
+  | head -n 1 \\
+  | base64 -D > output.png`,
+      },
+      {
+        label: 'Node.js',
+        lang: 'typescript',
+        code: `import fs from "node:fs";
+
+const API_KEY = process.env.API_KEY;
+const BASE_URL = "https://img.gpt88.cc";
+const MODEL = "${modelId}";
+
+const res = await fetch(
+  \`\${BASE_URL}/v1/models/\${MODEL}:generateContent\`,
+  {
+    method: "POST",
+    headers: {
+      "x-goog-api-key": API_KEY,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      contents: [{
+        parts: [{
+          text: "Create a cute 1:1 3D icon on a white background with colorful materials and no text.",
+        }],
+      }],
+      generationConfig: {
+        responseModalities: ["IMAGE"],
+        responseFormat: {
+          image: {
+            aspectRatio: "1:1",
+            imageSize: "1K",
+          },
+        },
+      },
+    }),
+  },
+);
+
+const json = await res.json();
+if (!res.ok) throw new Error(JSON.stringify(json, null, 2));
+
+const part = json.candidates?.[0]?.content?.parts?.find(
+  p => p.inlineData?.data || p.inline_data?.data,
+);
+
+const b64 = part?.inlineData?.data ?? part?.inline_data?.data;
+fs.writeFileSync("output.png", Buffer.from(b64, "base64"));
+console.log("saved output.png");`,
+      },
+      {
+        label: 'x-goog-api-key',
+        lang: 'bash',
+        code: `curl -s -X POST \\
+  "$BASE_URL/v1/models/$MODEL:generateContent" \\
+  -H "x-goog-api-key: $API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d @payload.json > response.json`,
+      },
+    ]
+  }
+
+  if (endpoint.path === '/v1/images/generations') {
+    const imageBaseUrl = 'https://img.gpt88.cc'
+    const ratioSizeModel = usesRatioImageSize(modelId)
+    const prompt = ratioSizeModel ? '月光下的竹林小径' : '极简风格的 API 文档站封面'
+    const editPrompt = ratioSizeModel
+      ? '保留参考图主体，将背景改成月光下的竹林小径'
+      : '保留参考图主体，改成极简 API 文档站封面风格'
+    const imageParamsJson = ratioSizeModel
+      ? `    "size": "1:1",
+    "resolution": "1K",
+    "n": 1`
+      : `    "size": "1024x1024",
+    "n": 1`
+    const imagePayloadPython = ratioSizeModel
+      ? `        "size": "1:1",
+        "resolution": "1K",
+        "n": 1,`
+      : `        "size": "1024x1024",
+        "n": 1,`
+    const imagePayloadNode = ratioSizeModel
+      ? `    size: "1:1",
+    resolution: "1K",
+    n: 1,`
+      : `    size: "1024x1024",
+    n: 1,`
+    return [
+      {
+        label: '文生图 cURL',
+        lang: 'bash',
+        code: `curl ${imageBaseUrl}${endpoint.path} \\
+  -H "Authorization: Bearer $GPT88_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "${modelId}",
+    "prompt": "${prompt}",
+${imageParamsJson}
+  }'`,
+      },
+      {
+        label: '文生图 Python',
+        lang: 'python',
+        code: `import requests
+
+resp = requests.post(
+    "${imageBaseUrl}${endpoint.path}",
+    headers={
+        "Authorization": "Bearer YOUR_GPT88_API_KEY",
+        "Content-Type": "application/json",
+    },
+    json={
+        "model": "${modelId}",
+        "prompt": "${prompt}",
+${imagePayloadPython}
+    },
+)
+print(resp.json())`,
+      },
+      {
+        label: '文生图 Node.js',
+        lang: 'typescript',
+        code: `const resp = await fetch("${imageBaseUrl}${endpoint.path}", {
+  method: "POST",
+  headers: {
+    Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: "${modelId}",
+    prompt: "${prompt}",
+${imagePayloadNode}
+  }),
+});
+
+console.log(await resp.json());`,
+      },
+      {
+        label: '图生图 Python',
+        lang: 'python',
+        code: `import requests
+
+with open("reference.png", "rb") as f:
+    resp = requests.post(
+        "${imageBaseUrl}/v1/images/edits",
+        headers={
+            "Authorization": "Bearer YOUR_GPT88_API_KEY",
+        },
+        files={
+            "image": f,
+        },
+        data={
+            "model": "${modelId}",
+            "prompt": "${editPrompt}",
+            "size": "1536x1024",
+            "quality": "high",
+        },
+    )
+print(resp.json())`,
+      },
+      {
+        label: '图生图 Node.js',
+        lang: 'typescript',
+        code: `import fs from "node:fs";
+import FormData from "form-data";
+
+const form = new FormData();
+form.append("model", "${modelId}");
+form.append("prompt", "${editPrompt}");
+form.append("size", "1536x1024");
+form.append("quality", "high");
+form.append("image", fs.createReadStream("reference.png"));
+
+const resp = await fetch("${imageBaseUrl}/v1/images/edits", {
+  method: "POST",
+  headers: {
+    Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
+    ...form.getHeaders(),
+  },
+  body: form,
+});
+
+console.log(await resp.json());`,
+      },
+    ]
+  }
+  if (endpoint.path === '/v1/videos/generations') {
+    return [
+      {
+        label: 'cURL',
+        lang: 'bash',
+        code: `curl https://img.gpt88.cc${endpoint.path} \\
+  -H "Authorization: Bearer $GPT88_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "${modelId}",
+    "prompt": "镜头从城市夜景缓缓推近一栋发光的摩天楼",
+    "duration": 6,
+    "aspect_ratio": "16:9"
+  }'`,
+      },
+      {
+        label: 'Python',
+        lang: 'python',
+        code: `# 视频生成通常是异步任务，先创建作业再轮询
+import requests
+
+resp = requests.post(
+    "https://img.gpt88.cc${endpoint.path}",
+    headers={"Authorization": "Bearer YOUR_GPT88_API_KEY"},
+    json={
+        "model": "${modelId}",
+        "prompt": "镜头从城市夜景缓缓推近一栋发光的摩天楼",
+        "duration": 6,
+        "aspect_ratio": "16:9",
+    },
+)
+print(resp.json())`,
+      },
+      {
+        label: 'Node.js',
+        lang: 'typescript',
+        code: `const resp = await fetch(
+  "https://img.gpt88.cc${endpoint.path}",
+  {
+    method: "POST",
+    headers: {
+      Authorization: \`Bearer \${process.env.GPT88_API_KEY}\`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "${modelId}",
+      prompt: "镜头从城市夜景缓缓推近一栋发光的摩天楼",
+      duration: 6,
+      aspect_ratio: "16:9",
+    }),
+  },
+);
+console.log(await resp.json());`,
+      },
+    ]
+  }
+  if (endpoint.path === '/v1/audio/transcriptions') {
+    return [
+      {
+        label: 'cURL',
+        lang: 'bash',
+        code: `curl https://api.gpt88.cc${endpoint.path} \\
+  -H "Authorization: Bearer $GPT88_API_KEY" \\
+  -F "model=${modelId}" \\
+  -F "file=@meeting.mp3" \\
+  -F "response_format=verbose_json"`,
+      },
+      {
+        label: 'Python',
+        lang: 'python',
+        code: `from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.gpt88.cc",
+    api_key="YOUR_GPT88_API_KEY",
+)
+
+with open("meeting.mp3", "rb") as f:
+    resp = client.audio.transcriptions.create(
+        model="${modelId}",
+        file=f,
+        response_format="verbose_json",
+    )
+print(resp.text)`,
+      },
+      {
+        label: 'Node.js',
+        lang: 'typescript',
+        code: `import OpenAI from "openai";
+import fs from "node:fs";
+
+const client = new OpenAI({
+  baseURL: "https://api.gpt88.cc",
+  apiKey: process.env.GPT88_API_KEY,
+});
+
+const resp = await client.audio.transcriptions.create({
+  model: "${modelId}",
+  file: fs.createReadStream("meeting.mp3"),
+  response_format: "verbose_json",
+});
+console.log(resp.text);`,
+      },
+    ]
+  }
+  if (endpoint.path === '/v1/embeddings') {
+    return [
+      {
+        label: 'cURL',
+        lang: 'bash',
+        code: `curl https://api.gpt88.cc${endpoint.path} \\
+  -H "Authorization: Bearer $GPT88_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "${modelId}",
+    "input": "gpt88.cc 是一个统一 API 网关"
+  }'`,
+      },
+      {
+        label: 'Python',
+        lang: 'python',
+        code: `from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.gpt88.cc",
+    api_key="YOUR_GPT88_API_KEY",
+)
+
+resp = client.embeddings.create(
+    model="${modelId}",
+    input="gpt88.cc 是一个统一 API 网关",
+)
+print(resp.data[0].embedding[:8])`,
+      },
+      {
+        label: 'Node.js',
+        lang: 'typescript',
+        code: `import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://api.gpt88.cc",
+  apiKey: process.env.GPT88_API_KEY,
+});
+
+const resp = await client.embeddings.create({
+  model: "${modelId}",
+  input: "gpt88.cc 是一个统一 API 网关",
+});
+console.log(resp.data[0].embedding.slice(0, 8));`,
+      },
+    ]
+  }
+  // 默认：chat / completion
+  return [
+    {
+      label: 'cURL',
+      lang: 'bash',
+      code: `curl https://api.gpt88.cc${endpoint.path} \\
+  -H "Authorization: Bearer $GPT88_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "${modelId}",
+    "messages": [
+      {"role": "user", "content": "用一句话介绍 gpt88.cc"}
+    ]
+  }'`,
+    },
+    {
+      label: 'Python',
+      lang: 'python',
+      code: `from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.gpt88.cc",
+    api_key="YOUR_GPT88_API_KEY",
+)
+
+resp = client.chat.completions.create(
+    model="${modelId}",
+    messages=[{"role": "user", "content": "用一句话介绍 gpt88.cc"}],
+)
+print(resp.choices[0].message.content)`,
+    },
+    {
+      label: 'Node.js',
+      lang: 'typescript',
+      code: `import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://api.gpt88.cc",
+  apiKey: process.env.GPT88_API_KEY,
+});
+
+const resp = await client.chat.completions.create({
+  model: "${modelId}",
+  messages: [{ role: "user", content: "用一句话介绍 gpt88.cc" }],
+});
+console.log(resp.choices[0].message.content);`,
+    },
+  ]
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * Catalog 加载：
+ * 1) 读 snapshot.catalog
+ * 2) 丢弃 embedding 分类（任务要求）
+ * 3) 按 canonical_name 去重；若同名条目同时有 chat 和 completion，留 chat 那一条
+ * 4) 把 completion 单独存在的条目（理论上没有，做保险）转成 chat
+ * 5) 套上 featured / capabilities / scenarios / tagline
+ * ────────────────────────────────────────────────────────────────── */
+
+type CatalogRow = {
+  canonical_name: string
+  display_name: string
+  category: string
+  vendors_count: number
+  upstream_samples: string[]
+  descriptions_sample: string[]
+}
+
+const LOCAL_CATALOG_ROWS: CatalogRow[] = [
+  {
+    canonical_name: 'gpt-5.6-sol',
+    display_name: 'gpt-5.6-sol',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-5.6-sol'],
+    descriptions_sample: ['OpenAI GPT-5.6 Sol 预览系列模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'gpt-5.6-terra',
+    display_name: 'gpt-5.6-terra',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-5.6-terra'],
+    descriptions_sample: ['OpenAI GPT-5.6 Terra 预览系列模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'gpt-5.6-luna',
+    display_name: 'gpt-5.6-luna',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-5.6-luna'],
+    descriptions_sample: ['OpenAI GPT-5.6 Luna 预览系列模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'claude-fable-5',
+    display_name: 'claude-fable-5',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-fable-5'],
+    descriptions_sample: ['Anthropic 新上 Claude Fable 5，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'claude-opus-4-8',
+    display_name: 'claude-opus-4-8',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-opus-4-8'],
+    descriptions_sample: ['gpt88.cc 新上主推模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'kimi-k3',
+    display_name: 'kimi-k3',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['kimi-k3'],
+    descriptions_sample: ['Moonshot Kimi K3 旗舰模型，支持 1M-token 上下文、长周期编程、知识工作和工具调用，具体价格、权限和线路以控制台为准。'],
+  },
+]
+
+function buildCatalog(): ModelEntry[] {
+  const rows = (snapshot.catalog as CatalogRow[]).concat(LOCAL_CATALOG_ROWS)
+  // 分组：(canonical_name) → array of rows
+  const byName = new Map<string, CatalogRow[]>()
+  for (const r of rows) {
+    if (r.category === 'embedding') continue
+    const list = byName.get(r.canonical_name) ?? []
+    list.push(r)
+    byName.set(r.canonical_name, list)
+  }
+
+  const entries: ModelEntry[] = []
+  for (const [, list] of byName) {
+    // 优先选 chat，其次 image/video/audio，最后 completion
+    const priority: Record<string, number> = {
+      chat: 0,
+      image: 1,
+      video: 2,
+      audio: 3,
+      completion: 4,
+    }
+    list.sort(
+      (a, b) => (priority[a.category] ?? 9) - (priority[b.category] ?? 9),
+    )
+    const picked = list[0]
+    // completion 暂归入 chat
+    const normalizedCategory: ModelCategory =
+      picked.category === 'completion' ? 'chat' : (picked.category as ModelCategory)
+    const slug = canonicalToSlug(picked.canonical_name)
+    const apiModelId = apiModelIdFromRow(picked)
+    const featured = (FEATURED_SLUGS as readonly string[]).includes(slug)
+    /*
+     * 注意：detail 的查找解耦了 featured 标记。
+     * FEATURED_SLUGS 控制"是否进入主推置顶位"，FEATURED_DETAILS 字典则覆盖
+     * "是否有人工运营的能力 / 场景 / tagline"——后者范围比前者大（21 vs 8），
+     * 所以这里**总是**按 slug 查表，无论 featured。命中即用人工文案，
+     * 未命中走下面的回退分支。
+     */
+    const detail = FEATURED_DETAILS[slug]
+    const longTailDetail = buildLongTailDetail({
+      slug,
+      modelId: apiModelId,
+      name: picked.display_name,
+      provider: detail?.provider ?? inferProvider(picked.canonical_name, picked.display_name),
+      category: normalizedCategory,
+      endpoint: endpointForModel(picked.category, apiModelId),
+    })
+
+    const provider = detail?.provider ?? inferProvider(picked.canonical_name, picked.display_name)
+    /*
+     * tagline 兜底逻辑（Human msg-20260509-4q7t82）：
+     * 1) 命中 FEATURED_DETAILS → 用人工写的 detail.tagline
+     * 2) 否则 inferProvider 命中（非"未知"，且不是 display_name 兜底）→
+     *    用 `${provider} ${display_name} · ${CATEGORY} 模型`
+     * 3) 否则用 `${CATEGORY} 模型 · ${provider}` 兜底
+     *
+     * 不再使用 descriptions_sample[0] 截 60 字作 tagline——
+     * subrouter 上 vendor 写的 description 噪声较大（如「不降智，延迟低，plus 号池」），
+     * 把它当成 tagline 会污染列表卡片可读性。原始数据仍保留在
+     * ModelEntry.descriptionsSample 里，留给后续可能的「上游卖点」展示用。
+     */
+    const inferred = inferProvider(picked.canonical_name)
+    const inferredHit = inferred !== '未知' && inferred !== picked.display_name
+    const upper = normalizedCategory.toUpperCase()
+    const longTailTagline = inferredHit
+      ? `${provider} ${picked.display_name} · ${upper} 模型`
+      : `${upper} 模型 · ${provider}`
+    const tagline = detail?.tagline ?? longTailTagline
+
+    const endpoint = endpointForModel(picked.category, apiModelId)
+    entries.push({
+      slug,
+      name: picked.display_name,
+      modelId: apiModelId,
+      provider,
+      category: normalizedCategory,
+      featured,
+      tagline,
+      capabilities: detail?.capabilities ?? [],
+      scenarios: detail?.scenarios ?? [],
+      overview: detail?.overview ?? longTailDetail.overview,
+      whenToUse: detail?.whenToUse ?? longTailDetail.whenToUse,
+      integrationNotes: detail?.integrationNotes ?? longTailDetail.integrationNotes,
+      caveats: detail?.caveats ?? longTailDetail.caveats,
+      vendorsCount: list.reduce((sum, r) => sum + r.vendors_count, 0),
+      endpoint,
+      examples: buildExamples(apiModelId, endpoint),
+      descriptionsSample: picked.descriptions_sample,
+    })
+  }
+  return entries
+}
+
+export const MODELS: ModelEntry[] = buildCatalog()
+
+type LocalizedModelDetail = Pick<
+  ModelEntry,
+  'tagline' | 'capabilities' | 'scenarios' | 'overview' | 'whenToUse' | 'integrationNotes' | 'caveats'
+>
+
+const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
+  'deepseek-v4-pro': {
+    tagline: 'DeepSeek V4 Pro, a full-capability open-model route for long-context work, code, and tool calling.',
+    capabilities: ['Long context', 'Function calling', 'Bilingual workflows', 'Code generation'],
+    scenarios: ['Coding assistants', 'General agents', 'Long documents', 'Chinese-first products'],
+    overview: [
+      'DeepSeek V4 Pro is positioned as the fuller-capability model in the DeepSeek V4 family available in the GPT88 catalog.',
+      'It is a practical candidate for teams that want Chinese and bilingual workflows, code generation, and tool-enabled tasks through an OpenAI-compatible API.',
+    ],
+    whenToUse: [
+      'Use it for long-document processing, coding assistants, and general agent workflows',
+      'Evaluate it for Chinese-first or bilingual applications',
+      'Compare it when you want an open-model route with stronger capability than a lightweight chat tier',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to deepseek-v4-pro in OpenAI-compatible requests.',
+      'Start with GET /v1/models and a minimal /v1/chat/completions request to confirm access for the current API key.',
+      'Evaluate the same representative prompts against DeepSeek V4 Flash and your current default model before changing production routing.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, and tool support are determined by the current GPT88 console configuration.',
+      'Use a staged rollout and measure quality, latency, errors, and usage before making it a production default.',
+    ],
+  },
+  'deepseek-v4-flash': {
+    tagline: 'DeepSeek V4 Flash, a lower-latency and cost-aware open-model route for frequent chat and agent subtasks.',
+    capabilities: ['Lower-latency positioning', 'Bilingual workflows', 'Function calling', 'Streaming responses'],
+    scenarios: ['Customer support', 'Content generation', 'Agent subtasks', 'High-frequency requests'],
+    overview: [
+      'DeepSeek V4 Flash is positioned as the faster, more cost-aware option in the DeepSeek V4 family available in the GPT88 catalog.',
+      'It is a useful starting point for frequent chat, content generation, lightweight agent tasks, and Chinese or bilingual workflows.',
+    ],
+    whenToUse: [
+      'Use it for customer support, content generation, and high-frequency short requests',
+      'Assign it bounded agent subtasks such as classification, extraction, or tool selection',
+      'Compare it when latency and usage cost matter more than maximum reasoning depth',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to deepseek-v4-flash in OpenAI-compatible requests.',
+      'Begin with a minimal chat completion, then validate streaming, function calling, retries, and timeout behavior separately.',
+      'Route longer or more complex code and document tasks to DeepSeek V4 Pro or another higher-capability model after evaluation.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, and tool support are determined by the current GPT88 console configuration.',
+      'Do not use a lower-latency tier as the only model for high-risk decisions or complex engineering work without workload-specific testing.',
+    ],
+  },
+  'gpt-5-6-sol': {
+    tagline:
+      'Quality-first tier in the GPT-5.6 preview family for demanding reasoning, multi-tool agents, and high-value production work.',
+    capabilities: [
+      'GPT-5.6 preview',
+      'Complex reasoning',
+      'Tool use',
+      'Multimodal workflows',
+    ],
+    scenarios: [
+      'Advanced agent workflows',
+      'Complex software engineering',
+      'Research and analysis',
+      'Long-running automation',
+    ],
+    overview: [
+      'GPT-5.6 Sol is the quality-first tier in the GPT-5.6 preview family represented in the current GPT88 catalog.',
+      'It is intended for complex reasoning, long-running agents, difficult software work, and research tasks where output quality matters more than minimum latency or cost.',
+      'This page summarizes the current catalog positioning without treating third-party commentary as an official capability, availability, or pricing commitment.',
+    ],
+    whenToUse: [
+      'Choose it when quality and task-completion reliability matter more than the lowest latency or cost',
+      'Evaluate it for multi-step planning, large codebases, long-document research, or multi-tool agent work',
+      'Use it to test GPT-5.6 preview behavior in an existing OpenAI-compatible SDK, Cursor, Codex CLI, or internal agent',
+      'Start with a small set of high-value tasks to measure the upper end of the GPT-5.6 family',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.6-sol in OpenAI-compatible requests.',
+      'Call GET /v1/models or check the console before sending traffic, because model access can differ by API key and route.',
+      'Compare Sol, Terra, GPT-5.5, and GPT-5.4 on the same representative evaluation set before changing a default model.',
+      'For agent workflows, validate a minimal non-streaming request first, then add streaming, tools, structured output, and multi-turn context one feature at a time.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, vision support, and tool support are determined by the current GPT88 console configuration.',
+      'GPT-5.6 Sol is a preview model. Behavior, availability, and supported parameters may change, so use a staged rollout instead of replacing every production default at once.',
+      'For frequent short requests such as classification, summaries, and routing, compare Terra, Luna, or a mini-tier model before choosing Sol.',
+      'Validate quality, latency, failure modes, and usage on your own workload before expanding production traffic.',
+    ],
+  },
+  'gpt-5-6-terra': {
+    tagline:
+      'Balanced tier in the GPT-5.6 preview family for production assistants, SaaS integrations, and routine agent workflows.',
+    capabilities: [
+      'GPT-5.6 preview',
+      'Function calling',
+      'Structured output',
+      'Streaming responses',
+    ],
+    scenarios: [
+      'Product default candidate',
+      'SaaS integrations',
+      'Workflow automation',
+      'Multi-turn assistants',
+    ],
+    overview: [
+      'GPT-5.6 Terra is the balanced tier in the GPT-5.6 preview family represented in the current GPT88 catalog.',
+      'Its positioning favors routine product integration, SaaS assistants, internal workflows, and multi-turn conversations rather than using the highest tier for every request.',
+      'Actual parameter support, model access, latency, and usage charges remain dynamic and should be verified in the GPT88 console.',
+    ],
+    whenToUse: [
+      'Use it when a lightweight model is not strong enough but the highest tier is unnecessary for every request',
+      'Evaluate it for OpenAI-compatible SDKs, tool calls, structured output, and streaming in normal business workflows',
+      'Consider it as a default candidate for support, knowledge-base, content, and internal-assistant applications',
+      'Use a representative evaluation set when comparing it with GPT-5.5, GPT-5.4, Sol, or Luna',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.6-terra in OpenAI-compatible requests.',
+      'A practical routing design is Terra for the default path, Sol for difficult escalations, and Luna for frequent lightweight work.',
+      'Cursor, OpenCode, Codex CLI, ChatBox, and internal services can use the same OpenAI-compatible configuration while changing only the model ID.',
+      'Call GET /v1/models before rollout and record quality, latency, errors, and usage against a fixed evaluation set.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, and feature support are determined by the current GPT88 console configuration.',
+      'GPT-5.6 Terra is a preview model. Supported behavior and parameters may change, so introduce it through a monitored canary or staged rollout.',
+      'Do not route requests from the model name alone; account for task complexity, failure cost, latency targets, and budget.',
+      'If tool calls or structured output are unreliable on a workload, simplify the prompt and tool set before testing an escalation to Sol.',
+    ],
+  },
+  'gpt-5-6-luna': {
+    tagline:
+      'Lightweight tier in the GPT-5.6 preview family for frequent short requests, preprocessing, classification, and agent subtasks.',
+    capabilities: [
+      'GPT-5.6 preview',
+      'Low-latency positioning',
+      'High-throughput positioning',
+      'Function calling',
+    ],
+    scenarios: [
+      'Batch classification',
+      'Log summarization',
+      'Agent subtasks',
+      'Content triage',
+    ],
+    overview: [
+      'GPT-5.6 Luna is the lightweight tier in the GPT-5.6 preview family represented in the current GPT88 catalog.',
+      'It is positioned for frequent, shorter, latency-sensitive, and cost-sensitive tasks such as routing, preprocessing, summaries, classification, and intermediate agent steps.',
+      'Luna should be evaluated as one layer in a model-routing strategy rather than assumed to replace stronger tiers on every complex task.',
+    ],
+    whenToUse: [
+      'Use it for short-text classification, tagging, summaries, formatting, and lower-risk content generation',
+      'Assign it bounded agent subtasks such as intent detection, tool selection, field extraction, or intermediate planning',
+      'Evaluate it for interactive requests where low latency matters and the cost of an individual error is limited',
+      'Pair it with Terra or Sol so difficult, long-context, or high-value tasks can be escalated',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.6-luna in OpenAI-compatible requests.',
+      'Define explicit escalation rules so Luna handles bounded tasks while longer or more complex work moves to Terra or Sol.',
+      'Load-test concurrency, timeout, and retry behavior before using it for batch automation.',
+      'Call GET /v1/models or check the console to confirm that the current API key can access the model.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, and tool support are determined by the current GPT88 console configuration.',
+      'GPT-5.6 Luna is a preview model. Its behavior and supported parameters may change, so validate it through a staged rollout with an escalation path.',
+      'Do not use a lightweight tier as the only model for complex research, important code changes, or high-risk decisions.',
+      'If quality is inconsistent, first check prompt length and task scope, then compare the same request with Terra or Sol.',
+    ],
+  },
+  'claude-fable-5': {
+    tagline:
+      'Mythos-class Claude entry in the current GPT88 catalog for long-running agents, software work, and complex knowledge tasks.',
+    capabilities: [
+      'Mythos-class positioning',
+      'Long-running agents',
+      'Tool use',
+      'Visual understanding',
+    ],
+    scenarios: [
+      'Long-running coding agents',
+      'Complex knowledge work',
+      'Multi-step reasoning',
+      'Research and analysis',
+    ],
+    overview: [
+      'Claude Fable 5 is represented in the current GPT88 catalog as a high-capability Claude model for longer and more complex work.',
+      'The catalog positioning emphasizes software engineering, knowledge work, visual tasks, and agent workflows that must continue across multiple files, tools, or stages.',
+      'Treat this page as an integration guide for the current GPT88 route, not as a promise of account access, fixed performance, or a fixed commercial tier.',
+    ],
+    whenToUse: [
+      'Evaluate it when a model must keep advancing across multiple turns, files, tools, or workflow stages',
+      'Use representative migrations, refactors, test repairs, and long-running coding tasks during evaluation',
+      'Test it on workflows that combine long documents, structured data, images, and multi-stage context',
+      'Compare it with an existing Claude Opus route before selecting a new default for complex Claude workloads',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to claude-fable-5 in OpenAI-compatible requests.',
+      'Claude- or Anthropic-style tools should also use the GPT88 Base URL and send the model ID in the format required by that client.',
+      'Call GET /v1/models or check the console before switching a default, because model access can differ by API key and route.',
+      'Run the same difficult workload against Claude Fable 5 and the current Claude Opus model before expanding traffic.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'The current catalog notes stricter safeguards for some high-risk requests; refusals or conservative handling should be included in acceptance testing.',
+      'Do not infer a fixed price or guaranteed performance tier from the model name or this positioning summary.',
+      'Use a staged rollout and keep a validated fallback route until production behavior is established on your own workload.',
+    ],
+  },
+  'claude-opus-4-8': {
+    tagline:
+      'High-capability Opus model for long-running coding agents, complex reasoning, and professional knowledge work.',
+    capabilities: [
+      'Long-context workflows',
+      'Large-output workflows',
+      'Adaptive thinking',
+      'Tool use',
+    ],
+    scenarios: [
+      'Long-running coding agents',
+      'Large codebase changes',
+      'Complex document analysis',
+      'Professional knowledge work',
+    ],
+    overview: [
+      'Claude Opus 4.8 is represented in the current GPT88 catalog as a high-capability Opus model for agentic coding, complex reasoning, professional knowledge work, and reliable tool use.',
+      'The source material behind the current catalog describes platform-dependent long-context support and large outputs. Confirm the context and output limits available to your GPT88 account before designing around them.',
+      'It is best evaluated on sustained, multi-stage work where fewer corrections and stronger self-checking can matter more than minimum response time.',
+    ],
+    whenToUse: [
+      'Evaluate it for migrations, refactors, bug sweeps, test repair, and cross-file review in large codebases',
+      'Use it for long-running agent workflows that coordinate multiple tools and recover from intermediate failures',
+      'Test it on long financial, legal, research, and structured materials that span multiple stages',
+      'Choose it for professional outputs where consistency, structure, and reduced rework are important',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to claude-opus-4-8 in OpenAI-compatible requests.',
+      'Claude- or Anthropic-style tools should use the same GPT88 Base URL and their native request format.',
+      'The current catalog describes adaptive thinking and a high default effort; verify how the selected client and route expose those controls before relying on them.',
+      'Start with a minimal request, then add tools, long context, caching, or advanced thinking controls separately so failures remain diagnosable.',
+    ],
+    caveats: [
+      'Availability, pricing, context and output limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'If Claude Opus 4.7 is already stable in production, canary Claude Opus 4.8 on representative tasks before widening traffic.',
+      'The current catalog notes parameter restrictions and adaptive-thinking differences in native Messages API flows; omit unsupported sampling controls and verify the route-specific request format.',
+      'Keep a tested fallback until quality, latency, usage, and tool behavior are established in production-like conditions.',
+    ],
+  },
+  'claude-opus-4-7': {
+    tagline:
+      'Quality-first Claude model for complex reasoning, long documents, agent decisions, and careful code review.',
+    capabilities: [
+      'Long-context workflows',
+      'Quality-first reasoning',
+      'Function calling',
+      'Visual understanding',
+    ],
+    scenarios: [
+      'Complex agent decisions',
+      'Long-document analysis',
+      'Research synthesis',
+      'Code review',
+    ],
+    overview: [
+      'Claude Opus 4.7 is positioned in the current GPT88 catalog as a flagship Claude model for complex reasoning, long-document understanding, and difficult task decomposition.',
+      'It is a quality-first candidate when complex inputs, logical completeness, and reduced rework matter more than receiving the fastest response.',
+      'Model access and the exact limits of context, vision, tools, and sampling parameters must still be confirmed for the current GPT88 route.',
+    ],
+    whenToUse: [
+      'Use it for long materials, long-running conversations, or multi-turn planning',
+      'Evaluate it when output quality, logical completeness, and clear explanations are important',
+      'Place it in agent or tool-use workflows that require difficult decisions',
+      'Test it on quality-sensitive workflows that combine text and image inputs',
+    ],
+    integrationNotes: [
+      'OpenAI-compatible tools can use https://api.gpt88.cc with model set to claude-opus-4-7.',
+      'Claude- or Anthropic-style tools such as Claude Code should use the same GPT88 Base URL and the request format expected by that client.',
+      'Call GET /v1/models and send a minimal request before adding long documents, images, or a large tool set.',
+      'Use a fixed evaluation set when comparing Claude Opus 4.7 with Opus 4.8 or a lighter Claude model.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'A flagship positioning does not guarantee the best latency or usage profile for every workload; compare a lighter model where throughput matters.',
+      'Introduce model changes through a staged rollout and measure errors, tool-call reliability, quality, latency, and usage before expanding traffic.',
+    ],
+  },
+  'claude-opus-4-6': {
+    tagline:
+      'Quality-focused Opus model for long documents, polished writing, reasoning, and enterprise agent workflows.',
+    capabilities: [
+      'Long-context workflows',
+      'High-quality writing',
+      'Function calling',
+      'Visual understanding',
+    ],
+    scenarios: [
+      'Long-document analysis',
+      'Product and professional writing',
+      'High-quality translation',
+      'Agent decisions',
+    ],
+    overview: [
+      'Claude Opus 4.6 is represented in the current GPT88 catalog as a strong reasoning model for stable quality and mature written output.',
+      'Compared with lighter models, its positioning favors more complex work, especially long-document analysis, high-quality content, and enterprise agent workflows.',
+      'The exact capabilities available through a route can vary, so validate the current account and model configuration before production use.',
+    ],
+    whenToUse: [
+      'Use it for long-document interpretation, report summaries, and research synthesis',
+      'Evaluate it for professional writing, rewriting, translation, and content organization',
+      'Test it in enterprise knowledge assistants and complex process-oriented agents',
+      'Use it for multi-step workflows that depend on function calling',
+    ],
+    integrationNotes: [
+      'OpenAI-compatible tools can use https://api.gpt88.cc with model set to claude-opus-4-6.',
+      'Claude- or Anthropic-style tools should use the same GPT88 Base URL and their expected native request format.',
+      'Validate the API key and exact model ID with a minimal request before adding production prompts, tools, or long context.',
+      'Keep model ID, API key, and route configuration separate so each environment can be changed independently.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'If real-time response speed matters more than maximum quality, compare Sonnet or Haiku on the same workload.',
+      'Use a staged rollout and measure quality, latency, errors, and usage before changing an established production default.',
+    ],
+  },
+  'claude-sonnet-4-6': {
+    tagline:
+      'Balanced Claude model for responsive production assistants, SaaS integrations, and tool-enabled workflows.',
+    capabilities: [
+      'Responsive interactions',
+      'Function calling',
+      'Visual understanding',
+      'Streaming responses',
+    ],
+    scenarios: [
+      'General assistants',
+      'Support and ticket analysis',
+      'Content review',
+      'Production SaaS',
+    ],
+    overview: [
+      'Claude Sonnet 4.6 is positioned in the current GPT88 catalog as a balance between response speed and model quality for common production workloads.',
+      'It is lighter than an Opus-tier model while retaining a general-purpose reasoning and tool-use profile suited to assistants, support workflows, and SaaS products.',
+      'Use this positioning as a starting hypothesis and confirm actual route behavior with representative requests.',
+    ],
+    whenToUse: [
+      'Use it for frequent conversations, support, and ticket-processing workflows',
+      'Evaluate it when a SaaS product needs a practical balance of quality and responsiveness',
+      'Test it for image understanding or tool use when an Opus-tier model may be unnecessary',
+      'Start with it as a team default, then route more difficult or lighter tasks to a different tier',
+    ],
+    integrationNotes: [
+      'OpenAI-compatible tools can use https://api.gpt88.cc with model set to claude-sonnet-4-6.',
+      'Claude- or Anthropic-style tools such as Claude Code should use the same GPT88 Base URL and their native request format.',
+      'Validate streaming and tool use with a minimal request and confirm the model is available to the current API key.',
+      'Record task-level quality and latency before selecting Sonnet as a default route.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'A balanced default is not ideal for every task; compare Opus for difficult long-context work and Haiku for bounded high-volume work.',
+      'Use a staged rollout and retain a tested fallback until production behavior is established.',
+    ],
+  },
+  'gpt-5-5': {
+    tagline:
+      'Flagship-tier GPT model for general agents, structured outputs, tool calling, and multimodal application workflows.',
+    capabilities: [
+      'Function calling',
+      'Visual understanding',
+      'Structured output',
+      'Long-context workflows',
+    ],
+    scenarios: [
+      'General-purpose agents',
+      'Production SaaS',
+      'Multimodal assistants',
+      'Complex workflows',
+    ],
+    overview: [
+      'GPT-5.5 is positioned in the current GPT88 catalog as a flagship-tier OpenAI model for general-purpose applications, tools, and multimodal workflows.',
+      'It is a practical candidate for teams already using OpenAI-compatible SDKs and looking for a low-friction way to evaluate a higher-capability default.',
+      'The exact route, feature access, and operational limits remain specific to the current GPT88 console configuration.',
+    ],
+    whenToUse: [
+      'Evaluate it for general-purpose agents, production SaaS, and complex workflows',
+      'Use it for workloads that need structured output, JSON parsing, or function calling',
+      'Test it on tasks that combine image understanding with text reasoning',
+      'Choose it when the team already uses an OpenAI-compatible toolchain and wants minimal integration changes',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.5 in OpenAI-compatible requests.',
+      'Start with a minimal /v1/chat/completions request, then add tools, structured output, streaming, or image inputs separately.',
+      'Keep the model ID, API key, and route configuration separate so staging and production can change independently.',
+      'Call GET /v1/models or check the console before rollout to confirm access for the current API key.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
+      'If latency or usage is more important than maximum capability, compare a lighter GPT tier on the same evaluation set.',
+      'Use a staged rollout and measure output quality, errors, tool calls, latency, and usage before changing the production default.',
+    ],
+  },
+  'gpt-5-4': {
+    tagline:
+      'Practical GPT model for general chat, SaaS integrations, streaming, structured output, and workflow automation.',
+    capabilities: [
+      'Function calling',
+      'Structured output',
+      'Streaming responses',
+    ],
+    scenarios: [
+      'SaaS integrations',
+      'General chat',
+      'Workflow automation',
+      'Support operations',
+    ],
+    overview: [
+      'GPT-5.4 is positioned in the current GPT88 catalog as a practical OpenAI-compatible model for stable, cost-aware application workloads.',
+      'It can serve as a starting candidate for general chat, ticket routing, and business automation while retaining tool-calling and structured-output workflows.',
+      'Its role as a practical default should be validated against your own quality, latency, and usage requirements rather than inferred from the model name alone.',
+    ],
+    whenToUse: [
+      'Use it for general chat, ticket routing, and business process automation',
+      'Evaluate it when a SaaS team wants a straightforward OpenAI-compatible integration',
+      'Test it for medium-complexity work that uses structured output, streaming, or function calling',
+      'Use it as a default candidate while routing harder or lighter tasks to an appropriate tier',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gpt-5.4 in OpenAI-compatible requests.',
+      'Validate both streaming and non-streaming requests before enabling a complete workflow.',
+      'Keep the model ID, API key, and route configuration separate so environments can be changed independently.',
+      'Call GET /v1/models or check the console to confirm access for the current API key.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'More complex long-document or multimodal tasks may need a higher-capability model after workload-specific evaluation.',
+      'Use a staged rollout and measure quality, errors, latency, and usage before adopting it as a production default.',
+    ],
+  },
+  'kimi-k3': {
+    tagline: 'Moonshot flagship model for long-horizon coding, knowledge work, and complex agent tasks.',
+    capabilities: ['1M-token context', 'Long-horizon coding', 'Knowledge work', 'Native vision', 'Tool calling'],
+    scenarios: ['Large codebase analysis', 'Long documents and research', 'Complex reasoning', 'Multi-step agents'],
+    overview: [
+      'Kimi K3 is a flagship model available through Moonshot’s Kimi API Platform. Its model ID is kimi-k3.',
+      'Moonshot describes a 2.8T-parameter architecture with native visual understanding and a 1M-token context window, aimed at long-horizon coding, knowledge work, and reasoning.',
+    ],
+    whenToUse: [
+      'Understanding large codebases and carrying out multi-step engineering work',
+      'Processing long documents, research material, and structured knowledge tasks',
+      'Evaluating visual inputs, tool calls, or agent workflows',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc, model ID kimi-k3, and endpoint /v1/chat/completions.',
+      'Kimi K3 works with OpenAI-compatible SDKs, cURL, and agent tools. Call GET /v1/models first to confirm access for the current API key.',
+      'Moonshot’s direct API documentation uses https://api.moonshot.ai/v1. GPT88 integrations should use the unified Base URL published by GPT88.',
+    ],
+    caveats: [
+      'Model availability, routes, pricing, rate limits, and permissions are determined by the current GPT88 console configuration.',
+      'A 1M-token context window does not mean every request should send the full context. Split work by task, reuse cached context, and monitor latency and cost.',
+      'Validate the model on representative codebases, long documents, and tool-calling workloads before a production rollout.',
+    ],
+  },
+}
+
+const ENGLISH_DETAIL_ARRAY_FIELDS = [
+  'capabilities',
+  'scenarios',
+  'overview',
+  'whenToUse',
+  'integrationNotes',
+  'caveats',
+] as const satisfies readonly (keyof LocalizedModelDetail)[]
+
+for (const slug of indexableEnglishModels) {
+  const detail = ENGLISH_MODEL_DETAILS[slug]
+  const incomplete =
+    !detail ||
+    !detail.tagline.trim() ||
+    ENGLISH_DETAIL_ARRAY_FIELDS.some(field => detail[field].length === 0)
+  if (incomplete) {
+    throw new Error(`Indexable English model detail is incomplete: ${slug}`)
+  }
+}
+
+export function localizeModelEntry(model: ModelEntry, locale: Locale): ModelEntry {
+  if (locale !== 'en') return model
+
+  const detail = ENGLISH_MODEL_DETAILS[model.slug]
+  const parentheticalProvider = model.provider.match(/\(([^()]*(?:[A-Za-z])[^()]*)\)\s*$/)?.[1]
+  const providerWithoutHan = model.provider
+    .replaceAll(/\p{Script=Han}/gu, '')
+    .replace(/^[\s()（）-]+|[\s()（）-]+$/g, '')
+  const provider = parentheticalProvider?.trim() || providerWithoutHan || 'Unknown provider'
+  const category = model.category === 'chat'
+    ? 'chat and reasoning'
+    : model.category === 'image'
+      ? 'image generation'
+      : model.category === 'video'
+        ? 'video generation'
+        : 'audio'
+  const localizedDetail: LocalizedModelDetail = detail || {
+    tagline: `${provider} ${category} model available through the GPT88 unified API.`,
+    capabilities: [],
+    scenarios: [],
+    overview: [
+      `${model.name} is listed in the current GPT88 model catalog with model ID ${model.modelId}.`,
+      'This route uses a generic English integration profile because a model-specific editorial profile has not been published. Confirm current access and behavior before production use.',
+    ],
+    whenToUse: [
+      `Evaluate it when you need a ${category} model and want to keep an existing GPT88 integration.`,
+      'Compare it with a model that already performs well on the same representative workload before changing a production default.',
+    ],
+    integrationNotes: [
+      `Keep the exact model ID ${model.modelId} in the request body and use the endpoint displayed on this page.`,
+      'Call GET /v1/models or check the GPT88 console first to confirm that the current API key can access the model.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'Generic catalog copy is not a model capability guarantee. Validate output quality, errors, latency, and usage on your own workload.',
+    ],
+  }
+
+  return {
+    ...model,
+    provider,
+    ...localizedDetail,
+    examples: model.examples.map(example => ({
+      ...example,
+      code: example.code.replaceAll('用一句话介绍 gpt88.cc', 'Introduce gpt88.cc in one sentence.'),
+    })),
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * 元数据：分类与查询助手
+ * ────────────────────────────────────────────────────────────────── */
+
+export const CATEGORY_META: Record<
+  ModelCategory,
+  { title: string; subtitle: string }
+> = {
+  chat: {
+    title: 'Chat',
+    subtitle: '对话与推理 · /v1/chat/completions',
+  },
+  image: {
+    title: 'Image',
+    subtitle: '图像生成 · Gemini generateContent / images',
+  },
+  video: {
+    title: 'Video',
+    subtitle: '视频生成 · /v1/videos/generations',
+  },
+  audio: {
+    title: 'Audio',
+    subtitle: '语音识别与合成 · /v1/audio/*',
+  },
+}
+
+export const CATEGORY_ORDER: ModelCategory[] = ['chat', 'image', 'video', 'audio']
+
+/** 主推模型，按 FEATURED_SLUGS 顺序返回（仅返回真实存在于 catalog 的） */
+export function getFeaturedModels(): ModelEntry[] {
+  const bySlug = new Map(MODELS.map(m => [m.slug, m]))
+  const result: ModelEntry[] = []
+  for (const s of FEATURED_SLUGS) {
+    const m = bySlug.get(s)
+    if (m) result.push(m)
+  }
+  return result
+}
+
+/** 默认主推 slug：用作 LandingPage 默认进详情页的 slug */
+export const DEFAULT_FEATURED_SLUG = FEATURED_SLUGS[0]
+
+/** 按 slug 取模型，详情页路由用 */
+export function findModel(slug: string): ModelEntry | undefined {
+  return MODELS.find(m => m.slug === slug)
+}
+
+/**
+ * 模型搜索：在 display_name / canonical_name / provider 推断结果 / descriptions_sample 中
+ * 不区分大小写匹配子串。命中任一字段即视为命中。
+ *
+ * 不做加权排序——保留调用方传入的顺序（featured 在前 / 同分类按 vendors_count 等）。
+ */
+export function searchModels(models: ModelEntry[], q: string): ModelEntry[] {
+  const query = q.trim().toLowerCase()
+  if (!query) return models
+  return models.filter(m => {
+    const haystack = [
+      m.name,
+      m.modelId,
+      m.provider,
+      m.tagline,
+      ...m.capabilities,
+      ...m.scenarios,
+      ...m.descriptionsSample,
+    ]
+      .join(' ')
+      .toLowerCase()
+    return haystack.includes(query)
+  })
+}

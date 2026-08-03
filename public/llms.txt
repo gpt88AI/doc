@@ -91,12 +91,12 @@
 
 ## 重点模型
 
-- [claude-fable-5](https://doc.gpt88.cc/models/claude-fable-5/): Anthropic claude-fable-5 · CHAT 模型，Model ID: claude-fable-5，接口路径: /v1/chat/completions。
 - [claude-opus-4-6](https://doc.gpt88.cc/models/claude-opus-4-6/): Anthropic claude-opus-4-6 · CHAT 模型，Model ID: claude-opus-4-6，接口路径: /v1/chat/completions。
 - [claude-opus-4-7](https://doc.gpt88.cc/models/claude-opus-4-7/): Anthropic claude-opus-4-7 · CHAT 模型，Model ID: claude-opus-4-7，接口路径: /v1/chat/completions。
 - [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8/): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
-- [claude-opus-5](https://doc.gpt88.cc/models/claude-opus-5/): Anthropic claude-opus-5 · CHAT 模型，Model ID: claude-opus-5，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-6](https://doc.gpt88.cc/models/claude-sonnet-4-6/): Anthropic claude-sonnet-4-6 · CHAT 模型，Model ID: claude-sonnet-4-6，接口路径: /v1/chat/completions。
+- [deepseek-v4-flash](https://doc.gpt88.cc/models/deepseek-v4-flash/): DeepSeek deepseek-v4-flash · CHAT 模型，Model ID: deepseek-v4-flash，接口路径: /v1/chat/completions。
+- [deepseek-v4-pro](https://doc.gpt88.cc/models/deepseek-v4-pro/): DeepSeek deepseek-v4-pro · CHAT 模型，Model ID: deepseek-v4-pro，接口路径: /v1/chat/completions。
 - [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4/): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
 - [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5/): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
 - [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
@@ -110,13 +110,14 @@
 - [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-luna/): English API reference for gpt-5.6-luna. Model ID: gpt-5.6-luna. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-fable-5 API Docs](https://doc.gpt88.cc/en/models/claude-fable-5/): English API reference for claude-fable-5. Model ID: claude-fable-5. OpenAI-compatible endpoint: /v1/chat/completions.
-- [claude-opus-5 API Docs](https://doc.gpt88.cc/en/models/claude-opus-5/): English API reference for claude-opus-5. Model ID: claude-opus-5. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-8 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-8/): English API reference for claude-opus-4-8. Model ID: claude-opus-4-8. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-7 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-7/): English API reference for claude-opus-4-7. Model ID: claude-opus-4-7. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-6/): English API reference for claude-opus-4-6. Model ID: claude-opus-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-sonnet-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-sonnet-4-6/): English API reference for claude-sonnet-4-6. Model ID: claude-sonnet-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.5 API Docs](https://doc.gpt88.cc/en/models/gpt-5-5/): English API reference for gpt-5.5. Model ID: gpt-5.5. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.4 API Docs](https://doc.gpt88.cc/en/models/gpt-5-4/): English API reference for gpt-5.4. Model ID: gpt-5.4. OpenAI-compatible endpoint: /v1/chat/completions.
+- [deepseek-v4-pro API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-pro/): English API reference for deepseek-v4-pro. Model ID: deepseek-v4-pro. OpenAI-compatible endpoint: /v1/chat/completions.
+- [deepseek-v4-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-flash/): English API reference for deepseek-v4-flash. Model ID: deepseek-v4-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
 
 ## API 摘要
