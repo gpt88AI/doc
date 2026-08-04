@@ -12,7 +12,7 @@
  * 主推顺序：
  *   gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
- *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → gpt-5.3-codex
+ *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *
  * Catalog 处理：
  * - completion 7 条全部 canonical_name 与 chat 重名（snapshot 内同名条目分类为 chat 与 completion 两份），
@@ -130,6 +130,7 @@ export const FEATURED_SLUGS = [
   'gpt-5-4-mini',
   'deepseek-v4-pro',
   'deepseek-v4-flash',
+  'qwen3-8-max-preview',
   'kimi-k3',
   'gpt-5-3-codex',
 ] as const
@@ -860,6 +861,33 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '作为长尾可选模型保留，不代表当前站内默认主推口径。',
     ],
   },
+  // slug=qwen3-8-max-preview ←→ modelId=qwen3.8-max-preview
+  'qwen3-8-max-preview': {
+    provider: 'Alibaba / Qwen',
+    tagline: '通义千问 Qianwen3.8Max，面向中文理解、复杂推理、代码和企业 Agent 工作流的主推模型。',
+    capabilities: ['中文理解', '复杂推理', '代码生成', 'Function Calling'],
+    scenarios: ['中文企业助手', '代码开发', '知识库问答', '多步骤 Agent'],
+    overview: [
+      'Qianwen3.8Max 是 GPT88 文档站新增的通义千问主推模型，标准 Model ID 为 qwen3.8-max-preview；如果 GPT88 控制台提供平台别名，应以 GET /v1/models 返回为准。',
+      '它适合中文优先的复杂任务，也可以用于代码生成、知识整理、结构化输出和多步骤 Agent 工作流。',
+    ],
+    whenToUse: [
+      '中文客服、企业助手、知识库问答和内容生成',
+      '需要代码理解、代码生成或结构化输出的开发任务',
+      '需要结合工具调用、函数调用和多轮规划的 Agent 工作流',
+      '希望在 Qwen 路线中评测高能力模型时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具使用 https://api.gpt88.cc，并把请求体 model 设置为 qwen3.8-max-preview。',
+      '首次接入建议先调用 GET /v1/models，再发送最小 POST /v1/chat/completions 请求确认当前 API Key 权限。',
+      '可使用现有 OpenAI SDK、cURL、ChatBox、Cursor、Claude Code 或 Codex 等兼容工具接入，具体协议按客户端要求配置。',
+    ],
+    caveats: [
+      '可用线路、价格、上下文长度、限速、工具能力和账号权限以 GPT88 控制台当前配置为准。',
+      '优先使用标准模型 ID qwen3.8-max-preview；如果 /v1/models 未返回该模型，应先检查账号权限、线路或 GPT88 是否提供平台别名。',
+      '正式上线前请使用中文业务样本、代码样本和工具调用样本进行小流量评测。',
+    ],
+  },
   // 来源：Moonshot 官方 Kimi K3 API 快速开始与官网，2026-07-17 核验。
   // slug=kimi-k3 ←→ modelId=kimi-k3
   'kimi-k3': {
@@ -945,7 +973,7 @@ export function inferProvider(modelId: string, fallbackName?: string): string {
   if (id.startsWith('deepseek-')) return 'DeepSeek'
   if (id.startsWith('glm-')) return '智谱 (Zhipu)'
   if (id.startsWith('kimi-')) return 'Moonshot'
-  if (id.startsWith('qwen') || id.startsWith('qwen3-') || id.startsWith('qwen-')) return 'Alibaba'
+  if (id.startsWith('qianwen') || id.startsWith('qwen') || id.startsWith('qwen3-') || id.startsWith('qwen-')) return 'Alibaba'
   if (id.startsWith('minimax-') || id.startsWith('abab-')) return 'MiniMax'
   if (id.startsWith('doubao-')) return '字节跳动 (ByteDance)'
   if (id.startsWith('sparkdesk-') || id.startsWith('spark-')) return '科大讯飞 (iFlytek)'
@@ -1709,6 +1737,14 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     upstream_samples: ['kimi-k3'],
     descriptions_sample: ['Moonshot Kimi K3 旗舰模型，支持 1M-token 上下文、长周期编程、知识工作和工具调用，具体价格、权限和线路以控制台为准。'],
   },
+  {
+    canonical_name: 'qwen3.8-max-preview',
+    display_name: 'Qianwen3.8Max',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['qwen3.8-max-preview'],
+    descriptions_sample: ['通义千问 Qianwen3.8Max Preview 主推模型，具体价格、权限和线路以控制台为准。'],
+  },
 ]
 
 function buildCatalog(): ModelEntry[] {
@@ -1812,6 +1848,31 @@ type LocalizedModelDetail = Pick<
 >
 
 const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
+  'qwen3-8-max-preview': {
+    tagline: 'Qianwen3.8Max, a promoted Qwen route for Chinese understanding, complex reasoning, coding, and enterprise agents.',
+    capabilities: ['Chinese understanding', 'Complex reasoning', 'Code generation', 'Function calling'],
+    scenarios: ['Chinese enterprise assistants', 'Software development', 'Knowledge-base Q&A', 'Multi-step agents'],
+    overview: [
+      'Qianwen3.8Max is a newly promoted Qwen preview model in the GPT88 catalog. Its standard model ID is qwen3.8-max-preview; confirm any GPT88 alias in GET /v1/models.',
+      'It is intended for Chinese-first complex tasks, code generation, knowledge work, structured output, and multi-step agent workflows.',
+    ],
+    whenToUse: [
+      'Use it for Chinese customer support, enterprise assistants, knowledge-base Q&A, and content generation',
+      'Evaluate it on code understanding, code generation, and structured-output tasks',
+      'Use it when tool calls, function calling, and multi-turn planning are part of the workflow',
+      'Prioritize it when evaluating a higher-capability Qwen route',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to qwen3.8-max-preview in OpenAI-compatible requests.',
+      'Call GET /v1/models and then send a minimal POST /v1/chat/completions request to confirm access for the current API key.',
+      'Use an OpenAI SDK, cURL, ChatBox, Cursor, Claude Code, Codex, or another compatible client according to that client\'s protocol settings.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, tool support, and permissions are determined by the current GPT88 console configuration.',
+      'Prefer the standard model ID qwen3.8-max-preview. If it is absent from /v1/models, check account access, route availability, or a GPT88-specific alias first.',
+      'Evaluate Chinese business samples, code samples, and tool-calling workloads before a production rollout.',
+    ],
+  },
   'deepseek-v4-pro': {
     tagline: 'DeepSeek V4 Pro, a full-capability open-model route for long-context work, code, and tool calling.',
     capabilities: ['Long context', 'Function calling', 'Bilingual workflows', 'Code generation'],

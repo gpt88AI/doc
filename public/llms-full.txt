@@ -27,6 +27,7 @@
 - [gpt-5.4 API Docs](https://doc.gpt88.cc/en/models/gpt-5-4/): English API reference for gpt-5.4. Model ID: gpt-5.4. OpenAI-compatible endpoint: /v1/chat/completions.
 - [deepseek-v4-pro API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-pro/): English API reference for deepseek-v4-pro. Model ID: deepseek-v4-pro. OpenAI-compatible endpoint: /v1/chat/completions.
 - [deepseek-v4-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-flash/): English API reference for deepseek-v4-flash. Model ID: deepseek-v4-flash. OpenAI-compatible endpoint: /v1/chat/completions.
+- [Qianwen3.8Max API Docs](https://doc.gpt88.cc/en/models/qwen3-8-max-preview/): English API reference for Qianwen3.8Max. Model ID: qwen3.8-max-preview. OpenAI-compatible endpoint: /v1/chat/completions.
 - [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
 
 ## 入门
@@ -333,6 +334,7 @@
 - [qwen3.5-9b](https://doc.gpt88.cc/models/qwen3-5-9b/): Alibaba qwen3.5-9b · CHAT 模型，Model ID: qwen3.5-9b，接口路径: /v1/chat/completions。
 - [Qwen3.5-Plus](https://doc.gpt88.cc/models/qwen3-5-plus/): Alibaba Qwen3.5-Plus · CHAT 模型，Model ID: qwen3.5-plus，接口路径: /v1/chat/completions。
 - [qwen3.6-27b](https://doc.gpt88.cc/models/qwen3-6-27b/): Alibaba qwen3.6-27b · CHAT 模型，Model ID: qwen3.6-27b，接口路径: /v1/chat/completions。
+- [Qianwen3.8Max](https://doc.gpt88.cc/models/qwen3-8-max-preview/): Alibaba Qianwen3.8Max · CHAT 模型，Model ID: qwen3.8-max-preview，接口路径: /v1/chat/completions。
 - [qwen3-max](https://doc.gpt88.cc/models/qwen3-max/): Alibaba qwen3-max · CHAT 模型，Model ID: qwen3-max，接口路径: /v1/chat/completions。
 - [SparkDesk-v1.1](https://doc.gpt88.cc/models/sparkdesk-v1-1/): 科大讯飞 (iFlytek) SparkDesk-v1.1 · CHAT 模型，Model ID: sparkdesk-v1.1，接口路径: /v1/chat/completions。
 - [SparkDesk-v2.1](https://doc.gpt88.cc/models/sparkdesk-v2-1/): 科大讯飞 (iFlytek) SparkDesk-v2.1 · CHAT 模型，Model ID: sparkdesk-v2.1，接口路径: /v1/chat/completions。

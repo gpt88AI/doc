@@ -118,6 +118,7 @@
 - [gpt-5.4 API Docs](https://doc.gpt88.cc/en/models/gpt-5-4/): English API reference for gpt-5.4. Model ID: gpt-5.4. OpenAI-compatible endpoint: /v1/chat/completions.
 - [deepseek-v4-pro API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-pro/): English API reference for deepseek-v4-pro. Model ID: deepseek-v4-pro. OpenAI-compatible endpoint: /v1/chat/completions.
 - [deepseek-v4-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-flash/): English API reference for deepseek-v4-flash. Model ID: deepseek-v4-flash. OpenAI-compatible endpoint: /v1/chat/completions.
+- [Qianwen3.8Max API Docs](https://doc.gpt88.cc/en/models/qwen3-8-max-preview/): English API reference for Qianwen3.8Max. Model ID: qwen3.8-max-preview. OpenAI-compatible endpoint: /v1/chat/completions.
 - [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
 
 ## API 摘要

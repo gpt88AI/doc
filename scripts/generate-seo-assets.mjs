@@ -830,6 +830,12 @@ async function readModels() {
       category: 'chat',
       vendors_count: 1,
     },
+    {
+      canonical_name: 'qwen3.8-max-preview',
+      display_name: 'Qianwen3.8Max',
+      category: 'chat',
+      vendors_count: 1,
+    },
   ]
   const byName = new Map()
 
@@ -947,7 +953,7 @@ function markdownLink(page) {
 
 function llmsTxt(modelPages, englishModelPages) {
   const featuredModels = modelPages
-    .filter(page => ['gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'deepseek-v4-pro', 'deepseek-v4-flash', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
+    .filter(page => ['gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 12)
 
   return `# gpt88.cc API 文档

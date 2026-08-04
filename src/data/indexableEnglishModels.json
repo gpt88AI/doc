@@ -11,5 +11,6 @@
   "gpt-5-4",
   "deepseek-v4-pro",
   "deepseek-v4-flash",
+  "qwen3-8-max-preview",
   "kimi-k3"
 ]
