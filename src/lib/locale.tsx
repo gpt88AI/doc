@@ -86,6 +86,8 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   '/docs/guides/codex-plugins-oauth/',
   '/docs/guides/agent-image-studio/',
   '/docs/guides/gpt-image-2-service-notice/',
+  '/docs/guides/async-image-generation-notice/',
+  '/docs/guides/async-image-generation-guide/',
   '/docs/guides/agent-image-quality-crop-guide/',
   '/docs/guides/codex-tool-recovery/',
 ])

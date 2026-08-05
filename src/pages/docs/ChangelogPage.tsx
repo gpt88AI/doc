@@ -29,6 +29,18 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-08-05',
+    summary: '图片 API 增加异步生图接入说明，开发者可以把图片生成拆成提交任务、保存 task_id、轮询状态和下载结果四个可恢复步骤。',
+    items: [
+      {
+        type: '新增',
+        title: '异步生图支持公告与详细教程',
+        detail: '新增异步生图支持公告和 API 详细教程，覆盖同步与异步选型、cURL、Node.js、Python、兼容式 task_id / status / result 解析、任务持久化、失败恢复、批量策略和生产验收清单。动态模型字段、价格、限速和响应结构仍以实时 API 返回为准。',
+        commits: [],
+      },
+    ],
+  },
+  {
     date: '2026-07-21',
     summary: '文档站补齐多语言入口和核心接入链路，面向全球开发者开放 13 种语言，并同步完善多语言 SEO、预渲染和未翻译页面回退策略。',
     items: [

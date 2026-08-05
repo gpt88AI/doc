@@ -31,6 +31,8 @@ export const CodexProjectFactoryDeliveryPage = lazy(() => import('./pages/docs/g
 export const AgentImageStudioGuidePage = lazy(() => import('./pages/docs/guides/AgentImageStudioGuidePage'))
 export const EcommerceToolsSpecialPage = lazy(() => import('./pages/docs/guides/EcommerceToolsSpecialPage'))
 export const GptImage2ServiceNoticePage = lazy(() => import('./pages/docs/guides/GptImage2ServiceNoticePage'))
+export const AsyncImageGenerationNoticePage = lazy(() => import('./pages/docs/guides/AsyncImageGenerationNoticePage'))
+export const AsyncImageGenerationGuidePage = lazy(() => import('./pages/docs/guides/AsyncImageGenerationGuidePage'))
 export const AgentImageQualityCropGuidePage = lazy(() => import('./pages/docs/guides/AgentImageQualityCropGuidePage'))
 export const CodexToolRecoveryPage = lazy(() => import('./pages/docs/guides/CodexToolRecoveryPage'))
 export const CodexWindowsPowershell7TimeoutPage = lazy(() => import('./pages/docs/guides/CodexWindowsPowershell7TimeoutPage'))

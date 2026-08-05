@@ -289,6 +289,18 @@ const docs = [
     section: '指南',
   },
   {
+    title: '异步生图支持公告',
+    path: '/docs/guides/async-image-generation-notice',
+    description: '公告说明 GPT88 异步图片任务的提交、task_id、状态轮询、结果下载、同步与异步选型，以及动态字段和计费边界。',
+    section: '指南',
+  },
+  {
+    title: '异步生图 API 详细教程',
+    path: '/docs/guides/async-image-generation-guide',
+    description: '使用 cURL、Node.js 和 Python 接入异步生图，覆盖任务持久化、状态轮询、结果解码、失败恢复、批量策略和生产验收。',
+    section: '指南',
+  },
+  {
     title: 'agent.gpt88.cc 生图质量与裁剪避坑指南',
     path: '/docs/guides/agent-image-quality-crop-guide',
     description: '分析 agent.gpt88.cc 生图时主体被裁剪、细节变糊、多视图角色设定图质量下降、电商产品边缘丢失和批量生成不稳定的原因，并补充 gpt-image-2 size 参数、构图词和英文提示词优化方案。',
@@ -679,6 +691,18 @@ const englishPages = [
     title: 'GPT-Image-2 Service Notice and Selection Guide',
     path: '/en/docs/guides/gpt-image-2-service-notice',
     description: 'Guide to the GPT88 image workstation, image acceleration route, and native 4K versus upscaled 4K strategy.',
+    priority: '0.7',
+  },
+  {
+    title: 'Async Image Generation Support Notice',
+    path: '/en/docs/guides/async-image-generation-notice',
+    description: 'Async image task submission, task IDs, polling, result downloads, and the trade-offs between synchronous and asynchronous generation.',
+    priority: '0.7',
+  },
+  {
+    title: 'Async Image Generation API Guide',
+    path: '/en/docs/guides/async-image-generation-guide',
+    description: 'cURL, Node.js, and Python integration for async image tasks, polling, result persistence, failure recovery, batching, and production checks.',
     priority: '0.7',
   },
   {

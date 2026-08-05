@@ -25,6 +25,8 @@ import { LOCALE_CONFIG, LocaleProvider, SUPPORTED_LOCALES } from './lib/locale'
 import {
   AgentImageQualityCropGuidePage,
   AgentImageStudioGuidePage,
+  AsyncImageGenerationGuidePage,
+  AsyncImageGenerationNoticePage,
   ApiKeyFirstRequestFailedPage,
   AiVideoStoryboardGuidePage,
   AnythingLlmPage,
@@ -165,6 +167,8 @@ export default function App() {
         <Route path="guides/agent-image-studio" element={route(<AgentImageStudioGuidePage />)} />
         <Route path="guides/ecommerce-tools-special" element={route(<EcommerceToolsSpecialPage />)} />
         <Route path="guides/gpt-image-2-service-notice" element={route(<GptImage2ServiceNoticePage />)} />
+        <Route path="guides/async-image-generation-notice" element={route(<AsyncImageGenerationNoticePage />)} />
+        <Route path="guides/async-image-generation-guide" element={route(<AsyncImageGenerationGuidePage />)} />
         <Route path="guides/agent-image-quality-crop-guide" element={route(<AgentImageQualityCropGuidePage />)} />
         <Route path="guides/codex-plugins-oauth" element={route(<CodexPluginsOauthPage />)} />
         <Route path="guides/codex-chatgpt-phone-verification" element={route(<CodexChatgptPhoneVerificationPage />)} />

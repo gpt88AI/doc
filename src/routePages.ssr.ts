@@ -29,6 +29,8 @@ export { default as CodexProjectFactoryDeliveryPage } from './pages/docs/guides/
 export { default as AgentImageStudioGuidePage } from './pages/docs/guides/AgentImageStudioGuidePage'
 export { default as EcommerceToolsSpecialPage } from './pages/docs/guides/EcommerceToolsSpecialPage'
 export { default as GptImage2ServiceNoticePage } from './pages/docs/guides/GptImage2ServiceNoticePage'
+export { default as AsyncImageGenerationNoticePage } from './pages/docs/guides/AsyncImageGenerationNoticePage'
+export { default as AsyncImageGenerationGuidePage } from './pages/docs/guides/AsyncImageGenerationGuidePage'
 export { default as AgentImageQualityCropGuidePage } from './pages/docs/guides/AgentImageQualityCropGuidePage'
 export { default as CodexToolRecoveryPage } from './pages/docs/guides/CodexToolRecoveryPage'
 export { default as CodexWindowsPowershell7TimeoutPage } from './pages/docs/guides/CodexWindowsPowershell7TimeoutPage'
