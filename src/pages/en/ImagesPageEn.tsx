@@ -355,6 +355,14 @@ export default function ImagesPageEn() {
         <li>Gemini commonly uses <code>contents</code>, <code>parts</code>, <code>responseModalities</code>, and <code>responseFormat.image</code>.</li>
       </ul>
 
+      <Callout tone="info" title="Related async image generation docs">
+        <p>If your application should not wait for the image in the current request, start with these two documents:</p>
+        <ul>
+          <li><Link to={localizePath('/docs/guides/async-image-generation-notice/', 'en')}>Async image generation announcement</Link>: scope, request flow, and compatibility notes.</li>
+          <li><Link to={localizePath('/docs/guides/async-image-generation-guide/', 'en')}>Async image generation API guide</Link>: submit jobs, poll status, retrieve results, and handle errors.</li>
+        </ul>
+      </Callout>
+
       <Callout tone="warn" title="Do not mix official model IDs with platform aliases">
         <p>
           In Google documentation, Nano Banana 2 maps to <code>gemini-3.1-flash-image</code>, and Nano Banana

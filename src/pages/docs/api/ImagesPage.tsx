@@ -361,6 +361,14 @@ export default function ImagesPage() {
         <li>Gemini 常用字段是 <code>contents</code>、<code>parts</code>、<code>responseModalities</code>、<code>responseFormat.image</code>。</li>
       </ul>
 
+      <Callout tone="info" title="异步生图相关文档">
+        <p>如果你的业务不适合等待图片在当前请求中直接返回，请先阅读下面两篇文档：</p>
+        <ul>
+          <li><Link to="/docs/guides/async-image-generation-notice/">异步生图支持公告</Link>：了解能力范围、请求流程与兼容说明。</li>
+          <li><Link to="/docs/guides/async-image-generation-guide/">异步生图 API 详细教程</Link>：查看提交任务、轮询状态、获取结果和错误处理示例。</li>
+        </ul>
+      </Callout>
+
       <Callout tone="warn" title="官方模型 ID 与平台别名不要混写">
         <p>
           Google 官方文档中，Nano Banana 2 对应的官方模型 ID 是 <code>gemini-3.1-flash-image</code>，
