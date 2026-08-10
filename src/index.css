@@ -228,3 +228,163 @@ summary,
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* ─── 首页：路由控制台视觉系统 ───────────────────────── */
+.home-surface {
+  overflow-x: clip;
+  color: #e7ebef;
+  background:
+    radial-gradient(circle at 78% 8%, rgba(158, 231, 125, 0.07), transparent 24rem),
+    #080b0f;
+}
+
+.home-hero {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.home-noise {
+  opacity: 0.42;
+  background:
+    radial-gradient(circle at 78% 32%, rgba(158, 231, 125, 0.12), transparent 26rem),
+    radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.055), transparent 20rem),
+    linear-gradient(180deg, rgba(8, 11, 15, 0.15), #080b0f 88%);
+}
+
+.home-console {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #080b0f;
+  box-shadow:
+    0 34px 90px -42px rgba(158, 231, 125, 0.22),
+    0 18px 48px -28px rgba(0, 0, 0, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.home-console-bar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.home-button-primary,
+.home-button-secondary {
+  justify-content: center;
+  border: 1px solid transparent;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.home-button-primary {
+  background: #9ee77d;
+  box-shadow: 0 14px 38px -22px rgba(158, 231, 125, 0.8);
+}
+
+.home-button-primary:hover {
+  background: #b8f39d;
+  transform: translateY(-2px);
+}
+
+.home-button-secondary {
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.home-button-secondary:hover {
+  border-color: rgba(158, 231, 125, 0.42);
+  background: rgba(158, 231, 125, 0.07);
+  transform: translateY(-2px);
+}
+
+.home-button-primary:active,
+.home-button-secondary:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.home-button-primary:focus-visible,
+.home-button-secondary:focus-visible,
+.home-inline-link:focus-visible {
+  outline: 2px solid #9ee77d;
+  outline-offset: 3px;
+}
+
+.home-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9ee77d;
+}
+
+.home-workflow-card {
+  min-height: 15rem;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  padding: clamp(1.4rem, 3vw, 2rem);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(158, 231, 125, 0.055), transparent 15rem),
+    #0a0e12;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.home-workflow-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(158, 231, 125, 0.28);
+  background-color: #0c1116;
+}
+
+.home-icon-box {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(158, 231, 125, 0.24);
+  color: #b8f39d;
+  background: rgba(158, 231, 125, 0.055);
+}
+
+.home-observability-panel,
+.home-final-cta,
+.home-activation-shell {
+  border: 1px solid rgba(255, 255, 255, 0.095);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 55%),
+    #0a0e12;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.home-inline-link {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d7dde3;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.home-inline-link:hover {
+  border-color: #9ee77d;
+  color: #b8f39d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-button-primary,
+  .home-button-secondary,
+  .home-workflow-card,
+  .home-inline-link {
+    transition: none;
+  }
+}

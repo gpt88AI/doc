@@ -71,6 +71,34 @@ const EN: LocaleCopy = {
 }
 
 const TRANSLATIONS: Partial<Record<Locale, Partial<LocaleCopy>>> = {
+  zh: {
+    siteName: 'GPT88 API 文档', menu: '语言',
+    nav: { docs: '文档', quickstart: '快速开始', api: 'API 参考', models: '模型导航', community: '社区', getStarted: '开始使用' },
+    home: {
+      eyebrow: '统一 API 网关 · OpenAI 兼容',
+      title: '一个 API，接入所有主流模型',
+      description: '通过一套 OpenAI 兼容 API 使用 GPT、Claude、Gemini、DeepSeek、Qwen、图片模型等能力。只需替换 Base URL 和 API Key，即可继续使用现有 SDK。',
+      quickstart: '快速开始', getKey: '获取 API Key', apiReference: 'API 参考',
+      cards: [
+        { title: '最小化迁移', body: '替换 Base URL 和 API Key，保留原有的 OpenAI 请求结构。' },
+        { title: '一个网关，多种模型', body: '使用一致的接入方式切换聊天、图片、视频和音频模型。' },
+        { title: '按用量计费', body: '清楚查看实际用量与账户余额，不使用不透明的虚拟积分换算。' },
+      ],
+      codeLabel: '快速 cURL',
+      links: { overview: '产品概览', billing: '认证与计费', models: '模型', fiveMinutes: '五分钟开始' },
+    },
+    quickstart: {
+      title: '快速开始', description: '只需替换 Base URL 和 API Key，五分钟完成第一次 gpt88.cc API 调用。',
+      headings: { key: '获取 API Key', endpoints: 'API 端点', curl: 'cURL 请求', sdk: '官方 SDK', next: '下一步' },
+      keyBody: '在控制台创建 API Key，并导出到终端环境变量。',
+      endpointBody: '文本和多模态请求使用标准 API 路由；图片和视频任务使用媒体路由。',
+      endpointStandard: '标准 OpenAI、Claude、Gemini 和音频 API。', endpointMedia: '图片和视频 API。',
+      curlBody: '发送最小聊天请求，验证 Key、路由和模型 ID。',
+      sdkBody: '任何 OpenAI 兼容 SDK 都可以将 base_url 指向标准 API 路由。',
+      nextBody: '继续阅读 API 参考、模型目录或计费指南。',
+      nextLinks: { api: '阅读 Chat Completions API 参考', models: '浏览可用模型', billing: '查看认证与计费' },
+    },
+  },
   'zh-TW': {
     siteName: 'gpt88.cc API 文件', menu: '語言',
     nav: { docs: '文件', quickstart: '快速開始', api: 'API 參考', models: '模型', community: '社群', getStarted: '開始使用' },

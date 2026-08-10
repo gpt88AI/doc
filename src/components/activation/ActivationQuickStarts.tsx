@@ -41,28 +41,33 @@ export function ActivationQuickStarts({ surface }: { surface: 'home' | 'quicksta
     <section
       data-activation-quickstarts={surface}
       aria-labelledby={`activation-quickstarts-${surface}`}
-      className="not-prose w-full border-y border-white/10 py-5"
+      className="home-activation-shell not-prose w-full p-6 sm:p-8 lg:p-10"
     >
-      <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+      <div className="flex flex-col gap-1 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
         <div>
-          <h2 id={`activation-quickstarts-${surface}`} className="text-base font-semibold text-ink-50">
+          <div className="home-kicker">Activation paths</div>
+          <h2 id={`activation-quickstarts-${surface}`} className="mt-4 text-2xl font-bold tracking-[-0.035em] text-white sm:text-3xl">
             {copy.nav.getStarted}
           </h2>
-          <p className="mt-1 max-w-2xl text-sm leading-6 text-ink-300">
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-ink-300">
             {copy.quickstart.description}
           </p>
         </div>
-        <div className="mt-3 flex flex-wrap items-center gap-3 text-xs sm:mt-0 sm:justify-end">
+        <div className="mt-5 flex flex-wrap items-center gap-4 text-xs lg:mt-0 lg:justify-end">
           <a
             href={registerUrl}
-            className="inline-flex items-center gap-1.5 font-semibold text-violet-300 hover:text-violet-200"
+            data-activation-intent="api_access"
+            data-agent-destination="register"
+            className="inline-flex items-center gap-1.5 font-semibold text-[#b8f39d] transition-colors hover:text-white"
           >
             <UserPlus className="h-3.5 w-3.5" aria-hidden="true" />
             {copy.nav.getStarted}
           </a>
           <a
             href={keysUrl}
-            className="inline-flex items-center gap-1.5 font-semibold text-cyan-300 hover:text-cyan-200"
+            data-activation-intent="api_access"
+            data-agent-destination="keys"
+            className="inline-flex items-center gap-1.5 font-semibold text-[#b8f39d] transition-colors hover:text-white"
           >
             <KeyRound className="h-3.5 w-3.5" aria-hidden="true" />
             {copy.home.getKey}
@@ -72,7 +77,7 @@ export function ActivationQuickStarts({ surface }: { surface: 'home' | 'quicksta
 
       <nav
         aria-label={copy.nav.getStarted}
-        className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3"
+        className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-white/8 bg-white/8 sm:grid-cols-3"
       >
         {tasks.map(task => {
           const Icon = task.icon
@@ -88,13 +93,13 @@ export function ActivationQuickStarts({ surface }: { surface: 'home' | 'quicksta
               href={href}
               data-activation-intent={task.intent}
               data-agent-destination={task.destination}
-              className="group inline-flex min-h-11 min-w-0 items-center justify-between gap-3 rounded-md border border-white/10 bg-white/[0.03] px-3.5 py-2.5 text-sm font-semibold text-ink-100 transition-colors hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400"
+              className="group inline-flex min-h-16 min-w-0 items-center justify-between gap-3 bg-[#0b0f14] px-4 py-3 text-sm font-semibold text-ink-100 transition-colors hover:bg-[#101710] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#9ee77d]"
             >
               <span className="inline-flex min-w-0 items-center gap-2">
-                <Icon className="h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
+                <Icon className="h-4 w-4 shrink-0 text-[#9ee77d]" aria-hidden="true" />
                 <span className="truncate">{task.label}</span>
               </span>
-              <ExternalLink className="h-3.5 w-3.5 shrink-0 text-ink-500 transition-colors group-hover:text-violet-300" aria-hidden="true" />
+              <ExternalLink className="h-3.5 w-3.5 shrink-0 text-ink-500 transition-colors group-hover:text-[#9ee77d]" aria-hidden="true" />
             </a>
           )
         })}

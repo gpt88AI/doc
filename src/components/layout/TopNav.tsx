@@ -40,8 +40,8 @@ export function TopNav() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 border-b border-white/8 bg-[#080b0f]/88 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-[88rem] items-center gap-6 px-4 sm:px-6 lg:px-8">
         <Link to={localizePath('/', locale)} className="shrink-0" aria-label={labels.home}>
           <Logo />
         </Link>
@@ -57,7 +57,7 @@ export function TopNav() {
                 className={cn(
                   'rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
                   active
-                    ? 'bg-violet-500/10 text-violet-300'
+                    ? 'bg-[#9ee77d]/8 text-[#b8f39d]'
                     : 'text-ink-300 hover:bg-white/5 hover:text-ink-100',
                 )}
               >
@@ -70,7 +70,9 @@ export function TopNav() {
         {/* 右侧操作区 */}
         <div className="ml-auto flex items-center gap-2">
           <GlobalSearch className="hidden md:inline-flex" />
-          <LanguageSwitcher />
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
           {COMMUNITY_LINKS.map(item => (
             <a
               key={item.href}
@@ -90,7 +92,7 @@ export function TopNav() {
            */}
           <Link
             to={localizePath('/docs/quickstart/', locale)}
-            className="hidden rounded-md border border-violet-500/40 bg-violet-500/10 px-3 py-1.5 text-sm font-medium text-violet-200 transition-colors hover:bg-violet-500/20 hover:text-white md:inline-flex"
+            className="hidden border border-[#9ee77d]/35 bg-[#9ee77d]/8 px-3 py-1.5 text-sm font-semibold text-[#b8f39d] transition-colors hover:bg-[#9ee77d]/14 hover:text-white md:inline-flex"
           >
             {labels.getStarted}
           </Link>
@@ -121,7 +123,7 @@ export function TopNav() {
                   className={cn(
                     'rounded-md px-3 py-2 text-sm font-medium transition-colors',
                     active
-                      ? 'bg-violet-500/10 text-violet-300'
+                      ? 'bg-[#9ee77d]/8 text-[#b8f39d]'
                       : 'text-ink-200 hover:bg-white/5',
                   )}
                 >
@@ -156,7 +158,7 @@ export function TopNav() {
             <Link
               to={localizePath('/docs/quickstart/', locale)}
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-md border border-violet-500/40 bg-violet-500/10 px-3 py-2 text-center text-sm font-medium text-violet-200"
+              className="mt-2 border border-[#9ee77d]/35 bg-[#9ee77d]/8 px-3 py-2 text-center text-sm font-semibold text-[#b8f39d]"
             >
               {labels.getStarted}
             </Link>
