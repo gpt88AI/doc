@@ -7,6 +7,21 @@
 - [gpt88.cc API 文档](https://doc.gpt88.cc/): gpt88.cc 开发者文档首页，一行 base_url 接入 Claude、GPT、Gemini、DeepSeek、Qwen 等模型。
 - [模型导航](https://doc.gpt88.cc/models/): 按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型。
 
+## 技术博客
+
+- [AI 涂色页生成器：用提示词或照片制作可打印线稿](https://doc.gpt88.cc/docs/blog/ai-coloring-page-generator/): 按用途选择 AI 涂色页路线：提示词、照片转线稿、课堂手工、成人细节页、个性化名字页或 KDP/Etsy 涂色书，并检查打印、隐私、导出和商用边界，生成真正可打印的干净线稿。
+- [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
+- [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
+- [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
+- [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
+- [AI 去除图片文字：上传前先选对安全路径](https://doc.gpt88.cc/docs/blog/ai-remove-text-from-image/): 用 AI 去除图片文字前，先判断它是普通说明、设计源文件、隐私内容、复杂背景，还是水印和权属标记，再选择在线工具、编辑器、专业修图、源文件重建或停止。
+- [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
+- [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
+- [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
+- [ChatGPT Plus 图片上传达到上限？别猜每天几张，先查这 6 类限制](https://doc.gpt88.cc/docs/blog/chatgpt-file-upload-limits-free-plus-pro/): OpenAI 没有公布统一的 Plus 每日图片上传张数。本文按单图 20MB、每 3 小时 80 个文件滚动上限、单条消息组合、Project、资料库和 custom GPT 知识文件共 6 类限制逐项排查，并给出最小对照与证据收集方法。
+- [ChatGPT 图片生成达到限制怎么办：Free、Plus、Pro 和 API 的分支处理](https://doc.gpt88.cc/docs/blog/chatgpt-free-image-generation-limit-complete-guide/): ChatGPT 图片生成被限制时，先区分应用冷却、720 小时长等待、政策拒绝、生成失败、OpenAI 状态事故和 API 429 六种分支，再选择安全动作；不要依赖清 Cookie、VPN 或开新账号等绕过手段。
+- [ChatGPT 无法上传图片？先分清按钮、文件、次数、存储和状态问题](https://doc.gpt88.cc/docs/blog/chatgpt-image-upload-not-working/): ChatGPT 无法上传图片？先用小于 20MB 的静态 PNG/JPG 做小图测试，再区分按钮、文件、上传次数、Library 存储、工作区权限、OpenAI Status 和 API 七层归属，逐层判断并保留支持证据。
+
 ## 文档入口
 
 - [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。

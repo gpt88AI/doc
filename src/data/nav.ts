@@ -473,6 +473,16 @@ export const DOCS_NAV: NavSection[] = [
       },
     ],
   },
+  {
+    title: '博客',
+    items: [
+      {
+        title: '技术博客',
+        path: '/docs/blog/',
+        blurb: '围绕模型接入、图片生成、API 集成与工程实践的实用文章',
+      },
+    ],
+  },
 ]
 
 /** 扁平化所有 docs 路径，便于 prev/next 导航 */
@@ -491,6 +501,7 @@ const SECTION_TITLE_EN_BY_ZH: Record<string, string> = {
   '集成指南': 'Integration Guides',
   指南: 'Guides',
   资源: 'Resources',
+  博客: 'Blog',
 }
 
 const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
@@ -573,6 +584,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/video-generation-skills-complex-action-storyboard/': 'Complex Action Storyboard',
   '/models/': 'Models',
   '/docs/faq/': 'FAQ',
+  '/docs/blog/': 'Technical Blog',
 }
 
 const NAV_BLURB_EN_BY_PATH: Record<string, string> = {

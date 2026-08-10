@@ -91,6 +91,8 @@ import {
   WorkrallyShotWorkflowPage,
   WorkrallyUploadAssetsPage,
   ZeroDowntimeReleasePage,
+  BlogIndexPage,
+  BlogPostPage,
 } from '@route-pages'
 
 /**
@@ -123,6 +125,8 @@ export default function App() {
         <Route path="auth" element={<AuthPage />} />
         <Route path="faq" element={<FaqPage />} />
         <Route path="changelog" element={<ChangelogPage />} />
+        <Route path="blog" element={route(<BlogIndexPage />)} />
+        <Route path="blog/:slug" element={route(<BlogPostPage />)} />
         <Route path="integrations" element={route(<IntegrationsHubPage />)} />
         <Route path="integrations/chat/chatbox" element={route(<ChatboxPage />)} />
         <Route path="integrations/chat/cherry-studio" element={route(<CherryStudioPage />)} />

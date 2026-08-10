@@ -68,3 +68,5 @@ export const DifyIntegrationPage = lazy(() => import('./pages/docs/integrations/
 export const ImmersiveTranslateIntegrationPage = lazy(() => import('./pages/docs/integrations/platforms/ImmersiveTranslatePage'))
 export const ModelsPage = lazy(() => import('./pages/ModelsPage'))
 export const ModelDetailPage = lazy(() => import('./pages/ModelDetailPage'))
+export const BlogIndexPage = lazy(() => import('./pages/blog/BlogIndexPage'))
+export const BlogPostPage = lazy(() => import('./pages/blog/BlogPostPage'))

@@ -66,3 +66,5 @@ export { default as DifyIntegrationPage } from './pages/docs/integrations/platfo
 export { default as ImmersiveTranslateIntegrationPage } from './pages/docs/integrations/platforms/ImmersiveTranslatePage'
 export { default as ModelsPage } from './pages/ModelsPage'
 export { default as ModelDetailPage } from './pages/ModelDetailPage'
+export { default as BlogIndexPage } from './pages/blog/BlogIndexPage'
+export { default as BlogPostPage } from './pages/blog/BlogPostPage'

@@ -1,5 +1,6 @@
 import { createContext, useContext } from 'react'
 import indexableEnglishModels from '../data/indexableEnglishModels.json'
+import { BLOG_SLUGS } from '../data/blog'
 
 export const SUPPORTED_LOCALES = [
   'zh',
@@ -90,6 +91,8 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   '/docs/guides/async-image-generation-guide/',
   '/docs/guides/agent-image-quality-crop-guide/',
   '/docs/guides/codex-tool-recovery/',
+  '/docs/blog/',
+  ...BLOG_SLUGS.map(slug => `/docs/blog/${slug}/`),
 ])
 
 export const CORE_TRANSLATED_BASE_PATHS = new Set([

@@ -975,7 +975,7 @@ function markdownLink(page) {
   return `- [${page.title}](${absoluteUrl(page.path)}): ${page.description}`
 }
 
-function llmsTxt(modelPages, englishModelPages) {
+function llmsTxt(modelPages, englishModelPages, blogPages = []) {
   const featuredModels = modelPages
     .filter(page => ['gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 12)
@@ -987,6 +987,10 @@ function llmsTxt(modelPages, englishModelPages) {
 ## 核心页面
 
 ${staticPages.slice(0, 2).map(markdownLink).join('\n')}
+
+## 技术博客
+
+${blogPages.slice(0, 12).map(markdownLink).join('\n')}
 
 ## 文档入口
 
@@ -1021,7 +1025,7 @@ ${englishModelPages.map(markdownLink).join('\n')}
 `
 }
 
-function llmsFullTxt(modelPages, englishModelPages) {
+function llmsFullTxt(modelPages, englishModelPages, blogPages = []) {
   const docsBySection = groupBy(docs, 'section')
   const modelsByCategory = groupBy(modelPages, 'category')
   const docsMd = Object.entries(docsBySection)
@@ -1032,6 +1036,7 @@ function llmsFullTxt(modelPages, englishModelPages) {
       return `## ${category.toUpperCase()} 模型\n\n${pages.map(markdownLink).join('\n')}`
     })
     .join('\n\n')
+  const blogMd = blogPages.map(markdownLink).join('\n')
 
   return `# gpt88.cc API 文档完整索引
 
@@ -1052,19 +1057,75 @@ function llmsFullTxt(modelPages, englishModelPages) {
 
 ${englishModelPages.map(markdownLink).join('\n')}
 
+## 技术博客
+
+${blogMd}
+
 ${docsMd}
 
 ${modelsMd}
 `
 }
 
+async function readBlogPosts() {
+  const blogDir = path.join(root, 'src/data/blog/posts')
+  const enDir = path.join(blogDir, 'en')
+  const [zhFiles, enFiles] = await Promise.all([
+    fs.readdir(blogDir).catch(() => []),
+    fs.readdir(enDir).catch(() => []),
+  ])
+
+  const posts = []
+  const enMeta = new Map()
+
+  for (const file of zhFiles) {
+    if (!file.endsWith('.md')) continue
+    const slug = file.replace(/\.md$/, '')
+    const source = await fs.readFile(path.join(blogDir, file), 'utf8')
+    posts.push({ slug, ...readFrontmatter(source) })
+  }
+  for (const file of enFiles) {
+    if (!file.endsWith('.md')) continue
+    const slug = file.replace(/\.md$/, '')
+    const source = await fs.readFile(path.join(enDir, file), 'utf8')
+    enMeta.set(slug, readFrontmatter(source))
+  }
+
+  return { posts, enMeta }
+}
+
+function readFrontmatter(source) {
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
+  const values = {}
+  if (match) {
+    for (const line of match[1].split(/\r?\n/)) {
+      const field = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/)
+      if (field) values[field[1]] = field[2].trim()
+    }
+  }
+  const tags = (values.tags || '')
+    .replace(/^\[|\]$/g, '')
+    .split(',')
+    .map(tag => tag.trim().replace(/^["']|["']$/g, ''))
+    .filter(Boolean)
+  return {
+    title: values.title || '',
+    description: values.description || '',
+    date: values.date || '',
+    category: values.category || '',
+    tags,
+    readTime: values.readTime ? Number(values.readTime) : undefined,
+  }
+}
+
 async function main() {
   await fs.mkdir(publicDir, { recursive: true })
-  const [modelPages, indexableEnglishModelSlugs] = await Promise.all([
+  const [modelPages, indexableEnglishModelSlugs, { posts: blogPosts, enMeta }] = await Promise.all([
     readModels(),
     fs
       .readFile(path.join(root, 'src/data/indexableEnglishModels.json'), 'utf8')
       .then(value => JSON.parse(value)),
+    readBlogPosts(),
   ])
   const modelPagesBySlug = new Map(
     modelPages.map(page => [page.path.split('/').filter(Boolean).at(-1), page]),
@@ -1079,11 +1140,52 @@ async function main() {
       description: `English API reference for ${page.title}. Model ID: ${page.modelId}. OpenAI-compatible endpoint: ${page.endpoint}.`,
     }
   })
-  const pages = [...staticPages, ...modelPages, ...englishModelPages]
+  const blogPages = blogPosts.map(post => ({
+    title: post.title,
+    path: `/docs/blog/${post.slug}/`,
+    description: post.description,
+    category: post.category,
+    date: post.date,
+    lastmod: post.date || undefined,
+    priority: '0.7',
+  }))
+  const englishBlogPages = blogPosts.map(post => {
+    const en = enMeta.get(post.slug)
+    return {
+      title: en?.title || post.title,
+      path: `/en/docs/blog/${post.slug}/`,
+      description: en?.description || post.description,
+      lastmod: post.date || undefined,
+      priority: '0.7',
+    }
+  })
+  const blogHubPage = {
+    title: 'GPT88 技术博客',
+    path: '/docs/blog/',
+    description: '围绕模型接入、图片生成、API 集成与工程实践的实用文章。',
+    priority: '0.8',
+  }
+  const englishBlogHubPage = {
+    title: 'GPT88 Technical Blog',
+    path: '/en/docs/blog/',
+    description: 'Practical guides on AI model access, image generation, API integration, and engineering practice.',
+    priority: '0.8',
+  }
+  const pages = [
+    ...staticPages,
+    blogHubPage,
+    ...blogPages,
+    englishBlogHubPage,
+    ...englishBlogPages,
+    ...modelPages,
+    ...englishModelPages,
+  ]
   const prerenderRoutes = [...new Set([
     ...pages.map(page => normalizeRoute(page.path)),
     ...docs.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
     ...modelPages.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
+    ...blogPages.map(page => normalizeRoute(page.path)),
+    ...englishBlogPages.map(page => normalizeRoute(page.path)),
   ])]
 
   await Promise.all([
@@ -1095,8 +1197,8 @@ async function main() {
       path.join(publicDir, 'prerender-routes.json'),
       `${JSON.stringify({ routes: prerenderRoutes }, null, 2)}\n`,
     ),
-    fs.writeFile(path.join(publicDir, 'llms.txt'), llmsTxt(modelPages, englishModelPages)),
-    fs.writeFile(path.join(publicDir, 'llms-full.txt'), llmsFullTxt(modelPages, englishModelPages)),
+    fs.writeFile(path.join(publicDir, 'llms.txt'), llmsTxt(modelPages, englishModelPages, blogPages)),
+    fs.writeFile(path.join(publicDir, 'llms-full.txt'), llmsFullTxt(modelPages, englishModelPages, blogPages)),
   ])
 
   console.log(`Generated SEO/GEO assets for ${pages.length} indexable URLs and ${prerenderRoutes.length} prerender routes at ${siteUrl}`)
