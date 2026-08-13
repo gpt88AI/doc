@@ -229,6 +229,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Grok 4.6 评测：编码 Agent 与 DeepSeek V4 Pro 对比参考',
+    path: '/docs/guides/grok-4-6-review',
+    description: '整理公开笔记中的 Grok 4.6、DeepSeek V4 Pro 指标、长程 Agent、成本与模型选型边界。',
+    section: '指南',
+  },
+  {
     title: '完整接入手册',
     path: '/docs/guides/complete-integration',
     description: '从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。',
@@ -676,6 +682,12 @@ const englishPages = [
     priority: '0.7',
   },
   {
+    title: 'Grok 4.6 Review: Coding Agents and DeepSeek V4 Pro',
+    path: '/en/docs/guides/grok-4-6-review',
+    description: 'A third-party summary of Grok 4.6 and DeepSeek V4 Pro observations covering coding agents, public metrics, cost, and model-selection limits.',
+    priority: '0.7',
+  },
+  {
     title: 'Codex Plugins and ChatGPT OAuth Login',
     path: '/en/docs/guides/codex-plugins-oauth',
     description: 'How to restore Codex plugin capability by switching from API key routing to ChatGPT OAuth.',
@@ -818,6 +830,12 @@ async function readModels() {
   const snapshotPath = path.join(publicDir, 'marketplace-snapshot.json')
   const snapshot = JSON.parse(await fs.readFile(snapshotPath, 'utf8'))
   const localCatalog = [
+    {
+      canonical_name: 'grok-4.6',
+      display_name: 'grok-4.6',
+      category: 'chat',
+      vendors_count: 1,
+    },
     {
       canonical_name: 'gpt-5.6-sol',
       display_name: 'gpt-5.6-sol',

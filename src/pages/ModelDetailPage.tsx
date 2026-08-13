@@ -336,6 +336,19 @@ function DetailContent({ model }: { model: ModelEntry }) {
               </Callout>
             ) : null}
 
+            {model.slug === 'grok-4-6' ? (
+              <Callout tone="info" title={locale === 'en' ? 'Featured GPT88 model' : 'GPT88 当前主推模型'}>
+                <p>
+                  {locale === 'en'
+                    ? 'Grok 4.6 is currently featured for coding agents, bug investigation, and long-running tool workflows. Read the third-party review summary before adopting it as a production default.'
+                    : 'Grok 4.6 当前主推用于编码 Agent、Bug 定位和长程工具工作流。正式设为生产默认模型前，建议先阅读第三方评测整理并用自己的任务集复测。'}{' '}
+                  <Link to={localizePath('/docs/guides/grok-4-6-review/', locale)}>
+                    {locale === 'en' ? 'Read the review summary' : '查看 Grok 4.6 评测'}
+                  </Link>
+                </p>
+              </Callout>
+            ) : null}
+
             <Section icon={Target} title={t.whenToUse}>
               <DetailBulletList field={t.whenToUse} items={model.whenToUse} />
             </Section>

@@ -60,6 +60,7 @@
 - [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
 - [Kimi K3 使用教程：Base URL、Claude Code 与 Codex 配置](https://doc.gpt88.cc/docs/guides/kimi-k3-guide/): 使用 gpt88.cc 接入 Kimi K3 的完整教程，包含 API 验证、Base URL 选择、Claude Code、Codex CLI 配置和 FailedToOpenSocket 排查。
 - [Kimi K3 实战评测与模型对比](https://doc.gpt88.cc/docs/guides/kimi-k3-review/): 整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。
+- [Grok 4.6 评测：编码 Agent 与 DeepSeek V4 Pro 对比参考](https://doc.gpt88.cc/docs/guides/grok-4-6-review/): 整理公开笔记中的 Grok 4.6、DeepSeek V4 Pro 指标、长程 Agent、成本与模型选型边界。
 - [完整接入手册](https://doc.gpt88.cc/docs/guides/complete-integration/): 从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。
 - [WorkRally Skills 总览](https://doc.gpt88.cc/docs/guides/workrally-overview/): 基于 Tencent/workrally 官方 Skill 与参考文档整理，完整说明 WorkRally CLI 的能力边界、安装方式、场景路由和各专项教程入口。
 - [WorkRally AI 生成指南](https://doc.gpt88.cc/docs/guides/workrally-ai-generation/): 详细说明 WorkRally 的图片生成、视频生成、三种视频驱动模式、画布自动占位、任务轮询和模型动态获取规则。
@@ -123,6 +124,7 @@
 
 ## English model API references
 
+- [grok-4.6 API Docs](https://doc.gpt88.cc/en/models/grok-4-6/): English API reference for grok-4.6. Model ID: grok-4.6. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-luna/): English API reference for gpt-5.6-luna. Model ID: gpt-5.6-luna. OpenAI-compatible endpoint: /v1/chat/completions.

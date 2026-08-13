@@ -17,6 +17,7 @@ import CurlSdkPage from './pages/docs/sdk/CurlPage'
 import PythonSdkPage from './pages/docs/sdk/PythonPage'
 import NodejsSdkPage from './pages/docs/sdk/NodejsPage'
 import ClaudeCodeCompactionErrorPage from './pages/docs/guides/ClaudeCodeCompactionErrorPage'
+import Grok46ReviewPage from './pages/docs/guides/Grok46ReviewPage'
 import KimiK3ReviewPage from './pages/docs/guides/KimiK3ReviewPage'
 import KimiK3GuidePage from './pages/docs/guides/KimiK3GuidePage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -161,6 +162,7 @@ export default function App() {
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
         <Route path="guides/kimi-k3-guide" element={<KimiK3GuidePage />} />
         <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
+        <Route path="guides/grok-4-6-review" element={<Grok46ReviewPage />} />
         <Route path="guides/complete-integration" element={route(<CompleteIntegrationGuidePage />)} />
         <Route path="guides/workrally-overview" element={route(<WorkrallyOverviewPage />)} />
         <Route path="guides/workrally-ai-generation" element={route(<WorkrallyAiGenerationPage />)} />

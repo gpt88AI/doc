@@ -30,7 +30,7 @@ const CURL_EXAMPLE = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "gpt-5.6-sol",
+    "model": "grok-4.6",
     "messages": [{"role": "user", "content": "Hello GPT88"}]
   }'`
 
@@ -287,7 +287,7 @@ export default function LocalizedLandingPage() {
                 <div className="mt-5 space-y-5">
                   <div>
                     <div className="text-[11px] text-ink-500">{labels.routeLabel}</div>
-                    <div className="mt-1 font-mono text-xs text-white">gpt-5.6-sol → route-03</div>
+                    <div className="mt-1 font-mono text-xs text-white">grok-4.6 → route-03</div>
                   </div>
                   <div className="grid grid-cols-2 gap-4 border-y border-white/8 py-4">
                     <div>

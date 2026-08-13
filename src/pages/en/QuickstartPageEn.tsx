@@ -9,7 +9,7 @@ const CURL_REQ = `curl https://api.gpt88.cc/v1/chat/completions \\
   -H "Authorization: Bearer $GPT88_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "gpt-5.6-sol",
+    "model": "grok-4.6",
     "messages": [{"role": "user", "content": "Introduce gpt88.cc in one sentence."}]
   }'`
 
@@ -21,7 +21,7 @@ client = OpenAI(
 )
 
 resp = client.chat.completions.create(
-    model="gpt-5.6-sol",
+    model="grok-4.6",
     messages=[{"role": "user", "content": "Introduce gpt88.cc in one sentence."}],
 )
 print(resp.choices[0].message.content)`

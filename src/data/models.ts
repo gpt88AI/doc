@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
+ *   grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *
@@ -116,6 +116,7 @@ export type ModelEntry = {
  * ────────────────────────────────────────────────────────────────── */
 
 export const FEATURED_SLUGS = [
+  'grok-4-6',
   'gpt-5-6-sol',
   'gpt-5-6-terra',
   'gpt-5-6-luna',
@@ -151,6 +152,35 @@ type FeaturedDetail = {
 }
 
 const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
+  'grok-4-6': {
+    provider: 'xAI',
+    tagline: '面向编码 Agent、Bug 定位与长程工具工作流的 GPT88 主推模型。',
+    capabilities: ['编码 Agent', 'Bug 定位', '长程执行', '交互与视觉任务'],
+    scenarios: ['代码库分析', '终端工具调用', '复杂问题排查', '前端与交互原型'],
+    overview: [
+      'Grok 4.6 是 GPT88 当前主推的 Grok 系列模型，重点面向编码、Bug 定位、长程 Agent 和复杂工具工作流。',
+      '站内评测整理记录了 Artificial Analysis Intelligence Index 61 分、Terminal-Bench v2.1 88.4% 和 GDPval-AA v2 Elo 1753；这些数字属于 2026-08-13 的第三方笔记记录，不是 GPT88 官方性能承诺。',
+      '如果任务需要模型持续执行命令、检查结果、修复问题并推进多个阶段，优先把 Grok 4.6 放进候选评测集。',
+    ],
+    whenToUse: [
+      '代码库分析、Bug 定位、测试修复和多文件工程任务',
+      '需要多轮工具调用、终端操作和失败恢复的长程 Agent 工作流',
+      '交互式网页、视觉原型和需要较强执行野心的前端任务',
+      '将 DeepSeek V4 Pro 的低成本路线与 Grok 4.6 的执行质量做 A/B 对比',
+    ],
+    integrationNotes: [
+      '使用 GPT88 Base URL https://api.gpt88.cc，并在 OpenAI 兼容请求中将 model 设置为 grok-4.6。',
+      '先调用 GET /v1/models 确认当前 API Key 已开放 grok-4.6，再逐步加入工具、长上下文和流式输出。',
+      '建议固定同一批代码库、提示词、工具权限和验收标准，记录成功率、端到端耗时、返工量与实际扣费。',
+      '如果客户端的模型选择器没有 Grok 4.6，优先使用自定义模型 ID 的 OpenAI 兼容配置验证请求。',
+    ],
+    caveats: [
+      '模型可用性、价格、上下文限制、速率限制、线路和工具支持以 GPT88 当前控制台为准。',
+      '公开评测分数受模型版本、提示词、工具权限、超时阈值和评分实现影响，不应直接等同于你的业务成功率。',
+      '长程 Agent 仍需要代码审查、权限隔离、测试、日志和人工验收；“能跑通”不等于可以直接上线。',
+      '上线前建议灰度运行，并保留一个已验证的备用模型路由。',
+    ],
+  },
   // slug=nanobanana2 ←→ modelId=NanoBanana2
   // gpt88.cc 平台别名，对应 Google Gemini 图片模型能力。
   nanobanana2: {
@@ -1690,6 +1720,14 @@ type CatalogRow = {
 
 const LOCAL_CATALOG_ROWS: CatalogRow[] = [
   {
+    canonical_name: 'grok-4.6',
+    display_name: 'grok-4.6',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['grok-4.6'],
+    descriptions_sample: ['xAI Grok 4.6 主推模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     canonical_name: 'gpt-5.6-sol',
     display_name: 'gpt-5.6-sol',
     category: 'chat',
@@ -1848,6 +1886,34 @@ type LocalizedModelDetail = Pick<
 >
 
 const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
+  'grok-4-6': {
+    tagline: 'GPT88 featured Grok route for coding agents, bug investigation, and long-running tool workflows.',
+    capabilities: ['Coding agents', 'Bug investigation', 'Long-running execution', 'Interactive and visual tasks'],
+    scenarios: ['Codebase analysis', 'Terminal tool use', 'Complex debugging', 'Frontend and interaction prototypes'],
+    overview: [
+      'Grok 4.6 is currently featured in the GPT88 catalog for coding, bug investigation, long-running agents, and complex tool workflows.',
+      'The GPT88 review summary records an Artificial Analysis Intelligence Index score of 61, Terminal-Bench v2.1 at 88.4%, and GDPval-AA v2 Elo at 1753. These are third-party notes dated August 13, 2026, not official GPT88 performance guarantees.',
+      'If a task requires the model to run commands, inspect results, repair issues, and continue across multiple stages, Grok 4.6 is a useful candidate for a workload-specific evaluation.',
+    ],
+    whenToUse: [
+      'Analyze codebases, investigate bugs, repair tests, and make multi-file engineering changes',
+      'Run long-running agent workflows with repeated tool calls, terminal operations, and failure recovery',
+      'Prototype interactive webpages, visual interfaces, and ambitious frontend workflows',
+      'Compare an execution-quality route with the lower-cost DeepSeek V4 Pro path on the same task set',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to grok-4.6 in OpenAI-compatible requests.',
+      'Call GET /v1/models to confirm that the current API key can access grok-4.6 before adding tools, long context, or streaming.',
+      'Keep the codebase, prompts, tool permissions, and acceptance criteria fixed while recording success rate, end-to-end time, rework, and actual usage.',
+      'If a client model picker does not list Grok 4.6, use its custom model ID option with the OpenAI-compatible configuration.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and tool support are determined by the current GPT88 console configuration.',
+      'Public benchmark results depend on model versions, prompts, tools, timeouts, and scoring implementations; they should not be treated as a direct business success-rate forecast.',
+      'Long-running agents still require code review, permission isolation, tests, logs, and human acceptance. A task completing once is not the same as production readiness.',
+      'Use a staged rollout and keep a validated fallback model route until the behavior is established on your own workload.',
+    ],
+  },
   'qwen3-8-max-preview': {
     tagline: 'Qianwen3.8Max, a promoted Qwen route for Chinese understanding, complex reasoning, coding, and enterprise agents.',
     capabilities: ['Chinese understanding', 'Complex reasoning', 'Code generation', 'Function calling'],

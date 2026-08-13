@@ -233,6 +233,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '整理公开基准、7 个真实项目、编程能力、稳定性和成本观察',
       },
       {
+        title: 'Grok 4.6 评测与模型对比',
+        path: '/docs/guides/grok-4-6-review/',
+        blurb: '整理 Grok 4.6 与 DeepSeek V4 Pro 的公开指标、长程 Agent、成本与选型边界',
+      },
+      {
         title: '完整接入手册',
         path: '/docs/guides/complete-integration/',
         blurb: '从 API Key、Base URL、客户端配置到用量核对和错误排查的端到端教程',
