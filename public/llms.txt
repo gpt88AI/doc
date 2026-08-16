@@ -22,6 +22,10 @@
 - [ChatGPT 图片生成达到限制怎么办：Free、Plus、Pro 和 API 的分支处理](https://doc.gpt88.cc/docs/blog/chatgpt-free-image-generation-limit-complete-guide/): ChatGPT 图片生成被限制时，先区分应用冷却、720 小时长等待、政策拒绝、生成失败、OpenAI 状态事故和 API 429 六种分支，再选择安全动作；不要依赖清 Cookie、VPN 或开新账号等绕过手段。
 - [ChatGPT 无法上传图片？先分清按钮、文件、次数、存储和状态问题](https://doc.gpt88.cc/docs/blog/chatgpt-image-upload-not-working/): ChatGPT 无法上传图片？先用小于 20MB 的静态 PNG/JPG 做小图测试，再区分按钮、文件、上传次数、Library 存储、工作区权限、OpenAI Status 和 API 七层归属，逐层判断并保留支持证据。
 
+## GPT88公益站搜索入口
+
+- [GPT88公益站是什么？官方文档、API 接入与安全使用指南](https://doc.gpt88.cc/docs/blog/gpt88-gongyi-site/): 面向搜索 GPT88公益站、GPT88公益站官网和 GPT88 API 的官方入口、Base URL、模型调用、计费与安全使用说明。
+
 ## 文档入口
 
 - [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。

@@ -6,6 +6,21 @@ import { docStructuredData } from '../../components/seo/structuredData'
 import { BlogMarkdown } from '../../components/blog/BlogMarkdown'
 import { localizedContentPath, useLocale } from '../../lib/locale'
 
+const GPT88_GONGYI_FAQ = [
+  {
+    question: 'GPT88公益站的文档入口是什么？',
+    answer: 'GPT88 API 文档入口是 https://doc.gpt88.cc/，提供快速开始、API Reference、SDK、模型导航和集成教程。',
+  },
+  {
+    question: 'GPT88公益站是否永久免费？',
+    answer: '不能仅根据搜索关键词判断。试用、赠送额度、活动资格、价格和限速以 gpt88.cc 当前注册页面与控制台规则为准，本文不承诺永久免费或无限使用。',
+  },
+  {
+    question: 'GPT88公益站的 API Base URL 怎么选？',
+    answer: '标准文本、聊天、Claude 兼容和音频 API 通常使用 https://api.gpt88.cc；图片和视频直连通常使用 https://img.gpt88.cc，具体以对应模型文档为准。',
+  },
+]
+
 export default function BlogPostPage() {
   const { slug = '' } = useParams<{ slug: string }>()
   const { locale } = useLocale()
@@ -30,6 +45,7 @@ export default function BlogPostPage() {
   const next = index >= 0 && index < BLOG_POSTS.length - 1 ? BLOG_POSTS[index + 1] : null
 
   const description = meta.description
+  const faqEntries = slug === 'gpt88-gongyi-site' && locale === 'zh' ? GPT88_GONGYI_FAQ : []
 
   return (
     <>
@@ -38,7 +54,7 @@ export default function BlogPostPage() {
         description={description}
         path={basePath}
         type="article"
-        structuredData={docStructuredData(meta.title, description, basePath, locale)}
+        structuredData={docStructuredData(meta.title, description, basePath, locale, faqEntries)}
       />
       <div className="flex gap-10">
         <article className="prose prose-invert min-w-0 flex-1 max-w-none prose-headings:scroll-mt-20 prose-headings:font-semibold prose-h1:text-3xl prose-h1:tracking-tight prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-3 prose-h2:border-b prose-h2:border-white/5 prose-h2:pb-2 prose-h3:text-base prose-h3:mt-8 prose-p:text-ink-200 prose-p:leading-7 prose-a:text-violet-300 hover:prose-a:text-violet-200 prose-strong:text-ink-50 prose-code:text-violet-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-ink-900/80 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-lg prose-li:text-ink-200">

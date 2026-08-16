@@ -1022,6 +1022,10 @@ ${staticPages.slice(0, 2).map(markdownLink).join('\n')}
 
 ${blogPages.slice(0, 12).map(markdownLink).join('\n')}
 
+## GPT88公益站搜索入口
+
+- [GPT88公益站是什么？官方文档、API 接入与安全使用指南](${siteUrl}/docs/blog/gpt88-gongyi-site/): 面向搜索 GPT88公益站、GPT88公益站官网和 GPT88 API 的官方入口、Base URL、模型调用、计费与安全使用说明。
+
 ## 文档入口
 
 ${docs.map(markdownLink).join('\n')}
