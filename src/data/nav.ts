@@ -238,6 +238,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '整理 Grok 4.6 与 DeepSeek V4 Pro 的公开指标、长程 Agent、成本与选型边界',
       },
       {
+        title: 'Harness Inspector 交付追踪指南',
+        path: '/docs/guides/harness-inspector/',
+        blurb: '把 Agent 意图、Session、文件活动和 Commit 连接成可检查的交付证据链',
+      },
+      {
         title: '完整接入手册',
         path: '/docs/guides/complete-integration/',
         blurb: '从 API Key、Base URL、客户端配置到用量核对和错误排查的端到端教程',

@@ -235,6 +235,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Harness Inspector：让 Agent 交付过程可观察、可检查、可追溯',
+    path: '/docs/guides/harness-inspector',
+    description: '整理 Better Harness 的 Harness Inspector 如何连接 Agent 意图、Session、文件活动和 Git Commit，并说明 Workbench、Trace、Replay 与 SKILL 沉淀。',
+    section: '指南',
+  },
+  {
     title: '完整接入手册',
     path: '/docs/guides/complete-integration',
     description: '从注册、API Key、Base URL、客户端配置、用量核对到错误排查，一篇教程跑通 gpt88.cc 的完整接入流程。',
@@ -685,6 +691,12 @@ const englishPages = [
     title: 'Grok 4.6 Review: Coding Agents and DeepSeek V4 Pro',
     path: '/en/docs/guides/grok-4-6-review',
     description: 'A third-party summary of Grok 4.6 and DeepSeek V4 Pro observations covering coding agents, public metrics, cost, and model-selection limits.',
+    priority: '0.7',
+  },
+  {
+    title: 'Harness Inspector: Observable, Inspectable, Traceable Agent Delivery',
+    path: '/en/docs/guides/harness-inspector',
+    description: 'A structured summary of how Better Harness connects agent intent, sessions, file activity, and Git commits through Workbench, Trace, Replay, and evidence-backed Skill capture.',
     priority: '0.7',
   },
   {

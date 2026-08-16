@@ -85,6 +85,7 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   '/docs/guides/billing-units/',
   '/docs/guides/kimi-k3-review/',
   '/docs/guides/grok-4-6-review/',
+  '/docs/guides/harness-inspector/',
   '/docs/guides/codex-plugins-oauth/',
   '/docs/guides/agent-image-studio/',
   '/docs/guides/gpt-image-2-service-notice/',
