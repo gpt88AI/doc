@@ -37,6 +37,7 @@
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
+- [AI 会生成 PPT 之后，为什么 Runtime 才决定上限？](https://doc.gpt88.cc/docs/blog/ai-ppt-runtime-artifact-runtime/): 从一次性 PPT 文件到可持续操作的 Artifact，理解 Artifact Runtime、Observe-Address-Operate-Verify 工作循环、布局语义和领域对象。
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
 - [AI 去除图片文字：上传前先选对安全路径](https://doc.gpt88.cc/docs/blog/ai-remove-text-from-image/): 用 AI 去除图片文字前，先判断它是普通说明、设计源文件、隐私内容、复杂背景，还是水印和权属标记，再选择在线工具、编辑器、专业修图、源文件重建或停止。
 - [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
