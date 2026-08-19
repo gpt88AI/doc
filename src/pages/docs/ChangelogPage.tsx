@@ -29,6 +29,72 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-08-17',
+    summary: '博客栏目新增两篇 AI 实践文章，分别整理微信公众号中的知识库工作流和 PPT 产物运行时观点，帮助读者理解 AI 工具从一次性生成走向可持续协作的产品方向。',
+    items: [
+      {
+        type: '新增',
+        title: '新增「微信 + Obsidian + AI Agent」知识库博客',
+        detail: '将公众号文章整理为博客，介绍 Wechatian、微信内容沉淀、Obsidian 本地知识库和 AI Agent 自动处理之间的协作方式，并补充适合个人知识管理的落地步骤、边界和注意事项。',
+        commits: ['14c20d4'],
+      },
+      {
+        type: '新增',
+        title: '新增 Artifact Runtime 与 AI PPT 博客',
+        detail: '整理 AI 生成 PPT 的产物运行时思路，围绕 Observe、Address、Operate、Verify 四个环节解释为什么 PPT 不应只是一次性文件，以及如何让 Agent 持续观察、定位、修改和验证演示文稿。',
+        commits: ['427b776'],
+      },
+    ],
+  },
+  {
+    date: '2026-08-16',
+    summary: '新增开发者工具教程和 GPT88 公益项目说明，补充从请求检查、故障定位到项目落地与搜索发现的实用资料。',
+    items: [
+      {
+        type: '新增',
+        title: '新增 Harness Inspector 使用指南',
+        detail: '新增 Harness Inspector 中文和英文教程，说明如何检查 AI Agent 的请求、工具调用和执行链路，帮助开发者定位模型调用、上下文传递和运行结果中的问题。',
+        commits: ['df0d5fd'],
+      },
+      {
+        type: '新增',
+        title: '新增 GPT88 公益站与 SEO 实践博客',
+        detail: '新增 GPT88 公益项目博客，整理公益站点的定位、内容组织、搜索引擎优化和 AI 检索可见性实践，为需要搭建公益或信息服务站点的团队提供参考。',
+        commits: ['1b8e91d'],
+      },
+    ],
+  },
+  {
+    date: '2026-08-13',
+    summary: '补充 Grok 4.6 模型推荐和实战评测资料，完善模型导航、接入说明与场景选择参考。',
+    items: [
+      {
+        type: '新增',
+        title: '新增 Grok 4.6 模型评测与接入资料',
+        detail: '模型导航新增 Grok 4.6 相关入口和独立评测页，补充模型能力、适用场景、请求接入方式、常见限制和选择建议，帮助开发者在编程、长文本和 Agent 工作流中进行判断。',
+        commits: ['2e1e6e2'],
+      },
+    ],
+  },
+  {
+    date: '2026-08-10',
+    summary: '多语言首页完成视觉与转化路径优化，同时将历史博客内容迁移到 GPT88 博客体系，扩大可发现的教程与实践内容。',
+    items: [
+      {
+        type: '优化',
+        title: '多语言首页体验重构',
+        detail: '重新整理多语言首页的品牌展示、产品入口、模型能力、计费信息和行动按钮，保持各语言页面的核心信息一致，并优化移动端浏览与首次接入路径。',
+        commits: ['4e7086f'],
+      },
+      {
+        type: '新增',
+        title: '迁移 YingTu 博客内容到 GPT88',
+        detail: '将历史博客内容迁移到 GPT88 博客栏目，补齐文章索引、预渲染路由、sitemap、llms.txt 和英文内容入口，方便用户通过站内搜索和搜索引擎发现相关教程。',
+        commits: ['1eb3856'],
+      },
+    ],
+  },
+  {
     date: '2026-08-05',
     summary: '图片 API 增加异步生图接入说明，开发者可以把图片生成拆成提交任务、保存 task_id、轮询状态和下载结果四个可恢复步骤。',
     items: [
