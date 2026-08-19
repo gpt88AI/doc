@@ -29,6 +29,18 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-08-19',
+    summary: '新增 Agent 专题总入口，把第一次 API 调用、工具调用、上下文、权限、可观察性、恢复和生产化资料串成一条学习路径。',
+    items: [
+      {
+        type: '新增',
+        title: 'Agent 专题文档',
+        detail: '新增 Agent 专题总入口，覆盖快速开始、六个核心概念、tools / function calling 最短成功路径、可恢复执行循环、CLI / IDE / 应用平台选择、Harness Inspector、排错顺序和生产验收清单，并提供英文入口。',
+        commits: [],
+      },
+    ],
+  },
+  {
     date: '2026-08-17',
     summary: '博客栏目新增两篇 AI 实践文章，分别整理微信公众号中的知识库工作流和 PPT 产物运行时观点，帮助读者理解 AI 工具从一次性生成走向可持续协作的产品方向。',
     items: [

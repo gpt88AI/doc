@@ -8,6 +8,7 @@ export { default as Gpt88AiProxyPage } from './pages/docs/guides/Gpt88AiProxyPag
 export { default as Gpt88DocsMapPage } from './pages/docs/guides/Gpt88DocsMapPage'
 export { default as Gpt88MigrationGuidePage } from './pages/docs/guides/Gpt88MigrationGuidePage'
 export { default as Gpt88TutorialPage } from './pages/docs/guides/Gpt88TutorialPage'
+export { default as AgentTopicPage } from './pages/docs/guides/AgentTopicPage'
 export { default as CompleteIntegrationGuidePage } from './pages/docs/guides/CompleteIntegrationGuidePage'
 export { default as WorkrallyOverviewPage } from './pages/docs/guides/WorkrallyOverviewPage'
 export { default as WorkrallyAiGenerationPage } from './pages/docs/guides/WorkrallyAiGenerationPage'

@@ -25,6 +25,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import LocalizedLandingPage from './pages/LocalizedLandingPage'
 import { LOCALE_CONFIG, LocaleProvider, SUPPORTED_LOCALES } from './lib/locale'
 import {
+  AgentTopicPage,
   AgentImageQualityCropGuidePage,
   AgentImageStudioGuidePage,
   AsyncImageGenerationGuidePage,
@@ -161,6 +162,7 @@ export default function App() {
         <Route path="guides/api-key-first-request-failed" element={route(<ApiKeyFirstRequestFailedPage />)} />
         <Route path="guides/billing-units" element={route(<BillingUnitsGuidePage />)} />
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
+        <Route path="guides/agent" element={route(<AgentTopicPage />)} />
         <Route path="guides/kimi-k3-guide" element={<KimiK3GuidePage />} />
         <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
         <Route path="guides/grok-4-6-review" element={<Grok46ReviewPage />} />

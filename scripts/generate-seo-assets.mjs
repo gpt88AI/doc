@@ -217,6 +217,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Agent 专题',
+    path: '/docs/guides/agent',
+    description: '从第一次 API 调用开始学习 Agent，覆盖上下文、tools / function calling、执行循环、权限、可观察性、恢复和生产化。',
+    section: '指南',
+  },
+  {
     title: 'Kimi K3 使用教程：Base URL、Claude Code 与 Codex 配置',
     path: '/docs/guides/kimi-k3-guide',
     description: '使用 gpt88.cc 接入 Kimi K3 的完整教程，包含 API 验证、Base URL 选择、Claude Code、Codex CLI 配置和 FailedToOpenSocket 排查。',
@@ -668,6 +674,12 @@ const englishPages = [
     path: '/en/docs/guides/gpt88-tutorial',
     description: 'General onboarding guide to the OpenAI-compatible and Claude-compatible mental model on gpt88.cc.',
     priority: '0.7',
+  },
+  {
+    title: 'Agent Topic: From First API Call to Recoverable Workflow',
+    path: '/en/docs/guides/agent',
+    description: 'A practical gpt88.cc learning path covering agent concepts, tool calling, execution loops, permissions, observability, recovery, and production checks.',
+    priority: '0.8',
   },
   {
     title: 'Complete Integration Guide',

@@ -81,6 +81,7 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   ...indexableEnglishModels.map(slug => `/models/${slug}/`),
   '/docs/guides/gpt88-ai-proxy/',
   '/docs/guides/gpt88-tutorial/',
+  '/docs/guides/agent/',
   '/docs/guides/complete-integration/',
   '/docs/guides/billing-units/',
   '/docs/guides/kimi-k3-review/',

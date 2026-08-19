@@ -228,6 +228,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'Claude 与 OpenAI 通用接入、模型选择、线路选择、工具接入',
       },
       {
+        title: 'Agent 专题',
+        path: '/docs/guides/agent/',
+        blurb: '从第一次 API 调用到工具调用、上下文、权限、可观察性和可恢复工作流',
+      },
+      {
         title: 'Kimi K3 使用教程',
         path: '/docs/guides/kimi-k3-guide/',
         blurb: '配置 Base URL、Claude Code、Codex CLI，并排查 FailedToOpenSocket',
@@ -553,6 +558,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/billing-units/': 'RMB Balance & USD Top-Up Billing',
   '/docs/guides/api-key-first-request-failed/': 'First API Request Failed',
   '/docs/guides/gpt88-tutorial/': 'General Tutorial',
+  '/docs/guides/agent/': 'Agent Topic',
   '/docs/guides/complete-integration/': 'Complete Integration Guide',
   '/docs/guides/workrally-overview/': 'WorkRally Skills Overview',
   '/docs/guides/workrally-ai-generation/': 'WorkRally AI Generation',
@@ -635,6 +641,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/billing-units/': 'Beginner guide to RMB balance, USD top-up conversion, group multipliers, and actual model deductions',
   '/docs/guides/api-key-first-request-failed/': 'Diagnose the first failed request after creating an API key',
   '/docs/guides/gpt88-tutorial/': 'General Claude and OpenAI integration, model choice, route choice, and tool setup',
+  '/docs/guides/agent/': 'From the first API call to tool calling, context, permissions, observability, and recoverable agent workflows',
   '/docs/guides/complete-integration/': 'End-to-end guide from API key and base URL setup to usage verification and troubleshooting',
   '/docs/guides/workrally-overview/': 'Overview of Tencent/workrally skills and references, including install flow, capability boundaries, and reading order',
   '/docs/guides/workrally-ai-generation/': 'Image generation, video generation, three video-driving modes, dynamic model lookup, and task polling',
