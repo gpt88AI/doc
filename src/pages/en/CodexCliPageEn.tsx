@@ -139,6 +139,11 @@ export default function CodexCliPageEn() {
 
       <h2 id="troubleshoot">Troubleshooting</h2>
       <CodeBlock lang="text" filename="troubleshooting" code={TROUBLESHOOTING} />
+      <p>
+        If you see repeated <code>Reconnecting 1/5</code> through <code>5/5</code>, continue with the{' '}
+        <Link to="/en/docs/guides/codex-http-responses-reconnect/">Codex HTTP / Responses reconnect guide</Link>
+        {' '}for a layered check of transport, providers, network, and minimal requests.
+      </p>
 
       <h2 id="references">Further reading</h2>
       <ul>

@@ -144,6 +144,11 @@ export default function CodexCliIntegrationPage() {
 
       <h2 id="troubleshoot">排障清单</h2>
       <CodeBlock lang="text" filename="troubleshooting" code={TROUBLESHOOTING} />
+      <p>
+        如果你遇到连续 <code>Reconnecting 1/5</code> 到 <code>5/5</code>，可以继续看{' '}
+        <Link to="/docs/guides/codex-http-responses-reconnect/">Codex HTTP / Responses 重连排障教程</Link>
+        ，按连接层、provider、网络和最小请求顺序排查。
+      </p>
 
       <h2 id="references">扩展阅读</h2>
       <ul>

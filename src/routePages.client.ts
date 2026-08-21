@@ -37,6 +37,7 @@ export const AsyncImageGenerationGuidePage = lazy(() => import('./pages/docs/gui
 export const AgentImageQualityCropGuidePage = lazy(() => import('./pages/docs/guides/AgentImageQualityCropGuidePage'))
 export const CodexToolRecoveryPage = lazy(() => import('./pages/docs/guides/CodexToolRecoveryPage'))
 export const CodexWindowsPowershell7TimeoutPage = lazy(() => import('./pages/docs/guides/CodexWindowsPowershell7TimeoutPage'))
+export const CodexHttpResponsesReconnectPage = lazy(() => import('./pages/docs/guides/CodexHttpResponsesReconnectPage'))
 export const LoopEngineeringGuidePage = lazy(() => import('./pages/docs/guides/LoopEngineeringGuidePage'))
 export const ZeroDowntimeReleasePage = lazy(() => import('./pages/docs/guides/ZeroDowntimeReleasePage'))
 export const GiffgaffGuidePage = lazy(() => import('./pages/docs/guides/GiffgaffGuidePage'))

@@ -54,6 +54,7 @@
 - [AI 商品图怎么保持同一产品不变：一套可执行的一致性质检法](https://doc.gpt88.cc/docs/blog/consistent-ai-product-photos/): 先锁定真实 SKU，再让场景变化。用参考包、锁定矩阵、六帧压力测试和逐图质检，减少 AI 商品图里的变形、错色、乱码与错款。
 - [AI 多图如何保持同一角色：四镜头一致性验收法](https://doc.gpt88.cc/docs/blog/consistent-character-generator/): AI 多图生图时如何保持同一个角色？先锁定脸型、发型、体型、服装与画风，再用中性肖像、侧面或全身、动态动作、受控场景四个镜头验收一致性，附可直接复制的验收记录表和失败后只做一次最小重试、及时换路线的规则。
 - [图片转吉卜力风格：先选路线、再写提示词](https://doc.gpt88.cc/docs/blog/convert-image-to-studio-ghibli-style/): 想把照片变成吉卜力风格或吉卜力灵感插画，先判断 ChatGPT、在线滤镜、API、本地流程和原创风格 brief 哪条路线更适合，再处理上传风险、细节保真与可商用表述，附人像、宠物和产品图的提示词写法。
+- [DeepSeek Harness 16 个热门插件整理：能力扩展、界面增强与安全安装指南](https://doc.gpt88.cc/docs/blog/deepseek-harness-16-plugins/): 整理公众号文章中的 16 个 DeepSeek Harness（DSH）社区插件，按能力扩展、工作台增强和社区整活分类，并补充插件选择、安装验证、权限安全与版本回滚建议。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
 - [AI 生成图片文字错了怎么改，才能不破坏原设计](https://doc.gpt88.cc/docs/blog/fix-text-in-ai-image-without-changing-design/): AI 海报或商品卡文字出错时，别只靠提示词重绘。按风险选择路径：先找源文件改真实文字层，无源文件时重建可编辑图层，再退而抹字重排，只有低风险装饰字才用局部 AI 修复，交付前用五分钟验收清单逐字核对。
 - [免费 AI 图像生成器每日积分怎么选：额度、限制和上传安全](https://doc.gpt88.cc/docs/blog/free-ai-image-generator-daily-credits/): 免费 AI 图像生成器不要先按"谁的积分最多"来选。先分清每日重置、每日领取、快速生成额度、计算单位、新手积分、无积分沙盒和付费后备这几种合约，再按练习、设计、上传和商用场景选择，附 9 个免费额度路线实例与上传前信任清单。
@@ -220,6 +221,7 @@
 - [Loop Engineering 是什么：Harness 之后的下一步](https://doc.gpt88.cc/docs/guides/loop-engineering-harness/): 结合 Smith 铜匠关于 Loop Engineering 的文章主题，解释它和 Prompt Engineering、Harness、Skill、Codex 工作流之间的关系，以及如何在工程实践中落地。
 - [Codex 工具恢复教程](https://doc.gpt88.cc/docs/guides/codex-tool-recovery/): 当 Codex 执行过程中工具不可调用、代码不能落地时，先检查文件工具是否可用，工具恢复后从第一步重新落代码。
 - [Windows Codex 工具调用 524 与 PowerShell 7 修复教程](https://doc.gpt88.cc/docs/guides/codex-windows-powershell7-timeout/): Windows 上 Codex 调用工具时出现 Reconnecting、HTTP 524、中文乱码或 responses stream finished without usable output 时，验证 PowerShell 7、UTF-8 编码、Agent 启动方式和上游线路。
+- [Codex 重连 5/5：HTTP / Responses 连接排障](https://doc.gpt88.cc/docs/guides/codex-http-responses-reconnect/): 整理 Codex 出现 Reconnecting 1/5 到 5/5、Thinking... 的连接层排查方法，说明 WebSocket、HTTP / Responses、config.toml、provider 配置和回滚验证。
 - [Claude Code compaction 上下文超限恢复教程](https://doc.gpt88.cc/docs/guides/claude-code-compaction-error/): 解决 Claude Code 执行 /compact 时出现 400 Input exceeds the model's context window：从历史会话较早位置 Fork / Branch 后重新压缩。
 - [无停服更新技术方案](https://doc.gpt88.cc/docs/guides/zero-downtime-release/): 基于反向代理、蓝绿槽位、健康检查、原子切流和快速回滚的无停服发布教程，适合 1Panel、Docker Compose、Caddy / Nginx 部署场景。
 - [giffgaff 实体 SIM 卡激活、保号与 eSIM 转换教程](https://doc.gpt88.cc/docs/guides/giffgaff-sim-guide/): 详细讲清 giffgaff 英国实体 SIM 卡如何激活、保号、查询号码、转 eSIM、充值以及常见问题排查，适合 ChatGPT、Codex 等海外应用验证场景。

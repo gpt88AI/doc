@@ -409,6 +409,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Codex 重连 5/5：HTTP / Responses 连接排障',
+    path: '/docs/guides/codex-http-responses-reconnect',
+    description: '整理 Codex 出现 Reconnecting 1/5 到 5/5、Thinking... 的连接层排查方法，说明 WebSocket、HTTP / Responses、config.toml、provider 配置和回滚验证。',
+    section: '指南',
+  },
+  {
     title: 'Claude Code compaction 上下文超限恢复教程',
     path: '/docs/guides/claude-code-compaction-error',
     description: "解决 Claude Code 执行 /compact 时出现 400 Input exceeds the model's context window：从历史会话较早位置 Fork / Branch 后重新压缩。",
@@ -715,6 +721,12 @@ const englishPages = [
     title: 'Codex Plugins and ChatGPT OAuth Login',
     path: '/en/docs/guides/codex-plugins-oauth',
     description: 'How to restore Codex plugin capability by switching from API key routing to ChatGPT OAuth.',
+    priority: '0.7',
+  },
+  {
+    title: 'Codex Reconnecting 5/5: HTTP / Responses Troubleshooting',
+    path: '/en/docs/guides/codex-http-responses-reconnect',
+    description: 'A practical guide to Codex reconnect loops, HTTP / Responses providers, config.toml, version-sensitive WebSocket fields, verification, and rollback.',
     priority: '0.7',
   },
   {

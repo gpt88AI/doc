@@ -94,6 +94,7 @@ export const EN_TRANSLATED_BASE_PATHS = new Set([
   '/docs/guides/async-image-generation-guide/',
   '/docs/guides/agent-image-quality-crop-guide/',
   '/docs/guides/codex-tool-recovery/',
+  '/docs/guides/codex-http-responses-reconnect/',
   '/docs/blog/',
   ...BLOG_SLUGS.map(slug => `/docs/blog/${slug}/`),
 ])

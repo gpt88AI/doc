@@ -29,6 +29,24 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-08-21',
+    summary: '新增 Codex 连接层排障教程和 DeepSeek Harness 插件生态整理，补充 Agent 开发工具的故障恢复、能力扩展、工作台增强与安全使用参考。',
+    items: [
+      {
+        type: '新增',
+        title: '新增 Codex HTTP / Responses 重连排障教程',
+        detail: '根据 X 上关于 Codex 反复重连的实践文章，补充 WebSocket 与 HTTP / Responses 的问题判断、用户级 config.toml 定位与备份、gpt88 API Key 和 OAuth 配置边界、最小请求验证、网络对照、版本字段核对及配置回滚，并提供英文入口。',
+        commits: [],
+      },
+      {
+        type: '新增',
+        title: '新增 DeepSeek Harness 16 个热门插件整理博客',
+        detail: '整理公众号文章中的 16 个 DSH 社区插件，覆盖图像理解、搜索增强、浏览器操控、多 Agent 协作、插件市场、上下文可视化、手机远程控制和主题玩法，并补充插件选择、安装验证、权限安全、兼容性与回滚建议。',
+        commits: [],
+      },
+    ],
+  },
+  {
     date: '2026-08-19',
     summary: '新增 Agent 专题总入口，把第一次 API 调用、工具调用、上下文、权限、可观察性、恢复和生产化资料串成一条学习路径。',
     items: [

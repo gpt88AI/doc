@@ -388,6 +388,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'Windows 上 Codex 调工具出现 524、中文乱码或流式输出异常时，切换并验证 PowerShell 7',
       },
       {
+        title: 'Codex 重连 5/5 与 HTTP / Responses',
+        path: '/docs/guides/codex-http-responses-reconnect/',
+        blurb: '排查 Reconnecting 1/5 到 5/5：备份 config.toml、切换 HTTP / Responses provider 并逐层验证',
+      },
+      {
         title: 'Claude Code 上下文超限恢复',
         path: '/docs/guides/claude-code-compaction-error/',
         blurb: '解决 /compact 报 400 上下文超限：从历史会话较早位置 Fork / Branch 后重新压缩',
@@ -586,6 +591,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/loop-engineering-harness/': 'Loop Engineering & Harness',
   '/docs/guides/codex-tool-recovery/': 'Codex Tool Recovery',
   '/docs/guides/codex-windows-powershell7-timeout/': 'Windows Codex 524 & PowerShell 7',
+  '/docs/guides/codex-http-responses-reconnect/': 'Codex Reconnect 5/5 & HTTP / Responses',
   '/docs/guides/claude-code-compaction-error/': 'Claude Code Context Recovery',
   '/docs/guides/zero-downtime-release/': 'Zero-Downtime Release',
   '/docs/guides/giffgaff-sim-guide/': 'giffgaff SIM Guide',
@@ -669,6 +675,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/loop-engineering-harness/': 'Why Loop Engineering follows Harness and how to apply that pattern inside Codex workflows',
   '/docs/guides/codex-tool-recovery/': 'When Codex tools fail mid-run, check file tools first, then restart code implementation from step one',
   '/docs/guides/codex-windows-powershell7-timeout/': 'Fix Windows Codex tool-call 524 errors, Chinese encoding failures, and unusable streams by verifying PowerShell 7',
+  '/docs/guides/codex-http-responses-reconnect/': 'Troubleshoot Codex Reconnecting 1/5 through 5/5 with HTTP / Responses providers, config.toml, and layered verification',
   '/docs/guides/claude-code-compaction-error/': 'Fix Claude Code compaction context errors by branching from an earlier session point before running /compact again',
   '/docs/guides/zero-downtime-release/': 'Production release playbook using blue-green slots, health checks, reverse-proxy traffic switching, and fast rollback',
   '/docs/guides/giffgaff-sim-guide/': 'Detailed guide to activating, retaining, checking, changing, and converting a UK giffgaff SIM to eSIM',
