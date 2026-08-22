@@ -1,5 +1,6 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
 import {
   GuideScreenshot,
   MiniCardGrid,
@@ -9,8 +10,12 @@ import {
   StepPanel,
   TwoUpScreenshots,
 } from './CodexGpt55SeriesShared'
+import CodexPluginsResearchWorkflowPageEn from '../../en/CodexPluginsResearchWorkflowPageEn'
 
 export default function CodexPluginsResearchWorkflowPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <CodexPluginsResearchWorkflowPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-plugins-research-workflow"

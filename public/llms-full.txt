@@ -43,6 +43,7 @@
 - [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
+- [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
 - [ChatGPT Plus 图片上传达到上限？别猜每天几张，先查这 6 类限制](https://doc.gpt88.cc/docs/blog/chatgpt-file-upload-limits-free-plus-pro/): OpenAI 没有公布统一的 Plus 每日图片上传张数。本文按单图 20MB、每 3 小时 80 个文件滚动上限、单条消息组合、Project、资料库和 custom GPT 知识文件共 6 类限制逐项排查，并给出最小对照与证据收集方法。
 - [ChatGPT 图片生成达到限制怎么办：Free、Plus、Pro 和 API 的分支处理](https://doc.gpt88.cc/docs/blog/chatgpt-free-image-generation-limit-complete-guide/): ChatGPT 图片生成被限制时，先区分应用冷却、720 小时长等待、政策拒绝、生成失败、OpenAI 状态事故和 API 429 六种分支，再选择安全动作；不要依赖清 Cookie、VPN 或开新账号等绕过手段。
 - [ChatGPT 无法上传图片？先分清按钮、文件、次数、存储和状态问题](https://doc.gpt88.cc/docs/blog/chatgpt-image-upload-not-working/): ChatGPT 无法上传图片？先用小于 20MB 的静态 PNG/JPG 做小图测试，再区分按钮、文件、上传次数、Library 存储、工作区权限、OpenAI Status 和 API 七层归属，逐层判断并保留支持证据。
@@ -135,11 +136,15 @@
 - [Nano Banana Pro vs Qwen-Image-2512完全对比：性能、价格与选型指南](https://doc.gpt88.cc/docs/blog/nano-banana-pro-vs-qwen-image-2512/): 深度实测Nano Banana Pro和Qwen-Image-2512两大AI图像生成模型，从4K分辨率到中文渲染，从官方定价到成本优化，助你做出最佳技术选型决策。
 - [Nano Banana Pro去水印完整指南：5种方法获取无水印AI图片【2026实测】](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark-removal/): 详细介绍Nano Banana Pro去水印的5种有效方法，包括官方订阅、第三方API、专业工具对比。深入解析可见水印与SynthID的区别，帮你选择最适合的无水印获取方案。
 - [Nano Banana 免费无可见水印：AI Studio、Gemini 免费版与 API 怎么选](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark/): 想免费获得没有可见 Gemini 标记的 Nano Banana 图片？先分清 Google AI Studio 免费试用、Gemini 免费版的可见标记、图像 API 付费边界，以及始终保留的 SynthID。
+- [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
 - [逼真 AI 图像生成器怎么选：先看用途、上传风险和切换规则](https://doc.gpt88.cc/docs/blog/realistic-ai-image-generator/): 先按人物、商品、品牌文字、免费测试、私密上传、API 或本地控制来选逼真 AI 生图路线，再决定是否换工具。
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Wechatian：把微信变成 AI Agent 与 Obsidian 知识库的双向通道](https://doc.gpt88.cc/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/): 总结 Wechatian 的核心思路、消息收发架构、隐私边界、文章剪藏与 Agent 通知场景，以及在 Obsidian 中安装和接入的方法。
 - [什么是 Nano Banana？功能、价格与 Prompt 技巧一文搞懂（2026 完全指南）](https://doc.gpt88.cc/docs/blog/what-is-nano-banana-guide/): 全面解析 Google 的 Nano Banana 图像生成技术：从 Gemini 2.5 Flash Image 到 Nano Banana Pro 的发展历史、核心功能、免费与付费配额、3D 手办病毒式传播事件，以及最佳 Prompt 技巧。
+- [为什么 Agent 要把 Skill 和 Tool 分成两个能力层？](https://doc.gpt88.cc/docs/blog/why-agent-skills-and-tools-should-be-separated/): 从 DeepSeek Harness 的插件化设计出发，解释 Skill 与 Tool 的职责边界、Agent Loop 中的协作方式，以及它们在 RAG、OTC 撮合和金融级 Agent 系统中的实践价值。
+- [为什么 reserve_match 不能只靠 LLM 决定是否调用？](https://doc.gpt88.cc/docs/blog/why-reserve-match-cannot-be-llm-only/): 以 OTC 撮合中的 reserve_match 锁定交易 Tool 为例，解释 LLM 意图判断与交易授权的区别，以及状态机、规则引擎、实时事实、并发控制、幂等和 Human-in-loop 如何共同守住副作用边界。
+- [为什么 Session 不应该等同于 Memory？](https://doc.gpt88.cc/docs/blog/why-session-is-not-memory/): 从 Agent Harness、RAG 和 OTC 交易系统出发，解释 Session、Working Memory、Episodic Memory、Semantic Memory、Compliance Memory 与订单事实的边界，以及如何设计可恢复、可审计的 Agent 上下文系统。
 
 ## 入门
 

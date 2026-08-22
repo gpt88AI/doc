@@ -1,5 +1,6 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
 import {
   GuideScreenshot,
   MiniCardGrid,
@@ -9,8 +10,12 @@ import {
   StepPanel,
   TwoUpScreenshots,
 } from './CodexGpt55SeriesShared'
+import CodexParallelAutomationWorkflowPageEn from '../../en/CodexParallelAutomationWorkflowPageEn'
 
 export default function CodexParallelAutomationWorkflowPage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <CodexParallelAutomationWorkflowPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-parallel-automation-workflow"

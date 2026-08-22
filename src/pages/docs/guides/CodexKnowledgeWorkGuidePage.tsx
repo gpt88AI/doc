@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { DocPage } from '../../../components/layout/DocPage'
+import { useLocale } from '../../../lib/locale'
+import CodexKnowledgeWorkGuidePageEn from '../../en/CodexKnowledgeWorkGuidePageEn'
 
 const SOURCE_POST = 'https://x.com/Gorden_Sun/status/2071484947391823966'
 const SOURCE_ARTICLE = 'https://x.com/i/article/2071483468069117953'
@@ -103,6 +105,9 @@ function SimpleTable({
 }
 
 export default function CodexKnowledgeWorkGuidePage() {
+  const { locale } = useLocale()
+  if (locale === 'en') return <CodexKnowledgeWorkGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-knowledge-work"

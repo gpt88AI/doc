@@ -19,8 +19,8 @@
 - [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
+- [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
 - [ChatGPT Plus 图片上传达到上限？别猜每天几张，先查这 6 类限制](https://doc.gpt88.cc/docs/blog/chatgpt-file-upload-limits-free-plus-pro/): OpenAI 没有公布统一的 Plus 每日图片上传张数。本文按单图 20MB、每 3 小时 80 个文件滚动上限、单条消息组合、Project、资料库和 custom GPT 知识文件共 6 类限制逐项排查，并给出最小对照与证据收集方法。
-- [ChatGPT 图片生成达到限制怎么办：Free、Plus、Pro 和 API 的分支处理](https://doc.gpt88.cc/docs/blog/chatgpt-free-image-generation-limit-complete-guide/): ChatGPT 图片生成被限制时，先区分应用冷却、720 小时长等待、政策拒绝、生成失败、OpenAI 状态事故和 API 429 六种分支，再选择安全动作；不要依赖清 Cookie、VPN 或开新账号等绕过手段。
 
 ## GPT88公益站搜索入口
 
