@@ -1,0 +1,1 @@
+import{n as e}from"./ui-Caz9BZV8.js";import{t}from"./SeoIntentPage-BVGWoFcc.js";var n=e();function r(){return(0,n.jsx)(t,{intent:`openai-sdk`})}export{r as default};
