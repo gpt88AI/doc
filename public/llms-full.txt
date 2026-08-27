@@ -41,9 +41,11 @@
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
 - [AI 去除图片文字：上传前先选对安全路径](https://doc.gpt88.cc/docs/blog/ai-remove-text-from-image/): 用 AI 去除图片文字前，先判断它是普通说明、设计源文件、隐私内容、复杂背景，还是水印和权属标记，再选择在线工具、编辑器、专业修图、源文件重建或停止。
 - [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
+- [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
 - [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
+- [ChatGPT 桌面版更新后提示 Unable to locate the Codex CLI binary：排查与修复指南](https://doc.gpt88.cc/docs/blog/chatgpt-desktop-codex-cli-binary-fix/): 整理 ChatGPT 桌面版更新后无法启动 Codex 的排查记录，解释桌面端与 Codex CLI 的关系，覆盖 PATH、npm 全局安装、Windows 原生二进制、版本错配和安全回滚。
 - [ChatGPT Plus 图片上传达到上限？别猜每天几张，先查这 6 类限制](https://doc.gpt88.cc/docs/blog/chatgpt-file-upload-limits-free-plus-pro/): OpenAI 没有公布统一的 Plus 每日图片上传张数。本文按单图 20MB、每 3 小时 80 个文件滚动上限、单条消息组合、Project、资料库和 custom GPT 知识文件共 6 类限制逐项排查，并给出最小对照与证据收集方法。
 - [ChatGPT 图片生成达到限制怎么办：Free、Plus、Pro 和 API 的分支处理](https://doc.gpt88.cc/docs/blog/chatgpt-free-image-generation-limit-complete-guide/): ChatGPT 图片生成被限制时，先区分应用冷却、720 小时长等待、政策拒绝、生成失败、OpenAI 状态事故和 API 429 六种分支，再选择安全动作；不要依赖清 Cookie、VPN 或开新账号等绕过手段。
 - [ChatGPT 无法上传图片？先分清按钮、文件、次数、存储和状态问题](https://doc.gpt88.cc/docs/blog/chatgpt-image-upload-not-working/): ChatGPT 无法上传图片？先用小于 20MB 的静态 PNG/JPG 做小图测试，再区分按钮、文件、上传次数、Library 存储、工作区权限、OpenAI Status 和 API 七层归属，逐层判断并保留支持证据。
@@ -56,6 +58,7 @@
 - [AI 多图如何保持同一角色：四镜头一致性验收法](https://doc.gpt88.cc/docs/blog/consistent-character-generator/): AI 多图生图时如何保持同一个角色？先锁定脸型、发型、体型、服装与画风，再用中性肖像、侧面或全身、动态动作、受控场景四个镜头验收一致性，附可直接复制的验收记录表和失败后只做一次最小重试、及时换路线的规则。
 - [图片转吉卜力风格：先选路线、再写提示词](https://doc.gpt88.cc/docs/blog/convert-image-to-studio-ghibli-style/): 想把照片变成吉卜力风格或吉卜力灵感插画，先判断 ChatGPT、在线滤镜、API、本地流程和原创风格 brief 哪条路线更适合，再处理上传风险、细节保真与可商用表述，附人像、宠物和产品图的提示词写法。
 - [DeepSeek Harness 16 个热门插件整理：能力扩展、界面增强与安全安装指南](https://doc.gpt88.cc/docs/blog/deepseek-harness-16-plugins/): 整理公众号文章中的 16 个 DeepSeek Harness（DSH）社区插件，按能力扩展、工作台增强和社区整活分类，并补充插件选择、安装验证、权限安全与版本回滚建议。
+- [DeepSeek Harness 架构全解：从 Model + Harness 到插件树、Session Log 与安全管线](https://doc.gpt88.cc/docs/blog/deepseek-harness-architecture-explained/): 整理 Russell 关于 DeepSeek Harness 的架构长文，解释 Agent = Model + Harness、Profile、Cordis 插件生命周期、Turn 与 Step、Session Log、工具审批、Capability Seam、子 Agent 与远程沙箱。
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
 - [AI 生成图片文字错了怎么改，才能不破坏原设计](https://doc.gpt88.cc/docs/blog/fix-text-in-ai-image-without-changing-design/): AI 海报或商品卡文字出错时，别只靠提示词重绘。按风险选择路径：先找源文件改真实文字层，无源文件时重建可编辑图层，再退而抹字重排，只有低风险装饰字才用局部 AI 修复，交付前用五分钟验收清单逐字核对。
