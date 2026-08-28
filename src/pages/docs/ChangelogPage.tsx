@@ -29,6 +29,66 @@ type ChangeGroup = {
 
 const CHANGELOG: ChangeGroup[] = [
   {
+    date: '2026-08-27',
+    summary: '新增企业 AI 培训与 Codex 桌面端故障排查资料，把 AI 落地方法和开发工具恢复路径补充到 GPT88 文档与博客体系。',
+    items: [
+      {
+        type: '新增',
+        title: '新增企业 AI 培训与落地方法博客',
+        detail: '围绕企业 AI 培训、岗位协作、知识沉淀、工具治理和效果验收，补充从试点到规模化落地的结构化方法，帮助团队把一次性培训转化为可复用的工作流能力。',
+        commits: ['f3b11f9'],
+      },
+      {
+        type: '新增',
+        title: '新增 ChatGPT 桌面版 Codex CLI 启动故障排查指南',
+        detail: '整理 Unable to locate the Codex CLI binary 的常见原因和诊断顺序，覆盖 PATH、npm 全局安装、Windows 平台包、版本错配、桌面端进程环境和安全回滚，并补充可审查的一键修复脚本设计建议。',
+        commits: ['f3b11f9'],
+      },
+      {
+        type: '优化',
+        title: '同步博客 SEO 与机器可读索引资产',
+        detail: '新文章同步进入预渲染路由、sitemap、llms.txt 和 llms-full.txt，确保站内导航、搜索引擎和 AI 检索入口使用一致的文章路径。',
+        commits: ['f3b11f9'],
+      },
+    ],
+  },
+  {
+    date: '2026-08-25',
+    summary: '补充 DeepSeek Harness 架构与进阶工作流文档，帮助开发者从插件使用进一步理解 Harness 的执行边界、上下文管理和可恢复协作。',
+    items: [
+      {
+        type: '新增',
+        title: '新增 DeepSeek Harness 架构全解博客',
+        detail: '从模型、Harness、工具、上下文、插件和工作区六个层面解释 DSH 的运行结构，补充请求流、工具调用、状态恢复、权限边界和排错路径，方便读者建立完整心智模型。',
+        commits: ['c1de50c'],
+      },
+      {
+        type: '新增',
+        title: '新增 DeepSeek Harness 进阶玩法指南',
+        detail: '补充多 Agent 协作、上下文复用、插件组合、任务拆解、运行验证和失败回滚等进阶实践，并把“能运行”扩展为可观察、可恢复、可维护的工作流。',
+        commits: ['c1de50c'],
+      },
+    ],
+  },
+  {
+    date: '2026-08-22',
+    summary: '扩充 GPT88 博客和多语言文档内容，完善模型评测、开发者指南与跨语言页面的索引覆盖。',
+    items: [
+      {
+        type: '新增',
+        title: '新增 GPT88 博客与多语言指南内容',
+        detail: '将近期整理的 AI 工具、开发实践和接入经验纳入 GPT88 博客体系，并补充对应的多语言入口、文章元数据、预渲染路由和搜索引擎索引信息。',
+        commits: ['97ac580'],
+      },
+      {
+        type: '优化',
+        title: '统一多语言页面的发现与回退体验',
+        detail: '继续完善语言前缀、内部链接、canonical、hreflang、sitemap 和 noindex 策略，让已翻译页面可直接访问，未完成翻译的内容保持明确且可控的回退路径。',
+        commits: ['97ac580'],
+      },
+    ],
+  },
+  {
     date: '2026-08-21',
     summary: '新增 Codex 连接层排障教程和 DeepSeek Harness 插件生态整理，补充 Agent 开发工具的故障恢复、能力扩展、工作台增强与安全使用参考。',
     items: [
