@@ -143,6 +143,7 @@
 - [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
 - [逼真 AI 图像生成器怎么选：先看用途、上传风险和切换规则](https://doc.gpt88.cc/docs/blog/realistic-ai-image-generator/): 先按人物、商品、品牌文字、免费测试、私密上传、API 或本地控制来选逼真 AI 生图路线，再决定是否换工具。
+- [从 Skill 到订单：Agent Harness 如何加载能力、调用工具并结构化交易数据](https://doc.gpt88.cc/docs/blog/skill-tool-agent-order-data-flow/): 以 OTC 交易为例，逐步解释 Skill 如何加载、Tool 如何定义、Agent 如何调用 Tool，以及订单数据如何从自然语言变成可审计的结构化对象。
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Wechatian：把微信变成 AI Agent 与 Obsidian 知识库的双向通道](https://doc.gpt88.cc/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/): 总结 Wechatian 的核心思路、消息收发架构、隐私边界、文章剪藏与 Agent 通知场景，以及在 Obsidian 中安装和接入的方法。
 - [什么是 Nano Banana？功能、价格与 Prompt 技巧一文搞懂（2026 完全指南）](https://doc.gpt88.cc/docs/blog/what-is-nano-banana-guide/): 全面解析 Google 的 Nano Banana 图像生成技术：从 Gemini 2.5 Flash Image 到 Nano Banana Pro 的发展历史、核心功能、免费与付费配额、3D 手办病毒式传播事件，以及最佳 Prompt 技巧。

@@ -1765,6 +1765,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/skill-tool-agent-order-data-flow/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -2463,6 +2469,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/realistic-ai-image-generator/</loc>
     <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/skill-tool-agent-order-data-flow/</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
