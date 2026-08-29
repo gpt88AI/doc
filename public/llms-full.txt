@@ -106,6 +106,7 @@
 - [GPT Image 2 使用限制：ChatGPT 次数、API 速率限制和 429 处理](https://doc.gpt88.cc/docs/blog/gpt-image-2-usage-limits/): GPT Image 2 的限制不是一个数字。区分 ChatGPT 图片次数、OpenAI API 的 TPM/IPM 与月度用量、Azure 配额和第三方 gateway 额度，先判断拦截你的 owner 与被耗尽的 bucket，再决定等待、降速、提额或换路线。
 - [Nano Banana Pro vs GPT Image 2：通过验收的单张成本怎么算](https://doc.gpt88.cc/docs/blog/gpt-image-2-vs-nano-banana-pro/): 比较 Nano Banana Pro 与 GPT Image 2 不能只看标价。用价格归一矩阵对齐质量与分辨率，再把失败尝试、人工审核与修复计入通过验收单张成本，配合盈亏平衡工作表与四镜头验收卡判断本次工作负载的便宜路线、平局或无有效赢家。
 - [GPT88公益站是什么？官方文档、API 接入与安全使用指南](https://doc.gpt88.cc/docs/blog/gpt88-gongyi-site/): 搜索 GPT88公益站、GPT88公益站官网或 GPT88 API 时，如何找到正确的文档、主站、图片工作台和 API 入口？本文整理官方入口、Base URL、模型调用、计费说明、常见问题与安全使用方法。
+- [GPT88 Skill 完整指南：作用、安装使用方法与适用场景](https://doc.gpt88.cc/docs/blog/gpt88-skill-agent-onboarding-guide/): GPT88 Skill 是一套面向 Agent 的 GPT88 接入工作流，覆盖 OpenAI SDK、Cursor、Codex、Claude Code、Cline、账号登录、API Key、模型发现、价格查询、用量管理和安全排障。本文解释它的作用、使用方式与场景。
 - [Grok 免费生图替代怎么选？中国大陆可用路线与避坑清单](https://doc.gpt88.cc/docs/blog/grok-alternative-for-image-generation-free/): Grok Imagine 不能用或额度不够时，按中国大陆可用性、中文文字、改图、商用权利与隐私选择免费 AI 生图替代：Qwen Studio、Qwen-Image + ComfyUI 本地部署与 Adobe Firefly，并附免费入口的六项合同检查与两轮测试评分表。
 - [职业头像背景怎么选：LinkedIn、简历、团队页和 AI 换背景的实用判断](https://doc.gpt88.cc/docs/blog/headshot-background/): 职业头像背景先看用途再看颜色。按 LinkedIn、简历、团队页、名录、正式头像与个人品牌选择浅灰、白色、深色或环境背景，并判断源图值得 AI 换背景还是应直接重拍，附发布前检查清单。
 - [ImagineArt AI 指南：免费积分、价格、模型和适用场景](https://doc.gpt88.cc/docs/blog/imagineart-ai-guide/): 用免费日积分、订阅与充值积分、Pro 模型访问、商用边界和官方 API 区别，判断 ImagineArt 是否适合你的图片或视频工作流：先试哪条路、先停在哪里，以及哪些场景应直接跳过套件。
