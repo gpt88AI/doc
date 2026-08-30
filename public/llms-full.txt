@@ -62,6 +62,7 @@
 - [DeepSeek Harness 架构全解：从 Model + Harness 到插件树、Session Log 与安全管线](https://doc.gpt88.cc/docs/blog/deepseek-harness-architecture-explained/): 整理 Russell 关于 DeepSeek Harness 的架构长文，解释 Agent = Model + Harness、Profile、Cordis 插件生命周期、Turn 与 Step、Session Log、工具审批、Capability Seam、子 Agent 与远程沙箱。
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
+- [AI Agent 时代的 FDE：如何把模型能力落到真实业务里](https://doc.gpt88.cc/docs/blog/fde-ai-agent-interview-business-delivery/): 整理 JODA 中文访谈中关于 FDE 与企业 AI 交付的核心主题，解释 FDE 的职责、业务调研、场景选择、Agent 工作流、评估验收、人工协作和持续运营方法。
 - [FDE 小团队如何从 0 到 1 做企业 AI 服务：获客、报价、交付与验收 SOP](https://doc.gpt88.cc/docs/blog/fde-enterprise-ai-service-delivery-sop/): 整理企业 AI 服务从线索获取、客户筛选、现场调研、需求边界、报价、SOW、开发交付、测试验收、回款到复盘的完整方法，帮助 FDE 和小团队把模糊的 Agent 想法变成可执行、可测试、可交付的业务结果。
 - [AI 生成图片文字错了怎么改，才能不破坏原设计](https://doc.gpt88.cc/docs/blog/fix-text-in-ai-image-without-changing-design/): AI 海报或商品卡文字出错时，别只靠提示词重绘。按风险选择路径：先找源文件改真实文字层，无源文件时重建可编辑图层，再退而抹字重排，只有低风险装饰字才用局部 AI 修复，交付前用五分钟验收清单逐字核对。
 - [免费 AI 图像生成器每日积分怎么选：额度、限制和上传安全](https://doc.gpt88.cc/docs/blog/free-ai-image-generator-daily-credits/): 免费 AI 图像生成器不要先按"谁的积分最多"来选。先分清每日重置、每日领取、快速生成额度、计算单位、新手积分、无积分沙盒和付费后备这几种合约，再按练习、设计、上传和商用场景选择，附 9 个免费额度路线实例与上传前信任清单。
