@@ -13,6 +13,7 @@
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
+- [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
 - [AI 会生成 PPT 之后，为什么 Runtime 才决定上限？](https://doc.gpt88.cc/docs/blog/ai-ppt-runtime-artifact-runtime/): 从一次性 PPT 文件到可持续操作的 Artifact，理解 Artifact Runtime、Observe-Address-Operate-Verify 工作循环、布局语义和领域对象。
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
 - [AI 去除图片文字：上传前先选对安全路径](https://doc.gpt88.cc/docs/blog/ai-remove-text-from-image/): 用 AI 去除图片文字前，先判断它是普通说明、设计源文件、隐私内容、复杂背景，还是水印和权属标记，再选择在线工具、编辑器、专业修图、源文件重建或停止。
@@ -20,7 +21,6 @@
 - [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
-- [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
 
 ## GPT88公益站搜索入口
 
