@@ -33,6 +33,7 @@
 
 ## 技术博客
 
+- [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
 - [AI 涂色页生成器：用提示词或照片制作可打印线稿](https://doc.gpt88.cc/docs/blog/ai-coloring-page-generator/): 按用途选择 AI 涂色页路线：提示词、照片转线稿、课堂手工、成人细节页、个性化名字页或 KDP/Etsy 涂色书，并检查打印、隐私、导出和商用边界，生成真正可打印的干净线稿。
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
@@ -150,6 +151,7 @@
 - [Pi Coding Harness 实践：用 AGENTS.md、Skills 与 Packages 重建可控的编程 Agent](https://doc.gpt88.cc/docs/blog/pi-coding-harness-efficiency-guide/): 整理 Chasen 关于从 Claude Code 转向 Pi Coding Agent 的实践，解释 Coding Harness 的三层结构、按需加载 Skills、子 Agent 并行、上下文管理、验证闭环与权限安全。
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
 - [逼真 AI 图像生成器怎么选：先看用途、上传风险和切换规则](https://doc.gpt88.cc/docs/blog/realistic-ai-image-generator/): 先按人物、商品、品牌文字、免费测试、私密上传、API 或本地控制来选逼真 AI 生图路线，再决定是否换工具。
+- [Skill 的终极形态：从外部课本到 Agent 大脑](https://doc.gpt88.cc/docs/blog/skill-as-agent-brain/): 整理 Vinkyu 关于 Skill、个人知识库、环境适配与 Agent 大脑的思考，解释为什么同一个 Skill 在不同电脑上效果不同，以及如何构建可持续进化的个人 Agent 知识系统。
 - [从 Skill 到订单：Agent Harness 如何加载能力、调用工具并结构化交易数据](https://doc.gpt88.cc/docs/blog/skill-tool-agent-order-data-flow/): 以 OTC 交易为例，逐步解释 Skill 如何加载、Tool 如何定义、Agent 如何调用 Tool，以及订单数据如何从自然语言变成可审计的结构化对象。
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Uber 软件工厂实践：如何规模化管理 Agent、Token 成本与模型路由](https://doc.gpt88.cc/docs/blog/uber-software-factory-agent-cost-optimization/): 整理 Uber Engineering 软件工厂实践，解释 Agent 使用的四层模型、成本拆解、基准测试选型、Prompt Cache、MCP 工具按需加载、Code-Mode、上下文工程与会话成本可视化，并提炼可复用的 GPT88 Agent 优化方法。
