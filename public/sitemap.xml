@@ -2701,6 +2701,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/models/claude-fable-5-1/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/models/claude-haiku-3-5/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -3218,6 +3224,12 @@
   </url>
   <url>
     <loc>https://doc.gpt88.cc/models/gemini-3-1-pro-preview/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/models/gemini-3-8-flash/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -4142,6 +4154,18 @@
   </url>
   <url>
     <loc>https://doc.gpt88.cc/en/models/claude-fable-5/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/models/gemini-3-8-flash/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/models/claude-fable-5-1/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

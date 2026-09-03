@@ -933,6 +933,18 @@ async function readModels() {
       vendors_count: 1,
     },
     {
+      canonical_name: 'gemini-3.8-flash',
+      display_name: 'gemini-3.8-flash',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
+      canonical_name: 'claude-fable-5-1',
+      display_name: 'claude-fable-5-1',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
       canonical_name: 'claude-opus-4-8',
       display_name: 'claude-opus-4-8',
       category: 'chat',

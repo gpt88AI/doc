@@ -13,6 +13,7 @@
  *   grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
+ *   → gemini-3.8-flash → claude-fable-5-1
  *
  * Catalog 处理：
  * - completion 7 条全部 canonical_name 与 chat 重名（snapshot 内同名条目分类为 chat 与 completion 两份），
@@ -134,6 +135,8 @@ export const FEATURED_SLUGS = [
   'qwen3-8-max-preview',
   'kimi-k3',
   'gpt-5-3-codex',
+  'gemini-3-8-flash',
+  'claude-fable-5-1',
 ] as const
 
 type FeaturedDetail = {
@@ -331,6 +334,36 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '公开报道显示，Claude Fable 5 带有更严格的高风险安全护栏；涉及部分网络安全、生物或化学高风险请求时，系统可能回退到更保守的 Claude Opus 4.8 路径。',
       '公开报道还将其描述为高于 Claude Opus 4.8 的定价档，但 gpt88.cc 文档站不固化价格；实际计费、可用线路、上下文和限速以控制台当前配置为准。',
       '如果你的任务主要是轻量问答或高频批量处理，Haiku、Sonnet 或 GPT mini 一类模型往往更划算，不必默认全量切到 Fable 5。',
+    ],
+  },
+  // slug=claude-fable-5-1 ←→ modelId=claude-fable-5-1
+  'claude-fable-5-1': {
+    provider: 'Anthropic',
+    tagline: 'Claude Fable 5.1 主推迭代，适合复杂推理、长周期 Agent 与高价值知识工作。',
+    capabilities: ['复杂推理', '长周期 Agent', '代码理解', '工具调用'],
+    scenarios: ['复杂代码任务', '企业知识库', '长文档分析', '多步骤自动化'],
+    overview: [
+      'Claude Fable 5.1 是 GPT88 当前主推目录中的 Claude Fable 迭代版本，适合需要持续理解上下文、拆解任务并推进多个步骤的工作流。',
+      '它更适合质量优先的 Agent、代码和知识工作场景，不建议仅凭模型名称推断固定的上下文、价格或工具能力。',
+      '如果你的业务已经使用 Claude Fable 5，可以用同一批评测样本对比 5.1 的完成率、返工量、延迟和实际用量，再决定是否切换默认路由。',
+    ],
+    whenToUse: [
+      '需要多轮规划、工具调用和失败恢复的复杂 Agent 工作流',
+      '大型代码库分析、重构、测试修复和跨文件代码审查',
+      '需要综合长文档、结构化资料和业务规则的知识工作',
+      '希望在 Claude Fable 系列内评估新的质量优先候选时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 claude-fable-5-1。',
+      'Claude / Anthropic 风格客户端也使用 GPT88 Base URL，并按照客户端协议发送精确的模型 ID。',
+      '首次接入先调用 GET /v1/models，再发送最小 POST /v1/chat/completions 请求确认当前 API Key、线路和模型权限。',
+      '建议先验证非流式请求，再逐步加入 streaming、tools、结构化输出和多轮上下文，便于定位参数兼容问题。',
+    ],
+    caveats: [
+      '模型可用性、价格、上下文、限速、线路、权限和工具支持以 GPT88 当前控制台配置为准。',
+      '新版本可能存在行为、响应速度或参数支持变化，不建议未经灰度直接替换全部生产流量。',
+      '高风险请求可能受到更严格的安全策略或拒答处理；应把拒答率和人工升级路径纳入验收标准。',
+      '保留已验证的 Claude Fable 5 或 Claude Opus 备用路由，直到 5.1 在真实任务上稳定运行。',
     ],
   },
   // slug=claude-opus-4-8 ←→ modelId=claude-opus-4-8
@@ -759,6 +792,36 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
     caveats: [
       'preview 版本的可用性、稳定性和功能边界以控制台为准。',
       '低延迟不等于适合复杂长文档推理；更复杂场景可对比 Pro 版本。',
+    ],
+  },
+  // slug=gemini-3-8-flash ←→ modelId=gemini-3.8-flash
+  'gemini-3-8-flash': {
+    provider: 'Google',
+    tagline: 'Gemini 3.8 Flash 主推模型，面向低延迟、多模态与高频 Agent 子任务。',
+    capabilities: ['低延迟定位', '多模态理解', '结构化输出', '工具调用'],
+    scenarios: ['实时助手', '图像问答', '信息抽取', 'Agent 子任务'],
+    overview: [
+      'Gemini 3.8 Flash 是 GPT88 当前主推目录中的 Google Flash 系列模型，适合追求响应速度、吞吐和多模态输入处理的产品工作流。',
+      '它可以作为复杂 Agent 的快速路由层，用于意图识别、信息抽取、工具选择、内容初筛和中间步骤，再把高难度任务升级到更强模型。',
+      '模型名中的 Flash 只代表当前目录定位，不等于固定的延迟或费用承诺；实际表现需要在你的提示词、并发和线路条件下验证。',
+    ],
+    whenToUse: [
+      '实时对话、交互式助手和对首 token 延迟敏感的场景',
+      '图像问答、多模态信息抽取和视觉内容初筛',
+      'Agent 工作流里的意图识别、工具选择、字段抽取和结果整理',
+      '高频、短上下文、成本敏感的批量任务与内容预处理',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 gemini-3.8-flash。',
+      '首次接入先调用 GET /v1/models，再发送最小 POST /v1/chat/completions 请求确认当前 API Key 的模型权限。',
+      '多模态请求先从一条文本或单张图片开始，确认字段格式后再加入多轮上下文、工具调用和流式输出。',
+      '建议把 Gemini 3.8 Flash 放在快速路由层，并为长文档复杂推理保留升级到 Pro 或其他高能力模型的策略。',
+    ],
+    caveats: [
+      '模型可用性、价格、上下文、限速、线路、视觉能力和工具支持以 GPT88 当前控制台配置为准。',
+      'Flash 定位不代表所有请求都会低延迟；图片大小、上下文长度、工具数量和上游拥塞都会影响响应。',
+      '多模态与结构化输出应分别测试，不能只用纯文本成功结果推断全部能力已经可用。',
+      '生产上线前记录成功率、首 token 延迟、端到端耗时、重试率和实际用量，并保留质量更高的备用模型。',
     ],
   },
   // 来源：同上；preview 阶段 Pro 版本面向高质量推理；
@@ -1760,6 +1823,22 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['Anthropic 新上 Claude Fable 5，具体价格、权限和线路以控制台为准。'],
   },
   {
+    canonical_name: 'gemini-3.8-flash',
+    display_name: 'gemini-3.8-flash',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gemini-3.8-flash'],
+    descriptions_sample: ['Google Gemini 3.8 Flash 主推模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'claude-fable-5-1',
+    display_name: 'claude-fable-5-1',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-fable-5-1'],
+    descriptions_sample: ['Anthropic Claude Fable 5.1 主推模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     canonical_name: 'claude-opus-4-8',
     display_name: 'claude-opus-4-8',
     category: 'chat',
@@ -1912,6 +1991,35 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'Public benchmark results depend on model versions, prompts, tools, timeouts, and scoring implementations; they should not be treated as a direct business success-rate forecast.',
       'Long-running agents still require code review, permission isolation, tests, logs, and human acceptance. A task completing once is not the same as production readiness.',
       'Use a staged rollout and keep a validated fallback model route until the behavior is established on your own workload.',
+    ],
+  },
+  'gemini-3-8-flash': {
+    tagline:
+      'Featured Google Flash route for low-latency interaction, multimodal understanding, and high-frequency agent subtasks.',
+    capabilities: ['Low-latency positioning', 'Multimodal understanding', 'Structured output', 'Tool use'],
+    scenarios: ['Real-time assistants', 'Image Q&A', 'Information extraction', 'Agent subtasks'],
+    overview: [
+      'Gemini 3.8 Flash is represented in the current GPT88 featured catalog as a Google Flash route for responsive, high-frequency, and multimodal workflows.',
+      'It can serve as a fast routing layer for intent detection, extraction, tool selection, content triage, and intermediate agent steps while harder work escalates to a stronger model.',
+      'The Flash label is catalog positioning rather than a fixed latency or cost guarantee. Measure it with your prompts, concurrency, payload sizes, and selected route.',
+    ],
+    whenToUse: [
+      'Build interactive assistants where first-token and end-to-end latency matter',
+      'Evaluate image Q&A, multimodal extraction, and visual content triage',
+      'Handle intent detection, tool selection, field extraction, and result formatting inside an agent workflow',
+      'Process frequent, short-context, and cost-sensitive requests',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to gemini-3.8-flash in OpenAI-compatible requests.',
+      'Call GET /v1/models, then send a minimal POST /v1/chat/completions request to confirm access for the current API key.',
+      'Start multimodal testing with text or one image, then add multi-turn context, tools, and streaming separately so format errors remain diagnosable.',
+      'Use it as a fast routing layer and keep an escalation path to a Pro or other higher-capability model for long, difficult reasoning.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, vision support, and tool support are determined by the current GPT88 console configuration.',
+      'Flash positioning does not guarantee low latency for every request; image size, context length, tool count, and upstream load affect response time.',
+      'Test multimodal and structured-output behavior independently instead of inferring all features from a successful text-only request.',
+      'Before rollout, record success rate, time to first token, end-to-end latency, retries, and usage, and keep a quality-focused fallback route.',
     ],
   },
   'qwen3-8-max-preview': {
@@ -2139,6 +2247,35 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'The current catalog notes stricter safeguards for some high-risk requests; refusals or conservative handling should be included in acceptance testing.',
       'Do not infer a fixed price or guaranteed performance tier from the model name or this positioning summary.',
       'Use a staged rollout and keep a validated fallback route until production behavior is established on your own workload.',
+    ],
+  },
+  'claude-fable-5-1': {
+    tagline:
+      'Claude Fable 5.1 is a featured Anthropic route for complex reasoning, long-running agents, software work, and knowledge tasks.',
+    capabilities: ['Complex reasoning', 'Long-running agents', 'Code understanding', 'Tool use'],
+    scenarios: ['Complex software tasks', 'Enterprise knowledge bases', 'Long documents', 'Multi-step automation'],
+    overview: [
+      'Claude Fable 5.1 is represented in the current GPT88 featured catalog as an iterative Claude Fable route for sustained, quality-first work.',
+      'It is intended for workflows that need to preserve context, plan across several steps, use tools, and produce outputs with less rework. Confirm the actual features available to the current account before relying on them.',
+      'If Claude Fable 5 is already in use, compare the same evaluation set on both versions before changing a production default.',
+    ],
+    whenToUse: [
+      'Run multi-step agent workflows with planning, tools, and failure recovery',
+      'Analyze large codebases, refactor across files, repair tests, and review changes',
+      'Process long documents, structured material, and business rules in a single workflow',
+      'Evaluate a new quality-first candidate within the Claude Fable family',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to claude-fable-5-1 in OpenAI-compatible requests.',
+      'Claude- or Anthropic-style clients should use the same GPT88 Base URL and send the exact model ID in their native request format.',
+      'Call GET /v1/models, then send a minimal POST /v1/chat/completions request before adding tools, streaming, structured output, or long context.',
+      'Compare it with Claude Fable 5 or Claude Opus on a fixed workload while recording completion rate, rework, latency, and usage.',
+    ],
+    caveats: [
+      'Availability, pricing, context limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration.',
+      'A new model revision may change behavior, latency, or parameter support. Introduce it through a monitored canary instead of replacing all traffic at once.',
+      'High-risk requests may receive stricter safeguards or refusals; include refusal handling and human escalation in acceptance testing.',
+      'Keep a validated Claude Fable 5 or Claude Opus fallback until the route is stable on production-like workloads.',
     ],
   },
   'claude-opus-4-8': {
