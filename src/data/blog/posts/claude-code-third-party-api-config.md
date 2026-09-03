@@ -157,6 +157,66 @@ Windows 桌面应用也可能不会自动读取刚刚在 PowerShell 当前窗口
 - MCP Server 的配置与模型 API 配置是两件事，配置 MCP 不等于切换模型供应商；
 - 如果桌面端没有明确的 Provider/Gateway 设置，终端版通常是最容易验证的路径。
 
+### 情况 C：桌面 UI 中确实出现了 Provider / Gateway 菜单
+
+部分版本、企业环境或第三方封装可能会显示类似下面的入口：
+
+```text
+Settings
+  → Developer
+  → Provider / Gateway / Environment
+  → Custom Provider
+```
+
+如果你的界面确实有这些选项，可以按下面的方式填写：
+
+| UI 字段 | 填写内容 |
+| --- | --- |
+| Provider Type | `Anthropic Compatible`，如果有该选项 |
+| Base URL | GPT88 当前提供的 Anthropic 兼容入口 |
+| API Key | GPT88 推理 API Key |
+| Model | GPT88 模型目录返回的准确模型 ID |
+
+保存后建议完全退出并重新打开桌面客户端，再新建会话测试。不要把以下地址直接当作 Claude Code 的地址，除非 GPT88 当前文档明确说明它兼容 Anthropic Messages：
+
+```text
+https://api.gpt88.cc/v1
+```
+
+这个地址通常是 GPT88 的 OpenAI 兼容 API 入口，适合 OpenAI SDK、Cursor、Cline 等客户端。Claude Code 需要 Anthropic Messages 兼容入口；两者的协议、请求路径和工具调用格式并不相同。
+
+### 如何判断 UI 配置是否真的生效
+
+不要只看设置页面显示了“已连接”。在桌面端新建会话后，先发送一条只读指令：
+
+```text
+请只读取当前项目目录并输出目录树。
+不要修改文件，不要执行删除、提交、推送或部署操作。
+```
+
+再到 GPT88 网关的请求日志中核对：
+
+- 请求时间是否对应刚才的会话；
+- 请求是否到达 GPT88，而不是官方 Anthropic 服务；
+- 模型 ID 是否是你选择的第三方模型；
+- 状态码是否为成功；
+- 工具调用和流式响应是否正常。
+
+如果桌面端仍然显示官方账号、官方用量或官方模型，通常说明 UI 配置没有被当前 Claude Code 运行时采用。此时优先回到终端版验证环境变量，再检查桌面应用是否支持自定义 Provider，而不是继续修改 MCP 配置。
+
+### 桌面客户端里的 MCP 配置不是模型 API 配置
+
+在 Claude Desktop 中，`Settings → Extensions` 或 MCP 配置主要用于添加本地工具和外部服务，例如文件、浏览器、数据库或其它 MCP Server。它不会自动把模型请求切换到 GPT88。
+
+可以这样区分：
+
+```text
+模型 API 配置：决定“由哪个模型供应商处理对话”
+MCP 配置：     决定“模型可以调用哪些外部工具”
+```
+
+因此，即使 MCP Server 已经安装成功，也不能据此判断 GPT88 API 已经接入。两部分需要分别配置、分别验证。
+
 ## 五、让配置永久生效
 
 临时 `export` 只对当前终端窗口有效。macOS 默认使用 zsh，可以将配置放入 `~/.zshrc`：
