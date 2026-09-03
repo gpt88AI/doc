@@ -53,6 +53,7 @@
 - [ChatGPT 无法上传图片？先分清按钮、文件、次数、存储和状态问题](https://doc.gpt88.cc/docs/blog/chatgpt-image-upload-not-working/): ChatGPT 无法上传图片？先用小于 20MB 的静态 PNG/JPG 做小图测试，再区分按钮、文件、上传次数、Library 存储、工作区权限、OpenAI Status 和 API 七层归属，逐层判断并保留支持证据。
 - [ChatGPT 图片生成器怎么用：从提示词、编辑到下载的完整指南](https://doc.gpt88.cc/docs/blog/chatgpt-images-2-0/): 一步完成 ChatGPT 图片生成：确认官方入口，写清中文提示词，上传自有素材，局部编辑，检查文字与事实，最后下载并核验文件。另说明免费额度、Images with thinking、C2PA/SynthID 与 API 的边界。
 - [Nano Banana Pro API 怎么选：便宜、稳定和高并发先看路线](https://doc.gpt88.cc/docs/blog/cheapest-stable-nano-banana-pro-api/): Nano Banana Pro API 不要只看谁喊得便宜。先分清 Google 直连、Batch/Flex、可验证网关和双路线验证，再用价格归属、日志、账单和并发测试决定生产路线。
+- [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
 - [ComfyUI Nano Banana Pro 替代方案：本地、API 与托管路线怎么选](https://doc.gpt88.cc/docs/blog/comfyui-nano-banana-pro-alternative/): 在 ComfyUI 里替换 Nano Banana Pro，不是找一个万能模型，而是判断本地控制、Qwen 编辑实验、托管 API 和继续使用 Pro 哪条路线更适合，并用同题测试做决策。
