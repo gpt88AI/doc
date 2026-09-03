@@ -26,6 +26,12 @@ import LocalizedLandingPage from './pages/LocalizedLandingPage'
 import { LOCALE_CONFIG, LocaleProvider, SUPPORTED_LOCALES } from './lib/locale'
 import {
   AgentTopicPage,
+  AgentJobMapPage,
+  AgentFoundationsPage,
+  AgentRagPage,
+  AgentToolsMcpPage,
+  AgentProductionPage,
+  AgentInterviewProjectPage,
   AgentImageQualityCropGuidePage,
   AgentImageStudioGuidePage,
   AsyncImageGenerationGuidePage,
@@ -164,6 +170,12 @@ export default function App() {
         <Route path="guides/billing-units" element={route(<BillingUnitsGuidePage />)} />
         <Route path="guides/gpt88-tutorial" element={route(<Gpt88TutorialPage />)} />
         <Route path="guides/agent" element={route(<AgentTopicPage />)} />
+        <Route path="guides/agent-job-map" element={route(<AgentJobMapPage />)} />
+        <Route path="guides/agent-foundations" element={route(<AgentFoundationsPage />)} />
+        <Route path="guides/agent-rag" element={route(<AgentRagPage />)} />
+        <Route path="guides/agent-tools-mcp" element={route(<AgentToolsMcpPage />)} />
+        <Route path="guides/agent-production" element={route(<AgentProductionPage />)} />
+        <Route path="guides/agent-interview-project" element={route(<AgentInterviewProjectPage />)} />
         <Route path="guides/kimi-k3-guide" element={<KimiK3GuidePage />} />
         <Route path="guides/kimi-k3-review" element={<KimiK3ReviewPage />} />
         <Route path="guides/grok-4-6-review" element={<Grok46ReviewPage />} />

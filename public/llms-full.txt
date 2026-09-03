@@ -211,6 +211,12 @@
 - [API Key 创建后第一次请求失败怎么办](https://doc.gpt88.cc/docs/guides/api-key-first-request-failed/): 按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。
 - [gpt88.cc 通用教程](https://doc.gpt88.cc/docs/guides/gpt88-tutorial/): Claude 与 OpenAI 通用接入、模型选择、线路选择和工具接入教程。
 - [Agent 专题](https://doc.gpt88.cc/docs/guides/agent/): 从第一次 API 调用开始学习 Agent，覆盖上下文、tools / function calling、执行循环、权限、可观察性、恢复和生产化。
+- [Agent 求职：岗位地图与能力模型](https://doc.gpt88.cc/docs/guides/agent-job-map/): 从 BOSS 直聘公开可见的 AI Agent 相关 JD 反推岗位类型、能力矩阵、职级要求、关键词含义和作品集准备方法。
+- [Agent 求职：基础架构与工作流](https://doc.gpt88.cc/docs/guides/agent-foundations/): 系统学习 Agent、LLM、上下文、状态机、ReAct、Plan-and-Execute、Workflow、Memory 和架构选型。
+- [Agent 求职：RAG 知识库工程](https://doc.gpt88.cc/docs/guides/agent-rag/): 从文档解析、切分、Embedding、向量检索、Hybrid Search、Rerank 到引用、知识更新和 RAG 评测的完整教程。
+- [Agent 求职：Tool Calling 与 MCP](https://doc.gpt88.cc/docs/guides/agent-tools-mcp/): 掌握工具契约、函数调用、MCP、权限、人工审批、幂等、超时、重试和安全执行。
+- [Agent 求职：评测与生产化](https://doc.gpt88.cc/docs/guides/agent-production/): 建立 Agent 质量模型、评测集、Trace、可观测性、成本与容量模型，并掌握灰度、回滚和人工接管。
+- [Agent 求职：高频面试题与项目实战](https://doc.gpt88.cc/docs/guides/agent-interview-project/): 整理 AI Agent 高频面试题、参考回答、企业知识库与多工具项目、现场编码题和 30 天复习路线。
 - [Kimi K3 使用教程：Base URL、Claude Code 与 Codex 配置](https://doc.gpt88.cc/docs/guides/kimi-k3-guide/): 使用 gpt88.cc 接入 Kimi K3 的完整教程，包含 API 验证、Base URL 选择、Claude Code、Codex CLI 配置和 FailedToOpenSocket 排查。
 - [Kimi K3 实战评测与模型对比](https://doc.gpt88.cc/docs/guides/kimi-k3-review/): 整理公开基准、7 个真实项目、编程能力、稳定性、成本观察以及与 Claude Fable 5、GPT-5.6 Sol 的第三方对比。
 - [Grok 4.6 评测：编码 Agent 与 DeepSeek V4 Pro 对比参考](https://doc.gpt88.cc/docs/guides/grok-4-6-review/): 整理公开笔记中的 Grok 4.6、DeepSeek V4 Pro 指标、长程 Agent、成本与模型选型边界。

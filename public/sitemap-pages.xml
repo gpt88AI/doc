@@ -223,6 +223,42 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/guides/agent-job-map/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/agent-foundations/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/agent-rag/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/agent-tools-mcp/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/agent-production/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/guides/agent-interview-project/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/guides/kimi-k3-guide/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>

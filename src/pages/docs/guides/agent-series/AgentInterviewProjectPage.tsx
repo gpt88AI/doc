@@ -1,0 +1,69 @@
+import { Link } from 'react-router-dom'
+import { Callout } from '../../../../components/ui/Callout'
+import { DocPage } from '../../../../components/layout/DocPage'
+import { GuideTable, Checklist, SeriesNav } from './AgentGuideShared'
+import { headings, toHeadings } from './AgentGuideData'
+
+export default function AgentInterviewProjectPage() {
+  return <DocPage path="/docs/guides/agent-interview-project" title="AI Agent 求职专题（六）：高频面试题、实战项目与 30 天复习路线" description="把 AI Agent 岗位常见问题整理成可复述答案，并通过一个企业知识库与多工具 Agent 项目准备系统设计、现场编码和项目深挖。" headings={toHeadings(headings.interview)}>
+    <SeriesNav current="/docs/guides/agent-interview-project/" />
+    <Callout tone="tip" title="面试的核心目标"><p>面试官通常不是在考你背了多少框架，而是在判断你是否能把不确定的模型能力放进一个有边界、有指标、可恢复的业务系统。所有答案都要回到场景、取舍、验证和结果。</p></Callout>
+    <h2 id="answer">面试回答框架</h2>
+    <p>面对任何 Agent 设计题，都可以按下面七步作答：</p>
+    <ol><li><strong>定义目标：</strong>用户是谁，任务成功是什么。</li><li><strong>划定边界：</strong>哪些动作交给模型，哪些由代码或人工控制。</li><li><strong>拆分链路：</strong>输入、检索、规划、工具、状态、输出。</li><li><strong>说明数据：</strong>上下文、Memory、业务库、向量库和权限。</li><li><strong>给出指标：</strong>成功率、准确率、延迟、成本和安全。</li><li><strong>说明失败：</strong>超时、权限、冲突、循环、模型错误如何恢复。</li><li><strong>补充演进：</strong>如何灰度、评测、回滚和扩展租户。</li></ol>
+    <p>这个结构能防止答案停留在“我会用 LangChain 搭一个 Agent”。框架是实现手段，面试重点是你能否解释系统行为。</p>
+    <h2 id="questions">高频题与参考答案</h2>
+    <GuideTable headers={['问题', '参考回答要点']} rows={[
+      ['什么是 AI Agent？', '以模型为推理核心，结合工具、状态、记忆、工作流和验证，循环完成目标；模型提出动作，应用负责授权与执行。'],
+      ['Agent 和 RAG 有什么关系？', 'RAG 是一种获取外部知识的能力，Agent 是更大的任务执行系统；Agent 可以调用 RAG，也可以调用业务 API。'],
+      ['什么时候不用 Agent？', '流程固定、风险高、规则清晰或强审计场景优先 Workflow；模型只负责模糊解析或局部判断。'],
+      ['RAG 答错怎么排查？', '先看解析和索引，再看 Recall@K、候选相关性、过滤、Rerank、上下文组装、Prompt 和引用对应关系。'],
+      ['如何防止工具越权？', '工具白名单、服务端 Schema 校验、身份和资源权限检查、最小权限、审批、审计；不信任模型生成的租户和用户 ID。'],
+      ['Tool Calling 失败是否重试？', '按错误分类：参数和权限错误通常不重试，网络超时有限重试，业务冲突先重读状态；写操作使用同一幂等键。'],
+      ['单 Agent 和多 Agent 怎么选？', '先建立单 Agent/Workflow 基线；只有职责分工、隔离上下文或并行执行带来可测量收益时再拆多 Agent。'],
+      ['如何评估 Agent？', '覆盖模型、检索、工具、任务、系统、业务和安全层，结合离线数据集、Trace、自动评分和人工抽检。'],
+      ['如何降低延迟和成本？', '模型路由、上下文裁剪、缓存、并行只读工具、减少重试、流式输出和合理降级，同时监控质量回归。'],
+      ['MCP 和 Function Calling 区别？', 'Function Calling 是一次模型交互中的工具调用契约；MCP 更偏跨应用的能力发现、连接、资源和工具服务器协议。'],
+    ]} />
+    <h2 id="project">实战项目设计：企业知识库与多工具 Agent</h2>
+    <p>建议准备一个贯穿全专题的项目：用户询问公司制度或业务数据，Agent 通过 RAG 查资料，通过只读工具查询状态，通过写工具提交申请，并在高风险动作前请求人工确认。</p>
+    <GuideTable headers={['模块', '实现内容', '面试时要讲什么']} rows={[
+      ['入口', '登录、租户、会话、请求 ID', '如何做鉴权和数据隔离'],
+      ['知识库', 'PDF/Markdown 解析、切分、Embedding、混合检索、重排', '如何证明召回效果提升'],
+      ['编排', '意图识别、检索、工具路由、状态和停止条件', '为什么使用 Workflow 或 Agent'],
+      ['工具', '查询订单、查库存、创建申请、导出报告', '读写分离、Schema、幂等和权限'],
+      ['记忆', '会话摘要、用户偏好、任务状态', '哪些信息长期保存、如何删除'],
+      ['评测', '任务集、自动评分、人工抽检、Badcase', '指标如何驱动迭代'],
+      ['上线', 'Docker、日志、Trace、告警、灰度、回滚', '如何处理真实故障'],
+    ]} />
+    <h3>推荐目录结构</h3>
+    <pre className="not-prose overflow-x-auto rounded-lg border border-white/5 bg-ink-900/80 p-4 text-[13px] leading-6 text-ink-100"><code>{'agent-demo/\n  app/\n    api/              # 鉴权、会话、流式接口\n    orchestration/    # 状态机、路由、停止条件\n    retrieval/        # 解析、切分、召回、重排\n    tools/            # 工具定义、权限、执行器\n    memory/           # 摘要和长期记忆\n    evaluation/       # 数据集、评分器、回归\n    observability/    # Trace、日志、指标\n  tests/\n  evals/\n  docker-compose.yml\n  README.md'}</code></pre>
+    <h2 id="walkthrough">项目讲解模板</h2>
+    <p>项目介绍控制在 3 到 5 分钟，按下面顺序：</p>
+    <ol><li><strong>业务问题：</strong>原流程耗时、错误点和用户规模。</li><li><strong>目标指标：</strong>例如任务成功率、首字延迟、人工转接率和单位成本。</li><li><strong>方案：</strong>为什么选择 RAG、Workflow、单 Agent 或多 Agent。</li><li><strong>关键设计：</strong>工具契约、权限、Memory、失败恢复和评测。</li><li><strong>结果：</strong>用对照实验或线上数据说明变化。</li><li><strong>复盘：</strong>最严重的 Badcase、修复过程和仍存在的边界。</li></ol>
+    <p>当面试官继续追问时，优先讲一个具体失败：例如“检索到了旧版本制度，导致答案错误”。然后说明你如何通过版本过滤、索引状态和回归样本修复，而不是泛泛说“优化了 Prompt”。</p>
+    <h2 id="coding">现场手写与排障题</h2>
+    <GuideTable headers={['题型', '考察点', '作答要点']} rows={[
+      ['实现 Agent 循环', '消息协议、停止条件、工具结果', '处理多轮、最大步数、异常和结构化结果'],
+      ['设计工具执行器', '安全边界和工程性', '白名单、Schema、超时、重试、权限、Trace'],
+      ['实现 RAG 检索', '数据结构和检索思维', '元数据过滤、top_k、去重、排序和来源保留'],
+      ['排查线上超时', '可观测性和分层诊断', '按 Trace 拆模型、检索、工具、队列和下游耗时'],
+      ['设计高并发服务', '系统设计', '连接池、队列、限流、缓存、流式、降级和容量'],
+    ]} />
+    <p>现场编码不要追求一次写出完整框架。先写清输入输出契约和失败分支，再补实现；每一步说明为什么这样做，以及如何测试。</p>
+    <h2 id="plan">30 天复习路线</h2>
+    <GuideTable headers={['时间', '学习目标', '产出']} rows={[
+      ['第 1—3 天', '读懂岗位类型和 JD 关键词', '岗位分类表、个人短板清单'],
+      ['第 4—7 天', '完成最小模型调用和结构化输出', '可运行的 API Demo'],
+      ['第 8—12 天', '掌握 Agent 循环、状态和 Workflow', '项目状态图和工具调用 Demo'],
+      ['第 13—18 天', '完成 RAG 入库、检索和引用', '知识库 Demo 与评测集'],
+      ['第 19—21 天', '完成工具权限、幂等和 MCP 阅读', '安全执行器和失败矩阵'],
+      ['第 22—25 天', '加入 Trace、指标和自动评测', '评测报告、Badcase 看板'],
+      ['第 26—28 天', '做容量、成本和上线设计', '生产架构图和 Runbook'],
+      ['第 29—30 天', '模拟面试和项目讲解', '3 分钟介绍、10 分钟深挖、现场题复盘'],
+    ]} />
+    <h2 id="acceptance">最终验收清单</h2>
+    <Checklist items={[<>我能用 60 秒定义 Agent，并解释它和 RAG、Workflow 的区别。</>, <>我能从零画出模型、上下文、编排、工具、数据、权限和观测架构。</>, <>我能解释 RAG 的入库、召回、重排、引用、更新和评测。</>, <>我能实现并排查 Tool Calling，处理超时、权限、重试和幂等。</>, <>我能说清 MCP 的 Host、Client、Server、工具发现和安全边界。</>, <>我有一套评测集，能给出任务成功率、延迟、成本和安全指标。</>, <>我能讲一个失败案例，并说明如何定位、修复、回归和上线。</>, <>我的简历项目描述包含业务目标、技术方案、指标结果和约束条件。</>]} />
+    <p>建议按顺序回看本专题：<Link to="/docs/guides/agent-job-map/">岗位地图</Link> → <Link to="/docs/guides/agent-foundations/">基础架构</Link> → <Link to="/docs/guides/agent-rag/">RAG</Link> → <Link to="/docs/guides/agent-tools-mcp/">工具与 MCP</Link> → <Link to="/docs/guides/agent-production/">生产化</Link>。</p>
+  </DocPage>
+}

@@ -233,6 +233,36 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '从第一次 API 调用到工具调用、上下文、权限、可观察性和可恢复工作流',
       },
       {
+        title: 'Agent 求职：岗位地图',
+        path: '/docs/guides/agent-job-map/',
+        blurb: '从 BOSS 直聘 JD 反推 AI Agent 岗位类型、能力矩阵和作品集要求',
+      },
+      {
+        title: 'Agent 求职：基础架构',
+        path: '/docs/guides/agent-foundations/',
+        blurb: 'Agent、状态机、ReAct、Workflow、Memory 与架构选型',
+      },
+      {
+        title: 'Agent 求职：RAG 工程',
+        path: '/docs/guides/agent-rag/',
+        blurb: '从文档入库、切分、召回、重排到引用、评测和知识更新',
+      },
+      {
+        title: 'Agent 求职：工具与 MCP',
+        path: '/docs/guides/agent-tools-mcp/',
+        blurb: 'Tool Calling、MCP、权限、审批、失败恢复和幂等设计',
+      },
+      {
+        title: 'Agent 求职：评测与生产化',
+        path: '/docs/guides/agent-production/',
+        blurb: '质量指标、评测集、Trace、成本、容量、灰度和回滚',
+      },
+      {
+        title: 'Agent 求职：面试与项目',
+        path: '/docs/guides/agent-interview-project/',
+        blurb: '高频面试题、企业 Agent 项目、现场题和 30 天复习路线',
+      },
+      {
         title: 'Kimi K3 使用教程',
         path: '/docs/guides/kimi-k3-guide/',
         blurb: '配置 Base URL、Claude Code、Codex CLI，并排查 FailedToOpenSocket',

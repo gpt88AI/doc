@@ -223,6 +223,42 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'Agent 求职：岗位地图与能力模型',
+    path: '/docs/guides/agent-job-map',
+    description: '从 BOSS 直聘公开可见的 AI Agent 相关 JD 反推岗位类型、能力矩阵、职级要求、关键词含义和作品集准备方法。',
+    section: '指南',
+  },
+  {
+    title: 'Agent 求职：基础架构与工作流',
+    path: '/docs/guides/agent-foundations',
+    description: '系统学习 Agent、LLM、上下文、状态机、ReAct、Plan-and-Execute、Workflow、Memory 和架构选型。',
+    section: '指南',
+  },
+  {
+    title: 'Agent 求职：RAG 知识库工程',
+    path: '/docs/guides/agent-rag',
+    description: '从文档解析、切分、Embedding、向量检索、Hybrid Search、Rerank 到引用、知识更新和 RAG 评测的完整教程。',
+    section: '指南',
+  },
+  {
+    title: 'Agent 求职：Tool Calling 与 MCP',
+    path: '/docs/guides/agent-tools-mcp',
+    description: '掌握工具契约、函数调用、MCP、权限、人工审批、幂等、超时、重试和安全执行。',
+    section: '指南',
+  },
+  {
+    title: 'Agent 求职：评测与生产化',
+    path: '/docs/guides/agent-production',
+    description: '建立 Agent 质量模型、评测集、Trace、可观测性、成本与容量模型，并掌握灰度、回滚和人工接管。',
+    section: '指南',
+  },
+  {
+    title: 'Agent 求职：高频面试题与项目实战',
+    path: '/docs/guides/agent-interview-project',
+    description: '整理 AI Agent 高频面试题、参考回答、企业知识库与多工具项目、现场编码题和 30 天复习路线。',
+    section: '指南',
+  },
+  {
     title: 'Kimi K3 使用教程：Base URL、Claude Code 与 Codex 配置',
     path: '/docs/guides/kimi-k3-guide',
     description: '使用 gpt88.cc 接入 Kimi K3 的完整教程，包含 API 验证、Base URL 选择、Claude Code、Codex CLI 配置和 FailedToOpenSocket 排查。',
