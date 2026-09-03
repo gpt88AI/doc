@@ -150,6 +150,13 @@
 - [Nano Banana Pro去水印完整指南：5种方法获取无水印AI图片【2026实测】](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark-removal/): 详细介绍Nano Banana Pro去水印的5种有效方法，包括官方订阅、第三方API、专业工具对比。深入解析可见水印与SynthID的区别，帮你选择最适合的无水印获取方案。
 - [Nano Banana 免费无可见水印：AI Studio、Gemini 免费版与 API 怎么选](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark/): 想免费获得没有可见 Gemini 标记的 Nano Banana 图片？先分清 Google AI Studio 免费试用、Gemini 免费版的可见标记、图像 API 付费边界，以及始终保留的 SynthID。
 - [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
+- [Palantir AIP 架构总览：企业 Agent 的完整能力地图](https://doc.gpt88.cc/docs/blog/palantir-aip-architecture/): 按 Palantir AIP 架构的能力层次，系统拆解模型接入、上下文工程、Ontology、工具、Agent 生命周期、自动化、评估、观测和企业级 AI 交付。
+- [AIP、Foundry 与 Apollo：Palantir 企业操作系统的三层协作](https://doc.gpt88.cc/docs/blog/palantir-aip-foundry-apollo/): 详细拆解 Palantir AIP、Foundry、Apollo 三个平台的职责边界、协作关系、安全模型和 AI Agent 落地方法，帮助 AI FDE 建立企业级架构视角。
+- [Palantir 架构中心导读：理解企业 AI 平台的全局地图](https://doc.gpt88.cc/docs/blog/palantir-architecture-center-overview/): 从 AIP、Foundry、Apollo、Ontology、多模态数据平面、互操作性与 Rubix 七个章节，建立一张面向 AI FDE 和企业 Agent 的 Palantir 架构全局地图。
+- [Palantir 互操作性：企业 Agent 如何连接 API、数据与外部系统](https://doc.gpt88.cc/docs/blog/palantir-interoperability/): 从数据、元数据、语义、代码、分析和安全六个维度，拆解 Palantir Architecture Center 的互操作性设计，并给出企业 Agent 集成外部系统的实操方法。
+- [Palantir 多模态数据平面：Any Data、Any Compute、Any Model](https://doc.gpt88.cc/docs/blog/palantir-multimodal-data-plane/): 详解 Palantir Multimodal Data Plane 的开放数据、开放计算和模型可选架构，分析结构化数据、文档、图像、流数据与企业 Agent 的统一处理方式。
+- [Palantir Ontology 系统：从数据表到企业决策对象](https://doc.gpt88.cc/docs/blog/palantir-ontology-system/): 深入理解 Palantir Ontology 的对象、属性、链接、动作、函数和安全模型，并用 AI Agent 的视角解释为什么企业 AI 需要决策语义层。
+- [Palantir Rubix 基础层：企业 Agent 的安全、高可用与混合部署](https://doc.gpt88.cc/docs/blog/palantir-rubix-substrate/): 解析 Palantir Rubix 基础层的零信任、工作负载隔离、节点周期、自动扩展、蓝绿升级和混合部署思想，帮助 AI FDE 补齐 Agent 生产工程能力。
 - [Pi Agent 扩展选型指南：联网、记忆、子 Agent、MCP 与上下文优化](https://doc.gpt88.cc/docs/blog/pi-agent-essential-extensions-guide/): 整理 Pi Agent 常用扩展推荐，解释 pi-web-access、pi-memory、rpiv-todo、pi-subagents、pi-mcp-adapter 和 context-mode 的作用、适用场景、安装策略与安全边界。
 - [Pi Coding Harness 实践：用 AGENTS.md、Skills 与 Packages 重建可控的编程 Agent](https://doc.gpt88.cc/docs/blog/pi-coding-harness-efficiency-guide/): 整理 Chasen 关于从 Claude Code 转向 Pi Coding Agent 的实践，解释 Coding Harness 的三层结构、按需加载 Skills、子 Agent 并行、上下文管理、验证闭环与权限安全。
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
