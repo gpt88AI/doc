@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
+ *   gpt-6 → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *   → gemini-3.8-flash → claude-fable-5-1
@@ -117,6 +117,7 @@ export type ModelEntry = {
  * ────────────────────────────────────────────────────────────────── */
 
 export const FEATURED_SLUGS = [
+  'gpt-6',
   'grok-4-6',
   'gpt-5-6-sol',
   'gpt-5-6-terra',
@@ -155,6 +156,33 @@ type FeaturedDetail = {
 }
 
 const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
+  'gpt-6': {
+    provider: 'OpenAI',
+    tagline: 'GPT88 新增主推模型入口，具体能力、权限与可用性以控制台实时配置为准。',
+    capabilities: ['GPT-6', '复杂推理', '多模态', 'Agent 工作流'],
+    scenarios: ['复杂代码任务', '研究分析', '多轮 Agent', '高价值生产任务'],
+    overview: [
+      'GPT-6 已加入 GPT88 主推模型展示位，作为新一代 GPT 路线的重点候选入口。',
+      '当前公开模型目录尚未返回 gpt-6 的完整实时配置，因此本文档不固化价格、上下文、限速、工具和视觉能力；实际开放范围以 GPT88 控制台和当前 API Key 的模型列表为准。',
+      '接入前应先调用 GET /v1/models，确认当前账号确实开放 gpt-6，再使用固定评测样本验证质量、延迟、成本和工具调用表现。',
+    ],
+    whenToUse: [
+      '希望优先测试新一代 GPT 路线能力时',
+      '需要复杂推理、长链路 Agent、代码和研究分析能力时',
+      '准备对现有主力模型做灰度对比，而不是直接全量切换时',
+      '高价值任务可以接受先验证模型权限和稳定性时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容客户端使用 GPT88 的 API Base URL，并将请求体 model 设置为 gpt-6；具体 Base URL 以当前 GPT88 接入文档为准。',
+      '首次接入先调用 GET /v1/models，确认 API Key 已开放 gpt-6，再发送最小非流式请求。',
+      '建议先使用少量可回滚任务灰度运行，再逐步开启 streaming、tools、JSON 输出和多轮上下文。',
+    ],
+    caveats: [
+      '当前实时公共模型目录未返回 gpt-6；模型是否可调用、实际模型 ID、价格、限速和能力以 GPT88 控制台为准。',
+      '不要因为模型已经出现在文档站主推区，就假设所有 API Key 都已开通。',
+      '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由。',
+    ],
+  },
   'grok-4-6': {
     provider: 'xAI',
     tagline: '面向编码 Agent、Bug 定位与长程工具工作流的 GPT88 主推模型。',
@@ -1783,6 +1811,14 @@ type CatalogRow = {
 
 const LOCAL_CATALOG_ROWS: CatalogRow[] = [
   {
+    canonical_name: 'gpt-6',
+    display_name: 'gpt-6',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-6'],
+    descriptions_sample: ['GPT88 新增主推模型入口，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     canonical_name: 'grok-4.6',
     display_name: 'grok-4.6',
     category: 'chat',
@@ -1965,6 +2001,32 @@ type LocalizedModelDetail = Pick<
 >
 
 const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
+  'gpt-6': {
+    tagline: 'New GPT88 featured GPT route for complex reasoning, multimodal work, and agent workflows.',
+    capabilities: ['GPT-6', 'Complex reasoning', 'Multimodal', 'Agent workflows'],
+    scenarios: ['Complex coding', 'Research and analysis', 'Multi-step agents', 'High-value production tasks'],
+    overview: [
+      'GPT-6 has been added to the GPT88 featured model lineup as a next-generation GPT route candidate.',
+      'The current public model catalog does not yet expose a complete live configuration for gpt-6, so availability, pricing, context, limits, tools, and vision support remain console-authoritative.',
+      'Confirm access with GET /v1/models and evaluate it on a fixed workload before routing production traffic.',
+    ],
+    whenToUse: [
+      'Test next-generation GPT capabilities on high-value tasks',
+      'Handle complex reasoning, long-running agents, coding, and research workflows',
+      'Run a staged comparison against an existing production model',
+      'Use when the workload allows access and stability validation first',
+    ],
+    integrationNotes: [
+      'Use the GPT88 OpenAI-compatible base URL and set model to gpt-6 after confirming the exact model ID in the console.',
+      'Call GET /v1/models before sending production traffic, then start with a minimal non-streaming request.',
+      'Enable streaming, tools, structured output, and long context progressively after baseline validation.',
+    ],
+    caveats: [
+      'The public live catalog does not currently return gpt-6; actual access, pricing, limits, and capabilities are determined by the GPT88 console.',
+      'Do not assume every API key has access simply because the model appears in the featured documentation.',
+      'Keep a validated fallback route until the model passes your own quality, latency, cost, and reliability checks.',
+    ],
+  },
   'grok-4-6': {
     tagline: 'GPT88 featured Grok route for coding agents, bug investigation, and long-running tool workflows.',
     capabilities: ['Coding agents', 'Bug investigation', 'Long-running execution', 'Interactive and visual tasks'],
