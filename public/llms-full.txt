@@ -59,6 +59,7 @@
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
 - [ComfyUI Nano Banana Pro 替代方案：本地、API 与托管路线怎么选](https://doc.gpt88.cc/docs/blog/comfyui-nano-banana-pro-alternative/): 在 ComfyUI 里替换 Nano Banana Pro，不是找一个万能模型，而是判断本地控制、Qwen 编辑实验、托管 API 和继续使用 Pro 哪条路线更适合，并用同题测试做决策。
+- [Commerce Agents 工程架构拆解：从 Prompt Demo 到可控的应用代理](https://doc.gpt88.cc/docs/blog/commerce-agents-engineering-architecture/): 以 commerce-agents 参考项目为例，拆解应用代理的共享核心、Backend 契约、Tool Calling Loop、Skill 分层、数据 Fencing、Provenance、结构化 UI、人工审批、记忆、评测与生产化路径。
 - [图片压缩到100KB或200KB：通过上传限制的格式、尺寸和画质步骤](https://doc.gpt88.cc/docs/blog/compress-image-to-100kb-200kb/): 按上传表单要求把图片压缩到100KB或200KB，先确认格式、尺寸和比例，再选择JPG、PNG或WebP，避免低于KB仍被驳回；覆盖敏感图片隐私与本地工具选择。
 - [AI 商品图怎么保持同一产品不变：一套可执行的一致性质检法](https://doc.gpt88.cc/docs/blog/consistent-ai-product-photos/): 先锁定真实 SKU，再让场景变化。用参考包、锁定矩阵、六帧压力测试和逐图质检，减少 AI 商品图里的变形、错色、乱码与错款。
 - [AI 多图如何保持同一角色：四镜头一致性验收法](https://doc.gpt88.cc/docs/blog/consistent-character-generator/): AI 多图生图时如何保持同一个角色？先锁定脸型、发型、体型、服装与画风，再用中性肖像、侧面或全身、动态动作、受控场景四个镜头验收一致性，附可直接复制的验收记录表和失败后只做一次最小重试、及时换路线的规则。
