@@ -175,6 +175,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'AI Builders 每日摘要',
+    path: '/docs/guides/ai-builders-digest',
+    description: '每天整理 AI 研究者、创始人、产品经理和工程师正在研究、发布与讨论的内容，并保留原始来源链接。',
+    section: 'AI Builders',
+  },
+  {
     title: 'gpt88 AI 中转站',
     path: '/docs/guides/gpt88-ai-proxy',
     description: 'gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。',

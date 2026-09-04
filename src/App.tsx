@@ -61,6 +61,7 @@ import {
   CodexWindowsPowershell7TimeoutPage,
   CompleteIntegrationGuidePage,
   ConfigExportPage,
+  FollowBuildersDigestPage,
   CursorIntegrationPage,
   DifyIntegrationPage,
   EcommerceToolsSpecialPage,
@@ -162,6 +163,7 @@ export default function App() {
         <Route path="sdk/nodejs" element={<NodejsSdkPage />} />
 
         <Route path="guides/config-export" element={route(<ConfigExportPage />)} />
+        <Route path="guides/ai-builders-digest" element={route(<FollowBuildersDigestPage />)} />
         <Route path="guides/gpt88-ai-proxy" element={route(<Gpt88AiProxyPage />)} />
         <Route path="guides/gpt88-docs-map" element={route(<Gpt88DocsMapPage />)} />
         <Route path="guides/gpt88-migration" element={route(<Gpt88MigrationGuidePage />)} />

@@ -177,6 +177,16 @@ export const DOCS_NAV: NavSection[] = [
     ],
   },
   {
+    title: 'AI Builders',
+    items: [
+      {
+        title: 'AI Builders 每日摘要',
+        path: '/docs/guides/ai-builders-digest/',
+        blurb: '跟踪 AI 研究者、创始人、产品经理和工程师的最新观点与实践，每天更新',
+      },
+    ],
+  },
+  {
     // 指南：偏"任务式"内容，把 API Key + 模型 + 线路打包给具体工具的实操教程。
     // 当前只有"配置文件导出"一篇，未来可以追加更多 how-to。
     // TOP_NAV 暂不增加"指南"项以免顶部导航过载，依赖侧边栏即可。
@@ -552,6 +562,7 @@ const TOP_NAV_EN_BY_HREF: Record<string, string> = {
 
 const SECTION_TITLE_EN_BY_ZH: Record<string, string> = {
   入门: 'Getting Started',
+  'AI Builders': 'AI Builders',
   'SDK 与集成': 'SDK & Integrations',
   '集成指南': 'Integration Guides',
   指南: 'Guides',
@@ -563,6 +574,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/overview/': 'Overview',
   '/docs/quickstart/': 'Quickstart',
   '/docs/auth/': 'Auth & Billing',
+  '/docs/guides/ai-builders-digest/': 'AI Builders Daily Digest',
   '/docs/changelog/': 'Changelog',
   '/docs/api/chat-completions/': 'POST /v1/chat/completions',
   '/docs/api/images/': 'Google Image Generation',
@@ -649,6 +661,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/overview/': 'What gpt88.cc is and what problems it solves',
   '/docs/quickstart/': 'Make your first model call in under 5 minutes',
   '/docs/auth/': 'API keys, usage, and quota behavior from the console',
+  '/docs/guides/ai-builders-digest/': 'Daily summaries of the latest signals from AI builders, researchers, founders, PMs, and engineers',
   '/docs/changelog/': 'Ongoing product updates, fixes, model changes, billing changes, and image workspace improvements',
   '/docs/api/chat-completions/': 'Primary chat completions endpoint',
   '/docs/api/images/': 'Google / Gemini image generation API for NanoBanana2 text-to-image and image-to-image',

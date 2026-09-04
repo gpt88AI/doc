@@ -1,4 +1,5 @@
 export { default as ConfigExportPage } from './pages/docs/guides/ConfigExportPage'
+export { default as FollowBuildersDigestPage } from './pages/docs/guides/FollowBuildersDigestPage'
 export { default as GrokVideoPage } from './pages/docs/api/GrokVideoPage'
 export { default as OpenaiSdkSeoPage } from './pages/docs/OpenaiSdkSeoPage'
 export { default as ModelPriceComparisonPage } from './pages/docs/ModelPriceComparisonPage'

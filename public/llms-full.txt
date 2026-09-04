@@ -277,6 +277,10 @@
 - [场景一致性专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-scene-consistency/): 讲清九宫格、俯视图、环绕截图和全景图如何解决场景穿帮，并提升 AI 视频的连续性与统一感。
 - [复杂动作与分镜专题](https://doc.gpt88.cc/docs/guides/video-generation-skills-complex-action-storyboard/): 讲清 12 宫格分镜法、参考视频替换法和复杂动作镜头拆解方法，适合打斗、奔跑、群像和高动作密度视频。
 
+## AI Builders
+
+- [AI Builders 每日摘要](https://doc.gpt88.cc/docs/guides/ai-builders-digest/): 每天整理 AI 研究者、创始人、产品经理和工程师正在研究、发布与讨论的内容，并保留原始来源链接。
+
 ## CHAT 模型
 
 - [claude-0pus-4-5-20251101](https://doc.gpt88.cc/models/claude-0pus-4-5-20251101/): Anthropic claude-0pus-4-5-20251101 · CHAT 模型，Model ID: claude-0pus-4-5-20251101，接口路径: /v1/chat/completions。

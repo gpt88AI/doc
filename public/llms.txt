@@ -55,6 +55,7 @@
 - [Dify 集成](https://doc.gpt88.cc/docs/integrations/platforms/dify/): 把 gpt88.cc 接入 Dify 平台、工作流和知识库应用。
 - [沉浸式翻译集成](https://doc.gpt88.cc/docs/integrations/platforms/immersive-translate/): 把 gpt88.cc 接入沉浸式翻译等浏览器扩展。
 - [配置文件导出](https://doc.gpt88.cc/docs/guides/config-export/): 把 API Key、模型和线路打包给 Claude Code、Cursor、Python SDK、CC Switch 等工具。
+- [AI Builders 每日摘要](https://doc.gpt88.cc/docs/guides/ai-builders-digest/): 每天整理 AI 研究者、创始人、产品经理和工程师正在研究、发布与讨论的内容，并保留原始来源链接。
 - [gpt88 AI 中转站](https://doc.gpt88.cc/docs/guides/gpt88-ai-proxy/): gpt88 AI 中转站是一套面向开发者的 AI API 中转与统一大模型网关，支持 OpenAI 兼容接口、Claude API 中转、Gemini 图片生成、国内直连、海外线路和人民币透明计费。
 - [gpt88 产品与文档地图](https://doc.gpt88.cc/docs/guides/gpt88-docs-map/): 把 gpt88 的主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图，方便新用户快速找到正确入口。
 - [gpt88.cc 迁移新站新手教程](https://doc.gpt88.cc/docs/guides/gpt88-migration/): 从旧站迁移到 agent.gpt88.cc，完成注册、登录、账户入口核对，并找到 API、模型广场和技术文档。
