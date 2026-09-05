@@ -1,0 +1,1 @@
+import{n as e}from"./ui-Caz9BZV8.js";import{t}from"./SeoIntentPage-DYM1aTnX.js";var n=e();function r(){return(0,n.jsx)(t,{intent:`model-price-comparison`})}export{r as default};

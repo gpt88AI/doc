@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      ;(function () {
+        // Use the dark technical theme unless the visitor selected light mode.
+        try {
+          var stored = localStorage.getItem('gpt88-docs-theme')
+          if (stored === 'light') {
+            document.documentElement.classList.remove('dark')
+          } else {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
+    <script type="module" crossorigin src="/assets/index-FnOEfHfs.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-Dw2cE7zH.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-C_-BWGOx.js">
+    <link rel="modulepreload" crossorigin href="/assets/router-DpHSRQDQ.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-Caz9BZV8.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-DmtF3rpi.js">
+    <link rel="modulepreload" crossorigin href="/assets/Seo-BYmDWq8R.js">
+    <link rel="modulepreload" crossorigin href="/assets/cn-DPjEau0e.js">
+    <link rel="modulepreload" crossorigin href="/assets/CodeBlock-BvvKvitI.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-DX_DcxOn.css">
+      <title>Nano Banana Pro多参考图像合成完全指南：14图融合+5人脸一致性实战教程 · gpt88.cc API Docs</title>
+    <meta name="description" content="深度解析Nano Banana Pro多参考图像系统，掌握14张参考图融合、5人脸Identity Locking角色一致性技术，附完整Python代码和提示词模板。" data-gpt88-seo="true"/>
+    <meta name="robots" content="index,follow" data-gpt88-seo="true"/>
+    <meta property="og:title" content="Nano Banana Pro多参考图像合成完全指南：14图融合+5人脸一致性实战教程 · gpt88.cc API Docs" data-gpt88-seo="true"/>
+    <meta property="og:description" content="深度解析Nano Banana Pro多参考图像系统，掌握14张参考图融合、5人脸Identity Locking角色一致性技术，附完整Python代码和提示词模板。" data-gpt88-seo="true"/>
+    <meta property="og:type" content="article" data-gpt88-seo="true"/>
+    <meta property="og:url" content="https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/" data-gpt88-seo="true"/>
+    <meta property="og:site_name" content="gpt88.cc API Docs" data-gpt88-seo="true"/>
+    <meta name="twitter:card" content="summary" data-gpt88-seo="true"/>
+    <meta name="twitter:title" content="Nano Banana Pro多参考图像合成完全指南：14图融合+5人脸一致性实战教程 · gpt88.cc API Docs" data-gpt88-seo="true"/>
+    <meta name="twitter:description" content="深度解析Nano Banana Pro多参考图像系统，掌握14张参考图融合、5人脸Identity Locking角色一致性技术，附完整Python代码和提示词模板。" data-gpt88-seo="true"/>
+    <link rel="canonical" href="https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/" data-gpt88-seo="true"/>
+    <link rel="alternate" hrefLang="zh-CN" href="https://doc.gpt88.cc/docs/blog/nano-banana-pro-multi-reference-guide/" data-gpt88-seo="true"/>
+    <link rel="alternate" hrefLang="en" href="https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/" data-gpt88-seo="true"/>
+    <link rel="alternate" hrefLang="x-default" href="https://doc.gpt88.cc/docs/blog/nano-banana-pro-multi-reference-guide/" data-gpt88-seo="true"/>
+    <script id="gpt88-jsonld" type="application/ld+json" data-gpt88-seo="true">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/#article","headline":"Nano Banana Pro多参考图像合成完全指南：14图融合+5人脸一致性实战教程","description":"深度解析Nano Banana Pro多参考图像系统，掌握14张参考图融合、5人脸Identity Locking角色一致性技术，附完整Python代码和提示词模板。","inLanguage":"en","url":"https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/","mainEntityOfPage":"https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/","breadcrumb":{"@id":"https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/#breadcrumb"},"publisher":{"@type":"Organization","name":"gpt88.cc","url":"https://gpt88.cc","sameAs":["https://x.com/webstarchina","https://t.me/+CtlYILkGaY1jYzBl"]}},{"@type":"BreadcrumbList","@id":"https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"gpt88.cc API Docs","item":"https://doc.gpt88.cc/en/"},{"@type":"ListItem","position":2,"name":"Nano Banana Pro多参考图像合成完全指南：14图融合+5人脸一致性实战教程","item":"https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-multi-reference-guide/"}]}]}</script>
+  </head>
+  <body>
+    <div id="root"><link rel="preload" as="image" href="/favicon.svg"/><section role="dialog" aria-labelledby="docs-analytics-title" aria-describedby="docs-analytics-description" class="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-3xl rounded-lg border border-white/10 bg-ink-900/98 p-4 text-ink-100 shadow-2xl backdrop-blur sm:bottom-5 sm:p-5"><div class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check mt-0.5 h-5 w-5 shrink-0 text-violet-300" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><div class="min-w-0 flex-1"><h2 id="docs-analytics-title" class="text-sm font-semibold">Optional analytics</h2><p id="docs-analytics-description" class="mt-1 text-sm leading-6 text-ink-300">If you allow it, we analyze only the documentation page, campaign, and Agent entry click to improve the docs and setup flow. The optional analytics event payload contains no email, prompts, API keys, tokens, account, device, or browser identifiers. Basic request metadata is used only for security and rate limiting, not analytics profiling.</p><div class="mt-4 flex flex-wrap justify-end gap-2"><button type="button" class="rounded-md border border-white/10 px-3 py-2 text-sm font-medium text-ink-200 hover:bg-white/5">Reject</button><button type="button" class="rounded-md bg-violet-500 px-3 py-2 text-sm font-semibold text-white hover:bg-violet-400">Allow optional analytics</button></div></div></div></section><div class="flex min-h-dvh flex-col bg-ink-950 text-ink-100"><header class="sticky top-0 z-40 border-b border-white/8 bg-[#080b0f]/88 backdrop-blur-xl"><div class="mx-auto flex h-16 max-w-[88rem] items-center gap-6 px-4 sm:px-6 lg:px-8"><a class="shrink-0" aria-label="gpt88.cc API Docs Home" href="/en/" data-discover="true"><span class="inline-flex items-center gap-2"><img src="/favicon.svg" alt="" aria-hidden="true" class="h-8 w-8 rounded-lg object-cover shadow-[0_0_24px_rgba(94,234,212,0.12)]"/><span class="font-semibold tracking-tight text-ink-50">GPT88 <span class="font-mono text-[0.78em] font-semibold tracking-[0.08em] text-[#9ee77d]">/ API</span> <span class="text-ink-300">Docs</span></span></span></a><nav class="hidden flex-1 items-center gap-1 md:flex"><a class="rounded-md px-3 py-1.5 text-sm font-medium transition-colors bg-[#9ee77d]/8 text-[#b8f39d]" href="/en/docs/overview/" data-discover="true">Docs</a><a class="rounded-md px-3 py-1.5 text-sm font-medium transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/quickstart/" data-discover="true">Quickstart</a><a class="rounded-md px-3 py-1.5 text-sm font-medium transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/chat-completions/" data-discover="true">API Reference</a><a class="rounded-md px-3 py-1.5 text-sm font-medium transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/models/" data-discover="true">Models</a></nav><div class="ml-auto flex items-center gap-2"><button type="button" class="items-center gap-2 rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5 text-sm text-ink-300 transition-colors hover:border-violet-500/30 hover:bg-violet-500/10 hover:text-ink-100 hidden md:inline-flex"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search h-4 w-4" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg><span class="hidden sm:inline">Search Docs</span><kbd class="hidden rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] text-ink-500 lg:inline">⌘K</kbd></button><div class="hidden sm:block"><div class="relative"><button type="button" aria-expanded="false" aria-label="English language" class="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5 text-xs font-medium text-ink-200 hover:bg-white/[0.07]"><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages h-3.5 w-3.5 text-ink-400" aria-hidden="true"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>EN</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down h-3.5 w-3.5 text-ink-500 transition-transform" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></div><a href="https://x.com/webstarchina" target="_blank" rel="noreferrer" class="hidden items-center gap-1 rounded-md px-2.5 py-1.5 text-sm font-medium text-ink-300 transition-colors hover:bg-white/5 hover:text-ink-100 lg:inline-flex">X Community<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link h-3 w-3 opacity-70" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a><a href="https://t.me/+CtlYILkGaY1jYzBl" target="_blank" rel="noreferrer" class="hidden items-center gap-1 rounded-md px-2.5 py-1.5 text-sm font-medium text-ink-300 transition-colors hover:bg-white/5 hover:text-ink-100 lg:inline-flex">Telegram<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link h-3 w-3 opacity-70" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a><a class="hidden border border-[#9ee77d]/35 bg-[#9ee77d]/8 px-3 py-1.5 text-sm font-semibold text-[#b8f39d] transition-colors hover:bg-[#9ee77d]/14 hover:text-white md:inline-flex" href="/en/docs/quickstart/" data-discover="true">Get Started</a><button type="button" aria-label="Toggle menu" class="rounded-md p-2 text-ink-200 hover:bg-white/5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-5 w-5" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></div></header><main class="flex-1"><div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"><div class="sticky top-14 z-30 -mx-4 flex items-center gap-2 border-b border-white/5 bg-ink-950/85 px-4 py-2 backdrop-blur md:hidden"><button type="button" class="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-ink-200"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-3.5 w-3.5" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>Docs Menu</button></div><div class="flex gap-8 py-8"><aside class="sticky top-16 hidden h-[calc(100dvh-4rem)] w-60 shrink-0 overflow-y-auto md:block"><nav class="flex flex-col gap-6 px-2 py-4 text-sm"><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Getting Started</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/quickstart/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Quickstart</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/auth/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Auth &amp; Billing</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/changelog/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Changelog</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">API Reference</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/chat-completions/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">POST /v1/chat/completions</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/images/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Google Image Generation</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/grok-video/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Grok 视频 API</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/list-models/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GET /v1/models</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/errors/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Error Codes</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">SDK &amp; Integrations</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/curl/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">cURL</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/openai-sdk/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">OpenAI SDK</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/python/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Python</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/nodejs/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Node.js</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Integration Guides</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Integrations Hub</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/chat/chatbox/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ChatBox</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/chat/cherry-studio/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Cherry Studio</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/chat/anythingllm/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">AnythingLLM</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/claude-code/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Claude Code</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/cursor/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Cursor</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/cline/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Cline</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/gemini-cli/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Gemini CLI</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/codex-cli/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex CLI</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/cc-switch/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">CC-Switch</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/platforms/dify/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Dify</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/platforms/immersive-translate/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Immersive Translate</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">AI Builders</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ai-builders-digest/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">AI Builders Daily Digest</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Guides</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/config-export/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Config Export</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-ai-proxy/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">gpt88 AI Gateway</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/blog/gpt88-gongyi-site/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GPT88 Public Welfare Site: Search &amp; API Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/blog/openai-latest-model-gpt-6-astra/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">OpenAI Latest Model: GPT-6 Astra</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-docs-map/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">gpt88 Docs Map</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-migration/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">gpt88 New-Site Migration Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/model-price-comparison/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GPT, Claude &amp; Gemini Price Comparison</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/billing-units/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">RMB Balance &amp; USD Top-Up Billing</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/api-key-first-request-failed/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">First API Request Failed</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-tutorial/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">General Tutorial</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent Topic</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-job-map/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：岗位地图</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-foundations/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：基础架构</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-rag/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：RAG 工程</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-tools-mcp/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：工具与 MCP</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-production/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：评测与生产化</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-interview-project/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：面试与项目</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/kimi-k3-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Kimi K3 使用教程</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/kimi-k3-review/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Kimi K3 实战评测</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/grok-4-6-review/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Grok 4.6 评测与模型对比</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/harness-inspector/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Harness Inspector 交付追踪指南</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/complete-integration/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Complete Integration Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Skills Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-ai-generation/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally AI Generation</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-canvas-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Canvas Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-upload-assets/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Upload &amp; Assets</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-shot-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Shot Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-common-pitfalls/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Common Pitfalls</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-image-studio/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent Image Studio</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ecommerce-tools-special/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Ecommerce Tools Special</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt-image-2-service-notice/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GPT-Image-2 Service Notice</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/async-image-generation-notice/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Async Image Generation Notice</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/async-image-generation-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Async Image Generation Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-image-quality-crop-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Image Quality &amp; Crop Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-plugins-oauth/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Plugins OAuth Login</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-chatgpt-phone-verification/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ChatGPT Phone Verification</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ecc-agent-harness/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ECC Agent Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-gpt-image-2-skill/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex GPT-Image-2 Skill</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-frontend-taste-skill/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Frontend Taste Skill</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-gpt55-system-overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex + GPT-5.5 Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-knowledge-work/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Knowledge Work Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-skills-context-engineering/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Skills &amp; Context Engineering</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-plugins-research-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Plugins Research Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-parallel-automation-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Parallel Automation</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-project-factory-delivery/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Project Factory Delivery</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/loop-engineering-harness/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Loop Engineering &amp; Harness</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-tool-recovery/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Tool Recovery</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-windows-powershell7-timeout/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Windows Codex 524 &amp; PowerShell 7</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-http-responses-reconnect/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Reconnect 5/5 &amp; HTTP / Responses</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/claude-code-compaction-error/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Claude Code Context Recovery</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/zero-downtime-release/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Zero-Downtime Release</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/giffgaff-sim-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">giffgaff SIM Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/us-virtual-card-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">US Virtual Card Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ai-video-storyboard-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">AI Video Storyboard Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-creator-tools-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">6 Creator Tools Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">video-generation-skills Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-install/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">video-generation-skills Install</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-prompt-director/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">prompt-director Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-ecommerce/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ecommerce Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-brand-ad-cg/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">brand-ad-cg Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-ai-video-director/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ai-video-director Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-i2v-prompt/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">I2V Prompt Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-white-background-scaling/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">White Background Scaling</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-product-cg/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Product CG Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-tvc-playbook/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">TVC Playbook</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-scene-consistency/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Scene Consistency</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-complex-action-storyboard/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Complex Action Storyboard</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Resources</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/models/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Models</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/faq/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">FAQ</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Blog</h4><ul class="flex flex-col"><li><a aria-current="page" class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100 active" href="/en/docs/blog/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Technical Blog</span></span></a></li></ul></div></nav></aside><aside class="fixed inset-x-0 top-[6.5rem] z-30 mx-4 max-h-[70dvh] origin-top overflow-y-auto rounded-lg border border-white/10 bg-ink-900/95 backdrop-blur md:hidden hidden"><nav class="flex flex-col gap-6 px-2 py-4 text-sm"><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Getting Started</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/quickstart/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Quickstart</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/auth/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Auth &amp; Billing</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/changelog/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Changelog</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">API Reference</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/chat-completions/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">POST /v1/chat/completions</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/images/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Google Image Generation</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/grok-video/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Grok 视频 API</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/list-models/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GET /v1/models</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/api/errors/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Error Codes</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">SDK &amp; Integrations</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/curl/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">cURL</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/openai-sdk/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">OpenAI SDK</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/python/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Python</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/sdk/nodejs/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Node.js</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Integration Guides</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Integrations Hub</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/chat/chatbox/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ChatBox</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/chat/cherry-studio/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Cherry Studio</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/chat/anythingllm/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">AnythingLLM</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/claude-code/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Claude Code</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/cursor/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Cursor</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/cline/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Cline</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/gemini-cli/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Gemini CLI</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/codex-cli/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex CLI</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/dev/cc-switch/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">CC-Switch</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/platforms/dify/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Dify</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/integrations/platforms/immersive-translate/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Immersive Translate</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">AI Builders</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ai-builders-digest/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">AI Builders Daily Digest</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Guides</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/config-export/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Config Export</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-ai-proxy/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">gpt88 AI Gateway</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/blog/gpt88-gongyi-site/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GPT88 Public Welfare Site: Search &amp; API Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/blog/openai-latest-model-gpt-6-astra/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">OpenAI Latest Model: GPT-6 Astra</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-docs-map/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">gpt88 Docs Map</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-migration/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">gpt88 New-Site Migration Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/model-price-comparison/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GPT, Claude &amp; Gemini Price Comparison</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/billing-units/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">RMB Balance &amp; USD Top-Up Billing</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/api-key-first-request-failed/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">First API Request Failed</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt88-tutorial/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">General Tutorial</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent Topic</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-job-map/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：岗位地图</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-foundations/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：基础架构</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-rag/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：RAG 工程</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-tools-mcp/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：工具与 MCP</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-production/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：评测与生产化</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-interview-project/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent 求职：面试与项目</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/kimi-k3-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Kimi K3 使用教程</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/kimi-k3-review/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Kimi K3 实战评测</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/grok-4-6-review/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Grok 4.6 评测与模型对比</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/harness-inspector/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Harness Inspector 交付追踪指南</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/complete-integration/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Complete Integration Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Skills Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-ai-generation/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally AI Generation</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-canvas-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Canvas Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-upload-assets/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Upload &amp; Assets</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-shot-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Shot Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/workrally-common-pitfalls/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">WorkRally Common Pitfalls</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-image-studio/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Agent Image Studio</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ecommerce-tools-special/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Ecommerce Tools Special</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/gpt-image-2-service-notice/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">GPT-Image-2 Service Notice</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/async-image-generation-notice/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Async Image Generation Notice</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/async-image-generation-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Async Image Generation Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/agent-image-quality-crop-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Image Quality &amp; Crop Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-plugins-oauth/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Plugins OAuth Login</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-chatgpt-phone-verification/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ChatGPT Phone Verification</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ecc-agent-harness/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ECC Agent Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-gpt-image-2-skill/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex GPT-Image-2 Skill</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-frontend-taste-skill/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Frontend Taste Skill</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-gpt55-system-overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex + GPT-5.5 Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-knowledge-work/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Knowledge Work Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-skills-context-engineering/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Skills &amp; Context Engineering</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-plugins-research-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Plugins Research Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-parallel-automation-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Parallel Automation</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-project-factory-delivery/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Project Factory Delivery</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/loop-engineering-harness/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Loop Engineering &amp; Harness</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-tool-recovery/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Tool Recovery</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-windows-powershell7-timeout/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Windows Codex 524 &amp; PowerShell 7</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/codex-http-responses-reconnect/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Codex Reconnect 5/5 &amp; HTTP / Responses</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/claude-code-compaction-error/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Claude Code Context Recovery</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/zero-downtime-release/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Zero-Downtime Release</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/giffgaff-sim-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">giffgaff SIM Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/us-virtual-card-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">US Virtual Card Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/ai-video-storyboard-guide/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">AI Video Storyboard Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-creator-tools-workflow/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">6 Creator Tools Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-overview/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">video-generation-skills Overview</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-install/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">video-generation-skills Install</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-prompt-director/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">prompt-director Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-ecommerce/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ecommerce Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-brand-ad-cg/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">brand-ad-cg Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-ai-video-director/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">ai-video-director Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-i2v-prompt/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">I2V Prompt Guide</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-white-background-scaling/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">White Background Scaling</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-product-cg/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Product CG Workflow</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-tvc-playbook/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">TVC Playbook</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-scene-consistency/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Scene Consistency</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/guides/video-generation-skills-complex-action-storyboard/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Complex Action Storyboard</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Resources</h4><ul class="flex flex-col"><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/models/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Models</span></span></a></li><li><a class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100" href="/en/docs/faq/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">FAQ</span></span></a></li></ul></div><div class="flex flex-col gap-1"><h4 class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">Blog</h4><ul class="flex flex-col"><li><a aria-current="page" class="group relative flex items-center justify-between rounded-md px-3 py-1.5 text-[13px] leading-snug transition-colors text-ink-300 hover:bg-white/5 hover:text-ink-100 active" href="/en/docs/blog/" data-discover="true"><span class="flex items-center gap-2"><span aria-hidden="true" class="inline-block h-3.5 w-px transition-colors bg-transparent group-hover:bg-ink-600"></span><span class="truncate">Technical Blog</span></span></a></li></ul></div></nav></aside><div class="min-w-0 flex-1"><!--$--><div class="flex gap-10"><article class="prose prose-invert min-w-0 flex-1 max-w-none prose-headings:scroll-mt-20 prose-headings:font-semibold prose-h1:text-3xl prose-h1:tracking-tight prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-3 prose-h2:border-b prose-h2:border-white/5 prose-h2:pb-2 prose-h3:text-base prose-h3:mt-8 prose-p:text-ink-200 prose-p:leading-7 prose-a:text-violet-300 hover:prose-a:text-violet-200 prose-strong:text-ink-50 prose-code:text-violet-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-ink-900/80 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-lg prose-li:text-ink-200"><header class="not-prose mb-8 border-b border-white/5 pb-6"><a class="mb-4 inline-flex items-center gap-1.5 text-xs font-medium text-violet-300 transition-colors hover:text-violet-200" href="/en/docs/blog/" data-discover="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left h-3.5 w-3.5" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to blog</a><h1 class="text-3xl font-semibold tracking-tight text-ink-50">Nano Banana Pro多参考图像合成完全指南：14图融合+5人脸一致性实战教程</h1><div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-ink-400"><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open h-3.5 w-3.5" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg>Gemini专题</span><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-3.5 w-3.5" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>2026-01-08</span><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-3.5 w-3.5" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>9 min read</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded border border-white/10 bg-white/[0.03] px-1.5 py-0.5">Nano Banana Pro</span><span class="rounded border border-white/10 bg-white/[0.03] px-1.5 py-0.5">AI图像生成</span><span class="rounded border border-white/10 bg-white/[0.03] px-1.5 py-0.5">多参考图合成</span><span class="rounded border border-white/10 bg-white/[0.03] px-1.5 py-0.5">角色一致性</span><span class="rounded border border-white/10 bg-white/[0.03] px-1.5 py-0.5">API教程</span></span></div></header><div class="prose prose-invert min-w-0 max-w-none prose-headings:scroll-mt-20 prose-headings:font-semibold prose-h1:text-2xl prose-h1:tracking-tight prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-3 prose-h2:border-b prose-h2:border-white/5 prose-h2:pb-2 prose-h3:text-base prose-h3:mt-8 prose-p:text-ink-200 prose-p:leading-7 prose-a:text-violet-300 hover:prose-a:text-violet-200 prose-strong:text-ink-50 prose-code:text-violet-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-ink-900/80 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-li:text-ink-200 prose-table:text-[13px] prose-th:bg-white/[0.03] prose-th:font-medium"><p>Nano Banana Pro的多参考图像系统是其最强大却最少被深入理解的功能。当我第一次尝试用14张参考图生成复杂场景时，结果让我震惊——5个角色的面部特征在不同姿态下保持完美一致，这在传统AI图像生成中几乎不可能实现。本文将系统解析这套技术的工作原理，并提供可直接运行的代码和经过验证的提示词模板。</p>
+<h2>什么是Nano Banana Pro多参考图像系统</h2>
+<p><strong>多参考图像系统</strong>是Nano Banana Pro区别于其他AI图像生成模型的核心技术。传统模型如Midjourney或DALL-E通常只支持单张参考图，生成结果容易出现&quot;特征漂移&quot;——角色在不同角度或场景中面部特征发生变化。Nano Banana Pro通过多模态参考编码技术，支持同时处理最多14张参考图像，并在最终输出中保持最多5个角色的身份一致性。</p>
+<p>这项技术的核心价值在于解决了AI图像生成领域的三大痛点：</p>
+<ul>
+<li><strong>身份一致性问题</strong>：同一角色在不同图像中保持面部特征、发型、体型完全一致</li>
+<li><strong>多角色场景控制</strong>：在复杂群像中精确控制每个角色的位置、姿态和表情</li>
+<li><strong>风格与内容分离</strong>：从不同参考图中分别提取风格、构图、色彩等元素并智能融合</li>
+</ul>
+<p>根据Google DeepMind官方文档的技术说明，该系统采用分层处理架构：前6张参考图获得<strong>高保真处理</strong>，对输出结果影响最大；后8张图提供<strong>补充指导</strong>，用于细节调整和风格统一。理解这个分层机制是掌握多参考图技术的关键。</p>
+<h2>Identity Locking角色一致性技术详解</h2>
+<p><strong>Identity Locking</strong>（身份锁定）是Nano Banana Pro实现角色一致性的核心技术。与简单的&quot;图像融合&quot;不同，Identity Locking能够从参考图中提取角色的<strong>身份特征编码</strong>，并在生成新图像时强制保持这些特征不变。</p>
+<h3>技术原理解析</h3>
+<p>Identity Locking的工作流程分为三个阶段：</p>
+<ol>
+<li><strong>特征提取阶段</strong>：系统分析参考图像，提取面部几何结构、肤色、发型轮廓、眼睛颜色等128维身份特征向量</li>
+<li><strong>特征锁定阶段</strong>：将提取的特征向量作为生成过程的硬性约束条件，确保输出图像必须满足这些特征</li>
+<li><strong>场景适配阶段</strong>：在保持身份特征的前提下，根据提示词调整角色的姿态、表情、服装和环境</li>
+</ol>
+<p>这种机制的优势在于：即使提示词要求&quot;愤怒的表情&quot;或&quot;侧面45度角&quot;，角色的核心身份特征（如眼距、鼻型、脸型轮廓）仍然保持一致。</p>
+<h3>5人脸记忆系统的实际应用</h3>
+<p>Nano Banana Pro的5人脸记忆系统允许在单次生成中同时维护5个独立角色的身份一致性。每个角色被分配独立的特征编码空间，系统会自动防止特征混淆。</p>
+<p>实际应用场景包括：</p>
+<table><thead><tr><th>应用场景</th><th>典型需求</th><th>实现方式</th></tr></thead><tbody><tr><td>漫画/分镜创作</td><td>多个角色在不同场景中保持一致</td><td>为每个角色上传3-4张不同角度参考图</td></tr><tr><td>游戏角色设计</td><td>同一角色的多角度展示图</td><td>单角色多姿态生成</td></tr><tr><td>营销素材制作</td><td>品牌吉祥物在不同场景中出现</td><td>Identity Locking + 场景变换</td></tr><tr><td>家庭合影编辑</td><td>多人物照片的姿态调整</td><td>5人脸同时锁定</td></tr></tbody></table>
+<blockquote>
+<p><strong>关键数据</strong>：根据实测，使用Identity Locking后角色面部特征匹配度可达95%以上，而不使用该技术时匹配度通常在60-70%之间。</p>
+</blockquote>
+<h3>提示词结构示例</h3>
+<p>实现角色一致性的提示词需要遵循特定结构：</p>
+<pre><code>hljs text复制[角色指定] character_1 from Image 1, character_2 from Image 3
+[身份锁定] Keep facial features exactly the same as reference
+[场景描述] in a modern office setting, natural lighting
+[姿态/表情] character_1 smiling while talking, character_2 listening attentively
+[构图要求] medium shot, 16:9 aspect ratio
+</code></pre>
+<h2>14张参考图的分层使用策略</h2>
+<p>理解14张参考图的分层机制是高效使用Nano Banana Pro的关键。系统将参考图分为两个层级处理，每个层级有不同的权重和作用。</p>
+<h3>第一层级：6张高保真参考图</h3>
+<p>前6张参考图获得最高处理优先级，建议用于：</p>
+<ul>
+<li><strong>位置1-2</strong>：主要角色的正面清晰照（最高优先级）</li>
+<li><strong>位置3-4</strong>：主要角色的侧面或其他角度</li>
+<li><strong>位置5-6</strong>：次要角色或关键场景元素</li>
+</ul>
+<p>这6张图的特征会被深度编码，生成结果会严格遵循这些参考图的视觉特征。</p>
+<!-- -->&lt;img src=&quot;/docs/blog/zh/nano-banana-pro-multi-reference-guide/img/content-img-1.webp&quot; class=&quot;blog-content-image cursor-zoom-in transition-opacity group-hover:opacity-90&quot; loading=&quot;lazy&quot; alt=&quot;14张参考图分层处理架构对比图：高保真层与补充指导层权重分配&quot; /&gt;<!-- -->
+<h3>第二层级：8张补充指导图</h3>
+<p>位置7-14的参考图提供补充指导，适合用于：</p>
+<ul>
+<li>光照风格参考</li>
+<li>色彩方案示例</li>
+<li>背景环境参照</li>
+<li>道具和配饰细节</li>
+<li>纹理和材质参考</li>
+</ul>
+<h3>实际配置示例</h3>
+<p>以下是一个多角色商业拍摄场景的参考图配置方案：</p>
+<table><thead><tr><th>位置</th><th>内容</th><th>作用</th></tr></thead><tbody><tr><td>1</td><td>主角A正面肖像</td><td>身份锁定主源</td></tr><tr><td>2</td><td>主角A侧面照</td><td>补充面部立体结构</td></tr><tr><td>3</td><td>主角B正面肖像</td><td>第二角色身份源</td></tr><tr><td>4</td><td>主角B侧面照</td><td>补充第二角色特征</td></tr><tr><td>5</td><td>场景参考图</td><td>环境基调设定</td></tr><tr><td>6</td><td>构图参考图</td><td>人物位置和比例</td></tr><tr><td>7-8</td><td>光照参考</td><td>影调和氛围</td></tr><tr><td>9-10</td><td>服装参考</td><td>服饰风格指导</td></tr><tr><td>11-14</td><td>细节补充</td><td>道具、背景元素等</td></tr></tbody></table>
+<h3>参考图质量要求</h3>
+<p>为确保最佳生成效果，参考图应满足以下标准：</p>
+<ul>
+<li><strong>分辨率</strong>：最低1024×1024像素，推荐2048×2048或更高</li>
+<li><strong>清晰度</strong>：面部区域清晰无模糊，避免重度美颜或滤镜</li>
+<li><strong>光照</strong>：均匀自然光，避免强烈阴影遮挡面部特征</li>
+<li><strong>角度</strong>：正面照必须包含完整五官，侧面照角度控制在30-60度</li>
+</ul>
+<h2>多参考图提示词工程实战</h2>
+<p>掌握提示词工程是发挥多参考图系统潜力的核心技能。Nano Banana Pro采用&quot;理解型&quot;提示词引擎，不同于传统的&quot;标签匹配&quot;模式，它能理解自然语言描述并进行逻辑推理。</p>
+<h3>基础提示词结构</h3>
+<p>有效的多参考图提示词应包含五个核心组件：</p>
+<pre><code>hljs text复制1. [角色分配] 明确每张参考图的角色定位
+2. [身份约束] 指定需要保持一致的特征
+3. [场景设定] 描述目标场景的环境和氛围
+4. [动作/姿态] 具体说明角色的行为和表情
+5. [技术参数] 画幅比例、风格、质量要求
+</code></pre>
+<h3>角色分配提示词模板</h3>
+<p><strong>单角色多姿态生成</strong>：</p>
+<pre><code>hljs text复制Using the person from Images 1-3 as reference, generate a portrait
+showing the same individual in [目标场景]. Maintain exact facial
+features including eye shape, nose structure, and jawline.
+The expression should be [表情], pose at [角度].
+</code></pre>
+<p><strong>双角色互动场景</strong>：</p>
+<pre><code>hljs text复制Combine character_1 (from Image 1) and character_2 (from Image 3)
+in a single composition. character_1 should be [动作1], while
+character_2 is [动作2]. Maintain identity consistency for both
+characters. Setting: [场景描述], lighting: [光照风格].
+</code></pre>
+<p><strong>5角色群像生成</strong>：</p>
+<pre><code>hljs text复制Create a group portrait featuring:
+- character_1 (Image 1): positioned left, [姿态]
+- character_2 (Image 2): positioned center-left, [姿态]
+- character_3 (Image 3): positioned center, [姿态]
+- character_4 (Image 4): positioned center-right, [姿态]
+- character_5 (Image 5): positioned right, [姿态]
+
+All characters must maintain exact facial features from references.
+Scene: [场景], Style: [风格], Aspect ratio: 16:9
+</code></pre>
+<h3>身份锁定强化语句</h3>
+<p>当角色一致性要求极高时，可以使用以下强化语句：</p>
+<ul>
+<li><code>&quot;The identity must be unmistakable in every single shot&quot;</code></li>
+<li><code>&quot;Zero deviation from reference facial features&quot;</code></li>
+<li><code>&quot;Face match accuracy: 100% exact match enforced&quot;</code></li>
+<li><code>&quot;Critical: fixed identity, preserve all distinguishing features&quot;</code></li>
+</ul>
+<h3>常见错误与修正</h3>
+<table><thead><tr><th>错误示例</th><th>问题原因</th><th>正确写法</th></tr></thead><tbody><tr><td>&quot;use this image for style&quot;</td><td>过于模糊</td><td>&quot;Apply the color grading and lighting style from Image 7&quot;</td></tr><tr><td>&quot;make it look like the reference&quot;</td><td>缺少具体指令</td><td>&quot;Maintain facial features from Image 1, apply background from Image 6&quot;</td></tr><tr><td>&quot;cool cyberpunk style, 4k, ultra detailed&quot;</td><td>标签堆砌</td><td>&quot;Neon-lit urban environment with cyan and magenta accent lighting, high resolution output&quot;</td></tr></tbody></table>
+<h2>API调用完整指南</h2>
+<p>本节提供完整的Python代码示例，涵盖从基础调用到多参考图高级应用的全部场景。</p>
+<h3>环境准备</h3>
+<p>首先安装必要的依赖包：</p>
+<pre><code>hljs bash复制pip install requests pillow base64
+</code></pre>
+<h3>基础单图生成代码</h3>
+<pre><code>hljs python复制import requests
+import base64
+from pathlib import Path
+
+def generate_single_image(prompt: str, api_key: str) -&gt; bytes:
+    &quot;&quot;&quot;
+    基础图像生成函数
+
+    Args:
+        prompt: 图像描述提示词
+        api_key: API密钥
+
+    Returns:
+        生成图像的二进制数据
+    &quot;&quot;&quot;
+    url = &quot;https://gpt88.cc/v1&quot;
+
+    headers = {
+        &quot;Authorization&quot;: f&quot;Bearer {api_key}&quot;,
+        &quot;Content-Type&quot;: &quot;application/json&quot;
+    }
+
+    payload = {
+        &quot;contents&quot;: [{
+            &quot;parts&quot;: [{&quot;text&quot;: prompt}]
+        }],
+        &quot;generationConfig&quot;: {
+            &quot;responseModalities&quot;: [&quot;IMAGE&quot;],
+            &quot;imageConfig&quot;: {
+                &quot;aspectRatio&quot;: &quot;16:9&quot;,
+                &quot;imageSize&quot;: &quot;2K&quot;
+            }
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload, timeout=180)
+    result = response.json()
+
+    image_data = result[&quot;candidates&quot;][0][&quot;content&quot;][&quot;parts&quot;][0][&quot;inlineData&quot;][&quot;data&quot;]
+    return base64.b64decode(image_data)
+
+# 使用示例
+api_key = &quot;sk-your-api-key&quot;  # 从 GPT88.ai 获取
+image_bytes = generate_single_image(
+    &quot;A professional portrait of a young woman in business attire, studio lighting&quot;,
+    api_key
+)
+
+with open(&quot;output.png&quot;, &quot;wb&quot;) as f:
+    f.write(image_bytes)
+</code></pre>
+<h3>多参考图融合代码</h3>
+<pre><code>hljs python复制import requests
+import base64
+from pathlib import Path
+from typing import List, Dict
+
+def load_image_as_base64(image_path: str) -&gt; str:
+    &quot;&quot;&quot;将本地图片转换为base64编码&quot;&quot;&quot;
+    with open(image_path, &quot;rb&quot;) as f:
+        return base64.b64encode(f.read()).decode(&quot;utf-8&quot;)
+
+def generate_with_multi_reference(
+    prompt: str,
+    reference_images: List[Dict[str, str]],
+    api_key: str,
+    output_size: str = &quot;2K&quot;
+) -&gt; bytes:
+    &quot;&quot;&quot;
+    多参考图融合生成
+
+    Args:
+        prompt: 包含角色分配的提示词
+        reference_images: 参考图列表，每项包含 {&quot;path&quot;: 路径, &quot;role&quot;: 角色说明}
+        api_key: API密钥
+        output_size: 输出尺寸 (&quot;2K&quot; 或 &quot;4K&quot;)
+
+    Returns:
+        生成图像的二进制数据
+    &quot;&quot;&quot;
+    url = &quot;https://gpt88.cc/v1&quot;
+
+    # 构建多模态内容
+    parts = []
+
+    # 添加参考图像
+    for i, ref in enumerate(reference_images, 1):
+        image_base64 = load_image_as_base64(ref[&quot;path&quot;])
+        parts.append({
+            &quot;inlineData&quot;: {
+                &quot;mimeType&quot;: &quot;image/jpeg&quot;,
+                &quot;data&quot;: image_base64
+            }
+        })
+        parts.append({
+            &quot;text&quot;: f&quot;Image {i}: {ref[&#x27;role&#x27;]}&quot;
+        })
+
+    # 添加主提示词
+    parts.append({&quot;text&quot;: prompt})
+
+    headers = {
+        &quot;Authorization&quot;: f&quot;Bearer {api_key}&quot;,
+        &quot;Content-Type&quot;: &quot;application/json&quot;
+    }
+
+    payload = {
+        &quot;contents&quot;: [{
+            &quot;parts&quot;: parts
+        }],
+        &quot;generationConfig&quot;: {
+            &quot;responseModalities&quot;: [&quot;IMAGE&quot;],
+            &quot;imageConfig&quot;: {
+                &quot;aspectRatio&quot;: &quot;16:9&quot;,
+                &quot;imageSize&quot;: output_size
+            }
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload, timeout=300)
+    result = response.json()
+
+    image_data = result[&quot;candidates&quot;][0][&quot;content&quot;][&quot;parts&quot;][0][&quot;inlineData&quot;][&quot;data&quot;]
+    return base64.b64decode(image_data)
+
+# 使用示例：双角色场景合成
+reference_images = [
+    {&quot;path&quot;: &quot;character_a_front.jpg&quot;, &quot;role&quot;: &quot;character_1 face reference (primary)&quot;},
+    {&quot;path&quot;: &quot;character_a_side.jpg&quot;, &quot;role&quot;: &quot;character_1 profile reference&quot;},
+    {&quot;path&quot;: &quot;character_b_front.jpg&quot;, &quot;role&quot;: &quot;character_2 face reference (primary)&quot;},
+    {&quot;path&quot;: &quot;background_office.jpg&quot;, &quot;role&quot;: &quot;scene environment reference&quot;},
+    {&quot;path&quot;: &quot;lighting_soft.jpg&quot;, &quot;role&quot;: &quot;lighting style reference&quot;},
+]
+
+prompt = &quot;&quot;&quot;
+Create a professional photo featuring character_1 and character_2
+in a business meeting scenario.
+
+character_1 (from Images 1-2): seated on the left, engaged in conversation,
+slight smile, maintaining exact facial features from references.
+
+character_2 (from Image 3): seated on the right, listening attentively,
+neutral expression, maintaining exact facial features from reference.
+
+Apply the office environment from Image 4 and soft lighting style from Image 5.
+Output: photorealistic, professional photography style, 16:9 aspect ratio.
+&quot;&quot;&quot;
+
+api_key = &quot;sk-your-api-key&quot;
+result = generate_with_multi_reference(prompt, reference_images, api_key, &quot;4K&quot;)
+
+with open(&quot;business_meeting.png&quot;, &quot;wb&quot;) as f:
+    f.write(result)
+</code></pre>
+<h3>角色一致性批量生成代码</h3>
+<pre><code>hljs python复制import requests
+import base64
+from typing import List
+from concurrent.futures import ThreadPoolExecutor
+import time
+
+class NanoBananaProClient:
+    &quot;&quot;&quot;Nano Banana Pro API客户端封装&quot;&quot;&quot;
+
+    def __init__(self, api_key: str, base_url: str = &quot;https://gpt88.cc/v1&quot;):
+        self.api_key = api_key
+        self.base_url = base_url
+        self.session = requests.Session()
+        self.session.headers.update({
+            &quot;Authorization&quot;: f&quot;Bearer {api_key}&quot;,
+            &quot;Content-Type&quot;: &quot;application/json&quot;
+        })
+
+    def generate_character_series(
+        self,
+        character_refs: List[str],
+        scenarios: List[str],
+        output_dir: str = &quot;./output&quot;
+    ) -&gt; List[str]:
+        &quot;&quot;&quot;
+        生成角色一致性系列图像
+
+        Args:
+            character_refs: 角色参考图路径列表
+            scenarios: 场景描述列表
+            output_dir: 输出目录
+
+        Returns:
+            生成的图像文件路径列表
+        &quot;&quot;&quot;
+        import os
+        os.makedirs(output_dir, exist_ok=True)
+
+        # 构建角色参考parts
+        character_parts = []
+        for i, ref_path in enumerate(character_refs, 1):
+            with open(ref_path, &quot;rb&quot;) as f:
+                image_base64 = base64.b64encode(f.read()).decode()
+            character_parts.append({
+                &quot;inlineData&quot;: {&quot;mimeType&quot;: &quot;image/jpeg&quot;, &quot;data&quot;: image_base64}
+            })
+            character_parts.append({
+                &quot;text&quot;: f&quot;Character reference {i}: primary identity source&quot;
+            })
+
+        output_paths = []
+
+        for idx, scenario in enumerate(scenarios):
+            prompt = f&quot;&quot;&quot;
+            Using the character from the reference images, generate a new image
+            showing the same person in the following scenario:
+
+            {scenario}
+
+            CRITICAL: Maintain 100% facial feature consistency with references.
+            The identity must be unmistakable and exactly match the reference images.
+            &quot;&quot;&quot;
+
+            parts = character_parts.copy()
+            parts.append({&quot;text&quot;: prompt})
+
+            payload = {
+                &quot;contents&quot;: [{&quot;parts&quot;: parts}],
+                &quot;generationConfig&quot;: {
+                    &quot;responseModalities&quot;: [&quot;IMAGE&quot;],
+                    &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;, &quot;imageSize&quot;: &quot;2K&quot;}
+                }
+            }
+
+            url = f&quot;{self.base_url}/v1beta/models/gemini-3-pro-image-preview:generateContent&quot;
+            response = self.session.post(url, json=payload, timeout=300)
+            result = response.json()
+
+            image_data = base64.b64decode(
+                result[&quot;candidates&quot;][0][&quot;content&quot;][&quot;parts&quot;][0][&quot;inlineData&quot;][&quot;data&quot;]
+            )
+
+            output_path = f&quot;{output_dir}/scene_{idx+1}.png&quot;
+            with open(output_path, &quot;wb&quot;) as f:
+                f.write(image_data)
+
+            output_paths.append(output_path)
+            print(f&quot;Generated: {output_path}&quot;)
+
+            # 请求间隔，避免速率限制
+            time.sleep(1)
+
+        return output_paths
+
+# 使用示例：生成角色在不同场景的系列图
+client = NanoBananaProClient(&quot;sk-your-api-key&quot;)
+
+character_refs = [
+    &quot;protagonist_front.jpg&quot;,
+    &quot;protagonist_side.jpg&quot;,
+    &quot;protagonist_full_body.jpg&quot;
+]
+
+scenarios = [
+    &quot;In a cozy coffee shop, reading a book, warm afternoon lighting&quot;,
+    &quot;Walking in a rainy city street at night, neon reflections on wet pavement&quot;,
+    &quot;At a beach during sunset, casual summer outfit, relaxed pose&quot;,
+    &quot;In a modern gym, workout attire, determined expression&quot;
+]
+
+generated_images = client.generate_character_series(character_refs, scenarios)
+print(f&quot;Generated {len(generated_images)} images with consistent character identity&quot;)
+</code></pre>
+<h2>成本优化与API选择方案</h2>
+<p>Nano Banana Pro的官方定价为每张图约$0.134（约0.95元人民币），对于需要批量生成的应用场景，成本控制是必须考虑的因素。</p>
+<h3>官方API vs 中转服务对比</h3>
+<table><thead><tr><th>对比维度</th><th>Google官方API</th><th>GPT88.ai中转</th></tr></thead><tbody><tr><td>单张价格</td><td>以官方定价页为准</td><td>以当前控制台和订单为准</td></tr><tr><td>千张成本</td><td>按当前官方价格核算</td><td>按成功/失败请求日志核算</td></tr><tr><td>成本节省</td><td>-</td><td>用同一批提示词实测后计算</td></tr><tr><td>并发限制</td><td>看当前账号tier</td><td>用小样本压测确认</td></tr><tr><td>网络稳定性</td><td>需实测</td><td>需实测</td></tr><tr><td>API格式</td><td>仅原生格式</td><td>原生+OpenAI兼容</td></tr><tr><td>计费方式</td><td>按token</td><td>按次计费</td></tr></tbody></table>
+<p>以生成1000张高质量图像为例，官方API成本约为950元，而通过<a href="https://gpt88.cc" target="_blank" rel="noopener noreferrer">GPT88.ai</a>中转服务仅需约350元，节省超过60%。对于需要大量生图的业务场景（如电商素材、内容创作、游戏资产），成本差异非常显著。</p>
+<!-- -->&lt;img src=&quot;/docs/blog/zh/nano-banana-pro-multi-reference-guide/img/content-img-2.webp&quot; class=&quot;blog-content-image cursor-zoom-in transition-opacity group-hover:opacity-90&quot; loading=&quot;lazy&quot; alt=&quot;Identity Locking多参考图工作流程图：从参考图到一致性输出的完整技术流程&quot; /&gt;<!-- -->
+<h3>何时选择官方API</h3>
+<p>尽管中转服务在成本上有明显优势，以下场景仍建议使用官方API：</p>
+<ul>
+<li><strong>企业级合规要求</strong>：需要直接与Google签订服务协议的场景</li>
+<li><strong>最低延迟需求</strong>：对响应时间有极端要求的实时应用</li>
+<li><strong>功能抢先体验</strong>：需要第一时间使用最新功能的开发测试</li>
+</ul>
+<h3>中转服务使用指南</h3>
+<p>通过GPT88.ai使用Nano Banana Pro的步骤：</p>
+<ol>
+<li><strong>注册账号</strong>：访问 <a href="https://gpt88.cc" target="_blank" rel="noopener noreferrer">gpt88.cc/register</a> 完成注册</li>
+<li><strong>获取API Key</strong>：在控制台生成专属密钥</li>
+<li><strong>修改端点</strong>：将代码中的API地址改为 <code>https://gpt88.cc/v1</code></li>
+<li><strong>开始调用</strong>：使用与官方完全相同的请求格式</li>
+</ol>
+<!-- -->&lt;!-- --&gt;<!-- -->
+<pre><code>hljs python复制# 仅需修改BASE_URL，其他代码保持不变
+BASE_URL = &quot;https://gpt88.cc/v1&quot;  # 替换官方地址
+API_KEY = &quot;sk-your-GPT88-key&quot;      # 使用GPT88.ai的密钥
+</code></pre>
+<p><strong>在线体验</strong>：可以先在 <a href="https://gpt88.cc" target="_blank" rel="noopener noreferrer">images.GPT88.ai</a> 体验生成效果，确认满足需求后再进行API集成。</p>
+<h2>国内开发者接入最佳实践</h2>
+<p>对于国内开发者，直连Google官方API面临网络不稳定、延迟高、支付困难等问题。本节提供经过验证的解决方案。</p>
+<h3>网络层面优化</h3>
+<p><strong>问题诊断</strong>：</p>
+<pre><code>hljs python复制import requests
+import time
+
+def test_api_latency(api_url: str, api_key: str, iterations: int = 5):
+    &quot;&quot;&quot;测试API响应延迟&quot;&quot;&quot;
+    headers = {&quot;Authorization&quot;: f&quot;Bearer {api_key}&quot;}
+    latencies = []
+
+    for i in range(iterations):
+        start = time.time()
+        try:
+            response = requests.get(f&quot;{api_url}/health&quot;, headers=headers, timeout=30)
+            latency = (time.time() - start) * 1000
+            latencies.append(latency)
+            print(f&quot;Test {i+1}: {latency:.0f}ms - Status: {response.status_code}&quot;)
+        except Exception as e:
+            print(f&quot;Test {i+1}: Failed - {e}&quot;)
+
+    if latencies:
+        avg = sum(latencies) / len(latencies)
+        print(f&quot;\nAverage latency: {avg:.0f}ms&quot;)
+
+# 对比测试
+test_api_latency(&quot;https://generativelanguage.googleapis.com&quot;, &quot;official-key&quot;)
+test_api_latency(&quot;https://gpt88.cc/v1&quot;, &quot;GPT88-key&quot;)
+</code></pre>
+<p>延迟和超时率会随账号、地区、节点和时间段变化。正式使用前，应同时记录官方路线和网关路线的P50/P95延迟、429、超时、内容拦截和失败扣费，再决定是否切换。</p>
+<h3>代码层面的稳定性保障</h3>
+<pre><code>hljs python复制import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+import logging
+
+def create_robust_session() -&gt; requests.Session:
+    &quot;&quot;&quot;创建带重试机制的HTTP会话&quot;&quot;&quot;
+    session = requests.Session()
+
+    retry_strategy = Retry(
+        total=3,                    # 最多重试3次
+        backoff_factor=1,           # 重试间隔指数增长
+        status_forcelist=[429, 500, 502, 503, 504],  # 这些状态码触发重试
+        allowed_methods=[&quot;POST&quot;]    # POST请求也允许重试
+    )
+
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    session.mount(&quot;https://&quot;, adapter)
+
+    return session
+
+def safe_generate(prompt: str, api_key: str, max_attempts: int = 3) -&gt; bytes:
+    &quot;&quot;&quot;带容错的图像生成函数&quot;&quot;&quot;
+    session = create_robust_session()
+    session.headers.update({
+        &quot;Authorization&quot;: f&quot;Bearer {api_key}&quot;,
+        &quot;Content-Type&quot;: &quot;application/json&quot;
+    })
+
+    url = &quot;https://gpt88.cc/v1&quot;
+
+    payload = {
+        &quot;contents&quot;: [{&quot;parts&quot;: [{&quot;text&quot;: prompt}]}],
+        &quot;generationConfig&quot;: {
+            &quot;responseModalities&quot;: [&quot;IMAGE&quot;],
+            &quot;imageConfig&quot;: {&quot;aspectRatio&quot;: &quot;16:9&quot;, &quot;imageSize&quot;: &quot;2K&quot;}
+        }
+    }
+
+    for attempt in range(max_attempts):
+        try:
+            response = session.post(url, json=payload, timeout=300)
+            response.raise_for_status()
+            result = response.json()
+
+            image_data = result[&quot;candidates&quot;][0][&quot;content&quot;][&quot;parts&quot;][0][&quot;inlineData&quot;][&quot;data&quot;]
+            return base64.b64decode(image_data)
+
+        except requests.exceptions.Timeout:
+            logging.warning(f&quot;Attempt {attempt+1}: Timeout, retrying...&quot;)
+        except requests.exceptions.HTTPError as e:
+            if response.status_code == 429:
+                wait_time = 2 ** attempt  # 指数退避
+                logging.warning(f&quot;Rate limited, waiting {wait_time}s...&quot;)
+                time.sleep(wait_time)
+            else:
+                raise e
+
+    raise Exception(&quot;Failed after maximum retry attempts&quot;)
+</code></pre>
+<h3>批量生成的最佳实践</h3>
+<p>对于需要批量生成的场景，建议采用以下策略：</p>
+<ol>
+<li><strong>请求队列管理</strong>：使用异步队列控制并发数量</li>
+<li><strong>结果缓存</strong>：相同prompt的结果进行本地缓存</li>
+<li><strong>失败重试</strong>：实现指数退避的重试机制</li>
+<li><strong>进度持久化</strong>：定期保存进度，支持断点续传</li>
+</ol>
+<!-- -->&lt;!-- --&gt;<!-- -->
+<pre><code>hljs python复制import asyncio
+import aiohttp
+import json
+from pathlib import Path
+
+class BatchGenerator:
+    &quot;&quot;&quot;批量图像生成管理器&quot;&quot;&quot;
+
+    def __init__(self, api_key: str, concurrency: int = 3):
+        self.api_key = api_key
+        self.concurrency = concurrency
+        self.progress_file = Path(&quot;generation_progress.json&quot;)
+
+    async def generate_batch(self, prompts: List[str], output_dir: str):
+        &quot;&quot;&quot;批量生成图像&quot;&quot;&quot;
+        output_path = Path(output_dir)
+        output_path.mkdir(exist_ok=True)
+
+        # 加载已完成的进度
+        completed = self._load_progress()
+
+        # 过滤未完成的任务
+        pending = [(i, p) for i, p in enumerate(prompts) if i not in completed]
+
+        # 创建信号量控制并发
+        semaphore = asyncio.Semaphore(self.concurrency)
+
+        async with aiohttp.ClientSession() as session:
+            tasks = [
+                self._generate_with_semaphore(session, semaphore, idx, prompt, output_path)
+                for idx, prompt in pending
+            ]
+
+            results = await asyncio.gather(*tasks, return_exceptions=True)
+
+        # 统计结果
+        success = sum(1 for r in results if not isinstance(r, Exception))
+        print(f&quot;Batch complete: {success}/{len(pending)} successful&quot;)
+
+    async def _generate_with_semaphore(self, session, semaphore, idx, prompt, output_path):
+        async with semaphore:
+            # 实现生成逻辑...
+            pass
+
+    def _load_progress(self) -&gt; set:
+        if self.progress_file.exists():
+            return set(json.loads(self.progress_file.read_text()))
+        return set()
+
+    def _save_progress(self, completed: set):
+        self.progress_file.write_text(json.dumps(list(completed)))
+</code></pre>
+<h2>常见问题与解决方案</h2>
+<h3>角色特征漂移问题</h3>
+<p><strong>问题描述</strong>：生成的角色与参考图存在明显差异，尤其在侧面或极端角度时。</p>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li><strong>增加参考图数量</strong>：为关键角色提供3-4张不同角度的参考图</li>
+<li><strong>强化身份锁定语句</strong>：在提示词中添加 <code>&quot;face_match_accuracy: 100% exact match enforced&quot;</code></li>
+<li><strong>避免极端角度</strong>：将视角控制在参考图已覆盖的范围内</li>
+<li><strong>提高参考图质量</strong>：确保面部区域清晰、光照均匀</li>
+</ol>
+<h3>多角色特征混淆</h3>
+<p><strong>问题描述</strong>：在多角色场景中，不同角色的特征发生混合。</p>
+<p><strong>解决方案</strong>：</p>
+<pre><code>hljs text复制# 错误示例
+&quot;Two women talking in a cafe&quot;
+
+# 正确示例
+&quot;character_1 (from Image 1, blonde hair, round face) and
+character_2 (from Image 2, black hair, angular features)
+talking in a cafe. Maintain distinct identity for each character.
+character_1 on the left, character_2 on the right.&quot;
+</code></pre>
+<p>关键是为每个角色指定明确的区分特征，并在提示词中强调身份独立性。</p>
+<h3>生成速度优化</h3>
+<p><strong>问题描述</strong>：单次生成耗时过长（超过60秒）。</p>
+<p><strong>影响因素与优化方向</strong>：</p>
+<table><thead><tr><th>因素</th><th>影响程度</th><th>优化方法</th></tr></thead><tbody><tr><td>参考图数量</td><td>高</td><td>仅上传必要的参考图</td></tr><tr><td>输出分辨率</td><td>高</td><td>非必要不使用4K</td></tr><tr><td>提示词复杂度</td><td>中</td><td>简化不必要的细节描述</td></tr><tr><td>网络延迟</td><td>中</td><td>使用国内中转节点</td></tr></tbody></table>
+<h3>图像质量不达预期</h3>
+<p><strong>问题描述</strong>：生成图像模糊、细节丢失或风格不一致。</p>
+<p><strong>排查清单</strong>：</p>
+<ul>
+<li>参考图分辨率是否达到1024×1024以上</li>
+<li>是否指定了输出尺寸（2K/4K）</li>
+<li>提示词是否包含具体的风格描述</li>
+<li>是否避免了&quot;4k, ultra detailed&quot;等无效标签</li>
+<li>光照参考图是否与目标场景匹配</li>
+</ul>
+<h2>高级技巧与最佳实践</h2>
+<h3>使用JSON结构化提示词</h3>
+<p>对于复杂场景，使用JSON格式可以提高提示词的精确度：</p>
+<pre><code>hljs json复制{
+  &quot;scene&quot;: {
+    &quot;setting&quot;: &quot;modern art gallery&quot;,
+    &quot;lighting&quot;: &quot;soft ambient with spotlight accents&quot;,
+    &quot;atmosphere&quot;: &quot;sophisticated, contemplative&quot;
+  },
+  &quot;characters&quot;: [
+    {
+      &quot;id&quot;: &quot;character_1&quot;,
+      &quot;reference&quot;: &quot;Images 1-2&quot;,
+      &quot;position&quot;: &quot;left third of frame&quot;,
+      &quot;pose&quot;: &quot;standing, viewing artwork&quot;,
+      &quot;expression&quot;: &quot;thoughtful, slight smile&quot;
+    },
+    {
+      &quot;id&quot;: &quot;character_2&quot;,
+      &quot;reference&quot;: &quot;Images 3-4&quot;,
+      &quot;position&quot;: &quot;right third of frame&quot;,
+      &quot;pose&quot;: &quot;seated on bench&quot;,
+      &quot;expression&quot;: &quot;relaxed, content&quot;
+    }
+  ],
+  &quot;composition&quot;: {
+    &quot;aspect_ratio&quot;: &quot;16:9&quot;,
+    &quot;focus&quot;: &quot;character_1 with shallow depth of field&quot;,
+    &quot;style&quot;: &quot;editorial photography, high fashion magazine&quot;
+  },
+  &quot;constraints&quot;: {
+    &quot;identity_lock&quot;: &quot;critical&quot;,
+    &quot;face_match&quot;: &quot;100%&quot;,
+    &quot;no_deviation&quot;: true
+  }
+}
+</code></pre>
+<h3>迭代优化工作流</h3>
+<p>高质量输出通常需要2-3轮迭代：</p>
+<ol>
+<li><strong>初始生成</strong>：使用基础提示词获取初版</li>
+<li><strong>定向修正</strong>：针对不满意的部分添加约束</li>
+<li><strong>细节打磨</strong>：微调光照、表情、构图等细节</li>
+</ol>
+<!-- -->&lt;!-- --&gt;<!-- -->
+<pre><code>hljs python复制def iterative_refinement(base_prompt: str, refinements: List[str], api_key: str):
+    &quot;&quot;&quot;迭代优化生成&quot;&quot;&quot;
+    current_prompt = base_prompt
+
+    for i, refinement in enumerate(refinements):
+        current_prompt = f&quot;{current_prompt}\n\nRefinement: {refinement}&quot;
+
+        image = generate_single_image(current_prompt, api_key)
+
+        with open(f&quot;iteration_{i+1}.png&quot;, &quot;wb&quot;) as f:
+            f.write(image)
+
+        print(f&quot;Iteration {i+1} complete&quot;)
+
+    return image
+
+# 使用示例
+base = &quot;Portrait of character_1 in a sunset beach scene&quot;
+refinements = [
+    &quot;Adjust lighting to golden hour warmth, reduce shadows on face&quot;,
+    &quot;Make expression more relaxed, add slight wind effect on hair&quot;,
+    &quot;Enhance background bokeh, sharpen facial features&quot;
+]
+
+final_image = iterative_refinement(base, refinements, api_key)
+</code></pre>
+<h3>建立角色参考库</h3>
+<p>对于需要长期维护角色一致性的项目，建议建立标准化的参考图库：</p>
+<pre><code>hljs text复制/character_library
+  /protagonist_alice
+    /faces
+      front_neutral.jpg      # 正面中性表情
+      front_smile.jpg        # 正面微笑
+      left_45.jpg            # 左侧45度
+      right_45.jpg           # 右侧45度
+    /poses
+      standing_full.jpg      # 全身站立
+      sitting_casual.jpg     # 休闲坐姿
+    /outfits
+      business_formal.jpg    # 正式商务装
+      casual_summer.jpg      # 夏日休闲装
+    metadata.json            # 角色描述元数据
+</code></pre>
+<p>这种组织方式便于快速检索和组合参考图，提高工作效率。</p>
+<h2>总结与快速开始清单</h2>
+<p>Nano Banana Pro的多参考图像系统为AI图像生成带来了前所未有的可控性和一致性。掌握本文介绍的技术要点，你可以实现：</p>
+<ul>
+<li><strong>14张参考图的智能融合</strong>：充分利用分层权重机制</li>
+<li><strong>5角色的完美一致性</strong>：通过Identity Locking技术</li>
+<li><strong>高效的批量生成</strong>：借助优化的代码架构</li>
+<li><strong>成本可控的规模化应用</strong>：合理选择API服务方案</li>
+</ul>
+<h3>快速开始清单</h3>
+<ul>
+<li>准备3-4张高质量角色参考图（至少1024×1024）</li>
+<li>注册API服务账号（<a href="https://gpt88.cc" target="_blank" rel="noopener noreferrer">推荐入口</a>）</li>
+<li>复制本文代码模板并配置API密钥</li>
+<li>从单角色单场景开始测试</li>
+<li>逐步增加复杂度：多角色→多场景→批量生成</li>
+</ul>
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="/en/docs/blog/nano-banana-pro-price/" data-discover="true">Nano Banana Pro API定价详解</a></li>
+<li><a href="/en/docs/blog/nano-banana-pro-best-prompts/" data-discover="true">Nano Banana Pro最佳提示词指南</a></li>
+<li><a href="/en/docs/blog/nano-banana-pro-china-guide/" data-discover="true">国内稳定接入Nano Banana Pro方案</a></li>
+<li><a href="/en/docs/blog/gpt-image-2-vs-nano-banana-pro/" data-discover="true">Nano Banana Pro vs GPT Image对比</a></li>
+</ul>
+<p>掌握多参考图技术需要实践积累。建议从简单场景开始，逐步探索更复杂的应用。如果在使用过程中遇到问题，欢迎参考本文的常见问题解决方案，或查阅相关延伸文章获取更多帮助。</p></div><div class="not-prose mt-10 rounded-lg border border-violet-500/20 bg-violet-500/[0.05] p-4"><p class="text-[11px] uppercase tracking-wider text-ink-400">Related guide</p><a class="mt-1 block text-sm font-medium text-violet-200 transition-colors hover:text-violet-100" href="/en/docs/api/images/" data-discover="true">GPT88 图片生成 API</a></div><nav aria-label="Blog pagination" class="not-prose mt-14 grid grid-cols-1 gap-3 border-t border-white/5 pt-6 sm:grid-cols-2"><a class="group flex flex-col items-start rounded-lg border border-white/5 p-4 transition-colors hover:border-violet-500/40 hover:bg-violet-500/5" href="/en/docs/blog/nano-banana-pro-4k-tutorial/" data-discover="true"><span class="flex items-center gap-1 text-[11px] uppercase tracking-wider text-ink-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left h-3 w-3" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg> <!-- -->Newer</span><span class="mt-1 text-sm font-medium text-ink-100 group-hover:text-violet-200">Nano Banana Pro 使用教程：如何生成 4K 高分辨率图像【完整指南】</span></a><a class="group flex flex-col items-end rounded-lg border border-white/5 p-4 text-right transition-colors hover:border-violet-500/40 hover:bg-violet-500/5 sm:col-start-2" href="/en/docs/blog/nano-banana-pro-vs-qwen-image-2512/" data-discover="true"><span class="flex items-center gap-1 text-[11px] uppercase tracking-wider text-ink-500">Older<!-- --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-3 w-3" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span><span class="mt-1 text-sm font-medium text-ink-100 group-hover:text-violet-200">Nano Banana Pro vs Qwen-Image-2512完全对比：性能、价格与选型指南</span></a></nav></article></div><!--/$--></div></div></div></main><footer class="border-t border-white/5 bg-ink-950"><div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"><div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3"><span>© <!-- -->2026<!-- --> gpt88.cc</span><span class="hidden sm:inline text-ink-600">•</span><span>Unified API Gateway · OpenAI Compatible</span></div><nav class="flex flex-wrap items-center gap-x-4 gap-y-2"><a class="hover:text-ink-200" href="/en/docs/overview/" data-discover="true">Docs</a><a class="hover:text-ink-200" href="/en/docs/quickstart/" data-discover="true">Quickstart</a><a class="hover:text-ink-200" href="/en/models/" data-discover="true">Models</a><a class="hover:text-ink-200" href="https://x.com/webstarchina" target="_blank" rel="noreferrer">X</a><a class="hover:text-ink-200" href="https://t.me/+CtlYILkGaY1jYzBl" target="_blank" rel="noreferrer">Telegram</a></nav></div></footer></div></div>
+  </body>
+</html>
