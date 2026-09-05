@@ -21,6 +21,25 @@ const GPT88_GONGYI_FAQ = [
   },
 ]
 
+const OPENAI_LATEST_MODEL_FAQ = [
+  {
+    question: 'GPT-6 Astra 的模型 ID 是什么？',
+    answer: 'OpenAI 官方最新模型指南使用 gpt-6-astra。通过 GPT88 调用前，应先使用当前 API Key 调用 GET /v1/models，确认该模型实际对账号可见。',
+  },
+  {
+    question: 'GPT-6 Astra 应该使用 Chat Completions 还是 Responses？',
+    answer: '普通兼容性验证可以先使用 Chat Completions；新项目、工具调用和 Agent 工作流优先使用 Responses。GPT88 当前线路是否开放 Responses，需要通过最小请求实际验证。',
+  },
+  {
+    question: '为什么 GPT-6 Astra 迁移时要删除 temperature？',
+    answer: 'OpenAI 官方迁移说明将 temperature、top_p 和 top_logprobs 列为需要移除的参数。迁移时应先删除这些旧字段，再用 reasoning effort、提示词和任务拆分控制执行行为。',
+  },
+  {
+    question: 'GPT-6 Astra 支持工具调用吗？',
+    answer: '官方指南支持工具调用，并将 GPT-6 Astra 的工具调用重点放在 Responses API。应用仍需自行执行函数、校验权限、处理超时，并回传与原始 call_id 对应的工具结果。',
+  },
+]
+
 export default function BlogPostPage() {
   const { slug = '' } = useParams<{ slug: string }>()
   const { locale } = useLocale()
@@ -45,7 +64,13 @@ export default function BlogPostPage() {
   const next = index >= 0 && index < BLOG_POSTS.length - 1 ? BLOG_POSTS[index + 1] : null
 
   const description = meta.description
-  const faqEntries = slug === 'gpt88-gongyi-site' && locale === 'zh' ? GPT88_GONGYI_FAQ : []
+  const faqEntries = locale === 'zh'
+    ? slug === 'gpt88-gongyi-site'
+      ? GPT88_GONGYI_FAQ
+      : slug === 'openai-latest-model-gpt-6-astra'
+        ? OPENAI_LATEST_MODEL_FAQ
+        : []
+    : []
 
   return (
     <>

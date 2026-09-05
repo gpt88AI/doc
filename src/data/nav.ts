@@ -208,6 +208,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '围绕 GPT88公益站关键词整理官方入口、API 接入、模型导航、计费和安全使用方法',
       },
       {
+        title: 'OpenAI 最新模型 GPT-6 Astra',
+        path: '/docs/blog/openai-latest-model-gpt-6-astra/',
+        blurb: '整理 GPT-6 Astra 的 Responses API、工具调用、提示词策略、迁移参数和 GPT88 排障流程',
+      },
+      {
         title: 'gpt88 产品与文档地图',
         path: '/docs/guides/gpt88-docs-map/',
         blurb: '把主站、图片工作台、文档站、图片加速域名和主要教程分类整理成一张完整地图',
@@ -599,6 +604,7 @@ const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/config-export/': 'Config Export',
   '/docs/guides/gpt88-ai-proxy/': 'gpt88 AI Gateway',
   '/docs/blog/gpt88-gongyi-site/': 'GPT88 Public Welfare Site: Search & API Guide',
+  '/docs/blog/openai-latest-model-gpt-6-astra/': 'OpenAI Latest Model: GPT-6 Astra',
   '/docs/guides/gpt88-docs-map/': 'gpt88 Docs Map',
   '/docs/guides/gpt88-migration/': 'gpt88 New-Site Migration Guide',
   '/docs/guides/model-price-comparison/': 'GPT, Claude & Gemini Price Comparison',
@@ -684,6 +690,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/config-export/': 'Package API keys, models, and routes for Claude Code, Cursor, Python SDK, and similar tools',
   '/docs/guides/gpt88-ai-proxy/': 'Search- and AI-engine-friendly introduction to the gpt88 AI gateway, integration flow, base URLs, and common questions',
   '/docs/blog/gpt88-gongyi-site/': 'Search-intent guide for GPT88公益站, official entry points, API integration, model lookup, billing, and safe usage',
+  '/docs/blog/openai-latest-model-gpt-6-astra/': 'GPT-6 Astra capabilities, Responses API migration, tool calling, prompting, unsupported parameters, and GPT88 verification',
   '/docs/guides/gpt88-docs-map/': 'A complete map of the main site, image workspace, docs site, accelerated image domains, and tutorial categories',
   '/docs/guides/gpt88-migration/': 'Beginner guide for moving from the legacy site to agent.gpt88.cc, including registration, login, and entry-point checks',
   '/docs/guides/model-price-comparison/': 'Compare GPT, Claude, and Gemini costs with one input, output, and usage measurement',

@@ -151,6 +151,7 @@
 - [Nano Banana Pro vs Qwen-Image-2512完全对比：性能、价格与选型指南](https://doc.gpt88.cc/docs/blog/nano-banana-pro-vs-qwen-image-2512/): 深度实测Nano Banana Pro和Qwen-Image-2512两大AI图像生成模型，从4K分辨率到中文渲染，从官方定价到成本优化，助你做出最佳技术选型决策。
 - [Nano Banana Pro去水印完整指南：5种方法获取无水印AI图片【2026实测】](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark-removal/): 详细介绍Nano Banana Pro去水印的5种有效方法，包括官方订阅、第三方API、专业工具对比。深入解析可见水印与SynthID的区别，帮你选择最适合的无水印获取方案。
 - [Nano Banana 免费无可见水印：AI Studio、Gemini 免费版与 API 怎么选](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark/): 想免费获得没有可见 Gemini 标记的 Nano Banana 图片？先分清 Google AI Studio 免费试用、Gemini 免费版的可见标记、图像 API 付费边界，以及始终保留的 SynthID。
+- [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 官方最新模型指南，整理 GPT-6 Astra 的核心能力、新增工具调用方式、提示词策略、迁移参数、Responses API 接入与 GPT88 使用排障。
 - [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
 - [Palantir AIP 架构总览：企业 Agent 的完整能力地图](https://doc.gpt88.cc/docs/blog/palantir-aip-architecture/): 按 Palantir AIP 架构的能力层次，系统拆解模型接入、上下文工程、Ontology、工具、Agent 生命周期、自动化、评估、观测和企业级 AI 交付。
 - [AIP、Foundry 与 Apollo：Palantir 企业操作系统的三层协作](https://doc.gpt88.cc/docs/blog/palantir-aip-foundry-apollo/): 详细拆解 Palantir AIP、Foundry、Apollo 三个平台的职责边界、协作关系、安全模型和 AI Agent 落地方法，帮助 AI FDE 建立企业级架构视角。

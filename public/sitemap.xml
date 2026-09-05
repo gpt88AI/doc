@@ -1849,6 +1849,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -2667,6 +2673,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/nano-banana-pro-watermark/</loc>
     <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/openai-latest-model-gpt-6-astra/</loc>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

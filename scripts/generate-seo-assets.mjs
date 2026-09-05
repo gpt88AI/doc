@@ -1110,6 +1110,10 @@ ${blogPages.slice(0, 12).map(markdownLink).join('\n')}
 
 - [GPT88公益站是什么？官方文档、API 接入与安全使用指南](${siteUrl}/docs/blog/gpt88-gongyi-site/): 面向搜索 GPT88公益站、GPT88公益站官网和 GPT88 API 的官方入口、Base URL、模型调用、计费与安全使用说明。
 
+## OpenAI 最新模型入口
+
+- [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](${siteUrl}/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 最新模型指南整理 GPT-6 Astra 的 Responses API、工具调用、提示词策略、迁移参数和 GPT88 验证排障。
+
 ## 文档入口
 
 ${docs.map(markdownLink).join('\n')}
