@@ -1212,6 +1212,29 @@ async function readBlogPosts() {
   return { posts, enMeta }
 }
 
+async function readFollowBuildersDigestPages() {
+  const digestDir = path.join(root, 'src/data/follow-builders/digests')
+  const files = await fs.readdir(digestDir).catch(() => [])
+  const pages = []
+
+  for (const file of files) {
+    const match = file.match(/^([0-9]{4}-[0-9]{2}-[0-9]{2})\.md$/)
+    if (!match) continue
+    const source = await fs.readFile(path.join(digestDir, file), 'utf8')
+    const meta = readFrontmatter(source)
+    pages.push({
+      title: meta.title || `AI Builders 每日摘要 · ${match[1]}`,
+      path: `/docs/guides/ai-builders-digest/${match[1]}`,
+      description: meta.description || 'AI builders 每日摘要，保留 X、博客与播客的原始来源链接。',
+      date: meta.date || match[1],
+      lastmod: meta.date || match[1],
+      priority: '0.7',
+    })
+  }
+
+  return pages.sort((a, b) => b.date.localeCompare(a.date))
+}
+
 function readFrontmatter(source) {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/)
   const values = {}
@@ -1238,12 +1261,13 @@ function readFrontmatter(source) {
 
 async function main() {
   await fs.mkdir(publicDir, { recursive: true })
-  const [modelPages, indexableEnglishModelSlugs, { posts: blogPosts, enMeta }] = await Promise.all([
+  const [modelPages, indexableEnglishModelSlugs, { posts: blogPosts, enMeta }, digestPages] = await Promise.all([
     readModels(),
     fs
       .readFile(path.join(root, 'src/data/indexableEnglishModels.json'), 'utf8')
       .then(value => JSON.parse(value)),
     readBlogPosts(),
+    readFollowBuildersDigestPages(),
   ])
   const modelPagesBySlug = new Map(
     modelPages.map(page => [page.path.split('/').filter(Boolean).at(-1), page]),
@@ -1291,6 +1315,7 @@ async function main() {
   }
   const pages = [
     ...staticPages,
+    ...digestPages,
     blogHubPage,
     ...blogPages,
     englishBlogHubPage,
@@ -1304,6 +1329,7 @@ async function main() {
     ...modelPages.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
     ...blogPages.map(page => normalizeRoute(page.path)),
     ...englishBlogPages.map(page => normalizeRoute(page.path)),
+    ...digestPages.map(page => normalizeRoute(`/en${page.path}`)),
   ])]
 
   await Promise.all([

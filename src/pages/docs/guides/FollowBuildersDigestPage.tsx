@@ -1,8 +1,9 @@
-import { Calendar, FileText } from 'lucide-react'
+import { ArrowLeft, Calendar, FileText } from 'lucide-react'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { BlogMarkdown } from '../../../components/blog/BlogMarkdown'
 import { parseFrontmatter, type BlogFrontmatter } from '../../../lib/frontmatter'
-import { useLocale } from '../../../lib/locale'
+import { localizedContentPath, useLocale } from '../../../lib/locale'
 
 type Digest = BlogFrontmatter & {
   slug: string
@@ -26,12 +27,38 @@ const DIGESTS: Digest[] = Object.entries(modules)
   .sort((a, b) => b.date.localeCompare(a.date))
 
 export default function FollowBuildersDigestPage() {
+  const { date } = useParams<{ date?: string }>()
   const { locale } = useLocale()
   const isEn = locale === 'en'
   const title = isEn ? 'AI Builders Daily Digest' : 'AI Builders 每日摘要'
   const description = isEn
     ? 'A daily, source-linked digest of what leading AI builders are researching, shipping, and debating.'
     : '每天整理 AI 研究者、创始人、产品经理和工程师正在研究、发布与讨论的内容，并保留原始来源链接。'
+
+  if (date) {
+    const digest = DIGESTS.find(item => item.slug === date)
+    if (!digest) return <Navigate to={localizedContentPath('/docs/guides/ai-builders-digest/', locale)} replace />
+
+    const digestPath = `/docs/guides/ai-builders-digest/${digest.slug}/`
+    return (
+      <DocPage
+        path={digestPath}
+        title={digest.title}
+        description={digest.description || description}
+      >
+        <div className="not-prose mb-6">
+          <Link
+            to={localizedContentPath('/docs/guides/ai-builders-digest/', locale)}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-300 transition-colors hover:text-violet-200"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            {isEn ? 'Back to digest archive' : '返回摘要归档'}
+          </Link>
+        </div>
+        <BlogMarkdown markdown={digest.body} />
+      </DocPage>
+    )
+  }
 
   return (
     <DocPage
@@ -64,18 +91,26 @@ export default function FollowBuildersDigestPage() {
 
       <h2 id="digest-archive">{isEn ? 'Digest archive' : '每日摘要'}</h2>
       {DIGESTS.length ? (
-        <div className="space-y-12">
+        <div className="not-prose space-y-3">
           {DIGESTS.map(digest => (
-            <section key={digest.slug} id={`digest-${digest.slug}`} className="scroll-mt-24">
-              <div className="not-prose mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-white/5 pb-3">
-                <h3 className="text-xl font-semibold text-ink-100">{digest.title}</h3>
-                <span className="inline-flex items-center gap-1.5 text-xs text-ink-400">
-                  <Calendar className="h-3.5 w-3.5" />
-                  {digest.date}
+            <Link
+              key={digest.slug}
+              to={localizedContentPath(`/docs/guides/ai-builders-digest/${digest.slug}/`, locale)}
+              className="group flex items-center justify-between gap-4 rounded-lg border border-white/5 bg-white/[0.02] px-4 py-4 transition-colors hover:border-violet-500/40 hover:bg-violet-500/[0.05]"
+            >
+              <span className="min-w-0">
+                <span className="block truncate text-base font-medium text-ink-100 group-hover:text-violet-200">
+                  {digest.title}
                 </span>
-              </div>
-              <BlogMarkdown markdown={digest.body} />
-            </section>
+                <span className="mt-1 block text-xs text-ink-400">
+                  {digest.description || (isEn ? 'Source-linked daily digest.' : '保留原始来源链接的每日摘要。')}
+                </span>
+              </span>
+              <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-ink-400">
+                <Calendar className="h-3.5 w-3.5" />
+                {digest.date}
+              </span>
+            </Link>
           ))}
         </div>
       ) : (

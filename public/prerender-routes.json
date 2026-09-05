@@ -190,6 +190,8 @@
     "/vi/docs/quickstart/",
     "/vi/docs/auth/",
     "/vi/docs/faq/",
+    "/docs/guides/ai-builders-digest/2026-09-05/",
+    "/docs/guides/ai-builders-digest/2026-09-04/",
     "/docs/blog/",
     "/docs/blog/agentic-engineering-setup-2000-hours/",
     "/docs/blog/ai-coloring-page-generator/",
@@ -1000,6 +1002,8 @@
     "/en/models/wan2-6-t2i/",
     "/en/models/wan2-7-image/",
     "/en/models/wan2-7-image-pro/",
-    "/en/models/whisper-1/"
+    "/en/models/whisper-1/",
+    "/en/docs/guides/ai-builders-digest/2026-09-05/",
+    "/en/docs/guides/ai-builders-digest/2026-09-04/"
   ]
 }
