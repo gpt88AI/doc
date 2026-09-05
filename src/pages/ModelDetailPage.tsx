@@ -323,6 +323,8 @@ function DetailContent({ model }: { model: ModelEntry }) {
               <DetailBulletList field={t.overview} items={model.overview} />
             </Section>
 
+            {model.slug === 'gpt-6-astra' ? <Gpt6AstraEvaluation /> : null}
+
             {model.slug === 'kimi-k3' ? (
               <Callout tone="info" title={locale === 'en' ? 'Third-party practical review' : '第三方实战评测参考'}>
                 <p>
@@ -540,6 +542,80 @@ function DetailBulletList({
         </li>
       ))}
     </ul>
+  )
+}
+
+function Gpt6AstraEvaluation() {
+  const { locale } = useLocale()
+  const english = locale === 'en'
+  const rows = english
+    ? [
+        ['Reasoning', 'Complex planning, constraint following, and multi-step consistency', 'Pending workload evaluation'],
+        ['Coding', 'Repository understanding, implementation, debugging, and review quality', 'Pending workload evaluation'],
+        ['Tool use', 'Tool selection, argument correctness, result inspection, and recovery', 'Pending workload evaluation'],
+        ['Structured output', 'JSON/schema adherence, field completeness, and refusal behavior', 'Pending workload evaluation'],
+        ['Long context', 'Retrieval precision, instruction retention, and context efficiency', 'Pending workload evaluation'],
+        ['Reliability / cost', 'Latency, error rate, retries, token use, and accepted-change cost', 'Measure in your own account'],
+      ]
+    : [
+        ['复杂推理', '复杂规划、约束遵循与多步骤一致性', '待业务任务集实测'],
+        ['代码能力', '代码库理解、实现、调试与审查质量', '待业务任务集实测'],
+        ['工具调用', '工具选择、参数正确性、结果检查与失败恢复', '待业务任务集实测'],
+        ['结构化输出', 'JSON / Schema 遵循、字段完整性与拒答行为', '待业务任务集实测'],
+        ['长上下文', '检索准确率、指令保持与上下文使用效率', '待业务任务集实测'],
+        ['稳定性 / 成本', '延迟、错误率、重试、Token 用量与有效变更成本', '以你的账号实测为准'],
+      ]
+
+  return (
+    <Section icon={Target} title={english ? 'Capability Analysis & Evaluation' : '能力分析与评测'}>
+      <div className="space-y-4">
+        <p className="text-sm leading-relaxed text-ink-300">
+          {english
+            ? 'The current GPT88 public model square lists gpt-6-astra in the “PRO” GPT-Codex-PRO group. No independently verifiable official benchmark score is published on this page, so the evaluation status below is intentionally marked as pending rather than filled with inferred numbers.'
+            : '当前 GPT88 公开模型广场将 gpt-6-astra 列在「PRO」GPT-Codex-PRO 分组。本页没有可独立复核的官方 Benchmark 分数，因此评测状态明确标为“待实测”，不使用推测数字冒充成绩。'}
+        </p>
+        <div className="overflow-x-auto rounded-lg border border-white/10">
+          <table className="min-w-full divide-y divide-white/10 text-left text-sm">
+            <thead className="bg-white/[0.04] text-xs uppercase tracking-wider text-ink-400">
+              <tr>
+                <th className="px-4 py-3 font-medium">{english ? 'Dimension' : '维度'}</th>
+                <th className="px-4 py-3 font-medium">{english ? 'What to inspect' : '重点观察'}</th>
+                <th className="px-4 py-3 font-medium">{english ? 'Current status' : '当前状态'}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {rows.map(([dimension, focus, status]) => (
+                <tr key={dimension} className="bg-white/[0.015] align-top">
+                  <td className="whitespace-nowrap px-4 py-3 font-medium text-ink-100">{dimension}</td>
+                  <td className="min-w-[16rem] px-4 py-3 leading-relaxed text-ink-300">{focus}</td>
+                  <td className="whitespace-nowrap px-4 py-3 text-amber-200">{status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="rounded-lg border border-violet-500/20 bg-violet-500/[0.06] px-4 py-3 text-sm leading-relaxed text-ink-200">
+          <p className="font-medium text-violet-200">{english ? 'Recommended evaluation protocol' : '建议评测流程'}</p>
+          <ol className="mt-2 list-decimal space-y-1 pl-5">
+            {(english
+              ? [
+                  'Call GET /v1/models with the target API key and confirm that gpt-6-astra is actually available.',
+                  'Prepare 20–50 representative tasks with fixed prompts, tools, permissions, and acceptance criteria.',
+                  'Run the same set against gpt-6-astra and a validated fallback such as gpt-5.6-sol or grok-4.6.',
+                  'Record pass rate, first-pass success, tool-call errors, latency, retries, token usage, and human rework.',
+                  'Start with shadow or low-risk traffic; promote it to a default only after quality and cost are acceptable.',
+                ]
+              : [
+                  '使用目标 API Key 调用 GET /v1/models，确认当前账号确实开放 gpt-6-astra。',
+                  '准备 20–50 个真实代表任务，固定 Prompt、工具、权限和验收标准。',
+                  '让 gpt-6-astra 与已验证的备用模型（如 gpt-5.6-sol 或 grok-4.6）运行同一批任务。',
+                  '记录通过率、首次成功率、工具错误、延迟、重试、Token 用量和人工返工量。',
+                  '先以影子流量或低风险任务灰度，质量与成本达标后再考虑设为默认模型。',
+                ]).map(step => <li key={step}>{step}</li>)}
+          </ol>
+        </div>
+      </div>
+    </Section>
   )
 }
 
