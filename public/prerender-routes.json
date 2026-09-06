@@ -190,6 +190,7 @@
     "/vi/docs/quickstart/",
     "/vi/docs/auth/",
     "/vi/docs/faq/",
+    "/docs/guides/ai-builders-digest/2026-09-06/",
     "/docs/guides/ai-builders-digest/2026-09-05/",
     "/docs/guides/ai-builders-digest/2026-09-04/",
     "/docs/blog/",
@@ -1005,6 +1006,7 @@
     "/en/models/wan2-7-image/",
     "/en/models/wan2-7-image-pro/",
     "/en/models/whisper-1/",
+    "/en/docs/guides/ai-builders-digest/2026-09-06/",
     "/en/docs/guides/ai-builders-digest/2026-09-05/",
     "/en/docs/guides/ai-builders-digest/2026-09-04/"
   ]
