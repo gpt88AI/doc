@@ -52,7 +52,7 @@ const POLL_RESPONSE_ROWS: FieldRow[] = [
 const MODEL_LIST_CURL = String.raw`curl -X GET "https://img.gpt88.cc/v1/models" \
   -H "Authorization: Bearer <YOUR_API_KEY>"`
 
-const CREATE_TASK_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
+const CREATE_TASK_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/videos/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -63,7 +63,7 @@ const CREATE_TASK_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/
     "resolution": "720p"
   }'`
 
-const SINGLE_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
+const SINGLE_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/videos/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -77,7 +77,7 @@ const SINGLE_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video
     ]
   }'`
 
-const MULTI_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
+const MULTI_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/videos/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -92,7 +92,7 @@ const MULTI_IMAGE_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/
     ]
   }'`
 
-const SINGLE_V1_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/video/generations" \
+const SINGLE_V1_CURL = String.raw`curl -X POST "https://img.gpt88.cc/v1/videos/generations" \
   -H "Authorization: Bearer <YOUR_API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -194,7 +194,7 @@ async function createVideo({
     }
   }
 
-  const createResponse = await fetch(\`\${BASE_URL}/v1/video/generations\`, {
+  const createResponse = await fetch(\`\${BASE_URL}/v1/videos/generations\`, {
     method: 'POST',
     headers: {
       Authorization: \`Bearer \${API_KEY}\`,
@@ -216,7 +216,7 @@ async function createVideo({
   for (let i = 0; i < 60; i += 1) {
     await sleep(5000)
 
-    const pollResponse = await fetch(\`\${BASE_URL}/v1/video/generations/\${taskId}\`, {
+    const pollResponse = await fetch(\`\${BASE_URL}/v1/videos/generations/\${taskId}\`, {
       headers: {
         Authorization: \`Bearer \${API_KEY}\`,
       },
@@ -285,8 +285,8 @@ export default function GrokVideoPage() {
 
       <h2 id="intro">基础信息</h2>
       <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/models" />
-      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/video/generations" />
-      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/video/generations/{task_id}" />
+      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/videos/generations" />
+      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/videos/generations/{task_id}" />
 
       <FieldTable
         rows={[
@@ -330,7 +330,7 @@ export default function GrokVideoPage() {
 
       <h2 id="create">创建视频任务</h2>
       <p>接口：</p>
-      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/video/generations" />
+      <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/videos/generations" />
       <FieldTable rows={REQUEST_ROWS} />
       <Callout tone="info" title="字段兼容规则">
         <p>
@@ -421,7 +421,7 @@ export default function GrokVideoPage() {
       <CodeBlock
         lang="bash"
         filename="poll-task.sh"
-        code={String.raw`curl -X GET "https://img.gpt88.cc/v1/video/generations/task_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
+        code={String.raw`curl -X GET "https://img.gpt88.cc/v1/videos/generations/task_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
   -H "Authorization: Bearer <YOUR_API_KEY>"`}
       />
       <p>典型处理中响应：</p>
