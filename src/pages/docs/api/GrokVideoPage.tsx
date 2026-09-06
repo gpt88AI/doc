@@ -31,7 +31,8 @@ const REQUEST_ROWS: FieldRow[] = [
 
 const TASK_RESPONSE_ROWS: FieldRow[] = [
   { name: 'id', type: 'string', required: true, description: <>任务唯一 ID。</> },
-  { name: 'task_id', type: 'string', required: true, description: <>任务唯一 ID 的别名，建议保存这个字段。</> },
+  { name: 'request_id', type: 'string', required: true, description: <>上游请求 ID。兼容字段；优先保存 <code>id</code> 作为 OpenAI 兼容接口的查询 ID。</> },
+  { name: 'task_id', type: 'string', description: <>旧版任务接口可能返回的任务 ID；新格式不一定在顶层返回。</> },
   { name: 'object', type: 'string', required: true, description: <>固定为 <code>"video"</code>。</> },
   { name: 'model', type: 'string', required: true, description: <>实际使用的模型 ID。</> },
   { name: 'status', type: 'string', required: true, description: <>任务状态，例如 <code>queued</code>。</> },
@@ -39,7 +40,20 @@ const TASK_RESPONSE_ROWS: FieldRow[] = [
   { name: 'created_at', type: 'integer', description: <>创建时间戳，Unix 秒。</> },
 ]
 
-const POLL_RESPONSE_ROWS: FieldRow[] = [
+const STATUS_RESPONSE_ROWS: FieldRow[] = [
+  { name: 'id', type: 'string', required: true, description: <>OpenAI 兼容的视频 ID，例如 <code>video_gpt88_v1_...</code>。用于继续查询和下载。</> },
+  { name: 'request_id', type: 'string', description: <>上游原始请求 ID。通常不需要自行拼接到 OpenAI 兼容接口中。</> },
+  { name: 'object', type: 'string', required: true, description: <>固定为 <code>"video"</code>。</> },
+  { name: 'model', type: 'string', required: true, description: <>实际使用的模型 ID。</> },
+  { name: 'status', type: 'string', required: true, description: <>状态为 <code>completed</code> 时表示可获取成品；失败通常为 <code>failed</code>。</> },
+  { name: 'progress', type: 'integer', description: <>进度百分比，例如 <code>100</code>。</> },
+  { name: 'url', type: 'string', description: <>视频内容路径或完整 URL。可能是相对路径。</> },
+  { name: 'video_url', type: 'string', description: <>视频内容路径或完整 URL，与 <code>url</code> 类似。</> },
+  { name: 'video.url', type: 'string', description: <>嵌套视频对象中的内容路径。</> },
+  { name: 'video.duration', type: 'number', description: <>视频时长，单位秒。</> },
+]
+
+const LEGACY_POLL_RESPONSE_ROWS: FieldRow[] = [
   { name: 'code', type: 'string', required: true, description: <>通常为 <code>success</code>。</> },
   { name: 'message', type: 'string', required: true, description: <>接口消息。</> },
   { name: 'data.task_id', type: 'string', required: true, description: <>任务 ID。</> },
@@ -152,8 +166,78 @@ const POLL_FAILURE = String.raw`{
   }
 }`
 
+const STATUS_COMPLETED = String.raw`{
+  "id": "video_gpt88_v1_dmlkZW9fYmY2OTEwODkwYmEwNGRjNThiODI4NWMzMTMzN2QwMTI",
+  "model": "grok-imagine-video",
+  "object": "video",
+  "progress": 100,
+  "request_id": "video_bf6910890ba04dc58b8285c31337d012",
+  "status": "completed",
+  "url": "/v1/videos/video_bf6910890ba04dc58b8285c31337d012/content",
+  "video": {
+    "duration": 6,
+    "task_id": "video_bf6910890ba04dc58b8285c31337d012",
+    "url": "/v1/videos/video_bf6910890ba04dc58b8285c31337d012/content"
+  },
+  "video_url": "/v1/videos/video_bf6910890ba04dc58b8285c31337d012/content"
+}`
+
+const STATUS_CURL = String.raw`curl --fail-with-body --max-redirs 0 \
+  "https://img.gpt88.cc/v1/videos/video_gpt88_v1_dmlkZW9fYmY2OTEwODkwYmEwNGRjNThiODI4NWMzMTMzN2QwMTI" \
+  -H "Authorization: Bearer $GPT88_API_KEY"`
+
+const CONTENT_CURL = String.raw`curl --fail-with-body --max-redirs 0 \
+  "https://img.gpt88.cc/v1/videos/video_gpt88_v1_dmlkZW9fYmY2OTEwODkwYmEwNGRjNThiODI4NWMzMTMzN2QwMTI/content" \
+  -H "Authorization: Bearer $GPT88_API_KEY" \
+  -o generated-video.mp4`
+
+const CONTENT_PYTHON = String.raw`import os
+from pathlib import Path
+import requests
+
+base_url = "https://img.gpt88.cc"
+video_id = "video_gpt88_v1_dmlkZW9fYmY2OTEwODkwYmEwNGRjNThiODI4NWMzMTMzN2QwMTI"
+headers = {"Authorization": f"Bearer {os.environ['GPT88_API_KEY']}"}
+
+status = requests.get(
+    f"{base_url}/v1/videos/{video_id}",
+    headers=headers,
+    timeout=30,
+)
+status.raise_for_status()
+payload = status.json()
+
+if payload.get("status") != "completed":
+    raise RuntimeError(f"video is not ready: {payload}")
+
+content = requests.get(
+    f"{base_url}/v1/videos/{video_id}/content",
+    headers=headers,
+    timeout=120,
+)
+content.raise_for_status()
+Path("generated-video.mp4").write_bytes(content.content)
+print("saved generated-video.mp4")`
+
+const CONTENT_NODE = String.raw`import { writeFile } from "node:fs/promises";
+
+const baseUrl = "https://img.gpt88.cc";
+const videoId = "video_gpt88_v1_dmlkZW9fYmY2OTEwODkwYmEwNGRjNThiODI4NWMzMTMzN2QwMTI";
+const headers = { Authorization: "Bearer " + process.env.GPT88_API_KEY };
+
+const statusResponse = await fetch(baseUrl + "/v1/videos/" + videoId, { headers });
+const status = await statusResponse.json();
+if (!statusResponse.ok || status.status !== "completed") {
+  throw new Error("video is not ready: " + JSON.stringify(status));
+}
+
+const contentResponse = await fetch(baseUrl + "/v1/videos/" + videoId + "/content", { headers });
+if (!contentResponse.ok) throw new Error("download failed: " + contentResponse.status);
+await writeFile("generated-video.mp4", Buffer.from(await contentResponse.arrayBuffer()));
+console.log("saved generated-video.mp4");`
+
 const JS_EXAMPLE = String.raw`const BASE_URL = 'https://img.gpt88.cc'
-const API_KEY = process.env.NEWAPI_API_KEY
+const API_KEY = process.env.GPT88_API_KEY
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -208,15 +292,15 @@ async function createVideo({
     throw new Error(\`Video request failed: \${JSON.stringify(created)}\`)
   }
 
-  const taskId = created.task_id || created.id
-  if (!taskId) {
-    throw new Error(\`No task_id returned: \${JSON.stringify(created)}\`)
+  const videoId = created.id || created.request_id || created.task_id
+  if (!videoId) {
+    throw new Error(\`No video id returned: \${JSON.stringify(created)}\`)
   }
 
   for (let i = 0; i < 60; i += 1) {
     await sleep(5000)
 
-    const pollResponse = await fetch(\`\${BASE_URL}/v1/videos/generations/\${taskId}\`, {
+    const pollResponse = await fetch(\`\${BASE_URL}/v1/videos/\${encodeURIComponent(videoId)}\`, {
       headers: {
         Authorization: \`Bearer \${API_KEY}\`,
       },
@@ -227,21 +311,34 @@ async function createVideo({
       throw new Error(\`Video poll failed: \${JSON.stringify(result)}\`)
     }
 
-    const task = result.data
-    if (task?.status === 'SUCCESS' && task.result_url) {
+    const status = String(result.status || result.data?.status || '').toLowerCase()
+    const completed = ['completed', 'complete', 'done', 'success', 'succeeded'].includes(status)
+    if (completed) {
+      const contentResponse = await fetch(\`\${BASE_URL}/v1/videos/\${encodeURIComponent(videoId)}/content\`, {
+        headers: {
+          Authorization: \`Bearer \${API_KEY}\`,
+        },
+      })
+      if (!contentResponse.ok) {
+        throw new Error(\`Video download failed: \${contentResponse.status}\`)
+      }
+
+      const file = Buffer.from(await contentResponse.arrayBuffer())
+      const { writeFile } = await import('node:fs/promises')
+      await writeFile(\`generated-\${videoId}.mp4\`, file)
       return {
-        task_id: task.task_id,
-        video_url: task.result_url,
+        video_id: videoId,
+        file: \`generated-\${videoId}.mp4\`,
         raw_response: result,
       }
     }
 
-    if (task?.status === 'FAILURE') {
-      throw new Error(\`Video generation failed: \${task.fail_reason || JSON.stringify(result)}\`)
+    if (['failed', 'failure', 'cancelled', 'canceled', 'expired'].includes(status)) {
+      throw new Error(\`Video generation failed: \${result.error?.message || result.fail_reason || JSON.stringify(result)}\`)
     }
   }
 
-  throw new Error(\`Video generation timeout: \${taskId}\`)
+  throw new Error(\`Video generation timeout: \${videoId}\`)
 }`
 
 export default function GrokVideoPage() {
@@ -257,7 +354,7 @@ export default function GrokVideoPage() {
     <DocPage
       path="/docs/api/grok-video/"
       title="Grok Video API 接入文档"
-      description="Grok 视频生成 API 的完整接入说明，包括模型列表、创建任务、轮询查询、图生视频参数、错误排查和 JavaScript 示例。"
+      description="Grok 视频生成 API 的完整接入说明，包括模型列表、创建任务、状态查询、视频内容下载保存、图生视频参数、错误排查和 JavaScript 示例。"
       headings={[
         { id: 'intro', text: '基础信息', level: 2 },
         { id: 'key', text: '获取 API Key', level: 2 },
@@ -267,6 +364,7 @@ export default function GrokVideoPage() {
         { id: 'examples', text: '请求示例', level: 2 },
         { id: 'create-response', text: '创建响应', level: 2 },
         { id: 'status', text: '查询任务状态', level: 2 },
+        { id: 'content', text: '查询内容并保存视频', level: 2 },
         { id: 'js', text: 'JavaScript 示例', level: 2 },
         { id: 'errors', text: '常见错误', level: 2 },
         { id: 'notes', text: '接入注意事项', level: 2 },
@@ -274,8 +372,7 @@ export default function GrokVideoPage() {
     >
       <Callout tone="info" title="适合把视频生成接到自己的后端或工作流">
         <p>
-          这是一份面向 API 用户的接入文档，目标是让你完成三件事：先查模型，再提交视频任务，最后轮询拿到
-          <code>result_url</code>。
+          这是一份面向 API 用户的接入文档，目标是让你完成四件事：先查模型，再提交视频任务，查询最终状态，最后获取并保存视频文件。
         </p>
         <p className="mt-2">
           如果你是从中转站或代理层接入，测试时请把你的请求地址、站内 Key 和本页示例统一替换后，再交给
@@ -286,7 +383,8 @@ export default function GrokVideoPage() {
       <h2 id="intro">基础信息</h2>
       <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/models" />
       <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/videos/generations" />
-      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/videos/generations/{task_id}" />
+      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/videos/{id}" />
+      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/videos/{id}/content" />
 
       <FieldTable
         rows={[
@@ -300,8 +398,8 @@ export default function GrokVideoPage() {
 
       <Callout tone="warn" title="异步任务要保存 task_id">
         <p>
-          创建视频任务不会立即返回最终视频地址。你需要把 <code>task_id</code> 保存起来，再调用查询接口直到
-          <code>SUCCESS</code> 或 <code>FAILURE</code>。
+          创建视频任务不会立即返回最终视频地址。你需要保存响应中的 <code>id</code>（或旧格式中的
+          <code>task_id</code>），再查询视频状态直到 <code>completed</code> 或失败状态。
         </p>
       </Callout>
 
@@ -409,37 +507,43 @@ export default function GrokVideoPage() {
       </Callout>
 
       <h2 id="create-response">创建响应</h2>
-      <p>创建成功后会返回任务对象。关键字段是 <code>id</code> 或 <code>task_id</code>：</p>
+      <p>创建成功后会返回视频任务对象。关键字段是 <code>id</code>、<code>request_id</code> 和兼容旧格式的 <code>task_id</code>：</p>
       <CodeBlock lang="json" filename="create-response.json" code={TASK_RESPONSE} />
       <FieldTable rows={TASK_RESPONSE_ROWS} />
       <p>
-        客户端建议统一保存：
-        <code className="ml-1">task_id = response.task_id || response.id</code>
+        OpenAI 兼容响应优先保存：
+        <code className="ml-1">video_id = response.id || response.request_id || response.task_id</code>
       </p>
 
       <h2 id="status">查询任务状态</h2>
+      <p>
+        推荐使用 OpenAI 兼容的视频资源路径，根据创建响应中的 <code>id</code> 查询。不要把响应里的相对路径直接当成完整 URL；
+        需要在前面拼接你的 Base URL。
+      </p>
       <CodeBlock
         lang="bash"
         filename="poll-task.sh"
-        code={String.raw`curl -X GET "https://img.gpt88.cc/v1/videos/generations/task_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
-  -H "Authorization: Bearer <YOUR_API_KEY>"`}
+        code={STATUS_CURL}
       />
-      <p>典型处理中响应：</p>
+      <p>生成中的旧格式响应：</p>
       <CodeBlock lang="json" filename="poll-progress.json" code={POLL_PROGRESS} />
-      <p>典型成功响应：</p>
-      <CodeBlock lang="json" filename="poll-success.json" code={POLL_SUCCESS} />
-      <p>典型失败响应：</p>
-      <CodeBlock lang="json" filename="poll-failure.json" code={POLL_FAILURE} />
-      <FieldTable rows={POLL_RESPONSE_ROWS} />
+      <p>兼容旧任务接口的成功响应：</p>
+      <CodeBlock lang="json" filename="poll-success-legacy.json" code={POLL_SUCCESS} />
+      <p>兼容旧任务接口的失败响应：</p>
+      <CodeBlock lang="json" filename="poll-failure-legacy.json" code={POLL_FAILURE} />
+      <FieldTable rows={LEGACY_POLL_RESPONSE_ROWS} />
+      <p>当前 OpenAI 兼容视频资源的成功响应：</p>
+      <CodeBlock lang="json" filename="video-status-completed.json" code={STATUS_COMPLETED} />
+      <FieldTable rows={STATUS_RESPONSE_ROWS} />
       <ul>
-        <li><code>data.status == "SUCCESS"</code> 且 <code>data.result_url</code> 非空，表示成功。</li>
-        <li><code>data.status == "FAILURE"</code>，读取 <code>data.fail_reason</code> 展示给用户。</li>
-        <li><code>data.status</code> 为 <code>SUBMITTED</code>、<code>QUEUED</code>、<code>IN_PROGRESS</code>、<code>NOT_START</code> 时，任务还在处理中。</li>
+        <li>新格式以顶层 <code>status == "completed"</code> 判断完成；失败时通常为 <code>failed</code>、<code>cancelled</code> 或 <code>expired</code>。</li>
+        <li>旧格式以 <code>data.status == "SUCCESS"</code> 且 <code>data.result_url</code> 非空判断完成。</li>
+        <li>处理中状态可能是 <code>queued</code>、<code>in_progress</code>，或旧格式的 <code>SUBMITTED</code>、<code>QUEUED</code>、<code>IN_PROGRESS</code>、<code>NOT_START</code>。</li>
       </ul>
       <Callout tone="warn" title="progress 100% 不等于成功">
         <p>
-          <code>progress: "100%"</code> 只表示流程已经结束，不代表一定成功。是否成功必须看
-          <code>data.status</code>。
+          <code>progress: 100</code> 或 <code>progress: "100%"</code> 只表示流程已经结束，不代表一定成功。必须同时检查
+          <code>status</code> 或旧格式的 <code>data.status</code>。
         </p>
       </Callout>
       <Callout tone="info" title="轮询建议">
@@ -447,7 +551,30 @@ export default function GrokVideoPage() {
           <li>轮询间隔：每 5 秒一次。</li>
           <li>最大轮询时长：5 分钟。</li>
           <li>最大轮询次数：60 次。</li>
-          <li>成功后尽快下载 <code>data.result_url</code>，因为这个直链大约 1 小时后失效。</li>
+          <li>成功后尽快下载内容；如果响应返回的是临时完整 URL，请在失效前保存。</li>
+        </ul>
+      </Callout>
+
+      <h2 id="content">查询内容并保存视频</h2>
+      <p>
+        当状态为 <code>completed</code> 后，可以调用内容接口获取视频二进制。内容接口返回的是视频文件流，不是 JSON，
+        所以需要使用 <code>-o</code>、<code>write_bytes</code> 或 <code>writeFile</code> 保存。
+      </p>
+      <EndpointBadge method="GET" path="https://img.gpt88.cc/v1/videos/{id}/content" />
+      <p>
+        你提供的响应中，<code>url</code>、<code>video_url</code> 和 <code>video.url</code> 都指向同一个内容路径。
+        若字段是以 <code>/v1/</code> 开头的相对路径，请拼接 <code>https://img.gpt88.cc</code>；更稳定的方式是直接调用
+        <code>/v1/videos/{'{id}'}/content</code> 并携带同一个 API Key。
+      </p>
+      <CodeBlock lang="bash" filename="download-video.sh" code={CONTENT_CURL} />
+      <CodeBlock lang="python" filename="download-video.py" code={CONTENT_PYTHON} />
+      <CodeBlock lang="typescript" filename="download-video.mjs" code={CONTENT_NODE} />
+      <Callout tone="info" title="保存成功的判断">
+        <ul className="mt-2 space-y-1">
+          <li>HTTP 请求应返回成功状态，并且响应体是视频二进制，而不是 JSON 错误对象。</li>
+          <li>保存后的文件建议使用 <code>.mp4</code> 扩展名；如果服务端返回其他 <code>Content-Type</code>，以响应头为准。</li>
+          <li>不要把 <code>video_url</code> 或完整响应直接写入文件；它们是路径或元数据，真正的视频内容来自 content 接口。</li>
+          <li>下载失败时先重新查询状态，确认仍为 <code>completed</code>，再检查 API Key、视频 ID 和响应中的内容路径。</li>
         </ul>
       </Callout>
 
@@ -463,7 +590,9 @@ export default function GrokVideoPage() {
         <li><strong>400 only supports exactly one reference image</strong>：<code>grok-video-1.5</code> 没有传图或传了多张图。</li>
         <li><strong>图片抓取失败</strong>：图片 URL 无法被服务端访问，换成真实直链或 base64。</li>
         <li><strong>任务 FAILURE</strong>：上游生成失败、图片不可访问或参数不支持，读取 <code>data.fail_reason</code>。</li>
-        <li><strong>轮询超时</strong>：保留 <code>task_id</code>，稍后继续查询。</li>
+        <li><strong>轮询超时</strong>：保留 <code>id</code> 或 <code>request_id</code>，稍后继续查询，不要重复提交生成任务。</li>
+        <li><strong>下载返回 JSON 而不是视频</strong>：检查是否调用了 <code>/v1/videos/{'{id}'}/content</code>，并确认请求头带有 API Key。</li>
+        <li><strong>404 或视频 ID 无效</strong>：优先使用响应里的 <code>id</code> 查询；不要把 <code>video.duration</code> 或 <code>task_id</code> 当作视频 ID。</li>
       </ul>
 
       <h2 id="notes">接入注意事项</h2>
@@ -474,8 +603,9 @@ export default function GrokVideoPage() {
         <li><code>grok-image-video</code> 文生视频和单图生视频最长 15 秒，多参考图最长 10 秒。</li>
         <li><code>grok-image-video</code> 多参考图最多 7 张；多参考图请求超过 10 秒会自动按 10 秒处理。</li>
         <li><code>grok-video-1.5</code> 只支持单图生视频，最长 15 秒。</li>
-        <li>最终视频 URL 在查询接口的 <code>data.result_url</code> 字段中，建议在生成成功后立即下载。</li>
-        <li>任务失败时可能会出现 <code>progress: "100%"</code>，这是正常结束状态，请以 <code>data.status</code> 判断结果。</li>
+        <li>新格式的最终视频路径通常在 <code>url</code>、<code>video_url</code> 或 <code>video.url</code>；也可以直接调用 <code>/v1/videos/{'{id}'}/content</code> 保存。</li>
+        <li>旧格式的最终视频 URL 在 <code>data.result_url</code> 字段中；返回相对路径时先拼接 Base URL。</li>
+        <li>任务失败时可能会出现 <code>progress: 100</code> 或 <code>"100%"</code>，这是正常结束状态，请以状态字段判断结果。</li>
       </ul>
     </DocPage>
   )
