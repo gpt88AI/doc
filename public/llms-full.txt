@@ -120,6 +120,7 @@
 - [GPT88 Skill 完整指南：作用、安装使用方法与适用场景](https://doc.gpt88.cc/docs/blog/gpt88-skill-agent-onboarding-guide/): GPT88 Skill 是一套面向 Agent 的 GPT88 接入工作流，覆盖 OpenAI SDK、Cursor、Codex、Claude Code、Cline、账号登录、API Key、模型发现、价格查询、用量管理和安全排障。本文解释它的作用、使用方式与场景。
 - [Grok 免费生图替代怎么选？中国大陆可用路线与避坑清单](https://doc.gpt88.cc/docs/blog/grok-alternative-for-image-generation-free/): Grok Imagine 不能用或额度不够时，按中国大陆可用性、中文文字、改图、商用权利与隐私选择免费 AI 生图替代：Qwen Studio、Qwen-Image + ComfyUI 本地部署与 Adobe Firefly，并附免费入口的六项合同检查与两轮测试评分表。
 - [职业头像背景怎么选：LinkedIn、简历、团队页和 AI 换背景的实用判断](https://doc.gpt88.cc/docs/blog/headshot-background/): 职业头像背景先看用途再看颜色。按 LinkedIn、简历、团队页、名录、正式头像与个人品牌选择浅灰、白色、深色或环境背景，并判断源图值得 AI 换背景还是应直接重拍，附发布前检查清单。
+- [Holo Card Studio Skill 使用指南：用一句话生成可编辑的 3D 全息闪卡](https://doc.gpt88.cc/docs/blog/holo-card-studio-skill-guide/): 整理 EverettFish/holo-card-studio Skill 的能力、安装、四层素材工作流、Blender 与 Three.js 流水线、参数调节、验收方法和常见问题，帮助你从文字或参考图生成可编辑的 3D 全息卡片。
 - [ImagineArt AI 指南：免费积分、价格、模型和适用场景](https://doc.gpt88.cc/docs/blog/imagineart-ai-guide/): 用免费日积分、订阅与充值积分、Pro 模型访问、商用边界和官方 API 区别，判断 ImagineArt 是否适合你的图片或视频工作流：先试哪条路、先停在哪里，以及哪些场景应直接跳过套件。
 - [ImagineArt 价格、免费积分和评价：付费前先查这几件事](https://doc.gpt88.cc/docs/blog/imagineart-pricing-free-credits-review/): 面向想试用或订阅 ImagineArt 的中文读者：免费积分、付费套餐、网页与 App 付款路线、取消订阅、评价信号和适合跳过的情况，避免把"低价""无限"当成购买承诺。
 - [GPT Image 2 API 免费吗？官方边界和安全测试路线](https://doc.gpt88.cc/docs/blog/is-gpt-image-2-api-free/): 截至 2026-04-25，gpt-image-2 没有可确认的 OpenAI 官方 API 免费层。区分 ChatGPT 应用额度、浏览器测试、provider 试用、用户自付 SDK 与共享 key wrapper，并给出安全测试路线和生产停止规则。
