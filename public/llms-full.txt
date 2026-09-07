@@ -65,6 +65,7 @@
 - [AI 商品图怎么保持同一产品不变：一套可执行的一致性质检法](https://doc.gpt88.cc/docs/blog/consistent-ai-product-photos/): 先锁定真实 SKU，再让场景变化。用参考包、锁定矩阵、六帧压力测试和逐图质检，减少 AI 商品图里的变形、错色、乱码与错款。
 - [AI 多图如何保持同一角色：四镜头一致性验收法](https://doc.gpt88.cc/docs/blog/consistent-character-generator/): AI 多图生图时如何保持同一个角色？先锁定脸型、发型、体型、服装与画风，再用中性肖像、侧面或全身、动态动作、受控场景四个镜头验收一致性，附可直接复制的验收记录表和失败后只做一次最小重试、及时换路线的规则。
 - [图片转吉卜力风格：先选路线、再写提示词](https://doc.gpt88.cc/docs/blog/convert-image-to-studio-ghibli-style/): 想把照片变成吉卜力风格或吉卜力灵感插画，先判断 ChatGPT、在线滤镜、API、本地流程和原创风格 brief 哪条路线更适合，再处理上传风险、细节保真与可商用表述，附人像、宠物和产品图的提示词写法。
+- [从 24 个企业 AI 案例看 FDE：如何把客户的痛点变成真正可用的产品](https://doc.gpt88.cc/docs/blog/datawhale-fde-enterprise-ai-delivery/): 结合 Datawhale 24 个企业 AI 落地案例，以及 Palantir 资深 FDE 与 OpenAI FDE 负责人 Colin Jarvis 的访谈，系统拆解企业 AI 的真实需求、FDE 的交付方法、信任建立、工作流设计和产品化路径。
 - [DeepSeek Harness 16 个热门插件整理：能力扩展、界面增强与安全安装指南](https://doc.gpt88.cc/docs/blog/deepseek-harness-16-plugins/): 整理公众号文章中的 16 个 DeepSeek Harness（DSH）社区插件，按能力扩展、工作台增强和社区整活分类，并补充插件选择、安装验证、权限安全与版本回滚建议。
 - [DeepSeek Harness 架构全解：从 Model + Harness 到插件树、Session Log 与安全管线](https://doc.gpt88.cc/docs/blog/deepseek-harness-architecture-explained/): 整理 Russell 关于 DeepSeek Harness 的架构长文，解释 Agent = Model + Harness、Profile、Cordis 插件生命周期、Turn 与 Step、Session Log、工具审批、Capability Seam、子 Agent 与远程沙箱。
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
