@@ -16,6 +16,12 @@ export const SUPPORTED_LOCALES = [
   'ru',
   'ko',
   'vi',
+  'hi',
+  'bn',
+  'ur',
+  'ta',
+  'ne',
+  'si',
 ] as const
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
@@ -43,6 +49,12 @@ export const LOCALE_CONFIG: Record<Locale, LocaleConfig> = {
   ru: { code: 'ru', pathPrefix: '/ru', hrefLang: 'ru', nativeName: 'Русский', shortName: 'RU', direction: 'ltr' },
   ko: { code: 'ko', pathPrefix: '/ko', hrefLang: 'ko', nativeName: '한국어', shortName: 'KO', direction: 'ltr' },
   vi: { code: 'vi', pathPrefix: '/vi', hrefLang: 'vi', nativeName: 'Tiếng Việt', shortName: 'VI', direction: 'ltr' },
+  hi: { code: 'hi', pathPrefix: '/hi', hrefLang: 'hi', nativeName: 'हिन्दी', shortName: 'HI', direction: 'ltr' },
+  bn: { code: 'bn', pathPrefix: '/bn', hrefLang: 'bn', nativeName: 'বাংলা', shortName: 'BN', direction: 'ltr' },
+  ur: { code: 'ur', pathPrefix: '/ur', hrefLang: 'ur', nativeName: 'اردو', shortName: 'UR', direction: 'rtl' },
+  ta: { code: 'ta', pathPrefix: '/ta', hrefLang: 'ta', nativeName: 'தமிழ்', shortName: 'TA', direction: 'ltr' },
+  ne: { code: 'ne', pathPrefix: '/ne', hrefLang: 'ne', nativeName: 'नेपाली', shortName: 'NE', direction: 'ltr' },
+  si: { code: 'si', pathPrefix: '/si', hrefLang: 'si', nativeName: 'සිංහල', shortName: 'SI', direction: 'ltr' },
 }
 
 type LocaleContextValue = {

@@ -71,6 +71,12 @@ function applyLocaleAttributes(html, route) {
     ru: ['ru', 'ltr'],
     ko: ['ko', 'ltr'],
     vi: ['vi', 'ltr'],
+    hi: ['hi', 'ltr'],
+    bn: ['bn', 'ltr'],
+    ur: ['ur', 'rtl'],
+    ta: ['ta', 'ltr'],
+    ne: ['ne', 'ltr'],
+    si: ['si', 'ltr'],
   }[prefix] ?? ['zh-CN', 'ltr']
   return html.replace(/<html lang="[^"]*">/i, `<html lang="${attributes[0]}" dir="${attributes[1]}">`)
 }

@@ -64,6 +64,12 @@ const CORE_EXTRA_COPY: Record<Locale, CoreExtraCopy> = {
     authHeading: 'Header Authorization',
     faqBody: 'Trước khi gửi lưu lượng production, hãy gọi endpoint danh sách mô hình để xác nhận API Key có quyền truy cập mô hình cần dùng.',
   },
+  hi: { authHeading: 'Authorization हेडर', faqBody: 'प्रोडक्शन ट्रैफ़िक भेजने से पहले मॉडल सूची एंडपॉइंट से पुष्टि करें कि आपकी API Key आवश्यक मॉडल तक पहुँच सकती है।' },
+  bn: { authHeading: 'Authorization হেডার', faqBody: 'প্রোডাকশন ট্রাফিক পাঠানোর আগে মডেল তালিকা এন্ডপয়েন্ট ব্যবহার করে নিশ্চিত করুন যে আপনার API Key প্রয়োজনীয় মডেলে প্রবেশ করতে পারে।' },
+  ur: { authHeading: 'Authorization ہیڈر', faqBody: 'پروڈکشن ٹریفک بھیجنے سے پہلے ماڈل لسٹ اینڈ پوائنٹ سے تصدیق کریں کہ آپ کی API Key مطلوبہ ماڈل تک رسائی رکھتی ہے۔' },
+  ta: { authHeading: 'Authorization தலைப்பு', faqBody: 'உற்பத்தி டிராஃபிக்கை அனுப்புவதற்கு முன், உங்கள் API Key தேவையான மாடலை அணுகுகிறதா என்பதை மாடல் பட்டியல் எண்ட்பாயிண்ட் மூலம் உறுதிப்படுத்தவும்.' },
+  ne: { authHeading: 'Authorization हेडर', faqBody: 'उत्पादन ट्राफिक पठाउनुअघि मोडेल सूची एन्डपोइन्ट प्रयोग गरेर तपाईंको API Key ले आवश्यक मोडेलमा पहुँच पाउँछ कि पाउँदैन पुष्टि गर्नुहोस्।' },
+  si: { authHeading: 'Authorization ශීර්ෂය', faqBody: 'නිෂ්පාදන ගමනාගමනය යැවීමට පෙර, ඔබේ API Keyට අවශ්‍ය මොඩලයට ප්‍රවේශය ඇති බව මොඩල ලැයිස්තු එන්ඩ්පොයින්ට් එකෙන් තහවුරු කරන්න.' },
 }
 
 export default function LocalizedCorePage({ kind }: { kind: CoreKind }) {

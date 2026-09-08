@@ -827,6 +827,12 @@ const additionalLocaleSeo = {
   ru: { language: 'Русский', home: 'Документация API gpt88.cc', overview: 'Обзор', quickstart: 'Быстрый старт', auth: 'Авторизация и оплата', faq: 'Частые вопросы' },
   ko: { language: '한국어', home: 'gpt88.cc API 문서', overview: '개요', quickstart: '빠른 시작', auth: '인증 및 과금', faq: '자주 묻는 질문' },
   vi: { language: 'Tiếng Việt', home: 'Tài liệu API gpt88.cc', overview: 'Tổng quan', quickstart: 'Bắt đầu nhanh', auth: 'Xác thực và tính phí', faq: 'Câu hỏi thường gặp' },
+  hi: { language: 'हिन्दी', home: 'gpt88.cc API दस्तावेज़', overview: 'अवलोकन', quickstart: 'त्वरित शुरुआत', auth: 'प्रमाणीकरण और बिलिंग', faq: 'अक्सर पूछे जाने वाले प्रश्न' },
+  bn: { language: 'বাংলা', home: 'gpt88.cc API ডকুমেন্টেশন', overview: 'ওভারভিউ', quickstart: 'দ্রুত শুরু', auth: 'প্রমাণীকরণ ও বিলিং', faq: 'সাধারণ প্রশ্ন' },
+  ur: { language: 'اردو', home: 'gpt88.cc API دستاویزات', overview: 'جائزہ', quickstart: 'فوری آغاز', auth: 'تصدیق اور بلنگ', faq: 'اکثر پوچھے گئے سوالات' },
+  ta: { language: 'தமிழ்', home: 'gpt88.cc API ஆவணங்கள்', overview: 'மேலோட்டம்', quickstart: 'விரைவு தொடக்கம்', auth: 'அங்கீகாரம் மற்றும் கட்டணம்', faq: 'அடிக்கடி கேட்கப்படும் கேள்விகள்' },
+  ne: { language: 'नेपाली', home: 'gpt88.cc API कागजात', overview: 'अवलोकन', quickstart: 'छिटो सुरु', auth: 'प्रमाणीकरण र बिलिङ', faq: 'सामान्य प्रश्न' },
+  si: { language: 'සිංහල', home: 'gpt88.cc API ලේඛන', overview: 'දළ විශ්ලේෂණය', quickstart: 'ඉක්මන් ආරම්භය', auth: 'සත්‍යාපනය සහ බිල්පත්', faq: 'නිතර අසන ප්‍රශ්න' },
 }
 
 const localizedPages = Object.entries(additionalLocaleSeo).flatMap(([prefix, copy]) => [
@@ -1334,6 +1340,7 @@ async function main() {
     ...blogPages.map(page => normalizeRoute(page.path)),
     ...englishBlogPages.map(page => normalizeRoute(page.path)),
     ...digestPages.map(page => normalizeRoute(`/en${page.path}`)),
+    ...localizedPages.map(page => normalizeRoute(page.path)),
   ])]
 
   await Promise.all([
