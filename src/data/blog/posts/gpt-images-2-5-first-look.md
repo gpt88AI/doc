@@ -229,3 +229,34 @@ GPT Images 2.5 的重要变化，是让 AI 生图更像一个可以被草图、�
 真正适合生产的工作流，仍然需要人工检查、素材授权、隐私边界、输出格式验证和成本记录。把它当成一个可控的创作工具，而不是“一句话生成最终成片”的黑盒，才能稳定地用于内容、设计、电商和产品团队。
 
 来源：[微信公众号原文](https://mp.weixin.qq.com/s/0FIyUJOcNC_Z6leuHah1gg)
+
+## 附：原文完整页面截图
+
+下面保留用户提供 PDF 的 26 张整页截图，方便对照原文上下文、界面操作和配图位置。截图中的公众号页眉、页脚、来源链接和原文导流内容属于原始 PDF 页面的一部分，不代表 GPT88 的产品或服务说明。
+
+![原文完整截图第 1 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-01.png)
+![原文完整截图第 2 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-02.png)
+![原文完整截图第 3 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-03.png)
+![原文完整截图第 4 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-04.png)
+![原文完整截图第 5 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-05.png)
+![原文完整截图第 6 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-06.png)
+![原文完整截图第 7 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-07.png)
+![原文完整截图第 8 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-08.png)
+![原文完整截图第 9 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-09.png)
+![原文完整截图第 10 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-10.png)
+![原文完整截图第 11 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-11.png)
+![原文完整截图第 12 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-12.png)
+![原文完整截图第 13 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-13.png)
+![原文完整截图第 14 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-14.png)
+![原文完整截图第 15 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-15.png)
+![原文完整截图第 16 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-16.png)
+![原文完整截图第 17 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-17.png)
+![原文完整截图第 18 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-18.png)
+![原文完整截图第 19 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-19.png)
+![原文完整截图第 20 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-20.png)
+![原文完整截图第 21 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-21.png)
+![原文完整截图第 22 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-22.png)
+![原文完整截图第 23 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-23.png)
+![原文完整截图第 24 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-24.png)
+![原文完整截图第 25 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-25.png)
+![原文完整截图第 26 页](/docs/blog/zh/gpt-images-2-5-first-look/full/page-26.png)
