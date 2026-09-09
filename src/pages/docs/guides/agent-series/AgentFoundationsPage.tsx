@@ -4,10 +4,15 @@ import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { GuideTable, Checklist, SeriesNav } from './AgentGuideShared'
 import { headings, toHeadings } from './AgentGuideData'
+import { useLocale } from '../../../../lib/locale'
+import AgentFoundationsPageEn from '../../../en/AgentFoundationsPageEn'
 
 const LOOP = 'while not finished and steps < max_steps:\n    decision = model(messages, tools, state)\n    if decision requests a tool:\n        validate(decision.tool, decision.arguments)\n        result = execute(decision.tool, decision.arguments)\n        state = reduce(state, decision, result)\n        messages.append(tool_result(result))\n    else:\n        answer = validate_output(decision.content)\n        return deliver(answer)\nraise StepLimitExceeded()'
 
 export default function AgentFoundationsPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <AgentFoundationsPageEn />
+
   return <DocPage path="/docs/guides/agent-foundations" title="AI Agent 求职专题（二）：Agent 基础、架构与工作流设计" description="从 LLM、上下文、工具、状态和验证出发，建立能够解释、实现和排错 Agent 的统一心智模型。" headings={toHeadings(headings.foundations)}>
     <SeriesNav current="/docs/guides/agent-foundations/" />
     <Callout tone="tip" title="面试中的高分定义"><p>Agent 是一个以模型为推理核心、以工具和外部系统为行动边界、以状态和工作流为控制结构、以验证和权限为安全约束的任务执行系统。</p></Callout>

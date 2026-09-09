@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Calendar, Clock, FolderOpen } from 'lucide-react'
-import { BLOG_POSTS, getBlogContent, getBlogMetaLocalized } from '../../data/blog'
+import { BLOG_POSTS, getBlogContentLocalized, getBlogMetaLocalized } from '../../data/blog'
 import { Seo } from '../../components/seo/Seo'
 import { docStructuredData } from '../../components/seo/structuredData'
 import { BlogMarkdown } from '../../components/blog/BlogMarkdown'
@@ -40,18 +40,35 @@ const OPENAI_LATEST_MODEL_FAQ = [
   },
 ]
 
+const BLOG_LOCALE_COPY: Partial<Record<string, {
+  back: string
+  related: string
+  newer: string
+  older: string
+  read: (n: number) => string
+  aria: string
+}>> = {
+  zh: { back: '返回博客', related: '相关指南', newer: '下一篇', older: '上一篇', read: (n: number) => `约 ${n} 分钟`, aria: '博客翻页' },
+  en: { back: 'Back to blog', related: 'Related guide', newer: 'Newer', older: 'Older', read: (n: number) => `${n} min read`, aria: 'Blog pagination' },
+  hi: { back: 'ब्लॉग पर वापस जाएँ', related: 'संबंधित गाइड', newer: 'नया', older: 'पुराना', read: (n: number) => `${n} मिनट पढ़ें`, aria: 'ब्लॉग पेजिनेशन' },
+  bn: { back: 'ব্লগে ফিরে যান', related: 'সম্পর্কিত গাইড', newer: 'নতুন', older: 'পুরোনো', read: (n: number) => `${n} মিনিট পড়ুন`, aria: 'ব্লগ পেজিনেশন' },
+  ur: { back: 'بلاگ پر واپس جائیں', related: 'متعلقہ رہنما', newer: 'نیا', older: 'پرانا', read: (n: number) => `${n} منٹ مطالعہ`, aria: 'بلاگ صفحہ بندی' },
+  ta: { back: 'வலைப்பதிவுக்குத் திரும்பு', related: 'தொடர்புடைய வழிகாட்டி', newer: 'புதியது', older: 'பழையது', read: (n: number) => `${n} நிமிட வாசிப்பு`, aria: 'வலைப்பதிவு பக்கங்கள்' },
+  ne: { back: 'ब्लगमा फर्कनुहोस्', related: 'सम्बन्धित गाइड', newer: 'नयाँ', older: 'पुरानो', read: (n: number) => `${n} मिनेट पढाइ`, aria: 'ब्लग पृष्ठाङ्कन' },
+  si: { back: 'බ්ලොගයට ආපසු යන්න', related: 'අදාළ මාර්ගෝපදේශය', newer: 'නවතම', older: 'පැරණි', read: (n: number) => `${n} මිනිත්තු කියවීම`, aria: 'බ්ලොග් පිටුකරණය' },
+} as const
+
 export default function BlogPostPage() {
   const { slug = '' } = useParams<{ slug: string }>()
   const { locale } = useLocale()
   const meta = getBlogMetaLocalized(slug, locale)
-  const content = getBlogContent(slug)
+  const markdown = getBlogContentLocalized(slug, locale)
 
-  if (!meta || !content) {
+  if (!meta || !markdown) {
     return <Navigate to={localizedContentPath('/docs/blog/', locale)} replace />
   }
 
-  const markdown = locale === 'en' && content.en ? content.en : content.zh
-  const isEn = locale === 'en'
+  const copy = BLOG_LOCALE_COPY[locale] ?? BLOG_LOCALE_COPY.en!
   const basePath = `/docs/blog/${slug}`
   const dateLabel = meta.date
   const category = meta.category
@@ -89,7 +106,7 @@ export default function BlogPostPage() {
               className="mb-4 inline-flex items-center gap-1.5 text-xs font-medium text-violet-300 transition-colors hover:text-violet-200"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
-              {isEn ? 'Back to blog' : '返回博客'}
+              {copy.back}
             </Link>
             <h1 className="text-3xl font-semibold tracking-tight text-ink-50">{meta.title}</h1>
             <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-ink-400">
@@ -104,7 +121,7 @@ export default function BlogPostPage() {
               {meta.readTime ? (
                 <span className="inline-flex items-center gap-1.5">
                   <Clock className="h-3.5 w-3.5" />
-                  {isEn ? `${meta.readTime} min read` : `约 ${meta.readTime} 分钟`}
+                {copy.read(meta.readTime)}
                 </span>
               ) : null}
               {meta.tags.length ? (
@@ -127,7 +144,7 @@ export default function BlogPostPage() {
           {related ? (
             <div className="not-prose mt-10 rounded-lg border border-violet-500/20 bg-violet-500/[0.05] p-4">
               <p className="text-[11px] uppercase tracking-wider text-ink-400">
-                {isEn ? 'Related guide' : '相关指南'}
+                {copy.related}
               </p>
               <Link
                 to={localizedContentPath(related.path, locale)}
@@ -139,7 +156,7 @@ export default function BlogPostPage() {
           ) : null}
 
           <nav
-            aria-label={isEn ? 'Blog pagination' : '博客翻页'}
+            aria-label={copy.aria}
             className="not-prose mt-14 grid grid-cols-1 gap-3 border-t border-white/5 pt-6 sm:grid-cols-2"
           >
             {prev ? (
@@ -148,7 +165,7 @@ export default function BlogPostPage() {
                 className="group flex flex-col items-start rounded-lg border border-white/5 p-4 transition-colors hover:border-violet-500/40 hover:bg-violet-500/5"
               >
                 <span className="flex items-center gap-1 text-[11px] uppercase tracking-wider text-ink-500">
-                  <ArrowLeft className="h-3 w-3" /> {isEn ? 'Newer' : '下一篇'}
+                  <ArrowLeft className="h-3 w-3" /> {copy.newer}
                 </span>
                 <span className="mt-1 text-sm font-medium text-ink-100 group-hover:text-violet-200">
                   {prev.title}
@@ -163,7 +180,7 @@ export default function BlogPostPage() {
                 className="group flex flex-col items-end rounded-lg border border-white/5 p-4 text-right transition-colors hover:border-violet-500/40 hover:bg-violet-500/5 sm:col-start-2"
               >
                 <span className="flex items-center gap-1 text-[11px] uppercase tracking-wider text-ink-500">
-                  {isEn ? 'Older' : '上一篇'} <ArrowRight className="h-3 w-3" />
+                  {copy.older} <ArrowRight className="h-3 w-3" />
                 </span>
                 <span className="mt-1 text-sm font-medium text-ink-100 group-hover:text-violet-200">
                   {next.title}

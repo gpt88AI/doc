@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import WorkrallyUploadAssetsPageEn from '../../en/WorkrallyUploadAssetsPageEn'
 
 const UPLOAD_FLOW = `# Step 1: 上传到 CDN
 workrally upload ./character.png -o json
@@ -31,6 +33,9 @@ workrally canvas build-draft <canvas_id> --nodes '[
 ]'`
 
 export default function WorkrallyUploadAssetsPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <WorkrallyUploadAssetsPageEn />
+
   return (
     <DocPage
       path="/docs/guides/workrally-upload-assets"

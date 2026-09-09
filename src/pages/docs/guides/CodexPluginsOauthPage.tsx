@@ -183,7 +183,7 @@ function DocTable({
 export default function CodexPluginsOauthPage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <CodexPluginsOauthPageEn />
+  if (locale !== 'zh') return <CodexPluginsOauthPageEn />
 
   return (
     <DocPage

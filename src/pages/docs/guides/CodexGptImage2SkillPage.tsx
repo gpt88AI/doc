@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import CodexGptImage2SkillPageEn from '../../en/CodexGptImage2SkillPageEn'
 
 const WHY_SKILL = `问题背景：
 
@@ -125,6 +127,10 @@ const TROUBLESHOOTING = `常见问题：
    先用 1024x1024 / n=1 做草图确认，再提高尺寸、质量或批量生成。`
 
 export default function CodexGptImage2SkillPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <CodexGptImage2SkillPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-gpt-image-2-skill"

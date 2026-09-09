@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import WorkrallyShotWorkflowPageEn from '../../en/WorkrallyShotWorkflowPageEn'
 
 const WORKFLOW = `# 1. 创建项目
 PROJECT_ID=$(workrally project create "我的短番" -o json | jq -r '.project_id')
@@ -42,6 +44,9 @@ workrally shot set-model --story-ids st_1,st_2 --video-provider 1 --duration 5 -
 workrally shot set-model --story-ids st_1,st_2 --image-model <en_name> --aspect-ratio 16:9`
 
 export default function WorkrallyShotWorkflowPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <WorkrallyShotWorkflowPageEn />
+
   return (
     <DocPage
       path="/docs/guides/workrally-shot-workflow"

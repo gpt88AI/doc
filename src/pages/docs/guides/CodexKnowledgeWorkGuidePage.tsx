@@ -106,7 +106,7 @@ function SimpleTable({
 
 export default function CodexKnowledgeWorkGuidePage() {
   const { locale } = useLocale()
-  if (locale === 'en') return <CodexKnowledgeWorkGuidePageEn />
+  if (locale !== 'zh') return <CodexKnowledgeWorkGuidePageEn />
 
   return (
     <DocPage

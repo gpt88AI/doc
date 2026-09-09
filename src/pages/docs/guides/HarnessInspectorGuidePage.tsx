@@ -11,7 +11,7 @@ const INSPECTOR_URL = 'https://qoderai.github.io/better-harness/inspector/'
 
 export default function HarnessInspectorGuidePage() {
   const { locale } = useLocale()
-  if (locale === 'en') return <HarnessInspectorGuidePageEn />
+  if (locale !== 'zh') return <HarnessInspectorGuidePageEn />
 
   return (
     <DocPage

@@ -236,6 +236,35 @@ if (!contentResponse.ok) throw new Error("download failed: " + contentResponse.s
 await writeFile("generated-video.mp4", Buffer.from(await contentResponse.arrayBuffer()));
 console.log("saved generated-video.mp4");`
 
+const GROK_VIDEO_COPY = {
+  zh: {
+    title: 'Grok Video API 接入文档',
+    description: 'Grok 视频生成 API 的完整接入说明，包括模型列表、创建任务、状态查询、视频内容下载保存、图生视频参数、错误排查和 JavaScript 示例。',
+    introTitle: '适合把视频生成接到自己的后端或工作流',
+    intro: '这是一份面向 API 用户的接入文档，目标是让你完成四件事：先查模型，再提交视频任务，查询最终状态，最后获取并保存视频文件。',
+    introProxy: '如果你是从中转站或代理层接入，测试时请把你的请求地址、站内 Key 和本页示例统一替换后，再交给',
+    headings: ['基础信息', '获取 API Key', '查询可用模型', '创建视频任务', '参数建议', '请求示例', '创建响应', '查询任务状态', '查询内容并保存视频', 'JavaScript 示例', '常见错误', '接入注意事项'],
+  },
+  hi: {
+    title: 'Grok Video API integration guide', description: 'Grok video generation API के लिए models, task creation, status polling, content download, image-to-video parameters और JavaScript examples।', introTitle: 'वीडियो generation को अपने backend या workflow से जोड़ें', intro: 'यह API users के लिए integration guide है: model देखें, task submit करें, अंतिम status जाँचें और video file save करें।', introProxy: 'यदि आप proxy layer से जुड़ रहे हैं, तो testing में request URL, site key और examples को अपने setup से बदलकर', headings: ['Basic information', 'Get an API key', 'List available models', 'Create a video task', 'Parameter guidance', 'Request examples', 'Create response', 'Check task status', 'Fetch and save video content', 'JavaScript example', 'Common errors', 'Integration notes'],
+  },
+  bn: {
+    title: 'Grok Video API integration guide', description: 'Grok video generation API-এর model, task creation, status polling, content download, image-to-video parameter এবং JavaScript example।', introTitle: 'ভিডিও generation নিজের backend বা workflow-এ যুক্ত করুন', intro: 'এই API guide-এ model দেখুন, video task জমা দিন, final status যাচাই করুন এবং video file সংরক্ষণ করুন।', introProxy: 'আপনি proxy layer ব্যবহার করলে testing-এর সময় request URL, site key এবং example নিজের setup অনুযায়ী বদলে', headings: ['মৌলিক তথ্য', 'API key নিন', 'উপলব্ধ model দেখুন', 'Video task তৈরি করুন', 'Parameter পরামর্শ', 'Request example', 'Create response', 'Task status দেখুন', 'Video content নিয়ে সংরক্ষণ করুন', 'JavaScript example', 'সাধারণ error', 'Integration নোট'],
+  },
+  ur: {
+    title: 'Grok Video API integration guide', description: 'Grok video generation API کے models، task creation، status polling، content download، image-to-video parameters اور JavaScript examples۔', introTitle: 'ویڈیو generation کو اپنے backend یا workflow سے جوڑیں', intro: 'یہ API guide model دیکھنے، video task submit کرنے، final status جانچنے اور video file محفوظ کرنے کے مراحل بتاتی ہے۔', introProxy: 'اگر آپ proxy layer استعمال کر رہے ہیں تو testing میں request URL، site key اور examples کو اپنے setup کے مطابق بدل کر', headings: ['بنیادی معلومات', 'API key حاصل کریں', 'دستیاب models دیکھیں', 'Video task بنائیں', 'Parameters کی رہنمائی', 'Request examples', 'Create response', 'Task status دیکھیں', 'Video content حاصل کر کے محفوظ کریں', 'JavaScript example', 'عام errors', 'Integration نوٹس'],
+  },
+  ta: {
+    title: 'Grok Video API integration guide', description: 'Grok video generation API-க்கான models, task creation, status polling, content download, image-to-video parameters மற்றும் JavaScript examples.', introTitle: 'Video generation-ஐ உங்கள் backend அல்லது workflow-உடன் இணைக்கவும்', intro: 'இந்த API guide model-ஐப் பார்ப்பது, video task அனுப்புவது, final status சரிபார்ப்பது மற்றும் video file-ஐ சேமிப்பது ஆகியவற்றைக் காட்டுகிறது.', introProxy: 'Proxy layer மூலம் இணைந்தால் testing நேரத்தில் request URL, site key மற்றும் examples-ஐ உங்கள் setup-க்கு மாற்றி', headings: ['அடிப்படை தகவல்', 'API key பெறுதல்', 'கிடைக்கும் models', 'Video task உருவாக்குதல்', 'Parameter வழிகாட்டி', 'Request examples', 'Create response', 'Task status பார்க்கவும்', 'Video content-ஐப் பெற்று சேமிக்கவும்', 'JavaScript example', 'பொதுவான errors', 'Integration குறிப்புகள்'],
+  },
+  ne: {
+    title: 'Grok Video API integration guide', description: 'Grok video generation API का model, task creation, status polling, content download, image-to-video parameter र JavaScript example।', introTitle: 'Video generation लाई आफ्नो backend वा workflow मा जोड्नुहोस्', intro: 'यो API guide ले model हेर्ने, video task पठाउने, final status जाँच्ने र video file बचत गर्ने तरिका बताउँछ।', introProxy: 'Proxy layer बाट जोडिँदा testing मा request URL, site key र examples लाई आफ्नो setup अनुसार बदलेर', headings: ['आधारभूत जानकारी', 'API key लिनुहोस्', 'उपलब्ध model हेर्नुहोस्', 'Video task बनाउनुहोस्', 'Parameter सुझाव', 'Request example', 'Create response', 'Task status जाँच्नुहोस्', 'Video content लिएर बचत गर्नुहोस्', 'JavaScript example', 'सामान्य error', 'Integration नोट'],
+  },
+  si: {
+    title: 'Grok Video API integration guide', description: 'Grok video generation API සඳහා models, task creation, status polling, content download, image-to-video parameters සහ JavaScript examples.', introTitle: 'Video generation ඔබේ backend හෝ workflow එකට සම්බන්ධ කරන්න', intro: 'මෙම API guide එකෙන් model බලන, video task යවන, අවසාන status පරීක්ෂා කරන සහ video file සුරැකීමේ පියවර දක්වයි.', introProxy: 'Proxy layer එකක් භාවිත කරන්නේ නම් testing අවස්ථාවේ request URL, site key සහ examples ඔබේ setup එකට වෙනස් කර', headings: ['මූලික තොරතුරු', 'API key ලබාගන්න', 'ලබාගත හැකි models', 'Video task සාදන්න', 'Parameter මාර්ගෝපදේශය', 'Request examples', 'Create response', 'Task status බලන්න', 'Video content ලබාගෙන සුරකින්න', 'JavaScript example', 'පොදු errors', 'Integration සටහන්'],
+  },
+} as const
+
 const JS_EXAMPLE = String.raw`const BASE_URL = 'https://img.gpt88.cc'
 const API_KEY = process.env.GPT88_API_KEY
 
@@ -343,6 +372,7 @@ async function createVideo({
 
 export default function GrokVideoPage() {
   const { locale } = useLocale()
+  const copy = GROK_VIDEO_COPY[locale as keyof typeof GROK_VIDEO_COPY] ?? GROK_VIDEO_COPY.zh
   const keyUrl = buildAgentActivationUrl({
     locale,
     surface: 'api_grok_video_auth',
@@ -353,29 +383,18 @@ export default function GrokVideoPage() {
   return (
     <DocPage
       path="/docs/api/grok-video/"
-      title="Grok Video API 接入文档"
-      description="Grok 视频生成 API 的完整接入说明，包括模型列表、创建任务、状态查询、视频内容下载保存、图生视频参数、错误排查和 JavaScript 示例。"
+      title={copy.title}
+      description={copy.description}
       headings={[
-        { id: 'intro', text: '基础信息', level: 2 },
-        { id: 'key', text: '获取 API Key', level: 2 },
-        { id: 'models', text: '查询可用模型', level: 2 },
-        { id: 'create', text: '创建视频任务', level: 2 },
-        { id: 'params', text: '参数建议', level: 2 },
-        { id: 'examples', text: '请求示例', level: 2 },
-        { id: 'create-response', text: '创建响应', level: 2 },
-        { id: 'status', text: '查询任务状态', level: 2 },
-        { id: 'content', text: '查询内容并保存视频', level: 2 },
-        { id: 'js', text: 'JavaScript 示例', level: 2 },
-        { id: 'errors', text: '常见错误', level: 2 },
-        { id: 'notes', text: '接入注意事项', level: 2 },
+        ...['intro', 'key', 'models', 'create', 'params', 'examples', 'create-response', 'status', 'content', 'js', 'errors', 'notes'].map((id, index) => ({ id, text: copy.headings[index], level: 2 as const })),
       ]}
     >
-      <Callout tone="info" title="适合把视频生成接到自己的后端或工作流">
+      <Callout tone="info" title={copy.introTitle}>
         <p>
-          这是一份面向 API 用户的接入文档，目标是让你完成四件事：先查模型，再提交视频任务，查询最终状态，最后获取并保存视频文件。
+          {copy.intro}
         </p>
         <p className="mt-2">
-          如果你是从中转站或代理层接入，测试时请把你的请求地址、站内 Key 和本页示例统一替换后，再交给
+          {copy.introProxy}
           <code>Codex</code>、<code>Claude</code> 或你的后端做真实连通性测试。
         </p>
       </Callout>

@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import WorkrallyAiGenerationPageEn from '../../en/WorkrallyAiGenerationPageEn'
 
 const IMAGE_FLOW = `# 1. 先拿模型
 workrally generate image-models -o json
@@ -93,6 +95,9 @@ function ParamTable({
 }
 
 export default function WorkrallyAiGenerationPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <WorkrallyAiGenerationPageEn />
+
   return (
     <DocPage
       path="/docs/guides/workrally-ai-generation"

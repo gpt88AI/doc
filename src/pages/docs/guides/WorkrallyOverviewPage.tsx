@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import WorkrallyOverviewPageEn from '../../en/WorkrallyOverviewPageEn'
 
 const CAPABILITIES = `AI 生图
 - Kontext 图片生成
@@ -96,6 +98,9 @@ function DocTable({
 }
 
 export default function WorkrallyOverviewPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <WorkrallyOverviewPageEn />
+
   return (
     <DocPage
       path="/docs/guides/workrally-overview"

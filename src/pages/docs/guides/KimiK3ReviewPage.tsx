@@ -46,7 +46,7 @@ function ComparisonTable({
 
 export default function KimiK3ReviewPage() {
   const { locale } = useLocale()
-  if (locale === 'en') return <KimiK3ReviewPageEn />
+  if (locale !== 'zh') return <KimiK3ReviewPageEn />
 
   return (
     <DocPage

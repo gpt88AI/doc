@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import VideoGenerationSkillsInstallPageEn from '../../en/VideoGenerationSkillsInstallPageEn'
 
 const LIST_CMD = `npx skills add adoin/video-generation-skills --list`
 
@@ -73,6 +75,9 @@ function DetailBlock({
 }
 
 export default function VideoGenerationSkillsInstallPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <VideoGenerationSkillsInstallPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-install"

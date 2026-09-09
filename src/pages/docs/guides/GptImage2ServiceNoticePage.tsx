@@ -82,7 +82,7 @@ function DocTable({
 export default function GptImage2ServiceNoticePage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <GptImage2ServiceNoticePageEn />
+  if (locale !== 'zh') return <GptImage2ServiceNoticePageEn />
 
   return (
     <DocPage

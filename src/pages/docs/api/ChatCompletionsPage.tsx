@@ -7,7 +7,18 @@ import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
 import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
+import { getApiCopy } from '../../../lib/apiLocaleCopy'
 import ChatCompletionsPageEn from '../../en/ChatCompletionsPageEn'
+
+const CHAT_UI_COPY: Record<string, Record<string, string>> = {
+  zh: { endpoint: '端点与认证', request: '请求体', message: 'Message 对象', example: '基础调用示例', response: '响应示例', responseFields: '响应字段', streaming: '流式响应', tools: '使用 tools / function calling', errors: '错误处理', pricing: '价格、限速、SLA 不在文档中固化', requestBody: '请求体为 JSON，常用字段如下：', simple: '下面是一次最简单的非流式调用：' },
+  hi: { endpoint: 'एंडपॉइंट और प्रमाणीकरण', request: 'रिक्वेस्ट बॉडी', message: 'Message ऑब्जेक्ट', example: 'मूल कॉल उदाहरण', response: 'रिस्पॉन्स उदाहरण', responseFields: 'रिस्पॉन्स फ़ील्ड', streaming: 'स्ट्रीमिंग प्रतिक्रिया', tools: 'tools / function calling का उपयोग', errors: 'त्रुटि प्रबंधन', pricing: 'कीमत, दर सीमा और SLA दस्तावेज़ में स्थिर नहीं हैं', requestBody: 'रिक्वेस्ट बॉडी JSON है; सामान्य फ़ील्ड नीचे हैं:', simple: 'यह सबसे सरल non-streaming कॉल है:' },
+  bn: { endpoint: 'এন্ডপয়েন্ট ও প্রমাণীকরণ', request: 'রিকোয়েস্ট বডি', message: 'Message অবজেক্ট', example: 'মৌলিক কলের উদাহরণ', response: 'রেসপন্সের উদাহরণ', responseFields: 'রেসপন্স ফিল্ড', streaming: 'স্ট্রিমিং প্রতিক্রিয়া', tools: 'tools / function calling ব্যবহার', errors: 'ত্রুটি পরিচালনা', pricing: 'মূল্য, rate limit ও SLA ডকুমেন্টে স্থির নয়', requestBody: 'রিকোয়েস্ট বডি JSON; সাধারণ ফিল্ডগুলো নিচে দেওয়া হলো:', simple: 'এটি সবচেয়ে সহজ non-streaming কল:' },
+  ur: { endpoint: 'اینڈ پوائنٹ اور تصدیق', request: 'درخواست کا جسم', message: 'Message آبجیکٹ', example: 'بنیادی کال کی مثال', response: 'جواب کی مثال', responseFields: 'جواب کے فیلڈز', streaming: 'اسٹریمنگ جواب', tools: 'tools / function calling کا استعمال', errors: 'غلطی کا انتظام', pricing: 'قیمت، rate limit اور SLA دستاویز میں مستقل نہیں ہیں', requestBody: 'درخواست کا جسم JSON ہے؛ عام فیلڈز یہ ہیں:', simple: 'یہ سب سے آسان non-streaming کال ہے:' },
+  ta: { endpoint: 'Endpoint மற்றும் அங்கீகாரம்', request: 'கோரிக்கை உடல்', message: 'Message பொருள்', example: 'அடிப்படை அழைப்பு எடுத்துக்காட்டு', response: 'பதில் எடுத்துக்காட்டு', responseFields: 'பதில் புலங்கள்', streaming: 'ஸ்ட்ரீமிங் பதில்', tools: 'tools / function calling பயன்பாடு', errors: 'பிழை கையாளல்', pricing: 'விலை, rate limit மற்றும் SLA ஆவணத்தில் நிலையாக இல்லை', requestBody: 'கோரிக்கை உடல் JSON; பொதுவான புலங்கள் கீழே:', simple: 'இது மிக எளிய non-streaming அழைப்பு:' },
+  ne: { endpoint: 'एन्डपोइन्ट र प्रमाणीकरण', request: 'रिक्वेस्ट बडी', message: 'Message वस्तु', example: 'आधारभूत कलको उदाहरण', response: 'प्रतिक्रियाको उदाहरण', responseFields: 'प्रतिक्रिया फिल्ड', streaming: 'स्ट्रिमिङ प्रतिक्रिया', tools: 'tools / function calling प्रयोग', errors: 'त्रुटि व्यवस्थापन', pricing: 'मूल्य, rate limit र SLA कागजातमा स्थिर छैनन्', requestBody: 'रिक्वेस्ट बडी JSON हो; सामान्य फिल्डहरू:', simple: 'यो सबैभन्दा सरल non-streaming कल हो:' },
+  si: { endpoint: 'Endpoint සහ සත්‍යාපනය', request: 'ඉල්ලීම් ශරීරය', message: 'Message වස්තුව', example: 'මූලික ඇමතුම් උදාහරණය', response: 'ප්‍රතිචාර උදාහරණය', responseFields: 'ප්‍රතිචාර ක්ෂේත්‍ර', streaming: 'ප්‍රවාහ ප්‍රතිචාරය', tools: 'tools / function calling භාවිතය', errors: 'දෝෂ හැසිරවීම', pricing: 'මිල, rate limit සහ SLA ලේඛනයේ ස්ථිර කර නැත', requestBody: 'ඉල්ලීම් ශරීරය JSON වේ; පොදු ක්ෂේත්‍ර පහත දැක්වේ:', simple: 'මෙය සරලම non-streaming ඇමතුමයි:' },
+}
 
 /**
  * API Reference: POST /v1/chat/completions
@@ -401,6 +412,8 @@ print(resp.choices[0].message)`,
 export default function ChatCompletionsPage() {
   const { locale } = useLocale()
   if (locale === 'en') return <ChatCompletionsPageEn />
+  const copy = getApiCopy(locale, 'chat', { title: 'POST /v1/chat/completions', description: '对话补全主接口。完全兼容 OpenAI 协议，可在流式与非流式之间切换，支持 function calling 与多模态内容。', intro: '这是用于聊天、多模态输入和 tools/function calling 的 OpenAI 兼容接口。' })
+  const ui = CHAT_UI_COPY[locale] ?? CHAT_UI_COPY.zh
 
   const keyUrl = buildAgentActivationUrl({
     locale,
@@ -412,21 +425,22 @@ export default function ChatCompletionsPage() {
   return (
     <DocPage
       path="/docs/api/chat-completions"
-      title="POST /v1/chat/completions"
-      description="对话补全主接口。完全兼容 OpenAI 协议，可在流式与非流式之间切换，支持 function calling 与多模态内容。"
+      title={copy.title}
+      description={copy.description}
       headings={[
-        { id: 'endpoint', text: '端点与认证', level: 2 },
-        { id: 'request', text: '请求体', level: 2 },
-        { id: 'message', text: 'Message 对象', level: 3 },
-        { id: 'example', text: '基础调用示例', level: 2 },
-        { id: 'response', text: '响应示例', level: 2 },
-        { id: 'response-fields', text: '响应字段', level: 3 },
-        { id: 'streaming', text: '流式响应', level: 2 },
-        { id: 'tools', text: '使用 tools / function calling', level: 2 },
-        { id: 'errors', text: '错误处理', level: 2 },
+        { id: 'endpoint', text: ui.endpoint, level: 2 },
+        { id: 'request', text: ui.request, level: 2 },
+        { id: 'message', text: ui.message, level: 3 },
+        { id: 'example', text: ui.example, level: 2 },
+        { id: 'response', text: ui.response, level: 2 },
+        { id: 'response-fields', text: ui.responseFields, level: 3 },
+        { id: 'streaming', text: ui.streaming, level: 2 },
+        { id: 'tools', text: ui.tools, level: 2 },
+        { id: 'errors', text: ui.errors, level: 2 },
       ]}
     >
-      <h2 id="endpoint">端点与认证</h2>
+      <p>{copy.intro}</p>
+      <h2 id="endpoint">{ui.endpoint}</h2>
       <EndpointBadge method="POST" path="https://api.gpt88.cc/v1/chat/completions" />
 
       {/*
@@ -448,34 +462,34 @@ export default function ChatCompletionsPage() {
         控制台「API Keys」页面创建一把 Key 后填入。
       </p>
 
-      <Callout tone="warn" title="价格、限速、SLA 不在文档中固化">
+      <Callout tone="warn" title={ui.pricing}>
         <p>
           不同账号、不同模型的单价、速率限制、并发上限和 SLA 都由控制台与后端配置动态下发。
           本页面只描述协议字段；具体数字以 gpt88.cc 控制台为准。
         </p>
       </Callout>
 
-      <h2 id="request">请求体</h2>
-      <p>请求体为 JSON，常用字段如下：</p>
+      <h2 id="request">{ui.request}</h2>
+      <p>{ui.requestBody}</p>
       <FieldTable rows={REQ_BODY} />
 
-      <h3 id="message">Message 对象</h3>
+      <h3 id="message">{ui.message}</h3>
       <FieldTable rows={MESSAGE_FIELDS} />
 
-      <h2 id="example">基础调用示例</h2>
-      <p>下面是一次最简单的非流式调用：</p>
+      <h2 id="example">{ui.example}</h2>
+      <p>{ui.simple}</p>
 
       <CodeBlock lang="json" filename="request body" code={REQUEST_BODY} />
       <CodeTabs tabs={TABS_BASIC} />
 
-      <h2 id="response">响应示例</h2>
+      <h2 id="response">{ui.response}</h2>
       <p>非流式响应直接返回完整 JSON：</p>
       <CodeBlock lang="json" filename="200 OK" code={RESP_NON_STREAM} />
 
-      <h3 id="response-fields">响应字段</h3>
+      <h3 id="response-fields">{ui.responseFields}</h3>
       <FieldTable rows={RESP_FIELDS} />
 
-      <h2 id="streaming">流式响应</h2>
+      <h2 id="streaming">{ui.streaming}</h2>
       <p>
         将 <code>stream</code> 置为 <code>true</code> 后，服务端会以
         <code>text/event-stream</code> 推送增量。每条事件是一行
@@ -495,7 +509,7 @@ export default function ChatCompletionsPage() {
         </p>
       </Callout>
 
-      <h2 id="tools">使用 tools / function calling</h2>
+      <h2 id="tools">{ui.tools}</h2>
       <p>
         模型可以根据用户请求决定调用某个工具，并在响应中返回
         <code>tool_calls</code>。在收到调用后，由你的应用执行工具并把结果作为
@@ -503,7 +517,7 @@ export default function ChatCompletionsPage() {
       </p>
       <CodeTabs tabs={TABS_TOOLS} />
 
-      <h2 id="errors">错误处理</h2>
+      <h2 id="errors">{ui.errors}</h2>
       <p>
         所有错误均以统一结构返回。HTTP 状态码遵循 OpenAI 协议惯例，
         详细码表请参阅 <Link to="/docs/api/errors/">错误码</Link> 页。

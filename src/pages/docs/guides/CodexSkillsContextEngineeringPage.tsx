@@ -1,4 +1,5 @@
 import { DocPage } from '../../../components/layout/DocPage'
+import { useLocale } from '../../../lib/locale'
 import { Callout } from '../../../components/ui/Callout'
 import {
   GuideScreenshot,
@@ -8,8 +9,13 @@ import {
   StepPanel,
   TwoUpScreenshots,
 } from './CodexGpt55SeriesShared'
+import CodexSkillsContextEngineeringPageEn from '../../en/CodexSkillsContextEngineeringPageEn'
 
 export default function CodexSkillsContextEngineeringPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <CodexSkillsContextEngineeringPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-skills-context-engineering"

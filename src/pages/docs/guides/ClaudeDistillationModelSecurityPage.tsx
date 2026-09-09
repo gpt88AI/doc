@@ -1,9 +1,15 @@
 import { Callout } from '../../../components/ui/Callout'
 import { DocPage } from '../../../components/layout/DocPage'
+import { useLocale } from '../../../lib/locale'
+import ClaudeDistillationModelSecurityPageEn from '../../en/ClaudeDistillationModelSecurityPageEn'
 
 const SOURCE_URL = 'https://www.youtube.com/watch?v=28Fbc9TQUDw'
 
 export default function ClaudeDistillationModelSecurityPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <ClaudeDistillationModelSecurityPageEn />
+
   return (
     <DocPage
       path="/docs/guides/claude-distillation-model-security"

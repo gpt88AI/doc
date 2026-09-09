@@ -4,6 +4,7 @@ import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
 import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
+import { getSdkCopy } from '../../../lib/sdkLocaleCopy'
 import { SeoIntentSections } from '../../../components/seo/SeoIntentSections'
 import { seoIntentHeadings } from '../../../components/seo/SeoIntentMeta'
 import NodejsPageEn from '../../en/NodejsPageEn'
@@ -148,10 +149,22 @@ export async function POST(req: Request) {
   });
 }`
 
+const NODE_BODY_COPY: Record<string, { key: string; browserTitle: string; browser: string; retry: string; edge: string; tip: string }> = {
+  zh: { key: '将代码中的 process.env.GPT88_API_KEY 指向你在 Agent API Keys 控制台 API Keys 页面创建的 Key（建议用环境变量而非硬编码）。', browserTitle: '不要在浏览器里直连', browser: 'OpenAI Node SDK 默认 dangerouslyAllowBrowser 是 false，请保留默认值。所有请求应走你自己的 server / Edge route 转发，避免把 API Key 暴露给客户端。', retry: '错误类别与处理建议详见', edge: '在 Edge / serverless 函数中转发流式响应，是 React 应用最常见的接入方式：', tip: '如果 runtime 不是 Edge（例如 Vercel Node Functions），请配置足够长的最大执行时长，并在反向代理层关闭 SSE 缓冲。' },
+  hi: { key: 'Code में process.env.GPT88_API_KEY को Agent API Keys console के API Keys page पर बनाए गए Key से जोड़ें (environment variable को hard-code से प्राथमिकता दें)।', browserTitle: 'Browser से direct call न करें', browser: 'OpenAI Node SDK में dangerouslyAllowBrowser default false है; इसे बनाए रखें। सभी requests अपने server / Edge route से forward करें ताकि API Key client को न मिले।', retry: 'Error category और handling देखें', edge: 'Edge / serverless function से streaming response forward करना React app का सामान्य तरीका है:', tip: 'Edge के बजाय Vercel Node Functions हो तो पर्याप्त execution time दें और reverse proxy में SSE buffering बंद करें।' },
+  bn: { key: 'Code-এর process.env.GPT88_API_KEY-কে Agent API Keys console-এর API Keys page-এ তৈরি করা Key-এর সঙ্গে যুক্ত করুন (hard-code না করে environment variable ব্যবহার করুন)।', browserTitle: 'Browser থেকে direct call করবেন না', browser: 'OpenAI Node SDK-তে dangerouslyAllowBrowser-এর default false রাখুন। সব request নিজের server / Edge route দিয়ে forward করুন, যাতে client-এ API Key না যায়।', retry: 'Error category ও handling দেখুন', edge: 'Edge / serverless function দিয়ে streaming response forward করা React app-এর সাধারণ পদ্ধতি:', tip: 'Edge নয়, Vercel Node Functions হলে যথেষ্ট execution time দিন এবং reverse proxy-তে SSE buffering বন্ধ করুন।' },
+  ur: { key: 'Code میں process.env.GPT88_API_KEY کو Agent API Keys console کے API Keys page پر بنائے گئے Key سے جوڑیں (hard-code کے بجائے environment variable استعمال کریں)۔', browserTitle: 'Browser سے direct call نہ کریں', browser: 'OpenAI Node SDK میں dangerouslyAllowBrowser کا default false رہنے دیں۔ تمام requests اپنے server / Edge route سے forward کریں تاکہ API Key client تک نہ پہنچے۔', retry: 'Error category اور handling دیکھیں', edge: 'Edge / serverless function سے streaming response forward کرنا React app کا عام طریقہ ہے:', tip: 'Edge کے بجائے Vercel Node Functions ہوں تو کافی execution time دیں اور reverse proxy میں SSE buffering بند کریں۔' },
+  ta: { key: 'Code-ல் process.env.GPT88_API_KEY-ஐ Agent API Keys console-ன் API Keys page-ல் உருவாக்கிய Key-க்கு இணைக்கவும் (hard-code செய்யாமல் environment variable பயன்படுத்தவும்).', browserTitle: 'Browser-ல் direct call செய்ய வேண்டாம்', browser: 'OpenAI Node SDK-ல் dangerouslyAllowBrowser default false-ஆக இருக்கட்டும். எல்லா requests-ஐ உங்கள் server / Edge route வழியாக forward செய்து API Key client-க்கு செல்லாமல் பாதுகாக்கவும்.', retry: 'Error category மற்றும் handling-ஐ பார்க்கவும்', edge: 'Edge / serverless function மூலம் streaming response-ஐ forward செய்வது React app-களின் பொதுவான முறையாகும்:', tip: 'Edge அல்லாத Vercel Node Functions என்றால் போதுமான execution time அமைத்து reverse proxy-ல் SSE buffering-ஐ முடக்கவும்.' },
+  ne: { key: 'Code को process.env.GPT88_API_KEY लाई Agent API Keys console को API Keys page मा बनाइएको Key सँग जोड्नुहोस् (hard-code भन्दा environment variable प्रयोग गर्नुहोस्)।', browserTitle: 'Browser बाट direct call नगर्नुहोस्', browser: 'OpenAI Node SDK को dangerouslyAllowBrowser default false नै राख्नुहोस्। सबै requests आफ्नै server / Edge route बाट forward गरी client मा API Key नपठाउनुहोस्।', retry: 'Error category र handling हेर्नुहोस्', edge: 'Edge / serverless function बाट streaming response forward गर्नु React app को सामान्य integration हो:', tip: 'Edge नभई Vercel Node Functions भए पर्याप्त execution time दिनुहोस् र reverse proxy मा SSE buffering बन्द गर्नुहोस्।' },
+  si: { key: 'Code එකේ process.env.GPT88_API_KEY Agent API Keys console හි API Keys page එකේ සාදන ලද Key එකට යොමු කරන්න (hard-code වෙනුවට environment variable භාවිතා කරන්න).', browserTitle: 'Browser එකෙන් direct call නොකරන්න', browser: 'OpenAI Node SDK හි dangerouslyAllowBrowser default false ලෙසම තබන්න. සියලු requests ඔබේ server / Edge route හරහා forward කර API Key client වෙත නොයවන්න.', retry: 'Error category සහ handling බලන්න', edge: 'Edge / serverless function එකකින් streaming response forward කිරීම React app සඳහා සාමාන්‍ය ක්‍රමයකි:', tip: 'Edge නොවන Vercel Node Functions නම් ප්‍රමාණවත් execution time සකසා reverse proxy එකේ SSE buffering අක්‍රීය කරන්න.' },
+}
+
 export default function NodejsSdkPage() {
   const { locale } = useLocale()
 
   if (locale === 'en') return <NodejsPageEn />
+  const copy = getSdkCopy(locale, 'nodejs', { title: 'Node.js 调用 GPT88 API 完整示例', description: '在 Node.js 中使用 OpenAI SDK 调用 GPT88 API，包含环境变量、流式响应和重试。', intro: '将 Key 保存在服务端环境变量中，并使用现有 OpenAI-compatible client 发送请求。', sections: { install: '安装与配置', basic: '基础调用', stream: '流式响应', tools: 'function calling', retry: '退避重试', edge: 'Next.js Edge / serverless' } })
+  const bodyCopy = NODE_BODY_COPY[locale] ?? NODE_BODY_COPY.zh
 
   const keyUrl = buildAgentActivationUrl({
     locale,
@@ -163,25 +176,26 @@ export default function NodejsSdkPage() {
   return (
     <DocPage
       path="/docs/sdk/nodejs"
-      title="Node.js 调用 GPT88 API 完整示例"
-      description="在 Node.js 中使用 OpenAI SDK 调用 GPT88 API，包含环境变量、流式响应和重试。"
+      title={copy.title}
+      description={copy.description}
       headings={[
-        { id: 'install', text: '安装与配置', level: 2 },
-        { id: 'basic', text: '基础调用', level: 2 },
-        { id: 'stream', text: '流式响应', level: 2 },
-        { id: 'tools', text: 'function calling', level: 2 },
-        { id: 'retry', text: '退避重试', level: 2 },
-        { id: 'edge', text: 'Next.js Edge / serverless', level: 2 },
+        { id: 'install', text: copy.sections.install, level: 2 },
+        { id: 'basic', text: copy.sections.basic, level: 2 },
+        { id: 'stream', text: copy.sections.stream, level: 2 },
+        { id: 'tools', text: copy.sections.tools, level: 2 },
+        { id: 'retry', text: copy.sections.retry, level: 2 },
+        { id: 'edge', text: copy.sections.edge, level: 2 },
         ...seoIntentHeadings('nodejs'),
       ]}
     >
-      <h2 id="install">安装与配置</h2>
+      <p>{copy.intro}</p>
+      <h2 id="install">{copy.sections.install}</h2>
       {/*
        * Human msg-20260509-jwfia3 要求文档明确引导用户到 gpt88.cc 控制台获取 API Key。
        * 在 INSTALL 代码块上方加一行外链提示，与 Python / cURL 页面保持一致语气。
        */}
       <p className="text-sm text-ink-400">
-        将代码中的 <code>process.env.GPT88_API_KEY</code> 指向你在{' '}
+        {bodyCopy.key.replace('process.env.GPT88_API_KEY', '')}<code>process.env.GPT88_API_KEY</code>{' '}
         <a
           href={keyUrl}
           target="_blank"
@@ -194,33 +208,29 @@ export default function NodejsSdkPage() {
       </p>
       <CodeBlock lang="bash" code={INSTALL} />
 
-      <Callout tone="warn" title="不要在浏览器里直连">
-        <p>
-          OpenAI Node SDK 默认 <code>dangerouslyAllowBrowser</code> 是 false，
-          请保留默认值。所有请求应当走你自己的 server / Edge route 转发，
-          避免把 API Key 暴露给客户端。
-        </p>
+      <Callout tone="warn" title={bodyCopy.browserTitle}>
+        <p>{bodyCopy.browser}</p>
       </Callout>
 
-      <h2 id="basic">基础调用</h2>
+      <h2 id="basic">{copy.sections.basic}</h2>
       <CodeBlock lang="typescript" filename="basic.ts" code={BASIC} />
 
-      <h2 id="stream">流式响应</h2>
+      <h2 id="stream">{copy.sections.stream}</h2>
       <CodeBlock lang="typescript" filename="stream.ts" code={STREAM} />
 
-      <h2 id="tools">function calling</h2>
+      <h2 id="tools">{copy.sections.tools}</h2>
       <CodeBlock lang="typescript" filename="tools.ts" code={TOOLS} />
 
-      <h2 id="retry">退避重试</h2>
+      <h2 id="retry">{copy.sections.retry}</h2>
       <CodeBlock lang="typescript" filename="retry.ts" code={RETRY} />
       <p>
-        错误类别与处理建议详见{' '}
+        {bodyCopy.retry}{' '}
         <Link to="/docs/api/errors/">错误码</Link>。
       </p>
 
-      <h2 id="edge">Next.js Edge / serverless</h2>
+      <h2 id="edge">{copy.sections.edge}</h2>
       <p>
-        在 Edge / serverless 函数中转发流式响应，是 React 应用最常见的接入方式：
+        {bodyCopy.edge}
       </p>
       <CodeBlock
         lang="typescript"
@@ -229,9 +239,7 @@ export default function NodejsSdkPage() {
       />
       <Callout tone="tip">
         <p>
-          如果你的 runtime 不是 Edge（例如 Vercel Node Functions），
-          注意配置足够长的最大执行时长（流式响应可能数十秒），
-          以及在反向代理层关闭对 SSE 的缓冲。
+          {bodyCopy.tip}
         </p>
       </Callout>
       <SeoIntentSections intent="nodejs" />

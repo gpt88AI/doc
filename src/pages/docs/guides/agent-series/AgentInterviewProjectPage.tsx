@@ -3,8 +3,13 @@ import { Callout } from '../../../../components/ui/Callout'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { GuideTable, Checklist, SeriesNav } from './AgentGuideShared'
 import { headings, toHeadings } from './AgentGuideData'
+import { useLocale } from '../../../../lib/locale'
+import AgentInterviewProjectPageEn from '../../../en/AgentInterviewProjectPageEn'
 
 export default function AgentInterviewProjectPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <AgentInterviewProjectPageEn />
+
   return <DocPage path="/docs/guides/agent-interview-project" title="AI Agent 求职专题（六）：高频面试题、实战项目与 30 天复习路线" description="把 AI Agent 岗位常见问题整理成可复述答案，并通过一个企业知识库与多工具 Agent 项目准备系统设计、现场编码和项目深挖。" headings={toHeadings(headings.interview)}>
     <SeriesNav current="/docs/guides/agent-interview-project/" />
     <Callout tone="tip" title="面试的核心目标"><p>面试官通常不是在考你背了多少框架，而是在判断你是否能把不确定的模型能力放进一个有边界、有指标、可恢复的业务系统。所有答案都要回到场景、取舍、验证和结果。</p></Callout>

@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import WorkrallyCanvasGuidePageEn from '../../en/WorkrallyCanvasGuidePageEn'
 
 const NODE_EXAMPLE = `[
   {
@@ -78,6 +80,9 @@ function GridTable() {
 }
 
 export default function WorkrallyCanvasGuidePage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <WorkrallyCanvasGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/workrally-canvas-guide"

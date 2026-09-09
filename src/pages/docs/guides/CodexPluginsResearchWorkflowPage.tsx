@@ -14,7 +14,7 @@ import CodexPluginsResearchWorkflowPageEn from '../../en/CodexPluginsResearchWor
 
 export default function CodexPluginsResearchWorkflowPage() {
   const { locale } = useLocale()
-  if (locale === 'en') return <CodexPluginsResearchWorkflowPageEn />
+  if (locale !== 'zh') return <CodexPluginsResearchWorkflowPageEn />
 
   return (
     <DocPage

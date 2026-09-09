@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
+import CodexGpt55SystemOverviewPageEn from '../../en/CodexGpt55SystemOverviewPageEn'
 import {
   GuideScreenshot,
   MiniCardGrid,
@@ -12,6 +14,10 @@ import {
 } from './CodexGpt55SeriesShared'
 
 export default function CodexGpt55SystemOverviewPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <CodexGpt55SystemOverviewPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-gpt55-system-overview"

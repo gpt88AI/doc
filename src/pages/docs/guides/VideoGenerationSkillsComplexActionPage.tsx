@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
+import { useLocale } from '../../../lib/locale'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import VideoGenerationSkillsComplexActionPageEn from '../../en/VideoGenerationSkillsComplexActionPageEn'
 
 const LOGIC = `分镜四问：
 1. 角色为什么行动
@@ -83,6 +85,10 @@ function DetailBlock({
 }
 
 export default function VideoGenerationSkillsComplexActionPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <VideoGenerationSkillsComplexActionPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-complex-action-storyboard"

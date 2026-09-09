@@ -44,6 +44,16 @@ const REVIEW_TEMPLATE = `这次调用的成本核对：
 
 结论：以充值订单、模型广场 / 定价页和账户用量记录的当前值为准。`
 
+const BILLING_COPY = {
+  zh: { title: '1 元为什么等于 1 余额？人民币结算与 USD 充值换算新手指南', description: '用最简单的方式解释 gpt88.cc 的人民币余额、美元充值换算、模型官方用量和分组倍率，帮助中国用户和外国用户理解 1:1 余额与实际结算。', headings: ['先记住这句话', '适用人群与完成标准', '先分清三层单位与一个倍率', '为什么会出现 1:1', '充值如何换算', '模型调用如何结算', '完整计算示例', '应该去哪里查看', '新手最短成功路径', '模型与分组怎么选', '成本核对与迭代方法', '常见问题与恢复方式', '练习任务与验收清单', '可复用成本核对模板', '口径与证据边界'], alertTitle: '重要：1 元余额不等于 1 美元', alert: '“1 元 = 1.00 余额”描述的是平台内部的人民币记账关系，不是汇率。它不表示 1 CNY 等于 1 USD，也不表示支付 1 USD 只会得到 1 CNY 余额。' },
+  hi: { title: '1 Yuan बराबर 1 balance क्यों है? RMB settlement और USD top-up guide', description: 'gpt88.cc के RMB balance, USD top-up conversion, official model usage और group multiplier को सरल तरीके से समझें।', headings: ['यह बात याद रखें', 'किसके लिए और completion standard', 'तीन units और एक multiplier अलग करें', '1:1 क्यों दिखता है', 'Top-up कैसे convert होता है', 'Model call का settlement', 'पूरा calculation example', 'कहाँ जाँचें', 'नए user का shortest success path', 'Model और group कैसे चुनें', 'Cost reconciliation और iteration', 'Common questions और recovery', 'Practice और acceptance checklist', 'Reusable cost template', 'Scope और evidence boundary'], alertTitle: 'महत्वपूर्ण: 1 Yuan balance, 1 USD नहीं है', alert: '“1 Yuan = 1.00 balance” platform की internal RMB accounting relationship है, exchange rate नहीं। इसका अर्थ 1 CNY = 1 USD या 1 USD payment = 1 CNY balance नहीं है।' },
+  bn: { title: '১ Yuan কেন ১ balance? RMB settlement ও USD top-up guide', description: 'gpt88.cc-এর RMB balance, USD top-up conversion, official model usage এবং group multiplier সহজভাবে বুঝুন।', headings: ['এই কথাটি মনে রাখুন', 'কার জন্য এবং completion standard', 'তিনটি unit ও একটি multiplier আলাদা করুন', '1:1 কেন দেখা যায়', 'Top-up কীভাবে convert হয়', 'Model call settlement', 'সম্পূর্ণ calculation example', 'কোথায় যাচাই করবেন', 'নতুন user-এর shortest success path', 'Model ও group নির্বাচন', 'Cost reconciliation ও iteration', 'সাধারণ প্রশ্ন ও recovery', 'Practice ও acceptance checklist', 'Reusable cost template', 'Scope ও evidence boundary'], alertTitle: 'গুরুত্বপূর্ণ: ১ Yuan balance, ১ USD নয়', alert: '“১ Yuan = ১.00 balance” platform-এর internal RMB accounting relationship, exchange rate নয়। এর অর্থ ১ CNY = ১ USD বা ১ USD payment = ১ CNY balance নয়।' },
+  ur: { title: '1 Yuan برابر 1 balance کیوں ہے؟ RMB settlement اور USD top-up guide', description: 'gpt88.cc کے RMB balance، USD top-up conversion، official model usage اور group multiplier کو آسان انداز میں سمجھیں۔', headings: ['یہ بات یاد رکھیں', 'کس کے لیے اور completion standard', 'تین units اور ایک multiplier الگ کریں', '1:1 کیوں نظر آتا ہے', 'Top-up کیسے convert ہوتا ہے', 'Model call کا settlement', 'مکمل calculation example', 'کہاں جانچیں', 'نئے user کا shortest success path', 'Model اور group کا انتخاب', 'Cost reconciliation اور iteration', 'عام سوالات اور recovery', 'Practice اور acceptance checklist', 'Reusable cost template', 'Scope اور evidence boundary'], alertTitle: 'اہم: 1 Yuan balance، 1 USD نہیں ہے', alert: '“1 Yuan = 1.00 balance” platform کا internal RMB accounting relationship ہے، exchange rate نہیں۔ اس کا مطلب 1 CNY = 1 USD یا 1 USD payment = 1 CNY balance نہیں ہے۔' },
+  ta: { title: '1 Yuan ஏன் 1 balance? RMB settlement மற்றும் USD top-up guide', description: 'gpt88.cc RMB balance, USD top-up conversion, official model usage மற்றும் group multiplier ஆகியவற்றை எளிதாகப் புரிந்துகொள்ளுங்கள்.', headings: ['இந்த வாக்கியத்தை நினைவில் கொள்ளுங்கள்', 'யாருக்காக மற்றும் completion standard', 'மூன்று units மற்றும் ஒரு multiplier-ஐப் பிரிக்கவும்', '1:1 ஏன் தோன்றுகிறது', 'Top-up எவ்வாறு convert ஆகிறது', 'Model call settlement', 'முழு calculation example', 'எங்கே சரிபார்ப்பது', 'புதிய user-ன் shortest success path', 'Model மற்றும் group தேர்வு', 'Cost reconciliation மற்றும் iteration', 'பொதுவான கேள்விகள் மற்றும் recovery', 'Practice மற்றும் acceptance checklist', 'Reusable cost template', 'Scope மற்றும் evidence boundary'], alertTitle: 'முக்கியம்: 1 Yuan balance என்பது 1 USD அல்ல', alert: '“1 Yuan = 1.00 balance” என்பது platform-ன் internal RMB accounting relationship; exchange rate அல்ல. இதன் பொருள் 1 CNY = 1 USD அல்லது 1 USD payment = 1 CNY balance அல்ல.' },
+  ne: { title: '1 Yuan किन 1 balance बराबर हुन्छ? RMB settlement र USD top-up guide', description: 'gpt88.cc को RMB balance, USD top-up conversion, official model usage र group multiplier सरल रूपमा बुझ्नुहोस्।', headings: ['यो कुरा सम्झनुहोस्', 'कसका लागि र completion standard', 'तीन units र एउटा multiplier छुट्याउनुहोस्', '1:1 किन देखिन्छ', 'Top-up कसरी convert हुन्छ', 'Model call settlement', 'पूरा calculation example', 'कहाँ जाँच्ने', 'नयाँ user को shortest success path', 'Model र group कसरी छान्ने', 'Cost reconciliation र iteration', 'सामान्य प्रश्न र recovery', 'Practice र acceptance checklist', 'Reusable cost template', 'Scope र evidence boundary'], alertTitle: 'महत्त्वपूर्ण: 1 Yuan balance, 1 USD होइन', alert: '“1 Yuan = 1.00 balance” platform को internal RMB accounting relationship हो, exchange rate होइन। यसको अर्थ 1 CNY = 1 USD वा 1 USD payment = 1 CNY balance होइन।' },
+  si: { title: '1 Yuan එකක් 1 balance එකක් වන්නේ ඇයි? RMB settlement සහ USD top-up guide', description: 'gpt88.cc හි RMB balance, USD top-up conversion, official model usage සහ group multiplier සරලව තේරුම් ගන්න.', headings: ['මෙය මතක තබාගන්න', 'කා සඳහාද සහ completion standard', 'Units තුන සහ multiplier එක වෙන්කරන්න', '1:1 පෙන්වන්නේ ඇයි', 'Top-up convert වන්නේ කෙසේද', 'Model call settlement', 'සම්පූර්ණ calculation example', 'පරීක්ෂා කළ යුතු ස්ථාන', 'නව user සඳහා shortest success path', 'Model සහ group තෝරාගැනීම', 'Cost reconciliation සහ iteration', 'සාමාන්‍ය ප්‍රශ්න සහ recovery', 'Practice සහ acceptance checklist', 'Reusable cost template', 'Scope සහ evidence boundary'], alertTitle: 'වැදගත්: 1 Yuan balance එක 1 USD නොවේ', alert: '“1 Yuan = 1.00 balance” යනු platform හි internal RMB accounting relationship එකකි; exchange rate එකක් නොවේ. එයින් 1 CNY = 1 USD හෝ 1 USD payment = 1 CNY balance යන්න අදහස් නොවේ.' },
+} as const
+
 function SimpleTable({
   headers,
   rows,
@@ -80,36 +90,22 @@ function SimpleTable({
 
 export default function BillingUnitsGuidePage() {
   const { locale } = useLocale()
+  const copy = BILLING_COPY[locale as keyof typeof BILLING_COPY] ?? BILLING_COPY.zh
 
-  if (locale === 'en') return <BillingUnitsGuidePageEn />
+  if (locale !== 'zh') return <BillingUnitsGuidePageEn />
 
   return (
     <DocPage
       path="/docs/guides/billing-units"
-      title="1 元为什么等于 1 余额？人民币结算与 USD 充值换算新手指南"
-      description="用最简单的方式解释 gpt88.cc 的人民币余额、美元充值换算、模型官方用量和分组倍率，帮助中国用户和外国用户理解 1:1 余额与实际结算。"
+      title={copy.title}
+      description={copy.description}
       headings={[
-        { id: 'summary', text: '先记住这句话', level: 2 },
-        { id: 'audience', text: '适用人群与完成标准', level: 2 },
-        { id: 'units', text: '先分清三层单位与一个倍率', level: 2 },
-        { id: 'why-one-to-one', text: '为什么会出现 1:1', level: 2 },
-        { id: 'top-up', text: '充值如何换算', level: 2 },
-        { id: 'settlement', text: '模型调用如何结算', level: 2 },
-        { id: 'example', text: '完整计算示例', level: 2 },
-        { id: 'where-to-check', text: '应该去哪里查看', level: 2 },
-        { id: 'shortest-path', text: '新手最短成功路径', level: 2 },
-        { id: 'decisions', text: '模型与分组怎么选', level: 2 },
-        { id: 'iteration', text: '成本核对与迭代方法', level: 2 },
-        { id: 'troubleshooting', text: '常见问题与恢复方式', level: 2 },
-        { id: 'practice', text: '练习任务与验收清单', level: 2 },
-        { id: 'template', text: '可复用成本核对模板', level: 2 },
-        { id: 'evidence', text: '口径与证据边界', level: 2 },
+        ...['summary', 'audience', 'units', 'why-one-to-one', 'top-up', 'settlement', 'example', 'where-to-check', 'shortest-path', 'decisions', 'iteration', 'troubleshooting', 'practice', 'template', 'evidence'].map((id, index) => ({ id, text: copy.headings[index], level: 2 as const })),
       ]}
     >
-      <Callout tone="danger" title="重要：1 元余额不等于 1 美元">
+      <Callout tone="danger" title={copy.alertTitle}>
         <p>
-          <strong>“1 元 = 1.00 余额”描述的是平台内部的人民币记账关系，不是汇率。</strong>
-          它不表示 1 CNY 等于 1 USD，也不表示支付 1 USD 只会得到 1 CNY 余额。
+          <strong>{copy.alert}</strong>
         </p>
         <p>
           如果充值页面或后台界面出现 <code>$</code> 符号，请以当前计费说明、充值订单和账户用量记录中的单位为准。在本套结算逻辑中，账户余额和调用扣费按人民币理解；支付美元时，美元会先经过支付渠道或平台配置的换算，再以人民币余额入账。

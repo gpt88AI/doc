@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import CodexChatgptPhoneVerificationPageEn from '../../en/CodexChatgptPhoneVerificationPageEn'
 
 const QUICK_DECISION = `适合使用这篇教程的情况：
 
@@ -78,6 +80,10 @@ function StepCard({
 }
 
 export default function CodexChatgptPhoneVerificationPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <CodexChatgptPhoneVerificationPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-chatgpt-phone-verification"

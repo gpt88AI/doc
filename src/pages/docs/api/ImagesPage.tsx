@@ -5,7 +5,18 @@ import { CodeTabs } from '../../../components/ui/CodeTabs'
 import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
 import { useLocale } from '../../../lib/locale'
+import { getApiCopy } from '../../../lib/apiLocaleCopy'
 import ImagesPageEn from '../../en/ImagesPageEn'
+
+const IMAGE_UI_COPY: Record<string, Record<string, string>> = {
+  zh: { overview: '先分清两套接口', openai: 'OpenAI 官方图片 API', openaiEdit: 'OpenAI 图片编辑', gemini: 'Gemini 官方图片 API', geminiEdit: 'Gemini 图生图与编辑', fields: '字段对照', compat: 'gpt88.cc 兼容说明', async: '异步生图相关文档', alias: '官方模型 ID 与平台别名不要混写', openaiResponse: 'OpenAI 返回结构', geminiResponse: 'Gemini 返回结构', ratio: '不要再把比例值和像素值混用', openaiFields: 'OpenAI 图片 API', geminiFields: 'Gemini 图片 API' },
+  hi: { overview: 'पहले दो इंटरफ़ेस अलग करें', openai: 'OpenAI आधिकारिक इमेज API', openaiEdit: 'OpenAI इमेज एडिटिंग', gemini: 'Gemini आधिकारिक इमेज API', geminiEdit: 'Gemini इमेज-टू-इमेज और एडिटिंग', fields: 'फ़ील्ड संदर्भ', compat: 'gpt88.cc संगतता नोट्स', async: 'असिंक्रोनस इमेज जनरेशन दस्तावेज़', alias: 'आधिकारिक मॉडल ID और प्लेटफ़ॉर्म उपनाम न मिलाएं', openaiResponse: 'OpenAI रिस्पॉन्स संरचना', geminiResponse: 'Gemini रिस्पॉन्स संरचना', ratio: 'अस्पेक्ट रेशियो और पिक्सेल आकार न मिलाएं', openaiFields: 'OpenAI इमेज API', geminiFields: 'Gemini इमेज API' },
+  bn: { overview: 'প্রথমে দুইটি ইন্টারফেস আলাদা করুন', openai: 'OpenAI অফিসিয়াল ইমেজ API', openaiEdit: 'OpenAI ইমেজ এডিট', gemini: 'Gemini অফিসিয়াল ইমেজ API', geminiEdit: 'Gemini ইমেজ-টু-ইমেজ ও এডিট', fields: 'ফিল্ড রেফারেন্স', compat: 'gpt88.cc সামঞ্জস্য নোট', async: 'অ্যাসিঙ্ক্রোনাস ছবি তৈরির ডকুমেন্টেশন', alias: 'অফিসিয়াল model ID ও প্ল্যাটফর্ম alias মেশাবেন না', openaiResponse: 'OpenAI রেসপন্সের গঠন', geminiResponse: 'Gemini রেসপন্সের গঠন', ratio: 'অনুপাত ও পিক্সেল মাপ মেশাবেন না', openaiFields: 'OpenAI ইমেজ API', geminiFields: 'Gemini ইমেজ API' },
+  ur: { overview: 'پہلے دونوں انٹرفیس الگ کریں', openai: 'OpenAI سرکاری امیج API', openaiEdit: 'OpenAI امیج ایڈیٹنگ', gemini: 'Gemini سرکاری امیج API', geminiEdit: 'Gemini امیج ٹو امیج اور ایڈیٹنگ', fields: 'فیلڈ حوالہ', compat: 'gpt88.cc مطابقتی نوٹس', async: 'غیر متزامن امیج جنریشن دستاویزات', alias: 'سرکاری model ID اور پلیٹ فارم alias کو نہ ملائیں', openaiResponse: 'OpenAI جواب کی ساخت', geminiResponse: 'Gemini جواب کی ساخت', ratio: 'نسبت اور پکسل سائز کو نہ ملائیں', openaiFields: 'OpenAI امیج API', geminiFields: 'Gemini امیج API' },
+  ta: { overview: 'முதலில் இரண்டு இடைமுகங்களைப் பிரிக்கவும்', openai: 'OpenAI அதிகாரப்பூர்வ பட API', openaiEdit: 'OpenAI படத் திருத்தம்', gemini: 'Gemini அதிகாரப்பூர்வ பட API', geminiEdit: 'Gemini படத்திலிருந்து படம் மற்றும் திருத்தம்', fields: 'புலக் குறிப்பு', compat: 'gpt88.cc இணக்கக் குறிப்புகள்', async: 'ஒத்திசைவற்ற பட உருவாக்க ஆவணங்கள்', alias: 'அதிகாரப்பூர்வ model ID மற்றும் platform alias-ஐக் கலக்க வேண்டாம்', openaiResponse: 'OpenAI பதில் அமைப்பு', geminiResponse: 'Gemini பதில் அமைப்பு', ratio: 'விகிதம் மற்றும் பிக்சல் அளவை கலக்க வேண்டாம்', openaiFields: 'OpenAI பட API', geminiFields: 'Gemini பட API' },
+  ne: { overview: 'पहिले दुई इन्टरफेस छुट्याउनुहोस्', openai: 'OpenAI आधिकारिक छवि API', openaiEdit: 'OpenAI छवि सम्पादन', gemini: 'Gemini आधिकारिक छवि API', geminiEdit: 'Gemini छविबाट छवि र सम्पादन', fields: 'फिल्ड सन्दर्भ', compat: 'gpt88.cc अनुकूलता नोट', async: 'असिन्क्रोनस छवि निर्माण कागजात', alias: 'आधिकारिक model ID र platform alias नमिसाउनुहोस्', openaiResponse: 'OpenAI प्रतिक्रियाको संरचना', geminiResponse: 'Gemini प्रतिक्रियाको संरचना', ratio: 'अनुपात र पिक्सेल आकार नमिसाउनुहोस्', openaiFields: 'OpenAI छवि API', geminiFields: 'Gemini छवि API' },
+  si: { overview: 'පළමුව අතුරුමුහුණු දෙක වෙන්කර හඳුනා ගන්න', openai: 'OpenAI නිල රූප API', openaiEdit: 'OpenAI රූප සංස්කරණය', gemini: 'Gemini නිල රූප API', geminiEdit: 'Gemini රූපයෙන් රූපයට සහ සංස්කරණය', fields: 'ක්ෂේත්‍ර යොමුව', compat: 'gpt88.cc අනුකූලතා සටහන්', async: 'අසමමුහුර්ත රූප නිර්මාණ ලේඛන', alias: 'නිල model ID සහ platform alias මිශ්‍ර නොකරන්න', openaiResponse: 'OpenAI ප්‍රතිචාර ව්‍යුහය', geminiResponse: 'Gemini ප්‍රතිචාර ව්‍යුහය', ratio: 'අනුපාතය සහ පික්සල් ප්‍රමාණය මිශ්‍ර නොකරන්න', openaiFields: 'OpenAI රූප API', geminiFields: 'Gemini රූප API' },
+}
 
 const GEMINI_UPLOAD_TABS = [
   {
@@ -333,23 +344,26 @@ export default function ImagesPage() {
   const { locale } = useLocale()
 
   if (locale === 'en') return <ImagesPageEn />
+  const copy = getApiCopy(locale, 'images', { title: '图片生成 API', description: '按 OpenAI 官方图片 API 与 Gemini 官方 generateContent 图片 API 分开说明，修正模型 ID、参数名、端点与返回结构。', intro: '本文将 OpenAI 图片 API 与 Gemini 图片 API 分开说明，因为两者的端点和字段并不相同。' })
+  const ui = IMAGE_UI_COPY[locale] ?? IMAGE_UI_COPY.zh
 
   return (
     <DocPage
       path="/docs/api/images"
-      title="图片生成 API"
-      description="按 OpenAI 官方图片 API 与 Gemini 官方 generateContent 图片 API 分开说明，修正模型 ID、参数名、端点与返回结构。"
+      title={copy.title}
+      description={copy.description}
       headings={[
-        { id: 'overview', text: '先分清两套接口', level: 2 },
-        { id: 'openai', text: 'OpenAI 官方图片 API', level: 2 },
-        { id: 'openai-edit', text: 'OpenAI 图片编辑', level: 2 },
-        { id: 'gemini', text: 'Gemini 官方图片 API', level: 2 },
-        { id: 'gemini-edit', text: 'Gemini 图生图与编辑', level: 2 },
-        { id: 'fields', text: '字段对照', level: 2 },
-        { id: 'compat', text: 'gpt88.cc 兼容说明', level: 2 },
+        { id: 'overview', text: ui.overview, level: 2 },
+        { id: 'openai', text: ui.openai, level: 2 },
+        { id: 'openai-edit', text: ui.openaiEdit, level: 2 },
+        { id: 'gemini', text: ui.gemini, level: 2 },
+        { id: 'gemini-edit', text: ui.geminiEdit, level: 2 },
+        { id: 'fields', text: ui.fields, level: 2 },
+        { id: 'compat', text: ui.compat, level: 2 },
       ]}
     >
-      <h2 id="overview">先分清两套接口</h2>
+      <p>{copy.intro}</p>
+      <h2 id="overview">{ui.overview}</h2>
       <p>
         图片生成文档最容易写错的地方，是把 OpenAI 的图片接口参数和 Gemini 的图片接口参数混在一起。
         这两套官方接口并不兼容，端点、字段名、模型 ID、返回结构都不同。
@@ -361,7 +375,7 @@ export default function ImagesPage() {
         <li>Gemini 常用字段是 <code>contents</code>、<code>parts</code>、<code>responseModalities</code>、<code>responseFormat.image</code>。</li>
       </ul>
 
-      <Callout tone="info" title="异步生图相关文档">
+      <Callout tone="info" title={ui.async}>
         <p>如果你的业务不适合等待图片在当前请求中直接返回，请先阅读下面两篇文档：</p>
         <ul>
           <li><Link to="/docs/guides/async-image-generation-notice/">异步生图支持公告</Link>：了解能力范围、请求流程与兼容说明。</li>
@@ -369,7 +383,7 @@ export default function ImagesPage() {
         </ul>
       </Callout>
 
-      <Callout tone="warn" title="官方模型 ID 与平台别名不要混写">
+      <Callout tone="warn" title={ui.alias}>
         <p>
           Google 官方文档中，Nano Banana 2 对应的官方模型 ID 是 <code>gemini-3.1-flash-image</code>，
           Nano Banana Pro 对应 <code>gemini-3-pro-image</code>。如果你在 gpt88.cc 控制台里看到
@@ -377,7 +391,7 @@ export default function ImagesPage() {
         </p>
       </Callout>
 
-      <h2 id="openai">OpenAI 官方图片 API</h2>
+      <h2 id="openai">{ui.openai}</h2>
       <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/images/generations" />
       <p>
         OpenAI 官方图片接口用于从文本直接生成图片。官方文档当前明确区分
@@ -386,14 +400,14 @@ export default function ImagesPage() {
       </p>
       <CodeTabs tabs={OPENAI_GENERATE_TABS} />
 
-      <Callout tone="info" title="OpenAI 返回结构">
+      <Callout tone="info" title={ui.openaiResponse}>
         <p>
           Image API 返回的图片数据通常在 <code>data[0].b64_json</code>。默认输出格式是 PNG，
           也可以请求 JPEG 或 WebP；JPEG / WebP 还支持 <code>output_compression</code>。
         </p>
       </Callout>
 
-      <h2 id="openai-edit">OpenAI 图片编辑</h2>
+      <h2 id="openai-edit">{ui.openaiEdit}</h2>
       <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/images/edits" />
       <p>
         OpenAI 官方编辑接口支持三类能力：编辑现有图片、基于参考图生成新图、以及配合 mask 做局部重绘。
@@ -401,7 +415,7 @@ export default function ImagesPage() {
       </p>
       <CodeTabs tabs={OPENAI_EDIT_TABS} />
 
-      <h2 id="gemini">Gemini 官方图片 API</h2>
+      <h2 id="gemini">{ui.gemini}</h2>
       <EndpointBadge method="POST" path="https://img.gpt88.cc/v1/models/gemini-3.1-flash-image:generateContent" />
       <p>
         Gemini 官方图片生成走 <code>generateContent</code>。Google 当前官方文档里，Nano Banana 2
@@ -411,27 +425,27 @@ export default function ImagesPage() {
       </p>
       <CodeTabs tabs={GEMINI_TEXT_TABS} />
 
-      <Callout tone="info" title="Gemini 返回结构">
+      <Callout tone="info" title={ui.geminiResponse}>
         <p>
           Gemini 生成结果通常在 <code>candidates[].content.parts[].inlineData.data</code> 中返回 base64 图片。
           Google 官方文档也明确说明，生成图片会带 SynthID 水印。
         </p>
       </Callout>
 
-      <h2 id="gemini-edit">Gemini 图生图与编辑</h2>
+      <h2 id="gemini-edit">{ui.geminiEdit}</h2>
       <p>
         Gemini 图生图按官方口径优先走“上传图片，然后再调用 generateContent”的流程。
         也就是说，参考图不要写成公网图片 URL，而是先上传成文件，再把返回的 file uri 放进 <code>fileData.fileUri</code>。
       </p>
       <CodeTabs tabs={GEMINI_UPLOAD_TABS} />
 
-      <h2 id="fields">字段对照</h2>
-      <h3>OpenAI 图片 API</h3>
+      <h2 id="fields">{ui.fields}</h2>
+      <h3>{ui.openaiFields}</h3>
       <FieldTable rows={OPENAI_FIELDS} />
-      <h3 className="mt-8">Gemini 图片 API</h3>
+      <h3 className="mt-8">{ui.geminiFields}</h3>
       <FieldTable rows={GEMINI_FIELDS} />
 
-      <Callout tone="warn" title="不要再把比例值和像素值混用">
+      <Callout tone="warn" title={ui.ratio}>
         <p>
           OpenAI 的 <code>size</code> 是像素尺寸，例如 <code>1024x1024</code>。
           Gemini 的 <code>aspectRatio</code> 是比例值，例如 <code>1:1</code>、<code>16:9</code>。
@@ -439,7 +453,7 @@ export default function ImagesPage() {
         </p>
       </Callout>
 
-      <h2 id="compat">gpt88.cc 兼容说明</h2>
+      <h2 id="compat">{ui.compat}</h2>
       <ul>
         <li>如果你接入的是 OpenAI 兼容图片模型，例如 <code>gpt-image-2</code>，优先使用 <code>/v1/images/generations</code> 和 <code>/v1/images/edits</code>。</li>
         <li>如果你接入的是 Google / Gemini 图片模型，优先使用 <code>/v1/models/{"{model}"}:generateContent</code>。</li>

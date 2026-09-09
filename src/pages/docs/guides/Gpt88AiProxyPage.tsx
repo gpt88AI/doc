@@ -116,7 +116,7 @@ function DocTable({
 export default function Gpt88AiProxyPage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <Gpt88AiProxyPageEn />
+  if (locale !== 'zh') return <Gpt88AiProxyPageEn />
 
   return (
     <DocPage

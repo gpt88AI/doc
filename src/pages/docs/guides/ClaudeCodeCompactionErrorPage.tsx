@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import ClaudeCodeCompactionErrorPageEn from '../../en/ClaudeCodeCompactionErrorPageEn'
 
 const ERROR = "Error during compaction: API Error: 400 Input exceeds the model's context window."
 
@@ -50,6 +52,10 @@ const DIAGNOSIS = [
 ].join('\n')
 
 export default function ClaudeCodeCompactionErrorPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <ClaudeCodeCompactionErrorPageEn />
+
   return (
     <DocPage
       path="/docs/guides/claude-code-compaction-error"

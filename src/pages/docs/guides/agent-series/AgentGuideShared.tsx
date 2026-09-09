@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../../lib/locale'
 
 export function GuideTable({ headers, rows }: { headers: string[]; rows: React.ReactNode[][] }) {
   return <div className="not-prose my-6 overflow-x-auto rounded-lg border border-white/5"><table className="w-full min-w-[44rem] text-left text-sm"><thead className="bg-white/[0.03] text-[11px] uppercase tracking-wider text-ink-400"><tr>{headers.map(header => <th key={header} className="px-4 py-2.5 font-medium">{header}</th>)}</tr></thead><tbody>{rows.map((row, rowIndex) => <tr key={rowIndex} className={`border-t border-white/5 align-top${rowIndex % 2 ? ' bg-white/[0.012]' : ''}`}>{row.map((cell, cellIndex) => <td key={cellIndex} className="px-4 py-3 text-[13px] leading-relaxed text-ink-200">{cell}</td>)}</tr>)}</tbody></table></div>
@@ -9,6 +10,9 @@ export function Checklist({ items }: { items: React.ReactNode[] }) {
 }
 
 export function SeriesNav({ current }: { current: string }) {
-  const items = [['岗位地图与能力模型', '/docs/guides/agent-job-map/'], ['Agent 基础与架构', '/docs/guides/agent-foundations/'], ['RAG 知识库工程', '/docs/guides/agent-rag/'], ['工具调用与 MCP', '/docs/guides/agent-tools-mcp/'], ['评测与生产化', '/docs/guides/agent-production/'], ['面试题与项目实战', '/docs/guides/agent-interview-project/']]
-  return <nav className="not-prose my-8 grid gap-2 sm:grid-cols-2 xl:grid-cols-3" aria-label="AI Agent 专题导航">{items.map(([title, href]) => href === current ? <div key={href} className="rounded-lg border border-violet-400/30 bg-violet-500/[0.08] px-3 py-2.5 text-sm text-violet-200">{title}</div> : <Link key={href} to={href} className="rounded-lg border border-white/5 px-3 py-2.5 text-sm text-ink-300 transition-colors hover:border-violet-400/30 hover:bg-violet-500/[0.05] hover:text-violet-200">{title}</Link>)}</nav>
+  const { locale } = useLocale()
+  const items = locale === 'zh'
+    ? [['岗位地图与能力模型', '/docs/guides/agent-job-map/'], ['Agent 基础与架构', '/docs/guides/agent-foundations/'], ['RAG 知识库工程', '/docs/guides/agent-rag/'], ['工具调用与 MCP', '/docs/guides/agent-tools-mcp/'], ['评测与生产化', '/docs/guides/agent-production/'], ['面试题与项目实战', '/docs/guides/agent-interview-project/']]
+    : [['Role map and capability model', '/docs/guides/agent-job-map/'], ['Agent foundations and architecture', '/docs/guides/agent-foundations/'], ['RAG knowledge engineering', '/docs/guides/agent-rag/'], ['Tool calling and MCP', '/docs/guides/agent-tools-mcp/'], ['Evaluation and productionization', '/docs/guides/agent-production/'], ['Interview questions and project practice', '/docs/guides/agent-interview-project/']]
+  return <nav className="not-prose my-8 grid gap-2 sm:grid-cols-2 xl:grid-cols-3" aria-label={locale === 'zh' ? 'AI Agent 专题导航' : 'AI Agent topic navigation'}>{items.map(([title, href]) => href === current ? <div key={href} className="rounded-lg border border-violet-400/30 bg-violet-500/[0.08] px-3 py-2.5 text-sm text-violet-200">{title}</div> : <Link key={href} to={href} className="rounded-lg border border-white/5 px-3 py-2.5 text-sm text-ink-300 transition-colors hover:border-violet-400/30 hover:bg-violet-500/[0.05] hover:text-violet-200">{title}</Link>)}</nav>
 }

@@ -147,7 +147,7 @@ function DocTable({
 export default function CompleteIntegrationGuidePage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <CompleteIntegrationGuidePageEn />
+  if (locale !== 'zh') return <CompleteIntegrationGuidePageEn />
 
   return (
     <DocPage

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import EccGuidePageEn from '../../en/EccGuidePageEn'
 
 const DECISION = `先判断你要哪种安装路径：
 
@@ -121,6 +123,10 @@ function StepCard({
 }
 
 export default function EccGuidePage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <EccGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/ecc-agent-harness"

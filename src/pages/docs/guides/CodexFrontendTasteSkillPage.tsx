@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import CodexFrontendTasteSkillPageEn from '../../en/CodexFrontendTasteSkillPageEn'
 
 const INSTALL_CODEX = `# 方式 A: 安装 Taste Skill 完整技能包到 Codex skills 目录
 npx skills add Leonxlnx/taste-skill -a codex
@@ -128,6 +130,10 @@ function DocTable({
 }
 
 export default function CodexFrontendTasteSkillPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <CodexFrontendTasteSkillPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-frontend-taste-skill"

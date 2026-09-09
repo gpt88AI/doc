@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import VideoGenerationSkillsI2vPromptPageEn from '../../en/VideoGenerationSkillsI2vPromptPageEn'
 
 const CORE_RULES = `图生视频三条硬规则：
 1. 首帧已定风格，提示词只写运动和变化
@@ -98,6 +100,10 @@ function DetailBlock({
 }
 
 export default function VideoGenerationSkillsI2vPromptPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <VideoGenerationSkillsI2vPromptPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-i2v-prompt"

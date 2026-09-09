@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { DocPage } from '../../../components/layout/DocPage'
+import CodexWindowsPowershell7TimeoutPageEn from '../../en/CodexWindowsPowershell7TimeoutPageEn'
 
 const SCREEN_ERROR = `Reconnecting... 1/5 (1m 00s · esc to interrupt)
 Unexpected status 524 <unknown status code>: responses stream finished without usable output
@@ -78,6 +80,10 @@ const HANDOFF = [
 ].join('\n')
 
 export default function CodexWindowsPowershell7TimeoutPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <CodexWindowsPowershell7TimeoutPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-windows-powershell7-timeout"

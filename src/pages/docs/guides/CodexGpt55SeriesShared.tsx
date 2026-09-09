@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useLocale } from '../../../lib/locale'
 
 export const SERIES_IMAGE_BASE = '/images/guides/codex-gpt55-system'
 export const SERIES_EXTRA_IMAGE_BASE = '/images/guides/codex-gpt55-system-extra'
@@ -96,7 +97,33 @@ export const SERIES_EXTRA_IMAGES = {
   },
 } as const
 
+const ENGLISH_IMAGE_COPY: Record<string, { alt: string; caption: string }> = {
+  'research-chat.jpg': { alt: 'Research conversation and plugin area in Codex Desktop', caption: 'Research session: Codex Desktop carries conversation, plugins, and research tasks in one workspace.' },
+  'skills-overview.jpg': { alt: 'Make Codex work your way and skill management interface', caption: 'Skill view: define a working method first, then turn it into reusable capability.' },
+  'youtube-research-report.jpg': { alt: 'Session analyzing a YouTube video and producing a report', caption: 'Research example: collect information from a public video and produce a reusable report or worklog.' },
+  'build-six-things.jpg': { alt: 'Building six things at the same time with Codex', caption: 'Parallel work: the screen shows several deliverables moving forward at the same time.' },
+  'ios-summary.jpg': { alt: 'iOS app requirements summary and build status', caption: 'Product delivery: a successful build check shows that the work continues beyond the chat layer.' },
+  'remotion-plan.jpg': { alt: 'Remotion launch video plan', caption: 'Video workflow: script, voice-over, music, captions, and shot planning become an execution list.' },
+  'skill-worklog.jpg': { alt: 'Skill files and worklog records', caption: 'Execution memory: skills and worklogs preserve the method and current progress.' },
+  'agent-curriculum.jpg': { alt: 'Generating a course or agent curriculum from video and transcript', caption: 'Knowledge productization: public material becomes a course, training set, or executable agent context.' },
+  'assets-fix.jpg': { alt: 'Asset repair and engineering verification', caption: 'Engineering detail: packaging, logo repair, and build checks happen in the same delivery workflow.' },
+  'app-icon-build.jpg': { alt: 'App icon and simulator verification', caption: 'Result verification: change the code, then verify the app icon and simulator build.' },
+  'investor-deck.jpg': { alt: 'Structured investor deck content', caption: 'Cross-deliverable work: one system can handle decks, copy, product narrative, and visual material.' },
+  'web-app-form.jpg': { alt: 'Web app form and layout work', caption: 'Frontend delivery: page structure, forms, and layout changes can enter a continuous workflow.' },
+  'manage-create.jpg': { alt: 'Skill creation and management interface', caption: 'Capability capture: turn one-off results back into reusable skill entry points.' },
+  'permissions-project-location.jpg': { alt: 'Codex permissions, effort, and project location settings', caption: 'Entry configuration: permissions, effort, and project location are set before the conversation starts.' },
+  'youtube-transcript-api-comparison.jpg': { alt: 'Comparison of YouTube transcript APIs', caption: 'Externalized research: the video compares several YouTube transcription approaches.' },
+  'automation-api-key.jpg': { alt: 'Automation API key configuration screen', caption: 'Automation setup: an external service credential is configured separately for automated tasks.' },
+  'chorus-landing-page.jpg': { alt: 'Chorus iPhone app landing page and Codex workspace', caption: 'Product delivery: Chorus is described as an iPhone app for learning agent basics and saving reusable skills.' },
+}
+
+function localizedImageCopy(locale: string, src: string, alt: string, caption: string) {
+  if (locale === 'zh') return { alt, caption }
+  return ENGLISH_IMAGE_COPY[src.split('/').pop() ?? ''] ?? { alt, caption }
+}
+
 export function ReferenceVideo() {
+  const { locale } = useLocale()
   return (
     <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
       <video
@@ -107,17 +134,17 @@ export function ReferenceVideo() {
         className="aspect-video w-full bg-black"
         src={REFERENCE_VIDEO_URL}
       >
-        当前浏览器不支持内嵌视频播放。
+        {locale === 'zh' ? '当前浏览器不支持内嵌视频播放。' : 'This browser does not support embedded video playback.'}
       </video>
       <figcaption className="border-t border-white/10 px-4 py-3 text-sm leading-6 text-ink-300">
-        参考视频：已切换为站内同域 MP4，避免外链播放器拦截。
+        {locale === 'zh' ? '参考视频：已切换为站内同域 MP4，避免外链播放器拦截。' : 'Reference video: using the same-origin MP4 avoids external player blocking.'}
         <a
           href={REFERENCE_VIDEO_URL}
           target="_blank"
           rel="noreferrer"
           className="ml-2 text-violet-300 hover:text-violet-200"
         >
-          直接打开视频文件
+          {locale === 'zh' ? '直接打开视频文件' : 'Open the video file'}
         </a>
       </figcaption>
     </figure>
@@ -133,11 +160,13 @@ export function GuideScreenshot({
   alt: string
   caption: string
 }) {
+  const { locale } = useLocale()
+  const copy = localizedImageCopy(locale, src, alt, caption)
   return (
     <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-      <img src={src} alt={alt} loading="lazy" className="w-full object-cover" />
+      <img src={src} alt={copy.alt} loading="lazy" className="w-full object-cover" />
       <figcaption className="border-t border-white/10 px-4 py-3 text-sm leading-6 text-ink-300">
-        {caption}
+        {copy.caption}
       </figcaption>
     </figure>
   )
@@ -148,6 +177,7 @@ export function TwoUpScreenshots({
 }: {
   items: ReadonlyArray<{ src: string; alt: string; caption: string }>
 }) {
+  const { locale } = useLocale()
   return (
     <div className="not-prose my-6 grid gap-4 lg:grid-cols-2">
       {items.map(item => (
@@ -155,9 +185,9 @@ export function TwoUpScreenshots({
           key={item.src}
           className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
         >
-          <img src={item.src} alt={item.alt} loading="lazy" className="w-full object-cover" />
+          <img src={item.src} alt={locale === 'zh' ? item.alt : localizedImageCopy(locale, item.src, item.alt, item.caption).alt} loading="lazy" className="w-full object-cover" />
           <figcaption className="border-t border-white/10 px-4 py-3 text-sm leading-6 text-ink-300">
-            {item.caption}
+            {locale === 'zh' ? item.caption : localizedImageCopy(locale, item.src, item.alt, item.caption).caption}
           </figcaption>
         </figure>
       ))}

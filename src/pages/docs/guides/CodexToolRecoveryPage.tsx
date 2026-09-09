@@ -56,7 +56,7 @@ const CHECKLIST = `排查清单：
 export default function CodexToolRecoveryPage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <CodexToolRecoveryPageEn />
+  if (locale !== 'zh') return <CodexToolRecoveryPageEn />
 
   return (
     <DocPage

@@ -4,10 +4,15 @@ import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { GuideTable, Checklist, SeriesNav } from './AgentGuideShared'
 import { headings, toHeadings } from './AgentGuideData'
+import { useLocale } from '../../../../lib/locale'
+import AgentRagPageEn from '../../../en/AgentRagPageEn'
 
 const RAG_FLOW = 'documents -> parse -> clean -> chunk -> embed -> index\nquery -> rewrite -> hybrid_retrieve -> metadata_filter -> rerank\n      -> context_pack -> generate -> cite -> evaluate'
 
 export default function AgentRagPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <AgentRagPageEn />
+
   return <DocPage path="/docs/guides/agent-rag" title="AI Agent 求职专题（三）：RAG 知识库工程从入库到评测" description="系统学习企业知识库、Embedding、向量检索、Hybrid Search、Rerank、引用、知识更新和 RAG 排障，覆盖面试与生产落地。" headings={toHeadings(headings.rag)}>
     <SeriesNav current="/docs/guides/agent-rag/" />
     <Callout tone="info" title="RAG 的本质"><p>RAG 不是“把文本切成块放进向量库”。完整 RAG 是一个信息检索系统加一个受约束的生成系统：相关内容要被召回，无关内容不能污染上下文，模型要基于证据回答并在证据不足时拒答。</p></Callout>

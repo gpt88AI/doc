@@ -1,4 +1,5 @@
 import { CodeBlock } from '../ui/CodeBlock'
+import { useLocale } from '../../lib/locale'
 import type { SeoIntentKey } from './SeoIntentMeta'
 
 type SeoIntentContent = {
@@ -6,6 +7,19 @@ type SeoIntentContent = {
   config: string
   errors: string[]
   pricing: string
+}
+
+const ENGLISH_CONTENT: Record<SeoIntentKey, SeoIntentContent> = {
+  'openai-sdk': { problem: 'Existing OpenAI SDK projects usually need only a base URL, API key, and model change.', config: 'OPENAI_API_KEY=your_gpt88_api_key\nOPENAI_BASE_URL=https://api.gpt88.cc/v1\nOPENAI_MODEL=gpt-5.6-sol', errors: ['401: check the Bearer key.', '404: keep the base URL at /v1.', 'model_not_found: copy the exact model ID.', '429: reduce concurrency and back off.'], pricing: 'Actual cost depends on the current model, group multiplier, input, and output usage shown in the GPT88 console.' },
+  python: { problem: 'Python integrations most often fail because of the base URL, environment variables, model ID, or stream parsing.', config: 'python -m pip install --upgrade openai\nexport OPENAI_API_KEY=your_gpt88_api_key\nexport OPENAI_BASE_URL=https://api.gpt88.cc/v1\nexport OPENAI_MODEL=gpt-5.6-sol', errors: ['Missing module: install openai in the active environment.', '401: check the key and environment.', '404: use /v1 only.', 'Empty stream: read delta.content.'], pricing: 'Billing follows the current GPT88 model and group rules; long outputs and tool loops consume more usage.' },
+  nodejs: { problem: 'Node.js projects should keep baseURL and API keys on the server and out of browser bundles.', config: 'npm install openai\nexport OPENAI_API_KEY=your_gpt88_api_key\nexport OPENAI_BASE_URL=https://api.gpt88.cc/v1\nexport OPENAI_MODEL=gpt-5.6-sol', errors: ['401: verify the Bearer key.', 'ECONNREFUSED: check DNS, TLS, and proxy.', '404: let the SDK append the resource path.', 'Timeout: test with a short prompt first.'], pricing: 'Use the current console usage record rather than third-party price assumptions.' },
+  'claude-code': { problem: 'Claude Code model calls and OAuth plugin capabilities are separate. Model calls need a compatible endpoint, key, and model.', config: 'export OPENAI_API_KEY=your_gpt88_api_key\nexport OPENAI_BASE_URL=https://api.gpt88.cc/v1\nexport OPENAI_MODEL=gpt-5.6-sol', errors: ['Missing variables: check the same shell that starts Claude Code.', '401: use an API key, not a web password.', '404: copy an available model ID.', 'Tool failure: verify plain text first.'], pricing: 'Multi-turn context increases input usage; follow current GPT88 model and group billing.' },
+  cursor: { problem: 'Cursor provider settings are separate from web login. Configure the compatible base URL, key, and model.', config: 'API Base URL: https://api.gpt88.cc/v1\nAPI Key: your_gpt88_api_key\nModel: gpt-5.6-sol', errors: ['Restart Cursor after changing credentials.', 'Do not add /chat/completions to the base URL.', 'Verify the model with cURL first.', 'Never put the key in frontend code.'], pricing: 'Cursor subscription charges and GPT88 API usage are separate accounts.' },
+  cline: { problem: 'Cline Provider, Base URL, Model ID, and API key must match. Start with a short request before enabling tools.', config: 'Provider: OpenAI Compatible\nBase URL: https://api.gpt88.cc/v1\nAPI Key: your_gpt88_api_key\nModel ID: gpt-5.6-sol', errors: ['401: use an API key.', '404: keep the base URL at /v1.', 'model_not_found: copy the exact ID.', 'Tool failure: validate text before tools.'], pricing: 'Cline does not change GPT88 billing; long context and tool loops increase usage.' },
+  'model-price-comparison': { problem: 'Compare input, output, context, image, and video units together instead of one request price.', config: 'provider: GPT / Claude / Gemini\nmodel: copy from the current catalog\ninput_tokens: fixed test size\noutput_tokens: fixed max_tokens', errors: ['Do not treat vendor list prices as GPT88 charges.', 'Include output tokens.', 'Compare image and video with their own units.', 'Record repeated p50/p90 usage.'], pricing: 'Use same-date official model prices and the GPT88 console for any current comparison.' },
+  'legacy-migration': { problem: 'The legacy entry, Agent console, and API host have different roles. Migrate by confirming the account, creating a key, and completing one request.', config: 'Account: https://agent.gpt88.cc\nAPI: https://api.gpt88.cc/v1\nHeader: Authorization: Bearer <API_KEY>', errors: ['No key: create it in Agent API Keys.', '401: do not use the web password.', '404: use api.gpt88.cc for API calls.', 'Balance mismatch: follow the new console.'], pricing: 'Migration does not guarantee old plans or balances; verify current account billing.' },
+  'first-request-failed': { problem: 'Creating an API key is not the same as completing a first-request verification. Check host, auth, model, balance, and parsing.', config: 'export OPENAI_API_KEY=your_gpt88_api_key\nexport OPENAI_BASE_URL=https://api.gpt88.cc/v1\nexport OPENAI_MODEL=gpt-5.6-sol', errors: ['401: recopy the key.', '404: use api.gpt88.cc/v1/chat/completions.', '400 model_not_found: copy the exact ID.', '429: back off.', 'Timeout: test DNS and TLS with cURL.'], pricing: 'Record one successful request as the cost baseline.' },
+  'openai-compatible-errors': { problem: 'OpenAI-compatible shape does not mean every model supports every parameter or tool protocol. Start with status, code, and request_id.', config: 'Base URL: https://api.gpt88.cc/v1\nHeader: Authorization: Bearer <API_KEY>\nPath: /chat/completions\nModel: copy from the catalog', errors: ['400: inspect JSON and supported parameters.', '401: check the key.', '404: check /v1 and model ID.', '429: cap retries.', '5xx: save request_id, time, and model.'], pricing: 'Successful requests follow current model, group, input, and output billing; media may use separate units.' },
 }
 
 const CTA_CAMPAIGN = 'seo_quickstart_2026q3'
@@ -115,7 +129,36 @@ function ctaUrl(utmContent: SeoIntentKey) {
 }
 
 export function SeoIntentSections({ intent }: { intent: SeoIntentKey }) {
+  const { locale } = useLocale()
   const content = CONTENT[intent]
+
+  if (locale !== 'zh') {
+    const english = ENGLISH_CONTENT[intent]
+    return (
+      <>
+        <h2 id={`${intent}-problem`}>The problem</h2>
+        <p>{english.problem}</p>
+        <h2 id={`${intent}-config`}>Shortest working configuration</h2>
+        <CodeBlock lang="bash" filename=".env" code={english.config} />
+        <p>Keep API keys in server-side environment variables or a secret manager. Never commit them or expose them in frontend code.</p>
+        <h2 id={`${intent}-examples`}>Complete examples</h2>
+        <CodeBlock lang="bash" filename="request.sh" code={CURL} />
+        <CodeBlock lang="python" filename="request.py" code={PYTHON} />
+        <CodeBlock lang="javascript" filename="request.mjs" code={NODE} />
+        <h2 id={`${intent}-errors`}>Common errors</h2>
+        <ul>{english.errors.map(error => <li key={error}>{error}</li>)}</ul>
+        <h2 id={`${intent}-pricing`}>Pricing and billing</h2>
+        <p>{english.pricing}</p>
+        <h2 id={`${intent}-cta`}>Create an API key</h2>
+        <div className="not-prose my-6 rounded-xl border border-violet-400/30 bg-violet-400/[0.08] p-5">
+          <a href={ctaUrl(intent)} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg bg-violet-400 px-4 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-violet-300">
+            Create a GPT88 API key and send your first request
+          </a>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <h2 id={`${intent}-problem`}>问题是什么</h2>

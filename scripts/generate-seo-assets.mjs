@@ -843,6 +843,8 @@ const localizedPages = Object.entries(additionalLocaleSeo).flatMap(([prefix, cop
   { title: copy.faq, path: `/${prefix}/docs/faq`, description: 'Common gpt88.cc API compatibility, route, billing, and troubleshooting questions.', priority: '0.7' },
 ])
 
+const localizedBlogPrefixes = ['hi', 'bn', 'ur', 'ta', 'ne', 'si']
+
 const staticPages = [
   {
     title: 'gpt88.cc API 文档',
@@ -1344,6 +1346,24 @@ async function main() {
     description: 'Practical guides on AI model access, image generation, API integration, and engineering practice.',
     priority: '0.8',
   }
+  const localizedBlogPages = localizedBlogPrefixes.flatMap(prefix => [
+    {
+      title: `${prefix === 'hi' ? 'GPT88 तकनीकी ब्लॉग' : prefix === 'bn' ? 'GPT88 প্রযুক্তি ব্লগ' : prefix === 'ur' ? 'GPT88 تکنیکی بلاگ' : prefix === 'ta' ? 'GPT88 தொழில்நுட்ப வலைப்பதிவு' : prefix === 'ne' ? 'GPT88 प्राविधिक ब्लग' : 'GPT88 තාක්ෂණික බ්ලොගය'}`,
+      path: `/${prefix}/docs/blog/`,
+      description: 'Practical guides on AI model access, image generation, API integration, and engineering practice.',
+      priority: '0.6',
+    },
+    ...blogPosts.map(post => {
+      const en = enMeta.get(post.slug)
+      return {
+        title: en?.title || post.title,
+        path: `/${prefix}/docs/blog/${post.slug}/`,
+        description: en?.description || post.description,
+        lastmod: post.date || undefined,
+        priority: '0.5',
+      }
+    }),
+  ])
   const pages = [
     ...staticPages,
     ...digestPages,
@@ -1351,6 +1371,7 @@ async function main() {
     ...blogPages,
     englishBlogHubPage,
     ...englishBlogPages,
+    ...localizedBlogPages,
     ...modelPages,
     ...englishModelPages,
   ]
@@ -1360,6 +1381,7 @@ async function main() {
     ...modelPages.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
     ...blogPages.map(page => normalizeRoute(page.path)),
     ...englishBlogPages.map(page => normalizeRoute(page.path)),
+    ...localizedBlogPages.map(page => normalizeRoute(page.path)),
     ...digestPages.map(page => normalizeRoute(`/en${page.path}`)),
     ...localizedPages.map(page => normalizeRoute(page.path)),
   ])]

@@ -105,7 +105,7 @@ const CHECKLIST = `□ 已记录原始错误、时间、模型和当前网络环
 export default function CodexHttpResponsesReconnectPage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <CodexHttpResponsesReconnectPageEn />
+  if (locale !== 'zh') return <CodexHttpResponsesReconnectPageEn />
 
   return (
     <DocPage

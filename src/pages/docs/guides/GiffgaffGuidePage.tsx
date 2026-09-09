@@ -2,6 +2,8 @@ import type { ReactNode } from 'react'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import GiffgaffGuidePageEn from '../../en/GiffgaffGuidePageEn'
 
 const WHY_GIFFGAFF = `giffgaff 常被用于这几类场景：
 
@@ -241,6 +243,9 @@ function ProductCard() {
 }
 
 export default function GiffgaffGuidePage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <GiffgaffGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/giffgaff-sim-guide"

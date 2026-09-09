@@ -1,4 +1,5 @@
 import { DocPage } from '../../../components/layout/DocPage'
+import { useLocale } from '../../../lib/locale'
 import { Callout } from '../../../components/ui/Callout'
 import {
   GuideScreenshot,
@@ -9,8 +10,13 @@ import {
   StepPanel,
   TwoUpScreenshots,
 } from './CodexGpt55SeriesShared'
+import CodexProjectFactoryDeliveryPageEn from '../../en/CodexProjectFactoryDeliveryPageEn'
 
 export default function CodexProjectFactoryDeliveryPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <CodexProjectFactoryDeliveryPageEn />
+
   return (
     <DocPage
       path="/docs/guides/codex-project-factory-delivery"

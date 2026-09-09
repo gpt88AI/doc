@@ -3,8 +3,13 @@ import { Callout } from '../../../../components/ui/Callout'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { GuideTable, Checklist, SeriesNav } from './AgentGuideShared'
 import { headings, toHeadings } from './AgentGuideData'
+import { useLocale } from '../../../../lib/locale'
+import AgentProductionPageEn from '../../../en/AgentProductionPageEn'
 
 export default function AgentProductionPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <AgentProductionPageEn />
+
   return <DocPage path="/docs/guides/agent-production" title="AI Agent 求职专题（五）：评测、可观测性与生产化" description="建立 Agent 的质量模型、评测数据集、Trace、成本与容量模型，并掌握上线、灰度、回滚和人工接管的完整方法。" headings={toHeadings(headings.production)}>
     <SeriesNav current="/docs/guides/agent-production/" />
     <Callout tone="warn" title="生产判断标准"><p>Agent 上线的标准不是“演示时成功”，而是面对变化、失败、超时、权限问题和成本压力时，系统仍能给出可解释、可恢复、可审计的结果。</p></Callout>

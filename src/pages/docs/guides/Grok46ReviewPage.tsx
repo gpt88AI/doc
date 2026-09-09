@@ -1,5 +1,7 @@
 import { Callout } from '../../../components/ui/Callout'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
+import Grok46ReviewPageEn from '../../en/Grok46ReviewPageEn'
 
 const SOURCE_URL = 'https://note.mowen.cn/detail/dc8O65jTVGq0SBGNqSvb5'
 
@@ -35,6 +37,10 @@ function ComparisonTable({
 }
 
 export default function Grok46ReviewPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <Grok46ReviewPageEn />
+
   return (
     <DocPage
       path="/docs/guides/grok-4-6-review"

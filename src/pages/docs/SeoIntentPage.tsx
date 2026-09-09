@@ -1,6 +1,7 @@
 import { DocPage } from '../../components/layout/DocPage'
 import { SeoIntentSections } from '../../components/seo/SeoIntentSections'
-import { seoIntentHeadings, type SeoIntentKey } from '../../components/seo/SeoIntentMeta'
+import { seoIntentHeadings, seoIntentHeadingsEn, type SeoIntentKey } from '../../components/seo/SeoIntentMeta'
+import { useLocale } from '../../lib/locale'
 
 const PAGE_META: Record<SeoIntentKey, { path: string; title: string; description: string }> = {
   'openai-sdk': {
@@ -55,14 +56,30 @@ const PAGE_META: Record<SeoIntentKey, { path: string; title: string; description
   },
 }
 
+const PAGE_META_EN: Record<SeoIntentKey, { title: string; description: string }> = {
+  'openai-sdk': { title: 'How to connect the OpenAI SDK to the GPT88 API', description: 'Connect to the GPT88 API through the OpenAI-compatible interface by changing the base URL, API key, and model.' },
+  python: { title: 'Complete Python examples for the GPT88 API', description: 'Call the GPT88 API with the official OpenAI Python SDK, including sync, streaming, and troubleshooting examples.' },
+  nodejs: { title: 'Complete Node.js examples for the GPT88 API', description: 'Use the OpenAI SDK in Node.js with environment variables, streaming responses, and retries.' },
+  'claude-code': { title: 'Use the GPT88 API with Claude Code', description: 'Configure Claude Code with an OpenAI-compatible API and verify the key, model, and endpoint.' },
+  cursor: { title: 'Configure the GPT88 API in Cursor', description: 'Use GPT88’s OpenAI-compatible endpoint in Cursor without confusing a web login password with an API key.' },
+  cline: { title: 'Configure an OpenAI-compatible API in Cline', description: 'Configure a custom OpenAI-compatible provider in Cline and troubleshoot the shortest request.' },
+  'model-price-comparison': { title: 'GPT, Claude, and Gemini API price comparison', description: 'Compare model multipliers, input and output costs, and real usage on a consistent basis.' },
+  'legacy-migration': { title: 'Migrate an old gpt88.cc account to Agent', description: 'Move from the old gpt88.cc entry point to Agent, create an API key, and make the first successful request.' },
+  'first-request-failed': { title: 'What to do when the first API request fails', description: 'Troubleshoot the first request in order: endpoint, authentication header, model, balance, and error code.' },
+  'openai-compatible-errors': { title: 'Troubleshoot common OpenAI-compatible API errors', description: 'Use HTTP status, error code, request_id, and retry strategy to locate compatibility API problems.' },
+}
+
 export function SeoIntentPage({ intent }: { intent: SeoIntentKey }) {
+  const { locale } = useLocale()
   const page = PAGE_META[intent]
+  const pageEn = PAGE_META_EN[intent]
+  const isChinese = locale === 'zh'
   return (
     <DocPage
       path={page.path}
-      title={page.title}
-      description={page.description}
-      headings={seoIntentHeadings(intent)}
+      title={isChinese ? page.title : pageEn.title}
+      description={isChinese ? page.description : pageEn.description}
+      headings={isChinese ? seoIntentHeadings(intent) : seoIntentHeadingsEn(intent)}
     >
       <SeoIntentSections intent={intent} />
     </DocPage>

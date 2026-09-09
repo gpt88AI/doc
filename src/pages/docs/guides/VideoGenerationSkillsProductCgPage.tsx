@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import VideoGenerationSkillsProductCgPageEn from '../../en/VideoGenerationSkillsProductCgPageEn'
 
 const PIPELINE = `产品 CG 标准管线：
 1. 产品图 / 草图 / 白模作为锚点
@@ -81,6 +83,9 @@ function DetailBlock({
 }
 
 export default function VideoGenerationSkillsProductCgPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <VideoGenerationSkillsProductCgPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-product-cg"

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
+import LoopEngineeringGuidePageEn from '../../en/LoopEngineeringGuidePageEn'
 
 function SectionCard({
   title,
@@ -70,6 +72,10 @@ function StepsTable({
 }
 
 export default function LoopEngineeringGuidePage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <LoopEngineeringGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/loop-engineering-harness"

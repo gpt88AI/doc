@@ -3,8 +3,13 @@ import { Callout } from '../../../../components/ui/Callout'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { GuideTable, Checklist, SeriesNav } from './AgentGuideShared'
 import { headings, toHeadings } from './AgentGuideData'
+import { useLocale } from '../../../../lib/locale'
+import AgentJobMapPageEn from '../../../en/AgentJobMapPageEn'
 
 export default function AgentJobMapPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <AgentJobMapPageEn />
+
   return <DocPage path="/docs/guides/agent-job-map" title="AI Agent 求职专题（一）：从 BOSS 直聘 JD 反推岗位能力模型" description="把 AI Agent、智能体、大模型应用、RAG、MCP 和 AI 产品岗位拆成可执行的学习地图，帮助你读懂 JD、定位短板并准备作品集。" headings={toHeadings(headings.jobMap)}>
     <SeriesNav current="/docs/guides/agent-job-map/" />
     <Callout tone="info" title="样本边界"><p>招聘信息会随城市、登录状态、发布时间和企业招聘计划变化。本文不是某一天全站职位数量的统计，而是对公开可见 AI Agent 相关 JD 的职责、关键词和能力要求进行归纳。</p></Callout>

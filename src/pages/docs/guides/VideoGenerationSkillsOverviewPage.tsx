@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import VideoGenerationSkillsOverviewPageEn from '../../en/VideoGenerationSkillsOverviewPageEn'
 
 const MODULES = `prompt-director
 - 提示词方法论：构图、光线、运镜、一致性、角色控制
@@ -113,6 +115,9 @@ function OverviewTable() {
 }
 
 export default function VideoGenerationSkillsOverviewPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <VideoGenerationSkillsOverviewPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-overview"

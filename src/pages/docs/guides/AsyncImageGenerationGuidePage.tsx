@@ -260,14 +260,34 @@ const REQUEST_ROWS: FieldRow[] = [
 
 export default function AsyncImageGenerationGuidePage() {
   const { locale } = useLocale()
+  const guideCopy = {
+    zh: ['异步生图 API 详细教程', '从提交异步图片任务、轮询状态、下载结果，到失败恢复、任务持久化、Node.js / Python 客户端和批量扩展的完整教程。'],
+    hi: ['Asynchronous image generation API guide', 'Complete guide to async image tasks, status polling, result downloads, failure recovery, persistence, Node.js/Python clients and batch expansion.'],
+    bn: ['Asynchronous image generation API guide', 'Async image task, status polling, result download, failure recovery, persistence, Node.js/Python client এবং batch expansion-এর সম্পূর্ণ guide।'],
+    ur: ['Asynchronous image generation API guide', 'Async image task، status polling، result download، failure recovery، persistence، Node.js/Python clients اور batch expansion کی مکمل guide۔'],
+    ta: ['Asynchronous image generation API guide', 'Async image tasks, status polling, result download, failure recovery, persistence, Node.js/Python clients மற்றும் batch expansion பற்றிய முழு guide.'],
+    ne: ['Asynchronous image generation API guide', 'Async image task, status polling, result download, failure recovery, persistence, Node.js/Python client र batch expansion को पूर्ण guide।'],
+    si: ['Asynchronous image generation API guide', 'Async image tasks, status polling, result download, failure recovery, persistence, Node.js/Python clients සහ batch expansion සඳහා සම්පූර්ණ guide.'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
+  const title = guideCopy?.[0] ?? 'Asynchronous image generation API guide'
+  const description = guideCopy?.[1] ?? 'Complete guide to asynchronous image generation tasks, polling, downloads, recovery, persistence and client integrations.'
+  const purposeCopy = {
+    zh: { intro: '本教程面向要把 GPT88 图片 API 接入后端、CLI、定时任务或自动化流程的开发者。它不是提示词教程，重点是可靠地编排图片任务。', done: '满足下面所有条件，就算完成：', items: ['提交响应返回的任务 ID 会被你的服务持久化。', '轮询逻辑能区分处理中、成功和失败。', '成功任务能得到可用图片文件，或明确保存结果 URL。', '超时和临时错误能使用原 task ID 恢复，而不是盲目重新生成。', '你可以凭 task ID 和请求元数据审计用量与失败原因。'], path: ['从环境变量读取 API Key，选择小尺寸、单张请求。', '打开异步模式提交任务，并保存返回的任务 ID。', '每 5 秒轮询一次，设置最大轮询次数。', '任务成功后提取结果 URL 或 base64 图片。', '下载或解码图片、检查文件，并记录本次成功参数。'] },
+    hi: { intro: 'यह tutorial उन developers के लिए है जो GPT88 Image API को backend, CLI, scheduled task या automation में जोड़ना चाहते हैं। Focus prompt writing नहीं, बल्कि reliable task orchestration है।', done: 'यह तभी पूरा माना जाएगा जब:', items: ['आपका service response से मिला task ID persist करे।', 'Polling logic processing, success और failure अलग करे।', 'Successful task से usable image file या स्पष्ट result URL मिले।', 'Timeout और temporary errors में वही task ID recover हो, blind regeneration नहीं।', 'Task ID और request metadata से usage और failure reason audit हो सके।'], path: ['Environment variable से API Key पढ़ें और छोटा, single-image request चुनें।', 'Async mode में task submit करें और returned task ID save करें।', 'हर 5 सेकंड poll करें और maximum attempts रखें।', 'Success पर result URL या base64 image निकालें।', 'Image download/decode करें, file जाँचें और सफल parameters record करें।'] },
+    bn: { intro: 'এই tutorial তাদের জন্য যারা GPT88 Image API-কে backend, CLI, scheduled task বা automation-এ যুক্ত করতে চান। এটি prompt-writing tutorial নয়; লক্ষ্য নির্ভরযোগ্য task orchestration।', done: 'নিচের সব শর্ত পূরণ হলে কাজ সম্পূর্ণ:', items: ['আপনার service response-এর task ID persist করবে।', 'Polling logic processing, success এবং failure আলাদা করবে।', 'Successful task থেকে usable image file বা স্পষ্ট result URL পাওয়া যাবে।', 'Timeout বা temporary error-এ একই task ID দিয়ে recovery হবে, blind regeneration নয়।', 'Task ID ও request metadata দিয়ে usage এবং failure reason audit করা যাবে।'], path: ['Environment variable থেকে API Key নিন এবং ছোট single-image request বাছুন।', 'Async mode-এ task submit করে returned task ID সংরক্ষণ করুন।', 'প্রতি ৫ সেকেন্ডে poll করুন এবং maximum attempts নির্ধারণ করুন।', 'Success হলে result URL বা base64 image বের করুন।', 'Image download/decode করে file যাচাই করুন এবং সফল parameter record করুন।'] },
+    ur: { intro: 'یہ tutorial ان developers کے لیے ہے جو GPT88 Image API کو backend، CLI، scheduled task یا automation سے جوڑنا چاہتے ہیں۔ مقصد prompt writing نہیں بلکہ reliable task orchestration ہے۔', done: 'یہ کام تب مکمل سمجھیں جب:', items: ['آپ کی service response سے ملا task ID persist کرے۔', 'Polling logic processing، success اور failure کو الگ کرے۔', 'Successful task سے usable image file یا واضح result URL ملے۔', 'Timeout اور temporary error میں اسی task ID سے recovery ہو، blind regeneration نہ ہو۔', 'Task ID اور request metadata سے usage اور failure reason audit کیا جا سکے۔'], path: ['Environment variable سے API Key پڑھیں اور چھوٹی single-image request چنیں۔', 'Async mode میں task submit کریں اور returned task ID محفوظ کریں۔', 'ہر 5 سیکنڈ بعد poll کریں اور maximum attempts مقرر کریں۔', 'Success پر result URL یا base64 image نکالیں۔', 'Image download/decode کریں، file چیک کریں اور کامیاب parameters record کریں۔'] },
+    ta: { intro: 'இந்த tutorial GPT88 Image API-ஐ backend, CLI, scheduled task அல்லது automation-உடன் இணைக்க விரும்பும் developers-க்கு. இது prompt-writing tutorial அல்ல; reliable task orchestration-ஐ மையமாகக் கொண்டது.', done: 'கீழ்கண்ட அனைத்தும் நடந்தால் முடிந்ததாகக் கருதலாம்:', items: ['உங்கள் service response-ல் கிடைத்த task ID-ஐ persist செய்யும்.', 'Polling logic processing, success, failure ஆகியவற்றைப் பிரிக்கும்.', 'Successful task-ல் usable image file அல்லது தெளிவான result URL கிடைக்கும்.', 'Timeout மற்றும் temporary error-ல் அதே task ID மூலம் recovery நடக்கும்; blind regeneration இல்லை.', 'Task ID மற்றும் request metadata மூலம் usage மற்றும் failure reason-ஐ audit செய்யலாம்.'], path: ['Environment variable-ல் இருந்து API Key-ஐப் பெற்று சிறிய single-image request தேர்ந்தெடுக்கவும்.', 'Async mode-ல் task submit செய்து returned task ID-ஐச் சேமிக்கவும்.', 'ஒவ்வொரு 5 வினாடிக்கும் poll செய்து maximum attempts அமைக்கவும்.', 'Success ஆனதும் result URL அல்லது base64 image-ஐப் பெறவும்.', 'Image-ஐ download/decode செய்து file-ஐச் சரிபார்த்து வெற்றிகரமான parameters-ஐ பதிவு செய்யவும்.'] },
+    ne: { intro: 'यो tutorial GPT88 Image API लाई backend, CLI, scheduled task वा automation मा जोड्न चाहने developers का लागि हो। यो prompt-writing tutorial होइन; reliable task orchestration मा केन्द्रित छ।', done: 'तलका सबै शर्त पूरा भएमा सम्पन्न मानिन्छ:', items: ['तपाईंको service ले response बाट आएको task ID persist गर्छ।', 'Polling logic ले processing, success र failure छुट्याउँछ।', 'Successful task बाट usable image file वा स्पष्ट result URL आउँछ।', 'Timeout र temporary error मा त्यही task ID बाट recovery हुन्छ; blind regeneration हुँदैन।', 'Task ID र request metadata बाट usage र failure reason audit गर्न सकिन्छ।'], path: ['Environment variable बाट API Key पढ्नुहोस् र सानो single-image request छान्नुहोस्।', 'Async mode मा task submit गरेर returned task ID बचत गर्नुहोस्।', 'हरेक 5 सेकेन्डमा poll गर्नुहोस् र maximum attempts राख्नुहोस्।', 'Success भएपछि result URL वा base64 image निकाल्नुहोस्।', 'Image download/decode गरी file जाँच्नुहोस् र सफल parameters record गर्नुहोस्।'] },
+    si: { intro: 'මෙම tutorial එක GPT88 Image API backend, CLI, scheduled task හෝ automation එකකට සම්බන්ධ කිරීමට කැමති developers සඳහාය. මෙය prompt-writing tutorial එකක් නොව reliable task orchestration පිළිබඳවයි.', done: 'පහත සියල්ල සිදුවුවහොත් සම්පූර්ණයි:', items: ['ඔබේ service එක response එකෙන් ලැබෙන task ID persist කරයි.', 'Polling logic එක processing, success සහ failure වෙන්කරයි.', 'Successful task එකෙන් usable image file එකක් හෝ පැහැදිලි result URL එකක් ලැබේ.', 'Timeout සහ temporary error වලදී එම task ID එකෙන් recovery සිදුවේ; blind regeneration නොවේ.', 'Task ID සහ request metadata මඟින් usage සහ failure reason audit කළ හැක.'], path: ['Environment variable එකෙන් API Key කියවා කුඩා single-image request එකක් තෝරන්න.', 'Async mode එකෙන් task submit කර returned task ID එක සුරකින්න.', 'සෑම තත්පර 5කටම poll කර maximum attempts සකසන්න.', 'Success වූ විට result URL හෝ base64 image ලබාගන්න.', 'Image download/decode කර file එක පරීක්ෂා කර සාර්ථක parameters record කරන්න.'] },
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
 
-  if (locale === 'en') return <AsyncImageGenerationGuidePageEn />
+  if (locale !== 'zh') return <AsyncImageGenerationGuidePageEn />
 
   return (
     <DocPage
       path="/docs/guides/async-image-generation-guide/"
-      title="异步生图 API 详细教程"
-      description="从提交异步图片任务、轮询状态、下载结果，到失败恢复、任务持久化、Node.js / Python 客户端和批量扩展的完整教程。"
+      title={title}
+      description={description}
       headings={[
         { id: 'purpose', text: '目标与完成标准', level: 2 },
         { id: 'concepts', text: '核心概念', level: 2 },
@@ -294,15 +314,11 @@ export default function AsyncImageGenerationGuidePage() {
 
       <h2 id="purpose">目标与完成标准</h2>
       <p>
-        本教程面向要把 GPT88 图片 API 接入后端、CLI、定时任务或自动化流程的开发者。它不是提示词教程，重点是可靠地编排图片任务。
+        {purposeCopy?.intro ?? 'This tutorial covers reliable orchestration of asynchronous image tasks for backend, CLI, scheduled and automated workflows.'}
       </p>
-      <p>满足下面所有条件，就算完成：</p>
+      <p>{purposeCopy?.done ?? 'Completion means all of the following are true:'}</p>
       <ul>
-        <li>提交响应返回的任务 ID 会被你的服务持久化。</li>
-        <li>轮询逻辑能区分处理中、成功和失败。</li>
-        <li>成功任务能得到可用图片文件，或明确保存结果 URL。</li>
-        <li>超时和临时错误能使用原 task ID 恢复，而不是盲目重新生成。</li>
-        <li>你可以凭 task ID 和请求元数据审计用量与失败原因。</li>
+        {(purposeCopy?.items ?? []).map(item => <li key={item}>{item}</li>)}
       </ul>
 
       <h2 id="concepts">核心概念</h2>
@@ -335,11 +351,7 @@ export default function AsyncImageGenerationGuidePage() {
 
       <h2 id="shortest-path">最短成功路径</h2>
       <ol>
-        <li>从环境变量读取 API Key，选择小尺寸、单张请求。</li>
-        <li>打开异步模式提交任务，并保存返回的任务 ID。</li>
-        <li>每 5 秒轮询一次，设置最大轮询次数。</li>
-        <li>任务成功后提取结果 URL 或 base64 图片。</li>
-        <li>下载或解码图片、检查文件，并记录本次成功参数。</li>
+        {(purposeCopy?.path ?? []).map(item => <li key={item}>{item}</li>)}
       </ol>
 
       <h2 id="submit">1. 提交异步生图任务</h2>

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
+import ZeroDowntimeReleasePageEn from '../../en/ZeroDowntimeReleasePageEn'
 
 const CORE_IDEA = `无停服更新不是“发布速度快”，而是把风险拆成 4 个可控动作：
 
@@ -190,6 +192,10 @@ function DocTable({
 }
 
 export default function ZeroDowntimeReleasePage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <ZeroDowntimeReleasePageEn />
+
   return (
     <DocPage
       path="/docs/guides/zero-downtime-release"

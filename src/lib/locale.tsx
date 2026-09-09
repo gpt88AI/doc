@@ -122,6 +122,8 @@ export const CORE_TRANSLATED_BASE_PATHS = new Set([
   '/docs/faq/',
 ])
 
+const SOUTH_ASIAN_BLOG_LOCALES = new Set<Locale>(['hi', 'bn', 'ur', 'ta', 'ne', 'si'])
+
 export function normalizePath(path = '/') {
   const clean = path.split(/[?#]/)[0] || '/'
   if (clean === '/') return '/'
@@ -152,6 +154,7 @@ export function isTranslatedPath(locale: Locale, path: string) {
   const basePath = stripLocalePrefix(path)
   if (locale === 'zh') return true
   if (locale === 'en') return EN_TRANSLATED_BASE_PATHS.has(basePath)
+  if (SOUTH_ASIAN_BLOG_LOCALES.has(locale) && (basePath === '/docs/blog/' || basePath.startsWith('/docs/blog/'))) return true
   return CORE_TRANSLATED_BASE_PATHS.has(basePath)
 }
 

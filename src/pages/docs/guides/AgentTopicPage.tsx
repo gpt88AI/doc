@@ -194,13 +194,97 @@ function SimpleTable({
 
 export default function AgentTopicPage() {
   const { locale } = useLocale()
-  if (locale === 'en') return <AgentTopicPageEn />
+  if (locale !== 'zh') return <AgentTopicPageEn />
+  const topicMeta = {
+    zh: ['Agent 专题：从第一次调用到可恢复的智能工作流', '围绕 gpt88.cc API 和常用开发工具，建立 Agent 的完整学习路径：先跑通一次请求，再理解工具调用、上下文、循环、权限、可观察性和生产化。'],
+    hi: ['Agent topic: from first call to recoverable workflows', 'Build a complete Agent learning path around the gpt88.cc API and common developer tools: run one request first, then learn tool calls, context, loops, permissions, observability and productionization.'],
+    bn: ['Agent topic: প্রথম call থেকে recoverable workflow', 'gpt88.cc API এবং developer tools ব্যবহার করে Agent শেখার সম্পূর্ণ পথ তৈরি করুন: প্রথমে একটি request চালান, তারপর tool call, context, loop, permission, observability এবং productionization বুঝুন।'],
+    ur: ['Agent topic: پہلی call سے recoverable workflow تک', 'gpt88.cc API اور عام developer tools کے ذریعے Agent سیکھنے کی مکمل راہ بنائیں: پہلے ایک request چلائیں، پھر tool calls، context، loops، permissions، observability اور productionization سمجھیں۔'],
+    ta: ['Agent topic: முதல் call முதல் recoverable workflow வரை', 'gpt88.cc API மற்றும் developer tools மூலம் Agent கற்றல் பாதையை உருவாக்குங்கள்: முதலில் ஒரு request இயக்கி, பின்னர் tool calls, context, loops, permissions, observability மற்றும் productionization கற்றுக்கொள்ளுங்கள்.'],
+    ne: ['Agent topic: पहिलो call देखि recoverable workflow सम्म', 'gpt88.cc API र developer tools वरिपरि Agent सिक्ने पूर्ण बाटो बनाउनुहोस्: पहिले एउटा request चलाउनुहोस्, त्यसपछि tool call, context, loop, permission, observability र productionization बुझ्नुहोस्।'],
+    si: ['Agent topic: පළමු call එකේ සිට recoverable workflow දක්වා', 'gpt88.cc API සහ developer tools වටා Agent ඉගෙනීමේ සම්පූර්ණ මාර්ගයක් සාදන්න: පළමුව request එකක් ධාවනය කර, පසුව tool calls, context, loops, permissions, observability සහ productionization තේරුම් ගන්න.'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
+  const tailTitles = {
+    zh: ['生产化验收清单', '常见问题与排错顺序', '练习任务', '下一步阅读'],
+    hi: ['Production acceptance checklist', 'Common problems and troubleshooting order', 'Practice task', 'Next reading'],
+    bn: ['Production acceptance checklist', 'সাধারণ সমস্যা ও troubleshooting order', 'Practice task', 'পরবর্তী পাঠ'],
+    ur: ['Production acceptance checklist', 'عام مسائل اور troubleshooting order', 'Practice task', 'اگلا مطالعہ'],
+    ta: ['Production acceptance checklist', 'பொதுவான சிக்கல்கள் மற்றும் troubleshooting order', 'Practice task', 'அடுத்த வாசிப்பு'],
+    ne: ['Production acceptance checklist', 'सामान्य समस्या र troubleshooting order', 'Practice task', 'अर्को पढाइ'],
+    si: ['Production acceptance checklist', 'පොදු ගැටලු සහ troubleshooting order', 'Practice task', 'ඊළඟ කියවීම'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? ['Production acceptance checklist', 'Common problems and troubleshooting order', 'Practice task', 'Next reading']
+  const nextCopy = {
+    zh: ['第一次接入：', '使用成熟工具：', '构建生产服务：', '处理异步媒体任务：'],
+    hi: ['First integration:', 'Use a mature tool:', 'Build a production service:', 'Handle async media tasks:'],
+    bn: ['প্রথম integration:', 'পরিণত tool ব্যবহার:', 'Production service তৈরি:', 'Async media task পরিচালনা:'],
+    ur: ['پہلی integration:', 'مکمل tool استعمال کریں:', 'Production service بنائیں:', 'Async media tasks سنبھالیں:'],
+    ta: ['முதல் integration:', 'முதிர்ந்த tool பயன்படுத்துதல்:', 'Production service உருவாக்குதல்:', 'Async media tasks கையாளுதல்:'],
+    ne: ['पहिलो integration:', 'परिपक्व tool प्रयोग:', 'Production service बनाउनुहोस्:', 'Async media task सम्हाल्नुहोस्:'],
+    si: ['පළමු integration:', 'පරිණත tool භාවිතය:', 'Production service එකක් සාදන්න:', 'Async media tasks හසුරුවන්න:'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? ['First integration:', 'Use a mature tool:', 'Build a production service:', 'Handle async media tasks:']
+  const troubleshootingHeaders = {
+    zh: ['现象', '先检查什么', '下一步'], hi: ['Symptom', 'Check first', 'Next step'], bn: ['লক্ষণ', 'প্রথমে যাচাই', 'পরবর্তী ধাপ'], ur: ['علامت', 'پہلے چیک کریں', 'اگلا قدم'], ta: ['அறிகுறி', 'முதலில் சரிபார்க்கவும்', 'அடுத்த step'], ne: ['समस्या', 'पहिले जाँच्ने', 'अर्को step'], si: ['ලක්ෂණය', 'පළමුව පරීක්ෂා කරන්න', 'ඊළඟ පියවර'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? ['Symptom', 'Check first', 'Next step']
+  const troubleActions = {
+    zh: ['降低并发，使用指数退避，并记录每次重试原因。', '先用一个只读工具和最短 Prompt 验证，再逐步增加工具。', '对照 Chat Completions API 的 function calling 示例检查消息顺序。', '按恢复指南从最小故障点继续'],
+    hi: ['Lower concurrency, use exponential backoff and record every retry reason.', 'Validate with one read-only tool and the shortest Prompt, then add tools gradually.', 'Compare the message order with the Chat Completions API function calling example.', 'Continue from the smallest failure point using the recovery guide'],
+    bn: ['Concurrency কমান, exponential backoff ব্যবহার করুন এবং প্রতিটি retry reason record করুন।', 'একটি read-only tool ও ছোট Prompt দিয়ে যাচাই করে ধীরে ধীরে tool যোগ করুন।', 'Chat Completions API function calling example-এর message order মিলিয়ে দেখুন।', 'Recovery guide অনুসারে সবচেয়ে ছোট failure point থেকে চালিয়ে যান'],
+    ur: ['Concurrency کم کریں، exponential backoff استعمال کریں اور ہر retry reason record کریں۔', 'ایک read-only tool اور مختصر Prompt سے verify کریں، پھر tools آہستہ آہستہ بڑھائیں۔', 'Chat Completions API کے function calling example سے message order ملائیں۔', 'Recovery guide کے مطابق سب سے چھوٹے failure point سے جاری رکھیں'],
+    ta: ['Concurrency-ஐக் குறைத்து, exponential backoff பயன்படுத்தி, ஒவ்வொரு retry reason-ஐப் பதிவு செய்யவும்.', 'ஒரு read-only tool மற்றும் குறுகிய Prompt மூலம் validate செய்து, பின்னர் tools-ஐ படிப்படியாகச் சேர்க்கவும்.', 'Chat Completions API function calling example-ன் message order-ஐ ஒப்பிடவும்.', 'Recovery guide படி சிறிய failure point-இலிருந்து தொடரவும்'],
+    ne: ['Concurrency घटाउनुहोस्, exponential backoff प्रयोग गर्नुहोस् र हरेक retry reason record गर्नुहोस्।', 'एउटा read-only tool र छोटो Prompt बाट validate गरी tools बिस्तारै थप्नुहोस्।', 'Chat Completions API function calling example सँग message order तुलना गर्नुहोस्।', 'Recovery guide अनुसार सबैभन्दा सानो failure point बाट जारी राख्नुहोस्'],
+    si: ['Concurrency අඩු කර, exponential backoff භාවිත කර, සෑම retry reason එකක්ම record කරන්න.', 'එක් read-only tool එකක් සහ කෙටි Prompt එකක් සමඟ validate කර tools ක්‍රමයෙන් එක් කරන්න.', 'Chat Completions API function calling example එකේ message order එක සමඟ සසඳන්න.', 'Recovery guide එක අනුව කුඩාම failure point එකෙන් ඉදිරියට යන්න'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? ['Lower concurrency, use exponential backoff and record every retry reason.', 'Validate with one read-only tool and the shortest Prompt, then add tools gradually.', 'Compare the message order with the Chat Completions API function calling example.', 'Continue from the smallest failure point using the recovery guide']
+  const practiceCopy = {
+    zh: { intro: '用一个只读的“项目状态检查 Agent”完成下面的练习：', steps: ['声明 get_project_status 工具，只返回环境、版本、测试状态和最近一次发布结果。', '让模型根据用户问题决定是否调用工具，不允许直接猜测项目状态。', '模拟一次工具成功返回和一次工具超时，分别验证 Agent 的回答。', '把每一步写入 JSONL 或数据库，包含调用 ID、参数、结果和耗时。', '给任务加上最大 4 步限制，并写出“超过限制后如何暂停和人工接管”。'], acceptance: '验收标准：', checks: ['没有工具结果时，Agent 明确说明无法确认，而不是编造状态；', '工具失败时，用户能看到可执行的下一步，而不是无上下文的“请求失败”；', '同一请求可以通过 request ID 和 tool call ID 还原执行过程；', '修改工具描述或模型后，仍能通过同一套验收清单回归。'] },
+    hi: { intro: 'एक read-only “project status check Agent” से यह अभ्यास पूरा करें:', steps: ['get_project_status tool declare करें, जो केवल environment, version, test status और latest release result लौटाए।', 'Model को user question के आधार पर tool call तय करने दें; project status guess न करने दें।', 'एक successful tool response और एक timeout simulate करके Agent answer verify करें।', 'हर step को JSONL या database में call ID, parameters, result और duration के साथ लिखें।', 'Maximum 4 steps रखें और लिखें कि limit के बाद task कैसे pause और human takeover होगा।'], acceptance: 'Acceptance criteria:', checks: ['Tool result न होने पर Agent साफ कहे कि confirm नहीं कर सकता, status न बनाए।', 'Tool failure पर user को executable next step दिखे, अस्पष्ट “request failed” नहीं।', 'Same request को request ID और tool call ID से reconstruct किया जा सके।', 'Tool description या model बदलने के बाद भी वही checklist regression में पास हो।'] },
+    bn: { intro: 'একটি read-only “project status check Agent” দিয়ে এই practice সম্পন্ন করুন:', steps: ['get_project_status tool declare করুন, যা শুধু environment, version, test status ও latest release result ফেরত দেবে।', 'User question দেখে model tool call করবে; project status অনুমান করতে পারবে না।', 'একটি successful tool response ও একটি timeout simulate করে Agent answer যাচাই করুন।', 'প্রতিটি step JSONL বা database-এ call ID, parameter, result ও duration সহ লিখুন।', 'Maximum 4 steps রাখুন এবং limit পেরোলে task কীভাবে pause ও human takeover হবে লিখুন।'], acceptance: 'Acceptance criteria:', checks: ['Tool result না থাকলে Agent স্পষ্টভাবে বলবে যে confirm করতে পারে না; status বানাবে না।', 'Tool failure-এ user executable next step দেখবে, context-বিহীন “request failed” নয়।', 'Request ID ও tool call ID দিয়ে একই request-এর execution reconstruct করা যাবে।', 'Tool description বা model বদলালেও একই checklist দিয়ে regression চালানো যাবে।'] },
+    ur: { intro: 'ایک read-only “project status check Agent” کے ذریعے یہ practice مکمل کریں:', steps: ['get_project_status tool declare کریں جو صرف environment، version، test status اور latest release result لوٹائے۔', 'Model user question کی بنیاد پر tool call کا فیصلہ کرے؛ project status guess نہ کرے۔', 'ایک successful tool response اور ایک timeout simulate کر کے Agent answer verify کریں۔', 'ہر step کو JSONL یا database میں call ID، parameters، result اور duration کے ساتھ لکھیں۔', 'Maximum 4 steps رکھیں اور لکھیں کہ limit کے بعد task کیسے pause اور human takeover ہوگا۔'], acceptance: 'Acceptance criteria:', checks: ['Tool result نہ ہو تو Agent واضح کہے کہ confirm نہیں کر سکتا؛ status نہ گھڑے۔', 'Tool failure پر user کو executable next step ملے، بے سیاق “request failed” نہیں۔', 'Request ID اور tool call ID سے اسی request کا execution دوبارہ بنایا جا سکے۔', 'Tool description یا model بدلنے کے بعد بھی اسی checklist سے regression ہو۔'] },
+    ta: { intro: 'ஒரு read-only “project status check Agent” மூலம் இந்தப் பயிற்சியை முடிக்கவும்:', steps: ['get_project_status tool-ஐ declare செய்து environment, version, test status மற்றும் latest release result மட்டும் திருப்பவும்.', 'User question அடிப்படையில் tool call செய்ய model-ஐ அனுமதிக்கவும்; project status-ஐ guess செய்யக் கூடாது.', 'ஒரு successful tool response மற்றும் ஒரு timeout-ஐ simulate செய்து Agent answer-ஐச் சரிபார்க்கவும்.', 'ஒவ்வொரு step-ஐயும் call ID, parameters, result மற்றும் duration உடன் JSONL அல்லது database-ல் எழுதவும்.', 'Maximum 4 steps அமைத்து limit-க்கு பின் task எவ்வாறு pause மற்றும் human takeover ஆகும் என எழுதவும்.'], acceptance: 'Acceptance criteria:', checks: ['Tool result இல்லாவிட்டால் Agent confirm செய்ய முடியாது என்று தெளிவாகச் சொல்ல வேண்டும்; status உருவாக்கக் கூடாது.', 'Tool failure-ல் user-க்கு executable next step வேண்டும்; context இல்லாத “request failed” அல்ல.', 'Request ID மற்றும் tool call ID மூலம் அதே request execution-ஐ மீட்டமைக்கலாம்.', 'Tool description அல்லது model மாற்றிய பின்பும் அதே checklist மூலம் regression செய்யலாம்.'] },
+    ne: { intro: 'एउटा read-only “project status check Agent” प्रयोग गरेर यो अभ्यास पूरा गर्नुहोस्:', steps: ['get_project_status tool declare गर्नुहोस्, जसले environment, version, test status र latest release result मात्र फर्काउँछ।', 'User question अनुसार tool call गर्ने निर्णय model लाई दिनुहोस्; project status अनुमान गर्न नदिनुहोस्।', 'एउटा successful tool response र एउटा timeout simulate गरेर Agent answer जाँच्नुहोस्।', 'हरेक step लाई call ID, parameters, result र duration सहित JSONL वा database मा लेख्नुहोस्।', 'Maximum 4 steps राख्नुहोस् र limit पछि task कसरी pause र human takeover हुन्छ लेख्नुहोस्।'], acceptance: 'Acceptance criteria:', checks: ['Tool result नभए Agent ले confirm गर्न नसक्ने स्पष्ट भन्नुपर्छ; status बनाउनु हुँदैन।', 'Tool failure मा user लाई executable next step देखिनुपर्छ; context-विहीन “request failed” होइन।', 'Request ID र tool call ID बाट उही request execution पुनर्निर्माण गर्न सकिनुपर्छ।', 'Tool description वा model बदलेपछि पनि उही checklist बाट regression चल्नुपर्छ।'] },
+    si: { intro: 'read-only “project status check Agent” එකක් භාවිත කර මෙම practice එක සම්පූර්ණ කරන්න:', steps: ['get_project_status tool එක declare කර environment, version, test status සහ latest release result පමණක් ආපසු දෙන්න.', 'User question අනුව tool call කිරීම model එකට තීරණය කිරීමට ඉඩ දෙන්න; project status guess කිරීමට ඉඩ නොදෙන්න.', 'Successful tool response එකක් සහ timeout එකක් simulate කර Agent answer එක පරීක්ෂා කරන්න.', 'සෑම step එකක්ම call ID, parameters, result සහ duration සමඟ JSONL හෝ database එකකට ලියන්න.', 'Maximum 4 steps සකසා limit පසු task එක pause සහ human takeover වන්නේ කෙසේද ලියන්න.'], acceptance: 'Acceptance criteria:', checks: ['Tool result නොමැති විට Agent එක confirm කළ නොහැකි බව පැහැදිලිව කියිය යුතුය; status එකක් ගොඩනැගිය නොයුතුය.', 'Tool failure එකකදී userට executable next step එකක් ලැබිය යුතුය; context නැති “request failed” නොවේ.', 'Request ID සහ tool call ID මඟින් එම request execution එක නැවත ගොඩනැගිය හැකි විය යුතුය.', 'Tool description හෝ model වෙනස් කළත් එම checklist එකෙන් regression කළ හැකි විය යුතුය.'] },
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
+  const reliabilityCopy = {
+    zh: ['Agent 的质量不只看最终回答，还要看它是否走了正确的路径。建议为每次任务建立一个可追踪记录，至少包含：任务目标、使用模型、请求 ID、消息摘要、工具名、参数摘要、执行结果、失败原因、人工确认点和最终交付物位置。', '高风险动作要有边界', '删除文件、执行不可逆命令、发布版本、发送外部消息、修改权限和支付相关操作不应只依赖模型判断。为这些动作设置明确的工具白名单、参数检查、预览结果和人工确认；无法验证时，宁可暂停任务，也不要自动扩大权限。'],
+    hi: ['Agent quality is not only the final answer; verify that it followed the correct path. Keep a traceable record for each task with the goal, model, request ID, message summary, tool, parameter summary, result, failure reason, approval points and deliverable location.', 'High-risk actions need boundaries', 'Deleting files, irreversible commands, releases, external messages, permission changes and payments must not rely on model judgment alone. Use tool allowlists, parameter checks, previews and human approval; pause when verification is unavailable.'],
+    bn: ['Agent-এর quality শুধু final answer নয়; সঠিক path অনুসরণ করেছে কি না তাও যাচাই করুন। প্রতিটি task-এর জন্য goal, model, request ID, message summary, tool, parameter summary, result, failure reason, approval point এবং deliverable location record করুন।', 'High-risk action-এর boundary দরকার', 'File delete, irreversible command, release, external message, permission change ও payment শুধু model judgment-এর ওপর ছাড়বেন না। Allowlists, parameter check, preview এবং human approval ব্যবহার করুন; যাচাই সম্ভব না হলে task pause করুন।'],
+    ur: ['Agent کا معیار صرف final answer نہیں؛ یہ بھی دیکھیں کہ اس نے درست path اختیار کیا۔ ہر task کے لیے goal، model، request ID، message summary، tool، parameter summary، result، failure reason، approval points اور deliverable location کا traceable record رکھیں۔', 'High-risk actions کی حدود ضروری ہیں', 'Files delete کرنا، irreversible commands، releases، external messages، permission changes اور payments صرف model judgment پر نہ چھوڑیں۔ Allowlists، parameter checks، previews اور human approval استعمال کریں؛ verification نہ ہو تو task روک دیں۔'],
+    ta: ['Agent-ன் தரம் final answer மட்டும் அல்ல; அது சரியான பாதையில் சென்றதா என்பதையும் பாருங்கள். ஒவ்வொரு task-க்கும் goal, model, request ID, message summary, tool, parameter summary, result, failure reason, approval points மற்றும் deliverable location ஆகியவற்றைப் பதிவு செய்யுங்கள்.', 'High-risk actions-க்கு boundaries தேவை', 'Files delete, irreversible commands, releases, external messages, permission changes மற்றும் payments ஆகியவற்றை model judgment மட்டும் தீர்மானிக்கக் கூடாது. Allowlists, parameter checks, previews மற்றும் human approval பயன்படுத்துங்கள்; verification முடியாவிட்டால் task-ஐ நிறுத்துங்கள்.'],
+    ne: ['Agent को quality final answer मात्र होइन; सही path पछ्यायो कि पछ्याएन भन्ने पनि हो। प्रत्येक task का लागि goal, model, request ID, message summary, tool, parameter summary, result, failure reason, approval points र deliverable location सहित traceable record राख्नुहोस्।', 'High-risk action का लागि boundary चाहिन्छ', 'File delete, irreversible command, release, external message, permission change र payment लाई model judgment मा मात्र नछोड्नुहोस्। Allowlists, parameter checks, previews र human approval प्रयोग गर्नुहोस्; verification नभए task रोक्नुहोस्।'],
+    si: ['Agent quality එක final answer එකෙන් පමණක් මැනෙන්නේ නැත; නිවැරදි path එක අනුගමනය කළාද යන්නද බලන්න. සෑම task එකකටම goal, model, request ID, message summary, tool, parameter summary, result, failure reason, approval points සහ deliverable location සහිත traceable record එකක් තබන්න.', 'High-risk actions සඳහා boundaries අවශ්‍යය', 'Files delete කිරීම, irreversible commands, releases, external messages, permission changes සහ payments model judgment එකට පමණක් භාර නොදෙන්න. Allowlists, parameter checks, previews සහ human approval භාවිත කරන්න; verification නොහැකි නම් task එක නවත්වන්න.'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
+  const tableCopy = {
+    zh: { pathHeaders: ['阶段', '你要获得的能力', '推荐入口'], pathRows: [['快速开始', '创建 Key、获取模型、完成第一条请求'], ['核心概念', '理解上下文、工具、循环、状态和权限'], ['API 构建', '使用 tools、流式响应和多轮消息构建 Agent 回路'], ['工具接入', '把同一套模型能力接到 CLI、IDE 或应用平台'], ['可观察性', '检查意图、Session、文件活动、工具结果和提交证据'], ['生产化', '管理密钥、用量、失败恢复、发布和团队复用']], conceptHeaders: ['概念', '它回答的问题', '最低实践'], concepts: [['目标 Goal', '这次任务最终要交付什么？', '把自然语言目标写成可验收的结果和边界。'], ['上下文 Context', '模型可以依据哪些事实工作？', '只提供任务需要的文件、消息、规则和历史结果。'], ['模型 Model', '谁负责规划、判断和生成下一步？', '确认当前 Key 可用的模型。'], ['工具 Tools', '模型可以请求哪些外部动作？', '写清描述、参数 Schema、权限和失败返回。'], ['循环 Loop', '工具结果返回后是否继续下一步？', '设置最大步数、超时和停止条件。'], ['验证 Verify', '如何知道任务真的完成了？', '用测试、差异、结构检查或交付清单验收。']] },
+    hi: { pathHeaders: ['Stage', 'Capability', 'Recommended entry'], pathRows: [['Quick start', 'Create a Key, get a model and complete the first request'], ['Core concepts', 'Understand context, tools, loops, state and permissions'], ['API building', 'Build Agent loops with tools, streaming and multi-turn messages'], ['Tool integration', 'Connect the same model capability to a CLI, IDE or app platform'], ['Observability', 'Inspect intent, Session, file activity, tool results and delivery evidence'], ['Production', 'Manage keys, usage, recovery, releases and team reuse']], conceptHeaders: ['Concept', 'Question answered', 'Minimum practice'], concepts: [['Goal', 'What must this task deliver?', 'Turn the natural-language goal into verifiable results and boundaries.'], ['Context', 'Which facts can the model use?', 'Provide only the files, messages, rules and prior results needed.'], ['Model', 'Who plans, judges and generates the next step?', 'Confirm a model available to the current Key.'], ['Tools', 'Which external actions may the model request?', 'Define description, parameter Schema, permissions and failures.'], ['Loop', 'Should the next step continue after a tool result?', 'Set maximum steps, timeout and stop conditions.'], ['Verify', 'How do we know the task is complete?', 'Use tests, diffs, structural checks or a delivery checklist.']] },
+    bn: { pathHeaders: ['ধাপ', 'যে capability পাবেন', 'প্রস্তাবিত entry'], pathRows: [['Quick start', 'Key তৈরি, model নেওয়া এবং প্রথম request সম্পূর্ণ করা'], ['Core concepts', 'Context, tool, loop, state ও permission বোঝা'], ['API building', 'Tool, streaming ও multi-turn message দিয়ে Agent loop তৈরি করা'], ['Tool integration', 'একই model capability CLI, IDE বা app platform-এ যুক্ত করা'], ['Observability', 'Intent, Session, file activity, tool result ও delivery evidence পরীক্ষা করা'], ['Production', 'Key, usage, recovery, release ও team reuse পরিচালনা করা']], conceptHeaders: ['Concept', 'যে প্রশ্নের উত্তর দেয়', 'Minimum practice'], concepts: [['Goal', 'এই task কী deliver করবে?', 'Natural-language goal-কে verifiable result ও boundary-তে রূপ দিন।'], ['Context', 'Model কোন facts ব্যবহার করতে পারে?', 'শুধু প্রয়োজনীয় file, message, rule ও prior result দিন।'], ['Model', 'পরের ধাপ কে plan ও generate করবে?', 'বর্তমান Key-এ available model নিশ্চিত করুন।'], ['Tools', 'Model কোন external action চাইতে পারে?', 'Description, parameter Schema, permission ও failure স্পষ্ট করুন।'], ['Loop', 'Tool result-এর পরে কি পরের ধাপ চলবে?', 'Maximum steps, timeout ও stop condition নির্ধারণ করুন।'], ['Verify', 'Task সত্যিই শেষ হয়েছে কীভাবে জানবেন?', 'Test, diff, structural check বা delivery checklist ব্যবহার করুন।']] },
+    ur: { pathHeaders: ['مرحلہ', 'حاصل ہونے والی صلاحیت', 'تجویز کردہ entry'], pathRows: [['Quick start', 'Key بنائیں، model حاصل کریں اور پہلی request مکمل کریں'], ['Core concepts', 'Context، tools، loops، state اور permissions سمجھیں'], ['API building', 'Tools، streaming اور multi-turn messages سے Agent loop بنائیں'], ['Tool integration', 'اسی model capability کو CLI، IDE یا app platform سے جوڑیں'], ['Observability', 'Intent، Session، file activity، tool results اور delivery evidence دیکھیں'], ['Production', 'Keys، usage، recovery، releases اور team reuse سنبھالیں']], conceptHeaders: ['Concept', 'یہ کس سوال کا جواب دیتا ہے', 'Minimum practice'], concepts: [['Goal', 'یہ task کیا deliver کرے گا؟', 'Natural-language goal کو قابلِ تصدیق result اور boundaries میں بدلیں۔'], ['Context', 'Model کن facts کو استعمال کر سکتا ہے؟', 'صرف ضروری files، messages، rules اور prior results دیں۔'], ['Model', 'اگلا قدم کون plan اور generate کرے گا؟', 'Current Key کے لیے available model کی تصدیق کریں۔'], ['Tools', 'Model کن external actions کی درخواست کر سکتا ہے؟', 'Description، parameter Schema، permissions اور failures واضح کریں۔'], ['Loop', 'Tool result کے بعد اگلا قدم جاری رہے؟', 'Maximum steps، timeout اور stop conditions مقرر کریں۔'], ['Verify', 'Task مکمل ہونے کا کیسے معلوم ہوگا؟', 'Tests، diffs، structural checks یا delivery checklist استعمال کریں۔']] },
+    ta: { pathHeaders: ['நிலை', 'பெற வேண்டிய திறன்', 'பரிந்துரைக்கப்படும் entry'], pathRows: [['Quick start', 'Key உருவாக்கி, model பெற்று, முதல் request முடித்தல்'], ['Core concepts', 'Context, tools, loops, state மற்றும் permissions புரிதல்'], ['API building', 'Tools, streaming மற்றும் multi-turn messages கொண்டு Agent loop உருவாக்குதல்'], ['Tool integration', 'அதே model capability-ஐ CLI, IDE அல்லது app platform-உடன் இணைத்தல்'], ['Observability', 'Intent, Session, file activity, tool results மற்றும் delivery evidence பரிசோதித்தல்'], ['Production', 'Keys, usage, recovery, releases மற்றும் team reuse நிர்வகித்தல்']], conceptHeaders: ['Concept', 'எந்த கேள்விக்கு பதில்', 'Minimum practice'], concepts: [['Goal', 'இந்த task என்ன deliver செய்ய வேண்டும்?', 'Natural-language goal-ஐ verifiable result மற்றும் boundaries ஆக மாற்றவும்.'], ['Context', 'Model எந்த facts-ஐப் பயன்படுத்தலாம்?', 'தேவையான files, messages, rules மற்றும் prior results மட்டும் வழங்கவும்.'], ['Model', 'அடுத்த step-ஐ யார் plan மற்றும் generate செய்வார்?', 'Current Key-க்கு available model-ஐ உறுதிப்படுத்தவும்.'], ['Tools', 'Model எந்த external actions-ஐக் கேட்கலாம்?', 'Description, parameter Schema, permissions மற்றும் failures தெளிவாக எழுதவும்.'], ['Loop', 'Tool result-க்குப் பிறகு அடுத்த step தொடர வேண்டுமா?', 'Maximum steps, timeout மற்றும் stop conditions அமைக்கவும்.'], ['Verify', 'Task முடிந்தது என்பதை எப்படி அறிவது?', 'Tests, diffs, structural checks அல்லது delivery checklist பயன்படுத்தவும்.']] },
+    ne: { pathHeaders: ['चरण', 'प्राप्त हुने क्षमता', 'सिफारिस गरिएको entry'], pathRows: [['Quick start', 'Key बनाउनुहोस्, model लिनुहोस् र पहिलो request पूरा गर्नुहोस्'], ['Core concepts', 'Context, tools, loops, state र permissions बुझ्नुहोस्'], ['API building', 'Tools, streaming र multi-turn messages बाट Agent loop बनाउनुहोस्'], ['Tool integration', 'उही model capability CLI, IDE वा app platform मा जोड्नुहोस्'], ['Observability', 'Intent, Session, file activity, tool results र delivery evidence जाँच्नुहोस्'], ['Production', 'Keys, usage, recovery, releases र team reuse व्यवस्थापन गर्नुहोस्']], conceptHeaders: ['Concept', 'यसले कुन प्रश्नको उत्तर दिन्छ', 'Minimum practice'], concepts: [['Goal', 'यो task ले के deliver गर्नुपर्छ?', 'Natural-language goal लाई verifiable result र boundaries मा बदल्नुहोस्।'], ['Context', 'Model ले कुन facts प्रयोग गर्न सक्छ?', 'आवश्यक files, messages, rules र prior results मात्र दिनुहोस्।'], ['Model', 'अर्को step कसले plan र generate गर्छ?', 'Current Key का लागि available model पुष्टि गर्नुहोस्।'], ['Tools', 'Model ले कुन external action माग्न सक्छ?', 'Description, parameter Schema, permissions र failures स्पष्ट गर्नुहोस्।'], ['Loop', 'Tool result पछि अर्को step चलिरहने हो?', 'Maximum steps, timeout र stop conditions सेट गर्नुहोस्।'], ['Verify', 'Task पूरा भयो भनेर कसरी थाहा पाउने?', 'Tests, diffs, structural checks वा delivery checklist प्रयोग गर्नुहोस्।']] },
+    si: { pathHeaders: ['අදියර', 'ලැබිය යුතු හැකියාව', 'නිර්දේශිත entry'], pathRows: [['Quick start', 'Key එක සාදා, model එක ලබාගෙන, පළමු request එක සම්පූර්ණ කිරීම'], ['Core concepts', 'Context, tools, loops, state සහ permissions තේරුම් ගැනීම'], ['API building', 'Tools, streaming සහ multi-turn messages මඟින් Agent loop සෑදීම'], ['Tool integration', 'එම model capability එක CLI, IDE හෝ app platform එකකට සම්බන්ධ කිරීම'], ['Observability', 'Intent, Session, file activity, tool results සහ delivery evidence පරීක්ෂා කිරීම'], ['Production', 'Keys, usage, recovery, releases සහ team reuse කළමනාකරණය කිරීම']], conceptHeaders: ['Concept', 'පිළිතුරු දෙන ප්‍රශ්නය', 'Minimum practice'], concepts: [['Goal', 'මෙම task එකෙන් deliver කළ යුත්තේ කුමක්ද?', 'Natural-language goal එක verifiable result සහ boundaries බවට පත් කරන්න.'], ['Context', 'Model එකට භාවිත කළ හැකි facts මොනවාද?', 'අවශ්‍ය files, messages, rules සහ prior results පමණක් දෙන්න.'], ['Model', 'ඊළඟ step එක plan සහ generate කරන්නේ කවුද?', 'Current Key එකට available model එක තහවුරු කරන්න.'], ['Tools', 'Model එකට ඉල්ලා සිටිය හැකි external actions මොනවාද?', 'Description, parameter Schema, permissions සහ failures පැහැදිලි කරන්න.'], ['Loop', 'Tool result එකෙන් පසු ඊළඟ step එක දිගටම යා යුතුද?', 'Maximum steps, timeout සහ stop conditions සකසන්න.'], ['Verify', 'Task එක සම්පූර්ණ බව දැනගන්නේ කෙසේද?', 'Tests, diffs, structural checks හෝ delivery checklist භාවිත කරන්න.']] },
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
+  const doneCopy = {
+    zh: ['完成本专题的最小标准不是“读完所有页面”，而是你能够独立完成下面这些动作：', '使用 API Key + Base URL + 模型 ID 跑通一次最小请求；', '给模型声明一个工具，并识别返回中的 tool_calls；', '在本地执行允许的工具，把结果以 role: tool 消息回传；', '给 Agent 设置最大步数、超时、允许动作和人工确认边界；', '记录请求 ID、工具输入、工具输出、失败原因和最终交付物；', '能在 401、404、429、超时或工具失败时，从最小故障点恢复。'],
+    hi: ['Minimum completion means you can perform these actions independently, not merely read every page:', 'Run a minimal request with API Key + Base URL + model ID;', 'Declare a tool and identify tool_calls in the response;', 'Execute an allowed local tool and return its result as a role: tool message;', 'Set maximum steps, timeout, allowed actions and human-confirmation boundaries;', 'Record request ID, tool input/output, failure reason and final deliverable;', 'Recover from the smallest failure point on 401, 404, 429, timeout or tool failure.'],
+    bn: ['Minimum completion মানে শুধু সব page পড়া নয়; আপনি স্বাধীনভাবে নিচের কাজগুলি করতে পারবেন:', 'API Key + Base URL + model ID দিয়ে একটি minimal request চালানো;', 'একটি tool declare করে response-এর tool_calls শনাক্ত করা;', 'অনুমোদিত local tool চালিয়ে role: tool message হিসেবে result ফেরত দেওয়া;', 'Maximum steps, timeout, allowed actions ও human-confirmation boundary নির্ধারণ করা;', 'Request ID, tool input/output, failure reason ও final deliverable record করা;', '401, 404, 429, timeout বা tool failure-এ সবচেয়ে ছোট failure point থেকে recover করা।'],
+    ur: ['Minimum completion کا مطلب صرف تمام pages پڑھنا نہیں؛ آپ یہ کام خود انجام دے سکیں:', 'API Key + Base URL + model ID سے ایک minimal request چلانا؛', 'ایک tool declare کرنا اور response میں tool_calls پہچاننا؛', 'مجاز local tool چلانا اور result کو role: tool message کے طور پر واپس کرنا؛', 'Maximum steps، timeout، allowed actions اور human-confirmation boundaries مقرر کرنا؛', 'Request ID، tool input/output، failure reason اور final deliverable record کرنا؛', '401، 404، 429، timeout یا tool failure میں سب سے چھوٹے failure point سے recover کرنا۔'],
+    ta: ['Minimum completion என்பது எல்லா pages-ஐப் படிப்பது மட்டும் அல்ல; கீழ்கண்ட செயல்களை நீங்கள் தனியாகச் செய்ய வேண்டும்:', 'API Key + Base URL + model ID மூலம் ஒரு minimal request இயக்குதல்;', 'ஒரு tool-ஐ declare செய்து response-ல் tool_calls-ஐ அடையாளம் காணுதல்;', 'அனுமதிக்கப்பட்ட local tool-ஐ இயக்கி result-ஐ role: tool message ஆகத் திருப்புதல்;', 'Maximum steps, timeout, allowed actions மற்றும் human-confirmation boundaries அமைத்தல்;', 'Request ID, tool input/output, failure reason மற்றும் final deliverable-ஐ பதிவு செய்தல்;', '401, 404, 429, timeout அல்லது tool failure-ல் சிறிய failure point-இலிருந்து recover செய்தல்.'],
+    ne: ['Minimum completion भनेको सबै page पढ्नु मात्र होइन; तपाईंले यी काम स्वतन्त्र रूपमा गर्न सक्नुपर्छ:', 'API Key + Base URL + model ID प्रयोग गरेर minimal request चलाउनु;', 'एउटा tool declare गरेर response को tool_calls पहिचान गर्नु;', 'अनुमति पाएको local tool चलाएर result लाई role: tool message का रूपमा फर्काउनु;', 'Maximum steps, timeout, allowed actions र human-confirmation boundaries सेट गर्नु;', 'Request ID, tool input/output, failure reason र final deliverable record गर्नु;', '401, 404, 429, timeout वा tool failure मा सबैभन्दा सानो failure point बाट recover गर्नु।'],
+    si: ['Minimum completion යනු සියලු pages කියවීම පමණක් නොවේ; ඔබට පහත ක්‍රියා ස්වාධීනව කළ හැකි විය යුතුය:', 'API Key + Base URL + model ID සමඟ minimal request එකක් ධාවනය කිරීම;', 'tool එකක් declare කර response එකේ tool_calls හඳුනාගැනීම;', 'අවසර ලත් local tool එකක් ධාවනය කර result එක role: tool message ලෙස ආපසු යැවීම;', 'Maximum steps, timeout, allowed actions සහ human-confirmation boundaries සැකසීම;', 'Request ID, tool input/output, failure reason සහ final deliverable record කිරීම;', '401, 404, 429, timeout හෝ tool failure එකකදී කුඩාම failure point එකෙන් recover කිරීම.'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
+  const introCopy = {
+    zh: ['先完成一个小任务，再扩展 Agent 能力', 'Agent 不是“给模型加一个更长的 Prompt”这么简单。一个可用的 Agent 至少需要目标、上下文、模型、工具、执行循环、权限边界和验证方式。本文把这些部分按依赖顺序串起来，先让你获得一个可验证结果，再介绍多工具、自动化和生产部署。', '如果你只看单个模型或单个客户端，很容易遇到三个断点：API 能调用，但不知道如何让模型使用工具；工具能调用，但没有状态、步数和权限边界；任务能完成，但无法解释过程、恢复失败或复用成功配置。'],
+    hi: ['पहले छोटा task पूरा करें, फिर Agent क्षमता बढ़ाएँ', 'Agent केवल model में लंबा Prompt जोड़ना नहीं है। एक usable Agent को goal, context, model, tools, execution loop, permission boundaries और verification चाहिए। यह page इन्हें dependency order में जोड़ता है: पहले verifiable result, फिर multi-tool, automation और production deployment।', 'केवल एक model या client देखने पर तीन gaps आते हैं: API चलती है पर model को tool उपयोग कराना स्पष्ट नहीं; tool चलता है पर state, steps और permissions नहीं; task पूरा होता है पर process समझना, failure recover करना या working configuration reuse करना कठिन होता है।'],
+    bn: ['প্রথমে একটি ছোট task সম্পূর্ণ করুন, তারপর Agent ক্ষমতা বাড়ান', 'Agent শুধু model-এ একটি বড় Prompt যোগ করা নয়। একটি usable Agent-এর goal, context, model, tools, execution loop, permission boundary এবং verification দরকার। এই page dependency order-এ এগুলি সাজায়: আগে verifiable result, তারপর multi-tool, automation এবং production deployment।', 'শুধু একটি model বা client দেখলে তিনটি gap দেখা যায়: API চলে কিন্তু model-কে tool ব্যবহার করানো স্পষ্ট নয়; tool চলে কিন্তু state, steps ও permission নেই; task শেষ হয় কিন্তু process ব্যাখ্যা, failure recovery বা working configuration reuse করা কঠিন।'],
+    ur: ['پہلے ایک چھوٹا task مکمل کریں، پھر Agent کی صلاحیت بڑھائیں', 'Agent صرف model میں ایک لمبا Prompt شامل کرنا نہیں ہے۔ ایک usable Agent کے لیے goal، context، model، tools، execution loop، permission boundaries اور verification ضروری ہیں۔ یہ page انہیں dependency order میں جوڑتا ہے: پہلے verifiable result، پھر multi-tool، automation اور production deployment۔', 'صرف ایک model یا client دیکھنے سے تین gaps پیدا ہوتے ہیں: API چلتی ہے مگر model سے tool استعمال کرانا واضح نہیں؛ tool چلتا ہے مگر state، steps اور permissions نہیں؛ task مکمل ہوتا ہے مگر process سمجھنا، failure recover کرنا یا working configuration reuse کرنا مشکل ہے۔'],
+    ta: ['முதலில் ஒரு சிறிய task-ஐ முடித்து, பின்னர் Agent திறனை விரிவாக்குங்கள்', 'Agent என்பது model-க்கு நீண்ட Prompt சேர்ப்பது மட்டும் அல்ல. ஒரு usable Agent-க்கு goal, context, model, tools, execution loop, permission boundaries மற்றும் verification தேவை. இந்தப் பக்கம் அவற்றை dependency order-ல் இணைக்கிறது: முதலில் verifiable result, பின்னர் multi-tool, automation மற்றும் production deployment.', 'ஒரே model அல்லது client-ஐ மட்டும் பார்த்தால் மூன்று gaps ஏற்படும்: API இயங்கும், ஆனால் model tool-ஐ எப்படிப் பயன்படுத்த வேண்டும் என்பது தெளிவில்லை; tool இயங்கும், ஆனால் state, steps மற்றும் permissions இல்லை; task முடியும், ஆனால் process-ஐ விளக்கவும் failure-ஐ recover செய்யவும் working configuration-ஐ reuse செய்யவும் கடினம்.'],
+    ne: ['पहिले सानो task पूरा गर्नुहोस्, त्यसपछि Agent क्षमता विस्तार गर्नुहोस्', 'Agent भनेको model मा लामो Prompt थप्नु मात्र होइन। usable Agent का लागि goal, context, model, tools, execution loop, permission boundaries र verification चाहिन्छ। यो page ले तिनलाई dependency order मा जोड्छ: पहिले verifiable result, त्यसपछि multi-tool, automation र production deployment।', 'एउटा model वा client मात्र हेर्दा तीन gap आउँछन्: API चल्छ तर model लाई tool प्रयोग गराउने तरिका स्पष्ट हुँदैन; tool चल्छ तर state, steps र permissions हुँदैनन्; task पूरा हुन्छ तर process बुझ्न, failure recover गर्न वा working configuration reuse गर्न गाह्रो हुन्छ।'],
+    si: ['පළමුව කුඩා task එකක් සම්පූර්ණ කර, පසුව Agent හැකියාව පුළුල් කරන්න', 'Agent යනු model එකට දිගු Prompt එකක් එක් කිරීම පමණක් නොවේ. usable Agent එකකට goal, context, model, tools, execution loop, permission boundaries සහ verification අවශ්‍යය. මෙම පිටුව ඒවා dependency order එකට සම්බන්ධ කරයි: පළමුව verifiable result, පසුව multi-tool, automation සහ production deployment.', 'එක් model එකක් හෝ client එකක් පමණක් බැලූ විට gaps තුනක් පෙනේ: API ක්‍රියාත්මක වුවත් model එක tool භාවිත කරන්නේ කෙසේද යන්න පැහැදිලි නැත; tool ක්‍රියාත්මක වුවත් state, steps සහ permissions නැත; task එක අවසන් වුවත් process පැහැදිලි කිරීමට, failure recover කිරීමට හෝ working configuration reuse කිරීමට අපහසුය.'],
+  }[locale as 'zh' | 'hi' | 'bn' | 'ur' | 'ta' | 'ne' | 'si'] ?? undefined
 
   return (
     <DocPage
       path="/docs/guides/agent"
-      title="Agent 专题：从第一次调用到可恢复的智能工作流"
-      description="围绕 gpt88.cc API 和常用开发工具，建立 Agent 的完整学习路径：先跑通一次请求，再理解工具调用、上下文、循环、权限、可观察性和生产化。"
+      title={topicMeta?.[0] ?? 'Agent topic: from first call to recoverable workflows'}
+      description={topicMeta?.[1] ?? 'Build a complete Agent learning path around the gpt88.cc API and common developer tools.'}
       headings={[
         { id: 'purpose', text: '这个专题解决什么问题', level: 2 },
         { id: 'definition-of-done', text: '看完后的完成标准', level: 2 },
@@ -218,15 +302,15 @@ export default function AgentTopicPage() {
         { id: 'next', text: '下一步阅读', level: 2 },
       ]}
     >
-      <Callout tone="info" title="先完成一个小任务，再扩展 Agent 能力">
+      <Callout tone="info" title={introCopy?.[0] ?? 'Start with one small task, then expand Agent capabilities'}>
         <p>
-          Agent 不是“给模型加一个更长的 Prompt”这么简单。一个可用的 Agent 至少需要目标、上下文、模型、工具、执行循环、权限边界和验证方式。本文把这些部分按依赖顺序串起来，先让你获得一个可验证结果，再介绍多工具、自动化和生产部署。
+          {introCopy?.[1] ?? 'A usable Agent needs a goal, context, model, tools, an execution loop, permission boundaries and verification.'}
         </p>
       </Callout>
 
       <h2 id="purpose">这个专题解决什么问题</h2>
       <p>
-        如果你只看单个模型或单个客户端，很容易遇到三个断点：API 能调用，但不知道如何让模型使用工具；工具能调用，但没有状态、步数和权限边界；任务能完成，但无法解释过程、恢复失败或复用成功配置。
+        {introCopy?.[2] ?? 'Looking at only one model or client often leaves gaps around tool use, state, permissions, recovery and reuse.'}
       </p>
       <p>
         这个专题把 GPT88 现有的 API、模型、开发工具和工程实践文档组织成一条 Agent 学习路线。你可以把它当作 Cocode 式的总入口：先快速开始，再进入核心概念、开发者 API、工具接入、可观察性和排错。
@@ -234,39 +318,28 @@ export default function AgentTopicPage() {
       <CardGrid items={TOPIC_CARDS} />
 
       <h2 id="definition-of-done">看完后的完成标准</h2>
-      <p>完成本专题的最小标准不是“读完所有页面”，而是你能够独立完成下面这些动作：</p>
+      <p>{doneCopy?.[0] ?? 'Minimum completion means you can perform the following actions independently:'}</p>
       <ul>
-        <li>使用 <code>API Key + Base URL + 模型 ID</code> 跑通一次最小请求；</li>
-        <li>给模型声明一个工具，并识别返回中的 <code>tool_calls</code>；</li>
-        <li>在本地执行允许的工具，把结果以 <code>role: tool</code> 消息回传；</li>
-        <li>给 Agent 设置最大步数、超时、允许动作和人工确认边界；</li>
-        <li>记录请求 ID、工具输入、工具输出、失败原因和最终交付物；</li>
-        <li>能在 401、404、429、超时或工具失败时，从最小故障点恢复。</li>
+        {doneCopy?.slice(1).map((item, index) => <li key={index}>{item}</li>)}
       </ul>
 
       <h2 id="path">推荐学习路径</h2>
       <SimpleTable
-        headers={['阶段', '你要获得的能力', '推荐入口']}
+        headers={tableCopy?.pathHeaders ?? ['Stage', 'Capability', 'Recommended entry']}
         rows={[
-          ['1. 快速开始', '创建 Key、获取模型、完成第一条请求', <Link key="quickstart" to="/docs/quickstart/">快速开始</Link>],
-          ['2. 核心概念', '理解上下文、工具、循环、状态和权限', <a key="concepts" href="#concepts">本文核心概念</a>],
-          ['3. API 构建', '使用 tools、流式响应和多轮消息构建 Agent 回路', <Link key="api" to="/docs/api/chat-completions/">Chat Completions API</Link>],
-          ['4. 工具接入', '把同一套模型能力接到 CLI、IDE 或应用平台', <Link key="integrations" to="/docs/integrations/">集成指南</Link>],
-          ['5. 可观察性', '检查意图、Session、文件活动、工具结果和提交证据', <Link key="harness" to="/docs/guides/harness-inspector/">Harness Inspector</Link>],
-          ['6. 生产化', '管理密钥、用量、失败恢复、发布和团队复用', <Link key="complete" to="/docs/guides/complete-integration/">完整接入手册</Link>],
+          ...tableCopy?.pathRows.map((row, index) => [
+            `${index + 1}. ${row[0]}`,
+            row[1],
+            [<Link key="quickstart" to="/docs/quickstart/">Quick start</Link>, <a key="concepts" href="#concepts">Core concepts</a>, <Link key="api" to="/docs/api/chat-completions/">Chat Completions API</Link>, <Link key="integrations" to="/docs/integrations/">Integration guide</Link>, <Link key="harness" to="/docs/guides/harness-inspector/">Harness Inspector</Link>, <Link key="complete" to="/docs/guides/complete-integration/">Complete integration guide</Link>][index],
+          ]) ?? [],
         ]}
       />
 
       <h2 id="concepts">Agent 的六个核心概念</h2>
       <SimpleTable
-        headers={['概念', '它回答的问题', '最低实践']}
+        headers={tableCopy?.conceptHeaders ?? ['Concept', 'Question answered', 'Minimum practice']}
         rows={[
-          [<strong key="goal">目标 Goal</strong>, '这次任务最终要交付什么？', '把自然语言目标写成可验收的结果和边界。'],
-          [<strong key="context">上下文 Context</strong>, '模型可以依据哪些事实工作？', '只提供任务需要的文件、消息、规则和历史结果。'],
-          [<strong key="model">模型 Model</strong>, '谁负责规划、判断和生成下一步？', '通过 <Link to="/docs/api/list-models/">模型列表</Link> 确认当前 Key 可用的模型。'],
-          [<strong key="tools">工具 Tools</strong>, '模型可以请求哪些外部动作？', '每个工具写清描述、参数 Schema、权限和失败返回。'],
-          [<strong key="loop">循环 Loop</strong>, '工具结果返回后是否继续下一步？', '设置最大步数、超时和停止条件，避免无限调用。'],
-          [<strong key="verify">验证 Verify</strong>, '如何知道任务真的完成了？', '用测试、差异、结构检查、人工确认或交付清单验收。'],
+          ...tableCopy?.concepts.map((row, index) => [<strong key={row[0]}>{row[0]}</strong>, row[1], index === 2 ? <>{row[2]} <Link to="/docs/api/list-models/">Model list</Link></> : row[2]]) ?? [],
         ]}
       />
       <CodeBlock lang="text" filename="agent-loop" code={AGENT_LOOP} />
@@ -339,7 +412,7 @@ export default function AgentTopicPage() {
 
       <h2 id="reliability">可观察性、权限与恢复</h2>
       <p>
-        Agent 的质量不只看最终回答，还要看它是否走了正确的路径。建议为每次任务建立一个可追踪记录，至少包含：任务目标、使用模型、请求 ID、消息摘要、工具名、参数摘要、执行结果、失败原因、人工确认点和最终交付物位置。
+        {reliabilityCopy?.[0] ?? 'Track each Agent task, including its goal, model, request ID, tools, results, failures, approvals and deliverable.'}
       </p>
       <ul>
         <li><Link to="/docs/guides/harness-inspector/">Harness Inspector</Link>：把 Agent 意图、Session、文件活动和 Commit 连接成交付证据链。</li>
@@ -347,13 +420,13 @@ export default function AgentTopicPage() {
         <li><Link to="/docs/guides/loop-engineering-harness/">Loop Engineering 与 Harness</Link>：把一次任务的成功路径沉淀为可复用循环。</li>
         <li><Link to="/docs/guides/codex-skills-context-engineering/">Skills 与上下文工程</Link>：将规则、上下文、权限和工作记录组合成稳定工作方式。</li>
       </ul>
-      <Callout tone="warn" title="高风险动作要有边界">
+      <Callout tone="warn" title={reliabilityCopy?.[1] ?? 'High-risk actions need boundaries'}>
         <p>
-          删除文件、执行不可逆命令、发布版本、发送外部消息、修改权限和支付相关操作不应只依赖模型判断。为这些动作设置明确的工具白名单、参数检查、预览结果和人工确认；无法验证时，宁可暂停任务，也不要自动扩大权限。
+          {reliabilityCopy?.[2] ?? 'Do not rely on model judgment alone for high-risk actions. Use allowlists, validation, previews and human approval.'}
         </p>
       </Callout>
 
-      <h2 id="production">生产化验收清单</h2>
+      <h2 id="production">{tailTitles[0]}</h2>
       <CodeBlock lang="text" filename="agent-production-checklist.txt" code={`身份与配置
 - API Key 放在服务端环境变量或密钥管理器中
 - 不在日志、截图、Prompt 或前端代码中输出完整 Key
@@ -376,42 +449,35 @@ export default function AgentTopicPage() {
 - 再组合多个工具或执行批量任务
 - 模型、价格、限速和响应差异以控制台与实时 API 为准`} />
 
-      <h2 id="troubleshooting">常见问题与排错顺序</h2>
+      <h2 id="troubleshooting">{tailTitles[1]}</h2>
       <SimpleTable
-        headers={['现象', '先检查什么', '下一步']}
+        headers={troubleshootingHeaders}
         rows={[
           ['401 / 认证失败', 'Authorization 头、Key 是否过期、环境变量是否生效', <Link key="auth" to="/docs/auth/">查看认证与计费</Link>],
           ['404 / 模型或路径不存在', 'Base URL、endpoint 路径、模型 ID 和账号可见性', <><Link key="models" to="/docs/api/list-models/">列出模型</Link>，再看 <Link key="errors" to="/docs/api/errors/">错误码</Link></>],
-          ['429 / 请求过多', '并发、重试是否叠加、是否缺少退避', '降低并发，使用指数退避，并记录每次重试原因。'],
-          ['模型不调用工具', 'tools 描述、参数 Schema、tool_choice 和模型能力', '先用一个只读工具和最短 Prompt 验证，再逐步增加工具。'],
-          ['工具调用后循环不继续', '是否回传 assistant tool_calls、tool_call_id 和 role=tool', '对照 Chat Completions API 的 function calling 示例检查消息顺序。'],
-          ['任务中途失败或卡住', '最后一个成功步骤、工具超时、上下文长度和资源预算', <Link key="recovery" to="/docs/guides/codex-tool-recovery/">按恢复指南从最小故障点继续</Link>],
+          ['429 / 请求过多', '并发、重试是否叠加、是否缺少退避', troubleActions[0]],
+          ['模型不调用工具', 'tools 描述、参数 Schema、tool_choice 和模型能力', troubleActions[1]],
+          ['工具调用后循环不继续', '是否回传 assistant tool_calls、tool_call_id 和 role=tool', troubleActions[2]],
+          ['任务中途失败或卡住', '最后一个成功步骤、工具超时、上下文长度和资源预算', <Link key="recovery" to="/docs/guides/codex-tool-recovery/">{troubleActions[3]}</Link>],
         ]}
       />
 
-      <h2 id="practice">练习任务</h2>
-      <p>用一个只读的“项目状态检查 Agent”完成下面的练习：</p>
+      <h2 id="practice">{tailTitles[2]}</h2>
+      <p>{practiceCopy?.intro ?? 'Complete this exercise with a read-only project status check Agent:'}</p>
       <ol>
-        <li>声明 <code>get_project_status</code> 工具，只返回环境、版本、测试状态和最近一次发布结果。</li>
-        <li>让模型根据用户问题决定是否调用工具，不允许直接猜测项目状态。</li>
-        <li>模拟一次工具成功返回和一次工具超时，分别验证 Agent 的回答。</li>
-        <li>把每一步写入 JSONL 或数据库，包含调用 ID、参数、结果和耗时。</li>
-        <li>给任务加上最大 4 步限制，并写出“超过限制后如何暂停和人工接管”。</li>
+        {(practiceCopy?.steps ?? []).map(item => <li key={item}>{item}</li>)}
       </ol>
-      <p>验收标准：</p>
+      <p>{practiceCopy?.acceptance ?? 'Acceptance criteria:'}</p>
       <ul>
-        <li>没有工具结果时，Agent 明确说明无法确认，而不是编造状态；</li>
-        <li>工具失败时，用户能看到可执行的下一步，而不是无上下文的“请求失败”；</li>
-        <li>同一请求可以通过 request ID 和 tool call ID 还原执行过程；</li>
-        <li>修改工具描述或模型后，仍能通过同一套验收清单回归。</li>
+        {(practiceCopy?.checks ?? []).map(item => <li key={item}>{item}</li>)}
       </ul>
 
-      <h2 id="next">下一步阅读</h2>
+      <h2 id="next">{tailTitles[3]}</h2>
       <ul>
-        <li>第一次接入：<Link to="/docs/quickstart/">快速开始</Link> → <Link to="/docs/api/list-models/">模型列表 API</Link> → <Link to="/docs/api/chat-completions/">Chat Completions API</Link>。</li>
-        <li>使用成熟工具：<Link to="/docs/integrations/">集成指南</Link>，再进入对应的 Claude Code、Codex CLI、Cursor、Cline 或 Dify 页面。</li>
-        <li>构建生产服务：<Link to="/docs/guides/complete-integration/">完整接入手册</Link> → <Link to="/docs/guides/config-export/">配置文件导出</Link> → <Link to="/docs/guides/harness-inspector/">Harness Inspector</Link>。</li>
-        <li>处理异步媒体任务：<Link to="/docs/guides/async-image-generation-guide/">异步生图 API 详细教程</Link>，把任务提交、轮询、失败恢复和结果下载纳入 Agent 工作流。</li>
+        <li>{nextCopy[0]}<Link to="/docs/quickstart/">Quick start</Link> → <Link to="/docs/api/list-models/">Model list API</Link> → <Link to="/docs/api/chat-completions/">Chat Completions API</Link>.</li>
+        <li>{nextCopy[1]}<Link to="/docs/integrations/">Integration guide</Link>，then open the relevant Claude Code, Codex CLI, Cursor, Cline or Dify page.</li>
+        <li>{nextCopy[2]}<Link to="/docs/guides/complete-integration/">Complete integration guide</Link> → <Link to="/docs/guides/config-export/">Config export</Link> → <Link to="/docs/guides/harness-inspector/">Harness Inspector</Link>.</li>
+        <li>{nextCopy[3]}<Link to="/docs/guides/async-image-generation-guide/">Async image generation API guide</Link>，bring task submission, polling, recovery and result downloads into the Agent workflow.</li>
       </ul>
     </DocPage>
   )

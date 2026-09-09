@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { DocPage } from '../../../components/layout/DocPage'
+import KimiK3GuidePageEn from '../../en/KimiK3GuidePageEn'
 
 const CURL_MODELS = `curl https://api.gpt88.cc/v1/models \\
   -H "Authorization: Bearer $GPT88_API_KEY"`
@@ -36,6 +38,10 @@ const CODEX_ENV = `export GPT88_API_KEY=你的_GPT88_API_KEY
 codex --model kimi-k3`
 
 export default function KimiK3GuidePage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <KimiK3GuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/kimi-k3-guide"

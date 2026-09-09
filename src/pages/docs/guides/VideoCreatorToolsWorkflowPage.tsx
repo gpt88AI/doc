@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import VideoCreatorToolsWorkflowPageEn from '../../en/VideoCreatorToolsWorkflowPageEn'
 
 const QUICK_STACK = `知识类视频 / 教程类视频：
 Excalidraw + Screen Studio + MD Publish
@@ -106,6 +108,10 @@ function DocTable({
 }
 
 export default function VideoCreatorToolsWorkflowPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <VideoCreatorToolsWorkflowPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-creator-tools-workflow"

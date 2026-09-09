@@ -4,6 +4,8 @@ import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
 import { SeoIntentSections } from '../../../components/seo/SeoIntentSections'
 import { seoIntentHeadings } from '../../../components/seo/SeoIntentMeta'
+import { useLocale } from '../../../lib/locale'
+import Gpt88MigrationGuidePageEn from '../../en/Gpt88MigrationGuidePageEn'
 
 const NEW_SITE_LINKS = `新站首页       https://agent.gpt88.cc/home
 注册入口       https://agent.gpt88.cc/register
@@ -125,6 +127,9 @@ function ConsoleEntryTable() {
 }
 
 export default function Gpt88MigrationGuidePage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <Gpt88MigrationGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/gpt88-migration"

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import {
   BookOpenText,
   Bot,
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
+import Gpt88DocsMapPageEn from '../../en/Gpt88DocsMapPageEn'
 
 const PRODUCT_ENTRIES = [
   {
@@ -178,6 +180,10 @@ function CategoryGrid() {
 }
 
 export default function Gpt88DocsMapPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <Gpt88DocsMapPageEn />
+
   return (
     <DocPage
       path="/docs/guides/gpt88-docs-map"

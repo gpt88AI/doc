@@ -4,10 +4,15 @@ import { CodeBlock } from '../../../../components/ui/CodeBlock'
 import { DocPage } from '../../../../components/layout/DocPage'
 import { GuideTable, Checklist, SeriesNav } from './AgentGuideShared'
 import { headings, toHeadings } from './AgentGuideData'
+import { useLocale } from '../../../../lib/locale'
+import AgentToolsMcpPageEn from '../../../en/AgentToolsMcpPageEn'
 
 const TOOL_SCHEMA = '{\n  "name": "get_order_status",\n  "description": "读取当前用户有权访问的订单状态",\n  "parameters": {\n    "type": "object",\n    "properties": { "order_id": { "type": "string" } },\n    "required": ["order_id"],\n    "additionalProperties": false\n  }\n}'
 
 export default function AgentToolsMcpPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <AgentToolsMcpPageEn />
+
   return <DocPage path="/docs/guides/agent-tools-mcp" title="AI Agent 求职专题（四）：Tool Calling、MCP 与安全执行" description="从工具契约和函数调用流程出发，掌握 Agent 如何执行外部动作，以及如何用权限、幂等、审批和审计控制风险。" headings={toHeadings(headings.tools)}>
     <SeriesNav current="/docs/guides/agent-tools-mcp/" />
     <Callout tone="danger" title="关键边界"><p>模型只能提出工具调用，不能直接执行工具。真正的执行者是你的应用、服务端或受控运行时；应用必须校验工具名、参数、身份、权限和副作用。</p></Callout>

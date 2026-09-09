@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import VideoGenerationSkillsSceneConsistencyPageEn from '../../en/VideoGenerationSkillsSceneConsistencyPageEn'
 
 const METHODS = `四种空间锁定法：
 1. 场景九宫格
@@ -66,6 +68,10 @@ function DetailBlock({
 }
 
 export default function VideoGenerationSkillsSceneConsistencyPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <VideoGenerationSkillsSceneConsistencyPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-scene-consistency"

@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
+import { useLocale } from '../../../lib/locale'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import UsVirtualCardGuidePageEn from '../../en/UsVirtualCardGuidePageEn'
 
 const QUICK_SUMMARY = `这不是“直接给你一张能用的卡”。
 而是教你自己注册并开出一张可长期使用的美区虚拟卡。
@@ -81,6 +83,10 @@ function StepCard({
 }
 
 export default function UsVirtualCardGuidePage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <UsVirtualCardGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/us-virtual-card-guide"

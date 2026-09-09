@@ -31,9 +31,20 @@ const CATEGORY_EN: Record<string, string> = {
   开发工具: 'Developer Tools',
 }
 
+const BLOG_INDEX_COPY: Record<string, { title: string; description: string; search: string; all: string; related: string; empty: string }> = {
+  zh: { title: 'GPT88 技术博客', description: '围绕模型接入、图片生成、API 集成与工程实践的实用文章，由 gpt88.cc 维护。', search: '搜索文章…', all: '全部', related: '相关指南', empty: '没有符合筛选条件的文章。' },
+  en: { title: 'GPT88 Technical Blog', description: 'Practical guides on AI model access, image generation, API integration, and engineering practice — maintained by gpt88.cc.', search: 'Search articles…', all: 'All', related: 'Related Guides', empty: 'No articles match your filters.' },
+  hi: { title: 'GPT88 तकनीकी ब्लॉग', description: 'AI मॉडल एक्सेस, इमेज जनरेशन, API इंटीग्रेशन और इंजीनियरिंग पर व्यावहारिक गाइड।', search: 'लेख खोजें…', all: 'सभी', related: 'संबंधित गाइड', empty: 'आपके फ़िल्टर से कोई लेख नहीं मिला।' },
+  bn: { title: 'GPT88 প্রযুক্তি ব্লগ', description: 'AI মডেল, ছবি তৈরি, API ইন্টিগ্রেশন এবং ইঞ্জিনিয়ারিং নিয়ে ব্যবহারিক গাইড।', search: 'নিবন্ধ খুঁজুন…', all: 'সব', related: 'সম্পর্কিত গাইড', empty: 'আপনার ফিল্টারের সঙ্গে কোনো নিবন্ধ মেলেনি।' },
+  ur: { title: 'GPT88 تکنیکی بلاگ', description: 'AI ماڈل، امیج جنریشن، API انٹیگریشن اور انجینئرنگ کے عملی رہنما۔', search: 'مضامین تلاش کریں…', all: 'سب', related: 'متعلقہ رہنما', empty: 'آپ کے فلٹر سے کوئی مضمون نہیں ملا۔' },
+  ta: { title: 'GPT88 தொழில்நுட்ப வலைப்பதிவு', description: 'AI மாதிரிகள், பட உருவாக்கம், API ஒருங்கிணைப்பு மற்றும் பொறியியல் குறித்த நடைமுறை வழிகாட்டிகள்.', search: 'கட்டுரைகளைத் தேடுங்கள்…', all: 'அனைத்தும்', related: 'தொடர்புடைய வழிகாட்டிகள்', empty: 'உங்கள் வடிகட்டிகளுக்கு கட்டுரைகள் இல்லை.' },
+  ne: { title: 'GPT88 प्राविधिक ब्लग', description: 'AI मोडेल, छवि निर्माण, API एकीकरण र इन्जिनियरिङका व्यावहारिक गाइडहरू।', search: 'लेख खोज्नुहोस्…', all: 'सबै', related: 'सम्बन्धित गाइड', empty: 'तपाईंका फिल्टरसँग कुनै लेख मिलेन्।' },
+  si: { title: 'GPT88 තාක්ෂණික බ්ලොගය', description: 'AI මාදිලි, රූප නිර්මාණය, API ඒකාබද්ධ කිරීම සහ ඉංජිනේරුකරණය පිළිබඳ ප්‍රායෝගික මාර්ගෝපදේශ.', search: 'ලිපි සොයන්න…', all: 'සියල්ල', related: 'අදාළ මාර්ගෝපදේශ', empty: 'ඔබේ පෙරහන්වලට ගැළපෙන ලිපි නැත.' },
+}
+
 export default function BlogIndexPage() {
   const { locale } = useLocale()
-  const isEn = locale === 'en'
+  const copy = BLOG_INDEX_COPY[locale] ?? BLOG_INDEX_COPY.en
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('query') ?? ''
   const activeCategory = searchParams.get('category') ?? '全部'
@@ -58,10 +69,8 @@ export default function BlogIndexPage() {
     })
   }, [query, activeCategory, locale])
 
-  const title = isEn ? 'GPT88 Technical Blog' : 'GPT88 技术博客'
-  const description = isEn
-    ? 'Practical guides on AI model access, image generation, API integration, and engineering practice — maintained by gpt88.cc.'
-    : '围绕模型接入、图片生成、API 集成与工程实践的实用文章，由 gpt88.cc 维护。'
+  const title = copy.title
+  const description = copy.description
 
   return (
     <>
@@ -87,7 +96,7 @@ export default function BlogIndexPage() {
               name="query"
               value={query}
               onChange={event => setFilter({ query: event.target.value })}
-              placeholder={isEn ? 'Search articles…' : '搜索文章…'}
+              placeholder={copy.search}
               className="w-full rounded-lg border border-white/10 bg-white/[0.03] py-2 pl-9 pr-3 text-sm text-ink-100 outline-none transition-colors placeholder:text-ink-500 focus:border-violet-500/50"
             />
           </div>
@@ -102,7 +111,7 @@ export default function BlogIndexPage() {
                   : 'border-white/10 bg-white/[0.02] text-ink-300 hover:border-violet-500/30')
               }
             >
-              {isEn ? 'All' : '全部'}
+              {copy.all}
             </button>
             {BLOG_CATEGORIES.map(category => (
               <button
@@ -116,7 +125,7 @@ export default function BlogIndexPage() {
                     : 'border-white/10 bg-white/[0.02] text-ink-300 hover:border-violet-500/30')
                 }
               >
-                {isEn ? CATEGORY_EN[category] ?? category : category}
+              {locale === 'en' ? CATEGORY_EN[category] ?? category : category}
               </button>
             ))}
           </div>
@@ -135,7 +144,7 @@ export default function BlogIndexPage() {
                 >
                   <div className="flex items-center gap-2 text-[11px] text-ink-400">
                     <span className="rounded border border-white/10 bg-white/[0.03] px-1.5 py-0.5">
-                      {isEn ? CATEGORY_EN[meta.category] ?? meta.category : meta.category}
+                      {locale === 'en' ? CATEGORY_EN[meta.category] ?? meta.category : meta.category}
                     </span>
                     <span>{meta.date}</span>
                   </div>
@@ -158,14 +167,14 @@ export default function BlogIndexPage() {
           </div>
         ) : (
           <div className="rounded-lg border border-white/5 p-8 text-center text-sm text-ink-400">
-            {isEn ? 'No articles match your filters.' : '没有符合筛选条件的文章。'}
+            {copy.empty}
           </div>
         )}
 
         {/* 相关指南 */}
         <section className="mt-12 border-t border-white/5 pt-8">
           <h2 className="text-lg font-semibold text-ink-100">
-            {isEn ? 'Related Guides' : '相关指南'}
+            {copy.related}
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {RELATED_GUIDES.map(guide => (

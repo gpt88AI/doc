@@ -72,6 +72,206 @@ const CLAUDE_MINDSET = `标准 API 工具 / SDK
 OpenAI / Claude / Anthropic 协议差异
   → 保持对应 Base URL 不变，按协议选择 endpoint 路径和请求格式`
 
+type TutorialCopy = {
+  title: string
+  description: string
+  goal: string
+  sections: string[]
+  intro?: string
+  whatIs?: string[]
+  audience?: string[]
+}
+
+const TUTORIAL_COPY: Record<string, TutorialCopy> = {
+  zh: { title: 'gpt88.cc 通用接入教程', description: '统一 Claude 与 OpenAI 兼容心智的上手教程：理解 gpt88.cc、选择模型与线路、跑通第一次请求，并找到下一篇文档。', goal: '这篇教程的目标', intro: '这不是某一个 SDK 的单页说明，而是一篇统一 Claude / OpenAI 兼容心智的总入口教程。', whatIs: ['gpt88.cc 是一个面向开发者的统一大模型 API 网关。标准文本与 Claude API 使用 https://api.gpt88.cc，图片和视频直连使用 https://img.gpt88.cc。', '它把多家模型统一成一套接入方式，并允许你把 API Key、模型、线路和工具配置导出。'], audience: ['第一次接入 gpt88.cc，想先建立整体心智；', '已经在用 OpenAI SDK 或 Claude Code，想用较低成本迁移；', '团队里有多种工具，希望统一 API 配置并正确分流媒体接口。'], sections: ['什么是 gpt88.cc', '适合谁 / 这篇教程适用对象', 'Claude 与 OpenAI 通用兼容心智', '开始前需要准备什么', '准备一个 API Key', '选一个默认模型', '选对线路', '逐步接入流程', '按工具接入', 'cURL：最快的连通性验证', 'Python SDK', 'Node.js SDK', 'Claude Code', 'Cursor / OpenCode / OpenClaw / Hermes', '为什么要有配置文件导出', '常见错误与排障', '最佳实践', '应该搭配阅读哪些文档', '一句话总结'] },
+  hi: { title: 'gpt88.cc सामान्य इंटीग्रेशन ट्यूटोरियल', description: 'Claude और OpenAI compatibility को समझने, model और route चुनने, पहला request चलाने और आगे की docs खोजने का शुरुआती guide।', goal: 'इस ट्यूटोरियल का लक्ष्य', intro: 'यह किसी एक SDK का पेज नहीं, बल्कि Claude और OpenAI compatibility को समझने का मुख्य प्रवेश बिंदु है।', whatIs: ['gpt88.cc developers के लिए unified large-model API gateway है। सामान्य text और Claude API के लिए https://api.gpt88.cc, image और video के लिए https://img.gpt88.cc इस्तेमाल होता है।', 'यह अलग-अलग models को एक integration में लाता है और API Key, model, route तथा tool configuration export करने देता है।'], audience: ['पहली बार gpt88.cc जोड़ने वाले users;', 'OpenAI SDK या Claude Code से कम बदलाव में migrate करने वाले developers;', 'ऐसी teams जिनके पास कई tools हैं और एक समान API configuration चाहिए।'], sections: ['gpt88.cc क्या है', 'यह किसके लिए है', 'Claude और OpenAI compatibility mindset', 'शुरू करने से पहले तैयारी', 'API Key तैयार करें', 'डिफ़ॉल्ट model चुनें', 'सही route चुनें', 'इंटीग्रेशन का क्रम', 'tool के अनुसार इंटीग्रेशन', 'cURL: सबसे तेज़ connectivity test', 'Python SDK', 'Node.js SDK', 'Claude Code', 'Cursor / OpenCode / OpenClaw / Hermes', 'config export क्यों चाहिए', 'सामान्य errors और troubleshooting', 'best practices', 'साथ में कौन-सी docs पढ़ें', 'एक वाक्य में सार'] },
+  bn: { title: 'gpt88.cc সাধারণ ইন্টিগ্রেশন টিউটোরিয়াল', description: 'Claude ও OpenAI compatibility বোঝা, model ও route বাছাই, প্রথম request চালানো এবং পরের docs খুঁজে পাওয়ার শুরু করার guide।', goal: 'এই টিউটোরিয়ালের লক্ষ্য', intro: 'এটি কোনো একক SDK-এর পেজ নয়; Claude ও OpenAI compatibility বোঝার মূল প্রবেশপথ।', whatIs: ['gpt88.cc developers-এর জন্য unified large-model API gateway। সাধারণ text ও Claude API-এর জন্য https://api.gpt88.cc, image ও video-এর জন্য https://img.gpt88.cc ব্যবহার করুন।', 'এটি বিভিন্ন model-কে এক integration-এ আনে এবং API Key, model, route ও tool configuration export করতে দেয়।'], audience: ['প্রথমবার gpt88.cc ব্যবহারকারী;', 'OpenAI SDK বা Claude Code থেকে কম পরিবর্তনে migrate করতে চান এমন developer;', 'বহু tool ব্যবহার করা team, যাদের একরকম API configuration দরকার।'], sections: ['gpt88.cc কী', 'কার জন্য উপযোগী', 'Claude ও OpenAI compatibility mindset', 'শুরু করার আগে প্রস্তুতি', 'API Key তৈরি করুন', 'ডিফল্ট model বাছুন', 'সঠিক route বাছুন', 'ইন্টিগ্রেশনের ধাপ', 'tool অনুযায়ী ইন্টিগ্রেশন', 'cURL: দ্রুত connectivity test', 'Python SDK', 'Node.js SDK', 'Claude Code', 'Cursor / OpenCode / OpenClaw / Hermes', 'config export কেন দরকার', 'সাধারণ error ও troubleshooting', 'best practices', 'কোন docs সঙ্গে পড়বেন', 'এক বাক্যে সারাংশ'] },
+  ur: { title: 'gpt88.cc عمومی انٹیگریشن ٹیوٹوریل', description: 'Claude اور OpenAI compatibility سمجھنے، model اور route منتخب کرنے، پہلی request چلانے اور اگلی docs تک پہنچنے کی ابتدائی رہنمائی۔', goal: 'اس ٹیوٹوریل کا مقصد', sections: ['gpt88.cc کیا ہے', 'یہ کس کے لیے ہے', 'Claude اور OpenAI compatibility mindset', 'شروع کرنے سے پہلے تیاری', 'API Key تیار کریں', 'default model منتخب کریں', 'درست route منتخب کریں', 'انٹیگریشن کا طریقہ', 'tool کے مطابق انٹیگریشن', 'cURL: تیز ترین connectivity test', 'Python SDK', 'Node.js SDK', 'Claude Code', 'Cursor / OpenCode / OpenClaw / Hermes', 'config export کیوں ضروری ہے', 'عام errors اور troubleshooting', 'best practices', 'ساتھ کون سی docs پڑھیں', 'ایک جملے میں خلاصہ'] },
+  ta: { title: 'gpt88.cc பொதுவான ஒருங்கிணைப்பு வழிகாட்டி', description: 'Claude மற்றும் OpenAI compatibility-ஐப் புரிந்து, model மற்றும் route தேர்ந்தெடுத்து, முதல் request இயக்கி அடுத்த docs-ஐக் கண்டுபிடிக்க உதவும் தொடக்க வழிகாட்டி.', goal: 'இந்த வழிகாட்டியின் நோக்கம்', sections: ['gpt88.cc என்றால் என்ன', 'யாருக்குப் பொருத்தம்', 'Claude மற்றும் OpenAI compatibility mindset', 'தொடங்குவதற்கு முன் தயாரிப்பு', 'API Key உருவாக்கவும்', 'default model தேர்ந்தெடுக்கவும்', 'சரியான route தேர்ந்தெடுக்கவும்', 'ஒருங்கிணைப்பு படிகள்', 'tool அடிப்படையிலான ஒருங்கிணைப்பு', 'cURL: வேகமான connectivity test', 'Python SDK', 'Node.js SDK', 'Claude Code', 'Cursor / OpenCode / OpenClaw / Hermes', 'config export ஏன் தேவை', 'பொதுவான errors மற்றும் troubleshooting', 'best practices', 'எந்த docs-ஐ இணைத்து படிக்க வேண்டும்', 'ஒரு வாக்கியச் சுருக்கம்'] },
+  ne: { title: 'gpt88.cc सामान्य integration tutorial', description: 'Claude र OpenAI compatibility बुझ्ने, model र route छान्ने, पहिलो request चलाउने र अर्को docs भेट्टाउने सुरुवाती guide।', goal: 'यस tutorial को लक्ष्य', sections: ['gpt88.cc के हो', 'कसका लागि हो', 'Claude र OpenAI compatibility mindset', 'सुरु गर्नुअघि तयारी', 'API Key तयार गर्नुहोस्', 'default model छान्नुहोस्', 'सही route छान्नुहोस्', 'integration को क्रम', 'tool अनुसार integration', 'cURL: सबैभन्दा छिटो connectivity test', 'Python SDK', 'Node.js SDK', 'Claude Code', 'Cursor / OpenCode / OpenClaw / Hermes', 'config export किन चाहिन्छ', 'सामान्य error र troubleshooting', 'best practices', 'सँगै कुन docs पढ्ने', 'एक वाक्यमा सार'] },
+  si: { title: 'gpt88.cc සාමාන්‍ය integration මාර්ගෝපදේශය', description: 'Claude සහ OpenAI compatibility තේරුම් ගැනීමට, model සහ route තෝරා ගැනීමට, පළමු request එක ධාවනය කිරීමට සහ ඊළඟ docs සොයාගැනීමට ආරම්භක guide එකක්.', goal: 'මෙම මාර්ගෝපදේශයේ අරමුණ', sections: ['gpt88.cc යනු කුමක්ද', 'කා සඳහාද', 'Claude සහ OpenAI compatibility mindset', 'ආරම්භයට පෙර සූදානම', 'API Key සූදානම් කරන්න', 'default model තෝරන්න', 'නිවැරදි route තෝරන්න', 'integration පියවර', 'tool අනුව integration', 'cURL: වේගවත් connectivity test', 'Python SDK', 'Node.js SDK', 'Claude Code', 'Cursor / OpenCode / OpenClaw / Hermes', 'config export අවශ්‍ය ඇයි', 'සාමාන්‍ය errors සහ troubleshooting', 'best practices', 'සමඟ කියවිය යුතු docs', 'එක් වාක්‍යයක සාරාංශය'] },
+}
+
+const TUTORIAL_BODY_COPY: Record<string, Pick<TutorialCopy, 'intro' | 'whatIs' | 'audience'>> = {
+  ur: {
+    intro: 'یہ کسی ایک SDK کا صفحہ نہیں، بلکہ Claude اور OpenAI compatibility سمجھنے کا مرکزی آغاز ہے۔',
+    whatIs: ['gpt88.cc developers کے لیے unified large-model API gateway ہے۔ عام text اور Claude API کے لیے https://api.gpt88.cc، image اور video کے لیے https://img.gpt88.cc استعمال ہوتا ہے۔', 'یہ مختلف models کو ایک integration میں لاتا ہے اور API Key، model، route اور tool configuration export کرنے دیتا ہے۔'],
+    audience: ['جو پہلی بار gpt88.cc استعمال کر رہے ہیں؛', 'جو OpenAI SDK یا Claude Code سے کم تبدیلی کے ساتھ migrate کرنا چاہتے ہیں؛', 'وہ teams جنہیں متعدد tools کے لیے یکساں API configuration چاہیے۔'],
+  },
+  ta: {
+    intro: 'இது ஒரு SDK-க்கான தனிப் பக்கம் அல்ல; Claude மற்றும் OpenAI compatibility-ஐப் புரிந்துகொள்ளும் முக்கிய தொடக்கப் புள்ளி.',
+    whatIs: ['gpt88.cc developers-க்கான unified large-model API gateway. பொதுவான text மற்றும் Claude API-க்கு https://api.gpt88.cc, image மற்றும் video-க்கு https://img.gpt88.cc பயன்படுத்தவும்.', 'இது பல models-ஐ ஒரே integration-ஆக இணைத்து API Key, model, route மற்றும் tool configuration-ஐ export செய்ய உதவுகிறது.'],
+    audience: ['gpt88.cc-ஐ முதன்முறையாக இணைப்பவர்கள்;', 'OpenAI SDK அல்லது Claude Code-இலிருந்து குறைந்த மாற்றத்துடன் migrate செய்ய விரும்பும் developers;', 'பல tools பயன்படுத்தும் team-கள், ஒரே API configuration தேவைப்படுபவர்கள்.'],
+  },
+  ne: {
+    intro: 'यो कुनै एउटा SDK को पृष्ठ होइन; Claude र OpenAI compatibility बुझ्ने मुख्य सुरुवाती बिन्दु हो।',
+    whatIs: ['gpt88.cc developers का लागि unified large-model API gateway हो। सामान्य text र Claude API का लागि https://api.gpt88.cc, image र video का लागि https://img.gpt88.cc प्रयोग हुन्छ।', 'यसले विभिन्न models लाई एउटै integration मा ल्याउँछ र API Key, model, route तथा tool configuration export गर्न दिन्छ।'],
+    audience: ['पहिलो पटक gpt88.cc जोड्ने users;', 'OpenAI SDK वा Claude Code बाट कम परिवर्तनमा migrate गर्न चाहने developers;', 'धेरै tools भएका teams जसलाई एउटै API configuration चाहिन्छ।'],
+  },
+  si: {
+    intro: 'මෙය එක් SDK එකකට පමණක් අදාළ පිටුවක් නොව, Claude සහ OpenAI compatibility තේරුම් ගැනීමට ඇති ප්‍රධාන ආරම්භක ස්ථානයයි.',
+    whatIs: ['gpt88.cc developers සඳහා unified large-model API gateway එකකි. සාමාන්‍ය text සහ Claude API සඳහා https://api.gpt88.cc, image සහ video සඳහා https://img.gpt88.cc භාවිතා කරන්න.', 'එය models කිහිපයක් එකම integration එකකට ගෙන එන අතර API Key, model, route සහ tool configuration export කිරීමට ඉඩ දෙයි.'],
+    audience: ['පළමු වරට gpt88.cc සම්බන්ධ කරන users;', 'OpenAI SDK හෝ Claude Code වලින් අඩු වෙනස්කම් සමඟ migrate වීමට කැමති developers;', 'tools කිහිපයක් භාවිතා කරන සහ එකම API configuration එකක් අවශ්‍ය teams.'],
+  },
+}
+
+const PREP_CHECKLIST_COPY: Record<string, string> = {
+  zh: PREP_CHECKLIST,
+  hi: `1. gpt88.cc console में API Key बनाएं
+2. एक default model चुनें (पहले request चलाएं, सबसे शक्तिशाली model पर न अटकें)
+3. सही route चुनें (China / global acceleration / direct / CDN / main domain)
+4. जांचें कि आपका tool OpenAI style है या Claude / Anthropic style
+5. connectivity जांचने के लिए एक छोटा request भेजें`,
+  bn: `1. gpt88.cc console-এ একটি API Key তৈরি করুন
+2. একটি default model বাছুন (আগে request চালান, সবচেয়ে শক্তিশালী model নিয়ে থেমে থাকবেন না)
+3. সঠিক route বাছুন (China / global acceleration / direct / CDN / main domain)
+4. আপনার tool OpenAI style নাকি Claude / Anthropic style তা শনাক্ত করুন
+5. connectivity যাচাই করতে একটি ছোট request পাঠান`,
+  ur: `1. gpt88.cc console میں API Key بنائیں
+2. ایک default model منتخب کریں (پہلے request چلائیں، سب سے طاقتور model پر نہ رکیں)
+3. درست route منتخب کریں (China / global acceleration / direct / CDN / main domain)
+4. دیکھیں کہ آپ کا tool OpenAI style ہے یا Claude / Anthropic style
+5. connectivity جانچنے کے لیے ایک چھوٹی request بھیجیں`,
+  ta: `1. gpt88.cc console-ல் API Key உருவாக்கவும்
+2. ஒரு default model தேர்ந்தெடுக்கவும் (முதலில் request இயக்கவும்; மிகச் சக்திவாய்ந்த model-ல் சிக்க வேண்டாம்)
+3. சரியான route தேர்ந்தெடுக்கவும் (China / global acceleration / direct / CDN / main domain)
+4. உங்கள் tool OpenAI style-ஆ அல்லது Claude / Anthropic style-ஆ என்பதை அறியவும்
+5. connectivity சரிபார்க்க ஒரு சிறிய request அனுப்பவும்`,
+  ne: `1. gpt88.cc console मा API Key बनाउनुहोस्
+2. एउटा default model छान्नुहोस् (पहिले request चलाउनुहोस्; सबैभन्दा शक्तिशाली model मा नअड्किनुहोस्)
+3. सही route छान्नुहोस् (China / global acceleration / direct / CDN / main domain)
+4. तपाईंको tool OpenAI style हो कि Claude / Anthropic style हो पहिचान गर्नुहोस्
+5. connectivity जाँच्न एउटा सानो request पठाउनुहोस्`,
+  si: `1. gpt88.cc console එකේ API Key එකක් සාදන්න
+2. default model එකක් තෝරන්න (පළමුව request එක ධාවනය කරන්න; බලවත්ම model එක මත නවතින්න එපා)
+3. නිවැරදි route එක තෝරන්න (China / global acceleration / direct / CDN / main domain)
+4. ඔබේ tool එක OpenAI style ද Claude / Anthropic style ද හඳුනාගන්න
+5. connectivity පරීක්ෂා කිරීමට කුඩා request එකක් යවන්න`,
+}
+
+const CLAUDE_MINDSET_COPY: Record<string, string> = {
+  zh: CLAUDE_MINDSET,
+  hi: `मानक API tool / SDK
+  → Base URL: https://api.gpt88.cc
+  → उदाहरण: OpenAI SDK, Claude Code, Cursor, OpenCode, cURL
+
+Image / video direct access
+  → Base URL: https://img.gpt88.cc
+
+OpenAI / Claude / Anthropic protocol differences
+  → Base URL वही रखें; protocol के अनुसार endpoint path और request format चुनें`,
+  bn: `সাধারণ API tool / SDK
+  → Base URL: https://api.gpt88.cc
+  → উদাহরণ: OpenAI SDK, Claude Code, Cursor, OpenCode, cURL
+
+Image / video direct access
+  → Base URL: https://img.gpt88.cc
+
+OpenAI / Claude / Anthropic protocol-এর পার্থক্য
+  → Base URL একই রাখুন; protocol অনুযায়ী endpoint path ও request format বাছুন`,
+  ur: `معیاری API tool / SDK
+  → Base URL: https://api.gpt88.cc
+  → مثال: OpenAI SDK، Claude Code، Cursor، OpenCode، cURL
+
+Image / video direct access
+  → Base URL: https://img.gpt88.cc
+
+OpenAI / Claude / Anthropic protocol کا فرق
+  → Base URL وہی رکھیں؛ protocol کے مطابق endpoint path اور request format چنیں`,
+  ta: `நிலையான API tool / SDK
+  → Base URL: https://api.gpt88.cc
+  → எடுத்துக்காட்டு: OpenAI SDK, Claude Code, Cursor, OpenCode, cURL
+
+Image / video direct access
+  → Base URL: https://img.gpt88.cc
+
+OpenAI / Claude / Anthropic protocol வேறுபாடு
+  → Base URL-ஐ மாற்றாமல், protocol-க்கு ஏற்ப endpoint path மற்றும் request format தேர்ந்தெடுக்கவும்`,
+  ne: `मानक API tool / SDK
+  → Base URL: https://api.gpt88.cc
+  → उदाहरण: OpenAI SDK, Claude Code, Cursor, OpenCode, cURL
+
+Image / video direct access
+  → Base URL: https://img.gpt88.cc
+
+OpenAI / Claude / Anthropic protocol को फरक
+  → Base URL उही राख्नुहोस्; protocol अनुसार endpoint path र request format छान्नुहोस्`,
+  si: `සම්මත API tool / SDK
+  → Base URL: https://api.gpt88.cc
+  → උදාහරණ: OpenAI SDK, Claude Code, Cursor, OpenCode, cURL
+
+Image / video direct access
+  → Base URL: https://img.gpt88.cc
+
+OpenAI / Claude / Anthropic protocol වෙනස්කම්
+  → Base URL එක වෙනස් නොකර protocol අනුව endpoint path සහ request format තෝරන්න`,
+}
+
+const PREP_BODY_COPY: Record<string, {
+  keyIntro: string; keyAdvice: string; keyItems: string[]
+  modelIntro: string; modelItems: string[]; modelEnd: string; route: string
+}> = {
+  zh: { keyIntro: '先去 gpt88.cc 控制台创建一把 Key。Key 是你的身份凭证，后续所有请求都会带上它。', keyAdvice: '建议你这样管理：', keyItems: ['给每个项目 / 环境单独建一把 Key；', 'Key 只放在服务端或受控配置里；', '截图、日志、分享文档时都要脱敏；', '一旦怀疑泄露，立刻 revoke 并重新生成。'], modelIntro: '如果你是新用户，建议先选一个最能代表你主要场景的模型：', modelItems: ['通用聊天 / 产品原型：优先选响应快、稳定的通用模型；', '复杂推理 / 长文档：优先选 Claude 系较强推理模型；', '代码与 Agent 工作流：优先选适合编程和 tool use 的模型；', '多模态任务：按你是否需要图像 / 音频 / 视频接口再做选择。'], modelEnd: '不要在第一步就纠结“最强模型是哪一个”，更重要的是先跑通一次。', route: '标准 API 使用 https://api.gpt88.cc，图片 / 视频直连使用 https://img.gpt88.cc。遇到连接问题时优先检查 API Key、模型、endpoint 和请求格式。' },
+  hi: { keyIntro: 'पहले gpt88.cc console में एक Key बनाएं। Key आपकी पहचान है और आगे की हर request में जाएगी।', keyAdvice: 'इसे इस तरह manage करें:', keyItems: ['हर project / environment के लिए अलग Key बनाएं;', 'Key केवल server या controlled configuration में रखें;', 'screenshots, logs और shared docs में इसे mask करें;', 'leak का संदेह हो तो तुरंत revoke करके नई Key बनाएं।'], modelIntro: 'नए user पहले अपने मुख्य use case से मेल खाने वाला model चुनें:', modelItems: ['सामान्य chat / prototype: तेज़ और stable general model;', 'complex reasoning / long document: मजबूत reasoning वाला Claude model;', 'code और Agent workflow: programming और tool use के लिए उपयुक्त model;', 'multimodal task: image / audio / video की जरूरत के अनुसार model।'], modelEnd: 'पहले कदम पर “सबसे शक्तिशाली model” में न उलझें; पहले एक request सफल करें।', route: 'सामान्य API के लिए https://api.gpt88.cc और image / video direct access के लिए https://img.gpt88.cc इस्तेमाल करें। connection समस्या में पहले API Key, model, endpoint और request format जांचें।' },
+  bn: { keyIntro: 'প্রথমে gpt88.cc console-এ একটি Key তৈরি করুন। Key আপনার পরিচয় এবং পরের প্রতিটি request-এ যাবে।', keyAdvice: 'এভাবে manage করুন:', keyItems: ['প্রতিটি project / environment-এর জন্য আলাদা Key তৈরি করুন;', 'Key শুধু server বা controlled configuration-এ রাখুন;', 'screenshot, log ও shared doc-এ mask করুন;', 'leak সন্দেহ হলে সঙ্গে সঙ্গে revoke করে নতুন Key বানান।'], modelIntro: 'নতুন user নিজের প্রধান use case-এর সঙ্গে মেলে এমন model বাছুন:', modelItems: ['সাধারণ chat / prototype: দ্রুত ও stable general model;', 'complex reasoning / long document: শক্তিশালী reasoning-এর Claude model;', 'code ও Agent workflow: programming ও tool use-এর উপযোগী model;', 'multimodal task: image / audio / video-এর প্রয়োজন অনুযায়ী model।'], modelEnd: 'প্রথমেই “সবচেয়ে শক্তিশালী model” নিয়ে আটকে থাকবেন না; আগে একটি request সফল করুন।', route: 'সাধারণ API-এর জন্য https://api.gpt88.cc এবং image / video direct access-এর জন্য https://img.gpt88.cc ব্যবহার করুন। connection সমস্যা হলে API Key, model, endpoint ও request format আগে দেখুন।' },
+  ur: { keyIntro: 'پہلے gpt88.cc console میں ایک Key بنائیں۔ Key آپ کی شناخت ہے اور ہر اگلی request میں شامل ہوگی۔', keyAdvice: 'اسے یوں manage کریں:', keyItems: ['ہر project / environment کے لیے الگ Key بنائیں؛', 'Key صرف server یا controlled configuration میں رکھیں؛', 'screenshots، logs اور shared docs میں اسے mask کریں؛', 'leak کا شک ہو تو فوراً revoke کرکے نئی Key بنائیں۔'], modelIntro: 'نئے user اپنے بنیادی use case کے مطابق model منتخب کریں:', modelItems: ['عام chat / prototype: تیز اور stable general model؛', 'complex reasoning / long document: مضبوط reasoning والا Claude model؛', 'code اور Agent workflow: programming اور tool use کے لیے مناسب model؛', 'multimodal task: image / audio / video کی ضرورت کے مطابق model۔'], modelEnd: 'شروع میں “سب سے طاقتور model” پر نہ رکیں؛ پہلے ایک request کامیاب کریں۔', route: 'عام API کے لیے https://api.gpt88.cc اور image / video direct access کے لیے https://img.gpt88.cc استعمال کریں۔ connection مسئلے میں پہلے API Key، model، endpoint اور request format چیک کریں۔' },
+  ta: { keyIntro: 'முதலில் gpt88.cc console-ல் ஒரு Key உருவாக்கவும். Key உங்கள் அடையாளம்; அடுத்த அனைத்து request-களிலும் அது செல்லும்.', keyAdvice: 'இதை இவ்வாறு நிர்வகிக்கவும்:', keyItems: ['ஒவ்வொரு project / environment-க்கும் தனி Key உருவாக்கவும்;', 'Key-ஐ server அல்லது controlled configuration-ல் மட்டும் வைக்கவும்;', 'screenshots, logs மற்றும் shared docs-ல் அதை mask செய்யவும்;', 'leak சந்தேகம் இருந்தால் உடனே revoke செய்து புதிய Key உருவாக்கவும்.'], modelIntro: 'புதிய user தங்கள் முக்கிய use case-க்கு ஏற்ற model-ஐ முதலில் தேர்ந்தெடுக்கவும்:', modelItems: ['பொதுவான chat / prototype: வேகமான stable general model;', 'complex reasoning / long document: வலுவான reasoning கொண்ட Claude model;', 'code மற்றும் Agent workflow: programming மற்றும் tool use-க்கு ஏற்ற model;', 'multimodal task: image / audio / video தேவைக்கு ஏற்ப model।'], modelEnd: 'முதல் படியிலேயே “மிகவும் வலுவான model” பற்றி சிக்க வேண்டாம்; முதலில் ஒரு request வெற்றிகரமாக இயங்கட்டும்.', route: 'பொதுவான API-க்கு https://api.gpt88.cc, image / video direct access-க்கு https://img.gpt88.cc பயன்படுத்தவும். connection சிக்கலில் API Key, model, endpoint மற்றும் request format-ஐ முதலில் சரிபார்க்கவும்.' },
+  ne: { keyIntro: 'पहिले gpt88.cc console मा एउटा Key बनाउनुहोस्। Key तपाईंको पहिचान हो र पछिका सबै request मा जानेछ।', keyAdvice: 'यसरी manage गर्नुहोस्:', keyItems: ['हरेक project / environment का लागि अलग Key बनाउनुहोस्;', 'Key server वा controlled configuration मा मात्र राख्नुहोस्;', 'screenshot, log र shared doc मा mask गर्नुहोस्;', 'leak को शंका भए तुरुन्त revoke गरेर नयाँ Key बनाउनुहोस्।'], modelIntro: 'नयाँ user ले आफ्नो मुख्य use case सँग मिल्ने model पहिले छान्नुहोस्:', modelItems: ['सामान्य chat / prototype: छिटो र stable general model;', 'complex reasoning / long document: बलियो reasoning भएको Claude model;', 'code र Agent workflow: programming र tool use का लागि उपयुक्त model;', 'multimodal task: image / audio / video को आवश्यकताअनुसार model।'], modelEnd: 'सुरुमै “सबैभन्दा शक्तिशाली model” मा नअड्किनुहोस्; पहिले एउटा request सफल पार्नुहोस्।', route: 'सामान्य API का लागि https://api.gpt88.cc र image / video direct access का लागि https://img.gpt88.cc प्रयोग गर्नुहोस्। connection समस्या भए API Key, model, endpoint र request format पहिले जाँच्नुहोस्।' },
+  si: { keyIntro: 'මුලින් gpt88.cc console එකේ Key එකක් සාදන්න. Key එක ඔබේ අනන්‍යතාව වන අතර ඉදිරි සියලු request වල යයි.', keyAdvice: 'එය මෙසේ කළමනාකරණය කරන්න:', keyItems: ['සෑම project / environment එකකටම වෙනම Key එකක් සාදන්න;', 'Key එක server හෝ controlled configuration තුළ පමණක් තබන්න;', 'screenshots, logs සහ shared docs තුළ mask කරන්න;', 'leak එකක් සැක නම් වහාම revoke කර නව Key එකක් සාදන්න.'], modelIntro: 'නව user කෙනෙකු තම ප්‍රධාන use case එකට ගැළපෙන model එකක් පළමුව තෝරන්න:', modelItems: ['සාමාන්‍ය chat / prototype: වේගවත් stable general model එකක්;', 'complex reasoning / long document: ශක්තිමත් reasoning ඇති Claude model එකක්;', 'code සහ Agent workflow: programming සහ tool use සඳහා සුදුසු model එකක්;', 'multimodal task: image / audio / video අවශ්‍යතාව අනුව model එකක්.'], modelEnd: 'පළමු පියවරේදීම “බලවත්ම model” ගැන නොනවතින්න; පළමුව request එකක් සාර්ථක කරගන්න.', route: 'සාමාන්‍ය API සඳහා https://api.gpt88.cc සහ image / video direct access සඳහා https://img.gpt88.cc භාවිතා කරන්න. connection ගැටලුවකදී API Key, model, endpoint සහ request format පළමුව පරීක්ෂා කරන්න.' },
+}
+
+const FLOW_COPY: Record<string, { intro: string; steps: string[]; failed: string; checks: string[] }> = {
+  zh: { intro: '下面是最稳妥的顺序：', steps: ['创建或选择 API Key', '决定你要用的模型', '选择网络线路', '确认你要接入的工具属于 OpenAI 还是 Claude 风格', '生成配置或直接拼 Base URL', '先发一条最小请求验证连通性', '再扩展到正式业务场景'], failed: '如果你第一次接入失败，不要同时改很多变量。先只改一项：', checks: ['先换线路；', '再检查 Base URL；', '再检查模型名；', '最后检查 API Key。'] },
+  hi: { intro: 'सबसे भरोसेमंद क्रम यह है:', steps: ['API Key बनाएं या चुनें', 'इस्तेमाल होने वाला model तय करें', 'network route चुनें', 'पुष्टि करें कि tool OpenAI style है या Claude style', 'config बनाएं या Base URL तैयार करें', 'एक छोटा request भेजकर connectivity जांचें', 'फिर production use case तक बढ़ें'], failed: 'पहली integration विफल हो तो कई variables एक साथ न बदलें। एक बार में केवल एक जांचें:', checks: ['पहले route बदलें;', 'फिर Base URL जांचें;', 'फिर model name जांचें;', 'अंत में API Key जांचें।'] },
+  bn: { intro: 'সবচেয়ে নির্ভরযোগ্য ক্রম:', steps: ['API Key তৈরি বা বাছুন', 'ব্যবহারযোগ্য model ঠিক করুন', 'network route বাছুন', 'tool OpenAI style নাকি Claude style নিশ্চিত করুন', 'config তৈরি বা Base URL প্রস্তুত করুন', 'ছোট request দিয়ে connectivity যাচাই করুন', 'তারপর production use case-এ যান'], failed: 'প্রথম integration ব্যর্থ হলে একসঙ্গে অনেক variable বদলাবেন না। একবারে একটি দেখুন:', checks: ['আগে route বদলান;', 'তারপর Base URL দেখুন;', 'তারপর model name দেখুন;', 'সবশেষে API Key দেখুন।'] },
+  ur: { intro: 'سب سے قابل اعتماد ترتیب یہ ہے:', steps: ['API Key بنائیں یا منتخب کریں', 'استعمال ہونے والا model طے کریں', 'network route منتخب کریں', 'یقین کریں کہ tool OpenAI style ہے یا Claude style', 'config بنائیں یا Base URL تیار کریں', 'ایک مختصر request سے connectivity چیک کریں', 'پھر production use case تک جائیں'], failed: 'پہلی integration ناکام ہو تو کئی variables ایک ساتھ نہ بدلیں۔ ایک وقت میں ایک چیز چیک کریں:', checks: ['پہلے route بدلیں؛', 'پھر Base URL چیک کریں؛', 'پھر model name چیک کریں؛', 'آخر میں API Key چیک کریں۔'] },
+  ta: { intro: 'நம்பகமான வரிசை இதோ:', steps: ['API Key உருவாக்கவும் அல்லது தேர்ந்தெடுக்கவும்', 'பயன்படுத்தும் model-ஐ முடிவு செய்யவும்', 'network route தேர்ந்தெடுக்கவும்', 'tool OpenAI style-ஆ அல்லது Claude style-ஆ உறுதிசெய்யவும்', 'config உருவாக்கவும் அல்லது Base URL அமைக்கவும்', 'சிறிய request மூலம் connectivity சரிபார்க்கவும்', 'பின்னர் production use case-க்கு விரிவாக்கவும்'], failed: 'முதல் integration தோல்வியடைந்தால் பல variables-ஐ ஒரே நேரத்தில் மாற்ற வேண்டாம். ஒரு முறை ஒன்றை மட்டும் சோதிக்கவும்:', checks: ['முதலில் route மாற்றவும்;', 'பின்னர் Base URL சரிபார்க்கவும்;', 'பின்னர் model name சரிபார்க்கவும்;', 'இறுதியில் API Key சரிபார்க்கவும்.'] },
+  ne: { intro: 'सबैभन्दा भरपर्दो क्रम यस्तो छ:', steps: ['API Key बनाउनुहोस् वा छान्नुहोस्', 'प्रयोग गर्ने model तय गर्नुहोस्', 'network route छान्नुहोस्', 'tool OpenAI style हो कि Claude style हो निश्चित गर्नुहोस्', 'config बनाउनुहोस् वा Base URL तयार गर्नुहोस्', 'सानो request पठाएर connectivity जाँच्नुहोस्', 'त्यसपछि production use case मा विस्तार गर्नुहोस्'], failed: 'पहिलो integration असफल भए धेरै variables एकैचोटि नबदल्नुहोस्। एकपटकमा एउटै जाँच्नुहोस्:', checks: ['पहिले route बदल्नुहोस्;', 'त्यसपछि Base URL जाँच्नुहोस्;', 'त्यसपछि model name जाँच्नुहोस्;', 'अन्त्यमा API Key जाँच्नुहोस्।'] },
+  si: { intro: 'වඩාත් විශ්වාසදායක අනුපිළිවෙල මෙයයි:', steps: ['API Key එකක් සාදන්න හෝ තෝරන්න', 'භාවිත කරන model එක තීරණය කරන්න', 'network route එක තෝරන්න', 'tool එක OpenAI style ද Claude style ද තහවුරු කරන්න', 'config එක සාදන්න හෝ Base URL එක සකසන්න', 'කුඩා request එකකින් connectivity පරීක්ෂා කරන්න', 'ඉන්පසු production use case වෙත පුළුල් කරන්න'], failed: 'පළමු integration එක අසාර්ථක නම් variables කිහිපයක් එකවර වෙනස් නොකරන්න. වරකට එකක් පමණක් පරීක්ෂා කරන්න:', checks: ['පළමුව route එක වෙනස් කරන්න;', 'ඊළඟට Base URL පරීක්ෂා කරන්න;', 'ඊළඟට model name පරීක්ෂා කරන්න;', 'අවසානයේ API Key පරීක්ෂා කරන්න.'] },
+}
+
+const TOOL_COPY: Record<string, {
+  curlIntro: string; curlItems: string[]; pythonIntro: string; pythonItems: string[]; pythonFit: string; nodeIntro: string; nodeFit: string; nodeItems: string[]
+}> = {
+  zh: { curlIntro: '适合想快速确认“这条链路能不能通”的场景。你应该用它来：', curlItems: ['排查网络问题；', '验证 API Key 是否有效；', '验证模型名是否拼对；', '给 QA 或 CI 做健康检查。'], pythonIntro: '如果你写的是 Python 服务，通常有两种情况：', pythonItems: ['OpenAI SDK 风格：直接把 base_url 换成 https://api.gpt88.cc；', 'Claude / Anthropic 风格：继续使用 https://api.gpt88.cc，并保持 Claude 风格请求结构。'], pythonFit: '适合：Web 服务、脚本、数据分析、Agent 原型。', nodeIntro: '如果你在前后端同构或 Next.js / Express 项目里开发，Node.js SDK 是最常见的选择。', nodeFit: '适合：', nodeItems: ['API 服务端代理；', '前端项目的边缘函数；', 'CLI 工具；', '流式输出和工具调用。'] },
+  hi: { curlIntro: 'यह उस स्थिति के लिए है जब आप जल्दी जानना चाहते हैं कि route काम कर रहा है। इसका उपयोग करें:', curlItems: ['network समस्या ढूंढने के लिए;', 'API Key valid है या नहीं जांचने के लिए;', 'model name सही है या नहीं जांचने के लिए;', 'QA या CI health check के लिए।'], pythonIntro: 'Python service लिखते समय आमतौर पर दो विकल्प होते हैं:', pythonItems: ['OpenAI SDK style: base_url को सीधे https://api.gpt88.cc करें;', 'Claude / Anthropic style: https://api.gpt88.cc रखें और Claude request structure बनाए रखें।'], pythonFit: 'उपयुक्त: Web service, script, data analysis और Agent prototype।', nodeIntro: 'Full-stack या Next.js / Express project में Node.js SDK सामान्य विकल्प है।', nodeFit: 'उपयुक्त:', nodeItems: ['API server proxy;', 'frontend edge function;', 'CLI tool;', 'streaming output और tool calling।'] },
+  bn: { curlIntro: 'দ্রুত route কাজ করছে কি না নিশ্চিত করতে এটি ব্যবহার করুন। এর মাধ্যমে:', curlItems: ['network সমস্যা খুঁজুন;', 'API Key valid কি না যাচাই করুন;', 'model name সঠিক কি না যাচাই করুন;', 'QA বা CI health check চালান।'], pythonIntro: 'Python service লিখলে সাধারণত দুটি পথ থাকে:', pythonItems: ['OpenAI SDK style: base_url সরাসরি https://api.gpt88.cc করুন;', 'Claude / Anthropic style: https://api.gpt88.cc রাখুন এবং Claude request structure বজায় রাখুন।'], pythonFit: 'উপযোগী: Web service, script, data analysis ও Agent prototype।', nodeIntro: 'Full-stack বা Next.js / Express project-এ Node.js SDK সাধারণ পছন্দ।', nodeFit: 'উপযোগী:', nodeItems: ['API server proxy;', 'frontend edge function;', 'CLI tool;', 'streaming output ও tool calling।'] },
+  ur: { curlIntro: 'جب آپ جلدی معلوم کرنا چاہیں کہ route چل رہا ہے تو یہ مناسب ہے۔ اسے استعمال کریں:', curlItems: ['network مسئلہ تلاش کرنے کے لیے؛', 'API Key درست ہے یا نہیں جانچنے کے لیے؛', 'model name درست ہے یا نہیں جانچنے کے لیے؛', 'QA یا CI health check کے لیے۔'], pythonIntro: 'Python service میں عموماً دو صورتیں ہوتی ہیں:', pythonItems: ['OpenAI SDK style: base_url کو https://api.gpt88.cc کریں؛', 'Claude / Anthropic style: https://api.gpt88.cc رکھیں اور Claude request structure برقرار رکھیں۔'], pythonFit: 'موزوں: Web service، script، data analysis اور Agent prototype۔', nodeIntro: 'Full-stack یا Next.js / Express project میں Node.js SDK عام انتخاب ہے۔', nodeFit: 'موزوں:', nodeItems: ['API server proxy؛', 'frontend edge function؛', 'CLI tool؛', 'streaming output اور tool calling۔'] },
+  ta: { curlIntro: 'இந்த route இயங்குகிறதா என்பதை விரைவாகச் சரிபார்க்க இது உதவும். இதைப் பயன்படுத்தி:', curlItems: ['network சிக்கலைக் கண்டறியவும்;', 'API Key சரியானதா சோதிக்கவும்;', 'model name சரியா சோதிக்கவும்;', 'QA அல்லது CI health check செய்யவும்.'], pythonIntro: 'Python service எழுதும்போது பொதுவாக இரண்டு வழிகள் உள்ளன:', pythonItems: ['OpenAI SDK style: base_url-ஐ https://api.gpt88.cc ஆக மாற்றவும்;', 'Claude / Anthropic style: https://api.gpt88.cc வைத்துக் கொண்டு Claude request structure-ஐப் பாதுகாக்கவும்.'], pythonFit: 'பொருத்தமானது: Web service, script, data analysis மற்றும் Agent prototype।', nodeIntro: 'Full-stack அல்லது Next.js / Express project-ல் Node.js SDK பொதுவான தேர்வு.', nodeFit: 'பொருத்தமானது:', nodeItems: ['API server proxy;', 'frontend edge function;', 'CLI tool;', 'streaming output மற்றும் tool calling।'] },
+  ne: { curlIntro: 'route चलिरहेको छ कि छैन छिटो जाँच्न यो उपयोगी छ। यसबाट:', curlItems: ['network समस्या खोज्नुहोस्;', 'API Key valid छ कि छैन जाँच्नुहोस्;', 'model name सही छ कि छैन जाँच्नुहोस्;', 'QA वा CI health check गर्नुहोस्।'], pythonIntro: 'Python service लेख्दा सामान्यतया दुई विकल्प हुन्छन्:', pythonItems: ['OpenAI SDK style: base_url लाई https://api.gpt88.cc बनाउनुहोस्;', 'Claude / Anthropic style: https://api.gpt88.cc राखेर Claude request structure कायम गर्नुहोस्।'], pythonFit: 'उपयुक्त: Web service, script, data analysis र Agent prototype।', nodeIntro: 'Full-stack वा Next.js / Express project मा Node.js SDK सामान्य विकल्प हो।', nodeFit: 'उपयुक्त:', nodeItems: ['API server proxy;', 'frontend edge function;', 'CLI tool;', 'streaming output र tool calling।'] },
+  si: { curlIntro: 'route එක ක්‍රියා කරනවාදැයි ඉක්මනින් තහවුරු කිරීමට මෙය සුදුසුය. මෙය භාවිතා කර:', curlItems: ['network ගැටලු හඳුනාගන්න;', 'API Key වලංගුදැයි පරීක්ෂා කරන්න;', 'model name නිවැරදිදැයි පරීක්ෂා කරන්න;', 'QA හෝ CI health check කරන්න.'], pythonIntro: 'Python service එකක් ලියන විට සාමාන්‍යයෙන් මාර්ග දෙකක් ඇත:', pythonItems: ['OpenAI SDK style: base_url එක https://api.gpt88.cc කරන්න;', 'Claude / Anthropic style: https://api.gpt88.cc තබා Claude request structure එක පවත්වාගන්න.'], pythonFit: 'සුදුසු: Web service, script, data analysis සහ Agent prototype.', nodeIntro: 'Full-stack හෝ Next.js / Express project එකක Node.js SDK සාමාන්‍ය තේරීමකි.', nodeFit: 'සුදුසු:', nodeItems: ['API server proxy;', 'frontend edge function;', 'CLI tool;', 'streaming output සහ tool calling.'] },
+}
+
+const AGENT_TOOL_COPY: Record<string, { claudeIntro: string; claudeItems: string[]; claudeEnd: string; othersIntro: string; othersItems: string[]; importText: string; calloutTitle: string; calloutBody: string }> = {
+  zh: { claudeIntro: 'Claude Code 的重点不是“写一个请求”，而是“让 AI 以开发者助手的方式工作”。', claudeItems: ['理解代码库；', '修改文件；', '跑测试；', '创建 PR；', '做持续性开发任务。'], claudeEnd: '这类工具通常走 Claude / Anthropic 风格配置，所以你要确认标准 API Base URL、请求路径和目标模型是否匹配。', othersIntro: '这类工具通常已经提供了某种“兼容 OpenAI 或 Claude”的输入项。你要做的事情就是：', othersItems: ['选对工具类型；', '填对 Base URL；', '填对 API Key；', '选对默认模型。'], importText: '如果工具本身支持导入配置，就把它交给配置文件导出页面生成。', calloutTitle: '一个最容易成功的起步方式', calloutBody: '不论是 OpenAI 风格还是 Claude 风格，都先用 https://api.gpt88.cc + 对应 SDK 跑一条最小请求。两种协议共用同一把 API Key，差异只在请求路径和请求格式。' },
+  hi: { claudeIntro: 'Claude Code का उद्देश्य केवल request लिखना नहीं, बल्कि AI को developer assistant की तरह काम कराना है।', claudeItems: ['codebase समझना;', 'files बदलना;', 'tests चलाना;', 'PR बनाना;', 'लगातार development task करना।'], claudeEnd: 'ये tools आमतौर पर Claude / Anthropic configuration लेते हैं। Standard API Base URL, request path और target model का मिलान करें।', othersIntro: 'इन tools में आमतौर पर OpenAI या Claude compatibility का input होता है। आपको यह करना है:', othersItems: ['सही tool type चुनें;', 'सही Base URL भरें;', 'सही API Key भरें;', 'सही default model चुनें।'], importText: 'यदि tool configuration import करता है, तो config export page से इसे generate करें।', calloutTitle: 'सबसे आसान सफल शुरुआत', calloutBody: 'OpenAI या Claude style दोनों में पहले https://api.gpt88.cc और संबंधित SDK से एक छोटा request चलाएं। दोनों protocol एक API Key साझा करते हैं; फर्क path और request format में है।' },
+  bn: { claudeIntro: 'Claude Code-এর লক্ষ্য শুধু request লেখা নয়; AI-কে developer assistant হিসেবে কাজ করানো।', claudeItems: ['codebase বোঝা;', 'file পরিবর্তন করা;', 'test চালানো;', 'PR তৈরি করা;', 'ধারাবাহিক development task করা।'], claudeEnd: 'এই tool-গুলি সাধারণত Claude / Anthropic configuration ব্যবহার করে। Standard API Base URL, request path ও target model মিলিয়ে নিন।', othersIntro: 'এই tool-গুলিতে সাধারণত OpenAI বা Claude compatibility input থাকে। আপনার কাজ হলো:', othersItems: ['সঠিক tool type বাছুন;', 'সঠিক Base URL দিন;', 'সঠিক API Key দিন;', 'সঠিক default model বাছুন।'], importText: 'tool configuration import সমর্থন করলে config export page থেকে তা তৈরি করুন।', calloutTitle: 'সবচেয়ে সহজ সফল শুরু', calloutBody: 'OpenAI বা Claude style যাই হোক, আগে https://api.gpt88.cc ও সংশ্লিষ্ট SDK দিয়ে একটি ছোট request চালান। দুই protocol একই API Key ব্যবহার করে; পার্থক্য path ও request format-এ।' },
+  ur: { claudeIntro: 'Claude Code کا مقصد صرف request لکھنا نہیں، بلکہ AI کو developer assistant کے طور پر کام کرانا ہے۔', claudeItems: ['codebase سمجھنا؛', 'files تبدیل کرنا؛', 'tests چلانا؛', 'PR بنانا؛', 'مسلسل development task کرنا۔'], claudeEnd: 'یہ tools عموماً Claude / Anthropic configuration استعمال کرتے ہیں۔ Standard API Base URL، request path اور target model کا میل دیکھیں۔', othersIntro: 'ان tools میں عموماً OpenAI یا Claude compatibility کا input ہوتا ہے۔ آپ کو یہ کرنا ہے:', othersItems: ['درست tool type منتخب کریں؛', 'درست Base URL بھریں؛', 'درست API Key بھریں؛', 'درست default model منتخب کریں۔'], importText: 'اگر tool configuration import کرتا ہے تو config export page سے اسے بنائیں۔', calloutTitle: 'سب سے آسان کامیاب آغاز', calloutBody: 'OpenAI یا Claude style دونوں میں پہلے https://api.gpt88.cc اور متعلقہ SDK سے ایک مختصر request چلائیں۔ دونوں protocol ایک API Key استعمال کرتے ہیں؛ فرق path اور request format میں ہے۔' },
+  ta: { claudeIntro: 'Claude Code-ன் நோக்கம் request எழுதுவது மட்டும் அல்ல; AI-ஐ developer assistant போல வேலை செய்யச் செய்வது.', claudeItems: ['codebase புரிந்துகொள்ளுதல்;', 'files மாற்றுதல்;', 'tests இயக்குதல்;', 'PR உருவாக்குதல்;', 'தொடர்ச்சியான development task செய்தல்.'], claudeEnd: 'இந்த tools பொதுவாக Claude / Anthropic configuration பயன்படுத்தும். Standard API Base URL, request path மற்றும் target model பொருந்துகிறதா உறுதிசெய்யவும்.', othersIntro: 'இந்த tools-ல் பொதுவாக OpenAI அல்லது Claude compatibility input இருக்கும். நீங்கள் செய்ய வேண்டியது:', othersItems: ['சரியான tool type தேர்ந்தெடுக்கவும்;', 'சரியான Base URL உள்ளிடவும்;', 'சரியான API Key உள்ளிடவும்;', 'சரியான default model தேர்ந்தெடுக்கவும்.'], importText: 'tool configuration import ஆதரித்தால் config export page மூலம் உருவாக்கவும்.', calloutTitle: 'வெற்றிகரமான எளிய தொடக்கம்', calloutBody: 'OpenAI அல்லது Claude style எதுவாக இருந்தாலும் https://api.gpt88.cc மற்றும் தொடர்புடைய SDK மூலம் சிறிய request ஒன்றை முதலில் இயக்கவும். இரு protocol-களும் ஒரே API Key-ஐப் பயன்படுத்தும்; path மற்றும் request format மட்டும் வேறுபடும்.' },
+  ne: { claudeIntro: 'Claude Code को उद्देश्य request लेख्नु मात्र होइन; AI लाई developer assistant का रूपमा काम गराउनु हो।', claudeItems: ['codebase बुझ्नु;', 'files बदल्नु;', 'tests चलाउनु;', 'PR बनाउनु;', 'निरन्तर development task गर्नु।'], claudeEnd: 'यी tools ले सामान्यतया Claude / Anthropic configuration प्रयोग गर्छन्। Standard API Base URL, request path र target model मिलेको छ कि छैन हेर्नुहोस्।', othersIntro: 'यी tools मा सामान्यतया OpenAI वा Claude compatibility input हुन्छ। तपाईंले:', othersItems: ['सही tool type छान्नुहोस्;', 'सही Base URL भर्नुहोस्;', 'सही API Key भर्नुहोस्;', 'सही default model छान्नुहोस्।'], importText: 'tool ले configuration import समर्थन गर्छ भने config export page बाट बनाउनुहोस्।', calloutTitle: 'सबैभन्दा सजिलो सफल सुरुवात', calloutBody: 'OpenAI वा Claude style जुनसुकै भए पनि https://api.gpt88.cc र सम्बन्धित SDK बाट सानो request चलाउनुहोस्। दुवै protocol ले एउटै API Key प्रयोग गर्छन्; फरक path र request format मा हुन्छ।' },
+  si: { claudeIntro: 'Claude Code හි අරමුණ request එකක් ලිවීම පමණක් නොව, AI එක developer assistant ලෙස වැඩ කරවීමයි.', claudeItems: ['codebase තේරුම් ගැනීම;', 'files වෙනස් කිරීම;', 'tests ධාවනය කිරීම;', 'PR නිර්මාණය කිරීම;', 'අඛණ්ඩ development task කිරීම.'], claudeEnd: 'මෙවැනි tools සාමාන්‍යයෙන් Claude / Anthropic configuration භාවිතා කරයි. Standard API Base URL, request path සහ target model ගැළපේදැයි තහවුරු කරන්න.', othersIntro: 'මෙවැනි tools සාමාන්‍යයෙන් OpenAI හෝ Claude compatibility input එකක් ලබා දෙයි. ඔබ කළ යුත්තේ:', othersItems: ['නිවැරදි tool type තෝරන්න;', 'නිවැරදි Base URL ඇතුළත් කරන්න;', 'නිවැරදි API Key ඇතුළත් කරන්න;', 'නිවැරදි default model තෝරන්න.'], importText: 'tool එක configuration import සහාය දක්වන්නේ නම් config export page එකෙන් එය සාදන්න.', calloutTitle: 'සාර්ථක වීමට පහසුම ආරම්භය', calloutBody: 'OpenAI හෝ Claude style කුමක් වුවත් https://api.gpt88.cc සහ අදාළ SDK සමඟ කුඩා request එකක් පළමුව ධාවනය කරන්න. protocol දෙකම එකම API Key එක භාවිතා කරයි; වෙනස path සහ request format තුළය.' },
+}
+
+const OPERATIONS_COPY: Record<string, { single: string; switching: string; problems: string[]; exportIntro: string; exportSteps: string[]; team: string; errorLists: string[][] }> = {
+  zh: { single: '如果你只是单次测试，手工填 Base URL 和 Key 就够了。', switching: '如果你已经在多个工具之间切换，就会反复遇到这些问题：', problems: ['每个工具配置项名字不一样；', '不同工具的请求路径和字段命名不一样；', '有的工具要单独的模型名映射；', '有的工具需要导入链接，有的工具需要配置文件。'], exportIntro: '配置文件导出页面就是为了解决这些碎片化问题：', exportSteps: ['先把 API Key、模型和线路选对；', '再选目标工具；', '页面自动生成对应格式；', '复制到目标工具，或一键导入 CC Switch。'], team: '如果你是团队负责人，这个页面尤其适合拿来统一标准。', errorLists: [['Key 是否复制完整；', '是否已经被 revoke；', '是否填到了正确的环境变量；', '是否在客户端暴露了 Key。'], ['OpenAI 风格是不是忘了 /v1；', 'Claude 风格是不是错误地拼了 /v1；', '是否混用了不同线路；', 'endpoint 是否和模型类型一致。'], ['当前 Key 的配额；', '是否并发过高；', '是否触发了重试风暴；', '是否应该改用更稳定的模型或更低并发。'], ['当前线路是否适合你的网络；', '是本地网络到网关慢，还是网关到上游慢；', '是否需要重新确认 API Key、模型、endpoint 和请求格式。'], ['模型名是否拼错；', '该 Key 是否允许调用这个模型；', '该模型是否属于当前线路支持的集合；', '是否需要重新导出配置。']] },
+  hi: { single: 'एक बार के test के लिए Base URL और Key manually भरना पर्याप्त है।', switching: 'कई tools के बीच बदलते समय ये समस्याएं बार-बार आती हैं:', problems: ['हर tool के config नाम अलग होते हैं;', 'request path और field names अलग होते हैं;', 'कुछ tools को अलग model mapping चाहिए;', 'कुछ tools import link लेते हैं और कुछ config file।'], exportIntro: 'config export page इन fragmented समस्याओं को हल करता है:', exportSteps: ['API Key, model और route चुनें;', 'target tool चुनें;', 'page सही format generate करेगा;', 'इसे tool में copy करें या CC Switch में import करें।'], team: 'Team lead के लिए यह page standardization में विशेष रूप से उपयोगी है।', errorLists: [['Key पूरा copy हुआ है?', 'क्या उसे revoke किया गया है?', 'क्या सही environment variable में रखा है?', 'क्या client में Key expose हुई है?'], ['क्या OpenAI style में /v1 छूट गया?', 'क्या Claude style में गलती से /v1 जुड़ा?', 'क्या route mix हुए हैं?', 'क्या endpoint model type से मेल खाता है?'], ['current Key quota;', 'बहुत अधिक concurrency;', 'retry storm;', 'stable model या कम concurrency का उपयोग।'], ['क्या route आपके network के लिए उपयुक्त है?', 'slow local-to-gateway है या gateway-to-upstream?', 'API Key, model, endpoint और request format दोबारा जांचें।'], ['model name गलत है?', 'क्या Key को model की अनुमति है?', 'क्या model current route पर समर्थित है?', 'क्या config फिर export करना है?']] },
+  bn: { single: 'একবারের test-এর জন্য Base URL ও Key হাতে পূরণ করলেই যথেষ্ট।', switching: 'একাধিক tool বদলালে এই সমস্যাগুলো বারবার আসে:', problems: ['প্রতিটি tool-এর config নাম আলাদা;', 'request path ও field name আলাদা;', 'কিছু tool-এর আলাদা model mapping দরকার;', 'কিছু tool import link, কিছু config file চায়।'], exportIntro: 'config export page এই বিচ্ছিন্ন সমস্যাগুলি সমাধান করে:', exportSteps: ['API Key, model ও route বাছুন;', 'target tool বাছুন;', 'page সঠিক format তৈরি করবে;', 'tool-এ copy করুন বা CC Switch-এ import করুন।'], team: 'Team lead-এর জন্য standardization-এ এই page বিশেষভাবে উপযোগী।', errorLists: [['Key সম্পূর্ণ copy হয়েছে?', 'revoke করা হয়েছে?', 'সঠিক environment variable-এ আছে?', 'client-এ Key expose হয়েছে?'], ['OpenAI style-এ /v1 বাদ গেছে?', 'Claude style-এ ভুল করে /v1 যুক্ত হয়েছে?', 'route মিশে গেছে?', 'endpoint model type-এর সঙ্গে মেলে?'], ['current Key quota;', 'concurrency বেশি;', 'retry storm;', 'stable model বা কম concurrency ব্যবহার।'], ['route আপনার network-এর জন্য উপযুক্ত?', 'local-to-gateway ধীর নাকি gateway-to-upstream?', 'API Key, model, endpoint ও request format আবার দেখুন।'], ['model name ভুল?', 'Key-টির model permission আছে?', 'model current route-এ supported?', 'config আবার export দরকার?']] },
+  ur: { single: 'ایک بار کے test کے لیے Base URL اور Key دستی طور پر بھرنا کافی ہے۔', switching: 'کئی tools کے درمیان بدلتے وقت یہ مسائل بار بار آتے ہیں:', problems: ['ہر tool کے config نام مختلف ہیں؛', 'request path اور field names مختلف ہیں؛', 'کچھ tools کو الگ model mapping چاہیے؛', 'کچھ import link اور کچھ config file لیتے ہیں۔'], exportIntro: 'config export page ان بکھرے ہوئے مسائل کو حل کرتا ہے:', exportSteps: ['API Key، model اور route منتخب کریں؛', 'target tool منتخب کریں؛', 'page درست format بنائے گا؛', 'tool میں copy کریں یا CC Switch میں import کریں۔'], team: 'Team lead کے لیے standardization میں یہ page خاص طور پر مفید ہے۔', errorLists: [['Key مکمل copy ہوئی؟', 'کیا revoke کی گئی؟', 'کیا درست environment variable میں ہے؟', 'کیا client میں Key expose ہوئی؟'], ['کیا OpenAI style میں /v1 بھول گئے؟', 'کیا Claude style میں غلطی سے /v1 جوڑا؟', 'کیا routes mix ہوئے؟', 'کیا endpoint model type سے ملتا ہے؟'], ['current Key quota;', 'concurrency بہت زیادہ;', 'retry storm;', 'زیادہ stable model یا کم concurrency۔'], ['کیا route آپ کے network کے لیے مناسب ہے؟', 'local-to-gateway سست ہے یا gateway-to-upstream؟', 'API Key، model، endpoint اور request format دوبارہ چیک کریں۔'], ['model name غلط ہے؟', 'کیا Key کو model کی اجازت ہے؟', 'کیا model موجودہ route پر supported ہے؟', 'کیا config دوبارہ export کرنا ہے؟']] },
+  ta: { single: 'ஒரு முறை test-க்கு Base URL மற்றும் Key-ஐ கைமுறையாக நிரப்புவது போதுமானது.', switching: 'பல tools இடையே மாறும்போது இச்சிக்கல்கள் மீண்டும் வரும்:', problems: ['ஒவ்வொரு tool-ன் config பெயர்கள் வேறுபடும்;', 'request path மற்றும் field names வேறுபடும்;', 'சில tools-க்கு தனி model mapping தேவை;', 'சில tools import link, சில config file கேட்கும்.'], exportIntro: 'config export page இந்த துண்டிக்கப்பட்ட சிக்கல்களைத் தீர்க்கிறது:', exportSteps: ['API Key, model மற்றும் route தேர்ந்தெடுக்கவும்;', 'target tool தேர்ந்தெடுக்கவும்;', 'page சரியான format உருவாக்கும்;', 'tool-ல் copy செய்யவும் அல்லது CC Switch-ல் import செய்யவும்.'], team: 'Team lead-க்கு standardization செய்ய இந்த page மிகவும் பயனுள்ளது.', errorLists: [['Key முழுமையாக copy செய்யப்பட்டதா?', 'revoke செய்யப்பட்டதா?', 'சரியான environment variable-ல் உள்ளதா?', 'client-ல் Key வெளிப்பட்டதா?'], ['OpenAI style-ல் /v1 விடப்பட்டதா?', 'Claude style-ல் தவறாக /v1 சேர்க்கப்பட்டதா?', 'routes கலந்துவிட்டதா?', 'endpoint model type-க்கு பொருந்துகிறதா?'], ['current Key quota;', 'concurrency அதிகமா;', 'retry storm;', 'stable model அல்லது குறைந்த concurrency பயன்படுத்தவும்.'], ['route உங்கள் network-க்கு ஏற்றதா?', 'local-to-gateway மெதுவா அல்லது gateway-to-upstream மெதுவா?', 'API Key, model, endpoint மற்றும் request format-ஐ மீண்டும் சரிபார்க்கவும்.'], ['model name தவறா?', 'Key-க்கு model permission உள்ளதா?', 'model தற்போதைய route-ல் ஆதரிக்கப்படுகிறதா?', 'config-ஐ மீண்டும் export செய்ய வேண்டுமா?']] },
+  ne: { single: 'एकपटकको test का लागि Base URL र Key manually भरे पुग्छ।', switching: 'धेरै tools बीच बदल्दा यी समस्या दोहोरिन्छन्:', problems: ['हरेक tool का config नाम फरक हुन्छन्;', 'request path र field names फरक हुन्छन्;', 'केही tools लाई अलग model mapping चाहिन्छ;', 'केहीले import link र केहीले config file माग्छन्।'], exportIntro: 'config export page ले यी टुक्रिएका समस्याहरू समाधान गर्छ:', exportSteps: ['API Key, model र route छान्नुहोस्;', 'target tool छान्नुहोस्;', 'page ले सही format बनाउँछ;', 'tool मा copy वा CC Switch मा import गर्नुहोस्।'], team: 'Team lead का लागि standardization गर्न यो page विशेष उपयोगी छ।', errorLists: [['Key पूरा copy भयो?', 'revoke गरिएको छ?', 'सही environment variable मा छ?', 'client मा Key expose भएको छ?'], ['OpenAI style मा /v1 छुट्यो?', 'Claude style मा गल्तीले /v1 जोडियो?', 'routes मिसिए?', 'endpoint model type सँग मिल्छ?'], ['current Key quota;', 'concurrency धेरै;', 'retry storm;', 'stable model वा कम concurrency प्रयोग।'], ['route तपाईंको network का लागि उपयुक्त छ?', 'local-to-gateway ढिलो हो कि gateway-to-upstream?', 'API Key, model, endpoint र request format फेरि जाँच्नुहोस्।'], ['model name गलत?', 'Key लाई model अनुमति छ?', 'model current route मा supported छ?', 'config फेरि export गर्नुपर्छ?']] },
+  si: { single: 'එක් වරක් test එකකට Base URL සහ Key අතින් ඇතුළත් කිරීම ප්‍රමාණවත්ය.', switching: 'tools කිහිපයක් අතර මාරු වන විට මෙම ගැටලු නැවත නැවත එයි:', problems: ['සෑම tool එකකම config නම් වෙනස්ය;', 'request path සහ field names වෙනස්ය;', 'සමහර tools සඳහා වෙනම model mapping අවශ්‍යය;', 'සමහර tools import link ද, සමහර tools config file ද ඉල්ලයි.'], exportIntro: 'config export page එක මෙම විසිරුණු ගැටලු විසඳයි:', exportSteps: ['API Key, model සහ route තෝරන්න;', 'target tool එක තෝරන්න;', 'page එක නිවැරදි format එක සාදයි;', 'tool එකට copy හෝ CC Switch එකට import කරන්න.'], team: 'Team lead කෙනෙකුට standardization සඳහා මෙම page එක විශේෂයෙන් ප්‍රයෝජනවත්ය.', errorLists: [['Key සම්පූර්ණයෙන් copy කර තිබේද?', 'revoke කර තිබේද?', 'නිවැරදි environment variable එකේද?', 'client එකේ Key expose වී තිබේද?'], ['OpenAI style එකේ /v1 අමතක වීද?', 'Claude style එකේ වැරදි ලෙස /v1 එකතු වීද?', 'routes මිශ්‍ර වීද?', 'endpoint එක model type එකට ගැළපේද?'], ['current Key quota;', 'concurrency වැඩිද;', 'retry storm;', 'stable model හෝ අඩු concurrency භාවිතා කරන්න.'], ['route එක ඔබේ network එකට සුදුසුද?', 'local-to-gateway මන්දගාමීද නැතිනම් gateway-to-upstream ද?', 'API Key, model, endpoint සහ request format නැවත පරීක්ෂා කරන්න.'], ['model name වැරදිද?', 'Key එකට model permission තිබේද?', 'model එක current route එකේ supported ද?', 'config නැවත export කළ යුතුද?']] },
+}
+
+const CLOSING_COPY: Record<string, { practices: string[]; order: string; summaryLead: string; summary: string; live: string }> = {
+  zh: { practices: ['先验证，再扩展：先用 cURL 或最小 SDK 调通，再上到复杂工具。', '先统一，再分流：团队内统一标准 API 配置，再为图片 / 视频使用媒体 Base URL。', 'Key 和模型分开管理：一个项目一把 Key，一个场景一个默认模型。', '不要把 Key 写进前端：浏览器和客户端不能作为 secret 的最终存放地。', '保留排障证据：保存 request_id、时间、模型名、线路和错误码。', '把文档和控制台一起看：文档负责方法，控制台负责实时状态和数值。'], order: '建议阅读顺序：', summaryLead: '如果你只记住一句话，那就是：', summary: 'gpt88.cc 用同一把 API Key，把 Claude 风格和 OpenAI 风格的接入统一起来；你只需要选对模型、选对线路、选对 Base URL。', live: '如果文档和实际工具行为有差异，请以控制台实时配置为准。' },
+  hi: { practices: ['पहले verify, फिर expand: cURL या छोटे SDK से शुरू करके complex tool पर जाएं।', 'पहले standardize, फिर route करें: team में API config एक रखें और media के लिए media Base URL उपयोग करें।', 'Key और model अलग manage करें: हर project की Key और हर use case का default model अलग रखें।', 'Key को frontend में न रखें: browser और client secret रखने की अंतिम जगह नहीं हैं।', 'troubleshooting evidence रखें: request_id, समय, model, route और error code बचाएं।', 'docs और console दोनों देखें: docs तरीका बताती हैं, console live values बताता है।'], order: 'पढ़ने का सुझाव:', summaryLead: 'एक बात याद रखें:', summary: 'gpt88.cc एक API Key से Claude और OpenAI style integration को जोड़ता है; सही model, route और Base URL चुनना जरूरी है।', live: 'docs और actual tool में अंतर हो तो console की live configuration मानें।' },
+  bn: { practices: ['আগে verify, পরে expand: cURL বা ছোট SDK দিয়ে শুরু করে complex tool-এ যান।', 'আগে standardize, পরে route করুন: team-এ API config এক রাখুন এবং media-র জন্য media Base URL ব্যবহার করুন।', 'Key ও model আলাদা manage করুন: প্রতিটি project-এর Key ও use case-এর default model আলাদা রাখুন।', 'Key frontend-এ রাখবেন না: browser বা client secret রাখার শেষ জায়গা নয়।', 'troubleshooting evidence রাখুন: request_id, সময়, model, route ও error code সংরক্ষণ করুন।', 'docs ও console দুটোই দেখুন: docs পদ্ধতি, console live value দেয়।'], order: 'পড়ার প্রস্তাবিত ক্রম:', summaryLead: 'একটি কথা মনে রাখুন:', summary: 'gpt88.cc একটি API Key দিয়ে Claude ও OpenAI style integration এক করে; সঠিক model, route ও Base URL বাছুন।', live: 'docs ও actual tool আলাদা হলে console-এর live configuration অনুসরণ করুন।' },
+  ur: { practices: ['پہلے verify، پھر expand: cURL یا چھوٹے SDK سے شروع کرکے complex tool تک جائیں۔', 'پہلے standardize، پھر route کریں: team میں API config یکساں رکھیں اور media کے لیے media Base URL استعمال کریں۔', 'Key اور model الگ manage کریں: ہر project کی Key اور ہر use case کا default model الگ رکھیں۔', 'Key کو frontend میں نہ رکھیں: browser اور client secret رکھنے کی آخری جگہ نہیں۔', 'troubleshooting evidence محفوظ کریں: request_id، وقت، model، route اور error code رکھیں۔', 'docs اور console دونوں دیکھیں: docs طریقہ بتاتی ہیں، console live values بتاتا ہے۔'], order: 'مطالعے کی تجویز کردہ ترتیب:', summaryLead: 'ایک بات یاد رکھیں:', summary: 'gpt88.cc ایک API Key کے ساتھ Claude اور OpenAI style integration کو متحد کرتا ہے؛ درست model، route اور Base URL منتخب کریں۔', live: 'docs اور actual tool میں فرق ہو تو console کی live configuration کو ترجیح دیں۔' },
+  ta: { practices: ['முதலில் verify, பின்னர் expand: cURL அல்லது சிறிய SDK-யில் தொடங்கி complex tool-க்கு செல்லவும்.', 'முதலில் standardize, பின்னர் route: team-ல் API config ஒன்றாக வைத்து media-க்கு media Base URL பயன்படுத்தவும்.', 'Key மற்றும் model-ஐ தனித்தனியாக நிர்வகிக்கவும்: project-க்கு ஒரு Key, use case-க்கு ஒரு default model.', 'Key-ஐ frontend-ல் வைக்க வேண்டாம்: browser அல்லது client secret-க்கான இறுதி இடமல்ல.', 'troubleshooting evidence சேமிக்கவும்: request_id, நேரம், model, route மற்றும் error code.', 'docs மற்றும் console இரண்டையும் பார்க்கவும்: docs முறை, console live values வழங்கும்.'], order: 'படிக்க வேண்டிய பரிந்துரைக்கப்பட்ட வரிசை:', summaryLead: 'ஒரு விஷயம் மட்டும் நினைவில் கொள்ளுங்கள்:', summary: 'gpt88.cc ஒரே API Key மூலம் Claude மற்றும் OpenAI style integration-ஐ இணைக்கிறது; சரியான model, route மற்றும் Base URL தேர்ந்தெடுக்கவும்.', live: 'docs மற்றும் actual tool வேறுபட்டால் console-ன் live configuration-ஐப் பின்பற்றவும்.' },
+  ne: { practices: ['पहिले verify, त्यसपछि expand: cURL वा सानो SDK बाट सुरु गरी complex tool मा जानुहोस्।', 'पहिले standardize, त्यसपछि route: team मा API config एउटै राखेर media का लागि media Base URL प्रयोग गर्नुहोस्।', 'Key र model अलग manage गर्नुहोस्: project का लागि एउटा Key, use case का लागि एउटा default model।', 'Key frontend मा नराख्नुहोस्: browser र client secret राख्ने अन्तिम ठाउँ होइन।', 'troubleshooting evidence राख्नुहोस्: request_id, समय, model, route र error code सुरक्षित गर्नुहोस्।', 'docs र console दुवै हेर्नुहोस्: docs ले विधि, console ले live values दिन्छ।'], order: 'पढ्ने सुझाइएको क्रम:', summaryLead: 'एउटा कुरा सम्झनुहोस्:', summary: 'gpt88.cc ले एउटै API Key बाट Claude र OpenAI style integration जोड्छ; सही model, route र Base URL छान्नुहोस्।', live: 'docs र actual tool फरक भए console को live configuration मान्नुहोस्।' },
+  si: { practices: ['පළමුව verify, පසුව expand: cURL හෝ කුඩා SDK එකකින් ආරම්භ කර complex tool වෙත යන්න.', 'පළමුව standardize, පසුව route: team එකේ API config එක සමාන කර media සඳහා media Base URL භාවිතා කරන්න.', 'Key සහ model වෙන්ව කළමනාකරණය කරන්න: project එකකට Key එකක්, use case එකකට default model එකක්.', 'Key frontend එකේ නොතබන්න: browser සහ client secret තැබීමට අවසාන ස්ථානය නොවේ.', 'troubleshooting evidence සුරකින්න: request_id, වේලාව, model, route සහ error code තබාගන්න.', 'docs සහ console දෙකම බලන්න: docs ක්‍රමයත් console live values ත් ලබා දෙයි.'], order: 'කියවීමට යෝජිත අනුපිළිවෙල:', summaryLead: 'එක් දෙයක් මතක තබාගන්න:', summary: 'gpt88.cc එකම API Key එකකින් Claude සහ OpenAI style integration එකතු කරයි; නිවැරදි model, route සහ Base URL තෝරන්න.', live: 'docs සහ actual tool වෙනස් නම් console හි live configuration අනුගමනය කරන්න.' },
+}
+
 function DocTable({
   headers,
   rows,
@@ -119,38 +319,32 @@ function DocTable({
 export default function Gpt88TutorialPage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <Gpt88TutorialPageEn />
+  if (locale !== 'zh') return <Gpt88TutorialPageEn />
+  const copy = TUTORIAL_COPY[locale] ?? TUTORIAL_COPY.zh
+  const bodyCopy = TUTORIAL_BODY_COPY[locale] ?? copy
+  const prepBody = PREP_BODY_COPY[locale] ?? PREP_BODY_COPY.zh
+  const flowCopy = FLOW_COPY[locale] ?? FLOW_COPY.zh
+  const toolCopy = TOOL_COPY[locale] ?? TOOL_COPY.zh
+  const agentToolCopy = AGENT_TOOL_COPY[locale] ?? AGENT_TOOL_COPY.zh
+  const operationsCopy = OPERATIONS_COPY[locale] ?? OPERATIONS_COPY.zh
+  const closingCopy = CLOSING_COPY[locale] ?? CLOSING_COPY.zh
+  const intro = bodyCopy.intro ?? TUTORIAL_COPY.zh.intro!
+  const whatIsBody = bodyCopy.whatIs ?? TUTORIAL_COPY.zh.whatIs!
+  const audienceBody = bodyCopy.audience ?? TUTORIAL_COPY.zh.audience!
+  const [whatIs, who, mindset, prepare, key, model, route, flow, byTool, curl, python, node, claude, others, config, troubleshooting, bestPractices, related, summary] = copy.sections
 
   return (
     <DocPage
       path="/docs/guides/gpt88-tutorial"
-      title="gpt88.cc 通用接入教程"
-      description="一篇统一 Claude 与 OpenAI 兼容心智的上手教程：理解 gpt88.cc 是什么、如何选择模型与线路、如何跑通第一次请求，以及接下来应该看哪篇文档。"
+      title={copy.title}
+      description={copy.description}
       headings={[
-        { id: 'what-is-gpt88', text: '什么是 gpt88.cc', level: 2 },
-        { id: 'who-is-this-for', text: '适合谁 / 这篇教程适用对象', level: 2 },
-        { id: 'compat-mindset', text: 'Claude 与 OpenAI 通用兼容心智', level: 2 },
-        { id: 'prepare', text: '开始前需要准备什么', level: 2 },
-        { id: 'prepare-key', text: '准备一个 API Key', level: 3 },
-        { id: 'prepare-model', text: '选一个默认模型', level: 3 },
-        { id: 'prepare-route', text: '选对线路', level: 3 },
-        { id: 'flow', text: '逐步接入流程', level: 2 },
-        { id: 'by-tool', text: '按工具接入', level: 2 },
-        { id: 'tool-curl', text: 'cURL：最快的连通性验证', level: 3 },
-        { id: 'tool-python', text: 'Python SDK', level: 3 },
-        { id: 'tool-node', text: 'Node.js SDK', level: 3 },
-        { id: 'tool-claude-code', text: 'Claude Code', level: 3 },
-        { id: 'tool-others', text: 'Cursor / OpenCode / OpenClaw / Hermes', level: 3 },
-        { id: 'config-export', text: '为什么要有配置文件导出', level: 2 },
-        { id: 'troubleshooting', text: '常见错误与排障', level: 2 },
-        { id: 'best-practices', text: '最佳实践', level: 2 },
-        { id: 'related-docs', text: '应该搭配阅读哪些文档', level: 2 },
-        { id: 'summary', text: '一句话总结', level: 2 },
+        { id: 'what-is-gpt88', text: whatIs, level: 2 }, { id: 'who-is-this-for', text: who, level: 2 }, { id: 'compat-mindset', text: mindset, level: 2 }, { id: 'prepare', text: prepare, level: 2 }, { id: 'prepare-key', text: key, level: 3 }, { id: 'prepare-model', text: model, level: 3 }, { id: 'prepare-route', text: route, level: 3 }, { id: 'flow', text: flow, level: 2 }, { id: 'by-tool', text: byTool, level: 2 }, { id: 'tool-curl', text: curl, level: 3 }, { id: 'tool-python', text: python, level: 3 }, { id: 'tool-node', text: node, level: 3 }, { id: 'tool-claude-code', text: claude, level: 3 }, { id: 'tool-others', text: others, level: 3 }, { id: 'config-export', text: config, level: 2 }, { id: 'troubleshooting', text: troubleshooting, level: 2 }, { id: 'best-practices', text: bestPractices, level: 2 }, { id: 'related-docs', text: related, level: 2 }, { id: 'summary', text: summary, level: 2 },
       ]}
     >
-      <Callout tone="info" title="这篇教程的目标">
+      <Callout tone="info" title={copy.goal}>
         <p>
-          这不是某一个 SDK 的单页说明，而是一篇「统一 Claude / OpenAI 兼容心智」的总入口教程。
+          {intro}
           如果你是第一次接入 gpt88.cc，建议先通读本文，再按需跳转到
           {' '}<Link to="/docs/quickstart/">快速开始</Link>、
           <Link to="/docs/auth/">认证与计费</Link>、
@@ -160,12 +354,8 @@ export default function Gpt88TutorialPage() {
       </Callout>
 
       <h2 id="what-is-gpt88">什么是 gpt88.cc</h2>
-      <p>
-        gpt88.cc 是一个面向开发者的统一大模型 API 网关。你不需要为每个模型单独维护一套接入方式，
-        标准文本与 Claude API 把 Base URL 指向 <code>https://api.gpt88.cc</code>，图片和视频直连任务使用
-        <code>https://img.gpt88.cc</code>，再在不同工具中切换模型。
-      </p>
-      <p>从使用者角度看，它解决的是三类问题：</p>
+      {whatIsBody.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+      <p>{locale === 'zh' ? '从使用者角度看，它解决的是三类问题：' : '从使用者角度看，它解决的是三类问题：'}</p>
       <ul>
         <li><strong>把多家模型统一成一套接口</strong>：你可以在 OpenAI 兼容工具里接入，也可以在 Claude / Anthropic 风格工具里接入。</li>
         <li><strong>使用首页官方入口</strong>：标准 API 使用 <code>https://api.gpt88.cc</code>，图片 / 视频使用 <code>https://img.gpt88.cc</code>。</li>
@@ -177,13 +367,8 @@ export default function Gpt88TutorialPage() {
       </p>
 
       <h2 id="who-is-this-for">适合谁 / 这篇教程适用对象</h2>
-      <p>你适合先看这篇教程，如果你是：</p>
-      <ul>
-        <li>第一次接入 gpt88.cc，想先建立整体心智；</li>
-        <li>已经在用 OpenAI SDK，想最低成本迁移；</li>
-        <li>已经在用 Claude Code / Anthropic SDK，想把同一套配置换到 gpt88.cc；</li>
-        <li>团队里有多种工具（Claude Code、Cursor、OpenCode、cURL、Python、Node.js），希望统一标准 API 配置并正确分流媒体接口。</li>
-      </ul>
+      <p>{locale === 'zh' ? '你适合先看这篇教程，如果你是：' : '如果你属于以下情况，可以先阅读本教程：'}</p>
+      <ul>{audienceBody.map(item => <li key={item}>{item}</li>)}</ul>
       <p>你看完后应该能做到：</p>
       <ul>
         <li>理解 <strong>OpenAI 兼容</strong> 和 <strong>Claude 兼容</strong> 的区别；</li>
@@ -223,185 +408,98 @@ export default function Gpt88TutorialPage() {
       {/*
        * 标准 API 使用 https://api.gpt88.cc；图片 / 视频使用 https://img.gpt88.cc。
        */}
-      <CodeBlock lang="text" filename="mental model" code={CLAUDE_MINDSET} />
+      <CodeBlock lang="text" filename="mental model" code={CLAUDE_MINDSET_COPY[locale] ?? CLAUDE_MINDSET} />
 
       <h2 id="prepare">开始前需要准备什么</h2>
       <p>开始之前，先完成下面这个最小清单：</p>
-      <CodeBlock lang="text" filename="before you start" code={PREP_CHECKLIST} />
+      <CodeBlock lang="text" filename="before you start" code={PREP_CHECKLIST_COPY[locale] ?? PREP_CHECKLIST} />
 
       <h3 id="prepare-key">准备一个 API Key</h3>
       <p>
-        先去{' '}
+        {prepBody.keyIntro}{' '}
         <a href="https://gpt88.cc" target="_blank" rel="noreferrer">
           gpt88.cc 控制台
         </a>{' '}
-        创建一把 Key。Key 是你的身份凭证，后续所有请求都会带上它。
+        {locale === 'zh' ? '创建一把 Key。' : ''}
       </p>
-      <p>建议你这样管理：</p>
-      <ul>
-        <li>给每个项目 / 环境单独建一把 Key；</li>
-        <li>Key 只放在服务端或受控配置里；</li>
-        <li>截图、日志、分享文档时都要脱敏；</li>
-        <li>一旦怀疑泄露，立刻 revoke 并重新生成。</li>
-      </ul>
+      <p>{prepBody.keyAdvice}</p>
+      <ul>{prepBody.keyItems.map(item => <li key={item}>{item}</li>)}</ul>
 
       <h3 id="prepare-model">选一个默认模型</h3>
-      <p>如果你是新用户，建议先选一个最能代表你主要场景的模型：</p>
-      <ul>
-        <li><strong>通用聊天 / 产品原型</strong>：优先选响应快、稳定的通用模型；</li>
-        <li><strong>复杂推理 / 长文档</strong>：优先选 Claude 系较强推理模型；</li>
-        <li><strong>代码与 Agent 工作流</strong>：优先选适合编程和 tool use 的模型；</li>
-        <li><strong>多模态任务</strong>：按你是否需要图像 / 音频 / 视频接口再做选择。</li>
-      </ul>
-      <p>不要在第一步就纠结“最强模型是哪一个”，更重要的是先跑通一次。</p>
+      <p>{prepBody.modelIntro}</p>
+      <ul>{prepBody.modelItems.map(item => <li key={item}>{item}</li>)}</ul>
+      <p>{prepBody.modelEnd}</p>
 
       <h3 id="prepare-route">选对线路</h3>
-      <p>
-        标准 API 使用 <code>https://api.gpt88.cc</code>，图片 / 视频直连使用 <code>https://img.gpt88.cc</code>。
-        遇到连接问题时优先检查 API Key、模型、endpoint 和请求格式。
-      </p>
+      <p>{prepBody.route}</p>
 
       <h2 id="flow">逐步接入流程</h2>
-      <p>下面是最稳妥的顺序：</p>
-      <ol>
-        <li>创建或选择 API Key</li>
-        <li>决定你要用的模型</li>
-        <li>选择网络线路</li>
-        <li>确认你要接入的工具属于 OpenAI 还是 Claude 风格</li>
-        <li>生成配置或直接拼 Base URL</li>
-        <li>先发一条最小请求验证连通性</li>
-        <li>再扩展到正式业务场景</li>
-      </ol>
-      <p>如果你第一次接入失败，不要同时改很多变量。先只改一项：</p>
-      <ul>
-        <li>先换线路；</li>
-        <li>再检查 Base URL；</li>
-        <li>再检查模型名；</li>
-        <li>最后检查 API Key。</li>
-      </ul>
+      <p>{flowCopy.intro}</p>
+      <ol>{flowCopy.steps.map(step => <li key={step}>{step}</li>)}</ol>
+      <p>{flowCopy.failed}</p>
+      <ul>{flowCopy.checks.map(check => <li key={check}>{check}</li>)}</ul>
 
       <h2 id="by-tool">按工具接入</h2>
       <h3 id="tool-curl">cURL：最快的连通性验证</h3>
-      <p>适合想快速确认“这条链路能不能通”的场景。你应该用它来：</p>
-      <ul>
-        <li>排查网络问题；</li>
-        <li>验证 API Key 是否有效；</li>
-        <li>验证模型名是否拼对；</li>
-        <li>给 QA 或 CI 做健康检查。</li>
-      </ul>
+      <p>{toolCopy.curlIntro}</p>
+      <ul>{toolCopy.curlItems.map(item => <li key={item}>{item}</li>)}</ul>
       <CodeBlock lang="bash" filename="curl-openai-compatible.sh" code={OPENAI_EXAMPLE} />
 
       <h3 id="tool-python">Python SDK</h3>
-      <p>如果你写的是 Python 服务，通常有两种情况：</p>
-      <ul>
-        <li><strong>OpenAI SDK 风格</strong>：直接把 <code>base_url</code> 换成 <code>https://api.gpt88.cc</code>；</li>
-        <li><strong>Claude / Anthropic 风格</strong>：继续使用 <code>https://api.gpt88.cc</code>，并保持 Claude 风格请求结构。</li>
-      </ul>
-      <p>适合：Web 服务、脚本、数据分析、Agent 原型。</p>
+      <p>{toolCopy.pythonIntro}</p>
+      <ul>{toolCopy.pythonItems.map(item => <li key={item}>{item}</li>)}</ul>
+      <p>{toolCopy.pythonFit}</p>
       <CodeBlock lang="python" filename="python-openai-compatible.py" code={PYTHON_EXAMPLE} />
 
       <h3 id="tool-node">Node.js SDK</h3>
-      <p>如果你在前后端同构或 Next.js / Express 项目里开发，Node.js SDK 是最常见的选择。</p>
-      <p>适合：</p>
-      <ul>
-        <li>API 服务端代理；</li>
-        <li>前端项目的边缘函数；</li>
-        <li>CLI 工具；</li>
-        <li>流式输出和工具调用。</li>
-      </ul>
+      <p>{toolCopy.nodeIntro}</p>
+      <p>{toolCopy.nodeFit}</p>
+      <ul>{toolCopy.nodeItems.map(item => <li key={item}>{item}</li>)}</ul>
       <CodeBlock lang="typescript" filename="node-openai-compatible.ts" code={NODE_EXAMPLE} />
 
       <h3 id="tool-claude-code">Claude Code</h3>
-      <p>Claude Code 的重点不是“写一个请求”，而是“让 AI 以开发者助手的方式工作”。</p>
-      <p>适合：</p>
-      <ul>
-        <li>理解代码库；</li>
-        <li>修改文件；</li>
-        <li>跑测试；</li>
-        <li>创建 PR；</li>
-        <li>做持续性开发任务。</li>
-      </ul>
-      <p>这类工具通常走 Claude / Anthropic 风格配置，所以你要确认标准 API Base URL、请求路径和目标模型是否匹配。</p>
+      <p>{agentToolCopy.claudeIntro}</p>
+      <p>{locale === 'zh' ? '适合：' : ''}</p>
+      <ul>{agentToolCopy.claudeItems.map(item => <li key={item}>{item}</li>)}</ul>
+      <p>{agentToolCopy.claudeEnd}</p>
 
       <h3 id="tool-others">Cursor / OpenCode / OpenClaw / Hermes</h3>
-      <p>这类工具通常已经提供了某种“兼容 OpenAI 或 Claude”的输入项。你要做的事情就是：</p>
-      <ul>
-        <li>选对工具类型；</li>
-        <li>填对 Base URL；</li>
-        <li>填对 API Key；</li>
-        <li>选对默认模型。</li>
-      </ul>
+      <p>{agentToolCopy.othersIntro}</p>
+      <ul>{agentToolCopy.othersItems.map(item => <li key={item}>{item}</li>)}</ul>
       <p>
-        如果工具本身支持导入配置，那就把它交给{' '}
+        {agentToolCopy.importText}{' '}
         <Link to="/docs/guides/config-export/">配置文件导出</Link> 页面生成。
       </p>
 
-      <Callout tone="tip" title="一个最容易成功的起步方式">
-        <p>
-          不论是 OpenAI 风格还是 Claude 风格，都先用 <code>https://api.gpt88.cc</code> + 对应 SDK 跑一条最小请求。
-          两种协议共用同一把 API Key，差异只在请求路径和请求格式。
-        </p>
+      <Callout tone="tip" title={agentToolCopy.calloutTitle}>
+        <p>{agentToolCopy.calloutBody}</p>
       </Callout>
 
       <h2 id="config-export">为什么要有配置文件导出</h2>
-      <p>如果你只是单次测试，手工填 Base URL 和 Key 就够了。</p>
-      <p>如果你已经在多个工具之间切换，就会反复遇到这些问题：</p>
-      <ul>
-        <li>每个工具配置项名字不一样；</li>
-        <li>不同工具的请求路径和字段命名不一样；</li>
-        <li>有的工具要单独的模型名映射；</li>
-        <li>有的工具需要导入链接，有的工具需要配置文件。</li>
-      </ul>
+      <p>{operationsCopy.single}</p>
+      <p>{operationsCopy.switching}</p>
+      <ul>{operationsCopy.problems.map(item => <li key={item}>{item}</li>)}</ul>
       <p>
-        <Link to="/docs/guides/config-export/">配置文件导出</Link> 页面就是为了解决这些碎片化问题：
+        <Link to="/docs/guides/config-export/">配置文件导出</Link> {operationsCopy.exportIntro}
       </p>
-      <ul>
-        <li>先把 API Key、模型和线路选对；</li>
-        <li>再选目标工具；</li>
-        <li>页面自动生成对应格式；</li>
-        <li>要么复制到目标工具，要么一键导入 CC Switch。</li>
-      </ul>
-      <p>如果你是团队负责人，这个页面尤其适合拿来统一标准。</p>
+      <ul>{operationsCopy.exportSteps.map(item => <li key={item}>{item}</li>)}</ul>
+      <p>{operationsCopy.team}</p>
 
       <h2 id="troubleshooting">常见错误与排障</h2>
       <h3>401：API Key 有问题</h3>
-      <ul>
-        <li>Key 是否复制完整；</li>
-        <li>是否已经被 revoke；</li>
-        <li>是否填到了正确的环境变量；</li>
-        <li>是否在客户端暴露了 Key。</li>
-      </ul>
+      <ul>{operationsCopy.errorLists[0].map(item => <li key={item}>{item}</li>)}</ul>
 
       <h3>404：Base URL 或路径不对</h3>
-      <ul>
-        <li>OpenAI 风格是不是忘了 <code>/v1</code>；</li>
-        <li>Claude 风格是不是错误地拼了 <code>/v1</code>；</li>
-        <li>你是否把中国调用 / 海外全球加速混用了；</li>
-        <li>你要调用的 endpoint 是否和模型类型一致。</li>
-      </ul>
+      <ul>{operationsCopy.errorLists[1].map(item => <li key={item}>{item}</li>)}</ul>
 
       <h3>429：限速或配额到了</h3>
-      <ul>
-        <li>当前 Key 的配额；</li>
-        <li>是否并发过高；</li>
-        <li>是否触发了重试风暴；</li>
-        <li>是否应该改用更稳定的模型或更低并发。</li>
-      </ul>
+      <ul>{operationsCopy.errorLists[2].map(item => <li key={item}>{item}</li>)}</ul>
 
       <h3>网络超时</h3>
-      <ul>
-        <li>当前线路是否适合你的网络；</li>
-        <li>是不是本地网络到网关慢，还是网关到上游慢；</li>
-        <li>是否需要重新确认 API Key、模型、endpoint 和请求格式。</li>
-      </ul>
+      <ul>{operationsCopy.errorLists[3].map(item => <li key={item}>{item}</li>)}</ul>
 
       <h3>模型不可用 / model not found</h3>
-      <ul>
-        <li>模型名是否拼错；</li>
-        <li>该 Key 是否允许调用这个模型；</li>
-        <li>该模型是否属于当前线路支持的集合；</li>
-        <li>是否需要重新导出配置。</li>
-      </ul>
+      <ul>{operationsCopy.errorLists[4].map(item => <li key={item}>{item}</li>)}</ul>
 
       <Callout tone="warn" title="关于价格 / 限速 / SLA / 配额">
         {/*
@@ -418,17 +516,10 @@ export default function Gpt88TutorialPage() {
       </Callout>
 
       <h2 id="best-practices">最佳实践</h2>
-      <ul>
-        <li><strong>先验证，再扩展</strong>：先用 cURL 或最小 SDK 调通，再上到复杂工具。</li>
-        <li><strong>先统一，再分流</strong>：团队内先统一标准 API 配置，再为图片 / 视频任务使用首页媒体 Base URL。</li>
-        <li><strong>Key 和模型分开管理</strong>：一个项目一把 Key，一个场景一个默认模型。</li>
-        <li><strong>不要把 Key 写进前端</strong>：浏览器和客户端都不能作为 secret 的最终存放地。</li>
-        <li><strong>保留排障证据</strong>：出问题时保留 request_id、时间、模型名、线路和错误码。</li>
-        <li><strong>把文档和控制台一起看</strong>：本文档负责方法，控制台负责实时状态和数值。</li>
-      </ul>
+      <ul>{closingCopy.practices.map(item => <li key={item}>{item}</li>)}</ul>
 
       <h2 id="related-docs">应该搭配阅读哪些文档</h2>
-      <p>建议阅读顺序：</p>
+      <p>{closingCopy.order}</p>
       <ol>
         <li><Link to="/docs/overview/">产品概览</Link> —— 先理解 gpt88.cc 是什么；</li>
         <li><Link to="/docs/quickstart/">快速开始</Link> —— 跑通第一次请求；</li>
@@ -440,16 +531,11 @@ export default function Gpt88TutorialPage() {
       </ol>
 
       <h2 id="summary">一句话总结</h2>
-      <p>如果你只记住一句话，那就是：</p>
+      <p>{closingCopy.summaryLead}</p>
       <Callout tone="tip">
-        <p>
-          <strong>
-            gpt88.cc 用同一把 API Key，把 Claude 风格和 OpenAI 风格的接入统一起来；
-            你只需要选对模型、选对线路、选对 Base URL。
-          </strong>
-        </p>
+        <p><strong>{closingCopy.summary}</strong></p>
       </Callout>
-      <p>如果这篇文档和你的实际工具行为有差异，请以控制台实时配置为准。</p>
+      <p>{closingCopy.live}</p>
     </DocPage>
   )
 }

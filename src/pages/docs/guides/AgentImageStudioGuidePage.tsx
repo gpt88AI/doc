@@ -83,7 +83,7 @@ function DocTable({
 export default function AgentImageStudioGuidePage() {
   const { locale } = useLocale()
 
-  if (locale === 'en') return <AgentImageStudioGuidePageEn />
+  if (locale !== 'zh') return <AgentImageStudioGuidePageEn />
 
   const studioIntroUrl = buildAgentActivationUrl({
     locale,

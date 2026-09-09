@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import VideoGenerationSkillsBrandAdCgPageEn from '../../en/VideoGenerationSkillsBrandAdCgPageEn'
 
 const FLOW = `1. 读 cheatsheet.md
 2. 读 confirmation-gates.md
@@ -184,6 +186,10 @@ function TopicList({
 }
 
 export default function VideoGenerationSkillsBrandAdCgPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <VideoGenerationSkillsBrandAdCgPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-brand-ad-cg"

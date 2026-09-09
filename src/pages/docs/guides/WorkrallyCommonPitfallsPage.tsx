@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import WorkrallyCommonPitfallsPageEn from '../../en/WorkrallyCommonPitfallsPageEn'
 
 const PITFALLS = `1. 把项目 ID 当画布 ID 用
 2. 硬编码模型 ID 或 provider
@@ -21,6 +23,9 @@ workrally upload ./file.png -o json
 workrally asset create --url <cdn_url> --project-id <project_id> -o json`
 
 export default function WorkrallyCommonPitfallsPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <WorkrallyCommonPitfallsPageEn />
+
   return (
     <DocPage
       path="/docs/guides/workrally-common-pitfalls"

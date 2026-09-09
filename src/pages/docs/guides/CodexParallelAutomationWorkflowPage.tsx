@@ -14,7 +14,7 @@ import CodexParallelAutomationWorkflowPageEn from '../../en/CodexParallelAutomat
 
 export default function CodexParallelAutomationWorkflowPage() {
   const { locale } = useLocale()
-  if (locale === 'en') return <CodexParallelAutomationWorkflowPageEn />
+  if (locale !== 'zh') return <CodexParallelAutomationWorkflowPageEn />
 
   return (
     <DocPage

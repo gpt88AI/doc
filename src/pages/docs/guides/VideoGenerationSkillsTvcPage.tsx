@@ -1,6 +1,8 @@
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import VideoGenerationSkillsTvcPageEn from '../../en/VideoGenerationSkillsTvcPageEn'
 
 const TVC_FLOW = `TVC 推荐流程：
 1. 先定 15 到 30 秒的核心情绪和卖点
@@ -74,6 +76,9 @@ function DetailBlock({
 }
 
 export default function VideoGenerationSkillsTvcPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <VideoGenerationSkillsTvcPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-tvc-playbook"

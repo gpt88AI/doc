@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import VideoGenerationSkillsWhiteBackgroundPageEn from '../../en/VideoGenerationSkillsWhiteBackgroundPageEn'
 
 const FLOW = `白底图裂变常用流程：
 1. 先拿到干净白底图
@@ -75,6 +77,10 @@ function DetailBlock({
 }
 
 export default function VideoGenerationSkillsWhiteBackgroundPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <VideoGenerationSkillsWhiteBackgroundPageEn />
+
   return (
     <DocPage
       path="/docs/guides/video-generation-skills-white-background-scaling"

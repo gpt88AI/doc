@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react'
+import { useLocale } from '../../lib/locale'
 import { DocPage } from '../../components/layout/DocPage'
 import { Callout } from '../../components/ui/Callout'
 import { CodeBlock } from '../../components/ui/CodeBlock'
+import ChangelogPageEn from '../en/ChangelogPageEn'
 
 const UPDATE_SOURCE = `更新来源：
 - 产品范围：GPT88 平台、gpt88.cc 控制台、agent.gpt88.cc 图片工作台和相关 API 能力
@@ -753,6 +755,10 @@ function ChangelogItem({ item }: { item: ChangeItem }) {
 }
 
 export default function ChangelogPage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <ChangelogPageEn />
+
   return (
     <DocPage
       path="/docs/changelog"

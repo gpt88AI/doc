@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import { useLocale } from '../../../lib/locale'
+import EcommerceToolsSpecialPageEn from '../../en/EcommerceToolsSpecialPageEn'
 
 const STAGES = `入门阶段
 1. 平台概览与界面导览
@@ -335,6 +337,9 @@ function DocTable({
 }
 
 export default function EcommerceToolsSpecialPage() {
+  const { locale } = useLocale()
+  if (locale !== 'zh') return <EcommerceToolsSpecialPageEn />
+
   const beginner = TOPICS.filter(topic => topic.stage === '入门')
   const intermediate = TOPICS.filter(topic => topic.stage === '进阶')
   const advanced = TOPICS.filter(topic => topic.stage === '高阶')

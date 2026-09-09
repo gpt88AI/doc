@@ -45,30 +45,34 @@ const ENDPOINTS = `异步生图入口
   查询任务：GET  https://img.gpt88.cc/v1/images/generations/{task_id}
   最终结果：data[0].url 或 data[0].b64_json，具体以实际响应为准`
 
+const NOTICE_COPY = {
+  zh: { title: '异步生图支持公告', description: 'GPT88 图片 API 增加异步生图接入说明：提交任务、保存 task_id、轮询状态并获取最终图片，不必让原始 HTTP 请求一直等待。', headings: ['发布时间', '这次支持什么', '接口入口', '什么时候使用异步', '响应字段与兼容处理', '迁移清单', '重要注意事项'], conclusion: '先看结论', conclusionText: '异步生图是一条三步链路：提交任务、轮询任务 ID、获取完成后的图片。原有同步图片请求仍然可以继续使用；当任务耗时较长、图片尺寸较大、客户端有超时限制，或你已经有任务队列时，优先使用异步模式。', progressTitle: '不要只看 progress 判断成功' },
+  hi: { title: 'Asynchronous image generation notice', description: 'GPT88 Image API अब asynchronous image generation support करता है: task submit करें, task_id save करें, status poll करें और final image लें।', headings: ['Release date', 'What is supported', 'API entry points', 'When to use async mode', 'Response fields and compatibility', 'Migration checklist', 'Important notes'], conclusion: 'Key takeaway', conclusionText: 'Async image generation तीन चरणों की प्रक्रिया है: task submit करें, task ID poll करें और complete होने पर image लें। Sync requests भी उपलब्ध हैं; लंबे tasks, बड़ी images, client timeout या task queue होने पर async mode चुनें।', progressTitle: 'सिर्फ progress देखकर सफलता तय न करें' },
+  bn: { title: 'Asynchronous image generation notice', description: 'GPT88 Image API-তে asynchronous image generation support যোগ হয়েছে: task submit, task_id সংরক্ষণ, status polling এবং final image সংগ্রহ করুন।', headings: ['প্রকাশের তারিখ', 'কী support করা হয়েছে', 'API entry point', 'কখন async ব্যবহার করবেন', 'Response field ও compatibility', 'Migration checklist', 'গুরুত্বপূর্ণ নোট'], conclusion: 'মূল কথা', conclusionText: 'Async image generation তিন ধাপের workflow: task submit, task ID poll এবং complete হলে image সংগ্রহ। Sync request-ও ব্যবহার করা যায়; দীর্ঘ task, বড় image, client timeout বা task queue থাকলে async mode নিন।', progressTitle: 'শুধু progress দেখে সফলতা নির্ধারণ করবেন না' },
+  ur: { title: 'Asynchronous image generation notice', description: 'GPT88 Image API میں asynchronous image generation شامل ہے: task submit کریں، task_id محفوظ کریں، status poll کریں اور final image حاصل کریں۔', headings: ['اجرا کی تاریخ', 'کیا support کیا گیا ہے', 'API entry points', 'Async کب استعمال کریں', 'Response fields اور compatibility', 'Migration checklist', 'اہم نوٹس'], conclusion: 'خلاصہ', conclusionText: 'Async image generation تین مراحل ہیں: task submit کرنا، task ID poll کرنا اور مکمل ہونے پر image حاصل کرنا۔ Sync requests بھی دستیاب ہیں؛ طویل tasks، بڑی images، client timeout یا task queue کی صورت میں async mode استعمال کریں۔', progressTitle: 'صرف progress دیکھ کر کامیابی کا فیصلہ نہ کریں' },
+  ta: { title: 'Asynchronous image generation notice', description: 'GPT88 Image API-ல் asynchronous image generation ஆதரவு சேர்க்கப்பட்டுள்ளது: task submit, task_id சேமிப்பு, status polling மற்றும் final image பெறுதல்.', headings: ['வெளியீட்டு தேதி', 'எது ஆதரிக்கப்படுகிறது', 'API entry points', 'Async எப்போது பயன்படுத்த வேண்டும்', 'Response fields மற்றும் compatibility', 'Migration checklist', 'முக்கிய குறிப்புகள்'], conclusion: 'முக்கிய கருத்து', conclusionText: 'Async image generation மூன்று படிகள் கொண்டது: task submit, task ID poll, complete ஆனதும் image பெறுதல். Sync requests தொடர்ந்தும் கிடைக்கும்; நீண்ட task, பெரிய image, client timeout அல்லது task queue இருந்தால் async mode தேர்வு செய்யவும்.', progressTitle: 'progress மட்டும் பார்த்து வெற்றியை முடிவு செய்ய வேண்டாம்' },
+  ne: { title: 'Asynchronous image generation notice', description: 'GPT88 Image API मा asynchronous image generation support थपिएको छ: task submit गर्नुहोस्, task_id बचत गर्नुहोस्, status poll गर्नुहोस् र final image लिनुहोस्।', headings: ['Release date', 'के support गरिएको छ', 'API entry points', 'Async कहिले प्रयोग गर्ने', 'Response fields र compatibility', 'Migration checklist', 'महत्त्वपूर्ण नोट'], conclusion: 'मुख्य कुरा', conclusionText: 'Async image generation तीन चरणको workflow हो: task submit, task ID poll र complete भएपछि image प्राप्त। Sync request पनि उपलब्ध छ; लामो task, ठूलो image, client timeout वा task queue हुँदा async mode प्रयोग गर्नुहोस्।', progressTitle: 'progress मात्र हेरेर सफलता निर्धारण नगर्नुहोस्' },
+  si: { title: 'Asynchronous image generation notice', description: 'GPT88 Image API වෙත asynchronous image generation support එක් කර ඇත: task submit කරන්න, task_id සුරකින්න, status poll කර final image ලබාගන්න.', headings: ['නිකුත් කළ දිනය', 'සහාය දක්වන්නේ කුමක්ද', 'API entry points', 'Async භාවිත කළ යුතු අවස්ථා', 'Response fields සහ compatibility', 'Migration checklist', 'වැදගත් සටහන්'], conclusion: 'ප්‍රධාන කරුණ', conclusionText: 'Async image generation පියවර තුනකි: task submit කිරීම, task ID poll කිරීම සහ complete වූ පසු image ලබාගැනීම. Sync requests ද තවම භාවිත කළ හැක; දිගු tasks, විශාල images, client timeout හෝ task queue තිබේ නම් async mode තෝරන්න.', progressTitle: 'progress පමණක් බලා සාර්ථකත්වය තීරණය නොකරන්න' },
+} as const
+
 export default function AsyncImageGenerationNoticePage() {
   const { locale } = useLocale()
+  const copy = NOTICE_COPY[locale as keyof typeof NOTICE_COPY] ?? NOTICE_COPY.zh
 
-  if (locale === 'en') return <AsyncImageGenerationNoticePageEn />
+  if (locale !== 'zh') return <AsyncImageGenerationNoticePageEn />
 
   return (
     <DocPage
       path="/docs/guides/async-image-generation-notice/"
-      title="异步生图支持公告"
-      description="GPT88 图片 API 增加异步生图接入说明：提交任务、保存 task_id、轮询状态并获取最终图片，不必让原始 HTTP 请求一直等待。"
+      title={copy.title}
+      description={copy.description}
       headings={[
-        { id: 'date', text: '发布时间', level: 2 },
-        { id: 'what-changed', text: '这次支持什么', level: 2 },
-        { id: 'entry-points', text: '接口入口', level: 2 },
-        { id: 'when', text: '什么时候使用异步', level: 2 },
-        { id: 'compatibility', text: '响应字段与兼容处理', level: 2 },
-        { id: 'migration', text: '迁移清单', level: 2 },
-        { id: 'notes', text: '重要注意事项', level: 2 },
+        ...['date', 'what-changed', 'entry-points', 'when', 'compatibility', 'migration', 'notes'].map((id, index) => ({ id, text: copy.headings[index], level: 2 as const })),
       ]}
     >
-      <Callout tone="tip" title="先看结论">
+      <Callout tone="tip" title={copy.conclusion}>
         <p>
-          异步生图是一条三步链路：提交任务、轮询任务 ID、获取完成后的图片。原有同步图片请求仍然可以继续使用；
-          当任务耗时较长、图片尺寸较大、客户端有超时限制，或你已经有任务队列时，优先使用异步模式。
+          {copy.conclusionText}
         </p>
       </Callout>
 
@@ -125,7 +129,7 @@ export default function AsyncImageGenerationNoticePage() {
 { "data": { "task_id": "imgtask_123", "status": "succeeded", "result_url": "https://.../image.png" } }
 { "data": { "task_id": "imgtask_123", "status": "failed", "error": { "message": "..." } }}`}
       />
-      <Callout tone="warn" title="不要只看 progress 判断成功">
+      <Callout tone="warn" title={copy.progressTitle}>
         <p>
           <code>100</code> 或 <code>100%</code> 只代表流程可能已经结束，不足以证明图片可下载。只有任务状态是成功终态，
           并且存在可用图片 URL 或图片 payload 时，才应把任务标记为成功。

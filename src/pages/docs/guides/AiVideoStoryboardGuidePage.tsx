@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { useLocale } from '../../../lib/locale'
 import { DocPage } from '../../../components/layout/DocPage'
 import { Callout } from '../../../components/ui/Callout'
 import { CodeBlock } from '../../../components/ui/CodeBlock'
+import AiVideoStoryboardGuidePageEn from '../../en/AiVideoStoryboardGuidePageEn'
 
 const CORE_WORKFLOW = `1. 先定主题：你想讲的不是“画面”，而是“情绪变化”
 2. 再拆人物：学生时代是谁，成年后是谁，现在的状态是什么
@@ -114,6 +116,10 @@ function DocTable({
 }
 
 export default function AiVideoStoryboardGuidePage() {
+  const { locale } = useLocale()
+
+  if (locale !== 'zh') return <AiVideoStoryboardGuidePageEn />
+
   return (
     <DocPage
       path="/docs/guides/ai-video-storyboard-guide"
