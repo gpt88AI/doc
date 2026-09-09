@@ -59,6 +59,7 @@
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
+- [用 Codex 和 HyperFrames 自动生成视频：从文章到口播、分镜与成片的完整教程](https://doc.gpt88.cc/docs/blog/codex-hyperframes-video-content-workflow/): 整理 Miles Ma 关于 Codex 视频生产流程的实践，讲清如何用文章或主题生成口播稿，完成 TTS 或声音复刻、字幕时间轴、分镜、HyperFrames 成片，以及真人口播和内容获客的后续扩展。
 - [ComfyUI Nano Banana Pro 替代方案：本地、API 与托管路线怎么选](https://doc.gpt88.cc/docs/blog/comfyui-nano-banana-pro-alternative/): 在 ComfyUI 里替换 Nano Banana Pro，不是找一个万能模型，而是判断本地控制、Qwen 编辑实验、托管 API 和继续使用 Pro 哪条路线更适合，并用同题测试做决策。
 - [Commerce Agents 工程架构拆解：从 Prompt Demo 到可控的应用代理](https://doc.gpt88.cc/docs/blog/commerce-agents-engineering-architecture/): 以 commerce-agents 参考项目为例，拆解应用代理的共享核心、Backend 契约、Tool Calling Loop、Skill 分层、数据 Fencing、Provenance、结构化 UI、人工审批、记忆、评测与生产化路径。
 - [图片压缩到100KB或200KB：通过上传限制的格式、尺寸和画质步骤](https://doc.gpt88.cc/docs/blog/compress-image-to-100kb-200kb/): 按上传表单要求把图片压缩到100KB或200KB，先确认格式、尺寸和比例，再选择JPG、PNG或WebP，避免低于KB仍被驳回；覆盖敏感图片隐私与本地工具选择。
@@ -528,6 +529,7 @@
 - [gpt-image-2-1k](https://doc.gpt88.cc/models/gpt-image-2-1k/): OpenAI gpt-image-2-1k · IMAGE 模型，Model ID: gpt-image-2-1k，接口路径: /v1/images/generations。
 - [gpt-image-2-2k](https://doc.gpt88.cc/models/gpt-image-2-2k/): OpenAI gpt-image-2-2k · IMAGE 模型，Model ID: gpt-image-2-2k，接口路径: /v1/images/generations。
 - [gpt-image-2-4k](https://doc.gpt88.cc/models/gpt-image-2-4k/): OpenAI gpt-image-2-4k · IMAGE 模型，Model ID: gpt-image-2-4k，接口路径: /v1/images/generations。
+- [ChatGPT Images 2.5](https://doc.gpt88.cc/models/gpt-image-2-5/): OpenAI ChatGPT Images 2.5 · IMAGE 模型，Model ID: gpt-image-2.5，接口路径: /v1/images/generations。
 - [grok-4.1-image](https://doc.gpt88.cc/models/grok-4-1-image/): xAI grok-4.1-image · IMAGE 模型，Model ID: grok-4.1-image，接口路径: /v1/images/generations。
 - [grok-4.2-image](https://doc.gpt88.cc/models/grok-4-2-image/): xAI grok-4.2-image · IMAGE 模型，Model ID: grok-4.2-image，接口路径: /v1/images/generations。
 - [imagen-3.0-generate-002](https://doc.gpt88.cc/models/imagen-3-0-generate-002/): Google imagen-3.0-generate-002 · IMAGE 模型，Model ID: imagen-3.0-generate-002，接口路径: /v1/images/generations。

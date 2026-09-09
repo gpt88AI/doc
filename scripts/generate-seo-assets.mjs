@@ -921,6 +921,13 @@ async function readModels() {
       vendors_count: 1,
     },
     {
+      // GPT88 2026-09-08 上新补丁：公开 marketplace snapshot 更新后可移除。
+      canonical_name: 'gpt-image-2.5',
+      display_name: 'ChatGPT Images 2.5',
+      category: 'image',
+      vendors_count: 1,
+    },
+    {
       canonical_name: 'grok-4.6',
       display_name: 'grok-4.6',
       category: 'chat',
@@ -1097,7 +1104,7 @@ function markdownLink(page) {
 
 function llmsTxt(modelPages, englishModelPages, blogPages = []) {
   const featuredModels = modelPages
-    .filter(page => ['gpt-6-astra', 'gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
+    .filter(page => ['gpt-6-astra', 'gpt-image-2-5', 'gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 12)
 
   return `# gpt88.cc API 文档

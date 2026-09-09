@@ -118,6 +118,7 @@ export type ModelEntry = {
 
 export const FEATURED_SLUGS = [
   'gpt-6-astra',
+  'gpt-image-2-5',
   'grok-4-6',
   'gpt-5-6-sol',
   'gpt-5-6-terra',
@@ -185,6 +186,37 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '目前没有站内可复核的官方 Benchmark 成绩；本文的能力标签是主推定位与评测设计，不是对所有任务的性能保证。',
       '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由并设置失败回退。',
       '高风险代码、数据库、支付、权限和生产操作仍需要独立审查、确定性测试和人工授权。',
+    ],
+  },
+  'gpt-image-2-5': {
+    provider: 'OpenAI',
+    tagline: 'ChatGPT Images 2.5 图像模型，GPT88 已同步上线，当前宣传价每张 0.08 元。',
+    capabilities: ['ChatGPT Images 2.5', '细节增强', '精准编辑', '更快生成', '文生图与图像编辑'],
+    scenarios: ['海报与营销素材', '产品图生成', '人物与场景创作', '参考图编辑', '社交媒体配图'],
+    overview: [
+      'ChatGPT Images 2.5 是 GPT88 新增的 OpenAI 图像生成路线，面向更清晰的细节、更精准的编辑和更快的生成体验。',
+      '用户提供的上新信息称，图像生成延迟相较 2.0 最高降低 50%；这是当前上新宣传口径，实际延迟仍会受图片尺寸、质量档位、提示词复杂度、并发和上游线路影响。',
+      'GPT88 当前同步上线价按每张 0.08 元展示；计费方式、适用尺寸、账号权限、活动有效期和最终扣费应以 GPT88 控制台与用量记录为准。',
+      '模型 ID 使用 gpt-image-2.5。由于该模型是在公开快照之外新增的本地目录补丁，调用前仍应使用当前 API Key 查询 GET /v1/models 或在控制台确认开放状态。',
+    ],
+    whenToUse: [
+      '需要比 ChatGPT Images 2.0 更清晰的主体细节和纹理表现时',
+      '需要对人物、产品、场景或局部区域进行更精确编辑时',
+      '需要更快生成海报、电商素材、社交媒体配图和概念图时',
+      '需要将 OpenAI 图片能力接入 GPT88 统一图片 API 或自研工作流时',
+      '需要在 2.0 与 2.5 之间做质量、延迟和单位图片成本对比时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容图片请求使用图片与多媒体 Base URL https://img.gpt88.cc，端点为 POST /v1/images/generations。',
+      '请求体中的 model 使用 gpt-image-2.5；不要把 ChatGPT Images 2.5 这个展示名称直接填进 model 字段。',
+      '首次接入先发送最小文生图请求，确认响应结构和图片保存流程，再增加 quality、size、图像编辑和批量任务。',
+      '建议记录 request ID、生成耗时、图片尺寸、成功率和实际扣费；不要仅用前端等待时间判断模型延迟。',
+    ],
+    caveats: [
+      '“最高降低 50%”是上新宣传中的峰值表述，不代表每个请求都能获得 50% 的延迟下降；请用自己的固定提示词和尺寸做对比测试。',
+      '每张 0.08 元是当前 GPT88 上新宣传价，不应视为永久价格、所有尺寸统一价格或所有账号都必然可用的计费承诺。',
+      '模型是否开放、支持哪些尺寸和质量参数、图像编辑是否可用，以 GPT88 控制台和当前 API Key 的 GET /v1/models 结果为准。',
+      '不要把 API Key 放入浏览器或公开前端；图片编辑涉及用户上传内容时，还需要单独处理隐私、授权、保存和删除策略。',
     ],
   },
   'grok-4-6': {
@@ -1821,6 +1853,15 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     vendors_count: 1,
     upstream_samples: ['gpt-6-astra'],
     descriptions_sample: ['GPT88 新增主推模型入口，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    // 2026-09-08 GPT88 上新补丁：等待下一次公开 marketplace snapshot 收录。
+    canonical_name: 'gpt-image-2.5',
+    display_name: 'ChatGPT Images 2.5',
+    category: 'image',
+    vendors_count: 1,
+    upstream_samples: ['gpt-image-2.5'],
+    descriptions_sample: ['OpenAI ChatGPT Images 2.5，GPT88 同步上线，当前宣传价每张 0.08 元。'],
   },
   {
     canonical_name: 'grok-4.6',
