@@ -530,6 +530,8 @@
 - [gpt-image-2-2k](https://doc.gpt88.cc/models/gpt-image-2-2k/): OpenAI gpt-image-2-2k · IMAGE 模型，Model ID: gpt-image-2-2k，接口路径: /v1/images/generations。
 - [gpt-image-2-4k](https://doc.gpt88.cc/models/gpt-image-2-4k/): OpenAI gpt-image-2-4k · IMAGE 模型，Model ID: gpt-image-2-4k，接口路径: /v1/images/generations。
 - [ChatGPT Images 2.5](https://doc.gpt88.cc/models/gpt-image-2-5/): OpenAI ChatGPT Images 2.5 · IMAGE 模型，Model ID: gpt-image-2.5，接口路径: /v1/images/generations。
+- [GPT-Image-2.5 Flare](https://doc.gpt88.cc/models/gpt-image-2-5-flare/): OpenAI GPT-Image-2.5 Flare · IMAGE 模型，Model ID: gpt-image-2.5-flare，接口路径: /v1/images/generations。
+- [GPT-Image-2.5 Sunburst](https://doc.gpt88.cc/models/gpt-image-2-5-sunburst/): OpenAI GPT-Image-2.5 Sunburst · IMAGE 模型，Model ID: gpt-image-2.5-sunburst，接口路径: /v1/images/generations。
 - [grok-4.1-image](https://doc.gpt88.cc/models/grok-4-1-image/): xAI grok-4.1-image · IMAGE 模型，Model ID: grok-4.1-image，接口路径: /v1/images/generations。
 - [grok-4.2-image](https://doc.gpt88.cc/models/grok-4-2-image/): xAI grok-4.2-image · IMAGE 模型，Model ID: grok-4.2-image，接口路径: /v1/images/generations。
 - [imagen-3.0-generate-002](https://doc.gpt88.cc/models/imagen-3-0-generate-002/): Google imagen-3.0-generate-002 · IMAGE 模型，Model ID: imagen-3.0-generate-002，接口路径: /v1/images/generations。

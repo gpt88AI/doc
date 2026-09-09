@@ -119,6 +119,8 @@ export type ModelEntry = {
 export const FEATURED_SLUGS = [
   'gpt-6-astra',
   'gpt-image-2-5',
+  'gpt-image-2-5-flare',
+  'gpt-image-2-5-sunburst',
   'grok-4-6',
   'gpt-5-6-sol',
   'gpt-5-6-terra',
@@ -217,6 +219,60 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '每张 0.08 元是当前 GPT88 上新宣传价，不应视为永久价格、所有尺寸统一价格或所有账号都必然可用的计费承诺。',
       '模型是否开放、支持哪些尺寸和质量参数、图像编辑是否可用，以 GPT88 控制台和当前 API Key 的 GET /v1/models 结果为准。',
       '不要把 API Key 放入浏览器或公开前端；图片编辑涉及用户上传内容时，还需要单独处理隐私、授权、保存和删除策略。',
+    ],
+  },
+  'gpt-image-2-5-flare': {
+    provider: 'OpenAI',
+    tagline: 'GPT-Image-2.5 Flare：速度优先，适合日常出图、SNS、网页素材和批量生成。',
+    capabilities: ['GPT-Image-2.5 Flare', '速度优先', '日常文生图', 'SNS 配图', '批量生成'],
+    scenarios: ['社交媒体配图', '网页素材', '日常内容创作', '批量缩略图', '快速概念草图'],
+    overview: [
+      'GPT-Image-2.5 Flare 是 ChatGPT Images 2.5 的速度优先变体，适合需要快速出图、频繁试稿或批量生成的工作流。',
+      '它更适合作为日常生产和素材探索的默认选择：先快速得到多个方向，再把最终版本交给精度优先的 Sunburst 处理。',
+      'Flare 的实际速度、尺寸支持、编辑能力和可用额度，仍取决于 GPT88 当前路由、API Key 权限、请求参数和并发情况。',
+    ],
+    whenToUse: [
+      '需要快速生成社交媒体、SNS 或网页配图时',
+      '需要批量创建缩略图、候选图或内容素材时',
+      '需要快速试验多个提示词和视觉方向时',
+      '对极致细节要求不高，但更关注响应速度和迭代次数时',
+    ],
+    integrationNotes: [
+      '图片接口使用 https://img.gpt88.cc/v1/images/generations。',
+      '请求体中的 model 建议填写 gpt-image-2.5-flare；如果当前 API Key 尚未开放该 ID，请以 GET /v1/models 返回值为准。',
+      '批量任务建议限制并发、记录 request ID 和单张耗时，并对失败请求使用指数退避重试。',
+    ],
+    caveats: [
+      '“速度优先”是产品定位，不代表每个请求都一定快于其他变体；请用固定提示词、尺寸和并发做实测。',
+      'Flare 适合快速出图，不建议未经检查就直接用于高价值广告或最终交付素材。',
+      '价格、尺寸、质量档位和编辑能力以 GPT88 控制台及当前 API Key 的模型列表为准。',
+    ],
+  },
+  'gpt-image-2-5-sunburst': {
+    provider: 'OpenAI',
+    tagline: 'GPT-Image-2.5 Sunburst：精度优先，适合广告图、产品图、复杂编辑和最终交付。',
+    capabilities: ['GPT-Image-2.5 Sunburst', '精度优先', '广告级素材', '产品图', '复杂图像编辑'],
+    scenarios: ['广告创意图', '电商产品图', '品牌视觉素材', '复杂参考图编辑', '最终交付图片'],
+    overview: [
+      'GPT-Image-2.5 Sunburst 是 ChatGPT Images 2.5 的精度优先变体，面向广告图、产品图、复杂编辑和最终交付场景。',
+      '它更适合在 Flare 完成方向探索后，用于处理主体细节、材质、构图和局部编辑要求更高的版本。',
+      'Sunburst 的实际质量、生成时间、尺寸支持、编辑能力和可用额度，仍取决于 GPT88 当前路由、API Key 权限和请求参数。',
+    ],
+    whenToUse: [
+      '需要广告图、产品图或品牌视觉素材时',
+      '需要处理复杂参考图、局部修改或多轮编辑时',
+      '需要更重视细节、材质、构图和成片一致性时',
+      '需要生成用于客户确认、发布或最终交付的图片时',
+    ],
+    integrationNotes: [
+      '图片接口使用 https://img.gpt88.cc/v1/images/generations。',
+      '请求体中的 model 建议填写 gpt-image-2.5-sunburst；如果当前 API Key 尚未开放该 ID，请以 GET /v1/models 返回值为准。',
+      '最终交付前应保存原始提示词、参考图版本、尺寸、请求 ID 和实际扣费，便于复现与审稿。',
+    ],
+    caveats: [
+      '“精度优先”是产品定位，不代表所有提示词、尺寸或编辑任务都能获得相同质量提升；请使用业务样例评测。',
+      '复杂编辑仍可能出现局部细节、文字、手部或品牌元素偏差，交付前必须人工检查。',
+      '价格、尺寸、质量档位和编辑能力以 GPT88 控制台及当前 API Key 的模型列表为准。',
     ],
   },
   'grok-4-6': {
@@ -1862,6 +1918,24 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     vendors_count: 1,
     upstream_samples: ['gpt-image-2.5'],
     descriptions_sample: ['OpenAI ChatGPT Images 2.5，GPT88 同步上线，当前宣传价每张 0.08 元。'],
+  },
+  {
+    // 2026-09-09 GPT88 变体补丁：公开 marketplace snapshot 更新后可移除。
+    canonical_name: 'gpt-image-2.5-flare',
+    display_name: 'GPT-Image-2.5 Flare',
+    category: 'image',
+    vendors_count: 1,
+    upstream_samples: ['gpt-image-2.5-flare'],
+    descriptions_sample: ['GPT-Image-2.5 Flare，速度优先，适合日常出图、SNS、网页素材和批量生成。'],
+  },
+  {
+    // 2026-09-09 GPT88 变体补丁：公开 marketplace snapshot 更新后可移除。
+    canonical_name: 'gpt-image-2.5-sunburst',
+    display_name: 'GPT-Image-2.5 Sunburst',
+    category: 'image',
+    vendors_count: 1,
+    upstream_samples: ['gpt-image-2.5-sunburst'],
+    descriptions_sample: ['GPT-Image-2.5 Sunburst，精度优先，适合广告图、产品图、复杂编辑和最终交付。'],
   },
   {
     canonical_name: 'grok-4.6',
