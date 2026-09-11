@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   gpt-6-astra → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
+ *   gpt-6-astra → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *   → gemini-3.8-flash → claude-fable-5-1
@@ -118,6 +118,7 @@ export type ModelEntry = {
 
 export const FEATURED_SLUGS = [
   'gpt-6-astra',
+  'deepseek-v4-1-flash',
   'gpt-image-2-5',
   'gpt-image-2-5-flare',
   'gpt-image-2-5-sunburst',
@@ -188,6 +189,36 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '目前没有站内可复核的官方 Benchmark 成绩；本文的能力标签是主推定位与评测设计，不是对所有任务的性能保证。',
       '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由并设置失败回退。',
       '高风险代码、数据库、支付、权限和生产操作仍需要独立审查、确定性测试和人工授权。',
+    ],
+  },
+  'deepseek-v4-1-flash': {
+    provider: 'DeepSeek',
+    tagline: 'DeepSeek V4.1 Flash，面向高频对话、代码辅助与 Agent 子任务的速度优先主推模型。',
+    capabilities: ['低延迟', '中英双语', '代码辅助', '流式响应', '工具调用'],
+    scenarios: ['高频对话', '客服与工单', '代码补全', 'Agent 子任务', '批量内容处理'],
+    overview: [
+      'DeepSeek V4.1 Flash 是 GPT88 新增的 DeepSeek 主推模型，定位为速度、吞吐与日常任务效率优先的 Flash 路线。',
+      '它适合高频对话、代码辅助、分类抽取、内容处理和 Agent 中的边界清晰子任务；需要更深层推理或复杂长文档时，应与 DeepSeek V4 Pro 或其他高能力模型做对比。',
+      '这是 GPT88 的目录与路由说明，不固化上下文、价格、限速、工具支持或 SLA 等动态信息；实际可用范围以控制台和当前 API Key 的 GET /v1/models 返回为准。',
+    ],
+    whenToUse: [
+      '需要低延迟、高吞吐的高频对话或客服请求时',
+      '需要代码补全、解释、轻量审查和开发辅助时',
+      '需要把分类、抽取、改写、路由等任务放入 Agent 子步骤时',
+      '需要处理中英双语内容或批量文本任务时',
+      '需要在 DeepSeek V4.1 Flash 与 V4 Pro、现有默认模型之间做固定样本对比时',
+    ],
+    integrationNotes: [
+      '使用 GPT88 OpenAI 兼容 Base URL https://api.gpt88.cc，并将请求体 model 设置为 deepseek-v4.1-flash。',
+      '首次接入先调用 GET /v1/models，确认当前 API Key 已开放该模型，再发送最小的 POST /v1/chat/completions 请求。',
+      '建议依次验证非流式、streaming、工具调用、超时与重试；记录首 token 延迟、端到端耗时、成功率和实际用量。',
+      '复杂代码、长文档和高风险决策不要仅依赖 Flash 路线；可设置 DeepSeek V4 Pro 或已验证模型作为升级与回退路径。',
+    ],
+    caveats: [
+      '“Flash”描述的是速度优先定位，不代表每个提示词、尺寸、并发或线路下都一定更快；应使用真实业务样本实测。',
+      '模型是否开放、价格、上下文、限速、线路、工具和最终扣费以 GPT88 控制台及当前 API Key 为准。',
+      '新模型上线后可能存在响应行为或参数支持变化，建议先灰度，不要未经验证替换全部生产流量。',
+      '涉及支付、权限、生产写入和高风险内容时，仍需要独立校验、权限隔离和人工授权。',
     ],
   },
   'gpt-image-2-5': {
@@ -1911,6 +1942,15 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['GPT88 新增主推模型入口，具体价格、权限和线路以控制台为准。'],
   },
   {
+    // 2026-09-11 GPT88 上新补丁：等待下一次公开 marketplace snapshot 收录。
+    canonical_name: 'deepseek-v4.1-flash',
+    display_name: 'deepseek-v4.1-flash',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['deepseek-v4.1-flash'],
+    descriptions_sample: ['DeepSeek V4.1 Flash 主推模型，速度与吞吐优先，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     // 2026-09-08 GPT88 上新补丁：等待下一次公开 marketplace snapshot 收录。
     canonical_name: 'gpt-image-2.5',
     display_name: 'ChatGPT Images 2.5',
@@ -2148,6 +2188,35 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'No independently verifiable official benchmark scores are published in this documentation. Capability labels describe positioning and an evaluation design, not universal performance guarantees.',
       'Keep a validated fallback route until the model passes your own quality, latency, cost, and reliability checks.',
       'High-risk code, database, payment, permission, and production actions still require independent review, deterministic tests, and human authorization.',
+    ],
+  },
+  'deepseek-v4-1-flash': {
+    tagline: 'GPT88 featured DeepSeek V4.1 Flash route for fast, high-throughput chat, coding help, and agent subtasks.',
+    capabilities: ['Low-latency positioning', 'Bilingual workflows', 'Coding assistance', 'Streaming', 'Tool use'],
+    scenarios: ['High-frequency chat', 'Support and ticketing', 'Code completion', 'Agent subtasks', 'Batch text processing'],
+    overview: [
+      'DeepSeek V4.1 Flash is a newly promoted DeepSeek route in GPT88, positioned around speed, throughput, and efficient everyday workloads.',
+      'It is a practical candidate for high-frequency chat, coding assistance, classification, extraction, content processing, and bounded agent subtasks. Compare a stronger model for deeper reasoning or complex long-document work.',
+      'This page describes GPT88 catalog positioning and does not hardcode dynamic context, pricing, limits, tools, or SLA. Confirm availability with the console and GET /v1/models for the current API key.',
+    ],
+    whenToUse: [
+      'Use it for low-latency, high-throughput chat and support requests',
+      'Use it for code completion, explanations, lightweight review, and developer assistance',
+      'Assign classification, extraction, rewriting, and routing to it as bounded agent steps',
+      'Process Chinese, English, or bilingual text in frequent batch workflows',
+      'Compare it with DeepSeek V4 Pro and your current default on a fixed workload before rollout',
+    ],
+    integrationNotes: [
+      'Use the GPT88 OpenAI-compatible base URL https://api.gpt88.cc and set model to deepseek-v4.1-flash.',
+      'Call GET /v1/models first, then send a minimal POST /v1/chat/completions request to confirm access.',
+      'Validate non-streaming, streaming, tool calls, timeouts, and retries separately; record first-token latency, end-to-end latency, success rate, and usage.',
+      'Keep DeepSeek V4 Pro or another validated model as an escalation and fallback route for complex or high-risk work.',
+    ],
+    caveats: [
+      'Flash describes a speed-first position; it does not guarantee lower latency for every prompt, concurrency level, or route. Test representative workloads.',
+      'Availability, pricing, context, rate limits, routes, tools, and final charges are determined by the current GPT88 console and API key.',
+      'New-model behavior and parameter support can change after launch. Start with a staged rollout before changing all production traffic.',
+      'Payment, permissions, production writes, and other high-risk actions still require independent checks, isolation, and human authorization.',
     ],
   },
   'grok-4-6': {

@@ -16,6 +16,7 @@
 ## English model API references
 
 - [gpt-6-astra API Docs](https://doc.gpt88.cc/en/models/gpt-6-astra/): English API reference for gpt-6-astra. Model ID: gpt-6-astra. OpenAI-compatible endpoint: /v1/chat/completions.
+- [deepseek-v4.1-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-1-flash/): English API reference for deepseek-v4.1-flash. Model ID: deepseek-v4.1-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [grok-4.6 API Docs](https://doc.gpt88.cc/en/models/grok-4-6/): English API reference for grok-4.6. Model ID: grok-4.6. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
@@ -41,6 +42,7 @@
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
+- [ai-image-prompts-skill：让 Agent 从一万条图片提示词中找答案](https://doc.gpt88.cc/docs/blog/ai-image-prompts-agent-search/): 介绍 ai-image-prompts-skill 的大规模提示词检索思路，说明如何把自然语言需求转换成案例搜索、候选 Prompt、变量替换和连续生图流程。
 - [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
 - [AI 会生成 PPT 之后，为什么 Runtime 才决定上限？](https://doc.gpt88.cc/docs/blog/ai-ppt-runtime-artifact-runtime/): 从一次性 PPT 文件到可持续操作的 Artifact，理解 Artifact Runtime、Observe-Address-Operate-Verify 工作循环、布局语义和领域对象。
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
@@ -48,6 +50,9 @@
 - [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
 - [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
+- [Applied AI Field Guide：FDE 如何从真实工作走到可接受结果](https://doc.gpt88.cc/docs/blog/applied-ai-field-guide-fde-methodology/): 介绍 Applied AI Field Guide 的应用型 AI 交付方法，解释现场调研、价值判断、机制选择、垂直切片、评测验收和生产运营如何组成完整生命周期。
+- [Awesome-AI-Images-Prompts：如何对照不同模型的生图写法](https://doc.gpt88.cc/docs/blog/awesome-ai-images-prompts-cross-model/): 介绍 Awesome-AI-Images-Prompts 的跨模型中文提示词思路，比较 GPT Image、Nano Banana、即梦、豆包和 FLUX 等工具的表达差异与迁移方法。
+- [awesome-gpt-image-2：从案例库学习工业级图片提示词](https://doc.gpt88.cc/docs/blog/awesome-gpt-image-2-industrial-prompts/): 介绍 awesome-gpt-image-2 的案例和模板思路，拆解海报、电商图、信息图、UI 和品牌视觉等任务如何从参考画面中提取可复用提示词结构。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
 - [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
 - [ChatGPT 桌面版更新后提示 Unable to locate the Codex CLI binary：排查与修复指南](https://doc.gpt88.cc/docs/blog/chatgpt-desktop-codex-cli-binary-fix/): 整理 ChatGPT 桌面版更新后无法启动 Codex 的排查记录，解释桌面端与 Codex CLI 的关系，覆盖 PATH、npm 全局安装、Windows 原生二进制、版本错配和安全回滚。
@@ -71,8 +76,12 @@
 - [DeepSeek Harness 架构全解：从 Model + Harness 到插件树、Session Log 与安全管线](https://doc.gpt88.cc/docs/blog/deepseek-harness-architecture-explained/): 整理 Russell 关于 DeepSeek Harness 的架构长文，解释 Agent = Model + Harness、Profile、Cordis 插件生命周期、Turn 与 Step、Session Log、工具审批、Capability Seam、子 Agent 与远程沙箱。
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
+- [企业上 AI 之前，先把数据治理做对：从纸质档案到可查询数据](https://doc.gpt88.cc/docs/blog/enterprise-data-governance-before-ai/): 从纸质维修单、扫描版产品手册和 Excel 配件表出发，系统整理企业数据治理流程，说明 OCR、表格解析、清洗、版本、权限、验收和持续维护如何为知识库与 AI 打基础。
 - [AI Agent 时代的 FDE：如何把模型能力落到真实业务里](https://doc.gpt88.cc/docs/blog/fde-ai-agent-interview-business-delivery/): 整理 JODA 中文访谈中关于 FDE 与企业 AI 交付的核心主题，解释 FDE 的职责、业务调研、场景选择、Agent 工作流、评估验收、人工协作和持续运营方法。
 - [FDE 小团队如何从 0 到 1 做企业 AI 服务：获客、报价、交付与验收 SOP](https://doc.gpt88.cc/docs/blog/fde-enterprise-ai-service-delivery-sop/): 整理企业 AI 服务从线索获取、客户筛选、现场调研、需求边界、报价、SOW、开发交付、测试验收、回款到复盘的完整方法，帮助 FDE 和小团队把模糊的 Agent 想法变成可执行、可测试、可交付的业务结果。
+- [FDE 开源工具箱：用四个项目搭建企业 AI 交付体系](https://doc.gpt88.cc/docs/blog/fde-open-source-toolbox-overview/): 从 Applied AI Field Guide、FDEOps、FDEstack 和 OpenFDE 四个开源项目出发，整理企业 AI 项目从现场调研、价值判断、客户交付到知识记忆和 Agent 协作的完整地图。
+- [FDEOps：如何管理客户现场的 AI 交付、验收与移交](https://doc.gpt88.cc/docs/blog/fdeops-client-delivery-governance/): 介绍 FDEOps 的客户交付治理思路，拆解简报、成功标准、决策权、风险、上线、验收和移交记录，帮助 FDE 小团队减少现场信息丢失。
+- [FDEstack：把客户发现、POC 和生产集成变成可复用工作流](https://doc.gpt88.cc/docs/blog/fdestack-fde-workflow/): 介绍 FDEstack 的八个 Claude Code Skill，解释它如何把客户上下文、需求范围、价值框架、POC、生产集成和复盘串成一套可重复的 FDE 工作流。
 - [AI 生成图片文字错了怎么改，才能不破坏原设计](https://doc.gpt88.cc/docs/blog/fix-text-in-ai-image-without-changing-design/): AI 海报或商品卡文字出错时，别只靠提示词重绘。按风险选择路径：先找源文件改真实文字层，无源文件时重建可编辑图层，再退而抹字重排，只有低风险装饰字才用局部 AI 修复，交付前用五分钟验收清单逐字核对。
 - [免费 AI 图像生成器每日积分怎么选：额度、限制和上传安全](https://doc.gpt88.cc/docs/blog/free-ai-image-generator-daily-credits/): 免费 AI 图像生成器不要先按"谁的积分最多"来选。先分清每日重置、每日领取、快速生成额度、计算单位、新手积分、无积分沙盒和付费后备这几种合约，再按练习、设计、上传和商用场景选择，附 9 个免费额度路线实例与上传前信任清单。
 - [Gemini 3.1 Flash Image 免费层：官方 API 付费，AI Studio 只能测试](https://doc.gpt88.cc/docs/blog/gemini-3-1-flash-image-preview-api/): 确认 gemini-3.1-flash-image 是否有官方 API 免费层、AI Studio 能做什么、当前模型 ID 怎么写，以及 Standard、Batch、Gemini Apps 与实时额度检查的区别，附定价表和上线前额度检查步骤。
@@ -117,7 +126,10 @@
 - [GPT Image 2 Skill：先审代码，再决定安装还是走官方 API](https://doc.gpt88.cc/docs/blog/gpt-image-2-skill/): GPT Image 2 Skill 是围绕 OpenAI gpt-image-2 的第三方生图技能与 CLI。安装前先看 README、SKILL.md、脚本、依赖、密钥处理与输出路径，再决定安装、走 Image API、Responses API 还是直接用 ChatGPT。
 - [GPT Image 2 使用限制：ChatGPT 次数、API 速率限制和 429 处理](https://doc.gpt88.cc/docs/blog/gpt-image-2-usage-limits/): GPT Image 2 的限制不是一个数字。区分 ChatGPT 图片次数、OpenAI API 的 TPM/IPM 与月度用量、Azure 配额和第三方 gateway 额度，先判断拦截你的 owner 与被耗尽的 bucket，再决定等待、降速、提额或换路线。
 - [Nano Banana Pro vs GPT Image 2：通过验收的单张成本怎么算](https://doc.gpt88.cc/docs/blog/gpt-image-2-vs-nano-banana-pro/): 比较 Nano Banana Pro 与 GPT Image 2 不能只看标价。用价格归一矩阵对齐质量与分辨率，再把失败尝试、人工审核与修复计入通过验收单张成本，配合盈亏平衡工作表与四镜头验收卡判断本次工作负载的便宜路线、平局或无有效赢家。
+- [GPT Image 提示词工具箱：六个开源项目如何组成生图工作流](https://doc.gpt88.cc/docs/blog/gpt-image-prompt-toolbox-overview/): 整理 GPT Image 提示词与 Agent 资源，比较案例库、中文提示词、结构化数据、跨模型清单和 Agent Skill 的定位，给出从找参考到稳定生成的实践路径。
+- [GPT-Image2-Skill：把图片提示词库接入 Codex 和 Claude Code](https://doc.gpt88.cc/docs/blog/gpt-image2-skill-agent-workflow/): 介绍 GPT-Image2-Skill 的 Agent Skill 与 CLI 工作流，说明如何从案例搜索、生成图片、编辑参考图到反推提示词，并梳理接入时的权限和配置边界。
 - [GPT Images 2.5 首发实测：手绘成图、指哪改哪与多轮一致性](https://doc.gpt88.cc/docs/blog/gpt-images-2-5-first-look/): 整理 GPT Images 2.5 的首发实测，覆盖 Sketch 草图参考、Comment 局部编辑、Templates 模板、多轮编辑、透明背景和 Prompt 共享，并给出 GPT88 图片 API 的接入建议。
+- [gpt4o-image-prompts：中文图片提示词与结构化数据怎么用](https://doc.gpt88.cc/docs/blog/gpt4o-image-prompts-structured-data/): 介绍 gpt4o-image-prompts 的中文提示词资源和 prompts.json 数据结构，说明如何用于中文配图、模型对照、Prompt 搜索和二次开发。
 - [GPT88公益站是什么？官方文档、API 接入与安全使用指南](https://doc.gpt88.cc/docs/blog/gpt88-gongyi-site/): 搜索 GPT88公益站、GPT88公益站官网或 GPT88 API 时，如何找到正确的文档、主站、图片工作台和 API 入口？本文整理官方入口、Base URL、模型调用、计费说明、常见问题与安全使用方法。
 - [GPT88 Skill 完整指南：作用、安装使用方法与适用场景](https://doc.gpt88.cc/docs/blog/gpt88-skill-agent-onboarding-guide/): GPT88 Skill 是一套面向 Agent 的 GPT88 接入工作流，覆盖 OpenAI SDK、Cursor、Codex、Claude Code、Cline、账号登录、API Key、模型发现、价格查询、用量管理和安全排障。本文解释它的作用、使用方式与场景。
 - [Grok 免费生图替代怎么选？中国大陆可用路线与避坑清单](https://doc.gpt88.cc/docs/blog/grok-alternative-for-image-generation-free/): Grok Imagine 不能用或额度不够时，按中国大陆可用性、中文文字、改图、商用权利与隐私选择免费 AI 生图替代：Qwen Studio、Qwen-Image + ComfyUI 本地部署与 Adobe Firefly，并附免费入口的六项合同检查与两轮测试评分表。
@@ -157,6 +169,7 @@
 - [Nano Banana Pro去水印完整指南：5种方法获取无水印AI图片【2026实测】](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark-removal/): 详细介绍Nano Banana Pro去水印的5种有效方法，包括官方订阅、第三方API、专业工具对比。深入解析可见水印与SynthID的区别，帮你选择最适合的无水印获取方案。
 - [Nano Banana 免费无可见水印：AI Studio、Gemini 免费版与 API 怎么选](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark/): 想免费获得没有可见 Gemini 标记的 Nano Banana 图片？先分清 Google AI Studio 免费试用、Gemini 免费版的可见标记、图像 API 付费边界，以及始终保留的 SynthID。
 - [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 官方最新模型指南，整理 GPT-6 Astra 的核心能力、新增工具调用方式、提示词策略、迁移参数、Responses API 接入与 GPT88 使用排障。
+- [OpenFDE：把客户访谈、业务记忆和 Agent 任务连成一条证据链](https://doc.gpt88.cc/docs/blog/openfde-local-first-fde-memory/): 介绍 OpenFDE 的本地优先 FDE 工作区，拆解来源引用、业务本体、任务状态机、Agent 上下文、评测验收和执行报告之间的关系。
 - [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
 - [Palantir AIP 架构总览：企业 Agent 的完整能力地图](https://doc.gpt88.cc/docs/blog/palantir-aip-architecture/): 按 Palantir AIP 架构的能力层次，系统拆解模型接入、上下文工程、Ontology、工具、Agent 生命周期、自动化、评估、观测和企业级 AI 交付。
 - [AIP、Foundry 与 Apollo：Palantir 企业操作系统的三层协作](https://doc.gpt88.cc/docs/blog/palantir-aip-foundry-apollo/): 详细拆解 Palantir AIP、Foundry、Apollo 三个平台的职责边界、协作关系、安全模型和 AI Agent 落地方法，帮助 AI FDE 建立企业级架构视角。
@@ -325,6 +338,7 @@
 - [deepseek-v3-0324](https://doc.gpt88.cc/models/deepseek-v3-0324/): DeepSeek deepseek-v3-0324 · CHAT 模型，Model ID: deepseek-v3-0324，接口路径: /v1/chat/completions。
 - [deepseek-v3.1](https://doc.gpt88.cc/models/deepseek-v3-1/): DeepSeek deepseek-v3.1 · CHAT 模型，Model ID: deepseek-v3.1，接口路径: /v1/chat/completions。
 - [DeepSeek-V3.2](https://doc.gpt88.cc/models/deepseek-v3-2/): DeepSeek DeepSeek-V3.2 · CHAT 模型，Model ID: deepseek-v3.2，接口路径: /v1/chat/completions。
+- [deepseek-v4.1-flash](https://doc.gpt88.cc/models/deepseek-v4-1-flash/): DeepSeek deepseek-v4.1-flash · CHAT 模型，Model ID: deepseek-v4.1-flash，接口路径: /v1/chat/completions。
 - [deepseek-v4-flash](https://doc.gpt88.cc/models/deepseek-v4-flash/): DeepSeek deepseek-v4-flash · CHAT 模型，Model ID: deepseek-v4-flash，接口路径: /v1/chat/completions。
 - [deepseek-v4-pro](https://doc.gpt88.cc/models/deepseek-v4-pro/): DeepSeek deepseek-v4-pro · CHAT 模型，Model ID: deepseek-v4-pro，接口路径: /v1/chat/completions。
 - [deepseek-v4-pro-search](https://doc.gpt88.cc/models/deepseek-v4-pro-search/): DeepSeek deepseek-v4-pro-search · CHAT 模型，Model ID: deepseek-v4-pro-search，接口路径: /v1/chat/completions。

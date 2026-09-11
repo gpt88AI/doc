@@ -14,13 +14,13 @@
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
+- [ai-image-prompts-skill：让 Agent 从一万条图片提示词中找答案](https://doc.gpt88.cc/docs/blog/ai-image-prompts-agent-search/): 介绍 ai-image-prompts-skill 的大规模提示词检索思路，说明如何把自然语言需求转换成案例搜索、候选 Prompt、变量替换和连续生图流程。
 - [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
 - [AI 会生成 PPT 之后，为什么 Runtime 才决定上限？](https://doc.gpt88.cc/docs/blog/ai-ppt-runtime-artifact-runtime/): 从一次性 PPT 文件到可持续操作的 Artifact，理解 Artifact Runtime、Observe-Address-Operate-Verify 工作循环、布局语义和领域对象。
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
 - [AI 去除图片文字：上传前先选对安全路径](https://doc.gpt88.cc/docs/blog/ai-remove-text-from-image/): 用 AI 去除图片文字前，先判断它是普通说明、设计源文件、隐私内容、复杂背景，还是水印和权属标记，再选择在线工具、编辑器、专业修图、源文件重建或停止。
 - [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
 - [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
-- [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
 
 ## GPT88公益站搜索入口
 
@@ -131,6 +131,7 @@
 - [claude-opus-4-7](https://doc.gpt88.cc/models/claude-opus-4-7/): Anthropic claude-opus-4-7 · CHAT 模型，Model ID: claude-opus-4-7，接口路径: /v1/chat/completions。
 - [claude-opus-4-8](https://doc.gpt88.cc/models/claude-opus-4-8/): Anthropic claude-opus-4-8 · CHAT 模型，Model ID: claude-opus-4-8，接口路径: /v1/chat/completions。
 - [claude-sonnet-4-6](https://doc.gpt88.cc/models/claude-sonnet-4-6/): Anthropic claude-sonnet-4-6 · CHAT 模型，Model ID: claude-sonnet-4-6，接口路径: /v1/chat/completions。
+- [deepseek-v4.1-flash](https://doc.gpt88.cc/models/deepseek-v4-1-flash/): DeepSeek deepseek-v4.1-flash · CHAT 模型，Model ID: deepseek-v4.1-flash，接口路径: /v1/chat/completions。
 - [deepseek-v4-flash](https://doc.gpt88.cc/models/deepseek-v4-flash/): DeepSeek deepseek-v4-flash · CHAT 模型，Model ID: deepseek-v4-flash，接口路径: /v1/chat/completions。
 - [deepseek-v4-pro](https://doc.gpt88.cc/models/deepseek-v4-pro/): DeepSeek deepseek-v4-pro · CHAT 模型，Model ID: deepseek-v4-pro，接口路径: /v1/chat/completions。
 - [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4/): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
@@ -138,11 +139,11 @@
 - [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
 - [gpt-5.6-sol](https://doc.gpt88.cc/models/gpt-5-6-sol/): OpenAI gpt-5.6-sol · CHAT 模型，Model ID: gpt-5.6-sol，接口路径: /v1/chat/completions。
 - [gpt-5.6-terra](https://doc.gpt88.cc/models/gpt-5-6-terra/): OpenAI gpt-5.6-terra · CHAT 模型，Model ID: gpt-5.6-terra，接口路径: /v1/chat/completions。
-- [gpt-6-astra](https://doc.gpt88.cc/models/gpt-6-astra/): OpenAI gpt-6-astra · CHAT 模型，Model ID: gpt-6-astra，接口路径: /v1/chat/completions。
 
 ## English model API references
 
 - [gpt-6-astra API Docs](https://doc.gpt88.cc/en/models/gpt-6-astra/): English API reference for gpt-6-astra. Model ID: gpt-6-astra. OpenAI-compatible endpoint: /v1/chat/completions.
+- [deepseek-v4.1-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-1-flash/): English API reference for deepseek-v4.1-flash. Model ID: deepseek-v4.1-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [grok-4.6 API Docs](https://doc.gpt88.cc/en/models/grok-4-6/): English API reference for grok-4.6. Model ID: grok-4.6. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-terra API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-terra/): English API reference for gpt-5.6-terra. Model ID: gpt-5.6-terra. OpenAI-compatible endpoint: /v1/chat/completions.
