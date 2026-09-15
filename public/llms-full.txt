@@ -81,6 +81,7 @@
 - [AI Agent 时代的 FDE：如何把模型能力落到真实业务里](https://doc.gpt88.cc/docs/blog/fde-ai-agent-interview-business-delivery/): 整理 JODA 中文访谈中关于 FDE 与企业 AI 交付的核心主题，解释 FDE 的职责、业务调研、场景选择、Agent 工作流、评估验收、人工协作和持续运营方法。
 - [FDE 小团队如何从 0 到 1 做企业 AI 服务：获客、报价、交付与验收 SOP](https://doc.gpt88.cc/docs/blog/fde-enterprise-ai-service-delivery-sop/): 整理企业 AI 服务从线索获取、客户筛选、现场调研、需求边界、报价、SOW、开发交付、测试验收、回款到复盘的完整方法，帮助 FDE 和小团队把模糊的 Agent 想法变成可执行、可测试、可交付的业务结果。
 - [FDE 开源工具箱：用四个项目搭建企业 AI 交付体系](https://doc.gpt88.cc/docs/blog/fde-open-source-toolbox-overview/): 从 Applied AI Field Guide、FDEOps、FDEstack 和 OpenFDE 四个开源项目出发，整理企业 AI 项目从现场调研、价值判断、客户交付到知识记忆和 Agent 协作的完整地图。
+- [企业 AI Native 怎么落地：从 Palantir Ontology 到真实 FDE 交付](https://doc.gpt88.cc/docs/blog/fde-palantir-ontology-five-day-delivery/): 整理 Miles Ma 关于 AI Native、Palantir Ontology、五天 PoC 和 FDE 交付的长文，拆解对象、关系、动作、写回、验收与复用，区分真正的企业 AI 落地和换皮 Demo。
 - [零基础如何进入 FDE：从第一个真实交付到可复用的 AI 落地能力](https://doc.gpt88.cc/docs/blog/fde-zero-to-one-entry-guide/): 整理 Formulasearch 关于 FDE 入行路径与能力成长的实践分享，拆解实习入口、AI Coding 转向、真实项目、客户交付、能力评估、面试准备、职业边界与长期资产沉淀。
 - [FDEOps：如何管理客户现场的 AI 交付、验收与移交](https://doc.gpt88.cc/docs/blog/fdeops-client-delivery-governance/): 介绍 FDEOps 的客户交付治理思路，拆解简报、成功标准、决策权、风险、上线、验收和移交记录，帮助 FDE 小团队减少现场信息丢失。
 - [FDEstack：把客户发现、POC 和生产集成变成可复用工作流](https://doc.gpt88.cc/docs/blog/fdestack-fde-workflow/): 介绍 FDEstack 的八个 Claude Code Skill，解释它如何把客户上下文、需求范围、价值框架、POC、生产集成和复盘串成一套可重复的 FDE 工作流。
@@ -190,6 +191,7 @@
 - [从 Skill 到订单：Agent Harness 如何加载能力、调用工具并结构化交易数据](https://doc.gpt88.cc/docs/blog/skill-tool-agent-order-data-flow/): 以 OTC 交易为例，逐步解释 Skill 如何加载、Tool 如何定义、Agent 如何调用 Tool，以及订单数据如何从自然语言变成可审计的结构化对象。
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Uber 软件工厂实践：如何规模化管理 Agent、Token 成本与模型路由](https://doc.gpt88.cc/docs/blog/uber-software-factory-agent-cost-optimization/): 整理 Uber Engineering 软件工厂实践，解释 Agent 使用的四层模型、成本拆解、基准测试选型、Prompt Cache、MCP 工具按需加载、Code-Mode、上下文工程与会话成本可视化，并提炼可复用的 GPT88 Agent 优化方法。
+- [Vibe Marketing：Solo Founder 如何成为营销工程师](https://doc.gpt88.cc/docs/blog/vibe-marketing-marketing-engineer-workflow/): 整理 Shann³ 关于 Marketing Engineer 的长文，拆解 Vibe Marketing、Agent Development Environment、营销知识层、数据层、工作流、审核循环与自治机器人，并给出可执行的第一条营销工作流。
 - [Wechatian：把微信变成 AI Agent 与 Obsidian 知识库的双向通道](https://doc.gpt88.cc/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/): 总结 Wechatian 的核心思路、消息收发架构、隐私边界、文章剪藏与 Agent 通知场景，以及在 Obsidian 中安装和接入的方法。
 - [什么是 Nano Banana？功能、价格与 Prompt 技巧一文搞懂（2026 完全指南）](https://doc.gpt88.cc/docs/blog/what-is-nano-banana-guide/): 全面解析 Google 的 Nano Banana 图像生成技术：从 Gemini 2.5 Flash Image 到 Nano Banana Pro 的发展历史、核心功能、免费与付费配额、3D 手办病毒式传播事件，以及最佳 Prompt 技巧。
 - [为什么 Agent 要把 Skill 和 Tool 分成两个能力层？](https://doc.gpt88.cc/docs/blog/why-agent-skills-and-tools-should-be-separated/): 从 DeepSeek Harness 的插件化设计出发，解释 Skill 与 Tool 的职责边界、Agent Loop 中的协作方式，以及它们在 RAG、OTC 撮合和金融级 Agent 系统中的实践价值。
