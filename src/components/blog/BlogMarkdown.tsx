@@ -9,7 +9,7 @@ import { localizedContentPath, useLocale } from '../../lib/locale'
  *
  * 复用 react-markdown + remark-gfm + rehype-highlight（依赖已在 package.json）。
  * 内链统一走 react-router 的 Link 并做 locale 前缀处理；外链新窗口打开。
- * 图片资源未随文迁移，统一渲染成 alt 文本，避免出现死链破图。
+ * 图片资源使用文章中的静态路径渲染，并限制最大宽度，避免破坏正文布局。
  */
 export function BlogMarkdown({ markdown }: { markdown: string }) {
   const { locale } = useLocale()
@@ -41,7 +41,16 @@ export function BlogMarkdown({ markdown }: { markdown: string }) {
               </a>
             )
           },
-          img: ({ alt }) => (alt ? <span className="text-ink-400">{alt}</span> : null),
+          img: ({ alt = '', src = '', title }) => (
+            <img
+              src={src}
+              alt={alt}
+              title={title}
+              loading="lazy"
+              decoding="async"
+              className="my-6 h-auto max-w-full rounded-xl border border-white/10"
+            />
+          ),
         }}
       >
         {markdown}
