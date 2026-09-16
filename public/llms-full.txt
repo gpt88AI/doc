@@ -91,6 +91,7 @@
 - [FDEOps：如何管理客户现场的 AI 交付、验收与移交](https://doc.gpt88.cc/docs/blog/fdeops-client-delivery-governance/): 介绍 FDEOps 的客户交付治理思路，拆解简报、成功标准、决策权、风险、上线、验收和移交记录，帮助 FDE 小团队减少现场信息丢失。
 - [FDEstack：把客户发现、POC 和生产集成变成可复用工作流](https://doc.gpt88.cc/docs/blog/fdestack-fde-workflow/): 介绍 FDEstack 的八个 Claude Code Skill，解释它如何把客户上下文、需求范围、价值框架、POC、生产集成和复盘串成一套可重复的 FDE 工作流。
 - [AI 生成图片文字错了怎么改，才能不破坏原设计](https://doc.gpt88.cc/docs/blog/fix-text-in-ai-image-without-changing-design/): AI 海报或商品卡文字出错时，别只靠提示词重绘。按风险选择路径：先找源文件改真实文字层，无源文件时重建可编辑图层，再退而抹字重排，只有低风险装饰字才用局部 AI 修复，交付前用五分钟验收清单逐字核对。
+- [14 个大模型同做一道量化题：谁写出了更好的交易策略？](https://doc.gpt88.cc/docs/blog/fourteen-llm-quant-trading-benchmark-ep007/): 整理 frank-quant 的 EP007 量化交易大模型基准测试，复盘 14 个模型、8 家厂商、9 套官方 harness 在同一份数据和同一张考卷上的表现，并分析样本外收益、稳健性、代码质量、成本与末端强平偏差。
 - [免费 AI 图像生成器每日积分怎么选：额度、限制和上传安全](https://doc.gpt88.cc/docs/blog/free-ai-image-generator-daily-credits/): 免费 AI 图像生成器不要先按"谁的积分最多"来选。先分清每日重置、每日领取、快速生成额度、计算单位、新手积分、无积分沙盒和付费后备这几种合约，再按练习、设计、上传和商用场景选择，附 9 个免费额度路线实例与上传前信任清单。
 - [Gemini 3.1 Flash Image 免费层：官方 API 付费，AI Studio 只能测试](https://doc.gpt88.cc/docs/blog/gemini-3-1-flash-image-preview-api/): 确认 gemini-3.1-flash-image 是否有官方 API 免费层、AI Studio 能做什么、当前模型 ID 怎么写，以及 Standard、Batch、Gemini Apps 与实时额度检查的区别，附定价表和上线前额度检查步骤。
 - [Gemini 3.1 Flash Lite Image API 最便宜路线：Google 官方价格与 GPT88 网关怎么选](https://doc.gpt88.cc/docs/blog/gemini-3-1-flash-lite-image-cheapest/): 分清 gemini-3.1-flash-lite-image 的 Google 官方 Standard/Batch 价格、GPT88 网关的 Nano Banana Standard 低价路线，以及不带 image 的 gemini-3.1-flash-lite 文本模型为何不能用于生图预算，避免混价。
