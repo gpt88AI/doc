@@ -1,0 +1,1 @@
+import{i as e}from"./vendor-DmtF3rpi.js";function t(...t){return e(t.filter(Boolean).join(` `))}export{t};

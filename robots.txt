@@ -1,0 +1,14 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://doc.gpt88.cc/sitemap.xml
+Sitemap: https://doc.gpt88.cc/sitemap-index.xml
