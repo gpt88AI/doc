@@ -86,6 +86,7 @@
 - [WorkRally 场次与剧集工作流](https://doc.gpt88.cc/docs/guides/workrally-shot-workflow/): 详细说明 WorkRally 的 project、series、shot 结构，以及场次创建、角色识别、模型配置、批量生成、结果查询和多场次工作流。
 - [WorkRally 常见坑点与错误排查](https://doc.gpt88.cc/docs/guides/workrally-common-pitfalls/): 汇总 WorkRally CLI 最容易出错的 10 类问题，帮助快速判断项目与画布、上传入库、URL、模型、资产树和节点结构问题。
 - [GPT88 Agent 图片工作台教程](https://doc.gpt88.cc/docs/guides/agent-image-studio/): 使用 agent.gpt88.cc 的 gpt-image-2 图片工作台生成电商主图、场景图、模特图、详情页素材、案例模板和批量图片。
+- [AI 工具导航：1,809 个工具与分类索引](https://doc.gpt88.cc/docs/guides/ai-tools/): 根据禾维 AI（Hvoy AI）公开 AI 工具集整理的分类导航快照，包含 1,809 个工具、13 个一级分类、子分类、简介和官方入口。
 - [电商工具专题教程](https://doc.gpt88.cc/docs/guides/ecommerce-tools-special/): 整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。
 - [GPT-Image-2 生图服务通知与选型指南](https://doc.gpt88.cc/docs/guides/gpt-image-2-service-notice/): 详细说明 gpt88.cc 统一图片 API、GPT-Image-2 生图入口、原生 4K 与超分 4K 的区别、价格口径和电商/短剧/广告场景选型建议。
 - [异步生图支持公告](https://doc.gpt88.cc/docs/guides/async-image-generation-notice/): 公告说明 GPT88 异步图片任务的提交、task_id、状态轮询、结果下载、同步与异步选型，以及动态字段和计费边界。

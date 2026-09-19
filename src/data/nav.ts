@@ -338,6 +338,11 @@ export const DOCS_NAV: NavSection[] = [
         blurb: '使用 agent.gpt88.cc 生成电商主图、场景图、模特图、详情页素材和批量图片',
       },
       {
+        title: 'AI 工具导航',
+        path: '/docs/guides/ai-tools/',
+        blurb: '按分类浏览禾维 AI 公开目录中的 1,809 个 AI 工具与官方入口',
+      },
+      {
         title: '电商工具专题教程',
         path: '/docs/guides/ecommerce-tools-special/',
         blurb: '一套更详细的电商工具实操教程，覆盖入门、提示词、图生图、模板、工具箱、批量工作流和交付检查',
@@ -706,6 +711,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
   '/docs/guides/workrally-shot-workflow/': 'Projects, series, shots, character recognition, model configuration, batch generation, and result lookup',
   '/docs/guides/workrally-common-pitfalls/': 'Ten common failure patterns and the recommended troubleshooting order for project, canvas, upload, URL, model, and node issues',
   '/docs/guides/agent-image-studio/': 'Use agent.gpt88.cc for ecommerce hero images, scene images, model images, detail-page assets, and batch image generation',
+  '/docs/guides/ai-tools/': 'Browse 1,809 AI tools from the public Hvoy AI directory by category, subcategory, and keyword',
   '/docs/guides/ecommerce-tools-special/': 'Detailed ecommerce tooling tutorials covering onboarding, prompting, image-to-image, templates, toolboxes, batch workflows, and delivery checks',
   '/docs/guides/gpt-image-2-service-notice/': 'agent.gpt88.cc image workspace, the https://img.gpt88.cc image API, native 4K vs upscaled 4K, pricing rules, and customer scenario guidance',
   '/docs/guides/async-image-generation-notice/': 'Async image task submission, task IDs, polling, result downloads, and sync versus async selection',

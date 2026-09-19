@@ -36,6 +36,7 @@ import {
   AgentImageStudioGuidePage,
   AsyncImageGenerationGuidePage,
   AsyncImageGenerationNoticePage,
+  AiToolsDirectoryPage,
   ApiKeyFirstRequestFailedPage,
   AiVideoStoryboardGuidePage,
   AnythingLlmPage,
@@ -191,6 +192,7 @@ export default function App() {
         <Route path="guides/workrally-shot-workflow" element={route(<WorkrallyShotWorkflowPage />)} />
         <Route path="guides/workrally-common-pitfalls" element={route(<WorkrallyCommonPitfallsPage />)} />
         <Route path="guides/agent-image-studio" element={route(<AgentImageStudioGuidePage />)} />
+        <Route path="guides/ai-tools" element={route(<AiToolsDirectoryPage />)} />
         <Route path="guides/ecommerce-tools-special" element={route(<EcommerceToolsSpecialPage />)} />
         <Route path="guides/gpt-image-2-service-notice" element={route(<GptImage2ServiceNoticePage />)} />
         <Route path="guides/async-image-generation-notice" element={route(<AsyncImageGenerationNoticePage />)} />

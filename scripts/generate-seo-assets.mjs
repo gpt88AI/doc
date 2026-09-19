@@ -337,6 +337,12 @@ const docs = [
     section: '指南',
   },
   {
+    title: 'AI 工具导航：1,809 个工具与分类索引',
+    path: '/docs/guides/ai-tools',
+    description: '根据禾维 AI（Hvoy AI）公开 AI 工具集整理的分类导航快照，包含 1,809 个工具、13 个一级分类、子分类、简介和官方入口。',
+    section: '指南',
+  },
+  {
     title: '电商工具专题教程',
     path: '/docs/guides/ecommerce-tools-special',
     description: '整理成一套更详细的电商工具专题教程，覆盖入门、提示词、图生图、模板、素材中心、工具箱、批量工作流、交付检查和计费。',

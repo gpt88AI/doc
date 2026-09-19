@@ -35,6 +35,7 @@ export { default as CodexPluginsResearchWorkflowPage } from './pages/docs/guides
 export { default as CodexParallelAutomationWorkflowPage } from './pages/docs/guides/CodexParallelAutomationWorkflowPage'
 export { default as CodexProjectFactoryDeliveryPage } from './pages/docs/guides/CodexProjectFactoryDeliveryPage'
 export { default as AgentImageStudioGuidePage } from './pages/docs/guides/AgentImageStudioGuidePage'
+export { default as AiToolsDirectoryPage } from './pages/docs/guides/AiToolsDirectoryPage'
 export { default as EcommerceToolsSpecialPage } from './pages/docs/guides/EcommerceToolsSpecialPage'
 export { default as GptImage2ServiceNoticePage } from './pages/docs/guides/GptImage2ServiceNoticePage'
 export { default as AsyncImageGenerationNoticePage } from './pages/docs/guides/AsyncImageGenerationNoticePage'
