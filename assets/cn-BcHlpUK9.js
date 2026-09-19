@@ -1,0 +1,1 @@
+import{i as e}from"./vendor-5G6bEZcA.js";function t(...t){return e(t.filter(Boolean).join(` `))}export{t};
