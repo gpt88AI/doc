@@ -152,6 +152,7 @@
 - [ImagineArt AI 指南：免费积分、价格、模型和适用场景](https://doc.gpt88.cc/docs/blog/imagineart-ai-guide/): 用免费日积分、订阅与充值积分、Pro 模型访问、商用边界和官方 API 区别，判断 ImagineArt 是否适合你的图片或视频工作流：先试哪条路、先停在哪里，以及哪些场景应直接跳过套件。
 - [ImagineArt 价格、免费积分和评价：付费前先查这几件事](https://doc.gpt88.cc/docs/blog/imagineart-pricing-free-credits-review/): 面向想试用或订阅 ImagineArt 的中文读者：免费积分、付费套餐、网页与 App 付款路线、取消订阅、评价信号和适合跳过的情况，避免把"低价""无限"当成购买承诺。
 - [GPT Image 2 API 免费吗？官方边界和安全测试路线](https://doc.gpt88.cc/docs/blog/is-gpt-image-2-api-free/): 截至 2026-04-25，gpt-image-2 没有可确认的 OpenAI 官方 API 免费层。区分 ChatGPT 应用额度、浏览器测试、provider 试用、用户自付 SDK 与共享 key wrapper，并给出安全测试路线和生产停止规则。
+- [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
 - [删掉 80% Prompt 规则后 Agent 交付更稳：把约束放回系统](https://doc.gpt88.cc/docs/blog/less-prompt-rules-agent-delivery/): 整理腾讯云开发者关于精简 Agent Prompt 的工程思路：把上下文索引、可信事实、工具能力和验证关卡分别承担确定性约束，避免依赖超长提示词记住所有规则。
 - [美团智播：数字人直播从生成模型到业务知识库的工程化实践](https://doc.gpt88.cc/docs/blog/meituan-zhibo-digital-human-practice/): 根据美团技术团队公开摘要整理智播数字人直播链路：形象生成、动作驱动、流式语音与手势协调、直播内容量产和业务知识库如何组合成可运营系统。
 - [Midjourney V8.2 要不要升级？先跑完这张 8 格验收表](https://doc.gpt88.cc/docs/blog/midjourney-8-2-upgrade-decision/): V8.2 已于 2026-07-24 成为默认版本，但旧项目不该只看一张漂亮样图就迁移。用 8 条真实工作提示词、固定控制项和两次重试预算，做出保留、复测或回退决定。
