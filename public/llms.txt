@@ -9,6 +9,8 @@
 
 ## 技术博客
 
+- [让 Agent 可评、可控、可迭代：业务效果导向的评测体系与实践](https://doc.gpt88.cc/docs/blog/agent-business-effect-evaluation/): 整理策略效果类 Agent 的业务评测方法：用五层评测对象、三层评估方法、四步质量归因和三阶段上线治理，把 Prompt、知识、工具、推理与线上效果纳入同一条可回归的质量闭环，并详解 Auto Rubrics、位置偏差、选择过拟合和策略收敛判断。
+- [AI Agent 应用精细化评测：从端到端结果定位到模块级缺陷](https://doc.gpt88.cc/docs/blog/agent-fine-grained-evaluation-practice/): 根据阿里技术公开摘要整理 Agent 精细化评测方法：将端到端任务完成度与感知、规划、记忆、工具调用等模块指标分开设计，建立评测范围、数据集、埋点和缺陷定位之间的映射。
 - [Agent Memory 五层架构：让 Agent 真正记住并持续学习](https://doc.gpt88.cc/docs/blog/agent-memory-5-layer-architecture/): 整理《Agent Memory - The 5-Layer Playbook》的核心框架，解释 Working、Episodic、Semantic、Procedural 与 Forgetting 五层记忆如何协作，以及为什么记忆是 Agent 的工程瓶颈。
 - [Agent Memory 7 天落地路径：从单 Agent 到多 Agent 共享记忆](https://doc.gpt88.cc/docs/blog/agent-memory-build-path-and-multi-agent/): 整理《Agent Memory - The 5-Layer Playbook》的七天构建路线、生产决策框架和多 Agent 记忆边界，帮助团队从事件日志逐步走向共享账本。
 - [Agent Memory 实现：JSONL、SQLite、YAML 与完整执行循环](https://doc.gpt88.cc/docs/blog/agent-memory-implementation-patterns/): 从《Agent Memory - The 5-Layer Playbook》整理 Agent 记忆系统的最小实现模式，覆盖 Episodic JSONL、Semantic SQLite、Procedural YAML、配置文件与 Memory-Aware Agent Loop。
@@ -19,8 +21,6 @@
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
 - [ai-image-prompts-skill：让 Agent 从一万条图片提示词中找答案](https://doc.gpt88.cc/docs/blog/ai-image-prompts-agent-search/): 介绍 ai-image-prompts-skill 的大规模提示词检索思路，说明如何把自然语言需求转换成案例搜索、候选 Prompt、变量替换和连续生图流程。
-- [推理芯片之战：Groq、Cerebras 与 OpenAI 三条路线，到底在比什么？](https://doc.gpt88.cc/docs/blog/ai-inference-chip-war-groq-cerebras-openai/): 整理硅谷101 E251 对 Groq、Cerebras、OpenAI 自研推理芯片与 Bill Dally 设计哲学的讨论，解释为什么推理更看带宽、SRAM 与 HBM 如何取舍，以及芯片、模型和系统如何共同决定速度与能耗。
-- [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
 
 ## GPT88公益站搜索入口
 
