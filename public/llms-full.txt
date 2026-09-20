@@ -296,6 +296,7 @@
 - [ImagineArt AI 指南：免费积分、价格、模型和适用场景](https://doc.gpt88.cc/docs/blog/imagineart-ai-guide/): 用免费日积分、订阅与充值积分、Pro 模型访问、商用边界和官方 API 区别，判断 ImagineArt 是否适合你的图片或视频工作流：先试哪条路、先停在哪里，以及哪些场景应直接跳过套件。
 - [ImagineArt 价格、免费积分和评价：付费前先查这几件事](https://doc.gpt88.cc/docs/blog/imagineart-pricing-free-credits-review/): 面向想试用或订阅 ImagineArt 的中文读者：免费积分、付费套餐、网页与 App 付款路线、取消订阅、评价信号和适合跳过的情况，避免把"低价""无限"当成购买承诺。
 - [GPT Image 2 API 免费吗？官方边界和安全测试路线](https://doc.gpt88.cc/docs/blog/is-gpt-image-2-api-free/): 截至 2026-04-25，gpt-image-2 没有可确认的 OpenAI 官方 API 免费层。区分 ChatGPT 应用额度、浏览器测试、provider 试用、用户自付 SDK 与共享 key wrapper，并给出安全测试路线和生产停止规则。
+- [Jev 完整实战教程：用快速决策模型驱动浏览器、记忆与预测](https://doc.gpt88.cc/docs/blog/jev-full-tutorial-three-demos/): 整理 Moritz Kremb 的 Full Jev Tutorial 与 AYi_AInotes 的中文解读，按时间轴拆解 Jev 的机制、API 接入、语音控制浏览器、长期记忆筛选和 YouTube 概率预测三个实战案例，并给出可靠的工程落地边界。
 - [Jev / System One Model 实测：把语言模型变成软件可直接调用的决策函数](https://doc.gpt88.cc/docs/blog/jev-system-one-model-practical-guide/): 整理 01Coder 对 TypeSafe AI Jev 的视频实测，解释 System One Model、Choice、Score、Boolean、并行评估、概率与置信度，并给出模型路由、内容审核和 LLM 输出校验的工程落地方法。
 - [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
 - [删掉 80% Prompt 规则后 Agent 交付更稳：把约束放回系统](https://doc.gpt88.cc/docs/blog/less-prompt-rules-agent-delivery/): 整理腾讯云开发者关于精简 Agent Prompt 的工程思路：把上下文索引、可信事实、工具能力和验证关卡分别承担确定性约束，避免依赖超长提示词记住所有规则。
