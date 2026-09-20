@@ -347,6 +347,7 @@
 - [Palantir Rubix 基础层：企业 Agent 的安全、高可用与混合部署](https://doc.gpt88.cc/docs/blog/palantir-rubix-substrate/): 解析 Palantir Rubix 基础层的零信任、工作负载隔离、节点周期、自动扩展、蓝绿升级和混合部署思想，帮助 AI FDE 补齐 Agent 生产工程能力。
 - [Pi Agent 扩展选型指南：联网、记忆、子 Agent、MCP 与上下文优化](https://doc.gpt88.cc/docs/blog/pi-agent-essential-extensions-guide/): 整理 Pi Agent 常用扩展推荐，解释 pi-web-access、pi-memory、rpiv-todo、pi-subagents、pi-mcp-adapter 和 context-mode 的作用、适用场景、安装策略与安全边界。
 - [Pi Coding Harness 实践：用 AGENTS.md、Skills 与 Packages 重建可控的编程 Agent](https://doc.gpt88.cc/docs/blog/pi-coding-harness-efficiency-guide/): 整理 Chasen 关于从 Claude Code 转向 Pi Coding Agent 的实践，解释 Coding Harness 的三层结构、按需加载 Skills、子 Agent 并行、上下文管理、验证闭环与权限安全。
+- [Pi Agent 多智能体实战：用 pi-herdr-agents 搭建可监督的 AI 团队](https://doc.gpt88.cc/docs/blog/pi-herdr-agents-multi-agent-workflow/): 整理畅的科技工坊关于 Pi Agent、pi-herdr-agents、subagent 和 workflow 工作流的视频，并结合公开 GitHub 仓库核对安装、角色、并行执行、Herdr 面板、Git worktree 与审查边界，给出可复用的多智能体工程方法。
 - [产品项目初始化 Prompt：让 Agent 参与从市场分析到版本复盘的全流程](https://doc.gpt88.cc/docs/blog/product-project-agent-workspace-init/): 整理一套适用于 Codex、Claude Code 和其他 Coding Agent 的产品项目初始化方法：用编号目录、唯一事实源、需求池、版本门槛和评审记录，把一次性 Prompt 变成可持续协作的产品工作空间。
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
 - [逼真 AI 图像生成器怎么选：先看用途、上传风险和切换规则](https://doc.gpt88.cc/docs/blog/realistic-ai-image-generator/): 先按人物、商品、品牌文字、免费测试、私密上传、API 或本地控制来选逼真 AI 生图路线，再决定是否换工具。
