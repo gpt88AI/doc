@@ -21,6 +21,19 @@ export function BlogMarkdown({ markdown }: { markdown: string }) {
         rehypePlugins={[rehypeHighlight]}
         components={{
           a: ({ href = '', children }) => {
+            if (/\.mp4(?:$|[?#])/.test(href)) {
+              return (
+                <video
+                  src={href}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="my-6 h-auto max-w-full rounded-xl border border-white/10"
+                >
+                  {children}
+                </video>
+              )
+            }
             const isInternal = href.startsWith('/')
             const isHash = href.startsWith('#')
             if (isInternal) {

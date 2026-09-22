@@ -63,6 +63,7 @@
 - [Applied AI Field Guide：FDE 如何从真实工作走到可接受结果](https://doc.gpt88.cc/docs/blog/applied-ai-field-guide-fde-methodology/): 介绍 Applied AI Field Guide 的应用型 AI 交付方法，解释现场调研、价值判断、机制选择、垂直切片、评测验收和生产运营如何组成完整生命周期。
 - [Awesome-AI-Images-Prompts：如何对照不同模型的生图写法](https://doc.gpt88.cc/docs/blog/awesome-ai-images-prompts-cross-model/): 介绍 Awesome-AI-Images-Prompts 的跨模型中文提示词思路，比较 GPT Image、Nano Banana、即梦、豆包和 FLUX 等工具的表达差异与迁移方法。
 - [awesome-gpt-image-2：从案例库学习工业级图片提示词](https://doc.gpt88.cc/docs/blog/awesome-gpt-image-2-industrial-prompts/): 介绍 awesome-gpt-image-2 的案例和模板思路，拆解海报、电商图、信息图、UI 和品牌视觉等任务如何从参考画面中提取可复用提示词结构。
+- [Awesome Seedance：把 463 条 AI 视频案例沉淀成提示语模板和 Agent Skill](https://doc.gpt88.cc/docs/blog/awesome-seedance-prompt-library/): 整理卡尔的AI沃茨公开的 awesome-seedance 项目，拆解 463 条视频案例复现、跨模型评分、分类、提示语模板和 Agent Skill 的完整方法，并保留原帖图片与视频，给出 UGC、打斗、产品广告和 Skill 工作流的可执行用法。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
 - [Browser Use + Jev：网页 Agent 为什么能在 7 秒内完成一次航班搜索](https://doc.gpt88.cc/docs/blog/browser-use-jev-ultrafast/): 整理 Gregor Zunic 的 Browser Use + Jev 实测视频，以及 AYi 对该案例的中文解读，拆解动态动作空间、DOM 状态、小模型输入回退和成本测量，并给出浏览器 Agent 的工程化落地与验收方法。
 - [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
