@@ -91,6 +91,7 @@
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
 - [企业上 AI 之前，先把数据治理做对：从纸质档案到可查询数据](https://doc.gpt88.cc/docs/blog/enterprise-data-governance-before-ai/): 从纸质维修单、扫描版产品手册和 Excel 配件表出发，系统整理企业数据治理流程，说明 OCR、表格解析、清洗、版本、权限、验收和持续维护如何为知识库与 AI 打基础。
 - [AI Agent 时代的 FDE：如何把模型能力落到真实业务里](https://doc.gpt88.cc/docs/blog/fde-ai-agent-interview-business-delivery/): 整理 JODA 中文访谈中关于 FDE 与企业 AI 交付的核心主题，解释 FDE 的职责、业务调研、场景选择、Agent 工作流、评估验收、人工协作和持续运营方法。
+- [FDE 为什么成为 AI 落地的前线角色：从 DeployCo、私募合作到企业工作流](https://doc.gpt88.cc/docs/blog/fde-deployco-openai-anthropic-enterprise-ai/): 整理《硅谷101》E240 关于 OpenAI、Anthropic 部署业务与 FDE 的讨论，拆解模型公司为什么要深入客户现场、FDE 与 FDPM 如何协作、私募为什么成为 AI 部署入口，以及企业落地 AI 时最容易忽略的数据与流程问题。
 - [FDE 小团队如何从 0 到 1 做企业 AI 服务：获客、报价、交付与验收 SOP](https://doc.gpt88.cc/docs/blog/fde-enterprise-ai-service-delivery-sop/): 整理企业 AI 服务从线索获取、客户筛选、现场调研、需求边界、报价、SOW、开发交付、测试验收、回款到复盘的完整方法，帮助 FDE 和小团队把模糊的 Agent 想法变成可执行、可测试、可交付的业务结果。
 - [FDE 开源工具箱：用四个项目搭建企业 AI 交付体系](https://doc.gpt88.cc/docs/blog/fde-open-source-toolbox-overview/): 从 Applied AI Field Guide、FDEOps、FDEstack 和 OpenFDE 四个开源项目出发，整理企业 AI 项目从现场调研、价值判断、客户交付到知识记忆和 Agent 协作的完整地图。
 - [企业 AI Native 怎么落地：从 Palantir Ontology 到真实 FDE 交付](https://doc.gpt88.cc/docs/blog/fde-palantir-ontology-five-day-delivery/): 整理 Miles Ma 关于 AI Native、Palantir Ontology、五天 PoC 和 FDE 交付的长文，拆解对象、关系、动作、写回、验收与复用，区分真正的企业 AI 落地和换皮 Demo。
