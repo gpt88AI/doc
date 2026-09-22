@@ -1483,6 +1483,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -3471,6 +3477,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/agent-memory-testing-and-production/</loc>
     <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5467,6 +5479,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -7455,6 +7473,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/agent-memory-testing-and-production/</loc>
     <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9451,6 +9475,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -11439,6 +11469,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/agent-memory-testing-and-production/</loc>
     <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13435,6 +13471,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -15423,6 +15465,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/agent-memory-testing-and-production/</loc>
     <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/agent-transaction-trust-infrastructure/</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
