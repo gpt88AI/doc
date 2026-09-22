@@ -46,6 +46,7 @@
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
 - [2026 AI API 中转站怎么选？结合 GPT88 的接入、验证与避坑指南](https://doc.gpt88.cc/docs/blog/ai-api-proxy-guide-2026-gpt88/): 整理 GPT88 的 OpenAI 兼容 API 接入流程，覆盖 AI 中转站选型、Base URL、API Key、模型发现、最小请求、计费核对、客户端配置、故障排查与安全边界。
 - [AI 涂色页生成器：用提示词或照片制作可打印线稿](https://doc.gpt88.cc/docs/blog/ai-coloring-page-generator/): 按用途选择 AI 涂色页路线：提示词、照片转线稿、课堂手工、成人细节页、个性化名字页或 KDP/Etsy 涂色书，并检查打印、隐私、导出和商用边界，生成真正可打印的干净线稿。
+- [AI 时代如何建立非对称增长优势：从 Product-Channel Fit 到大 B 销售](https://doc.gpt88.cc/docs/blog/ai-era-asymmetric-growth-advantage/): 整理课代表立正与 Hockey Stick 创始人陈唱关于 AI 产品增长的访谈，拆解 AI Agent Manager、红人营销、Product-Channel Fit、Enterprise 与 PLG、Bardeen 复盘、Churn 和大 B 销售之间的关系。
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
