@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   gpt-6-astra → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
+ *   gpt-6-astra → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *   → gemini-3.8-flash → claude-fable-5-1
@@ -118,6 +118,8 @@ export type ModelEntry = {
 
 export const FEATURED_SLUGS = [
   'gpt-6-astra',
+  'gpt-6-sol',
+  'gpt-6-luna',
   'deepseek-v4-1-flash',
   'gpt-image-2-5',
   'gpt-image-2-5-flare',
@@ -189,6 +191,65 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '目前没有站内可复核的官方 Benchmark 成绩；本文的能力标签是主推定位与评测设计，不是对所有任务的性能保证。',
       '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由并设置失败回退。',
       '高风险代码、数据库、支付、权限和生产操作仍需要独立审查、确定性测试和人工授权。',
+    ],
+  },
+  'gpt-6-sol': {
+    provider: 'OpenAI',
+    tagline: 'GPT88 新上线的 GPT-6 Sol，面向复杂编码、深度推理和长链路 Agent 工作流。',
+    capabilities: ['GPT-6 Sol', '复杂推理', '代码与工具调用', 'Agent 工作流', '长链路执行'],
+    scenarios: ['复杂代码任务', '代码审查', '研究分析', '多轮 Agent', '高价值生产任务'],
+    overview: [
+      'GPT-6 Sol 是 OpenAI 最新 GPT-6 家族中的复杂工作路线，适合需要较深推理、代码理解、工具调用和多阶段执行的任务。',
+      'GPT88 将 GPT-6 Sol 加入主推模型位，方便开发者把复杂编码、研究分析和 Agent 工作流纳入同一套 OpenAI 兼容接入流程。',
+      '模型详情页不固化上下文、限速、工具、视觉和价格等动态字段；实际开放范围以 GPT88 控制台和当前 API Key 的 GET /v1/models 返回结果为准。',
+    ],
+    whenToUse: [
+      '需要复杂代码生成、重构、调试和代码审查时',
+      '需要 Agent 连续调用工具、检查结果并推进多个阶段时',
+      '需要研究分析、技术方案和高质量结构化输出时',
+      '准备与 gpt-6-astra、gpt-6-luna 或其他已验证模型做固定任务集对比时',
+      '高价值任务可以接受先验证权限、稳定性、延迟和实际用量时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容客户端使用 GPT88 的 API Base URL，并将请求体 model 设置为 gpt-6-sol。',
+      '首次接入先调用 GET /v1/models，确认当前 API Key 已开放 gpt-6-sol，再发送最小非流式请求。',
+      '建议按“纯文本 → JSON / 结构化输出 → streaming → tools → 长上下文”的顺序逐项开启，并记录成功率和错误类型。',
+      '对于 Agent 任务，固定工具 Schema、权限、初始上下文和验收条件；不要把模型能力、Harness 能力和工具权限混在一起评价。',
+    ],
+    caveats: [
+      'gpt-6-sol 是新上线模型，当前本地后端目录尚未完成同步；模型是否开放、价格、分组、额度、限速和可用线路以 GPT88 控制台及当前 API Key 为准。',
+      '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由并设置失败回退。',
+      '高风险代码、数据库、支付、权限和生产操作仍需要独立审查、确定性测试和人工授权。',
+    ],
+  },
+  'gpt-6-luna': {
+    provider: 'OpenAI',
+    tagline: 'GPT88 新上线的 GPT-6 Luna，面向高频、聚焦和成本敏感的日常模型调用。',
+    capabilities: ['GPT-6 Luna', '快速响应', '聚焦任务', '高频调用', 'Agent 子任务'],
+    scenarios: ['高频对话', '分类与抽取', '轻量代码辅助', '内容改写', 'Agent 子任务'],
+    overview: [
+      'GPT-6 Luna 是 OpenAI 最新 GPT-6 家族中的轻量工作路线，适合边界清晰、调用频率高、需要控制延迟和成本的任务。',
+      '它适合放在日常对话、分类抽取、内容处理和 Agent 的边界清晰子步骤中；复杂推理和长链路执行应与 GPT-6 Astra 或 GPT-6 Sol 做对比。',
+      '模型详情页不固化上下文、限速、工具、视觉和价格等动态字段；实际开放范围以 GPT88 控制台和当前 API Key 的 GET /v1/models 返回结果为准。',
+    ],
+    whenToUse: [
+      '需要高频、低延迟的日常对话或客服请求时',
+      '需要分类、抽取、改写、路由和摘要等边界清晰的文本任务时',
+      '需要把轻量代码辅助或内容预处理放入 Agent 子步骤时',
+      '需要在质量、延迟和成本之间做业务级平衡时',
+      '准备与 gpt-6-astra、gpt-6-sol 或现有默认模型做固定任务集对比时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容客户端使用 GPT88 的 API Base URL，并将请求体 model 设置为 gpt-6-luna。',
+      '首次接入先调用 GET /v1/models，确认当前 API Key 已开放 gpt-6-luna，再发送最小非流式请求。',
+      '建议先验证非流式和 streaming，再按实际需要开启结构化输出、工具调用和批量任务。',
+      '记录首 token 延迟、端到端耗时、成功率、重试次数和实际用量，不要仅凭模型名称推断成本或速度。',
+    ],
+    caveats: [
+      'gpt-6-luna 是新上线模型，当前本地后端目录尚未完成同步；模型是否开放、价格、分组、额度、限速和可用线路以 GPT88 控制台及当前 API Key 为准。',
+      'Luna 的轻量定位不代表所有提示词、并发和线路下都一定更快或更便宜，应使用真实业务样本实测。',
+      '新模型上线后可能存在响应行为或参数支持变化，建议先灰度，不要未经验证替换全部生产流量。',
+      '涉及支付、权限、生产写入和高风险内容时，仍需要独立校验、权限隔离和人工授权。',
     ],
   },
   'deepseek-v4-1-flash': {
@@ -1942,6 +2003,22 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['GPT88 新增主推模型入口，具体价格、权限和线路以控制台为准。'],
   },
   {
+    canonical_name: 'gpt-6-sol',
+    display_name: 'gpt-6-sol',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-6-sol'],
+    descriptions_sample: ['GPT-6 Sol 新上线模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
+    canonical_name: 'gpt-6-luna',
+    display_name: 'gpt-6-luna',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-6-luna'],
+    descriptions_sample: ['GPT-6 Luna 新上线模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     // 2026-09-11 GPT88 上新补丁：等待下一次公开 marketplace snapshot 收录。
     canonical_name: 'deepseek-v4.1-flash',
     display_name: 'deepseek-v4.1-flash',
@@ -2188,6 +2265,63 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'No independently verifiable official benchmark scores are published in this documentation. Capability labels describe positioning and an evaluation design, not universal performance guarantees.',
       'Keep a validated fallback route until the model passes your own quality, latency, cost, and reliability checks.',
       'High-risk code, database, payment, permission, and production actions still require independent review, deterministic tests, and human authorization.',
+    ],
+  },
+  'gpt-6-sol': {
+    tagline: 'New GPT88 featured GPT-6 Sol route for complex coding, deep reasoning, and long-running agent workflows.',
+    capabilities: ['GPT-6 Sol', 'Complex reasoning', 'Code and tool use', 'Agent workflows', 'Long-running execution'],
+    scenarios: ['Complex coding', 'Code review', 'Research and analysis', 'Multi-step agents', 'High-value production tasks'],
+    overview: [
+      'GPT-6 Sol is the complex-work route in OpenAI’s latest GPT-6 family, intended for deeper reasoning, code understanding, tool use, and multi-stage execution.',
+      'GPT88 has added GPT-6 Sol to the featured lineup so developers can evaluate complex coding, research, and agent workflows through the same OpenAI-compatible integration.',
+      'This page does not hardcode dynamic context, limits, tools, vision support, or pricing. Confirm the current API key access with GET /v1/models and the GPT88 console.',
+    ],
+    whenToUse: [
+      'Handle complex code generation, refactoring, debugging, and code review',
+      'Run agents that call tools, inspect results, and progress through multiple stages',
+      'Produce technical plans, research analysis, and high-quality structured output',
+      'Compare it with gpt-6-astra, gpt-6-luna, or a validated fallback on a fixed workload',
+      'Use it for high-value work where access, stability, latency, and usage can be validated first',
+    ],
+    integrationNotes: [
+      'Use the GPT88 OpenAI-compatible base URL and set model to gpt-6-sol.',
+      'Call GET /v1/models to confirm that the current API key can access gpt-6-sol before sending a minimal non-streaming request.',
+      'Enable plain text, structured output, streaming, tools, and long context progressively while recording success rates and error types.',
+      'For agent tasks, keep the tool schema, permissions, initial context, and acceptance criteria fixed; do not conflate model quality with harness or tool permissions.',
+    ],
+    caveats: [
+      'gpt-6-sol is a newly launched model and the current local backend catalog has not synced it yet. Access, groups, quota, pricing, limits, and routes are determined by the GPT88 console and API key.',
+      'Keep a validated fallback route until the model passes your own quality, latency, cost, and reliability checks.',
+      'High-risk code, database, payment, permission, and production actions still require independent review, deterministic tests, and human authorization.',
+    ],
+  },
+  'gpt-6-luna': {
+    tagline: 'New GPT88 featured GPT-6 Luna route for frequent, focused, and cost-sensitive model calls.',
+    capabilities: ['GPT-6 Luna', 'Fast response positioning', 'Focused tasks', 'High-frequency use', 'Agent subtasks'],
+    scenarios: ['High-frequency chat', 'Classification and extraction', 'Lightweight coding help', 'Content rewriting', 'Agent subtasks'],
+    overview: [
+      'GPT-6 Luna is the lightweight-work route in OpenAI’s latest GPT-6 family, intended for bounded tasks where latency and cost control matter.',
+      'It is a practical candidate for everyday chat, classification, extraction, content processing, and bounded agent steps. Compare GPT-6 Astra or GPT-6 Sol for deeper reasoning and long-running execution.',
+      'This page does not hardcode dynamic context, limits, tools, vision support, or pricing. Confirm the current API key access with GET /v1/models and the GPT88 console.',
+    ],
+    whenToUse: [
+      'Use it for frequent, latency-sensitive chat or support requests',
+      'Run bounded classification, extraction, rewriting, routing, and summarization tasks',
+      'Assign lightweight coding assistance or preprocessing to it as an agent step',
+      'Balance quality, latency, and cost on a representative production workload',
+      'Compare it with gpt-6-astra, gpt-6-sol, or your current default model on a fixed workload',
+    ],
+    integrationNotes: [
+      'Use the GPT88 OpenAI-compatible base URL and set model to gpt-6-luna.',
+      'Call GET /v1/models to confirm that the current API key can access gpt-6-luna before sending a minimal non-streaming request.',
+      'Validate non-streaming and streaming first, then enable structured output, tools, and batch workloads as needed.',
+      'Record first-token latency, end-to-end latency, success rate, retries, and actual usage instead of inferring speed or cost from the model name.',
+    ],
+    caveats: [
+      'gpt-6-luna is a newly launched model and the current local backend catalog has not synced it yet. Access, groups, quota, pricing, limits, and routes are determined by the GPT88 console and API key.',
+      'A lightweight positioning does not guarantee lower latency or cost for every prompt, concurrency level, or route. Test representative workloads.',
+      'New-model behavior and parameter support can change after launch. Start with a staged rollout before changing all production traffic.',
+      'Payment, permissions, production writes, and other high-risk actions still require independent checks, isolation, and human authorization.',
     ],
   },
   'deepseek-v4-1-flash': {

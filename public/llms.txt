@@ -144,6 +144,8 @@
 ## English model API references
 
 - [gpt-6-astra API Docs](https://doc.gpt88.cc/en/models/gpt-6-astra/): English API reference for gpt-6-astra. Model ID: gpt-6-astra. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-6-sol/): English API reference for gpt-6-sol. Model ID: gpt-6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-6-luna/): English API reference for gpt-6-luna. Model ID: gpt-6-luna. OpenAI-compatible endpoint: /v1/chat/completions.
 - [deepseek-v4.1-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-1-flash/): English API reference for deepseek-v4.1-flash. Model ID: deepseek-v4.1-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [grok-4.6 API Docs](https://doc.gpt88.cc/en/models/grok-4-6/): English API reference for grok-4.6. Model ID: grok-4.6. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.

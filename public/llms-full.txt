@@ -16,6 +16,8 @@
 ## English model API references
 
 - [gpt-6-astra API Docs](https://doc.gpt88.cc/en/models/gpt-6-astra/): English API reference for gpt-6-astra. Model ID: gpt-6-astra. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-6-sol/): English API reference for gpt-6-sol. Model ID: gpt-6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
+- [gpt-6-luna API Docs](https://doc.gpt88.cc/en/models/gpt-6-luna/): English API reference for gpt-6-luna. Model ID: gpt-6-luna. OpenAI-compatible endpoint: /v1/chat/completions.
 - [deepseek-v4.1-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-1-flash/): English API reference for deepseek-v4.1-flash. Model ID: deepseek-v4.1-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [grok-4.6 API Docs](https://doc.gpt88.cc/en/models/grok-4-6/): English API reference for grok-4.6. Model ID: grok-4.6. OpenAI-compatible endpoint: /v1/chat/completions.
 - [gpt-5.6-sol API Docs](https://doc.gpt88.cc/en/models/gpt-5-6-sol/): English API reference for gpt-5.6-sol. Model ID: gpt-5.6-sol. OpenAI-compatible endpoint: /v1/chat/completions.
@@ -692,6 +694,8 @@
 - [gpt-5-mini](https://doc.gpt88.cc/models/gpt-5-mini/): OpenAI gpt-5-mini · CHAT 模型，Model ID: gpt-5-mini，接口路径: /v1/chat/completions。
 - [gpt-5-nano](https://doc.gpt88.cc/models/gpt-5-nano/): OpenAI gpt-5-nano · CHAT 模型，Model ID: gpt-5-nano，接口路径: /v1/chat/completions。
 - [gpt-6-astra](https://doc.gpt88.cc/models/gpt-6-astra/): OpenAI gpt-6-astra · CHAT 模型，Model ID: gpt-6-astra，接口路径: /v1/chat/completions。
+- [gpt-6-luna](https://doc.gpt88.cc/models/gpt-6-luna/): OpenAI gpt-6-luna · CHAT 模型，Model ID: gpt-6-luna，接口路径: /v1/chat/completions。
+- [gpt-6-sol](https://doc.gpt88.cc/models/gpt-6-sol/): OpenAI gpt-6-sol · CHAT 模型，Model ID: gpt-6-sol，接口路径: /v1/chat/completions。
 - [gpt-oss-120b](https://doc.gpt88.cc/models/gpt-oss-120b/): OpenAI gpt-oss-120b · CHAT 模型，Model ID: gpt-oss-120b，接口路径: /v1/chat/completions。
 - [gpt-oss-120b-turbo](https://doc.gpt88.cc/models/gpt-oss-120b-turbo/): OpenAI gpt-oss-120b-turbo · CHAT 模型，Model ID: gpt-oss-120b-turbo，接口路径: /v1/chat/completions。
 - [gpt-oss-20b](https://doc.gpt88.cc/models/gpt-oss-20b/): OpenAI gpt-oss-20b · CHAT 模型，Model ID: gpt-oss-20b，接口路径: /v1/chat/completions。
