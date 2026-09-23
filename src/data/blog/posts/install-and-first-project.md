@@ -1,0 +1,321 @@
+---
+title: Claude Code 安装与第一个项目：先跑通一次可验收的小闭环
+description: 用一个可丢弃的 git 小仓库，完成 Claude Code 的第一次安装、登录核验与最小改动闭环。
+date: 2026-07-11
+category: 开发工具
+tags: [LearnPrompt, Claude Code]
+readTime: 12
+---
+
+> 来源：[LearnPrompt：Claude Code 安装与第一个项目：先跑通一次可验收的小闭环](https://www.learnprompt.pro/claude-code/install-and-first-project/)。本文为迁移、格式转换和图片路径调整后的整理版，保留原文结构、代码片段与公开教学配图。原站仓库采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)；产品版本与事实以原文标注的核验日期为准。
+
+| 难度 | 阅读时间 | 最后验证 | 作者 |
+| --- | --- | --- | --- |
+| 入门 | 12 分钟 | 2026-07-11 | LearnPrompt 编辑部 |
+
+第一次用 Claude Code，最容易误判的成功信号是“装好了，能聊天了”。
+
+这还不够。真正有用的首日成功，是你能在一个可丢弃的 git 项目里，让它先读项目、再冻结任务、只做一个最小改动、跑真实检查、最后看 `git diff`。如果这五步没跑通，安装只是完成了准备动作。
+
+## 读完你能做什么
+
+读完后，你应该能独立完成这条第一次闭环：
+
+1. 按官方当前推荐路径安装并核验 Claude Code。
+2. 用一句话把第一个任务冻结成“小到能验收”的范围。
+3. 让 Claude Code 先盘点项目，再做最小改动，而不是一上来重构。
+4. 用退出码、测试结果和 `git diff` 验收结果，而不是听模型自述。
+5. 把第一次踩坑总结成一条项目规则，留给下一次协作。
+
+![Claude Code 第一次闭环：安装和认证只做一次，真正反复执行的是 INSPECT、PLAN、EDIT、VERIFY、DIFF 五步控制环](/docs/blog/zh/install-and-first-project/img/first-loop.svg)
+*图注：安装、认证、进入仓库只是一次性准备；每次真实协作都要回到 INSPECT→PLAN→EDIT→VERIFY→DIFF。验收失败时，不是继续硬修，而是退回 PLAN 或 EDIT。*
+
+## 先把成功标准改对：不是“工具能打开”，而是“任务能验收”
+
+官方 Quickstart 的前两步确实是安装和登录，但真正开始协作，是你进入项目目录后先问它“这个项目做什么”，再让它做第一次改动。官方 best practices 又补上了更关键的一点：要给 Claude 一个能跑出 pass/fail 的检查，不然“看起来像做完了”就是唯一信号。
+
+这就是本文的核心判断：
+
+> 第一次成功，不是 `claude --version` 有输出，而是一个最小任务已经跑通 INSPECT→PLAN→EDIT→VERIFY→DIFF，而且 VERIFY 由独立检查决定。
+
+如果把这句话拆开：
+
+- `INSPECT`：先只读盘点，不改文件。
+- `PLAN`：用一句话钉死任务范围与硬约束。
+- `EDIT`：只做最小改动。
+- `VERIFY`：跑测试或构建，看退出码。
+- `DIFF`：确认没有改错文件。
+
+这比“让它帮我优化项目”慢半步，但安全得多，也更接近官方推荐的 Explore→Plan→Code→Commit 路径。
+
+## 第 0 步：安装、登录、核验，只做够今天需要的部分
+
+截至 **2026 年 7 月 11 日**，Claude Code 官方 Quickstart 把 **Native Install** 标成 **Recommended**。对 macOS、Linux、WSL，推荐安装命令是：
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Windows 则分别提供 PowerShell 和 CMD 版本。官方 setup 页同时说明：`npm install -g @anthropic-ai/claude-code` 仍可用，但已归到 Advanced installation options，不再是首选首日路径。
+
+安装后先做两个核验：
+
+```bash
+claude --version
+claude doctor
+```
+
+本次写作使用的本机结果是：
+
+```text
+claude --version
+2.1.206 (Claude Code)
+```
+
+登录方式也不要猜。官方 Quickstart 现在要求先启动一个交互会话：
+
+```bash
+claude
+```
+
+首次运行会引导浏览器认证；如果之后要切换账号，在会话里使用 `/login`。这一步的目的很单纯：确认你的账号真的可用，别等到第一次改文件时才发现认证没完成。
+
+> **今天先记住两件事**
+>
+> 第一，第一次按官方推荐路径走 native install，不用把 npm、Homebrew、WinGet、Linux 包管理器全学一遍。第二，先会用 `claude --version` 和 `claude doctor` 做核验，比背更多安装细节更重要。
+
+## 第一个项目不要选“大活”，而要选一个可丢弃的小仓库
+
+第一次练手的项目，建议同时满足四个条件：
+
+- 已经是 git 仓库。
+- 有明确入口，比如 `README.md`、`package.json`、`Makefile`。
+- 有至少一个可机械执行的检查命令。
+- 不含真实密钥、生产配置和不可回滚的数据。
+
+为什么一定要是小项目？因为你首日要学的是流程，不是让模型一口气做大功能。官方 best practices 里有一句很关键的话：如果你能用一句话说清楚这个 diff，就不一定需要长计划。第一次任务就该小到这个程度。
+
+最合适的首个目标，往往不是“帮我优化项目”，而是：
+
+```text
+给 README 增加一段本地启动说明，并确保现有检查仍然通过。
+```
+
+这个目标有几个优点：
+
+- 结果看得见。
+- 改动范围天然小。
+- 很容易写出硬约束。
+- 可以用测试和 `git diff` 双重验收。
+
+## 把任务冻结成一句话，比写长 prompt 更重要
+
+第一次失败，常常不是模型不会写 README，而是你的任务边界没钉死。与其写一大段背景，不如先把冻结任务写清楚。
+
+本篇 Showcase 使用的冻结任务是：
+
+```text
+给 README.md 补齐一段本地运行说明（安装 / 运行 CLI / 跑测试）。
+硬约束：不改代码逻辑（wordcount.js、test.js 不动），不新增依赖，只编辑 README.md。
+```
+
+这句话有三个层次：
+
+1. 明确目标文件：`README.md`。
+2. 明确任务内容：本地运行说明。
+3. 明确禁止项：不改代码、不加依赖。
+
+接下来不要立刻让它写，而是先要求它盘点。一个够用的首轮提示可以直接复制：
+
+```text
+先不要改文件。请先阅读项目根目录的 README、package 文件和目录结构。
+
+然后告诉我：
+1. 这个项目做什么。
+2. 本地运行或检查命令可能是什么。
+3. 如果只做一个最小改动，你建议从哪里开始。
+4. 你预计会读哪些文件，不要超过 8 个。
+```
+
+这一步对应 `INSPECT`。目标不是让模型展示聪明，而是先让它建立地图。陌生仓库里，先读后改几乎总比先改后补救便宜。
+
+## 五步闭环怎么跑
+
+下面这张表，就是第一次使用时最实用的执行顺序：
+
+| 步骤 | 你要做什么 | 为什么这样安排 |
+| --- | --- | --- |
+| INSPECT | 让 Claude 只读 README、脚本、目录结构 | 先建立地图，避免无关改动 |
+| PLAN | 用一句话冻结范围和硬约束 | 让“完成”变成可判断目标 |
+| EDIT | 只批准最小改动 | 小 diff 最容易复核与回滚 |
+| VERIFY | 跑测试/构建，看退出码 | 验收不依赖模型口头总结 |
+| DIFF | 看 `git diff` 和改动文件列表 | 防止 README 任务顺手改了代码 |
+
+如果你愿意再保守一点，探索阶段可以先切到 plan 模式。官方 permission-modes 页给了三种入口：`Shift+Tab` 循环切换、在消息前加 `/plan` 前缀，或直接启动：
+
+```bash
+claude --permission-mode plan
+```
+
+plan 模式的价值不是“更高级”，而是让第一次盘点只读进行。等你把范围想清楚，再回到默认的手动批准模式做修改，会更稳。
+
+权限也只记住首日最小集合就够了。官方 permissions 页说明了规则求值顺序是 `deny → ask → allow`。这意味着：
+
+- 不要一上来放很宽的 `allow`。
+- 真正危险的命令，例如 `git push`，应该明确 deny。
+- 对项目无害且你确定会频繁跑的检查命令，才考虑逐步 allow。
+
+本文不展开整套权限设计，因为第一次闭环真正要学的是“先收紧，再按证据放开”。
+
+## 真实 Showcase：README 小改动，但验收标准不是“它说改完了”
+
+为避免空谈，这篇教程配了一次真实运行。研究包位于 `research/articles/install-and-first-project/showcase/`，其中有四类关键证据：
+
+- `README.md` 的真实 diff 摘录：`readme.diff`
+- 模型运行的脱敏摘要：`run-summary.txt`
+- 确定性验收脚本：`verify-first-loop.mjs`
+- 验收脚本的通过与失败输出：`gate-output.txt`
+
+练习仓库是一个很小的 CLI 项目，只做单词计数，初始 README 故意缺少“本地运行”说明。它有三条对首日非常友好的性质：
+
+- `npm test` 已存在，可以直接做 VERIFY。
+- 代码很小，是否越界改动一眼能看出来。
+- README 改动足够小，容易和代码逻辑区分。
+
+实际运行时，冻结任务后调用的是 Claude Code 的非交互模式：
+
+```bash
+claude -p "<冻结任务>" \
+  --permission-mode acceptEdits \
+  --allowedTools "Read Edit Bash(npm test) Bash(git diff)" \
+  --model claude-haiku-4-5-20251001
+```
+
+这条命令是为了一次**受限的非交互归档运行**，不是给新手第一轮交互练手的默认姿态。这里用
+`acceptEdits` 让单条命令能完成候选改动，同时把 `--allowedTools` 收到读、改文件、`npm test`
+和 `git diff`；你第一次交互上手仍应使用 `manual/default`，陌生仓库先用 `plan` 盘点。
+
+本次归档环境已经配置 API key，没有走前文面向订阅用户的浏览器登录。这只改变认证入口，
+不改变后面的权限、范围、验收和 diff 闭环；你自己的首日安装仍按 Quickstart 选择对应账号路径。
+
+这次真实运行留下了三条关键事实：
+
+1. `claude` 进程退出码是 `0`。
+2. `npm test` 通过。
+3. 真实 diff 只改了 `README.md`，增加本地运行说明，没有碰 `wordcount.js`、`test.js` 或 `package.json`。
+
+真实 diff 的核心内容很朴素：加了 `npm install`、`node wordcount.js "hello world"`、`npm link` 和 `npm test` 的说明。它不是一篇“漂亮文案”，而是一笔可验收的小改动。
+
+## 为什么还要再做一个确定性验收门
+
+如果只有模型自述，你仍然要人工猜它到底有没有越界。官方 best practices 特别强调，要给 Claude 一个它自己也能运行的 pass/fail 检查。于是这个 Showcase 又加了第二层：先给初始提交打上不可变的 `baseline` tag，再让脚本始终与这条基线比较。即使候选改动后来被提交，越界代码改动也不会因为 `HEAD` 前进而被漏掉。
+
+通过门的命令是：
+
+```bash
+node verify-first-loop.mjs
+```
+
+真实通过输出是：
+
+```text
+PASS no-code-edit: code/config match baseline
+PASS readme-run-section: local-run instructions added vs baseline
+PASS check-passes: npm test exit 0
+SUMMARY: 3/3 acceptance checks passed
+```
+
+这三条分别检查：
+
+- 代码和配置文件与 `baseline` tag 完全一致。
+- README 相对 `baseline` 确实新增了本地运行说明。
+- `npm test` 退出码是 0。
+
+更重要的是，研究包还保留了一条失败路径：故意往 `wordcount.js` 追加两行无害代码后，`npm test` 仍然通过，但验收门会立即报：
+
+```text
+FAIL no-code-edit: frozen files differ from baseline: wordcount.js
+SUMMARY: 2/3 passed — task NOT accepted, return to PLAN/EDIT
+```
+
+这正是本文想教的第一天习惯：**测试通过，不等于任务就合格；还要看它有没有越界改了不该改的文件。**
+
+### 这个 Showcase 证明了什么
+
+- 真实 Claude Code 会话可以在冻结约束下产出最小 diff。
+- 首次任务完全可以选 README 这种低风险修改，而不是代码重构。
+- 验收门可以独立于模型自述，直接用退出码和 diff 决定接受或拒绝。
+
+### 它没有证明什么
+
+- 不代表大型真实仓库也会一次成功。
+- 不代表任何模型都能写出同样措辞的 README。
+- 不代表只要测试过了，文案质量就一定足够好。
+
+所以 Showcase 的地位很明确：它证明“闭环可跑通”，不是给模型能力排总榜。
+
+## 失败时怎么处理，什么时候不要这样用
+
+第一次使用时，最常见的四个错误是：
+
+1. 还没盘点项目，就直接让它“帮我优化一下”。
+2. 没冻结范围，导致 README 任务顺手改了代码。
+3. 只看模型总结，不看退出码和 `git diff`。
+4. 同一个错误纠正两三轮后，继续在原会话里硬修。
+
+官方 best practices 对第 4 点给出的建议也很实用：如果你已经纠正同一个问题两次，还没解决，就清空上下文，带着更具体的 prompt 重新开始。对新手来说，这比在错误前提上越补越多更省成本。
+
+本文这套闭环也不是所有场景都要照搬：
+
+- 只改一个 typo，且你能一句话说清 diff，可以不专门开长计划。
+- 一次性玩具实验，连 git 都没有，也没必要硬套完整闭环。
+- 含真实密钥、部署脚本、生产数据的仓库，不适合作为第一天练手项目。
+
+第一天最合适的难度，不是“有挑战”，而是“失败了也能完全回滚”。
+
+## 跑完第一轮后，你应该留下什么
+
+如果这次练手是有效的，最后至少要留下四样东西：
+
+- 一个最小改动。
+- 一条真实验收命令和它的退出码。
+- 一份 `git diff`。
+- 一条写回项目规则的经验。
+
+这一条项目规则不用长。比如：
+
+```md
+- Before editing, read README and package files.
+- Prefer small, reviewable diffs.
+- State the exact files you plan to change before editing.
+- Run the fastest relevant check after behavior changes.
+```
+
+注意，这里只是把第一次验证过有效的习惯写回项目，不展开完整 `CLAUDE.md` 设计。那是下一篇文章要处理的问题。
+
+## 练习：把同一套闭环换到你自己的仓库
+
+找一个你愿意完全丢弃的练习仓库，按下面标准做一遍：
+
+1. 先运行 `claude --version` 和 `claude doctor`，确认安装与环境都正常。
+2. 选一个一句话能说清的任务，例如补一段 README、补一条 usage、修一个错别字。
+3. 先让 Claude 只读盘点，不准改文件。
+4. 再给冻结任务和硬约束，只允许最小改动。
+5. 跑一个真实检查命令，再看 `git diff`。
+
+完成标准也要可观察：
+
+- 你能指出它读了哪些文件。
+- 你能说清它为什么只改这些文件。
+- 你有一个通过或失败都说得清的验收结果。
+- 如果失败，你知道该回到 PLAN/EDIT，而不是继续追加模糊要求。
+
+## 来源与延伸阅读
+
+- [Claude Code Quickstart](https://code.claude.com/docs/en/quickstart)：当前推荐安装路径、首次登录、首轮问答、首次改动与 `Shift+Tab` 切换 permission mode。
+- [Claude Code Setup](https://code.claude.com/docs/en/setup)：系统要求、`claude --version` / `claude doctor` 核验，以及 npm 已归入 Advanced installation options。
+- [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)：Explore→Plan→Code→Commit、给 Claude 一个 pass/fail 检查、同类纠错超过两次后重开。
+- [Choose a Permission Mode](https://code.claude.com/docs/en/permission-modes)：`manual`、`plan`、`acceptEdits` 等模式的含义与进入方式。
+- [Configure Permissions](https://code.claude.com/docs/en/permissions)：`deny → ask → allow` 求值顺序，以及命令白名单/黑名单写法。
+- [本篇研究包与 Showcase](https://github.com/LearnPrompt/LearnPrompt/tree/main/research/articles/install-and-first-project)：真实 diff、失败路径、教学图、证据台账与控制核验记录。
+- [Claude Code Orange Book](https://github.com/alchaincyf/claude-code-orange-book)：只作为中文主题地图保留署名与链接，许可为 CC BY-NC-SA 4.0；本文当前产品行为与命令均已按官方资料和本机 CLI 重新核对。

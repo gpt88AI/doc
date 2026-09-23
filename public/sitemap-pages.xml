@@ -1453,6 +1453,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/agent-business-effect-evaluation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -1497,6 +1503,12 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1549,6 +1561,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -1579,6 +1597,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -1591,8 +1615,20 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1629,6 +1665,12 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1675,8 +1717,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1689,6 +1755,30 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1729,6 +1819,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -1755,6 +1863,12 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1821,6 +1935,24 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2151,6 +2283,12 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3025,6 +3163,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -3073,14 +3229,44 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3259,8 +3445,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3273,6 +3477,12 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3343,8 +3553,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3361,6 +3589,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -3369,6 +3603,18 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3385,6 +3631,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -3393,6 +3645,18 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3409,6 +3673,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -3417,6 +3687,18 @@
   <url>
     <loc>https://doc.gpt88.cc/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3457,10 +3739,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/agent-business-effect-evaluation/</loc>
@@ -3507,6 +3801,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3559,6 +3859,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -3589,6 +3895,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -3601,8 +3913,20 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3639,6 +3963,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3685,8 +4015,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3699,6 +4053,30 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3739,6 +4117,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -3765,6 +4161,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3831,6 +4233,24 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4161,6 +4581,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5035,6 +5461,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -5083,14 +5527,44 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5269,8 +5743,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5283,6 +5775,12 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5353,8 +5851,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5371,6 +5887,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -5379,6 +5901,18 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5395,6 +5929,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -5403,6 +5943,18 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5419,6 +5971,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -5427,6 +5985,18 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5467,10 +6037,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/agent-business-effect-evaluation/</loc>
@@ -5517,6 +6099,12 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5569,6 +6157,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -5599,6 +6193,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -5611,8 +6211,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5649,6 +6261,12 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5695,8 +6313,32 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5709,6 +6351,30 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5749,6 +6415,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -5775,6 +6459,12 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -5841,6 +6531,24 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -6171,6 +6879,12 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7045,6 +7759,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -7093,14 +7825,44 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7279,8 +8041,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7293,6 +8073,12 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7363,8 +8149,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7381,6 +8185,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -7389,6 +8199,18 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7405,6 +8227,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -7413,6 +8241,18 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7429,6 +8269,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -7437,6 +8283,18 @@
   <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7477,10 +8335,22 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/agent-business-effect-evaluation/</loc>
@@ -7527,6 +8397,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7579,6 +8455,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -7609,6 +8491,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -7621,8 +8509,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7659,6 +8559,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7705,8 +8611,32 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7719,6 +8649,30 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7759,6 +8713,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -7785,6 +8757,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -7851,6 +8829,24 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -8181,6 +9177,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9055,6 +10057,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -9103,14 +10123,44 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9289,8 +10339,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9303,6 +10371,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9373,8 +10447,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9391,6 +10483,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -9399,6 +10497,18 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9415,6 +10525,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -9423,6 +10539,18 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9439,6 +10567,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -9447,6 +10581,18 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9487,10 +10633,22 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/agent-business-effect-evaluation/</loc>
@@ -9537,6 +10695,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9589,6 +10753,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -9619,6 +10789,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -9631,8 +10807,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9669,6 +10857,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9715,8 +10909,32 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9729,6 +10947,30 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9769,6 +11011,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -9795,6 +11055,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -9861,6 +11127,24 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -10191,6 +11475,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11065,6 +12355,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -11113,14 +12421,44 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11299,8 +12637,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11313,6 +12669,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11383,8 +12745,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11401,6 +12781,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -11409,6 +12795,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11425,6 +12823,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -11433,6 +12837,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11449,6 +12865,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -11457,6 +12879,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11497,10 +12931,22 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/agent-business-effect-evaluation/</loc>
@@ -11547,6 +12993,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11599,6 +13051,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -11629,6 +13087,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -11641,8 +13105,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11679,6 +13155,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11725,8 +13207,32 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11739,6 +13245,30 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11779,6 +13309,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -11805,6 +13353,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11871,6 +13425,24 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -12201,6 +13773,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13075,6 +14653,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -13123,14 +14719,44 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13309,8 +14935,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13323,6 +14967,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13393,8 +15043,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13411,6 +15079,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -13419,6 +15093,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13435,6 +15121,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -13443,6 +15135,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13459,6 +15163,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -13467,6 +15177,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13507,10 +15229,22 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/agent-business-effect-evaluation/</loc>
@@ -13557,6 +15291,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13609,6 +15349,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -13639,6 +15385,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -13651,8 +15403,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13689,6 +15453,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13735,8 +15505,32 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13749,6 +15543,30 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13789,6 +15607,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -13815,6 +15651,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -13881,6 +15723,24 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -14211,6 +16071,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15085,6 +16951,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -15133,14 +17017,44 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15319,8 +17233,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15333,6 +17265,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15403,8 +17341,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15421,6 +17377,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -15429,6 +17391,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15445,6 +17419,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -15453,6 +17433,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15469,6 +17461,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -15477,6 +17475,18 @@
   <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15517,10 +17527,22 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/advanced-conversation-patterns/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/agent-business-effect-evaluation/</loc>
@@ -15567,6 +17589,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/agentic-engineering-setup-2000-hours/</loc>
     <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/ai-agent-marketing-geo-community-human-attention/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15619,6 +17647,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/ai-maintains-knowledge-base/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/ai-native-sdlc-four-reports/</loc>
     <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -15649,6 +17683,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/ai-town/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/ai-training-business-model/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -15661,8 +17701,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/api-integration-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/applied-ai-field-guide-fde-methodology/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/auto-review-boundaries/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15699,6 +17751,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/build-minimal-otc-trading-skill/</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/capcut-ai-video-workflow/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15745,8 +17803,32 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/checklist-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/choose-claude-code-or-codex/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/chrome-extension-prototype/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/claude-code-third-party-api-config/</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/claude-md-index-navigation/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15759,6 +17841,30 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/codex-china-access-gpt88-guide/</loc>
     <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/codex-claude-code-dual-track/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/codex-cli-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/codex-cloud-task-fit/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/codex-form-factors/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15799,6 +17905,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/constraint-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/content-automation-pipeline/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/control-style-with-claude-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/convert-image-to-studio-ghibli-style/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -15825,6 +17949,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/deepseek-harness-complete-guide/</loc>
     <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/deployment-channels-cost/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15891,6 +18021,24 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/fdestack-fde-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/feedback-loop/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/first-skill-md/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/five-moves/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -16221,6 +18369,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/headshot-background/</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/hermes-learning-loop/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17095,6 +19249,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/install-and-first-project/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/installation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/instruction-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/is-gpt-image-2-api-free/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -17143,14 +19315,44 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/markdown-as-agent-memory/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/meituan-zhibo-digital-human-practice/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/memory-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/midjourney-8-2-upgrade-decision/</loc>
     <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/minimum-agentic-coding-workflow/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/minimum-claude-md/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/multi-agent-collaboration/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17329,8 +19531,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/natural-language-to-mvp/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/obsidian-git-workflow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/openai-latest-model-gpt-6-astra/</loc>
     <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/openclaw-architecture-guide/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17343,6 +19563,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/openviking-context-filesystem-rnd/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/orchestration-layer/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17413,8 +19639,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/pipeline-skill-design/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/plan-auto-approval-boundary/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/product-project-agent-workspace-init/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/project-checklist/</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17431,6 +19675,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/reducing-gpt-hallucinations/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/rethinking-skills-prompts-gpt-6-astra/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -17439,6 +19689,18 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/rslib-1-library-build-tool/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/sandbox-and-permissions/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/sd-prompt-syntax/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17455,6 +19717,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/skills-hooks-mcp-roles/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/souhu-ad-event-parameter-ai-validation/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -17463,6 +19731,18 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/taobao-subsidy-data-analysis-agent/</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/thinking-distillation-boundary/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/trigger-rules-and-structure/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17479,6 +19759,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/vault-directory-for-ai/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/vibe-marketing-marketing-engineer-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -17487,6 +19773,18 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/what-are-agent-skills/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/what-is-harness/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17523,6 +19821,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/xilo-codex-video-editing-knowledge-workflow/</loc>
     <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/zhipu-qingying-ai-video/</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -1,0 +1,191 @@
+---
+title: 从自然语言需求到可运行 MVP：把一句想法冻结成能交给 Agent 的切片
+description: 用输入、输出、失败态、验收动作四个维度，把一句模糊产品想法冻结成 coding agent 能一次实现并验收的最小可运行切片。
+date: 2026-07-11
+category: 技术教程
+tags: [LearnPrompt, AI 编程]
+readTime: 12
+---
+
+> 来源：[LearnPrompt：从自然语言需求到可运行 MVP：把一句想法冻结成能交给 Agent 的切片](https://www.learnprompt.pro/ai-coding/natural-language-to-mvp/)。本文为迁移、格式转换和图片路径调整后的整理版，保留原文结构、代码片段与公开教学配图。原站仓库采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)；产品版本与事实以原文标注的核验日期为准。
+
+| 难度 | 阅读时间 | 最后验证 | 作者 |
+| --- | --- | --- | --- |
+| 入门 | 12 分钟 | 2026-07-11 | LearnPrompt 编辑部 |
+
+你对 coding agent 说了一句：我想做一个 AI 新闻雷达，帮我盯住最重要的 AI 动态。十分钟后它给你一个又大又跑不通的东西——抓取、登录、界面、推送糊在一起，某一步报错，你既不知道它做到哪，也说不出到底哪里算完成。
+
+问题不在模型不够聪明，而在这句话还停在愿景阶段。它没有回答数据从哪来、交付物长什么样、出错了怎么办、凭什么算做完。把这四件事写死之前，需求就还没冻结，提示词写再长也一样。
+
+> MVP 的最小单位不是一个想法，而是一个能被验收的切片。验收动作还写不出来，需求就还没准备好交给 Agent。
+
+## 读完你能做什么
+
+1. 把一句模糊想法改写成一条可执行的用户价值：谁、在什么场景、得到什么结果。
+2. 用输入、输出、失败态、验收动作四个维度削减范围，给「砍到多小」一个能停下来的判据。
+3. 写出一张 coding agent 能一次实现的冻结任务卡，并把好点子显式推进 backlog。
+4. 用一段验收脚本把「怎么算完成」变成退出码，而不是靠肉眼目测。
+
+![一句模糊想法经输入、输出、失败态、验收动作四维冻结，收敛为最小可运行切片，其余进 backlog](/docs/blog/zh/natural-language-to-mvp/img/freeze-funnel.svg)
+*图注：注意中间那一列——四件事任一含糊，需求就还没冻结；四件事全部写死那一刻，开放式创作才变成 Agent 能验收的确定任务。*
+
+> **这不是商业 MVP**
+>
+> 经典 MVP 出自 Lean Startup，指用最小投入收集关于用户的最大量可验证认知，回答的是市场假设。本文只管更靠前的一步：交给 coding agent 之前，把需求冻结到能一次实现并客观验收的技术粒度。两个 MVP 目标不同，别混为一谈。
+
+## 先看清楚 Agent 需要的是什么
+
+Anthropic 在长任务 Agent 的工程实践里给出一个关键动作：在写代码之前，先就「done 长什么样」达成约定，再用带硬阈值的验收标准判定每一轮是否通过，并且把做事的角色和判断做对的角色分开。把这个要求前移到需求阶段，就得到本文的立足点。
+
+一句想法之所以无法执行，是因为它把四件本该写死的事留成了空白。逐一定死，需求就从开放式创作变成确定任务。
+
+| 维度 | 它回答什么 | 留空时的典型失败 |
+| --- | --- | --- |
+| 输入 | 数据从哪来、长什么样 | Agent 只能脑补数据源，主流程被抓取和鉴权淹没 |
+| 输出 | 交付物的确切形态 | 做出来没法验收，你不知道该看什么 |
+| 失败态 | 缺失、非法、零结果怎么办 | 脏数据下崩溃或静默产出空结果，还以为做完了 |
+| 验收动作 | 跑哪条命令、看到什么算成功 | 只能反复目测，无法接进自动化，也无法交给第二个角色独立判断 |
+
+> **这是 LearnPrompt 的需求冻结模型**
+>
+> “输入 / 输出 / 失败态 / 验收动作”四维法，是 LearnPrompt 把 Harness 的能力、约束与验收要求前移到需求阶段后形成的操作化编辑综合。它不是既有行业标准，也不是 Anthropic、OpenAI 或其他厂商的官方分类。
+
+这套模型的作用只有一个：让你知道什么时候可以停下来削减。四件事都能写死，就够小了；任何一件还含糊，就还不能开工。
+
+## Showcase：把一句模糊需求冻结成一个能跑的切片
+
+下面是一次真实过程，不是抽象模板。目标是把开头那句 AI 新闻雷达，做成一个当天能跑通、能验收的 MVP。完整脚本、fixture 和冻结输出保存在研究包的 `showcase/news-radar-mvp/` 里。
+
+### 第一步：把不能猜的决定问出来
+
+只问会改变成稿的问题，其余按最小假设先冻结。
+
+| 要决定什么 | 冻结结论 | 为什么不能让 Agent 猜 |
+| --- | --- | --- |
+| 数据从哪来 | 首版读一个本地 `feed.json`，不联网 | 真实抓取会牵出反爬、限流、鉴权，淹没主流程 |
+| 「重要」怎么定义 | 命中一组关注标签算相关，命中越多越靠前 | 决定核心算法，不能默认 |
+| 输出是什么 | 一份 Markdown 摘要打到 stdout | 决定验收动作长什么样 |
+| 首版规模 | 单文件脚本加一个验收脚本，一条命令跑通 | 防止第一版就背上 Web、登录、定时 |
+
+### 第二步：把决定写成冻结任务卡
+
+这张卡就是你要交给 Agent 的东西。它把四维和 backlog 都钉死。
+
+```yaml
+goal: 从本地 feed.json 生成一份 Top N 的 AI 新闻摘要
+user_value: 让我一眼看到命中关注标签的最重要几条，别的先不看
+input:
+  - feed.json：数组，每条含 title / source / url / published / tags
+process:
+  - 按关注标签 {anthropic, openai, coding-agent, model-release} 打分
+  - 同标题去重
+  - 按分数、其次按日期排序，取 Top N（默认 3）
+output: Markdown 摘要，含标题、来源、命中标签数、链接
+failure_states:
+  - 输入缺失 / 非法 JSON / 顶层非数组 → 非零退出并给可读错误
+  - 某条缺 title/source/tags → 判为坏数据，非零退出
+  - 零命中 → 非零退出（摘要为空不算成功）
+acceptance:
+  - node radar.mjs feed.json --top 3 输出恰好 3 条且含来源
+  - node verify.mjs 全绿、退出码 0
+allowed_paths: [radar.mjs, verify.mjs, feed.json, empty-feed.json]
+backlog_not_now:
+  - 真实抓取（网页 / RSS / GitHub / 邮件 / X）
+  - 多平台去噪与相似度合并
+  - Web UI、登录、定时任务、通知推送
+```
+
+### 第三步：实现并跑通
+
+实现只有一个 `radar.mjs`：读 `feed.json`、按关注标签打分、同标题去重、取 Top N、输出 Markdown，并把每个失败态都显式处理成非零退出。环境是本地 Node v24，无第三方依赖，不联网。
+
+主流程的真实输出（2026-07-11 实测）：
+
+```text
+$ node radar.mjs feed.json --top 3
+# AI 新闻雷达 · Top 3
+
+- **Anthropic 发布 Claude 新模型** — 官方博客（命中 2 个关注标签）
+  https://example.com/a
+- **OpenAI 更新 Codex CLI** — 官方博客（命中 2 个关注标签）
+  https://example.com/b
+- **开源 Agent 框架月度进展** — GitHub Trending（命中 1 个关注标签）
+  https://example.com/e
+```
+
+注意那条重复的「Anthropic 发布 Claude 新模型」只出现一次——去重在起作用。
+
+### 第四步：把验收写成退出码
+
+冻结任务卡里的 acceptance 不能靠肉眼。`verify.mjs` 把它变成四条确定性检查，全绿才退出 0：
+
+```text
+$ node verify.mjs
+PASS Top 3 恰好输出三条并含来源
+PASS 重复标题被去重
+PASS 缺失输入文件时非零退出
+PASS 零命中时非零退出
+
+summary: 4 passed, 0 failed
+```
+
+失败态也真的会失败，而不是静默通过：
+
+```text
+$ node radar.mjs nope.json
+radar: 读不到输入文件：nope.json
+exit=1
+```
+
+### 这个 Showcase 证明了什么，没证明什么
+
+- 证明了：一句模糊需求可以被削减成当天跑通、能验收的切片；四维写清后，实现从开放创作变成确定任务。
+- 没证明：真实抓取、跨平台去噪、相似度合并可行——那些正是被推进 backlog 的部分。fixture 是构造的最小数据，关注标签也是硬编码示例，不代表一套通用的重要性定义。
+
+## 常见失败模式
+
+### 把 MVP 写成商业计划
+
+同时要登录、支付、推荐、后台和漂亮动画。这既违背 MVP 最小投入的原意，更致命的是它没有一个能一次实现的切片。先问自己：删到只剩一个主流程，它还成立吗。
+
+### 只定义成功路径，不写失败态
+
+Agent 在脏数据上崩溃，或者静默产出空结果，你却以为它做完了。Showcase 里那条「零命中必须非零退出」，就是专门防这个。
+
+### 验收靠肉眼
+
+没有 `verify` 脚本，你只能反复目测，既接不进自动化，也没法让第二个角色独立判断。把完成写成退出码，验收才可复现、可移交。
+
+### backlog 隐形
+
+好点子不写进 backlog，就会以「顺便加一下」的方式回流进首版，把切片重新撑大。显式记录，是给首版划一条能守住的边界。
+
+## 什么时候不该用这套方法
+
+- 需求本质是市场验证而非技术交付：该做的是商业 MVP 和用户访谈，不是冻结代码切片。
+- 你已经有仓库和明确任务：这时接力棒交给[开工与验收清单](https://www.learnprompt.pro/ai-coding/project-checklist/)的六格清单，以及 [Agentic Coding 的最小工作流](https://www.learnprompt.pro/ai-coding/minimum-agentic-coding-workflow/)的 Plan→Patch→Verify→Learn 循环。
+- 想法确实无法先本地跑通（强依赖外部账号、实时数据、硬件）：可以先用 fixture 或桩替身把主流程跑通，真实接入留在 backlog——这正是本文 Showcase 的做法。
+
+## 练习：把你自己的一句想法冻结成任务卡
+
+挑一个你真想做的产品想法，用不超过十五行填完下面这张卡：
+
+```yaml
+user_value: 谁 / 在什么场景 / 得到什么结果
+input: 数据从哪来，长什么样
+output: 交付物的确切形态
+failure_states: 缺失 / 非法 / 空结果时怎么办
+acceptance: 跑哪条命令、看到什么算成功
+backlog_not_now: 这一版明确不做的三件事
+```
+
+可观察的完成标准：如果 `acceptance` 那一行你写不出一条能跑的命令，说明需求还没冻结——先补它，别急着交给 Agent。这时你面对的是范围问题，不是模型或工具的选择问题。
+
+## 来源与延伸阅读
+
+- [Anthropic：Effective harnesses for long-running agents](https://www.anthropic.com/engineering/harness-design-long-running-apps)（一手工程实践：先约定 done、用硬阈值验收、实现与评审分离）
+- [OpenAI Codex CLI 文档](https://learn.chatgpt.com/docs/codex/cli)（一手产品文档：以自然语言描述任务，permissions 与 sandbox 控制边界）
+- [Minimum viable product（Wikipedia，转述 Eric Ries 定义）](https://en.wikipedia.org/wiki/Minimum_viable_product)（作为要区分的商业 MVP 背景，非本文主张）
+- [Claude Code 橙皮书](https://github.com/alchaincyf/claude-code-orange-book)
+
+一手来源支撑当前产品行为与工程实践；Wikipedia 条目仅作商业 MVP 概念的背景对照。Claude Code 橙皮书采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)，本文将它标为中文二手主题地图，保留来源与许可；本文的四维冻结法、任务卡与 Showcase 均独立重建并复核。涉及产品行为的事实以 2026-07-11 核对过的官方资料为准。

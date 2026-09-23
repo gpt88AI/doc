@@ -37,6 +37,7 @@
 
 ## 技术博客
 
+- [长任务不漂移：用会话分段、handoff 和 checkpoint 管住 Claude Code 上下文](https://doc.gpt88.cc/docs/blog/advanced-conversation-patterns/): 把一次真实 bug 修复拆成探索、冻结结论、干净实现与验证，并知道什么时候该 continue、compact、clear、resume 或 fork。
 - [让 Agent 可评、可控、可迭代：业务效果导向的评测体系与实践](https://doc.gpt88.cc/docs/blog/agent-business-effect-evaluation/): 整理策略效果类 Agent 的业务评测方法：用五层评测对象、三层评估方法、四步质量归因和三阶段上线治理，把 Prompt、知识、工具、推理与线上效果纳入同一条可回归的质量闭环，并详解 Auto Rubrics、位置偏差、选择过拟合和策略收敛判断。
 - [AI Agent 应用精细化评测：从端到端结果定位到模块级缺陷](https://doc.gpt88.cc/docs/blog/agent-fine-grained-evaluation-practice/): 根据阿里技术公开摘要整理 Agent 精细化评测方法：将端到端任务完成度与感知、规划、记忆、工具调用等模块指标分开设计，建立评测范围、数据集、埋点和缺陷定位之间的映射。
 - [Agent Memory 五层架构：让 Agent 真正记住并持续学习](https://doc.gpt88.cc/docs/blog/agent-memory-5-layer-architecture/): 整理《Agent Memory - The 5-Layer Playbook》的核心框架，解释 Working、Episodic、Semantic、Procedural 与 Forgetting 五层记忆如何协作，以及为什么记忆是 Agent 的工程瓶颈。
@@ -45,6 +46,7 @@
 - [Agent Memory 生产化：遗忘、分层存储与测试方法](https://doc.gpt88.cc/docs/blog/agent-memory-testing-and-production/): 整理《Agent Memory - The 5-Layer Playbook》的生产化注意事项，覆盖 memory tax、层级摘要、冷热存储、矛盾流水线、领域生命周期和六类测试。
 - [当 Agent 成为交易主体：从授权、身份到 A2A 支付的信任基建](https://doc.gpt88.cc/docs/blog/agent-transaction-trust-infrastructure/): 整理硅谷101播客外滩大会圆桌内容，拆解 Agent 从推荐走向办事和交易后，授权、身份、KYA、支付权限、沙箱、责任追踪与 Agent-to-Agent 微交易需要怎样的信任基础设施。
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
+- [AI Agent 时代的营销：从 GEO、品牌提及到社群与真实连接](https://doc.gpt88.cc/docs/blog/ai-agent-marketing-geo-community-human-attention/): 整理 Indigo Talk EP51 关于 AI 营销、GEO、AI 推荐、品牌提及、AI Slop、社群和 Agent Vendor 的完整访谈，拆解企业如何从“生产更多内容”转向“被 AI 记住、被真人讨论、由专业 Agent 交付”。
 - [2026 AI API 中转站怎么选？结合 GPT88 的接入、验证与避坑指南](https://doc.gpt88.cc/docs/blog/ai-api-proxy-guide-2026-gpt88/): 整理 GPT88 的 OpenAI 兼容 API 接入流程，覆盖 AI 中转站选型、Base URL、API Key、模型发现、最小请求、计费核对、客户端配置、故障排查与安全边界。
 - [AI 涂色页生成器：用提示词或照片制作可打印线稿](https://doc.gpt88.cc/docs/blog/ai-coloring-page-generator/): 按用途选择 AI 涂色页路线：提示词、照片转线稿、课堂手工、成人细节页、个性化名字页或 KDP/Etsy 涂色书，并检查打印、隐私、导出和商用边界，生成真正可打印的干净线稿。
 - [AI 时代如何建立非对称增长优势：从 Product-Channel Fit 到大 B 销售](https://doc.gpt88.cc/docs/blog/ai-era-asymmetric-growth-advantage/): 整理课代表立正与 Hockey Stick 创始人陈唱关于 AI 产品增长的访谈，拆解 AI Agent Manager、红人营销、Product-Channel Fit、Enterprise 与 PLG、Bardeen 复盘、Churn 和大 B 销售之间的关系。
@@ -53,20 +55,25 @@
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
 - [ai-image-prompts-skill：让 Agent 从一万条图片提示词中找答案](https://doc.gpt88.cc/docs/blog/ai-image-prompts-agent-search/): 介绍 ai-image-prompts-skill 的大规模提示词检索思路，说明如何把自然语言需求转换成案例搜索、候选 Prompt、变量替换和连续生图流程。
 - [推理芯片之战：Groq、Cerebras 与 OpenAI 三条路线，到底在比什么？](https://doc.gpt88.cc/docs/blog/ai-inference-chip-war-groq-cerebras-openai/): 整理硅谷101 E251 对 Groq、Cerebras、OpenAI 自研推理芯片与 Bill Dally 设计哲学的讨论，解释为什么推理更看带宽、SRAM 与 HBM 如何取舍，以及芯片、模型和系统如何共同决定速度与能耗。
+- [让 AI 维护知识库而不直接改库：把合并、过期和孤立笔记变成审批队列](https://doc.gpt88.cc/docs/blog/ai-maintains-knowledge-base/): 用 Obsidian 的 Search、properties、backlinks 和 links 收集信号，让 AI 只生成带证据的维护提案，等人批准后再进入后续应用流程。
 - [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
 - [AI 会生成 PPT 之后，为什么 Runtime 才决定上限？](https://doc.gpt88.cc/docs/blog/ai-ppt-runtime-artifact-runtime/): 从一次性 PPT 文件到可持续操作的 Artifact，理解 Artifact Runtime、Observe-Address-Operate-Verify 工作循环、布局语义和领域对象。
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
 - [AI 去除图片文字：上传前先选对安全路径](https://doc.gpt88.cc/docs/blog/ai-remove-text-from-image/): 用 AI 去除图片文字前，先判断它是普通说明、设计源文件、隐私内容、复杂背景，还是水印和权属标记，再选择在线工具、编辑器、专业修图、源文件重建或停止。
 - [AI 塔罗牌生成器：先分清抽牌、卡面设计、牌组系统和发布检查](https://doc.gpt88.cc/docs/blog/ai-tarot-card-generator/): 想做塔罗牌却分不清抽牌工具和 AI 卡面？本文先区分塔罗抽牌、单张卡面设计、牌组系统和发布检查四条路线，再讲清卡牌提示词结构、牌组风格系统、审核重生成规则，以及印刷售卖前的导出、权利和 AI 披露检查。
+- [AI Town 与多智能体模拟：从热闹演示到可验证系统](https://doc.gpt88.cc/docs/blog/ai-town/): 从 AI Town 的搜索意图出发，理解多智能体模拟的记忆、环境、调度、观察与评估，并做出一个可复跑的最小切片。
 - [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
+- [API 集成型 Skill 设计：把一次 REST 调用写成 request contract，而不是把 token、重试、schema 和副作用全交给 Agent 猜](https://doc.gpt88.cc/docs/blog/api-integration-skill-design/): 用一个只读 release feed Showcase 学会冻结 credential 来源、GET/pagination、429/5xx、schema validation 与脱敏 evidence。
 - [Applied AI Field Guide：FDE 如何从真实工作走到可接受结果](https://doc.gpt88.cc/docs/blog/applied-ai-field-guide-fde-methodology/): 介绍 Applied AI Field Guide 的应用型 AI 交付方法，解释现场调研、价值判断、机制选择、垂直切片、评测验收和生产运营如何组成完整生命周期。
+- [Codex auto-review 的边界：别把 GitHub PR review 和审批 reviewer 混成一个开关](https://doc.gpt88.cc/docs/blog/auto-review-boundaries/): 用一个 refund-window-review 真实示例，拆清 GitHub `@codex review` / Automatic reviews 与 `approvals_reviewer = "auto_review"` 的职责、输入、输出和不能证明什么。
 - [Awesome-AI-Images-Prompts：如何对照不同模型的生图写法](https://doc.gpt88.cc/docs/blog/awesome-ai-images-prompts-cross-model/): 介绍 Awesome-AI-Images-Prompts 的跨模型中文提示词思路，比较 GPT Image、Nano Banana、即梦、豆包和 FLUX 等工具的表达差异与迁移方法。
 - [awesome-gpt-image-2：从案例库学习工业级图片提示词](https://doc.gpt88.cc/docs/blog/awesome-gpt-image-2-industrial-prompts/): 介绍 awesome-gpt-image-2 的案例和模板思路，拆解海报、电商图、信息图、UI 和品牌视觉等任务如何从参考画面中提取可复用提示词结构。
 - [Awesome Seedance：把 463 条 AI 视频案例沉淀成提示语模板和 Agent Skill](https://doc.gpt88.cc/docs/blog/awesome-seedance-prompt-library/): 整理卡尔的AI沃茨公开的 awesome-seedance 项目，拆解 463 条视频案例复现、跨模型评分、分类、提示语模板和 Agent Skill 的完整方法，并保留原帖图片与视频，给出 UGC、打斗、产品广告和 Skill 工作流的可执行用法。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
 - [Browser Use + Jev：网页 Agent 为什么能在 7 秒内完成一次航班搜索](https://doc.gpt88.cc/docs/blog/browser-use-jev-ultrafast/): 整理 Gregor Zunic 的 Browser Use + Jev 实测视频，以及 AYi 对该案例的中文解读，拆解动态动作空间、DOM 状态、小模型输入回退和成本测量，并给出浏览器 Agent 的工程化落地与验收方法。
 - [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
+- [CapCut AI 视频工作流：把生成草稿变成可发布的短视频](https://doc.gpt88.cc/docs/blog/capcut-ai-video-workflow/): 用 CapCut 的 AI 视频能力做出可审阅的第一版，再用镜头、字幕、音轨和导出检查把它变成可发布的短视频。
 - [ChatGPT 新手进阶教程：10 个容易忽略的功能与变现工作流](https://doc.gpt88.cc/docs/blog/chatgpt-10-hidden-features-beginner-guide/): 根据小船的 ChatGPT 新手教程视频整理，覆盖搜索与深度研究、文件分析、图像生成、语音、Canvas、Projects、自定义 GPT、任务自动化、连接器和 API/GPT88 工作流，并给出逐项验证与安全边界。
 - [ChatGPT 桌面版更新后提示 Unable to locate the Codex CLI binary：排查与修复指南](https://doc.gpt88.cc/docs/blog/chatgpt-desktop-codex-cli-binary-fix/): 整理 ChatGPT 桌面版更新后无法启动 Codex 的排查记录，解释桌面端与 Codex CLI 的关系，覆盖 PATH、npm 全局安装、Windows 原生二进制、版本错配和安全回滚。
 - [ChatGPT Plus 图片上传达到上限？别猜每天几张，先查这 6 类限制](https://doc.gpt88.cc/docs/blog/chatgpt-file-upload-limits-free-plus-pro/): OpenAI 没有公布统一的 Plus 每日图片上传张数。本文按单图 20MB、每 3 小时 80 个文件滚动上限、单条消息组合、Project、资料库和 custom GPT 知识文件共 6 类限制逐项排查，并给出最小对照与证据收集方法。
@@ -74,20 +81,32 @@
 - [ChatGPT 无法上传图片？先分清按钮、文件、次数、存储和状态问题](https://doc.gpt88.cc/docs/blog/chatgpt-image-upload-not-working/): ChatGPT 无法上传图片？先用小于 20MB 的静态 PNG/JPG 做小图测试，再区分按钮、文件、上传次数、Library 存储、工作区权限、OpenAI Status 和 API 七层归属，逐层判断并保留支持证据。
 - [ChatGPT 图片生成器怎么用：从提示词、编辑到下载的完整指南](https://doc.gpt88.cc/docs/blog/chatgpt-images-2-0/): 一步完成 ChatGPT 图片生成：确认官方入口，写清中文提示词，上传自有素材，局部编辑，检查文字与事实，最后下载并核验文件。另说明免费额度、Images with thinking、C2PA/SynthID 与 API 的边界。
 - [Nano Banana Pro API 怎么选：便宜、稳定和高并发先看路线](https://doc.gpt88.cc/docs/blog/cheapest-stable-nano-banana-pro-api/): Nano Banana Pro API 不要只看谁喊得便宜。先分清 Google 直连、Batch/Flex、可验证网关和双路线验证，再用价格归属、日志、账单和并发测试决定生产路线。
+- [检查清单型 Skill 设计：把“列问题”升级成可执行的 release gate](https://doc.gpt88.cc/docs/blog/checklist-skill-design/): 用一个小型 npm CLI release candidate，把 checklist row 冻结成 evidence、pass rule、severity 和 N/A policy，避免 Agent 只给“看起来没问题”的结论。
+- [Claude Code 与 Codex 怎么选：别比较模型，先判断工作方式](https://doc.gpt88.cc/docs/blog/choose-claude-code-or-codex/): 用一次真实教程改稿、五个决策变量和四种任务模式，选择 Claude Code、Codex 或双工具协作。
+- [用 Claude Code 做 Chrome 扩展原型：从验收标准做出权限克制的 Manifest V3 阅读卡](https://doc.gpt88.cc/docs/blog/chrome-extension-prototype/): 从 acceptance criteria 出发，用 Claude Code 做一个真实可加载、可验证、只申请必要权限的 Chrome Manifest V3 扩展原型。
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
+- [CLAUDE.md + index.md 如何限制 Agent 读取范围：用路由预算代替全库递归](https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/): 学会把 Claude Code 的指令加载机制和项目自写 index.md 组合成可审计的路由预算，让 Agent 只读必要入口而不是递归扫完整个 vault。
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
+- [Claude Code 与 Codex 双线开发：用 Git 工件交接，而不是靠记忆接力](https://doc.gpt88.cc/docs/blog/codex-claude-code-dual-track/): 用一套与品牌无关的 handoff contract、receipt、worktree 和 gate，在 Claude Code 与 Codex 之间切 lane、降级和独立验收。
+- [Codex CLI 入门工作流：把一次聊天变成可验证闭环](https://doc.gpt88.cc/docs/blog/codex-cli-workflow/): 用隔离 receipt-normalizer 仓库的一次真实 codex exec，学会检查目录与工作树、冻结 contract、最小修改、测试、diff 与结构化汇报。
+- [Codex Cloud 适合什么任务：用 timezone-rollup 预演判断能不能安全上云](https://doc.gpt88.cc/docs/blog/codex-cloud-task-fit/): 用一个具体的 timezone-rollup bug，学会在提交前用 repo-contained、deterministic、clean-checkout 和 acceptance-command 四条门槛判断任务是否适合交给 Codex Cloud。
+- [Codex 的四个执行面怎么选：CLI、IDE 插件、桌面 App、Cloud](https://doc.gpt88.cc/docs/blog/codex-form-factors/): 用环境依赖、反馈节奏、权限风险和异步需求四个维度，判断该用 Codex 的哪个入口执行任务。
 - [用 Codex 和 HyperFrames 自动生成视频：从文章到口播、分镜与成片的完整教程](https://doc.gpt88.cc/docs/blog/codex-hyperframes-video-content-workflow/): 整理 Miles Ma 关于 Codex 视频生产流程的实践，讲清如何用文章或主题生成口播稿，完成 TTS 或声音复刻、字幕时间轴、分镜、HyperFrames 成片，以及真人口播和内容获客的后续扩展。
 - [ComfyUI Nano Banana Pro 替代方案：本地、API 与托管路线怎么选](https://doc.gpt88.cc/docs/blog/comfyui-nano-banana-pro-alternative/): 在 ComfyUI 里替换 Nano Banana Pro，不是找一个万能模型，而是判断本地控制、Qwen 编辑实验、托管 API 和继续使用 Pro 哪条路线更适合，并用同题测试做决策。
 - [Commerce Agents 工程架构拆解：从 Prompt Demo 到可控的应用代理](https://doc.gpt88.cc/docs/blog/commerce-agents-engineering-architecture/): 以 commerce-agents 参考项目为例，拆解应用代理的共享核心、Backend 契约、Tool Calling Loop、Skill 分层、数据 Fencing、Provenance、结构化 UI、人工审批、记忆、评测与生产化路径。
 - [图片压缩到100KB或200KB：通过上传限制的格式、尺寸和画质步骤](https://doc.gpt88.cc/docs/blog/compress-image-to-100kb-200kb/): 按上传表单要求把图片压缩到100KB或200KB，先确认格式、尺寸和比例，再选择JPG、PNG或WebP，避免低于KB仍被驳回；覆盖敏感图片隐私与本地工具选择。
 - [AI 商品图怎么保持同一产品不变：一套可执行的一致性质检法](https://doc.gpt88.cc/docs/blog/consistent-ai-product-photos/): 先锁定真实 SKU，再让场景变化。用参考包、锁定矩阵、六帧压力测试和逐图质检，减少 AI 商品图里的变形、错色、乱码与错款。
 - [AI 多图如何保持同一角色：四镜头一致性验收法](https://doc.gpt88.cc/docs/blog/consistent-character-generator/): AI 多图生图时如何保持同一个角色？先锁定脸型、发型、体型、服装与画风，再用中性肖像、侧面或全身、动态动作、受控场景四个镜头验收一致性，附可直接复制的验收记录表和失败后只做一次最小重试、及时换路线的规则。
+- [约束层：把「不要做什么」从软提醒变成可执行边界](https://doc.gpt88.cc/docs/blog/constraint-layer/): 用执行前判定和执行时拦截两类机制，把一条「不要碰密钥、不要 push」从 CLAUDE.md 里的软提醒变成系统会强制执行、且能验证的硬边界。
+- [把一次性抓取总结变成可恢复流水线：用 Claude Code 先出草稿，再等人工批准](https://doc.gpt88.cc/docs/blog/content-automation-pipeline/): 用两份固定离线快照和七阶段门禁，把“抓两份源顺手出周报”改写成可恢复、可追溯、默认只产草稿的 Claude Code 内容流水线。
+- [用 CLAUDE.md 管住风格膨胀：把规则放对层，而不是越写越长](https://doc.gpt88.cc/docs/blog/control-style-with-claude-md/): 从一次真实风格失败出发，判断规则该放根 CLAUDE.md、路径作用域 `.claude/rules`，还是确定性检查，并建立添加、验证、修剪的维护循环。
 - [图片转吉卜力风格：先选路线、再写提示词](https://doc.gpt88.cc/docs/blog/convert-image-to-studio-ghibli-style/): 想把照片变成吉卜力风格或吉卜力灵感插画，先判断 ChatGPT、在线滤镜、API、本地流程和原创风格 brief 哪条路线更适合，再处理上传风险、细节保真与可商用表述，附人像、宠物和产品图的提示词写法。
 - [从 24 个企业 AI 案例看 FDE：如何把客户的痛点变成真正可用的产品](https://doc.gpt88.cc/docs/blog/datawhale-fde-enterprise-ai-delivery/): 结合 Datawhale 24 个企业 AI 落地案例，以及 Palantir 资深 FDE 与 OpenAI FDE 负责人 Colin Jarvis 的访谈，系统拆解企业 AI 的真实需求、FDE 的交付方法、信任建立、工作流设计和产品化路径。
 - [DeepSeek Harness 16 个热门插件整理：能力扩展、界面增强与安全安装指南](https://doc.gpt88.cc/docs/blog/deepseek-harness-16-plugins/): 整理公众号文章中的 16 个 DeepSeek Harness（DSH）社区插件，按能力扩展、工作台增强和社区整活分类，并补充插件选择、安装验证、权限安全与版本回滚建议。
 - [DeepSeek Harness 架构全解：从 Model + Harness 到插件树、Session Log 与安全管线](https://doc.gpt88.cc/docs/blog/deepseek-harness-architecture-explained/): 整理 Russell 关于 DeepSeek Harness 的架构长文，解释 Agent = Model + Harness、Profile、Cordis 插件生命周期、Turn 与 Step、Session Log、工具审批、Capability Seam、子 Agent 与远程沙箱。
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
+- [OpenClaw 上线决策：部署、渠道安全与可重算成本](https://doc.gpt88.cc/docs/blog/deployment-channels-cost/): 用工作负载、信任边界和预算公式选择本地、VPS 或托管模板，并建立可验证的上线门禁。
 - [扩散式语言模型会赢得 AI 推理吗？从 Inception 访谈看并行生成、速度与模型架构竞争](https://doc.gpt88.cc/docs/blog/diffusion-language-model-inference-inception/): 整理 No Priors 对 Inception 联合创始人 Stefano Ermon 的访谈，解释扩散式语言模型如何通过并行去噪生成文本，为什么推理阶段可能比自回归模型更适合 GPU，以及速度、可控性、服务引擎和 GPT88 模型路由应该如何评测。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
 - [企业上 AI 之前，先把数据治理做对：从纸质档案到可查询数据](https://doc.gpt88.cc/docs/blog/enterprise-data-governance-before-ai/): 从纸质维修单、扫描版产品手册和 Excel 配件表出发，系统整理企业数据治理流程，说明 OCR、表格解析、清洗、版本、权限、验收和持续维护如何为知识库与 AI 打基础。
@@ -99,6 +118,9 @@
 - [零基础如何进入 FDE：从第一个真实交付到可复用的 AI 落地能力](https://doc.gpt88.cc/docs/blog/fde-zero-to-one-entry-guide/): 整理 Formulasearch 关于 FDE 入行路径与能力成长的实践分享，拆解实习入口、AI Coding 转向、真实项目、客户交付、能力评估、面试准备、职业边界与长期资产沉淀。
 - [FDEOps：如何管理客户现场的 AI 交付、验收与移交](https://doc.gpt88.cc/docs/blog/fdeops-client-delivery-governance/): 介绍 FDEOps 的客户交付治理思路，拆解简报、成功标准、决策权、风险、上线、验收和移交记录，帮助 FDE 小团队减少现场信息丢失。
 - [FDEstack：把客户发现、POC 和生产集成变成可复用工作流](https://doc.gpt88.cc/docs/blog/fdestack-fde-workflow/): 介绍 FDEstack 的八个 Claude Code Skill，解释它如何把客户上下文、需求范围、价值框架、POC、生产集成和复盘串成一套可重复的 FDE 工作流。
+- [反馈层：把环境信号变成下一轮可执行的最小修正](https://doc.gpt88.cc/docs/blog/feedback-loop/): 用可定位、可判断、低延迟、可执行四个属性审计反馈信号，从失败证据定位一处最小改动，并说清何时停止、何时升级。
+- [第一个 SKILL.md 怎么写：让 Agent 稳定触发、执行和验收](https://doc.gpt88.cc/docs/blog/first-skill-md/): 用官方字段约束和三级渐进披露写出第一个能被 Agent 触发的 SKILL.md，并亲手校验、打包一个最小 Skill。
+- [一个 Loop 的五个动作：发现、交接、验证、持久化、调度](https://doc.gpt88.cc/docs/blog/five-moves/): 从一次性 Agent 任务走向可持续循环，并运行一个会保存状态、验证结果和决定下一步的最小 Loop。
 - [AI 生成图片文字错了怎么改，才能不破坏原设计](https://doc.gpt88.cc/docs/blog/fix-text-in-ai-image-without-changing-design/): AI 海报或商品卡文字出错时，别只靠提示词重绘。按风险选择路径：先找源文件改真实文字层，无源文件时重建可编辑图层，再退而抹字重排，只有低风险装饰字才用局部 AI 修复，交付前用五分钟验收清单逐字核对。
 - [14 个大模型同做一道量化题：谁写出了更好的交易策略？](https://doc.gpt88.cc/docs/blog/fourteen-llm-quant-trading-benchmark-ep007/): 整理 frank-quant 的 EP007 量化交易大模型基准测试，复盘 14 个模型、8 家厂商、9 套官方 harness 在同一份数据和同一张考卷上的表现，并分析样本外收益、稳健性、代码质量、成本与末端强平偏差。
 - [免费 AI 图像生成器每日积分怎么选：额度、限制和上传安全](https://doc.gpt88.cc/docs/blog/free-ai-image-generator-daily-credits/): 免费 AI 图像生成器不要先按"谁的积分最多"来选。先分清每日重置、每日领取、快速生成额度、计算单位、新手积分、无积分沙盒和付费后备这几种合约，再按练习、设计、上传和商用场景选择，附 9 个免费额度路线实例与上传前信任清单。
@@ -154,6 +176,7 @@
 - [GPT88 Skill 完整指南：作用、安装使用方法与适用场景](https://doc.gpt88.cc/docs/blog/gpt88-skill-agent-onboarding-guide/): GPT88 Skill 是一套面向 Agent 的 GPT88 接入工作流，覆盖 OpenAI SDK、Cursor、Codex、Claude Code、Cline、账号登录、API Key、模型发现、价格查询、用量管理和安全排障。本文解释它的作用、使用方式与场景。
 - [Grok 免费生图替代怎么选？中国大陆可用路线与避坑清单](https://doc.gpt88.cc/docs/blog/grok-alternative-for-image-generation-free/): Grok Imagine 不能用或额度不够时，按中国大陆可用性、中文文字、改图、商用权利与隐私选择免费 AI 生图替代：Qwen Studio、Qwen-Image + ComfyUI 本地部署与 Adobe Firefly，并附免费入口的六项合同检查与两轮测试评分表。
 - [职业头像背景怎么选：LinkedIn、简历、团队页和 AI 换背景的实用判断](https://doc.gpt88.cc/docs/blog/headshot-background/): 职业头像背景先看用途再看颜色。按 LinkedIn、简历、团队页、名录、正式头像与个人品牌选择浅灰、白色、深色或环境背景，并判断源图值得 AI 换背景还是应直接重拍，附发布前检查清单。
+- [Hermes Agent 的学习循环：记忆、Skill 与写入审批](https://doc.gpt88.cc/docs/blog/hermes-learning-loop/): 分清 Hermes 何时把事实写入 memory、何时把流程写成 Skill，并用审批 gate 避免错误学习被固化。
 - [Holo Card Studio Skill 使用指南：用一句话生成可编辑的 3D 全息闪卡](https://doc.gpt88.cc/docs/blog/holo-card-studio-skill-guide/): 整理 EverettFish/holo-card-studio Skill 的能力、安装、四层素材工作流、Blender 与 Three.js 流水线、参数调节、验收方法和常见问题，帮助你从文字或参考图生成可编辑的 3D 全息卡片。
 - [AI 中转站最全科普](https://doc.gpt88.cc/docs/blog/hvoy-ai-api-101/): 全面教您了解中转站,知道中转站商业逻辑, 上游渠道
 - [AI 每日简报｜Claude Opus 5 在你的模型轮换体系中处于什么位置｜2026.07.27](https://doc.gpt88.cc/docs/blog/hvoy-ai-daily-brief-2026-07-27/): 本期聚焦 Claude Opus 5 的真实定位与争议表现，同时梳理 OpenAI 失控智能体事件、NVIDIA 和 Google 的巨额融资兜底，以及 DeepSeek 暂停融资等重要动态。
@@ -299,6 +322,9 @@
 - [如何选择一个好的中转站](https://doc.gpt88.cc/docs/blog/hvoy-how-to-choose-api-gateway/): 选择中转站, 要综合考虑站长人品, 站点规模, 稳定性, 价格等多方面因素之后, 再下手.
 - [ImagineArt AI 指南：免费积分、价格、模型和适用场景](https://doc.gpt88.cc/docs/blog/imagineart-ai-guide/): 用免费日积分、订阅与充值积分、Pro 模型访问、商用边界和官方 API 区别，判断 ImagineArt 是否适合你的图片或视频工作流：先试哪条路、先停在哪里，以及哪些场景应直接跳过套件。
 - [ImagineArt 价格、免费积分和评价：付费前先查这几件事](https://doc.gpt88.cc/docs/blog/imagineart-pricing-free-credits-review/): 面向想试用或订阅 ImagineArt 的中文读者：免费积分、付费套餐、网页与 App 付款路线、取消订阅、评价信号和适合跳过的情况，避免把"低价""无限"当成购买承诺。
+- [Claude Code 安装与第一个项目：先跑通一次可验收的小闭环](https://doc.gpt88.cc/docs/blog/install-and-first-project/): 用一个可丢弃的 git 小仓库，完成 Claude Code 的第一次安装、登录核验与最小改动闭环。
+- [Stable Diffusion 安装与部署：先选工作流，再做一次可复现的本地运行](https://doc.gpt88.cc/docs/blog/installation/): 用硬件、隐私、控制需求和维护成本选择 Stable Diffusion 工作流；完成一次可复现安装并保留模型、参数和错误证据。
+- [指令层：把意图翻译成 Agent 能执行的项目地图](https://doc.gpt88.cc/docs/blog/instruction-layer/): 用目标、范围、顺序、验收和冲突优先级五个可执行维度，把一份指令从形容词变成能被验收的项目地图。
 - [GPT Image 2 API 免费吗？官方边界和安全测试路线](https://doc.gpt88.cc/docs/blog/is-gpt-image-2-api-free/): 截至 2026-04-25，gpt-image-2 没有可确认的 OpenAI 官方 API 免费层。区分 ChatGPT 应用额度、浏览器测试、provider 试用、用户自付 SDK 与共享 key wrapper，并给出安全测试路线和生产停止规则。
 - [Jev 完整实战教程：用快速决策模型驱动浏览器、记忆与预测](https://doc.gpt88.cc/docs/blog/jev-full-tutorial-three-demos/): 整理 Moritz Kremb 的 Full Jev Tutorial 与 AYi_AInotes 的中文解读，按时间轴拆解 Jev 的机制、API 接入、语音控制浏览器、长期记忆筛选和 YouTube 概率预测三个实战案例，并给出可靠的工程落地边界。
 - [Jev 开源项目地图：从浏览器 Agent 到代码搜索和知识图谱](https://doc.gpt88.cc/docs/blog/jev-open-source-ecosystem-map/): 根据 govin.eth 的 Jev 项目清单逐项核验公开 GitHub 仓库，整理 Jev 开源生态中的浏览器自动化、桌面控制、代码审查、模型路由、MCP、知识图谱、代码搜索和上下文过滤项目，并标注当前能力与使用风险。
@@ -307,8 +333,13 @@
 - [Jev / System One Model 实测：把语言模型变成软件可直接调用的决策函数](https://doc.gpt88.cc/docs/blog/jev-system-one-model-practical-guide/): 整理 01Coder 对 TypeSafe AI Jev 的视频实测，解释 System One Model、Choice、Score、Boolean、并行评估、概率与置信度，并给出模型路由、内容审核和 LLM 输出校验的工程落地方法。
 - [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
 - [删掉 80% Prompt 规则后 Agent 交付更稳：把约束放回系统](https://doc.gpt88.cc/docs/blog/less-prompt-rules-agent-delivery/): 整理腾讯云开发者关于精简 Agent Prompt 的工程思路：把上下文索引、可信事实、工具能力和验证关卡分别承担确定性约束，避免依赖超长提示词记住所有规则。
+- [Markdown 何时才算 Agent 可交接记忆：把项目交接写成可验证记录](https://doc.gpt88.cc/docs/blog/markdown-as-agent-memory/): 学会用一个小型 Markdown handoff packet 记录状态、决策、证据、下一条命令和限制，让新开的 Agent 会话能接着干。
 - [美团智播：数字人直播从生成模型到业务知识库的工程化实践](https://doc.gpt88.cc/docs/blog/meituan-zhibo-digital-human-practice/): 根据美团技术团队公开摘要整理智播数字人直播链路：形象生成、动作驱动、流式语音与手势协调、直播内容量产和业务知识库如何组合成可运营系统。
+- [记忆层：跨会话该记住什么，何时读取，何时淘汰](https://doc.gpt88.cc/docs/blog/memory-layer/): 按生命周期把信息分成当前上下文、任务状态、持久项目指令、自动记忆和原始证据五个桶，只把跨会话可复用的教训写进记忆，并给它一条召回与淘汰纪律。
 - [Midjourney V8.2 要不要升级？先跑完这张 8 格验收表](https://doc.gpt88.cc/docs/blog/midjourney-8-2-upgrade-decision/): V8.2 已于 2026-07-24 成为默认版本，但旧项目不该只看一张漂亮样图就迁移。用 8 条真实工作提示词、固定控制项和两次重试预算，做出保留、复测或回退决定。
+- [Agentic Coding 的最小工作流：把一次任务跑成 Plan → Patch → Verify → Learn 闭环](https://doc.gpt88.cc/docs/blog/minimum-agentic-coding-workflow/): 用四步操作模型跑完一次真实小改动，锚定 plan mode、可读 diff、可执行验收与规则写回，并附一个可复现的边界失败。
+- [CLAUDE.md 模板：从重复失败里提炼最小可用项目规则](https://doc.gpt88.cc/docs/blog/minimum-claude-md/): 用可直接改写的 CLAUDE.md 模板，把一次已完成任务的重复错误压成短、具体、可验证的项目规则。
+- [多 Agent 协作适合解决什么问题](https://doc.gpt88.cc/docs/blog/multi-agent-collaboration/): 先画依赖图、冻结接口与验收标准、分配不重叠文件所有权，再选择单 Agent / subagent / agent team / worktree，用合并门禁验证结果。
 - [Gemini 图片免费在线生成：Nano Banana 2 官方入口与第三方工具检查](https://doc.gpt88.cc/docs/blog/nano-banana-2-online-free/): 想在线免费生成 Gemini 图片，先分清官方 Gemini、Google AI Studio、开发者 API、社区 Demo 与第三方包装站的责任边界，再决定是否上传照片、品牌素材或客户文件。
 - [Nano Banana免费版vs付费版：配额、分辨率与功能差异完全对比（2026）](https://doc.gpt88.cc/docs/blog/nano-banana-free-vs-paid-comparison/): 对比 Google Nano Banana 免费版、Pro 与 Ultra 三档的每日配额、分辨率上限、水印政策与功能特性；解析配额用尽后的降级机制，以及 Gemini App 与 AI Studio API 两套独立配额体系的组合用法与成本测算。
 - [Nano Banana 免费使用完整指南：官方渠道、12 个平台与 $300 赠金攻略](https://doc.gpt88.cc/docs/blog/nano-banana-free/): 详解 Nano Banana 免费使用方法：官方 Gemini App、AI Studio、Vertex AI、Whisk、ImageFX 与第三方平台额度对比，$300 Google Cloud 赠金获取与使用、配额重置时间、中国用户访问方案与长期免费策略。
@@ -338,9 +369,13 @@
 - [Nano Banana Pro vs Qwen-Image-2512完全对比：性能、价格与选型指南](https://doc.gpt88.cc/docs/blog/nano-banana-pro-vs-qwen-image-2512/): 深度实测Nano Banana Pro和Qwen-Image-2512两大AI图像生成模型，从4K分辨率到中文渲染，从官方定价到成本优化，助你做出最佳技术选型决策。
 - [Nano Banana Pro去水印完整指南：5种方法获取无水印AI图片【2026实测】](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark-removal/): 详细介绍Nano Banana Pro去水印的5种有效方法，包括官方订阅、第三方API、专业工具对比。深入解析可见水印与SynthID的区别，帮你选择最适合的无水印获取方案。
 - [Nano Banana 免费无可见水印：AI Studio、Gemini 免费版与 API 怎么选](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark/): 想免费获得没有可见 Gemini 标记的 Nano Banana 图片？先分清 Google AI Studio 免费试用、Gemini 免费版的可见标记、图像 API 付费边界，以及始终保留的 SynthID。
+- [从自然语言需求到可运行 MVP：把一句想法冻结成能交给 Agent 的切片](https://doc.gpt88.cc/docs/blog/natural-language-to-mvp/): 用输入、输出、失败态、验收动作四个维度，把一句模糊产品想法冻结成 coding agent 能一次实现并验收的最小可运行切片。
+- [Obsidian + Git 工作流：把同步、备份、版本控制和 Agent 批量改动拆开](https://doc.gpt88.cc/docs/blog/obsidian-git-workflow/): 学会用 clean baseline、独立 worktree、diff gate 和人工 review，让 Obsidian vault 的 AI 批量改动可接受、可丢弃、可恢复。
 - [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 官方最新模型指南，整理 GPT-6 Astra 的核心能力、新增工具调用方式、提示词策略、迁移参数、Responses API 接入与 GPT88 使用排障。
+- [OpenClaw 架构导读：沿一条消息看懂 Gateway、Node 与 Channel](https://doc.gpt88.cc/docs/blog/openclaw-architecture-guide/): 从合成消息的完整路径出发，判断 Gateway、Node、Channel、pairing、scope 与远程接入分别在哪一层生效。
 - [OpenFDE：把客户访谈、业务记忆和 Agent 任务连成一条证据链](https://doc.gpt88.cc/docs/blog/openfde-local-first-fde-memory/): 介绍 OpenFDE 的本地优先 FDE 工作区，拆解来源引用、业务本体、任务状态机、Agent 上下文、评测验收和执行报告之间的关系。
 - [OpenViking：让研发上下文在不同 Agent 与工具之间持续在线](https://doc.gpt88.cc/docs/blog/openviking-context-filesystem-rnd/): 整理字节跳动技术团队对 OpenViking 的公开介绍：用统一上下文文件系统组织资源、记忆与技能，通过 L0、L1、L2 分层加载减少上下文浪费，并保留会话记忆与检索轨迹。
+- [编排层：把一次任务变成一台明确的状态机](https://doc.gpt88.cc/docs/blog/orchestration-layer/): 用顺序、角色、路由、重试、预算、停止、升级七个决定审计编排，从单 worker 加独立 evaluator 的最小状态机起步，并说清什么时候不该上多 Agent。
 - [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
 - [Palantir AIP 架构总览：企业 Agent 的完整能力地图](https://doc.gpt88.cc/docs/blog/palantir-aip-architecture/): 按 Palantir AIP 架构的能力层次，系统拆解模型接入、上下文工程、Ontology、工具、Agent 生命周期、自动化、评估、观测和企业级 AI 交付。
 - [AIP、Foundry 与 Apollo：Palantir 企业操作系统的三层协作](https://doc.gpt88.cc/docs/blog/palantir-aip-foundry-apollo/): 详细拆解 Palantir AIP、Foundry、Apollo 三个平台的职责边界、协作关系、安全模型和 AI Agent 落地方法，帮助 AI FDE 建立企业级架构视角。
@@ -352,25 +387,38 @@
 - [Pi Agent 扩展选型指南：联网、记忆、子 Agent、MCP 与上下文优化](https://doc.gpt88.cc/docs/blog/pi-agent-essential-extensions-guide/): 整理 Pi Agent 常用扩展推荐，解释 pi-web-access、pi-memory、rpiv-todo、pi-subagents、pi-mcp-adapter 和 context-mode 的作用、适用场景、安装策略与安全边界。
 - [Pi Coding Harness 实践：用 AGENTS.md、Skills 与 Packages 重建可控的编程 Agent](https://doc.gpt88.cc/docs/blog/pi-coding-harness-efficiency-guide/): 整理 Chasen 关于从 Claude Code 转向 Pi Coding Agent 的实践，解释 Coding Harness 的三层结构、按需加载 Skills、子 Agent 并行、上下文管理、验证闭环与权限安全。
 - [Pi Agent 多智能体实战：用 pi-herdr-agents 搭建可监督的 AI 团队](https://doc.gpt88.cc/docs/blog/pi-herdr-agents-multi-agent-workflow/): 整理畅的科技工坊关于 Pi Agent、pi-herdr-agents、subagent 和 workflow 工作流的视频，并结合公开 GitHub 仓库核对安装、角色、并行执行、Herdr 面板、Git worktree 与审查边界，给出可复用的多智能体工程方法。
+- [流水线型 Skill 设计：用 stage contract 和 receipt 让失败可恢复，而不是把步骤塞进巨大 prompt](https://doc.gpt88.cc/docs/blog/pipeline-skill-design/): 用一个 3 文档迁移 Showcase 学会 stage contract、receipt、checkpoint、resume、invalidation 和 idempotency 的最小骨架。
+- [Plan、Auto 与人工审批边界：按风险放权，别按信任放权](https://doc.gpt88.cc/docs/blog/plan-auto-approval-boundary/): 用只读计划、普通自动执行、需人工批准三档风险边界，决定 coding agent 哪些动作能自动跑，并在 Claude Code 与 Codex 里各自选对权限原语。
 - [产品项目初始化 Prompt：让 Agent 参与从市场分析到版本复盘的全流程](https://doc.gpt88.cc/docs/blog/product-project-agent-workspace-init/): 整理一套适用于 Codex、Claude Code 和其他 Coding Agent 的产品项目初始化方法：用编号目录、唯一事实源、需求池、版本门槛和评审记录，把一次性 Prompt 变成可持续协作的产品工作空间。
+- [AI 编程项目的开工与验收清单：把散文变成一道确定性闸门](https://doc.gpt88.cc/docs/blog/project-checklist/): 用六格开工清单，把仓库、运行、禁区、密钥、验收、回滚写清楚，并用一段脚本校验成退出码。
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
 - [逼真 AI 图像生成器怎么选：先看用途、上传风险和切换规则](https://doc.gpt88.cc/docs/blog/realistic-ai-image-generator/): 先按人物、商品、品牌文字、免费测试、私密上传、API 或本地控制来选逼真 AI 生图路线，再决定是否换工具。
+- [如何降低大语言模型幻觉：把“回答得像真的”变成可验证的工作流](https://doc.gpt88.cc/docs/blog/reducing-gpt-hallucinations/): 用任务边界、受控上下文、结构化输出、工具验证和失败处理降低 LLM 幻觉；区分模型表达与系统可靠性。
 - [GPT-6 Astra 时代如何重写 Skills、AGENTS.md 与提示词：从堆指令到清晰边界](https://doc.gpt88.cc/docs/blog/rethinking-skills-prompts-gpt-6-astra/): 结合 OpenAI 官方文章，详细拆解 GPT-6 Astra 时代 Skills、AGENTS.md 和任务提示词的变化：为什么描述要更短、如何使用渐进式披露、哪些旧式流程应该删掉，以及如何在 GPT88 项目中建立更高效的 Agent 指令体系。
 - [Rslib 1.0：面向 JavaScript 库、组件库和 CLI 的构建工具](https://doc.gpt88.cc/docs/blog/rslib-1-library-build-tool/): 整理 Rslib 1.0 的公开摘要：基于 Rsbuild 统一 JavaScript 库的编译、类型生成和资源处理，覆盖工具库、组件库与 CLI，支持 ESM、CJS、模块保留和 Rstest、Rspress 组合。
+- [Codex 沙箱与审批怎么分层：最小权限实战教程](https://doc.gpt88.cc/docs/blog/sandbox-and-permissions/): 用一个 docs-link-fix 实验室，拆开“沙箱能做什么”和“何时停下来问”，学会按任务风险选择最小权限。
+- [Stable Diffusion Prompt 语法：把自然语言变成可测试的生成配方](https://doc.gpt88.cc/docs/blog/sd-prompt-syntax/): 用主体、场景、风格、约束和参数构造 Stable Diffusion Prompt；理解权重语法的工具差异，并用小实验而非玄学调参。
 - [Skill 的终极形态：从外部课本到 Agent 大脑](https://doc.gpt88.cc/docs/blog/skill-as-agent-brain/): 整理 Vinkyu 关于 Skill、个人知识库、环境适配与 Agent 大脑的思考，解释为什么同一个 Skill 在不同电脑上效果不同，以及如何构建可持续进化的个人 Agent 知识系统。
 - [从 Skill 到订单：Agent Harness 如何加载能力、调用工具并结构化交易数据](https://doc.gpt88.cc/docs/blog/skill-tool-agent-order-data-flow/): 以 OTC 交易为例，逐步解释 Skill 如何加载、Tool 如何定义、Agent 如何调用 Tool，以及订单数据如何从自然语言变成可审计的结构化对象。
+- [Skill、Hook、MCP 怎么选：用三个问题分诊，而不是混成一锅](https://doc.gpt88.cc/docs/blog/skills-hooks-mcp-roles/): 根据重复工作流、事件时点保证、外部系统与数据三个问题选对扩展机制，知道何时组合、何时不该上 MCP。
 - [广告埋点参数自动化校验：让 AI 补充规则引擎而不是替代它](https://doc.gpt88.cc/docs/blog/souhu-ad-event-parameter-ai-validation/): 整理搜狐技术产品公开摘要中的广告埋点 AI 校验实践：在确定性规则引擎之外增加复杂关联检查，用新旧链路并行、超时、缓存、熔断和结果融合控制模型接入风险。
 - [淘宝百亿补贴数据分析助手 Agent：让自然语言查询先经过业务语义层](https://doc.gpt88.cc/docs/blog/taobao-subsidy-data-analysis-agent/): 根据大淘宝技术公开摘要整理淘宝百亿补贴数据分析助手的工程思路：在自然语言与 SQL 之间加入业务语义层，用多 Agent 编排、知识检索、血缘溯源和 Python 沙箱串联取数、分析与归因。
+- [观察性思维蒸馏的边界：怎样把重复判断提炼成 Skill，而不是索取隐藏思维链](https://doc.gpt88.cc/docs/blog/thinking-distillation-boundary/): 用 receipts、accepted diffs、corrections 和 validator，把可观察的专家修复方法提炼成候选 Skill，并用 holdout 证明它没有越界到 secret、私有 transcript 或 raw chain-of-thought。
+- [Skill 触发规则与目录结构：把误触发和漏触发变成可测问题](https://doc.gpt88.cc/docs/blog/trigger-rules-and-structure/): 用触发测试矩阵、目录分层和一个 broad vs bounded 实验设计，给 Skill 划出可验证的边界，并理解 metadata、正文与资源何时加载。
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Uber 软件工厂实践：如何规模化管理 Agent、Token 成本与模型路由](https://doc.gpt88.cc/docs/blog/uber-software-factory-agent-cost-optimization/): 整理 Uber Engineering 软件工厂实践，解释 Agent 使用的四层模型、成本拆解、基准测试选型、Prompt Cache、MCP 工具按需加载、Code-Mode、上下文工程与会话成本可视化，并提炼可复用的 GPT88 Agent 优化方法。
+- [Obsidian Vault 目录怎样才对 Agent 有用：把分类树写成放置 contract](https://doc.gpt88.cc/docs/blog/vault-directory-for-ai/): 用一个冻结的 synthetic vault 定义 folder roles、canonical paths、reject 边界和审计办法，让 Claude Code 或 Codex 不再跨整个个人 vault 猜文件该放哪。
 - [Vibe Marketing：Solo Founder 如何成为营销工程师](https://doc.gpt88.cc/docs/blog/vibe-marketing-marketing-engineer-workflow/): 整理 Shann³ 关于 Marketing Engineer 的长文，拆解 Vibe Marketing、Agent Development Environment、营销知识层、数据层、工作流、审核循环与自治机器人，并给出可执行的第一条营销工作流。
 - [Wechatian：把微信变成 AI Agent 与 Obsidian 知识库的双向通道](https://doc.gpt88.cc/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/): 总结 Wechatian 的核心思路、消息收发架构、隐私边界、文章剪藏与 Agent 通知场景，以及在 Obsidian 中安装和接入的方法。
+- [Agent Skill 到底是什么：什么时候该把重复 prompt 升级成按需加载的工作包](https://doc.gpt88.cc/docs/blog/what-are-agent-skills/): 用当前官方文档和一个真实收据重命名案例，判断 Skill 的边界，以及什么时候值得从普通 prompt 升级。
+- [Harness 的五个组件：让 Agent 不只“会做”，还要可靠地做完](https://doc.gpt88.cc/docs/blog/what-is-harness/): 用指令、能力、约束、状态和编排检查 Agent 系统，并运行一个五项可验证的最小 Harness。
 - [什么是 Nano Banana？功能、价格与 Prompt 技巧一文搞懂（2026 完全指南）](https://doc.gpt88.cc/docs/blog/what-is-nano-banana-guide/): 全面解析 Google 的 Nano Banana 图像生成技术：从 Gemini 2.5 Flash Image 到 Nano Banana Pro 的发展历史、核心功能、免费与付费配额、3D 手办病毒式传播事件，以及最佳 Prompt 技巧。
 - [为什么 Agent 要把 Skill 和 Tool 分成两个能力层？](https://doc.gpt88.cc/docs/blog/why-agent-skills-and-tools-should-be-separated/): 从 DeepSeek Harness 的插件化设计出发，解释 Skill 与 Tool 的职责边界、Agent Loop 中的协作方式，以及它们在 RAG、OTC 撮合和金融级 Agent 系统中的实践价值。
 - [为什么 reserve_match 不能只靠 LLM 决定是否调用？](https://doc.gpt88.cc/docs/blog/why-reserve-match-cannot-be-llm-only/): 以 OTC 撮合中的 reserve_match 锁定交易 Tool 为例，解释 LLM 意图判断与交易授权的区别，以及状态机、规则引擎、实时事实、并发控制、幂等和 Human-in-loop 如何共同守住副作用边界。
 - [为什么 Session 不应该等同于 Memory？](https://doc.gpt88.cc/docs/blog/why-session-is-not-memory/): 从 Agent Harness、RAG 和 OTC 交易系统出发，解释 Session、Working Memory、Episodic Memory、Semantic Memory、Compliance Memory 与订单事实的边界，以及如何设计可恢复、可审计的 Agent 上下文系统。
 - [小红书 × vivo 的 3D 图片技术：从相册生成到移动端消费](https://doc.gpt88.cc/docs/blog/xiaohongshu-vivo-3d-gaussian-splatting/): 整理小红书与 vivo 3D 图片实践的公开摘要：基于三维高斯泼溅打通相册生成、社交发布和移动端消费，并通过压缩、剪枝、分级细节和渲染优化控制体积与帧率。
 - [Codex 自动剪辑知识类视频：从 A/B-roll 到视觉编排表的完整工作流](https://doc.gpt88.cc/docs/blog/xilo-codex-video-editing-knowledge-workflow/): 整理 xilo 关于 Codex 自动剪辑知识类视频的长文，拆解 A-roll 与 B-roll、配音时间轴、视觉编排表、角色一致性、素材库、HyperFrames、Remotion 与样片验收，并补充 GPT88 API 在这套工作流中的接入方式。
+- [智谱清影 AI 视频：把一次生成变成可验收的镜头工作流](https://doc.gpt88.cc/docs/blog/zhipu-qingying-ai-video/): 围绕“智谱清影”这一历史搜索意图，用当前视频生成接口、结构化提示词和异步任务验收，做出可复跑的镜头流程。
 
 ## 入门
 
