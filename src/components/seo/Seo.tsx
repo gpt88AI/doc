@@ -112,7 +112,7 @@ export function Seo({
   const localizedUrl = absoluteUrl(localizePath(path, locale))
   const zhUrl = absoluteUrl(localizePath(path, 'zh'))
   const enUrl = absoluteUrl(localizePath(path, 'en'))
-  const url = locale !== 'zh' && !translated ? enUrl : localizedUrl
+  const url = locale !== 'zh' && !translated ? zhUrl : localizedUrl
   const robots = noindex || (locale !== 'zh' && !translated) ? 'noindex,follow' : 'index,follow'
   const alternateEntries = SUPPORTED_LOCALES
     .filter(target => isTranslatedPath(target, path))

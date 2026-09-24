@@ -7,6 +7,7 @@ import { EndpointBadge } from '../../../components/ui/EndpointBadge'
 import { FieldTable, type FieldRow } from '../../../components/ui/FieldTable'
 import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { localizePath, useLocale } from '../../../lib/locale'
+import GrokVideoPageEn from '../../en/GrokVideoPageEn'
 
 const MODEL_ROWS: FieldRow[] = [
   { name: 'id', type: 'string', required: true, description: <>模型 ID，例如 <code>grok-image-video</code>。</> },
@@ -372,6 +373,8 @@ async function createVideo({
 
 export default function GrokVideoPage() {
   const { locale } = useLocale()
+  if (locale === 'en') return <GrokVideoPageEn />
+
   const copy = GROK_VIDEO_COPY[locale as keyof typeof GROK_VIDEO_COPY] ?? GROK_VIDEO_COPY.zh
   const keyUrl = buildAgentActivationUrl({
     locale,

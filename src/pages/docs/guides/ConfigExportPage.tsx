@@ -4,6 +4,7 @@ import { CodeBlock } from '../../../components/ui/CodeBlock'
 import { Callout } from '../../../components/ui/Callout'
 import { buildAgentActivationUrl } from '../../../lib/activationLinks'
 import { useLocale } from '../../../lib/locale'
+import ConfigExportPageEn from '../../en/ConfigExportPageEn'
 
 /**
  * 文档：配置文件导出
@@ -230,6 +231,8 @@ function DocTable({
 
 export default function ConfigExportPage() {
   const { locale } = useLocale()
+  if (locale === 'en') return <ConfigExportPageEn />
+
   const copy = CONFIG_COPY[locale] ?? CONFIG_COPY.zh
   const fieldCopy = FIELD_COPY[locale] ?? FIELD_COPY.zh
   const addressCopy = ADDRESS_COPY[locale] ?? ADDRESS_COPY.zh

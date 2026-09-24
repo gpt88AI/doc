@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import {
   BLOG_CATEGORIES,
+  EN_BLOG_SLUGS,
   BLOG_POSTS,
   getBlogMetaLocalized,
 } from '../../data/blog'
@@ -60,7 +61,10 @@ export default function BlogIndexPage() {
 
   const posts = useMemo(() => {
     const keyword = query.trim().toLowerCase()
-    return BLOG_POSTS.filter(post => {
+    const availablePosts = locale === 'en'
+      ? BLOG_POSTS.filter(post => EN_BLOG_SLUGS.includes(post.slug))
+      : BLOG_POSTS
+    return availablePosts.filter(post => {
       if (activeCategory !== '全部' && post.category !== activeCategory) return false
       if (!keyword) return true
       const meta = getBlogMetaLocalized(post.slug, locale)

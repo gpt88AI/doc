@@ -108,3 +108,6 @@ export function getBlogContentLocalized(slug: string, locale: string): string | 
 }
 
 export const BLOG_SLUGS = BLOG_POSTS.map(post => post.slug)
+
+/** Blog posts with an independent English Markdown translation. */
+export const EN_BLOG_SLUGS = [...enPosts.keys()].sort()

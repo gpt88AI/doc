@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 
 export const ConfigExportPage = lazy(() => import('./pages/docs/guides/ConfigExportPage'))
+export const ClaudeDistillationModelSecurityPage = lazy(() => import('./pages/docs/guides/ClaudeDistillationModelSecurityPage'))
 export const FollowBuildersDigestPage = lazy(() => import('./pages/docs/guides/FollowBuildersDigestPage'))
 export const GrokVideoPage = lazy(() => import('./pages/docs/api/GrokVideoPage'))
 export const OpenaiSdkSeoPage = lazy(() => import('./pages/docs/OpenaiSdkSeoPage'))

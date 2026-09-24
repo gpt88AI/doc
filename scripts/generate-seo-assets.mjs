@@ -821,6 +821,59 @@ const englishPages = [
   },
 ]
 
+const additionalEnglishPages = [
+  { title: 'AI Agent foundations, architecture and workflow design', path: '/en/docs/guides/agent-foundations', description: 'Build a practical mental model of agents from models, context, tools, state, workflows and verification.', priority: '0.7' },
+  { title: 'AI Agent interview questions, practical project and 30-day plan', path: '/en/docs/guides/agent-interview-project', description: 'Prepare structured answers, a company knowledge-base and multi-tool Agent project, system design, coding and project deep dives.', priority: '0.7' },
+  { title: 'AI Agent job map: turn job descriptions into a skills plan', path: '/en/docs/guides/agent-job-map', description: 'Break down Agent, LLM application, RAG, MCP and AI product roles into an actionable learning map and portfolio plan.', priority: '0.7' },
+  { title: 'Agent evaluation, observability and productionization', path: '/en/docs/guides/agent-production', description: 'Build a quality model, evaluation set, trace, cost and capacity model, then release agents with rollout, rollback and human takeover controls.', priority: '0.7' },
+  { title: 'RAG knowledge-base engineering from ingestion to evaluation', path: '/en/docs/guides/agent-rag', description: 'Learn enterprise document ingestion, chunking, embeddings, hybrid retrieval, reranking, citations, updates and RAG troubleshooting.', priority: '0.7' },
+  { title: 'Tool calling, MCP and secure agent execution', path: '/en/docs/guides/agent-tools-mcp', description: 'Design tool contracts and control external actions with permissions, idempotency, approval and auditability.', priority: '0.7' },
+  { title: 'AI Video Storyboard and Prompt Guide', path: '/en/docs/guides/ai-video-storyboard-guide', description: 'A practical workflow for turning an emotional story into consistent AI video shots, keyframes, motion prompts, and an edited short film.', priority: '0.7' },
+  { title: 'GPT88 Changelog', path: '/en/docs/changelog', description: 'A record of GPT88 product updates, fixes, image tools, model catalog changes, billing, deployment, and API behavior.', priority: '0.7' },
+  { title: 'Claude Code Compaction Error: Input Exceeds the Context Window', path: '/en/docs/guides/claude-code-compaction-error', description: 'Why Claude Code /compact can fail with a 400 context-window error, how to fork from an earlier session point, and how to recover safely.', priority: '0.7' },
+  { title: 'From Copying Answers to Capturing Process: Model Security Behind the Claude Distillation Debate', path: '/en/docs/guides/claude-distillation-model-security', description: 'A source-bounded analysis of model distillation, hidden reasoning, multi-turn boundaries, anomaly detection, and benchmark reliability.', priority: '0.7' },
+  { title: 'ChatGPT and Codex Phone Verification Recovery', path: '/en/docs/guides/codex-chatgpt-phone-verification', description: 'Use passkeys, security keys, and recovery keys to reduce repeated phone verification for ChatGPT OAuth and Codex, without bypassing account security.', priority: '0.7' },
+  { title: 'Use Taste Skill with Codex for Frontend Design', path: '/en/docs/guides/codex-frontend-taste-skill', description: 'Install Taste Skill, give Codex stronger frontend design constraints, preserve an existing design system, and verify the result without generic AI UI patterns.', priority: '0.7' },
+  { title: 'Codex + GPT-5.5: A Practical System Overview', path: '/en/docs/guides/codex-gpt55-system-overview', description: 'A source-bounded reconstruction of how Codex can become a reliable delivery system through context, skills, permissions, parallel work, and verification.', priority: '0.7' },
+  { title: 'Create a GPT-Image-2 Skill for Codex', path: '/en/docs/guides/codex-gpt-image-2-skill', description: 'Create a small Codex skill that routes real image-generation requests to the GPT88 Images API and saves the resulting files locally.', priority: '0.7' },
+  { title: 'Turn Codex into a Project Factory', path: '/en/docs/guides/codex-project-factory-delivery', description: 'A delivery system for producing apps, websites, videos, decks, courses, and asset packages from one verified Codex environment.', priority: '0.7' },
+  { title: 'Codex Skills and Context Engineering', path: '/en/docs/guides/codex-skills-context-engineering', description: 'Make Codex more reliable by defining context, skills, permissions, task boundaries, worklogs, and verification loops before execution.', priority: '0.7' },
+  { title: 'Windows Codex Tool Timeout 524: Switch to PowerShell 7', path: '/en/docs/guides/codex-windows-powershell7-timeout', description: 'Diagnose Windows Codex reconnect loops, HTTP 524 responses, broken tool streams, and UTF-8 output issues caused by PowerShell environments.', priority: '0.7' },
+  { title: 'ECC Guide: A Reusable Agent Workflow System', path: '/en/docs/guides/ecc-agent-harness', description: 'Learn what ECC is, how to install it without duplication, how to copy rules safely, and how to combine its workflow ideas with Claude Code and Codex.', priority: '0.7' },
+  { title: 'Ecommerce AI image production guide', path: '/en/docs/guides/ecommerce-tools-special', description: 'A structured ecommerce workflow covering first images, prompts, references, templates, assets, batch production, delivery checks and cost control.', priority: '0.7' },
+  { title: 'giffgaff SIM activation, number maintenance and eSIM guide', path: '/en/docs/guides/giffgaff-sim-guide', description: 'A practical guide to activating a UK giffgaff SIM, keeping the number active, checking the number, moving to eSIM and troubleshooting verification use cases.', priority: '0.7' },
+  { title: 'GPT88 Product and Documentation Map', path: '/en/docs/guides/gpt88-docs-map', description: 'Choose the right GPT88 product entry, documentation category, API route, and learning path.', priority: '0.7' },
+  { title: 'Migrate from the legacy gpt88.cc site to Agent', path: '/en/docs/guides/gpt88-migration', description: 'Move from the legacy gpt88.cc entry point to Agent, then complete sign-in, API key creation and your first successful request.', priority: '0.7' },
+  { title: 'Kimi K3 Integration Guide: Base URL, Claude Code, and Codex', path: '/en/docs/guides/kimi-k3-guide', description: 'Connect Kimi K3 through GPT88, verify the API, configure Claude Code or Codex CLI, and diagnose endpoint and socket errors.', priority: '0.7' },
+  { title: 'What Is Loop Engineering? The Layer After the Harness', path: '/en/docs/guides/loop-engineering-harness', description: 'A practical explanation of Prompt, Context, Harness, and Loop, with a controlled workflow for turning agent execution into a verifiable recurring system.', priority: '0.7' },
+  { title: 'Self-Service US Virtual Card Guide', path: '/en/docs/guides/us-virtual-card-guide', description: 'A practical, risk-aware guide to registering, funding, opening, and maintaining a virtual card for eligible international subscriptions and services.', priority: '0.7' },
+  { title: 'Six Video-Creation Tools and a Reusable Workflow', path: '/en/docs/guides/video-creator-tools-workflow', description: 'Combine Excalidraw, Screen Studio, Rotato, Jacky Illustration, Jacky Motion, and MD Publish into a repeatable video-production workflow.', priority: '0.7' },
+  { title: 'AI Video Director: Production Guide', path: '/en/docs/guides/video-generation-skills-ai-video-director', description: 'Learn how ai-video-director handles narrative video, storyboards, shot breakdowns, scene continuity, character consistency, and complex actions.', priority: '0.7' },
+  { title: 'Brand Advertising and Product CG Guide', path: '/en/docs/guides/video-generation-skills-brand-ad-cg', description: 'Learn how brand-ad-cg turns product ideas, moodboards, and brand systems into premium keyframes, TVC shots, and creative advertising assets.', priority: '0.7' },
+  { title: 'Complex Action and Storyboard Guide', path: '/en/docs/guides/video-generation-skills-complex-action-storyboard', description: 'Learn how to plan complex AI video actions with causal storyboards, 12-panel breakdowns, reference videos, and short editable segments.', priority: '0.7' },
+  { title: 'Ecommerce Content Production Guide', path: '/en/docs/guides/video-generation-skills-ecommerce', description: 'A practical guide to using video-generation-skills for product images, detail pages, UGC, short videos, and scalable ecommerce assets.', priority: '0.7' },
+  { title: 'Image-to-Video Prompt Guide', path: '/en/docs/guides/video-generation-skills-i2v-prompt', description: 'Learn how to write stable image-to-video prompts with one dominant action, timeline control, and anchor-based motion.', priority: '0.7' },
+  { title: 'Install and use video-generation-skills', path: '/en/docs/guides/video-generation-skills-install', description: 'Install adoin/video-generation-skills in Cursor, Claude Code, Codex and other Agents with selective installation, verification and local development.', priority: '0.7' },
+  { title: 'Video generation skills overview', path: '/en/docs/guides/video-generation-skills-overview', description: 'An overview of four AI video-generation skills, their boundaries, combinations and recommended use cases.', priority: '0.7' },
+  { title: 'Product CG workflow', path: '/en/docs/guides/video-generation-skills-product-cg', description: 'A practical product-CG workflow for turning stable keyframes into commercial stills and short videos.', priority: '0.7' },
+  { title: 'Prompt Director: A Practical Guide', path: '/en/docs/guides/video-generation-skills-prompt-director', description: 'Learn how prompt-director turns stories, scripts, scenes, and creative briefs into storyboards and executable image or video prompts.', priority: '0.7' },
+  { title: 'Scene Consistency Guide', path: '/en/docs/guides/video-generation-skills-scene-consistency', description: 'Learn how to lock spatial layout, camera positions, lighting, and transitions for narrative AI video.', priority: '0.7' },
+  { title: 'TVC advertising workflow', path: '/en/docs/guides/video-generation-skills-tvc-playbook', description: 'A practical workflow for TVC scripts, storyboards, keyframes, short clips and post-production assembly.', priority: '0.7' },
+  { title: 'White-Background Product Image Scaling', path: '/en/docs/guides/video-generation-skills-white-background-scaling', description: 'Learn how to turn a clean product image into lifestyle scenes, detail-page assets, video first frames, and scalable advertising variations.', priority: '0.7' },
+  { title: 'WorkRally AI generation guide', path: '/en/docs/guides/workrally-ai-generation', description: 'Generate images and videos with dynamic model discovery, three video modes, canvas placeholders and task polling.', priority: '0.7' },
+  { title: 'WorkRally infinite canvas guide', path: '/en/docs/guides/workrally-canvas-guide', description: 'Understand WorkRally canvas nodes, artboard rules, build-draft merge and overwrite modes, and project/canvas boundaries.', priority: '0.7' },
+  { title: 'WorkRally common pitfalls and troubleshooting', path: '/en/docs/guides/workrally-common-pitfalls', description: 'Diagnose the most common WorkRally CLI failures involving projects, canvases, uploads, URLs, models, materials and node structure.', priority: '0.7' },
+  { title: 'WorkRally Skills overview', path: '/en/docs/guides/workrally-overview', description: 'An overview of WorkRally CLI capabilities, installation, scenario routing and focused tutorials based on the official Tencent/workrally materials.', priority: '0.7' },
+  { title: 'WorkRally series and shot workflow', path: '/en/docs/guides/workrally-shot-workflow', description: 'Create projects, series and shots, recognize characters, configure models, generate batches and query results.', priority: '0.7' },
+  { title: 'WorkRally uploads and asset management', path: '/en/docs/guides/workrally-upload-assets', description: 'Understand the upload, asset and material layers, including project ingestion, character/prop/scene organization and canvas placement.', priority: '0.7' },
+  { title: 'Zero-Downtime Blue-Green Release Guide', path: '/en/docs/guides/zero-downtime-release', description: 'Deploy a new version beside the active version, verify the real public path, switch traffic safely, and keep a fast rollback path.', priority: '0.7' },
+  { title: 'OpenAI SDK and GPT88 API', path: '/en/docs/sdk/openai-sdk', description: 'Connect an existing OpenAI SDK project to GPT88 by changing the base URL, API key, and model.', priority: '0.7' },
+  { title: 'GPT, Claude, and Gemini API price comparison', path: '/en/docs/guides/model-price-comparison', description: 'Compare model multipliers, input and output costs, and real usage on a consistent basis.', priority: '0.7' },
+  { title: 'What to do when the first API request fails', path: '/en/docs/guides/api-key-first-request-failed', description: 'Troubleshoot the first request in order: endpoint, authentication header, model, balance, and error code.', priority: '0.7' },
+  { title: 'Configuration Export', path: '/en/docs/guides/config-export', description: 'Package an API key, model, and route into a reusable configuration for Claude Code, Cursor, SDKs, CC Switch, and other tools.', priority: '0.7' },
+  { title: 'Grok Video API', path: '/en/docs/api/grok-video', description: 'Integrate asynchronous Grok video generation with model discovery, task creation, polling, content download, image references, and JavaScript-ready request patterns.', priority: '0.7' },
+]
+
 const additionalLocaleSeo = {
   'zh-tw': { language: '繁體中文', home: 'gpt88.cc API 文件', overview: '產品概覽', quickstart: '快速開始', auth: '認證與計費', faq: '常見問題' },
   es: { language: 'Español', home: 'Documentación API de gpt88.cc', overview: 'Descripción general', quickstart: 'Inicio rápido', auth: 'Auth y facturación', faq: 'Preguntas frecuentes' },
@@ -866,6 +919,7 @@ const staticPages = [
   },
   ...docs.map(page => ({ ...page, priority: '0.8' })),
   ...englishPages,
+  ...additionalEnglishPages,
   ...localizedPages,
 ]
 
@@ -1349,16 +1403,19 @@ async function main() {
     lastmod: post.date || undefined,
     priority: '0.7',
   }))
-  const englishBlogPages = blogPosts.map(post => {
-    const en = enMeta.get(post.slug)
-    return {
-      title: en?.title || post.title,
-      path: `/en/docs/blog/${post.slug}/`,
-      description: en?.description || post.description,
-      lastmod: post.date || undefined,
-      priority: '0.7',
-    }
-  })
+  const englishBlogPages = blogPosts
+    .filter(post => enMeta.has(post.slug))
+    .map(post => {
+      const en = enMeta.get(post.slug)
+      return {
+        title: en.title,
+        path: `/en/docs/blog/${post.slug}/`,
+        description: en.description,
+        lastmod: post.date || undefined,
+        priority: '0.7',
+      }
+    })
+  const englishBlogRoutes = blogPages.map(page => normalizeRoute(`/en${page.path}`))
   const blogHubPage = {
     title: 'GPT88 技术博客',
     path: '/docs/blog/',
@@ -1405,7 +1462,7 @@ async function main() {
     ...docs.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
     ...modelPages.flatMap(page => [normalizeRoute(page.path), normalizeRoute(`/en${page.path}`)]),
     ...blogPages.map(page => normalizeRoute(page.path)),
-    ...englishBlogPages.map(page => normalizeRoute(page.path)),
+    ...englishBlogRoutes,
     ...localizedBlogPages.map(page => normalizeRoute(page.path)),
     ...digestPages.map(page => normalizeRoute(`/en${page.path}`)),
     ...localizedPages.map(page => normalizeRoute(page.path)),

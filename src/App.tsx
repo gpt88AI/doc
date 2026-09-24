@@ -62,6 +62,7 @@ import {
   CodexWindowsPowershell7TimeoutPage,
   CompleteIntegrationGuidePage,
   ConfigExportPage,
+  ClaudeDistillationModelSecurityPage,
   FollowBuildersDigestPage,
   CursorIntegrationPage,
   DifyIntegrationPage,
@@ -214,6 +215,7 @@ export default function App() {
         <Route path="guides/codex-windows-powershell7-timeout" element={route(<CodexWindowsPowershell7TimeoutPage />)} />
         <Route path="guides/codex-http-responses-reconnect" element={route(<CodexHttpResponsesReconnectPage />)} />
         <Route path="guides/claude-code-compaction-error" element={<ClaudeCodeCompactionErrorPage />} />
+        <Route path="guides/claude-distillation-model-security" element={route(<ClaudeDistillationModelSecurityPage />)} />
         <Route path="guides/zero-downtime-release" element={route(<ZeroDowntimeReleasePage />)} />
         <Route path="guides/giffgaff-sim-guide" element={route(<GiffgaffGuidePage />)} />
         <Route path="guides/us-virtual-card-guide" element={route(<UsVirtualCardGuidePage />)} />
