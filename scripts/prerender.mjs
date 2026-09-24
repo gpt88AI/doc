@@ -84,8 +84,10 @@ function applyLocaleAttributes(html, route) {
 function injectIntoTemplate(template, rendered) {
   const { head, body } = extractHead(rendered)
   let html = template
-    .replace(/\s*<meta\s+name="description"[\s\S]*?\/>\n?/i, '\n')
-    .replace(/\s*<title>[\s\S]*?<\/title>\n?/i, '\n')
+    .replace(/\s*<title>[\s\S]*?<\/title>\n?/gi, '\n')
+    .replace(/\s*<meta\s+[^>]*\bdata-gpt88-seo=["']true["'][^>]*>\n?/gi, '\n')
+    .replace(/\s*<link\s+[^>]*\bdata-gpt88-seo=["']true["'][^>]*>\n?/gi, '\n')
+    .replace(/\s*<script\s+[^>]*\bdata-gpt88-seo=["']true["'][^>]*>[\s\S]*?<\/script>\n?/gi, '\n')
 
   html = html.replace('</head>', `    ${head}\n  </head>`)
   return canonicalizeInternalHrefs(html.replace('<div id="root"></div>', `<div id="root">${body}</div>`))
