@@ -90,6 +90,7 @@
 - [用 Claude Code 做 Chrome 扩展原型：从验收标准做出权限克制的 Manifest V3 阅读卡](https://doc.gpt88.cc/docs/blog/chrome-extension-prototype/): 从 acceptance criteria 出发，用 Claude Code 做一个真实可加载、可验证、只申请必要权限的 Chrome Manifest V3 扩展原型。
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
 - [CLAUDE.md + index.md 如何限制 Agent 读取范围：用路由预算代替全库递归](https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/): 学会把 Claude Code 的指令加载机制和项目自写 index.md 组合成可审计的路由预算，让 Agent 只读必要入口而不是递归扫完整个 vault。
+- [Claude Opus 5.5 vs GPT-6 Sol：程序员鱼皮的 5 个实战测评](https://doc.gpt88.cc/docs/blog/claude-opus-55-vs-gpt6-sol-practical-test/): 整理程序员鱼皮对 Claude Opus 5.5 与 GPT-6 Sol 的视频实测，覆盖代码生成、技术写作、3D 城市、电脑操作画图和 Cursor 类 AI 编程工具复刻，并拆解速度、质量、价格与日常使用的取舍。
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
 - [Claude Code 与 Codex 双线开发：用 Git 工件交接，而不是靠记忆接力](https://doc.gpt88.cc/docs/blog/codex-claude-code-dual-track/): 用一套与品牌无关的 handoff contract、receipt、worktree 和 gate，在 Claude Code 与 Codex 之间切 lane、降级和独立验收。
