@@ -112,6 +112,7 @@
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
 - [OpenClaw 上线决策：部署、渠道安全与可重算成本](https://doc.gpt88.cc/docs/blog/deployment-channels-cost/): 用工作负载、信任边界和预算公式选择本地、VPS 或托管模板，并建立可验证的上线门禁。
 - [扩散式语言模型会赢得 AI 推理吗？从 Inception 访谈看并行生成、速度与模型架构竞争](https://doc.gpt88.cc/docs/blog/diffusion-language-model-inference-inception/): 整理 No Priors 对 Inception 联合创始人 Stefano Ermon 的访谈，解释扩散式语言模型如何通过并行去噪生成文本，为什么推理阶段可能比自回归模型更适合 GPU，以及速度、可控性、服务引擎和 GPT88 模型路由应该如何评测。
+- [Eight Sleep 的睡眠科技：富人的玩具，还是预防医疗的入口？](https://doc.gpt88.cc/docs/blog/eight-sleep-sleep-technology-preventive-health/): 整理《硅谷101》E252 对 Eight Sleep 两位创始人的访谈，拆解智能床套的温控逻辑、睡眠数据、消费硬件创业、中国市场和从睡眠监测走向预防医疗的产品愿景。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
 - [企业上 AI 之前，先把数据治理做对：从纸质档案到可查询数据](https://doc.gpt88.cc/docs/blog/enterprise-data-governance-before-ai/): 从纸质维修单、扫描版产品手册和 Excel 配件表出发，系统整理企业数据治理流程，说明 OCR、表格解析、清洗、版本、权限、验收和持续维护如何为知识库与 AI 打基础。
 - [AI Agent 时代的 FDE：如何把模型能力落到真实业务里](https://doc.gpt88.cc/docs/blog/fde-ai-agent-interview-business-delivery/): 整理 JODA 中文访谈中关于 FDE 与企业 AI 交付的核心主题，解释 FDE 的职责、业务调研、场景选择、Agent 工作流、评估验收、人工协作和持续运营方法。
