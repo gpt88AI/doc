@@ -4105,6 +4105,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/ai-image-prompts-agent-search/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/ai-product-background-remover/</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -4125,6 +4131,18 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/album-cover-maker/</loc>
     <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/awesome-ai-images-prompts-cross-model/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/awesome-gpt-image-2-industrial-prompts/</loc>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4461,6 +4479,24 @@
   <url>
     <loc>https://doc.gpt88.cc/en/docs/blog/gpt-image-2-vs-nano-banana-pro/</loc>
     <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/gpt-image-prompt-toolbox-overview/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/gpt-image2-skill-agent-workflow/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/docs/blog/gpt4o-image-prompts-structured-data/</loc>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

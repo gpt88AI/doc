@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Calendar, Clock, FolderOpen } from 'lucide-react'
-import { BLOG_POSTS, getBlogContentLocalized, getBlogMetaLocalized } from '../../data/blog'
+import { BLOG_POSTS, getBlogContentLocalized, getBlogMetaLocalized, hasBlogTranslation } from '../../data/blog'
 import { Seo } from '../../components/seo/Seo'
 import { docStructuredData } from '../../components/seo/structuredData'
 import { BlogMarkdown } from '../../components/blog/BlogMarkdown'
@@ -77,8 +77,12 @@ export default function BlogPostPage() {
     : null
 
   const index = BLOG_POSTS.findIndex(post => post.slug === slug)
-  const prev = index > 0 ? BLOG_POSTS[index - 1] : null
-  const next = index >= 0 && index < BLOG_POSTS.length - 1 ? BLOG_POSTS[index + 1] : null
+  const prev = index > 0 && hasBlogTranslation(BLOG_POSTS[index - 1].slug, locale)
+    ? getBlogMetaLocalized(BLOG_POSTS[index - 1].slug, locale)
+    : null
+  const next = index >= 0 && index < BLOG_POSTS.length - 1 && hasBlogTranslation(BLOG_POSTS[index + 1].slug, locale)
+    ? getBlogMetaLocalized(BLOG_POSTS[index + 1].slug, locale)
+    : null
 
   const description = meta.description
   const faqEntries = locale === 'zh'

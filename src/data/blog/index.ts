@@ -78,7 +78,8 @@ for (const [filePath, source] of Object.entries(modules)) {
     }
   } else {
     zhPosts.set(slug, { ...meta, slug })
-    contentBySlug.set(slug, { zh: body })
+    const existing = contentBySlug.get(slug)
+    contentBySlug.set(slug, { ...(existing ?? {}), zh: body })
   }
 }
 
@@ -95,6 +96,10 @@ export function getBlogMetaLocalized(slug: string, locale: string): BlogPostMeta
   if (localized) return localized
   if (locale !== 'zh' && enPosts.has(slug)) return enPosts.get(slug) ?? null
   return zhPosts.get(slug) ?? null
+}
+
+export function hasBlogTranslation(slug: string, locale: string): boolean {
+  return locale === 'zh' || localizedPosts.get(locale)?.has(slug) === true || (locale !== 'zh' && enPosts.has(slug))
 }
 
 export function getBlogContent(slug: string): BlogContent | null {
