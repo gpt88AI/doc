@@ -378,6 +378,7 @@
 - [Nano Banana 免费无可见水印：AI Studio、Gemini 免费版与 API 怎么选](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark/): 想免费获得没有可见 Gemini 标记的 Nano Banana 图片？先分清 Google AI Studio 免费试用、Gemini 免费版的可见标记、图像 API 付费边界，以及始终保留的 SynthID。
 - [从自然语言需求到可运行 MVP：把一句想法冻结成能交给 Agent 的切片](https://doc.gpt88.cc/docs/blog/natural-language-to-mvp/): 用输入、输出、失败态、验收动作四个维度，把一句模糊产品想法冻结成 coding agent 能一次实现并验收的最小可运行切片。
 - [Obsidian + Git 工作流：把同步、备份、版本控制和 Agent 批量改动拆开](https://doc.gpt88.cc/docs/blog/obsidian-git-workflow/): 学会用 clean baseline、独立 worktree、diff gate 和人工 review，让 Obsidian vault 的 AI 批量改动可接受、可丢弃、可恢复。
+- [Obsidian 备考教资：把教师资格证学习内容做成可展开的知识路线图](https://doc.gpt88.cc/docs/blog/obsidian-teacher-qualification-exam-roadmap/): 整理 Johnny学关于用 Obsidian 备考教师资格证的视频，拆解考试路线、报名材料、Excalidraw 可视化和 Note Refactor 拆分笔记的学习系统。
 - [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 官方最新模型指南，整理 GPT-6 Astra 的核心能力、新增工具调用方式、提示词策略、迁移参数、Responses API 接入与 GPT88 使用排障。
 - [OpenClaw 架构导读：沿一条消息看懂 Gateway、Node 与 Channel](https://doc.gpt88.cc/docs/blog/openclaw-architecture-guide/): 从合成消息的完整路径出发，判断 Gateway、Node、Channel、pairing、scope 与远程接入分别在哪一层生效。
 - [OpenFDE：把客户访谈、业务记忆和 Agent 任务连成一条证据链](https://doc.gpt88.cc/docs/blog/openfde-local-first-fde-memory/): 介绍 OpenFDE 的本地优先 FDE 工作区，拆解来源引用、业务本体、任务状态机、Agent 上下文、评测验收和执行报告之间的关系。
