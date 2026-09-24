@@ -306,12 +306,12 @@ function main() {
     .map(route => `/en${route}`)
     .filter(route => {
       const file = routeToFile(route)
-      return fs.existsSync(file) && /\p{Script=Han}/u.test(readFile(file))
+      return fs.existsSync(file) && /\p{Script=Han}/u.test(readSsrBodyText(readFile(file)))
     })
   const englishModelCatalogRoute = '/en/models/'
   const englishModelCatalogFile = routeToFile(englishModelCatalogRoute)
   const englishModelCatalogHasCjk = fs.existsSync(englishModelCatalogFile) &&
-    /\p{Script=Han}/u.test(readFile(englishModelCatalogFile))
+    /\p{Script=Han}/u.test(readSsrBodyText(readFile(englishModelCatalogFile)))
   const localizedCorePrefixes = ['zh-tw', 'es', 'pt-br', 'fr', 'de', 'ar', 'ja', 'id', 'ru', 'ko', 'vi']
   const localizedCoreFallbackRoutes = localizedCorePrefixes.flatMap(prefix => [
     `/${prefix}/docs/auth/`,

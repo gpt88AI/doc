@@ -18919,6 +18919,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/models/claude-opus-5-5/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/models/claude-sonnet-4-20250514/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -20342,6 +20348,12 @@
   </url>
   <url>
     <loc>https://doc.gpt88.cc/en/models/claude-fable-5-1/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/en/models/claude-opus-5-5/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

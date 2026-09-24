@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   gpt-6-astra → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-fable-5 → claude-opus-4-8
+ *   gpt-6-astra → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-opus-5-5 → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *   → gemini-3.8-flash → claude-fable-5-1
@@ -101,7 +101,7 @@ export type ModelEntry = {
  * Human msg-20260509-4q7t82：缺失字段网上查找；查不到回退占位
  * （ConsoleAuthoritativeNote 「以控制台为准」由 ModelDetailPage 渲染）。
  *
- * 范围演进：原本仅覆盖 FEATURED_SLUGS 的主推模型。本轮扩展到 21 条——
+ * 范围演进：原本仅覆盖 FEATURED_SLUGS 的主推模型。本轮扩展到 22 条——
  * 在主推模型之外，把 marketplace vendors_count >= 4 的非主推 chat 模型
  * 也补上中文 capabilities / scenarios / tagline；运行时由 buildCatalog
  * 按 slug 查表（无论是否在 FEATURED_SLUGS 中），命中即采用人工文案，
@@ -128,6 +128,7 @@ export const FEATURED_SLUGS = [
   'gpt-5-6-sol',
   'gpt-5-6-terra',
   'gpt-5-6-luna',
+  'claude-opus-5-5',
   'claude-fable-5',
   'claude-opus-4-8',
   'claude-opus-4-7',
@@ -576,6 +577,36 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '新版本可能存在行为、响应速度或参数支持变化，不建议未经灰度直接替换全部生产流量。',
       '高风险请求可能受到更严格的安全策略或拒答处理；应把拒答率和人工升级路径纳入验收标准。',
       '保留已验证的 Claude Fable 5 或 Claude Opus 备用路由，直到 5.1 在真实任务上稳定运行。',
+    ],
+  },
+  // slug=claude-opus-5-5 ←→ modelId=claude-opus-5-5
+  'claude-opus-5-5': {
+    provider: 'Anthropic',
+    tagline: 'Anthropic 最新 Opus 主推模型，面向长周期 Agent 编码、复杂推理和知识工作。',
+    capabilities: ['1M 上下文', '128k 输出', 'adaptive thinking', 'tool use'],
+    scenarios: ['长周期 Agent 编码', '大型代码库迁移', '复杂知识工作', '多工具自动化'],
+    overview: [
+      'Claude Opus 5.5 于 2026-09-22 发布，官方定位为面向长时间运行的 agentic coding 与 knowledge work 的 Opus 模型。',
+      '官方 Claude API 模型 ID 为 claude-opus-5-5；模型默认支持 1M token 上下文和 128k 最大输出，适合需要持续规划、工具协作和较少返工的复杂任务。',
+      'Claude Opus 5.5 的 adaptive thinking 始终开启，通过 effort 参数控制思考深度；当前默认 effort 为 medium。',
+    ],
+    whenToUse: [
+      '大型代码库迁移、重构、bug sweep、测试修复和跨文件代码审查',
+      '需要持续规划、多工具调用和失败恢复的长周期 Agent 工作流',
+      '需要综合长文档、结构化资料和业务规则的复杂知识工作',
+      '希望在 Opus 系列中选择最新主推模型，并以质量优先而不是最低延迟为目标时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可使用 https://api.gpt88.cc，并把请求体 model 设置为 claude-opus-5-5。',
+      'Claude / Anthropic 风格工具统一使用 Base URL https://api.gpt88.cc，再按工具要求发送精确的模型 ID。',
+      '首次接入先调用 GET /v1/models，再发送最小 POST /v1/chat/completions 请求确认当前 API Key、线路和模型权限。',
+      '如果从 Claude Opus 5 迁移，检查 thinking、tool_choice、computer use 和 tool-call 间文本返回格式等参数差异，再逐步加入 streaming、tools 和长上下文。',
+    ],
+    caveats: [
+      'GPT88 的可用性、价格、上下文、限速、线路、权限和工具支持以当前控制台及 GET /v1/models 返回为准。',
+      '模型于 2026-09-22 新发布，建议先用固定评测集和小流量灰度验证质量、延迟、工具调用和实际用量。',
+      'adaptive thinking 始终开启；原生 Claude Messages API 迁移时不要继续发送 thinking disabled/enabled 配置，应改用 effort 控制思考深度。',
+      '保留已验证的 Claude Fable 5.1、Claude Opus 4.8 或其他稳定路由作为回退，直到真实业务任务验证完成。',
     ],
   },
   // slug=claude-opus-4-8 ←→ modelId=claude-opus-4-8
@@ -2111,6 +2142,14 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['Anthropic Claude Fable 5.1 主推模型，具体价格、权限和线路以控制台为准。'],
   },
   {
+    canonical_name: 'claude-opus-5-5',
+    display_name: 'claude-opus-5-5',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-opus-5-5'],
+    descriptions_sample: ['Anthropic Claude Opus 5.5 主推模型，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     canonical_name: 'claude-opus-4-8',
     display_name: 'claude-opus-4-8',
     category: 'chat',
@@ -2170,7 +2209,7 @@ function buildCatalog(): ModelEntry[] {
     /*
      * 注意：detail 的查找解耦了 featured 标记。
      * FEATURED_SLUGS 控制"是否进入主推置顶位"，FEATURED_DETAILS 字典则覆盖
-     * "是否有人工运营的能力 / 场景 / tagline"——后者范围比前者大（21 vs 8），
+     * "是否有人工运营的能力 / 场景 / tagline"——后者范围比前者大（22 vs 8），
      * 所以这里**总是**按 slug 查表，无论 featured。命中即用人工文案，
      * 未命中走下面的回退分支。
      */
@@ -2664,6 +2703,45 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'A new model revision may change behavior, latency, or parameter support. Introduce it through a monitored canary instead of replacing all traffic at once.',
       'High-risk requests may receive stricter safeguards or refusals; include refusal handling and human escalation in acceptance testing.',
       'Keep a validated Claude Fable 5 or Claude Opus fallback until the route is stable on production-like workloads.',
+    ],
+  },
+  'claude-opus-5-5': {
+    tagline:
+      'Latest featured Anthropic Opus model for long-running agentic coding, complex reasoning, and knowledge work.',
+    capabilities: [
+      '1M-token context',
+      '128k max output',
+      'Adaptive thinking',
+      'Tool use',
+    ],
+    scenarios: [
+      'Long-running coding agents',
+      'Large codebase migrations',
+      'Complex knowledge work',
+      'Multi-tool automation',
+    ],
+    overview: [
+      'Claude Opus 5.5 was released on September 22, 2026 for long-running agentic coding and knowledge work.',
+      'The Claude API model ID is claude-opus-5-5. The model is documented with a 1M-token context window and 128k maximum output, which suits sustained planning, tool use, and quality-first workflows.',
+      'Adaptive thinking is always on. Use the effort parameter to control thinking depth; the documented default effort is medium.',
+    ],
+    whenToUse: [
+      'Evaluate it for migrations, refactors, bug sweeps, test repair, and cross-file review in large codebases',
+      'Use it for long-running agents that plan across multiple steps, call tools, and recover from intermediate failures',
+      'Test it on long documents, structured material, and business rules that require several stages of work',
+      'Choose it as the latest Opus candidate when output quality matters more than minimum latency',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL https://api.gpt88.cc and set model to claude-opus-5-5 in OpenAI-compatible requests.',
+      'Claude- or Anthropic-style tools should use the same GPT88 Base URL and send the exact model ID in their native request format.',
+      'Call GET /v1/models, then send a minimal POST /v1/chat/completions request before adding tools, streaming, or long context.',
+      'When migrating from Claude Opus 5, review the changes to thinking, tool_choice, computer use, and text returned between tool calls before enabling advanced controls.',
+    ],
+    caveats: [
+      'Availability, pricing, context and output limits, rate limits, routes, permissions, and feature support are determined by the current GPT88 console configuration and GET /v1/models.',
+      'This is a newly released route. Canary it on a fixed evaluation set and representative workloads before changing a production default.',
+      'Adaptive thinking is always on; native Claude Messages API integrations should use effort instead of legacy thinking disabled/enabled settings.',
+      'Keep a tested Claude Fable 5.1, Claude Opus 4.8, or other stable fallback until quality, latency, usage, and tool behavior are established.',
     ],
   },
   'claude-opus-4-8': {
