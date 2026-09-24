@@ -97,6 +97,7 @@
 - [Codex 的四个执行面怎么选：CLI、IDE 插件、桌面 App、Cloud](https://doc.gpt88.cc/docs/blog/codex-form-factors/): 用环境依赖、反馈节奏、权限风险和异步需求四个维度，判断该用 Codex 的哪个入口执行任务。
 - [Codex 从 0 到 1 全攻略：从第一次安装到完整工作流](https://doc.gpt88.cc/docs/blog/codex-from-zero-to-one-complete-guide/): 整理马克的技术工作坊关于 Codex 的完整教程，覆盖安装登录、模型与套餐、预览和 Annotate、权限安全、内置终端、Git、Fork、Archive、AGENTS.md、Plan Mode、多任务、Plugin、Skill、Automation 与 Mobile。
 - [用 Codex 和 HyperFrames 自动生成视频：从文章到口播、分镜与成片的完整教程](https://doc.gpt88.cc/docs/blog/codex-hyperframes-video-content-workflow/): 整理 Miles Ma 关于 Codex 视频生产流程的实践，讲清如何用文章或主题生成口播稿，完成 TTS 或声音复刻、字幕时间轴、分镜、HyperFrames 成片，以及真人口播和内容获客的后续扩展。
+- [我是怎么用 Codex 做小红书：从选题模型到 2 天涨 1000 粉](https://doc.gpt88.cc/docs/blog/codex-xiaohongshu-1000-followers/): 整理 Andy L 在 X 分享的 Codex 小红书起号实验，拆解“熟悉物品 + 陌生英文名 + 好奇心问题”的选题模型、AI 内容流水线、封面设计、数据复用和增长边界。
 - [ComfyUI Nano Banana Pro 替代方案：本地、API 与托管路线怎么选](https://doc.gpt88.cc/docs/blog/comfyui-nano-banana-pro-alternative/): 在 ComfyUI 里替换 Nano Banana Pro，不是找一个万能模型，而是判断本地控制、Qwen 编辑实验、托管 API 和继续使用 Pro 哪条路线更适合，并用同题测试做决策。
 - [Commerce Agents 工程架构拆解：从 Prompt Demo 到可控的应用代理](https://doc.gpt88.cc/docs/blog/commerce-agents-engineering-architecture/): 以 commerce-agents 参考项目为例，拆解应用代理的共享核心、Backend 契约、Tool Calling Loop、Skill 分层、数据 Fencing、Provenance、结构化 UI、人工审批、记忆、评测与生产化路径。
 - [图片压缩到100KB或200KB：通过上传限制的格式、尺寸和画质步骤](https://doc.gpt88.cc/docs/blog/compress-image-to-100kb-200kb/): 按上传表单要求把图片压缩到100KB或200KB，先确认格式、尺寸和比例，再选择JPG、PNG或WebP，避免低于KB仍被驳回；覆盖敏感图片隐私与本地工具选择。
