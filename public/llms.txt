@@ -11,6 +11,7 @@
 
 - [长任务不漂移：用会话分段、handoff 和 checkpoint 管住 Claude Code 上下文](https://doc.gpt88.cc/docs/blog/advanced-conversation-patterns/): 把一次真实 bug 修复拆成探索、冻结结论、干净实现与验证，并知道什么时候该 continue、compact、clear、resume 或 fork。
 - [让 Agent 可评、可控、可迭代：业务效果导向的评测体系与实践](https://doc.gpt88.cc/docs/blog/agent-business-effect-evaluation/): 整理策略效果类 Agent 的业务评测方法：用五层评测对象、三层评估方法、四步质量归因和三阶段上线治理，把 Prompt、知识、工具、推理与线上效果纳入同一条可回归的质量闭环，并详解 Auto Rubrics、位置偏差、选择过拟合和策略收敛判断。
+- [Agent 自主搞钱案例拆解：10 条商业流水线，哪些是闭环，哪些只是叙事](https://doc.gpt88.cc/docs/blog/agent-business-pipelines-reality-check/): 整理疯狂的烤妹儿对 10 个 Agent 商业案例的拆解，从多 Agent 交易、Bug 赏金、3D 教材、UGC、无人直播、空间建模、体育分析、SEO 和小游戏中提炼真实交付物与验证门槛。
 - [AI Agent 应用精细化评测：从端到端结果定位到模块级缺陷](https://doc.gpt88.cc/docs/blog/agent-fine-grained-evaluation-practice/): 根据阿里技术公开摘要整理 Agent 精细化评测方法：将端到端任务完成度与感知、规划、记忆、工具调用等模块指标分开设计，建立评测范围、数据集、埋点和缺陷定位之间的映射。
 - [Agent Memory 五层架构：让 Agent 真正记住并持续学习](https://doc.gpt88.cc/docs/blog/agent-memory-5-layer-architecture/): 整理《Agent Memory - The 5-Layer Playbook》的核心框架，解释 Working、Episodic、Semantic、Procedural 与 Forgetting 五层记忆如何协作，以及为什么记忆是 Agent 的工程瓶颈。
 - [Agent Memory 7 天落地路径：从单 Agent 到多 Agent 共享记忆](https://doc.gpt88.cc/docs/blog/agent-memory-build-path-and-multi-agent/): 整理《Agent Memory - The 5-Layer Playbook》的七天构建路线、生产决策框架和多 Agent 记忆边界，帮助团队从事件日志逐步走向共享账本。
@@ -20,7 +21,6 @@
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
 - [AI Agent 时代的营销：从 GEO、品牌提及到社群与真实连接](https://doc.gpt88.cc/docs/blog/ai-agent-marketing-geo-community-human-attention/): 整理 Indigo Talk EP51 关于 AI 营销、GEO、AI 推荐、品牌提及、AI Slop、社群和 Agent Vendor 的完整访谈，拆解企业如何从“生产更多内容”转向“被 AI 记住、被真人讨论、由专业 Agent 交付”。
 - [2026 AI API 中转站怎么选？结合 GPT88 的接入、验证与避坑指南](https://doc.gpt88.cc/docs/blog/ai-api-proxy-guide-2026-gpt88/): 整理 GPT88 的 OpenAI 兼容 API 接入流程，覆盖 AI 中转站选型、Base URL、API Key、模型发现、最小请求、计费核对、客户端配置、故障排查与安全边界。
-- [AI 涂色页生成器：用提示词或照片制作可打印线稿](https://doc.gpt88.cc/docs/blog/ai-coloring-page-generator/): 按用途选择 AI 涂色页路线：提示词、照片转线稿、课堂手工、成人细节页、个性化名字页或 KDP/Etsy 涂色书，并检查打印、隐私、导出和商用边界，生成真正可打印的干净线稿。
 
 ## GPT88公益站搜索入口
 

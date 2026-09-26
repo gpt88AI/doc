@@ -42,6 +42,7 @@
 
 - [长任务不漂移：用会话分段、handoff 和 checkpoint 管住 Claude Code 上下文](https://doc.gpt88.cc/docs/blog/advanced-conversation-patterns/): 把一次真实 bug 修复拆成探索、冻结结论、干净实现与验证，并知道什么时候该 continue、compact、clear、resume 或 fork。
 - [让 Agent 可评、可控、可迭代：业务效果导向的评测体系与实践](https://doc.gpt88.cc/docs/blog/agent-business-effect-evaluation/): 整理策略效果类 Agent 的业务评测方法：用五层评测对象、三层评估方法、四步质量归因和三阶段上线治理，把 Prompt、知识、工具、推理与线上效果纳入同一条可回归的质量闭环，并详解 Auto Rubrics、位置偏差、选择过拟合和策略收敛判断。
+- [Agent 自主搞钱案例拆解：10 条商业流水线，哪些是闭环，哪些只是叙事](https://doc.gpt88.cc/docs/blog/agent-business-pipelines-reality-check/): 整理疯狂的烤妹儿对 10 个 Agent 商业案例的拆解，从多 Agent 交易、Bug 赏金、3D 教材、UGC、无人直播、空间建模、体育分析、SEO 和小游戏中提炼真实交付物与验证门槛。
 - [AI Agent 应用精细化评测：从端到端结果定位到模块级缺陷](https://doc.gpt88.cc/docs/blog/agent-fine-grained-evaluation-practice/): 根据阿里技术公开摘要整理 Agent 精细化评测方法：将端到端任务完成度与感知、规划、记忆、工具调用等模块指标分开设计，建立评测范围、数据集、埋点和缺陷定位之间的映射。
 - [Agent Memory 五层架构：让 Agent 真正记住并持续学习](https://doc.gpt88.cc/docs/blog/agent-memory-5-layer-architecture/): 整理《Agent Memory - The 5-Layer Playbook》的核心框架，解释 Working、Episodic、Semantic、Procedural 与 Forgetting 五层记忆如何协作，以及为什么记忆是 Agent 的工程瓶颈。
 - [Agent Memory 7 天落地路径：从单 Agent 到多 Agent 共享记忆](https://doc.gpt88.cc/docs/blog/agent-memory-build-path-and-multi-agent/): 整理《Agent Memory - The 5-Layer Playbook》的七天构建路线、生产决策框架和多 Agent 记忆边界，帮助团队从事件日志逐步走向共享账本。
@@ -91,11 +92,13 @@
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
 - [CLAUDE.md + index.md 如何限制 Agent 读取范围：用路由预算代替全库递归](https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/): 学会把 Claude Code 的指令加载机制和项目自写 index.md 组合成可审计的路由预算，让 Agent 只读必要入口而不是递归扫完整个 vault。
 - [Claude Opus 5.5 vs GPT-6 Sol：程序员鱼皮的 5 个实战测评](https://doc.gpt88.cc/docs/blog/claude-opus-55-vs-gpt6-sol-practical-test/): 整理程序员鱼皮对 Claude Opus 5.5 与 GPT-6 Sol 的视频实测，覆盖代码生成、技术写作、3D 城市、电脑操作画图和 Cursor 类 AI 编程工具复刻，并拆解速度、质量、价格与日常使用的取舍。
+- [Claude 跨境使用环境怎么判断：从账号、网络、支付到风控的风险边界](https://doc.gpt88.cc/docs/blog/claude-overseas-access-risk-boundaries/): 整理余温关于 Claude 账号、设备、网络、手机号、支付和使用行为的经验文章，并改写为一份不承诺解封、不规避平台风控的稳定性与合规检查框架。
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
 - [Claude Code 与 Codex 双线开发：用 Git 工件交接，而不是靠记忆接力](https://doc.gpt88.cc/docs/blog/codex-claude-code-dual-track/): 用一套与品牌无关的 handoff contract、receipt、worktree 和 gate，在 Claude Code 与 Codex 之间切 lane、降级和独立验收。
 - [Codex CLI 入门工作流：把一次聊天变成可验证闭环](https://doc.gpt88.cc/docs/blog/codex-cli-workflow/): 用隔离 receipt-normalizer 仓库的一次真实 codex exec，学会检查目录与工作树、冻结 contract、最小修改、测试、diff 与结构化汇报。
 - [Codex Cloud 适合什么任务：用 timezone-rollup 预演判断能不能安全上云](https://doc.gpt88.cc/docs/blog/codex-cloud-task-fit/): 用一个具体的 timezone-rollup bug，学会在提交前用 repo-contained、deterministic、clean-checkout 和 acceptance-command 四条门槛判断任务是否适合交给 Codex Cloud。
+- [Codex + Excalidraw 白板视频工作流：一句话生成不露脸手绘成片](https://doc.gpt88.cc/docs/blog/codex-excalidraw-whiteboard-video-workflow/): 整理 Simon聊AI 关于 Codex、Claude Code 与 Excalidraw 白板视频 Skill 的完整实践，拆解账号定位、选题查证、旁白分镜、贴纸与场景、配音字幕、封面、渲染验收和多平台发布。
 - [Codex 的四个执行面怎么选：CLI、IDE 插件、桌面 App、Cloud](https://doc.gpt88.cc/docs/blog/codex-form-factors/): 用环境依赖、反馈节奏、权限风险和异步需求四个维度，判断该用 Codex 的哪个入口执行任务。
 - [Codex 从 0 到 1 全攻略：从第一次安装到完整工作流](https://doc.gpt88.cc/docs/blog/codex-from-zero-to-one-complete-guide/): 整理马克的技术工作坊关于 Codex 的完整教程，覆盖安装登录、模型与套餐、预览和 Annotate、权限安全、内置终端、Git、Fork、Archive、AGENTS.md、Plan Mode、多任务、Plugin、Skill、Automation 与 Mobile。
 - [用 Codex 和 HyperFrames 自动生成视频：从文章到口播、分镜与成片的完整教程](https://doc.gpt88.cc/docs/blog/codex-hyperframes-video-content-workflow/): 整理 Miles Ma 关于 Codex 视频生产流程的实践，讲清如何用文章或主题生成口播稿，完成 TTS 或声音复刻、字幕时间轴、分镜、HyperFrames 成片，以及真人口播和内容获客的后续扩展。
@@ -339,6 +342,7 @@
 - [Jev 开源项目地图：从浏览器 Agent 到代码搜索和知识图谱](https://doc.gpt88.cc/docs/blog/jev-open-source-ecosystem-map/): 根据 govin.eth 的 Jev 项目清单逐项核验公开 GitHub 仓库，整理 Jev 开源生态中的浏览器自动化、桌面控制、代码审查、模型路由、MCP、知识图谱、代码搜索和上下文过滤项目，并标注当前能力与使用风险。
 - [Jev 能不能上生产：从四次失败到置信度校准的完整验收方法](https://doc.gpt88.cc/docs/blog/jev-production-calibration-and-limitations/): 整理 huangserva 对 Jev 的失败案例与两轮实测，结合 TypeSafe 官方评测边界，解释为什么 Jev 不是自动化外挂，如何验证上下文、延迟、成本、概率校准和人工接管，给出从 shadow 到生产的渐进式验收流程。
 - [Jev 到底适合做什么：从客服分流到 AI 质检的真实落地清单](https://doc.gpt88.cc/docs/blog/jev-real-world-applications/): 根据黄小木、huangserva 的 Jev 文章与 TypeSafe 官方资料，整理 Jev 适合落地的客服分流、内容审核、招聘筛选、模型路由、代码质检和海量数据分类场景，并给出结构化决策层的工程设计方法。
+- [Jev 为什么不想做聊天机器人：从 System One 到可编程判断层](https://doc.gpt88.cc/docs/blog/jev-system-one-model-interview/): 整理 Frank Wang 玉伯对 TypeSafe 联合创始人 Diogo Almeida 的访谈转述，解释 Jev 为什么从聊天产品转向 System One、可编程模型、工作流评测与软件内置智能。
 - [Jev / System One Model 实测：把语言模型变成软件可直接调用的决策函数](https://doc.gpt88.cc/docs/blog/jev-system-one-model-practical-guide/): 整理 01Coder 对 TypeSafe AI Jev 的视频实测，解释 System One Model、Choice、Score、Boolean、并行评估、概率与置信度，并给出模型路由、内容审核和 LLM 输出校验的工程落地方法。
 - [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
 - [删掉 80% Prompt 规则后 Agent 交付更稳：把约束放回系统](https://doc.gpt88.cc/docs/blog/less-prompt-rules-agent-delivery/): 整理腾讯云开发者关于精简 Agent Prompt 的工程思路：把上下文索引、可信事实、工具能力和验证关卡分别承担确定性约束，避免依赖超长提示词记住所有规则。
