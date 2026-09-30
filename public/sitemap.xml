@@ -1627,6 +1627,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/guides/ai-builders-digest/2026-09-30/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://doc.gpt88.cc/docs/guides/ai-builders-digest/2026-09-29/</loc>
     <lastmod>2026-09-29</lastmod>
@@ -1639,6 +1644,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/guides/ai-builders-digest/2026-09-27/</loc>
     <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
