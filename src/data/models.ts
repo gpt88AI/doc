@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   gpt-6-astra → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-opus-5-5 → claude-fable-5 → claude-opus-4-8
+ *   gpt-6-astra → gpt-6.1-sol → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-opus-5-5 → claude-fable-5 → claude-opus-4-8
  *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *   → gemini-3.8-flash → claude-fable-5-1
@@ -118,6 +118,7 @@ export type ModelEntry = {
 
 export const FEATURED_SLUGS = [
   'gpt-6-astra',
+  'gpt-6-1-sol',
   'gpt-6-sol',
   'gpt-6-luna',
   'deepseek-v4-1-flash',
@@ -192,6 +193,33 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '目前没有站内可复核的官方 Benchmark 成绩；本文的能力标签是主推定位与评测设计，不是对所有任务的性能保证。',
       '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由并设置失败回退。',
       '高风险代码、数据库、支付、权限和生产操作仍需要独立审查、确定性测试和人工授权。',
+    ],
+  },
+  'gpt-6-1-sol': {
+    provider: 'OpenAI',
+    tagline: 'GPT88 新增主推 GPT-6.1 Sol，官方定位为面向复杂工作，在能力与成本之间取得平衡。',
+    capabilities: ['GPT-6.1 Sol', '复杂工作', '能力与成本平衡', '接近 Astra 的能力定位'],
+    scenarios: ['复杂任务', '质量与成本对比', '固定任务集评测', '高价值工作流'],
+    overview: [
+      'OpenAI 模型目录将 GPT-6.1 Sol 定位为面向复杂工作的模型，推荐在智能水平与成本之间取得平衡，并称其以更低成本提供接近 Astra 的表现。这是厂商定位，不是独立基准测试结果或特定 GPT88 路由的性能保证。',
+      '接入时可用代表性任务与 gpt-6-astra、gpt-6-sol 做固定样本对比，同时记录任务成功率、延迟和实际用量。',
+      '模型详情页不固化上下文、限速、工具和价格等动态字段；实际开放范围以 GPT88 控制台和当前 API Key 的 GET /v1/models 返回结果为准。',
+    ],
+    whenToUse: [
+      '处理复杂工作，同时需要评估能力与成本的平衡时',
+      '准备与 gpt-6-astra、gpt-6-sol 或当前默认模型进行固定任务集对比时',
+      '希望比较复杂任务上的输出质量、延迟和实际用量时',
+      '先在可度量、可回退的工作流中验证新模型时',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容客户端使用 GPT88 的 API Base URL，并将请求体 model 设置为 gpt-6.1-sol。',
+      '首次接入先调用 GET /v1/models，确认当前 API Key 已开放 gpt-6.1-sol，再发送最小非流式请求。',
+      '建议使用固定提示词、样本和验收标准，对比成功率、延迟、错误类型与实际用量；具体 API 路径和参数支持以 GPT88 接入文档及实测为准。',
+    ],
+    caveats: [
+      'OpenAI 对接近 Astra 表现和较低成本的描述属于厂商定位，不代表独立评测结论，也不保证 GPT88 各线路上的实际表现或费用。',
+      '当前本地后端目录尚未完成同步；模型是否开放、价格、分组、额度、限速和可用线路以 GPT88 控制台及当前 API Key 为准。',
+      '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由并设置失败回退。',
     ],
   },
   'gpt-6-sol': {
@@ -2034,6 +2062,14 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['GPT88 新增主推模型入口，具体价格、权限和线路以控制台为准。'],
   },
   {
+    canonical_name: 'gpt-6.1-sol',
+    display_name: 'gpt-6.1-sol',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-6.1-sol'],
+    descriptions_sample: ['GPT-6.1 Sol 主推模型，官方定位为复杂工作与能力、成本平衡，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     canonical_name: 'gpt-6-sol',
     display_name: 'gpt-6-sol',
     category: 'chat',
@@ -2304,6 +2340,32 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'No independently verifiable official benchmark scores are published in this documentation. Capability labels describe positioning and an evaluation design, not universal performance guarantees.',
       'Keep a validated fallback route until the model passes your own quality, latency, cost, and reliability checks.',
       'High-risk code, database, payment, permission, and production actions still require independent review, deterministic tests, and human authorization.',
+    ],
+  },
+  'gpt-6-1-sol': {
+    tagline: 'GPT88 featured GPT-6.1 Sol for complex work with a balance of capability and cost.',
+    capabilities: ['GPT-6.1 Sol', 'Complex work', 'Capability and cost balance', 'Near-Astra positioning'],
+    scenarios: ['Complex tasks', 'Quality and cost comparisons', 'Fixed-workload evaluations', 'High-value workflows'],
+    overview: [
+      'OpenAI positions GPT-6.1 Sol for complex work and recommends it to balance intelligence and cost, describing near-Astra performance at a lower cost. This is provider positioning, not an independent benchmark result or a performance guarantee for a specific GPT88 route.',
+      'Compare it with gpt-6-astra, gpt-6-sol, or your current default on representative fixed tasks, tracking task success, latency, and actual usage.',
+      'This page does not hardcode dynamic context, limits, tools, or pricing. Confirm current access through GET /v1/models and the GPT88 console.',
+    ],
+    whenToUse: [
+      'Handle complex work while evaluating a balance between capability and cost',
+      'Compare it with gpt-6-astra, gpt-6-sol, or your current default on a fixed workload',
+      'Measure output quality, latency, and actual usage on representative complex tasks',
+      'Validate a new model first in a measurable workflow with a fallback route',
+    ],
+    integrationNotes: [
+      'Use the GPT88 OpenAI-compatible base URL and set model to gpt-6.1-sol.',
+      'Call GET /v1/models to confirm that the current API key can access gpt-6.1-sol before sending a minimal non-streaming request.',
+      'Compare success rates, latency, errors, and actual usage using fixed prompts, samples, and acceptance criteria. Confirm endpoint and parameter support against GPT88 integration docs and a live test.',
+    ],
+    caveats: [
+      'OpenAI’s near-Astra and lower-cost description is provider positioning, not an independent evaluation or a guarantee of performance or cost on GPT88 routes.',
+      'The current local backend catalog has not synced this model. Access, groups, quota, pricing, limits, and routes are determined by the GPT88 console and API key.',
+      'Keep a validated fallback route until the model passes your own quality, latency, cost, and reliability checks.',
     ],
   },
   'gpt-6-sol': {
