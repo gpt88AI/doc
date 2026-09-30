@@ -1234,6 +1234,10 @@ ${blogPages.slice(0, 12).map(markdownLink).join('\n')}
 
 - [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](${siteUrl}/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 最新模型指南整理 GPT-6 Astra 的 Responses API、工具调用、提示词策略、迁移参数和 GPT88 验证排障。
 
+## OpenAI DevDay 2026
+
+- [OpenAI DevDay 2026：Dots、GPT-6.1 Sol 与面向 Agent 的产品栈](${siteUrl}/docs/blog/openai-devday-2026-summary/): 根据数字生命卡兹克的现场长文，梳理 Dots、ChatGPT Space、GPT-6.1 Sol、Decisions API、Codex Cloud、Pro 订阅与 ChatGPT 应用生态更新，并标明作者报告和官方资料的边界。
+
 ## 文档入口
 
 ${docs.map(markdownLink).join('\n')}
