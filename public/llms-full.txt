@@ -86,6 +86,7 @@
 - [ChatGPT 图片生成达到限制怎么办：Free、Plus、Pro 和 API 的分支处理](https://doc.gpt88.cc/docs/blog/chatgpt-free-image-generation-limit-complete-guide/): ChatGPT 图片生成被限制时，先区分应用冷却、720 小时长等待、政策拒绝、生成失败、OpenAI 状态事故和 API 429 六种分支，再选择安全动作；不要依赖清 Cookie、VPN 或开新账号等绕过手段。
 - [ChatGPT 无法上传图片？先分清按钮、文件、次数、存储和状态问题](https://doc.gpt88.cc/docs/blog/chatgpt-image-upload-not-working/): ChatGPT 无法上传图片？先用小于 20MB 的静态 PNG/JPG 做小图测试，再区分按钮、文件、上传次数、Library 存储、工作区权限、OpenAI Status 和 API 七层归属，逐层判断并保留支持证据。
 - [ChatGPT 图片生成器怎么用：从提示词、编辑到下载的完整指南](https://doc.gpt88.cc/docs/blog/chatgpt-images-2-0/): 一步完成 ChatGPT 图片生成：确认官方入口，写清中文提示词，上传自有素材，局部编辑，检查文字与事实，最后下载并核验文件。另说明免费额度、Images with thinking、C2PA/SynthID 与 API 的边界。
+- [ChatGPT Plus 与 Codex 订阅怎么选？一条视频拆解三类支付路径与风险](https://doc.gpt88.cc/docs/blog/chatgpt-plus-codex-subscription-payment-options-video/): 整理红孩儿 Redman 2026 年 9 月发布的 ChatGPT Plus 与 Codex 订阅教程，梳理 Plus/Pro 选择、地区与支付匹配、第三方代充、App 内购和价格时效边界，并补充凭据安全检查清单。
 - [Nano Banana Pro API 怎么选：便宜、稳定和高并发先看路线](https://doc.gpt88.cc/docs/blog/cheapest-stable-nano-banana-pro-api/): Nano Banana Pro API 不要只看谁喊得便宜。先分清 Google 直连、Batch/Flex、可验证网关和双路线验证，再用价格归属、日志、账单和并发测试决定生产路线。
 - [检查清单型 Skill 设计：把“列问题”升级成可执行的 release gate](https://doc.gpt88.cc/docs/blog/checklist-skill-design/): 用一个小型 npm CLI release candidate，把 checklist row 冻结成 evidence、pass rule、severity 和 N/A policy，避免 Agent 只给“看起来没问题”的结论。
 - [Claude Code 与 Codex 怎么选：别比较模型，先判断工作方式](https://doc.gpt88.cc/docs/blog/choose-claude-code-or-codex/): 用一次真实教程改稿、五个决策变量和四种任务模式，选择 Claude Code、Codex 或双工具协作。
