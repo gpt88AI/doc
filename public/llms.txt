@@ -9,6 +9,7 @@
 
 ## 技术博客
 
+- [GPT + dot 数字员工军团怎么搭：ACN、Loop 与 RSI 的实操拆解](https://doc.gpt88.cc/docs/blog/acn-loop-rsi-digital-employee-army-video/): 整理灵姐说 AI 关于 GPT 与 dot 协同网络的视频，解释 ACN 的角色与路由、Loop 的反馈闭环、RSI 的能力补强，以及把多 Agent 组织成可交接工作系统时需要记录的状态。
 - [长任务不漂移：用会话分段、handoff 和 checkpoint 管住 Claude Code 上下文](https://doc.gpt88.cc/docs/blog/advanced-conversation-patterns/): 把一次真实 bug 修复拆成探索、冻结结论、干净实现与验证，并知道什么时候该 continue、compact、clear、resume 或 fork。
 - [让 Agent 可评、可控、可迭代：业务效果导向的评测体系与实践](https://doc.gpt88.cc/docs/blog/agent-business-effect-evaluation/): 整理策略效果类 Agent 的业务评测方法：用五层评测对象、三层评估方法、四步质量归因和三阶段上线治理，把 Prompt、知识、工具、推理与线上效果纳入同一条可回归的质量闭环，并详解 Auto Rubrics、位置偏差、选择过拟合和策略收敛判断。
 - [Agent 自主搞钱案例拆解：10 条商业流水线，哪些是闭环，哪些只是叙事](https://doc.gpt88.cc/docs/blog/agent-business-pipelines-reality-check/): 整理疯狂的烤妹儿对 10 个 Agent 商业案例的拆解，从多 Agent 交易、Bug 赏金、3D 教材、UGC、无人直播、空间建模、体育分析、SEO 和小游戏中提炼真实交付物与验证门槛。
@@ -20,7 +21,6 @@
 - [当 Agent 成为交易主体：从授权、身份到 A2A 支付的信任基建](https://doc.gpt88.cc/docs/blog/agent-transaction-trust-infrastructure/): 整理硅谷101播客外滩大会圆桌内容，拆解 Agent 从推荐走向办事和交易后，授权、身份、KYA、支付权限、沙箱、责任追踪与 Agent-to-Agent 微交易需要怎样的信任基础设施。
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
 - [AI Agent 时代的营销：从 GEO、品牌提及到社群与真实连接](https://doc.gpt88.cc/docs/blog/ai-agent-marketing-geo-community-human-attention/): 整理 Indigo Talk EP51 关于 AI 营销、GEO、AI 推荐、品牌提及、AI Slop、社群和 Agent Vendor 的完整访谈，拆解企业如何从“生产更多内容”转向“被 AI 记住、被真人讨论、由专业 Agent 交付”。
-- [2026 AI API 中转站怎么选？结合 GPT88 的接入、验证与避坑指南](https://doc.gpt88.cc/docs/blog/ai-api-proxy-guide-2026-gpt88/): 整理 GPT88 的 OpenAI 兼容 API 接入流程，覆盖 AI 中转站选型、Base URL、API Key、模型发现、最小请求、计费核对、客户端配置、故障排查与安全边界。
 
 ## GPT88公益站搜索入口
 

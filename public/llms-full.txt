@@ -41,6 +41,7 @@
 
 ## 技术博客
 
+- [GPT + dot 数字员工军团怎么搭：ACN、Loop 与 RSI 的实操拆解](https://doc.gpt88.cc/docs/blog/acn-loop-rsi-digital-employee-army-video/): 整理灵姐说 AI 关于 GPT 与 dot 协同网络的视频，解释 ACN 的角色与路由、Loop 的反馈闭环、RSI 的能力补强，以及把多 Agent 组织成可交接工作系统时需要记录的状态。
 - [长任务不漂移：用会话分段、handoff 和 checkpoint 管住 Claude Code 上下文](https://doc.gpt88.cc/docs/blog/advanced-conversation-patterns/): 把一次真实 bug 修复拆成探索、冻结结论、干净实现与验证，并知道什么时候该 continue、compact、clear、resume 或 fork。
 - [让 Agent 可评、可控、可迭代：业务效果导向的评测体系与实践](https://doc.gpt88.cc/docs/blog/agent-business-effect-evaluation/): 整理策略效果类 Agent 的业务评测方法：用五层评测对象、三层评估方法、四步质量归因和三阶段上线治理，把 Prompt、知识、工具、推理与线上效果纳入同一条可回归的质量闭环，并详解 Auto Rubrics、位置偏差、选择过拟合和策略收敛判断。
 - [Agent 自主搞钱案例拆解：10 条商业流水线，哪些是闭环，哪些只是叙事](https://doc.gpt88.cc/docs/blog/agent-business-pipelines-reality-check/): 整理疯狂的烤妹儿对 10 个 Agent 商业案例的拆解，从多 Agent 交易、Bug 赏金、3D 教材、UGC、无人直播、空间建模、体育分析、SEO 和小游戏中提炼真实交付物与验证门槛。
@@ -187,6 +188,7 @@
 - [GPT-Image2-Skill：把图片提示词库接入 Codex 和 Claude Code](https://doc.gpt88.cc/docs/blog/gpt-image2-skill-agent-workflow/): 介绍 GPT-Image2-Skill 的 Agent Skill 与 CLI 工作流，说明如何从案例搜索、生成图片、编辑参考图到反推提示词，并梳理接入时的权限和配置边界。
 - [GPT Images 2.5 首发实测：手绘成图、指哪改哪与多轮一致性](https://doc.gpt88.cc/docs/blog/gpt-images-2-5-first-look/): 整理 GPT Images 2.5 的首发实测，覆盖 Sketch 草图参考、Comment 局部编辑、Templates 模板、多轮编辑、透明背景和 Prompt 共享，并给出 GPT88 图片 API 的接入建议。
 - [gpt4o-image-prompts：中文图片提示词与结构化数据怎么用](https://doc.gpt88.cc/docs/blog/gpt4o-image-prompts-structured-data/): 介绍 gpt4o-image-prompts 的中文提示词资源和 prompts.json 数据结构，说明如何用于中文配图、模型对照、Prompt 搜索和二次开发。
+- [GPT-6 时代 Codex 的 4 个关键技巧：上下文、模型、提示词与 Agent 模式](https://doc.gpt88.cc/docs/blog/gpt6-codex-four-core-techniques-video/): 整理杰森的效率工坊关于 GPT-6 Codex 的视频，覆盖上下文压缩与交接、缓存和模型分工、ChatGPT 网页协作、AGENTS.md 与 Skill 精简，以及子代理和测试边界。
 - [GPT88公益站是什么？官方文档、API 接入与安全使用指南](https://doc.gpt88.cc/docs/blog/gpt88-gongyi-site/): 搜索 GPT88公益站、GPT88公益站官网或 GPT88 API 时，如何找到正确的文档、主站、图片工作台和 API 入口？本文整理官方入口、Base URL、模型调用、计费说明、常见问题与安全使用方法。
 - [GPT88 Skill 完整指南：作用、安装使用方法与适用场景](https://doc.gpt88.cc/docs/blog/gpt88-skill-agent-onboarding-guide/): GPT88 Skill 是一套面向 Agent 的 GPT88 接入工作流，覆盖 OpenAI SDK、Cursor、Codex、Claude Code、Cline、账号登录、API Key、模型发现、价格查询、用量管理和安全排障。本文解释它的作用、使用方式与场景。
 - [Grok 免费生图替代怎么选？中国大陆可用路线与避坑清单](https://doc.gpt88.cc/docs/blog/grok-alternative-for-image-generation-free/): Grok Imagine 不能用或额度不够时，按中国大陆可用性、中文文字、改图、商用权利与隐私选择免费 AI 生图替代：Qwen Studio、Qwen-Image + ComfyUI 本地部署与 Adobe Firefly，并附免费入口的六项合同检查与两轮测试评分表。
