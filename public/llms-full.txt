@@ -440,6 +440,10 @@
 - [Codex 自动剪辑知识类视频：从 A/B-roll 到视觉编排表的完整工作流](https://doc.gpt88.cc/docs/blog/xilo-codex-video-editing-knowledge-workflow/): 整理 xilo 关于 Codex 自动剪辑知识类视频的长文，拆解 A-roll 与 B-roll、配音时间轴、视觉编排表、角色一致性、素材库、HyperFrames、Remotion 与样片验收，并补充 GPT88 API 在这套工作流中的接入方式。
 - [智谱清影 AI 视频：把一次生成变成可验收的镜头工作流](https://doc.gpt88.cc/docs/blog/zhipu-qingying-ai-video/): 围绕“智谱清影”这一历史搜索意图，用当前视频生成接口、结构化提示词和异步任务验收，做出可复跑的镜头流程。
 
+## 用户手册 · 重点推荐
+
+- [OpenTu 用户手册](https://doc.gpt88.cc/docs/user-manual/): GPT88 OpenTu 工作台的 21 篇教程，覆盖 API 配置、画布操作、绘图、AI 创作、素材管理与排障。
+
 ## 入门
 
 - [产品概览](https://doc.gpt88.cc/docs/overview/): gpt88.cc 是面向开发者的统一大模型 API 网关，把多家厂商模型聚合为一套 OpenAI 兼容接口，并提供 Kimi K3 等模型。
@@ -550,6 +554,39 @@
 ## AI Builders
 
 - [AI Builders 每日摘要](https://doc.gpt88.cc/docs/guides/ai-builders-digest/): 每天整理 AI 研究者、创始人、产品经理和工程师正在研究、发布与讨论的内容，并保留原始来源链接。
+
+## 用户手册 · 接入与画布入门
+
+- [GPT88 API 配置与首次生成](https://doc.gpt88.cc/docs/user-manual/api-configuration/): 创建 API Key、选择服务端点、加载模型并验证第一次图片生成。
+- [画布操作](https://doc.gpt88.cc/docs/user-manual/basics-canvas-navigation/): 移动、缩放、选择、复制与撤销，掌握无限画布的基础操作。
+- [插入内容到画布](https://doc.gpt88.cc/docs/user-manual/basics-insert-content/): 导入图片、文字、形状、思维导图与流程图，安排内容位置。
+
+## 用户手册 · 绘图与图解
+
+- [画笔工具](https://doc.gpt88.cc/docs/user-manual/drawing-pencil-tool/): 选择笔触、颜色和粗细，使用橡皮擦并编辑已绘制的线条。
+- [形状工具](https://doc.gpt88.cc/docs/user-manual/drawing-shapes/): 创建几何图形和箭头，设置样式、组合、对齐与连接关系。
+- [文本工具](https://doc.gpt88.cc/docs/user-manual/drawing-text/): 添加文字、调整字体和排版，在形状中编辑说明文字。
+- [思维导图](https://doc.gpt88.cc/docs/user-manual/drawing-mindmap/): 从主题或 Markdown 大纲创建导图，管理节点和分支。
+- [流程图](https://doc.gpt88.cc/docs/user-manual/drawing-flowchart/): 用文字、Mermaid 或手动绘制表达流程与判断分支。
+
+## 用户手册 · AI 创作
+
+- [AI 生成图片](https://doc.gpt88.cc/docs/user-manual/ai-generation-image-generation/): 从提示词、参考图到批量出图，了解 Agent 与 Skill 的创作流程。
+- [灵感创意板](https://doc.gpt88.cc/docs/user-manual/ai-generation-inspiration-board/): 挑选创作模板，调整提示词、模型与尺寸后开始生成。
+- [智能拆分图片](https://doc.gpt88.cc/docs/user-manual/ai-generation-image-split/): 生成或导入整图，拆分成宫格并按顺序导出。
+- [AI 生成视频](https://doc.gpt88.cc/docs/user-manual/ai-generation-video-generation/): 文字转视频、图片转视频、首尾帧控制与任务进度管理。
+
+## 用户手册 · 进阶与管理
+
+- [导出与导入](https://doc.gpt88.cc/docs/user-manual/advanced-export-import/): 导出图片和项目文件，备份数据并迁移到新浏览器。
+- [素材库](https://doc.gpt88.cc/docs/user-manual/advanced-media-library/): 上传、筛选和复用图片视频，做好本地素材备份。
+- [设置与配置](https://doc.gpt88.cc/docs/user-manual/advanced-settings/): 管理 API、主题、语言、浏览器存储和移动端操作。
+- [问题排查](https://doc.gpt88.cc/docs/user-manual/advanced-troubleshooting/): 诊断生成失败、页面空白、素材异常与数据丢失，联系 GPT88 支持。
+- [图片预览与编辑](https://doc.gpt88.cc/docs/user-manual/advanced-image-preview-edit/): 查看大图、裁剪、去白边、滤镜调整与保存编辑结果。
+- [工具箱](https://doc.gpt88.cc/docs/user-manual/advanced-toolbox/): 使用提示词、动作参考、批量出图和知识管理工具。
+- [知识库](https://doc.gpt88.cc/docs/user-manual/advanced-knowledge-base/): 整理笔记、目录与标签，导入导出知识并管理自定义 Skill。
+- [任务队列](https://doc.gpt88.cc/docs/user-manual/advanced-task-queue/): 追踪任务状态、筛选结果、重试失败任务与批量操作。
+- [命令面板](https://doc.gpt88.cc/docs/user-manual/advanced-command-palette/): 搜索功能名称并通过键盘快速执行常用命令。
 
 ## CHAT 模型
 

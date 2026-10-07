@@ -10,8 +10,16 @@ const consoleUrl = 'https://gpt88.cc'
 const apiBaseUrl = 'https://api.gpt88.cc'
 const mediaBaseUrl = 'https://img.gpt88.cc'
 const buildDate = new Date().toISOString().slice(0, 10)
+const userManualCatalog = JSON.parse(await fs.readFile(path.join(root, 'src/data/user-manual/catalog.json'), 'utf8'))
 
 const docs = [
+  {
+    title: 'OpenTu 用户手册',
+    path: '/docs/user-manual',
+    description: 'GPT88 OpenTu 工作台的 21 篇教程，覆盖 API 配置、画布操作、绘图、AI 创作、素材管理与排障。',
+    section: '用户手册 · 重点推荐',
+    priority: '0.95',
+  },
   {
     title: '产品概览',
     path: '/docs/overview',
@@ -572,6 +580,16 @@ const docs = [
   },
 ]
 
+for (const item of userManualCatalog) {
+  docs.push({
+    title: item.title,
+    path: `/docs/user-manual/${item.slug}`,
+    description: item.description,
+    section: `用户手册 · ${item.group}`,
+    priority: '0.85',
+  })
+}
+
 const englishPages = [
   {
     title: 'gpt88.cc API Docs',
@@ -917,7 +935,7 @@ const staticPages = [
     description: '按 Chat / Image / Video / Audio 分类浏览 gpt88.cc 可用模型。',
     priority: '0.9',
   },
-  ...docs.map(page => ({ ...page, priority: '0.8' })),
+  ...docs.map(page => ({ ...page, priority: page.priority ?? '0.8' })),
   ...englishPages,
   ...additionalEnglishPages,
   ...localizedPages,

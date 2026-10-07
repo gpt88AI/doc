@@ -23,6 +23,8 @@ export type NavSection = {
   items: NavLeaf[]
 }
 
+import userManualCatalog from './user-manual/catalog.json'
+
 /** 顶部主导航：聚焦核心入口，避免过载 */
 export type TopNavItem = {
   title: string
@@ -33,6 +35,7 @@ export type TopNavItem = {
 
 export const TOP_NAV: TopNavItem[] = [
   { title: '文档', match: '/docs', href: '/docs/overview/' },
+  { title: '用户手册', match: '/docs/user-manual', href: '/docs/user-manual/' },
   { title: '快速开始', match: '/docs/quickstart', href: '/docs/quickstart/' },
   {
     title: 'API Reference',
@@ -43,6 +46,21 @@ export const TOP_NAV: TopNavItem[] = [
 ]
 
 export const DOCS_NAV: NavSection[] = [
+  {
+    title: '用户手册 · 重点推荐',
+    items: [
+      {
+        title: 'OpenTu 用户手册总览',
+        path: '/docs/user-manual/',
+        blurb: '21 篇 GPT88 OpenTu 工作台教程，从 API 配置到 AI 创作与进阶管理',
+      },
+      ...userManualCatalog.map(item => ({
+        title: item.title,
+        path: `/docs/user-manual/${item.slug}/`,
+        blurb: item.description,
+      })),
+    ],
+  },
   {
     title: '入门',
     items: [
@@ -565,12 +583,14 @@ export const DOCS_FLAT: NavLeaf[] = DOCS_NAV.flatMap(s => s.items)
 
 const TOP_NAV_EN_BY_HREF: Record<string, string> = {
   '/docs/overview/': 'Docs',
+  '/docs/user-manual/': 'User Manual',
   '/docs/quickstart/': 'Quickstart',
   '/docs/api/chat-completions/': 'API Reference',
   '/models/': 'Models',
 }
 
 const SECTION_TITLE_EN_BY_ZH: Record<string, string> = {
+  '用户手册 · 重点推荐': 'User Manual · Featured',
   入门: 'Getting Started',
   'AI Builders': 'AI Builders',
   'SDK 与集成': 'SDK & Integrations',
@@ -581,6 +601,7 @@ const SECTION_TITLE_EN_BY_ZH: Record<string, string> = {
 }
 
 const NAV_TITLE_EN_BY_PATH: Record<string, string> = {
+  '/docs/user-manual/': 'OpenTu User Manual',
   '/docs/overview/': 'Overview',
   '/docs/quickstart/': 'Quickstart',
   '/docs/auth/': 'Auth & Billing',
@@ -780,7 +801,7 @@ const NAV_BLURB_EN_BY_PATH: Record<string, string> = {
 export function getTopNav(locale: Locale) {
   if (locale === 'zh') return TOP_NAV
   const labels = getLocaleCopy(locale).nav
-  const titles = [labels.docs, labels.quickstart, labels.api, labels.models]
+  const titles = [labels.docs, 'User Manual', labels.quickstart, labels.api, labels.models]
   return TOP_NAV.map((item, index) => ({ ...item, title: titles[index] ?? TOP_NAV_EN_BY_HREF[item.href] ?? item.title }))
 }
 

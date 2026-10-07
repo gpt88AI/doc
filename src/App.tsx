@@ -74,6 +74,7 @@ import {
   Gpt88DocsMapPage,
   Gpt88MigrationGuidePage,
   Gpt88TutorialPage,
+  UserManualPage,
   GptImage2ServiceNoticePage,
   GrokVideoPage,
   ImmersiveTranslateIntegrationPage,
@@ -134,6 +135,8 @@ export default function App() {
       <Route path="docs" element={<DocsLayout />}>
         <Route index element={<Navigate to="overview/" replace />} />
         <Route path="overview" element={<OverviewPage />} />
+        <Route path="user-manual" element={<UserManualPage />} />
+        <Route path="user-manual/:slug" element={<UserManualPage />} />
         <Route path="quickstart" element={<QuickstartPage />} />
         <Route path="auth" element={<AuthPage />} />
         <Route path="faq" element={<FaqPage />} />

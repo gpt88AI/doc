@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
   ArrowRight,
+  BookOpen,
   Boxes,
   CheckCircle2,
   Cpu,
@@ -207,6 +208,14 @@ export default function LandingPage() {
            * 「在 gpt88.cc 获取 API Key」（外链 → 控制台），让访客在第一屏就看到完整链路。
            */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/docs/user-manual/"
+              className="group inline-flex items-center gap-2 rounded-md border border-cyan-400/40 bg-cyan-400/10 px-5 py-2.5 text-sm font-semibold text-cyan-100 hover:bg-cyan-400/15 hover:text-white"
+            >
+              <BookOpen className="h-4 w-4" />
+              OpenTu 用户手册
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
             <Link
               to="/docs/quickstart/"
               className="group inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-violet-500 to-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition-transform hover:scale-[1.02]"

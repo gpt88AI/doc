@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Boxes, Code2, Compass, Image, Zap } from 'lucide-react'
+import { ArrowRight, BookOpen, Boxes, Code2, Compass, Image, Zap } from 'lucide-react'
 import { DocPage } from '../../components/layout/DocPage'
 import { Callout } from '../../components/ui/Callout'
 import { useLocale } from '../../lib/locale'
@@ -16,6 +16,12 @@ import LocalizedCorePage from '../LocalizedCorePage'
  */
 
 const NEXT_STEPS = [
+  {
+    title: 'OpenTu 用户手册',
+    desc: '21 篇 GPT88 工作台教程，从 API 配置到 AI 创作与进阶管理。',
+    href: '/docs/user-manual/',
+    icon: BookOpen,
+  },
   {
     title: '快速开始',
     desc: '5 分钟内通过 cURL 完成第一次 chat completion 调用。',

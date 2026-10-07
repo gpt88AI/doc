@@ -1,0 +1,23 @@
+[
+  {"slug":"api-configuration","title":"GPT88 API 配置与首次生成","description":"创建 API Key、选择服务端点、加载模型并验证第一次图片生成。","group":"接入与画布入门","sourcePage":"settings-tuzi-api-configuration.html"},
+  {"slug":"basics-canvas-navigation","title":"画布操作","description":"移动、缩放、选择、复制与撤销，掌握无限画布的基础操作。","group":"接入与画布入门","sourcePage":"basics-canvas-navigation.html"},
+  {"slug":"basics-insert-content","title":"插入内容到画布","description":"导入图片、文字、形状、思维导图与流程图，安排内容位置。","group":"接入与画布入门","sourcePage":"basics-insert-content.html"},
+  {"slug":"drawing-pencil-tool","title":"画笔工具","description":"选择笔触、颜色和粗细，使用橡皮擦并编辑已绘制的线条。","group":"绘图与图解","sourcePage":"drawing-pencil-tool.html"},
+  {"slug":"drawing-shapes","title":"形状工具","description":"创建几何图形和箭头，设置样式、组合、对齐与连接关系。","group":"绘图与图解","sourcePage":"drawing-shapes.html"},
+  {"slug":"drawing-text","title":"文本工具","description":"添加文字、调整字体和排版，在形状中编辑说明文字。","group":"绘图与图解","sourcePage":"drawing-text.html"},
+  {"slug":"drawing-mindmap","title":"思维导图","description":"从主题或 Markdown 大纲创建导图，管理节点和分支。","group":"绘图与图解","sourcePage":"drawing-mindmap.html"},
+  {"slug":"drawing-flowchart","title":"流程图","description":"用文字、Mermaid 或手动绘制表达流程与判断分支。","group":"绘图与图解","sourcePage":"drawing-flowchart.html"},
+  {"slug":"ai-generation-image-generation","title":"AI 生成图片","description":"从提示词、参考图到批量出图，了解 Agent 与 Skill 的创作流程。","group":"AI 创作","sourcePage":"ai-generation-image-generation.html"},
+  {"slug":"ai-generation-inspiration-board","title":"灵感创意板","description":"挑选创作模板，调整提示词、模型与尺寸后开始生成。","group":"AI 创作","sourcePage":"ai-generation-inspiration-board.html"},
+  {"slug":"ai-generation-image-split","title":"智能拆分图片","description":"生成或导入整图，拆分成宫格并按顺序导出。","group":"AI 创作","sourcePage":"ai-generation-image-split.html"},
+  {"slug":"ai-generation-video-generation","title":"AI 生成视频","description":"文字转视频、图片转视频、首尾帧控制与任务进度管理。","group":"AI 创作","sourcePage":"ai-generation-video-generation.html"},
+  {"slug":"advanced-export-import","title":"导出与导入","description":"导出图片和项目文件，备份数据并迁移到新浏览器。","group":"进阶与管理","sourcePage":"advanced-export-import.html"},
+  {"slug":"advanced-media-library","title":"素材库","description":"上传、筛选和复用图片视频，做好本地素材备份。","group":"进阶与管理","sourcePage":"advanced-media-library.html"},
+  {"slug":"advanced-settings","title":"设置与配置","description":"管理 API、主题、语言、浏览器存储和移动端操作。","group":"进阶与管理","sourcePage":"advanced-settings.html"},
+  {"slug":"advanced-troubleshooting","title":"问题排查","description":"诊断生成失败、页面空白、素材异常与数据丢失，联系 GPT88 支持。","group":"进阶与管理","sourcePage":"advanced-troubleshooting.html"},
+  {"slug":"advanced-image-preview-edit","title":"图片预览与编辑","description":"查看大图、裁剪、去白边、滤镜调整与保存编辑结果。","group":"进阶与管理","sourcePage":"advanced-image-preview-edit.html"},
+  {"slug":"advanced-toolbox","title":"工具箱","description":"使用提示词、动作参考、批量出图和知识管理工具。","group":"进阶与管理","sourcePage":"advanced-toolbox.html"},
+  {"slug":"advanced-knowledge-base","title":"知识库","description":"整理笔记、目录与标签，导入导出知识并管理自定义 Skill。","group":"进阶与管理","sourcePage":"advanced-knowledge-base.html"},
+  {"slug":"advanced-task-queue","title":"任务队列","description":"追踪任务状态、筛选结果、重试失败任务与批量操作。","group":"进阶与管理","sourcePage":"advanced-task-queue.html"},
+  {"slug":"advanced-command-palette","title":"命令面板","description":"搜索功能名称并通过键盘快速执行常用命令。","group":"进阶与管理","sourcePage":"advanced-command-palette.html"}
+]

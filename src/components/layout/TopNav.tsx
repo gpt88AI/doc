@@ -31,6 +31,9 @@ export function TopNav() {
   const [open, setOpen] = useState(false)
   const topNav = getTopNav(locale)
   const plainPath = stripLocalePrefix(pathname)
+  const activeMatch = topNav
+    .filter(item => plainPath.startsWith(item.match))
+    .sort((a, b) => b.match.length - a.match.length)[0]?.match
   const copy = getLocaleCopy(locale)
   const labels = {
     home: `${copy.siteName} Home`,
@@ -49,7 +52,7 @@ export function TopNav() {
         {/* 桌面端主导航 */}
         <nav className="hidden flex-1 items-center gap-1 md:flex">
           {topNav.map(item => {
-            const active = plainPath.startsWith(item.match)
+            const active = item.match === activeMatch
             return (
               <NavLink
                 key={item.match}
@@ -114,7 +117,7 @@ export function TopNav() {
         <div className="border-t border-white/5 bg-ink-950/95 md:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
             {topNav.map(item => {
-              const active = plainPath.startsWith(item.match)
+              const active = item.match === activeMatch
               return (
                 <NavLink
                   key={item.match}
