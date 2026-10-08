@@ -28,6 +28,7 @@
 - [gemini-3.8-flash API Docs](https://doc.gpt88.cc/en/models/gemini-3-8-flash/): English API reference for gemini-3.8-flash. Model ID: gemini-3.8-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-fable-5-1 API Docs](https://doc.gpt88.cc/en/models/claude-fable-5-1/): English API reference for claude-fable-5-1. Model ID: claude-fable-5-1. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-5-5 API Docs](https://doc.gpt88.cc/en/models/claude-opus-5-5/): English API reference for claude-opus-5-5. Model ID: claude-opus-5-5. OpenAI-compatible endpoint: /v1/chat/completions.
+- [claude-haiku-5-5 API Docs](https://doc.gpt88.cc/en/models/claude-haiku-5-5/): English API reference for claude-haiku-5-5. Model ID: claude-haiku-5-5. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-8 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-8/): English API reference for claude-opus-4-8. Model ID: claude-opus-4-8. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-7 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-7/): English API reference for claude-opus-4-7. Model ID: claude-opus-4-7. OpenAI-compatible endpoint: /v1/chat/completions.
 - [claude-opus-4-6 API Docs](https://doc.gpt88.cc/en/models/claude-opus-4-6/): English API reference for claude-opus-4-6. Model ID: claude-opus-4-6. OpenAI-compatible endpoint: /v1/chat/completions.
@@ -93,6 +94,7 @@
 - [Claude Code 与 Codex 怎么选：别比较模型，先判断工作方式](https://doc.gpt88.cc/docs/blog/choose-claude-code-or-codex/): 用一次真实教程改稿、五个决策变量和四种任务模式，选择 Claude Code、Codex 或双工具协作。
 - [用 Claude Code 做 Chrome 扩展原型：从验收标准做出权限克制的 Manifest V3 阅读卡](https://doc.gpt88.cc/docs/blog/chrome-extension-prototype/): 从 acceptance criteria 出发，用 Claude Code 做一个真实可加载、可验证、只申请必要权限的 Chrome Manifest V3 扩展原型。
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
+- [Claude Haiku 5.5 发布：平均运行成本降低约 75%，小模型该怎么选？](https://doc.gpt88.cc/docs/blog/claude-haiku-5-5-cost-and-model-selection/): 整理 Claude 官方关于 Haiku 5.5 的公开消息，解释“平均运行成本低约 75%”的口径边界，并给出按任务质量、延迟、吞吐和总账单进行模型选型与复测的方法。
 - [CLAUDE.md + index.md 如何限制 Agent 读取范围：用路由预算代替全库递归](https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/): 学会把 Claude Code 的指令加载机制和项目自写 index.md 组合成可审计的路由预算，让 Agent 只读必要入口而不是递归扫完整个 vault。
 - [Claude Opus 5.5 vs GPT-6 Sol：程序员鱼皮的 5 个实战测评](https://doc.gpt88.cc/docs/blog/claude-opus-55-vs-gpt6-sol-practical-test/): 整理程序员鱼皮对 Claude Opus 5.5 与 GPT-6 Sol 的视频实测，覆盖代码生成、技术写作、3D 城市、电脑操作画图和 Cursor 类 AI 编程工具复刻，并拆解速度、质量、价格与日常使用的取舍。
 - [Claude 跨境使用环境怎么判断：从账号、网络、支付到风控的风险边界](https://doc.gpt88.cc/docs/blog/claude-overseas-access-risk-boundaries/): 整理余温关于 Claude 账号、设备、网络、手机号、支付和使用行为的经验文章，并改写为一份不承诺解封、不规避平台风控的稳定性与合规检查框架。
@@ -171,6 +173,7 @@
 - [GPT-6.1 Sol 到底能不能打？官方评测、成本与适用场景](https://doc.gpt88.cc/docs/blog/gpt-6-1-sol-benchmarks-and-cost/): 根据 OpenAI 的 GPT-6.1 Sol 发布资料，梳理编程、专业工作、计算机使用、科学研究、事实准确性与安全评测，并说明五分之一标价和单任务成本的区别。
 - [GPT-6 Astra 与哥德巴赫猜想：AI 数学突破意味着什么？](https://doc.gpt88.cc/docs/blog/gpt-6-astra-goldbach-conjecture/): 整理李永乐老师关于 GPT-6 Astra、哥德巴赫猜想与刘维尔函数的科普视频，区分视频论断、数学背景和仍需独立验证的研究结论。
 - [GPT-6 Astra 时代的 Skills 与 Prompt 重构指南：少一点脚手架，多一点判断](https://doc.gpt88.cc/docs/blog/gpt-6-astra-skills-prompts-guide/): 整理 Eric Provencher 关于 GPT-6 Astra、Skills、AGENTS.md、决策边界和任务持续性的实践，帮助团队清理过时指令，构建更轻量、更稳定的 Agent 工作流。
+- [GPT-6 与 Intelligent UI：ChatGPT 正在把回答变成可交互界面](https://doc.gpt88.cc/docs/blog/gpt-6-intelligent-ui-chatgpt/): 整理 OpenAI 2026 年 10 月 7 日关于 GPT-6 与 Intelligent UI 的公开消息，解释交互式回答的产品含义、可复用的 UI 输出架构，以及目前仍未公布的模型规格与开放范围。
 - [GPT Image 2 怎么生成 4K 图片：尺寸规则、API 代码与验收方法](https://doc.gpt88.cc/docs/blog/gpt-image-2-4k-image-generation/): 用 GPT Image 2 请求 3840x2160 或 2160x3840 图片，理解四条尺寸校验规则、高于 2560x1440 的实验性 4K、Image API 与 Responses API 的区别，并验证保存文件和 CDN 成品，含本地校验、解码验尺寸与按层排查代码。
 - [GPT Image 2.5 商业接单实战：从一张样稿到一万元视觉项目](https://doc.gpt88.cc/docs/blog/gpt-image-2-5-commercial-workflow/): 整理 govin.eth G哥关于 GPT Image 2.5 商业接单的实践分享，拆解客户筛选、需求访谈、报价拆分、视觉方向、Flare 与 Sunburst 分工、7天排期、修改控制、质量验收和交付复购。
 - [便宜的 GPT Image 2 API：OpenAI 官方计费 vs GPT88 统一网关路线](https://doc.gpt88.cc/docs/blog/gpt-image-2-api-cheap/): 比较 GPT Image 2 API 的 OpenAI 官方 token 计费、Batch 降本路线和 GPT88 统一网关的 provider 报价，明确测试与生产各阶段该怎么选，含请求单位核对、安全测试路径与上线前 provider 检查清单。
@@ -598,6 +601,7 @@
 - [claude-haiku-4-5](https://doc.gpt88.cc/models/claude-haiku-4-5/): Anthropic claude-haiku-4-5 · CHAT 模型，Model ID: claude-haiku-4-5，接口路径: /v1/chat/completions。
 - [claude-haiku-4-5-20251001](https://doc.gpt88.cc/models/claude-haiku-4-5-20251001/): Anthropic claude-haiku-4-5-20251001 · CHAT 模型，Model ID: claude-haiku-4-5-20251001，接口路径: /v1/chat/completions。
 - [claude-haiku-4-5-20251001-thinking](https://doc.gpt88.cc/models/claude-haiku-4-5-20251001-thinking/): Anthropic claude-haiku-4-5-20251001-thinking · CHAT 模型，Model ID: claude-haiku-4-5-20251001-thinking，接口路径: /v1/chat/completions。
+- [claude-haiku-5-5](https://doc.gpt88.cc/models/claude-haiku-5-5/): Anthropic claude-haiku-5-5 · CHAT 模型，Model ID: claude-haiku-5-5，接口路径: /v1/chat/completions。
 - [claude-opus-4-1](https://doc.gpt88.cc/models/claude-opus-4-1/): Anthropic claude-opus-4-1 · CHAT 模型，Model ID: claude-opus-4-1，接口路径: /v1/chat/completions。
 - [claude-opus-4-1-20250805](https://doc.gpt88.cc/models/claude-opus-4-1-20250805/): Anthropic claude-opus-4-1-20250805 · CHAT 模型，Model ID: claude-opus-4-1-20250805，接口路径: /v1/chat/completions。
 - [claude-opus-4-20250514](https://doc.gpt88.cc/models/claude-opus-4-20250514/): Anthropic claude-opus-4-20250514 · CHAT 模型，Model ID: claude-opus-4-20250514，接口路径: /v1/chat/completions。

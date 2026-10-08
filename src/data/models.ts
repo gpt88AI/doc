@@ -11,7 +11,7 @@
  *
  * 主推顺序：
  *   gpt-6-astra → gpt-6.1-sol → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-opus-5-5 → claude-fable-5 → claude-opus-4-8
- *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-4-5-20251001
+ *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-5-5 → claude-haiku-4-5-20251001
  *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
  *   → gemini-3.8-flash → claude-fable-5-1
  *
@@ -135,6 +135,7 @@ export const FEATURED_SLUGS = [
   'claude-opus-4-7',
   'claude-opus-4-6',
   'claude-sonnet-4-6',
+  'claude-haiku-5-5',
   'claude-haiku-4-5-20251001',
   'gpt-5-5',
   'gpt-5-4',
@@ -745,6 +746,35 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
     caveats: [
       '“默认主力”不代表适合所有场景；复杂长文档可升级到 Opus，轻量批量任务可降到 Haiku。',
       '价格、限速、是否支持视觉等实时能力以控制台为准。',
+    ],
+  },
+  // slug=claude-haiku-5-5 ←→ modelId=claude-haiku-5-5
+  'claude-haiku-5-5': {
+    provider: 'Anthropic',
+    tagline: 'Claude Haiku 5.5，面向低延迟与高吞吐场景的新一代轻量主推模型。',
+    capabilities: ['低延迟定位', '高吞吐定位', '轻量 Agent 步骤', '批量文本处理'],
+    scenarios: ['高频对话', '分类与抽取', '客服与工单', '轻量 Agent 子任务'],
+    overview: [
+      'Anthropic 将 Claude Haiku 5.5 定位为迄今最快、最便宜、能力最强的小模型，并称其平均运行成本约比 Claude Haiku 4.5 低 75%。这是发布方定位，具体表现仍要用你的工作负载验证。',
+      '它适合放在高频、边界清晰、重视响应速度和吞吐的链路中；复杂长文档、多步规划或高质量最终输出仍应与更强模型做分层路由。',
+      '当前公开 GPT88 模型广场尚未同步 Haiku 5.5，这里先保留主推入口；真实 API model ID、价格、权限和线路以控制台与 GET /v1/models 返回为准。',
+    ],
+    whenToUse: [
+      '高频客服、工单、分类、抽取和审核辅助',
+      '批量改写、摘要、路由和结构化文本处理',
+      '把轻量模型作为 Agent 的检索、判断或格式化子步骤',
+      '在固定评测集上比较速度、质量、错误率和实际用量',
+    ],
+    integrationNotes: [
+      'OpenAI 兼容工具可以先将 model 设置为 claude-haiku-5-5，并用最小请求确认当前 Key 是否开放。',
+      'Claude 或 Anthropic 风格工具使用 GPT88 Base URL 和客户端要求的原生请求格式；不要把目录展示名当作权限证明。',
+      '先验证非流式、流式、结构化输出和工具调用，再逐步接入批量或长上下文工作流。',
+      '保留一个已验证的 Sonnet、Opus 或其他轻量模型作为回退，并记录首 token 延迟、端到端延迟、成功率和实际用量。',
+    ],
+    caveats: [
+      '公开发布信息没有给出 GPT88 路由的固定价格、上下文上限、速率、工具或视觉能力；这些字段以当前控制台配置为准。',
+      '“更快、更便宜、更强”的发布方定位不等于每个提示词、并发级别或线路都会得到同样结果，需使用代表性任务验证。',
+      '新模型接入建议先灰度运行，确认质量、延迟、错误和用量后再改变生产默认路由。',
     ],
   },
   // slug=claude-haiku-4-5-20251001 ←→ modelId=claude-haiku-4-5-20251001
@@ -2186,6 +2216,15 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['Anthropic Claude Opus 5.5 主推模型，具体价格、权限和线路以控制台为准。'],
   },
   {
+    // 2026-10-08 GPT88 上新补丁：等待下一次公开 marketplace snapshot 收录。
+    canonical_name: 'claude-haiku-5-5',
+    display_name: 'claude-haiku-5-5',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-haiku-5-5'],
+    descriptions_sample: ['Anthropic Claude Haiku 5.5 主推模型，低延迟与高吞吐定位，具体价格、权限和线路以控制台为准。'],
+  },
+  {
     canonical_name: 'claude-opus-4-8',
     display_name: 'claude-opus-4-8',
     category: 'chat',
@@ -2957,6 +2996,44 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'Availability, pricing, context limits, rate limits, routes, permissions, vision, and tool support are determined by the current GPT88 console configuration.',
       'A balanced default is not ideal for every task; compare Opus for difficult long-context work and Haiku for bounded high-volume work.',
       'Use a staged rollout and retain a tested fallback until production behavior is established.',
+    ],
+  },
+  'claude-haiku-5-5': {
+    tagline:
+      'Featured Anthropic Haiku model for low-latency, high-throughput, and bounded production workflows.',
+    capabilities: [
+      'Low-latency positioning',
+      'High-throughput positioning',
+      'Batch text processing',
+      'Lightweight agent steps',
+    ],
+    scenarios: [
+      'High-frequency chat',
+      'Classification and extraction',
+      'Support and ticket routing',
+      'Lightweight agent subtasks',
+    ],
+    overview: [
+      'Anthropic positions Claude Haiku 5.5 as its fastest, cheapest, and most capable small model, and says it costs about 75% less to run on average than Claude Haiku 4.5. This is provider positioning; validate actual behavior on a fixed workload.',
+      'It is a practical candidate for frequent, bounded requests where response time and throughput matter. Use a stronger model for difficult long-context work, multi-step planning, or quality-sensitive final output.',
+      'The public GPT88 model square has not synced Haiku 5.5 yet, so this page is backed by a local catalog patch. Confirm the exact API model ID, access, pricing, and route with the console and GET /v1/models.',
+    ],
+    whenToUse: [
+      'Use it for high-frequency support, ticketing, classification, extraction, and review assistance',
+      'Process rewriting, summarization, routing, and structured text in batches',
+      'Assign retrieval, judgment, formatting, or other bounded steps to it inside an agent',
+      'Compare speed, quality, errors, and actual usage with Haiku 4.5 and your current default',
+    ],
+    integrationNotes: [
+      'Use the GPT88 Base URL and set model to claude-haiku-5-5 in an OpenAI-compatible request after confirming access for the current API key.',
+      'Claude- or Anthropic-style tools should use the same GPT88 Base URL and the native request format required by that client.',
+      'Validate non-streaming, streaming, structured output, and tools separately before adding batch or long-context workloads.',
+      'Keep a tested Sonnet, Opus, or other lightweight fallback and record first-token latency, end-to-end latency, success rate, and usage.',
+    ],
+    caveats: [
+      'The public announcement does not define GPT88 route pricing, context limits, rate limits, tools, or vision support; those fields are controlled by the current console configuration.',
+      'Faster, cheaper, and more capable are release positioning claims, not guarantees for every prompt, concurrency level, or route. Test representative workloads.',
+      'Canary a new model and keep a validated fallback until quality, latency, errors, and usage are established in production-like traffic.',
     ],
   },
   'gpt-5-5': {
