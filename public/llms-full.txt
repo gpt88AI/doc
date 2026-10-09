@@ -92,6 +92,7 @@
 - [Nano Banana Pro API 怎么选：便宜、稳定和高并发先看路线](https://doc.gpt88.cc/docs/blog/cheapest-stable-nano-banana-pro-api/): Nano Banana Pro API 不要只看谁喊得便宜。先分清 Google 直连、Batch/Flex、可验证网关和双路线验证，再用价格归属、日志、账单和并发测试决定生产路线。
 - [检查清单型 Skill 设计：把“列问题”升级成可执行的 release gate](https://doc.gpt88.cc/docs/blog/checklist-skill-design/): 用一个小型 npm CLI release candidate，把 checklist row 冻结成 evidence、pass rule、severity 和 N/A policy，避免 Agent 只给“看起来没问题”的结论。
 - [Claude Code 与 Codex 怎么选：别比较模型，先判断工作方式](https://doc.gpt88.cc/docs/blog/choose-claude-code-or-codex/): 用一次真实教程改稿、五个决策变量和四种任务模式，选择 Claude Code、Codex 或双工具协作。
+- [新模型密集发布，该怎么选？先看任务风险，再看模型价格](https://doc.gpt88.cc/docs/blog/choosing-ai-models-dense-releases/): 整理快刀青衣对 2026 年 9 月模型密集发布的观察，梳理模型降价、AI 辅助研发、发布节奏变化，以及普通用户如何按任务风险和验证能力选择模型。
 - [用 Claude Code 做 Chrome 扩展原型：从验收标准做出权限克制的 Manifest V3 阅读卡](https://doc.gpt88.cc/docs/blog/chrome-extension-prototype/): 从 acceptance criteria 出发，用 Claude Code 做一个真实可加载、可验证、只申请必要权限的 Chrome Manifest V3 扩展原型。
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
 - [Claude Haiku 5.5 发布：平均运行成本降低约 75%，小模型该怎么选？](https://doc.gpt88.cc/docs/blog/claude-haiku-5-5-cost-and-model-selection/): 整理 Claude 官方关于 Haiku 5.5 的公开消息，解释“平均运行成本低约 75%”的口径边界，并给出按任务质量、延迟、吞吐和总账单进行模型选型与复测的方法。
