@@ -197,6 +197,7 @@
 - [GPT88公益站是什么？官方文档、API 接入与安全使用指南](https://doc.gpt88.cc/docs/blog/gpt88-gongyi-site/): 搜索 GPT88公益站、GPT88公益站官网或 GPT88 API 时，如何找到正确的文档、主站、图片工作台和 API 入口？本文整理官方入口、Base URL、模型调用、计费说明、常见问题与安全使用方法。
 - [GPT88 Skill 完整指南：作用、安装使用方法与适用场景](https://doc.gpt88.cc/docs/blog/gpt88-skill-agent-onboarding-guide/): GPT88 Skill 是一套面向 Agent 的 GPT88 接入工作流，覆盖 OpenAI SDK、Cursor、Codex、Claude Code、Cline、账号登录、API Key、模型发现、价格查询、用量管理和安全排障。本文解释它的作用、使用方式与场景。
 - [Grok 免费生图替代怎么选？中国大陆可用路线与避坑清单](https://doc.gpt88.cc/docs/blog/grok-alternative-for-image-generation-free/): Grok Imagine 不能用或额度不够时，按中国大陆可用性、中文文字、改图、商用权利与隐私选择免费 AI 生图替代：Qwen Studio、Qwen-Image + ComfyUI 本地部署与 Adobe Firefly，并附免费入口的六项合同检查与两轮测试评分表。
+- [用 Tailscale 和 Orca 把 Claude Code 放进长期在线的远程开发环境](https://doc.gpt88.cc/docs/blog/grok-bot-tailscale-orca-claude-code/): 整理 AppSail 关于 Grok Bot 云电脑、Tailscale、Orca Remote Server 与 Claude Code 的实践，拆解远程连接、更新恢复、定时自检和故障排查，并标出账号与权限风险边界。
 - [职业头像背景怎么选：LinkedIn、简历、团队页和 AI 换背景的实用判断](https://doc.gpt88.cc/docs/blog/headshot-background/): 职业头像背景先看用途再看颜色。按 LinkedIn、简历、团队页、名录、正式头像与个人品牌选择浅灰、白色、深色或环境背景，并判断源图值得 AI 换背景还是应直接重拍，附发布前检查清单。
 - [Hermes Agent 的学习循环：记忆、Skill 与写入审批](https://doc.gpt88.cc/docs/blog/hermes-learning-loop/): 分清 Hermes 何时把事实写入 memory、何时把流程写成 Skill，并用审批 gate 避免错误学习被固化。
 - [Holo Card Studio Skill 使用指南：用一句话生成可编辑的 3D 全息闪卡](https://doc.gpt88.cc/docs/blog/holo-card-studio-skill-guide/): 整理 EverettFish/holo-card-studio Skill 的能力、安装、四层素材工作流、Blender 与 Three.js 流水线、参数调节、验收方法和常见问题，帮助你从文字或参考图生成可编辑的 3D 全息卡片。
