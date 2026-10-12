@@ -362,7 +362,7 @@
 - [美团智播：数字人直播从生成模型到业务知识库的工程化实践](https://doc.gpt88.cc/docs/blog/meituan-zhibo-digital-human-practice/): 根据美团技术团队公开摘要整理智播数字人直播链路：形象生成、动作驱动、流式语音与手势协调、直播内容量产和业务知识库如何组合成可运营系统。
 - [记忆层：跨会话该记住什么，何时读取，何时淘汰](https://doc.gpt88.cc/docs/blog/memory-layer/): 按生命周期把信息分成当前上下文、任务状态、持久项目指令、自动记忆和原始证据五个桶，只把跨会话可复用的教训写进记忆，并给它一条召回与淘汰纪律。
 - [Midjourney V8.2 要不要升级？先跑完这张 8 格验收表](https://doc.gpt88.cc/docs/blog/midjourney-8-2-upgrade-decision/): V8.2 已于 2026-07-24 成为默认版本，但旧项目不该只看一张漂亮样图就迁移。用 8 条真实工作提示词、固定控制项和两次重试预算，做出保留、复测或回退决定。
-- [Miles Ma 的 X 长文链接归档：先确认来源，再补全文内容](https://doc.gpt88.cc/docs/blog/miles-ma-x-article-2108121456022614016/): 记录 Miles Ma 于 2026 年 10 月 8 日发布的 X 帖子、短链接解析结果与当前可核验边界，避免在原文不可访问时把猜测写成摘要。
+- [Miles Ma 的 X 长文链接归档：先确认来源，再补全文内容](https://doc.gpt88.cc/docs/blog/miles-ma-x-article-2108121456022614016/): 记录 Miles Ma 于 2026 年 10 月 8 日发布的 X 帖子、短链接解析结果与截至 2026 年 10 月 12 日的核验边界，避免在原文不可访问时把猜测写成摘要。
 - [Agentic Coding 的最小工作流：把一次任务跑成 Plan → Patch → Verify → Learn 闭环](https://doc.gpt88.cc/docs/blog/minimum-agentic-coding-workflow/): 用四步操作模型跑完一次真实小改动，锚定 plan mode、可读 diff、可执行验收与规则写回，并附一个可复现的边界失败。
 - [CLAUDE.md 模板：从重复失败里提炼最小可用项目规则](https://doc.gpt88.cc/docs/blog/minimum-claude-md/): 用可直接改写的 CLAUDE.md 模板，把一次已完成任务的重复错误压成短、具体、可验证的项目规则。
 - [多 Agent 协作适合解决什么问题](https://doc.gpt88.cc/docs/blog/multi-agent-collaboration/): 先画依赖图、冻结接口与验收标准、分配不重叠文件所有权，再选择单 Agent / subagent / agent team / worktree，用合并门禁验证结果。
