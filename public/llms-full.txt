@@ -63,6 +63,7 @@
 - [ai-image-prompts-skill：让 Agent 从一万条图片提示词中找答案](https://doc.gpt88.cc/docs/blog/ai-image-prompts-agent-search/): 介绍 ai-image-prompts-skill 的大规模提示词检索思路，说明如何把自然语言需求转换成案例搜索、候选 Prompt、变量替换和连续生图流程。
 - [推理芯片之战：Groq、Cerebras 与 OpenAI 三条路线，到底在比什么？](https://doc.gpt88.cc/docs/blog/ai-inference-chip-war-groq-cerebras-openai/): 整理硅谷101 E251 对 Groq、Cerebras、OpenAI 自研推理芯片与 Bill Dally 设计哲学的讨论，解释为什么推理更看带宽、SRAM 与 HBM 如何取舍，以及芯片、模型和系统如何共同决定速度与能耗。
 - [让 AI 维护知识库而不直接改库：把合并、过期和孤立笔记变成审批队列](https://doc.gpt88.cc/docs/blog/ai-maintains-knowledge-base/): 用 Obsidian 的 Search、properties、backlinks 和 links 收集信号，让 AI 只生成带证据的维护提案，等人批准后再进入后续应用流程。
+- [从真实使用感受看模型选择：速度、产出与套餐风险](https://doc.gpt88.cc/docs/blog/ai-models-real-world-experience-selection-2026-10/): 基于 ZinkLu 对 GPT、GLM 5.3、Kimi K3、Qwen 3.8 Max、MiniMax M3.1-Flash、DeepSeek Flash 与 Claude 的个人体验，梳理模型选择维度、适用任务和短期试用方法。
 - [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
 - [AI 会生成 PPT 之后，为什么 Runtime 才决定上限？](https://doc.gpt88.cc/docs/blog/ai-ppt-runtime-artifact-runtime/): 从一次性 PPT 文件到可持续操作的 Artifact，理解 Artifact Runtime、Observe-Address-Operate-Verify 工作循环、布局语义和领域对象。
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
@@ -193,6 +194,7 @@
 - [GPT Image 提示词工具箱：六个开源项目如何组成生图工作流](https://doc.gpt88.cc/docs/blog/gpt-image-prompt-toolbox-overview/): 整理 GPT Image 提示词与 Agent 资源，比较案例库、中文提示词、结构化数据、跨模型清单和 Agent Skill 的定位，给出从找参考到稳定生成的实践路径。
 - [GPT-Image2-Skill：把图片提示词库接入 Codex 和 Claude Code](https://doc.gpt88.cc/docs/blog/gpt-image2-skill-agent-workflow/): 介绍 GPT-Image2-Skill 的 Agent Skill 与 CLI 工作流，说明如何从案例搜索、生成图片、编辑参考图到反推提示词，并梳理接入时的权限和配置边界。
 - [GPT Images 2.5 首发实测：手绘成图、指哪改哪与多轮一致性](https://doc.gpt88.cc/docs/blog/gpt-images-2-5-first-look/): 整理 GPT Images 2.5 的首发实测，覆盖 Sketch 草图参考、Comment 局部编辑、Templates 模板、多轮编辑、透明背景和 Prompt 共享，并给出 GPT88 图片 API 的接入建议。
+- [GPT 代充副业的流量与风险：从一篇 X 长文看获客、售后和合规边界](https://doc.gpt88.cc/docs/blog/gpt-topup-side-hustle-source-analysis-2026-10/): 整理 0xraco 关于 GPT 代充项目的 X 长文，拆解其流量、订单、客户管理和内容获客经验，并明确不复述 session/token 复制、支付绕过和平台规避审核等高风险操作。
 - [gpt4o-image-prompts：中文图片提示词与结构化数据怎么用](https://doc.gpt88.cc/docs/blog/gpt4o-image-prompts-structured-data/): 介绍 gpt4o-image-prompts 的中文提示词资源和 prompts.json 数据结构，说明如何用于中文配图、模型对照、Prompt 搜索和二次开发。
 - [GPT-6 时代 Codex 的 4 个关键技巧：上下文、模型、提示词与 Agent 模式](https://doc.gpt88.cc/docs/blog/gpt6-codex-four-core-techniques-video/): 整理杰森的效率工坊关于 GPT-6 Codex 的视频，覆盖上下文压缩与交接、缓存和模型分工、ChatGPT 网页协作、AGENTS.md 与 Skill 精简，以及子代理和测试边界。
 - [GPT88公益站是什么？官方文档、API 接入与安全使用指南](https://doc.gpt88.cc/docs/blog/gpt88-gongyi-site/): 搜索 GPT88公益站、GPT88公益站官网或 GPT88 API 时，如何找到正确的文档、主站、图片工作台和 API 入口？本文整理官方入口、Base URL、模型调用、计费说明、常见问题与安全使用方法。
