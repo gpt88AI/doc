@@ -2395,6 +2395,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/codex-ultrafast-local-model-catalog/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/codex-xiaohongshu-1000-followers/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -5539,6 +5545,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/codex-ultrafast-local-model-catalog/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/codex-xiaohongshu-1000-followers/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -7977,6 +7989,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/codex-hyperframes-video-content-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/codex-ultrafast-local-model-catalog/</loc>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -10423,6 +10441,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/codex-ultrafast-local-model-catalog/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/codex-xiaohongshu-1000-followers/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -12861,6 +12885,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/codex-hyperframes-video-content-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/codex-ultrafast-local-model-catalog/</loc>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15307,6 +15337,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/codex-ultrafast-local-model-catalog/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/codex-xiaohongshu-1000-followers/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -17745,6 +17781,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/codex-hyperframes-video-content-workflow/</loc>
     <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/codex-ultrafast-local-model-catalog/</loc>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -21431,6 +21473,48 @@
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/docs/blog/researchwang-x-article-2109812002076143824/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/researchwang-x-article-2109812002076143824/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/researchwang-x-article-2109812002076143824/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/researchwang-x-article-2109812002076143824/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/researchwang-x-article-2109812002076143824/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/researchwang-x-article-2109812002076143824/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/researchwang-x-article-2109812002076143824/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
   <url>
