@@ -74,6 +74,7 @@
 - [AI Town 与多智能体模拟：从热闹演示到可验证系统](https://doc.gpt88.cc/docs/blog/ai-town/): 从 AI Town 的搜索意图出发，理解多智能体模拟的记忆、环境、调度、观察与评估，并做出一个可复跑的最小切片。
 - [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
+- [Anatomy Skill：让 AI 把原理做成可交互的科普视频](https://doc.gpt88.cc/docs/blog/anatomy-skill-interactive-explanation-video-2026-10/): 整理数字生命卡兹克对 Anatomy Skill 的体验，拆解它如何把机械表、显卡、TCP 握手等抽象原理做成可交互模型、HTML 页面和带讲解的视频，并讨论准确性、成本与学习边界。
 - [API 集成型 Skill 设计：把一次 REST 调用写成 request contract，而不是把 token、重试、schema 和副作用全交给 Agent 猜](https://doc.gpt88.cc/docs/blog/api-integration-skill-design/): 用一个只读 release feed Showcase 学会冻结 credential 来源、GET/pagination、429/5xx、schema validation 与脱敏 evidence。
 - [Applied AI Field Guide：FDE 如何从真实工作走到可接受结果](https://doc.gpt88.cc/docs/blog/applied-ai-field-guide-fde-methodology/): 介绍 Applied AI Field Guide 的应用型 AI 交付方法，解释现场调研、价值判断、机制选择、垂直切片、评测验收和生产运营如何组成完整生命周期。
 - [Codex auto-review 的边界：别把 GitHub PR review 和审批 reviewer 混成一个开关](https://doc.gpt88.cc/docs/blog/auto-review-boundaries/): 用一个 refund-window-review 真实示例，拆清 GitHub `@codex review` / Automatic reviews 与 `approvals_reviewer = "auto_review"` 的职责、输入、输出和不能证明什么。
