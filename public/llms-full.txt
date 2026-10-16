@@ -100,6 +100,7 @@
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
 - [Claude Haiku 5.5 发布：平均运行成本降低约 75%，小模型该怎么选？](https://doc.gpt88.cc/docs/blog/claude-haiku-5-5-cost-and-model-selection/): 整理 Claude 官方关于 Haiku 5.5 的公开消息，解释“平均运行成本低约 75%”的口径边界，并给出按任务质量、延迟、吞吐和总账单进行模型选型与复测的方法。
 - [CLAUDE.md + index.md 如何限制 Agent 读取范围：用路由预算代替全库递归](https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/): 学会把 Claude Code 的指令加载机制和项目自写 index.md 组合成可审计的路由预算，让 Agent 只读必要入口而不是递归扫完整个 vault。
+- [用 Claude 和 Openverse 为视频挑选音效：从搜索到授权核验](https://doc.gpt88.cc/docs/blog/claude-openverse-freesound-sound-effects-workflow-2026-10/): 整理程序员鱼皮分享的 Claude、Openverse 与 Freesound 音效工作流，说明免申请 API Key 搜索的适用边界、筛选思路、素材试听和授权署名检查。
 - [Claude Opus 5.5 vs GPT-6 Sol：程序员鱼皮的 5 个实战测评](https://doc.gpt88.cc/docs/blog/claude-opus-55-vs-gpt6-sol-practical-test/): 整理程序员鱼皮对 Claude Opus 5.5 与 GPT-6 Sol 的视频实测，覆盖代码生成、技术写作、3D 城市、电脑操作画图和 Cursor 类 AI 编程工具复刻，并拆解速度、质量、价格与日常使用的取舍。
 - [Claude 跨境使用环境怎么判断：从账号、网络、支付到风控的风险边界](https://doc.gpt88.cc/docs/blog/claude-overseas-access-risk-boundaries/): 整理余温关于 Claude 账号、设备、网络、手机号、支付和使用行为的经验文章，并改写为一份不承诺解封、不规避平台风控的稳定性与合规检查框架。
 - [Cloudflare 从域名接入到 AI 后端：一个域名搭起网站、邮箱、存储与 Agent 工具链](https://doc.gpt88.cc/docs/blog/cloudflare-domain-to-ai-backend/): 以一个示例域名串起 Cloudflare 的 DNS、HTTPS、GitHub 网站部署、邮件转发、R2、AI 爬虫控制、Workers、Workers AI 与 cf CLI，给出个人站点从接入到维护的可执行路径。
