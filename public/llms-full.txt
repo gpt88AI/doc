@@ -416,6 +416,7 @@
 - [OpenFDE：把客户访谈、业务记忆和 Agent 任务连成一条证据链](https://doc.gpt88.cc/docs/blog/openfde-local-first-fde-memory/): 介绍 OpenFDE 的本地优先 FDE 工作区，拆解来源引用、业务本体、任务状态机、Agent 上下文、评测验收和执行报告之间的关系。
 - [Opentu 开图功能全解析：把 AI 创作、画布和任务管理放在一起](https://doc.gpt88.cc/docs/blog/opentu-ai-canvas-workspace-guide/): 结合 Opentu 工作台与用户手册，梳理 AI 图片与视频生成、无限画布、流程图、思维导图、素材库、知识库、任务队列等功能，并说明每项功能的使用场景与适合人群。
 - [OpenViking：让研发上下文在不同 Agent 与工具之间持续在线](https://doc.gpt88.cc/docs/blog/openviking-context-filesystem-rnd/): 整理字节跳动技术团队对 OpenViking 的公开介绍：用统一上下文文件系统组织资源、记忆与技能，通过 L0、L1、L2 分层加载减少上下文浪费，并保留会话记忆与检索轨迹。
+- [不会画画、不会剪辑：用 Opus5.5 做一部 7 分钟手绘动画](https://doc.gpt88.cc/docs/blog/opus55-hand-drawn-storybook-animation/): 整理 Hailey 用 GPT、Opus5.5、hand-drawn-storybook-animation skill 和豆包语音制作手绘水彩动画绘本的完整流程，包含剧本打磨、分镜、迭代、配音接入和发布前检查。
 - [编排层：把一次任务变成一台明确的状态机](https://doc.gpt88.cc/docs/blog/orchestration-layer/): 用顺序、角色、路由、重试、预算、停止、升级七个决定审计编排，从单 worker 加独立 evaluator 的最小状态机起步，并说清什么时候不该上多 Agent。
 - [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
 - [Palantir AIP 架构总览：企业 Agent 的完整能力地图](https://doc.gpt88.cc/docs/blog/palantir-aip-architecture/): 按 Palantir AIP 架构的能力层次，系统拆解模型接入、上下文工程、Ontology、工具、Agent 生命周期、自动化、评估、观测和企业级 AI 交付。
