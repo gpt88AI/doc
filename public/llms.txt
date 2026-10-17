@@ -20,7 +20,7 @@
 - [Agent Memory 生产化：遗忘、分层存储与测试方法](https://doc.gpt88.cc/docs/blog/agent-memory-testing-and-production/): 整理《Agent Memory - The 5-Layer Playbook》的生产化注意事项，覆盖 memory tax、层级摘要、冷热存储、矛盾流水线、领域生命周期和六类测试。
 - [当 Agent 成为交易主体：从授权、身份到 A2A 支付的信任基建](https://doc.gpt88.cc/docs/blog/agent-transaction-trust-infrastructure/): 整理硅谷101播客外滩大会圆桌内容，拆解 Agent 从推荐走向办事和交易后，授权、身份、KYA、支付权限、沙箱、责任追踪与 Agent-to-Agent 微交易需要怎样的信任基础设施。
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
-- [AI Agent 时代的营销：从 GEO、品牌提及到社群与真实连接](https://doc.gpt88.cc/docs/blog/ai-agent-marketing-geo-community-human-attention/): 整理 Indigo Talk EP51 关于 AI 营销、GEO、AI 推荐、品牌提及、AI Slop、社群和 Agent Vendor 的完整访谈，拆解企业如何从“生产更多内容”转向“被 AI 记住、被真人讨论、由专业 Agent 交付”。
+- [AI 3D 游戏制作工作流：从概念图、Tripo 资产到 Blender 与 Unity](https://doc.gpt88.cc/docs/blog/ai-3d-game-workflow-tripo-blender-unity-2026-10/): 整理 Sac 的《小王子》3D 游戏制作分享，拆解 AI 参与需求规划、场景搭建、角色建模、绑定动画和 Unity 集成的流程，并给出可复用的检查清单。
 
 ## GPT88公益站搜索入口
 
