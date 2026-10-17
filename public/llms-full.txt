@@ -430,6 +430,7 @@
 - [Plan、Auto 与人工审批边界：按风险放权，别按信任放权](https://doc.gpt88.cc/docs/blog/plan-auto-approval-boundary/): 用只读计划、普通自动执行、需人工批准三档风险边界，决定 coding agent 哪些动作能自动跑，并在 Claude Code 与 Codex 里各自选对权限原语。
 - [产品项目初始化 Prompt：让 Agent 参与从市场分析到版本复盘的全流程](https://doc.gpt88.cc/docs/blog/product-project-agent-workspace-init/): 整理一套适用于 Codex、Claude Code 和其他 Coding Agent 的产品项目初始化方法：用编号目录、唯一事实源、需求池、版本门槛和评审记录，把一次性 Prompt 变成可持续协作的产品工作空间。
 - [AI 编程项目的开工与验收清单：把散文变成一道确定性闸门](https://doc.gpt88.cc/docs/blog/project-checklist/): 用六格开工清单，把仓库、运行、禁区、密钥、验收、回滚写清楚，并用一段脚本校验成退出码。
+- ["用自己的写作数据微调 Qwen2.5-1.5B：一份 LoRA 实验指南"](https://doc.gpt88.cc/docs/blog/qwen25-x-writer-lora-finetuning-guide-2026-10/): "整理雪瑜分享的 Qwen2.5-1.5B-Instruct 本地 LoRA 微调教程，覆盖数据清洗、MLX 环境、训练配置、评估、Adapter 融合和实验边界。"
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
 - [逼真 AI 图像生成器怎么选：先看用途、上传风险和切换规则](https://doc.gpt88.cc/docs/blog/realistic-ai-image-generator/): 先按人物、商品、品牌文字、免费测试、私密上传、API 或本地控制来选逼真 AI 生图路线，再决定是否换工具。
 - [如何降低大语言模型幻觉：把“回答得像真的”变成可验证的工作流](https://doc.gpt88.cc/docs/blog/reducing-gpt-hallucinations/): 用任务边界、受控上下文、结构化输出、工具验证和失败处理降低 LLM 幻觉；区分模型表达与系统可靠性。
