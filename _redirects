@@ -1,0 +1,14 @@
+# Netlify / Cloudflare Pages SPA fallback
+#
+# 为什么需要这一行：
+# 本站使用 react-router-dom 的 BrowserRouter（HTML5 History 模式），
+# 形如 /docs/quickstart、/docs/api/chat-completions、/models/deepseek-v4-pro
+# 这些深链在打包后的 dist/ 中并不存在对应的物理 .html 文件。
+# 如果用户直接访问深链或在深链上按下刷新，托管服务器会找不到对应文件而返回 404。
+#
+# 这条规则告诉 Netlify / Cloudflare Pages：
+# 任何路径都用 200 状态码（而不是 301/302）回退到 /index.html。
+# 浏览器拿到 index.html 后，react-router 会读取 location.pathname 自行渲染对应页面。
+#
+# 注意：必须用 200 而不是 301，否则 SEO 与 client 缓存都会被污染成"重定向"。
+/*    /index.html   200

@@ -1,0 +1,1 @@
+import{n as e}from"./ui-6T_4G6VH.js";import{t}from"./SeoIntentPage-BOk-j_rT.js";var n=e();function r(){return(0,n.jsx)(t,{intent:`first-request-failed`})}export{r as default};
