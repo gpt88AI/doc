@@ -377,6 +377,7 @@
 - [Jev 为什么不想做聊天机器人：从 System One 到可编程判断层](https://doc.gpt88.cc/docs/blog/jev-system-one-model-interview/): 整理 Frank Wang 玉伯对 TypeSafe 联合创始人 Diogo Almeida 的访谈转述，解释 Jev 为什么从聊天产品转向 System One、可编程模型、工作流评测与软件内置智能。
 - [Jev / System One Model 实测：把语言模型变成软件可直接调用的决策函数](https://doc.gpt88.cc/docs/blog/jev-system-one-model-practical-guide/): 整理 01Coder 对 TypeSafe AI Jev 的视频实测，解释 System One Model、Choice、Score、Boolean、并行评估、概率与置信度，并给出模型路由、内容审核和 LLM 输出校验的工程落地方法。
 - [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
+- [Vibe Coding 项目越做越难维护？用六层工程能力给 AI Coding 加护栏](https://doc.gpt88.cc/docs/blog/kxians-ai-coding-software-engineering-practices/): 整理 Kxians 关于 AI Coding 工程化的长帖，拆解 SDD、TDD、DDD、上下文工程、Workflow/Harness、项目规则与 Skills 的分工，并用可重建性检查知识是否沉淀。
 - [删掉 80% Prompt 规则后 Agent 交付更稳：把约束放回系统](https://doc.gpt88.cc/docs/blog/less-prompt-rules-agent-delivery/): 整理腾讯云开发者关于精简 Agent Prompt 的工程思路：把上下文索引、可信事实、工具能力和验证关卡分别承担确定性约束，避免依赖超长提示词记住所有规则。
 - [Markdown 何时才算 Agent 可交接记忆：把项目交接写成可验证记录](https://doc.gpt88.cc/docs/blog/markdown-as-agent-memory/): 学会用一个小型 Markdown handoff packet 记录状态、决策、证据、下一条命令和限制，让新开的 Agent 会话能接着干。
 - [美团智播：数字人直播从生成模型到业务知识库的工程化实践](https://doc.gpt88.cc/docs/blog/meituan-zhibo-digital-human-practice/): 根据美团技术团队公开摘要整理智播数字人直播链路：形象生成、动作驱动、流式语音与手势协调、直播内容量产和业务知识库如何组合成可运营系统。
