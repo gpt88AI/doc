@@ -140,6 +140,7 @@
 - [DeepSeek Harness 16 个热门插件整理：能力扩展、界面增强与安全安装指南](https://doc.gpt88.cc/docs/blog/deepseek-harness-16-plugins/): 整理公众号文章中的 16 个 DeepSeek Harness（DSH）社区插件，按能力扩展、工作台增强和社区整活分类，并补充插件选择、安装验证、权限安全与版本回滚建议。
 - [DeepSeek Harness 架构全解：从 Model + Harness 到插件树、Session Log 与安全管线](https://doc.gpt88.cc/docs/blog/deepseek-harness-architecture-explained/): 整理 Russell 关于 DeepSeek Harness 的架构长文，解释 Agent = Model + Harness、Profile、Cordis 插件生命周期、Turn 与 Step、Session Log、工具审批、Capability Seam、子 Agent 与远程沙箱。
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
+- [DeepSeek V4.1 Flash 1017 实测怎么看：从 7 项开发测试到自己验证](https://doc.gpt88.cc/docs/blog/deepseek-v41-flash-1017-seven-dev-tests/): 整理 AI超元域关于 DeepSeek V4.1 Flash 1017 的开发测试视频，区分视频标题信息与官方发布说明，并提供在 GPT88 体验模型、复现任务和核验成本的步骤。
 - [OpenClaw 上线决策：部署、渠道安全与可重算成本](https://doc.gpt88.cc/docs/blog/deployment-channels-cost/): 用工作负载、信任边界和预算公式选择本地、VPS 或托管模板，并建立可验证的上线门禁。
 - ["设计审美提升：硅谷设计师私藏的 10 个网站与灵感库"](https://doc.gpt88.cc/docs/blog/design-aesthetic-inspiration-sites-2026-10/): "整理 Dreameryanyan 分享的 10 个设计灵感网站，按产品界面、极简、企业 SaaS、深色模式、动效、落地页、字体和实验性视觉分类，并把收藏转化为审美判断。"
 - [扩散式语言模型会赢得 AI 推理吗？从 Inception 访谈看并行生成、速度与模型架构竞争](https://doc.gpt88.cc/docs/blog/diffusion-language-model-inference-inception/): 整理 No Priors 对 Inception 联合创始人 Stefano Ermon 的访谈，解释扩散式语言模型如何通过并行去噪生成文本，为什么推理阶段可能比自回归模型更适合 GPU，以及速度、可控性、服务引擎和 GPT88 模型路由应该如何评测。
