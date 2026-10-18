@@ -75,6 +75,7 @@
 - [AI Town 与多智能体模拟：从热闹演示到可验证系统](https://doc.gpt88.cc/docs/blog/ai-town/): 从 AI Town 的搜索意图出发，理解多智能体模拟的记忆、环境、调度、观察与评估，并做出一个可复跑的最小切片。
 - [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
+- [阿里云《AI Agent Handbook》导读：从 Harness 构建到生产治理](https://doc.gpt88.cc/docs/blog/aliyun-ai-agent-handbook-reading-guide/): 基于阿里云开源 AI Agent Handbook，梳理智能体从架构、构建、运行、治理到调优的完整工程生命周期，并按不同目标给出章节阅读路径。
 - [Anatomy Skill：让 AI 把原理做成可交互的科普视频](https://doc.gpt88.cc/docs/blog/anatomy-skill-interactive-explanation-video-2026-10/): 整理数字生命卡兹克对 Anatomy Skill 的体验，拆解它如何把机械表、显卡、TCP 握手等抽象原理做成可交互模型、HTML 页面和带讲解的视频，并讨论准确性、成本与学习边界。
 - [Anthropic 从 Agents 到 Skills：能力封装为什么比重复造 Agent 更重要](https://doc.gpt88.cc/docs/blog/anthropic-agents-to-skills-strategy-2026-10/): 整理《ANTHROPIC战略转向，从Agents转向Skills！》视频的公开信息，并结合 Anthropic Agent Skills 文章与 Claude Code 文档，拆解 Agent 与 Skill 的分工、渐进式加载和可验证的落地方法。
 - [Anthropic 如何重做代码审查：让机器读更多 diff，把人的注意力留给风险](https://doc.gpt88.cc/docs/blog/anthropic-code-review-system/): 整理 Claude Code 团队公开的代码审查实践，拆解变更前验证、AI 与安全审查、CI、人类风险分级审批、合并队列、渐进发布和快速回滚，并解释如何用召回、噪声、审查轮次与事故指标持续改进。
