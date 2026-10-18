@@ -428,6 +428,7 @@
 - [不会画画、不会剪辑：用 Opus5.5 做一部 7 分钟手绘动画](https://doc.gpt88.cc/docs/blog/opus55-hand-drawn-storybook-animation/): 整理 Hailey 用 GPT、Opus5.5、hand-drawn-storybook-animation skill 和豆包语音制作手绘水彩动画绘本的完整流程，包含剧本打磨、分镜、迭代、配音接入和发布前检查。
 - [编排层：把一次任务变成一台明确的状态机](https://doc.gpt88.cc/docs/blog/orchestration-layer/): 用顺序、角色、路由、重试、预算、停止、升级七个决定审计编排，从单 worker 加独立 evaluator 的最小状态机起步，并说清什么时候不该上多 Agent。
 - [OTC 撮合 Agent 中，8 类职责到底应该由谁负责？](https://doc.gpt88.cc/docs/blog/otc-agent-harness-responsibility-boundaries/): 以“我要用 5 万人民币买 USDT，优先支付宝，找响应最快的商家”为例，拆解 Agent Harness 中的意图理解、Skill、Tool Router、规则引擎、RAG、风控、解释和订单锁定边界。
+- [用引荐域名和 Vercel 子域名发现出海产品线索：从名单到需求验证](https://doc.gpt88.cc/docs/blog/overseas-product-discovery-referral-and-vercel-keywords/): 整理 aiRobertDaily 的 Stripe Checkout 引荐站点与 Vercel 子域名找词思路，说明如何把 Similarweb、Semrush 和趋势数据组合成候选调研流程，并避免误读流量为收入。
 - [Palantir AIP 架构总览：企业 Agent 的完整能力地图](https://doc.gpt88.cc/docs/blog/palantir-aip-architecture/): 按 Palantir AIP 架构的能力层次，系统拆解模型接入、上下文工程、Ontology、工具、Agent 生命周期、自动化、评估、观测和企业级 AI 交付。
 - [AIP、Foundry 与 Apollo：Palantir 企业操作系统的三层协作](https://doc.gpt88.cc/docs/blog/palantir-aip-foundry-apollo/): 详细拆解 Palantir AIP、Foundry、Apollo 三个平台的职责边界、协作关系、安全模型和 AI Agent 落地方法，帮助 AI FDE 建立企业级架构视角。
 - [Palantir 架构中心导读：理解企业 AI 平台的全局地图](https://doc.gpt88.cc/docs/blog/palantir-architecture-center-overview/): 从 AIP、Foundry、Apollo、Ontology、多模态数据平面、互操作性与 Rubix 七个章节，建立一张面向 AI FDE 和企业 Agent 的 Palantir 架构全局地图。
