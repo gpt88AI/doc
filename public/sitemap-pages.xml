@@ -2251,6 +2251,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/anthropic-code-review-system/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/api-integration-skill-design/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -5491,6 +5497,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/anthropic-code-review-system/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/api-integration-skill-design/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -8025,6 +8037,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/anthropic-agents-to-skills-strategy-2026-10/</loc>
     <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/anthropic-code-review-system/</loc>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -10567,6 +10585,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/anthropic-code-review-system/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/api-integration-skill-design/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -13101,6 +13125,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/anthropic-agents-to-skills-strategy-2026-10/</loc>
     <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/anthropic-code-review-system/</loc>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -15643,6 +15673,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/anthropic-code-review-system/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/api-integration-skill-design/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -18177,6 +18213,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/anthropic-agents-to-skills-strategy-2026-10/</loc>
     <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/anthropic-code-review-system/</loc>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
