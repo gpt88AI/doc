@@ -110,6 +110,7 @@
 - [Claude 跨境使用环境怎么判断：从账号、网络、支付到风控的风险边界](https://doc.gpt88.cc/docs/blog/claude-overseas-access-risk-boundaries/): 整理余温关于 Claude 账号、设备、网络、手机号、支付和使用行为的经验文章，并改写为一份不承诺解封、不规避平台风控的稳定性与合规检查框架。
 - [Cloudflare 从域名接入到 AI 后端：一个域名搭起网站、邮箱、存储与 Agent 工具链](https://doc.gpt88.cc/docs/blog/cloudflare-domain-to-ai-backend/): 以一个示例域名串起 Cloudflare 的 DNS、HTTPS、GitHub 网站部署、邮件转发、R2、AI 爬虫控制、Workers、Workers AI 与 cf CLI，给出个人站点从接入到维护的可执行路径。
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
+- [精简 Codex 的 AGENTS.md 与 Skills：让规则只在需要时进入上下文](https://doc.gpt88.cc/docs/blog/codex-agents-md-skill-trigger-optimization/): 根据 goan999999 的帖子，整理项目指令与 Skill 触发规则的瘦身方法：先盘点重复和过宽规则，再用范围、路由与验收标准做小步验证。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
 - [Claude Code 与 Codex 双线开发：用 Git 工件交接，而不是靠记忆接力](https://doc.gpt88.cc/docs/blog/codex-claude-code-dual-track/): 用一套与品牌无关的 handoff contract、receipt、worktree 和 gate，在 Claude Code 与 Codex 之间切 lane、降级和独立验收。
 - [Codex CLI 入门工作流：把一次聊天变成可验证闭环](https://doc.gpt88.cc/docs/blog/codex-cli-workflow/): 用隔离 receipt-normalizer 仓库的一次真实 codex exec，学会检查目录与工作树、冻结 contract、最小修改、测试、diff 与结构化汇报。
@@ -118,6 +119,9 @@
 - [Codex 的四个执行面怎么选：CLI、IDE 插件、桌面 App、Cloud](https://doc.gpt88.cc/docs/blog/codex-form-factors/): 用环境依赖、反馈节奏、权限风险和异步需求四个维度，判断该用 Codex 的哪个入口执行任务。
 - [Codex 从 0 到 1 全攻略：从第一次安装到完整工作流](https://doc.gpt88.cc/docs/blog/codex-from-zero-to-one-complete-guide/): 整理马克的技术工作坊关于 Codex 的完整教程，覆盖安装登录、模型与套餐、预览和 Annotate、权限安全、内置终端、Git、Fork、Archive、AGENTS.md、Plan Mode、多任务、Plugin、Skill、Automation 与 Mobile。
 - [用 Codex 和 HyperFrames 自动生成视频：从文章到口播、分镜与成片的完整教程](https://doc.gpt88.cc/docs/blog/codex-hyperframes-video-content-workflow/): 整理 Miles Ma 关于 Codex 视频生产流程的实践，讲清如何用文章或主题生成口播稿，完成 TTS 或声音复刻、字幕时间轴、分镜、HyperFrames 成片，以及真人口播和内容获客的后续扩展。
+- [9 个值得按需评估的 Agent Skills：从前端、演示到视频和数据图表](https://doc.gpt88.cc/docs/blog/codex-nine-practical-skills/): 按用途梳理 goan999999 推荐的九个 Skill 仓库，并核对当前 README 所述能力、依赖和边界，避免把作者宣传数字当成通用基准。
+- [把复杂任务拆成推理与执行：用 Task Packet 交接，而不是只换模型](https://doc.gpt88.cc/docs/blog/codex-reasoning-execution-task-packet/): 整理 goan999999 提出的 Luna 搜集信息、Sol 负责判断与实现的双阶段流程，并给出不依赖固定模型名称的 Task Packet 模板和验证办法。
+- [Codex 子 Agent 怎么分工：让并行工作有边界、有交付、有复核](https://doc.gpt88.cc/docs/blog/codex-subagent-task-delegation/): 整理 goan999999 的子 Agent 配置与分工经验，给出适合委派的任务、任务说明模板和合并检查，并澄清子 Agent 不会自动增加套餐额度。
 - [Codex Ultrafast 模式偶尔消失？拆解本地模型目录 workaround](https://doc.gpt88.cc/docs/blog/codex-ultrafast-local-model-catalog/): 李不凯分享了通过本地模型目录让 Codex App 持续显示 Ultrafast 的 workaround。本文解释原帖中的 models_cache.json、service_tiers 与 model_catalog_json 说法，列出操作前提、验证方法和回滚边界，并区分作者猜测与已核实事实。
 - [我是怎么用 Codex 做小红书：从选题模型到 2 天涨 1000 粉](https://doc.gpt88.cc/docs/blog/codex-xiaohongshu-1000-followers/): 整理 Andy L 在 X 分享的 Codex 小红书起号实验，拆解“熟悉物品 + 陌生英文名 + 好奇心问题”的选题模型、AI 内容流水线、封面设计、数据复用和增长边界。
 - [ComfyUI Nano Banana Pro 替代方案：本地、API 与托管路线怎么选](https://doc.gpt88.cc/docs/blog/comfyui-nano-banana-pro-alternative/): 在 ComfyUI 里替换 Nano Banana Pro，不是找一个万能模型，而是判断本地控制、Qwen 编辑实验、托管 API 和继续使用 Pro 哪条路线更适合，并用同题测试做决策。
@@ -409,6 +413,7 @@
 - [Nano Banana Pro去水印完整指南：5种方法获取无水印AI图片【2026实测】](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark-removal/): 详细介绍Nano Banana Pro去水印的5种有效方法，包括官方订阅、第三方API、专业工具对比。深入解析可见水印与SynthID的区别，帮你选择最适合的无水印获取方案。
 - [Nano Banana 免费无可见水印：AI Studio、Gemini 免费版与 API 怎么选](https://doc.gpt88.cc/docs/blog/nano-banana-pro-watermark/): 想免费获得没有可见 Gemini 标记的 Nano Banana 图片？先分清 Google AI Studio 免费试用、Gemini 免费版的可见标记、图像 API 付费边界，以及始终保留的 SynthID。
 - [从自然语言需求到可运行 MVP：把一句想法冻结成能交给 Agent 的切片](https://doc.gpt88.cc/docs/blog/natural-language-to-mvp/): 用输入、输出、失败态、验收动作四个维度，把一句模糊产品想法冻结成 coding agent 能一次实现并验收的最小可运行切片。
+- [用 Obsidian 做 Codex 本地记忆库：只保存下次还用得上的经验](https://doc.gpt88.cc/docs/blog/obsidian-codex-local-memory-workflow/): 整理 goan999999 的 Obsidian 记忆库方案，说明如何按任务检索、写入可复用经验并淘汰过期信息，同时处理同步、插件和敏感数据风险。
 - [Obsidian + Git 工作流：把同步、备份、版本控制和 Agent 批量改动拆开](https://doc.gpt88.cc/docs/blog/obsidian-git-workflow/): 学会用 clean baseline、独立 worktree、diff gate 和人工 review，让 Obsidian vault 的 AI 批量改动可接受、可丢弃、可恢复。
 - [Obsidian 备考教资：把教师资格证学习内容做成可展开的知识路线图](https://doc.gpt88.cc/docs/blog/obsidian-teacher-qualification-exam-roadmap/): 整理 Johnny学关于用 Obsidian 备考教师资格证的视频，拆解考试路线、报名材料、Excalidraw 可视化和 Note Refactor 拆分笔记的学习系统。
 - [OpenAI DevDay 2026：Dots、GPT-6.1 Sol 与面向 Agent 的产品栈](https://doc.gpt88.cc/docs/blog/openai-devday-2026-summary/): 根据数字生命卡兹克的现场长文，梳理 OpenAI DevDay 2026 的个人 Agent、ChatGPT Space、GPT-6.1 Sol、Decisions API、Codex Cloud、Pro 订阅与应用生态更新，并区分官方定位和作者报告。
