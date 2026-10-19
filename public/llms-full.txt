@@ -470,6 +470,7 @@
 - [Obsidian Vault 目录怎样才对 Agent 有用：把分类树写成放置 contract](https://doc.gpt88.cc/docs/blog/vault-directory-for-ai/): 用一个冻结的 synthetic vault 定义 folder roles、canonical paths、reject 边界和审计办法，让 Claude Code 或 Codex 不再跨整个个人 vault 猜文件该放哪。
 - [Vibe Marketing：Solo Founder 如何成为营销工程师](https://doc.gpt88.cc/docs/blog/vibe-marketing-marketing-engineer-workflow/): 整理 Shann³ 关于 Marketing Engineer 的长文，拆解 Vibe Marketing、Agent Development Environment、营销知识层、数据层、工作流、审核循环与自治机器人，并给出可执行的第一条营销工作流。
 - [Wechatian：把微信变成 AI Agent 与 Obsidian 知识库的双向通道](https://doc.gpt88.cc/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/): 总结 Wechatian 的核心思路、消息收发架构、隐私边界、文章剪藏与 Agent 通知场景，以及在 Obsidian 中安装和接入的方法。
+- [FDE 企业 AI 交付复盘：项目报价、范围控制与收款设计](https://doc.gpt88.cc/docs/blog/weiyong-fde-enterprise-ai-delivery-pricing/): 根据唯庸关于智能体项目和企业 AI 落地的复盘，梳理小单交付的利润压力、FDE 的服务边界，以及按人天、交付物和阶段拆分项目的定价方法。
 - [Agent Skill 到底是什么：什么时候该把重复 prompt 升级成按需加载的工作包](https://doc.gpt88.cc/docs/blog/what-are-agent-skills/): 用当前官方文档和一个真实收据重命名案例，判断 Skill 的边界，以及什么时候值得从普通 prompt 升级。
 - [Harness 的五个组件：让 Agent 不只“会做”，还要可靠地做完](https://doc.gpt88.cc/docs/blog/what-is-harness/): 用指令、能力、约束、状态和编排检查 Agent 系统，并运行一个五项可验证的最小 Harness。
 - [什么是 Nano Banana？功能、价格与 Prompt 技巧一文搞懂（2026 完全指南）](https://doc.gpt88.cc/docs/blog/what-is-nano-banana-guide/): 全面解析 Google 的 Nano Banana 图像生成技术：从 Gemini 2.5 Flash Image 到 Nano Banana Pro 的发展历史、核心功能、免费与付费配额、3D 手办病毒式传播事件，以及最佳 Prompt 技巧。
