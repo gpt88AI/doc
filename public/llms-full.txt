@@ -126,6 +126,7 @@
 - [把复杂任务拆成推理与执行：用 Task Packet 交接，而不是只换模型](https://doc.gpt88.cc/docs/blog/codex-reasoning-execution-task-packet/): 整理 goan999999 提出的 Luna 搜集信息、Sol 负责判断与实现的双阶段流程，并给出不依赖固定模型名称的 Task Packet 模板和验证办法。
 - [Codex 子 Agent 怎么分工：让并行工作有边界、有交付、有复核](https://doc.gpt88.cc/docs/blog/codex-subagent-task-delegation/): 整理 goan999999 的子 Agent 配置与分工经验，给出适合委派的任务、任务说明模板和合并检查，并澄清子 Agent 不会自动增加套餐额度。
 - [Codex Ultrafast 模式偶尔消失？拆解本地模型目录 workaround](https://doc.gpt88.cc/docs/blog/codex-ultrafast-local-model-catalog/): 李不凯分享了通过本地模型目录让 Codex App 持续显示 Ultrafast 的 workaround。本文解释原帖中的 models_cache.json、service_tiers 与 model_catalog_json 说法，列出操作前提、验证方法和回滚边界，并区分作者猜测与已核实事实。
+- [用 Codex 和 Unreal 做游戏：从一周原型到可验证迭代](https://doc.gpt88.cc/docs/blog/codex-unreal-game-prototype-workflow/): 根据“小奇说”分享的 Codex + Unreal 游戏案例，整理 AI 参与游戏原型开发的实践框架，并结合 Unreal 官方文档补充蓝图、C++、版本控制与验证建议。
 - [我是怎么用 Codex 做小红书：从选题模型到 2 天涨 1000 粉](https://doc.gpt88.cc/docs/blog/codex-xiaohongshu-1000-followers/): 整理 Andy L 在 X 分享的 Codex 小红书起号实验，拆解“熟悉物品 + 陌生英文名 + 好奇心问题”的选题模型、AI 内容流水线、封面设计、数据复用和增长边界。
 - [ComfyUI Nano Banana Pro 替代方案：本地、API 与托管路线怎么选](https://doc.gpt88.cc/docs/blog/comfyui-nano-banana-pro-alternative/): 在 ComfyUI 里替换 Nano Banana Pro，不是找一个万能模型，而是判断本地控制、Qwen 编辑实验、托管 API 和继续使用 Pro 哪条路线更适合，并用同题测试做决策。
 - [Commerce Agents 工程架构拆解：从 Prompt Demo 到可控的应用代理](https://doc.gpt88.cc/docs/blog/commerce-agents-engineering-architecture/): 以 commerce-agents 参考项目为例，拆解应用代理的共享核心、Backend 契约、Tool Calling Loop、Skill 分层、数据 Fencing、Provenance、结构化 UI、人工审批、记忆、评测与生产化路径。
