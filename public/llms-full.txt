@@ -90,6 +90,7 @@
 - [更有野心地使用 AI：从加速任务到重定义问题](https://doc.gpt88.cc/docs/blog/be-more-ambitious-ai-workflow-2026-10/): 整理 sleepy 对 Felix Rieseberg《How to be more ambitious》的解读，拆解 AI 工作流中的速度、抽象层级、专业深度和跨学科范围，并给出可验证的实践框架。
 - [别只让 AI 更快：用速度、升维、深度和范围扩大问题边界](https://doc.gpt88.cc/docs/blog/be-more-ambitious-ai-workflow-tutorial/): 整理 Felix Rieseberg 的 AI 使用教程，拆解速度、Altitude、Depth、Range 四种野心，并给出可复用的任务提示、外部验收和权限边界。
 - [用自己的脸生成高质量照片：先选对路线，再比较模型](https://doc.gpt88.cc/docs/blog/best-ai-model-for-pictures-with-your-face/): 用自己或授权的人脸生成高质量照片，先分清职业头像、参考图编辑、训练身份、GPT Image 2 与 Gemini 官方路线。本文提供同脸证明表和上传前隐私授权清单，帮你避免"好看但不像"的失败输出。
+- [Claude Code 创作者 Boris Cherny 的实战建议：先问代码库，再让 Agent 迭代](https://doc.gpt88.cc/docs/blog/boris-cherny-claude-code-practical-tips/): 根据 Boris Cherny 在 Anthropic 技术分享中的完整视频整理 Claude Code 的上手路径、代码库问答、CLAUDE.md 上下文、验证反馈循环、终端快捷操作、SDK 和并行会话，并区分视频演示与当前官方文档。
 - [Browser Use + Jev：网页 Agent 为什么能在 7 秒内完成一次航班搜索](https://doc.gpt88.cc/docs/blog/browser-use-jev-ultrafast/): 整理 Gregor Zunic 的 Browser Use + Jev 实测视频，以及 AYi 对该案例的中文解读，拆解动态动作空间、DOM 状态、小模型输入回退和成本测量，并给出浏览器 Agent 的工程化落地与验收方法。
 - [从零实现一个最小的 otc-trading Skill：识别“买入 OTC 资产”](https://doc.gpt88.cc/docs/blog/build-minimal-otc-trading-skill/): 通过一个可运行的最小示例，设计 otc-trading Skill 的 manifest、输入输出契约和意图识别器，让 Agent 能识别用户想买入 OTC 资产，并为后续撮合流程留下清晰边界。
 - [CapCut AI 视频工作流：把生成草稿变成可发布的短视频](https://doc.gpt88.cc/docs/blog/capcut-ai-video-workflow/): 用 CapCut 的 AI 视频能力做出可审阅的第一版，再用镜头、字幕、音轨和导出检查把它变成可发布的短视频。
