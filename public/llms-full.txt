@@ -370,6 +370,7 @@
 - [AI 热点日报｜2026年8月2日](https://doc.gpt88.cc/docs/blog/hvoy-ai-hot-daily-2026-08-02/): 本期聚焦 OpenAI Astra 以约 2000 美元算力解决 10 个数学难题、Grok Imagine 支持 1080p 多模态生成，以及 DeepSeek V4 Flash 发布并强调成本优势；同时关注 AI Agent 伦理、Codex 工作流、软件质量转向约束系统、YC 多 Agent 框架 QM 开源等动态。
 - [AI 热点日报｜2026年8月3日](https://doc.gpt88.cc/docs/blog/hvoy-ai-hot-daily-2026-08-03/): 今日聚焦 AI 成本百倍下降、AI 数学研究能力超越人类、开源模型安全争议，以及 Agent、产品设计、多模态和独立开发者工具的新进展。
 - [如何选择一个好的中转站](https://doc.gpt88.cc/docs/blog/hvoy-how-to-choose-api-gateway/): 选择中转站, 要综合考虑站长人品, 站点规模, 稳定性, 价格等多方面因素之后, 再下手.
+- [HyperFrames Studio 长视频工作流：从一分钟动效到可持续的知识栏目](https://doc.gpt88.cc/docs/blog/hyperframes-studio-long-form-video-series-workflow/): 整理 Miao Yang 的 HyperFrames Studio 演示，围绕一条 9 分 34 秒的泰国经济讲解，拆解栏目模板、脚本与画面时间轴、数字人与声音、音乐音效和长视频验收方法。
 - [ImagineArt AI 指南：免费积分、价格、模型和适用场景](https://doc.gpt88.cc/docs/blog/imagineart-ai-guide/): 用免费日积分、订阅与充值积分、Pro 模型访问、商用边界和官方 API 区别，判断 ImagineArt 是否适合你的图片或视频工作流：先试哪条路、先停在哪里，以及哪些场景应直接跳过套件。
 - [ImagineArt 价格、免费积分和评价：付费前先查这几件事](https://doc.gpt88.cc/docs/blog/imagineart-pricing-free-credits-review/): 面向想试用或订阅 ImagineArt 的中文读者：免费积分、付费套餐、网页与 App 付款路线、取消订阅、评价信号和适合跳过的情况，避免把"低价""无限"当成购买承诺。
 - [Claude Code 安装与第一个项目：先跑通一次可验收的小闭环](https://doc.gpt88.cc/docs/blog/install-and-first-project/): 用一个可丢弃的 git 小仓库，完成 Claude Code 的第一次安装、登录核验与最小改动闭环。
