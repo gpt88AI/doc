@@ -54,6 +54,7 @@
 - [当 Agent 成为交易主体：从授权、身份到 A2A 支付的信任基建](https://doc.gpt88.cc/docs/blog/agent-transaction-trust-infrastructure/): 整理硅谷101播客外滩大会圆桌内容，拆解 Agent 从推荐走向办事和交易后，授权、身份、KYA、支付权限、沙箱、责任追踪与 Agent-to-Agent 微交易需要怎样的信任基础设施。
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
 - [AI 3D 游戏制作工作流：从概念图、Tripo 资产到 Blender 与 Unity](https://doc.gpt88.cc/docs/blog/ai-3d-game-workflow-tripo-blender-unity-2026-10/): 整理 Sac 的《小王子》3D 游戏制作分享，拆解 AI 参与需求规划、场景搭建、角色建模、绑定动画和 Unity 集成的流程，并给出可复用的检查清单。
+- [AI Agent 工程师 12 步学习路线：从第一个工具调用到可恢复、可评测的系统](https://doc.gpt88.cc/docs/blog/ai-agent-engineer-12-step-roadmap/): 根据一张 12 步 Agent 工程学习路线图整理，逐步讲清状态机、MCP、界面操作、记忆、多 Agent、沙箱、安全、人工审批、自我纠错、轨迹评测、降级与复盘，并给出练手项目和验收标准。
 - [AI Agent 时代的营销：从 GEO、品牌提及到社群与真实连接](https://doc.gpt88.cc/docs/blog/ai-agent-marketing-geo-community-human-attention/): 整理 Indigo Talk EP51 关于 AI 营销、GEO、AI 推荐、品牌提及、AI Slop、社群和 Agent Vendor 的完整访谈，拆解企业如何从“生产更多内容”转向“被 AI 记住、被真人讨论、由专业 Agent 交付”。
 - [2026 AI API 中转站怎么选？结合 GPT88 的接入、验证与避坑指南](https://doc.gpt88.cc/docs/blog/ai-api-proxy-guide-2026-gpt88/): 整理 GPT88 的 OpenAI 兼容 API 接入流程，覆盖 AI 中转站选型、Base URL、API Key、模型发现、最小请求、计费核对、客户端配置、故障排查与安全边界。
 - [AI 涂色页生成器：用提示词或照片制作可打印线稿](https://doc.gpt88.cc/docs/blog/ai-coloring-page-generator/): 按用途选择 AI 涂色页路线：提示词、照片转线稿、课堂手工、成人细节页、个性化名字页或 KDP/Etsy 涂色书，并检查打印、隐私、导出和商用边界，生成真正可打印的干净线稿。
