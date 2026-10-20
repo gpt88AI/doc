@@ -463,6 +463,7 @@
 - [Plan、Auto 与人工审批边界：按风险放权，别按信任放权](https://doc.gpt88.cc/docs/blog/plan-auto-approval-boundary/): 用只读计划、普通自动执行、需人工批准三档风险边界，决定 coding agent 哪些动作能自动跑，并在 Claude Code 与 Codex 里各自选对权限原语。
 - [产品项目初始化 Prompt：让 Agent 参与从市场分析到版本复盘的全流程](https://doc.gpt88.cc/docs/blog/product-project-agent-workspace-init/): 整理一套适用于 Codex、Claude Code 和其他 Coding Agent 的产品项目初始化方法：用编号目录、唯一事实源、需求池、版本门槛和评审记录，把一次性 Prompt 变成可持续协作的产品工作空间。
 - [AI 编程项目的开工与验收清单：把散文变成一道确定性闸门](https://doc.gpt88.cc/docs/blog/project-checklist/): 用六格开工清单，把仓库、运行、禁区、密钥、验收、回滚写清楚，并用一段脚本校验成退出码。
+- [pstack 深度解读：如何把 AI 规则变成 Agent 的工程护栏](https://doc.gpt88.cc/docs/blog/pstack-agent-rules-practical-guide/): 根据三少科技的视频主题，整理 Agent 规则的落地思路：从仓库约定、任务流程、工具权限到验证与回滚，并给出可复用的 GPT88 API 接入示例。
 - [Qiaomu Publish：在 Obsidian 写一次，再交付到公众号、X、知乎和小红书](https://doc.gpt88.cc/docs/blog/qiaomu-publish-obsidian-multi-platform/): 整理 Qiaomu Publish 的 Obsidian 写作与多平台发布工作流，覆盖实时排版、42 个主题、封面、HTML/PNG 导出、公众号草稿和浏览器交接，并说明凭据与发布边界。
 - ["用自己的写作数据微调 Qwen2.5-1.5B：一份 LoRA 实验指南"](https://doc.gpt88.cc/docs/blog/qwen25-x-writer-lora-finetuning-guide-2026-10/): "整理雪瑜分享的 Qwen2.5-1.5B-Instruct 本地 LoRA 微调教程，覆盖数据清洗、MLX 环境、训练配置、评估、Adapter 融合和实验边界。"
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
