@@ -494,6 +494,9 @@
 - [为什么 Agent 要把 Skill 和 Tool 分成两个能力层？](https://doc.gpt88.cc/docs/blog/why-agent-skills-and-tools-should-be-separated/): 从 DeepSeek Harness 的插件化设计出发，解释 Skill 与 Tool 的职责边界、Agent Loop 中的协作方式，以及它们在 RAG、OTC 撮合和金融级 Agent 系统中的实践价值。
 - [为什么 reserve_match 不能只靠 LLM 决定是否调用？](https://doc.gpt88.cc/docs/blog/why-reserve-match-cannot-be-llm-only/): 以 OTC 撮合中的 reserve_match 锁定交易 Tool 为例，解释 LLM 意图判断与交易授权的区别，以及状态机、规则引擎、实时事实、并发控制、幂等和 Human-in-loop 如何共同守住副作用边界。
 - [为什么 Session 不应该等同于 Memory？](https://doc.gpt88.cc/docs/blog/why-session-is-not-memory/): 从 Agent Harness、RAG 和 OTC 交易系统出发，解释 Session、Working Memory、Episodic Memory、Semantic Memory、Compliance Memory 与订单事实的边界，以及如何设计可恢复、可审计的 Agent 上下文系统。
+- [WorkBuddy 接入 GPT88 完整教程：自定义 API 配置与模型验证](https://doc.gpt88.cc/docs/blog/workbuddy-connect-gpt88-guide/): 通过 WorkBuddy 自定义模型接入 GPT88 统一大模型入口，配置 API Base URL、API Key 与模型 ID，并用实际请求验证连通、工具调用和费用边界。
+- [WorkBuddy 接入 GPT88 报错排查：401、404、模型不可用与工具调用失败](https://doc.gpt88.cc/docs/blog/workbuddy-gpt88-troubleshooting/): 排查 WorkBuddy 自定义 GPT88 API 常见问题：Base URL 路径重复、API Key 错误、模型 ID 不可用、工具调用失败与额度不足，并用最小请求定位故障层。
+- [WorkBuddy 如何统一切换不同大模型？用 GPT88 自定义 API 搭建可验证工作流](https://doc.gpt88.cc/docs/blog/workbuddy-unified-model-workflow-gpt88/): 介绍 WorkBuddy 的模型切换和 GPT88 自定义 API 接入思路，按文本、工具调用与多模态任务分工选择模型，并建立可复现的验证、费用核对和回退流程。
 - [小红书 × vivo 的 3D 图片技术：从相册生成到移动端消费](https://doc.gpt88.cc/docs/blog/xiaohongshu-vivo-3d-gaussian-splatting/): 整理小红书与 vivo 3D 图片实践的公开摘要：基于三维高斯泼溅打通相册生成、社交发布和移动端消费，并通过压缩、剪枝、分级细节和渲染优化控制体积与帧率。
 - [Codex 自动剪辑知识类视频：从 A/B-roll 到视觉编排表的完整工作流](https://doc.gpt88.cc/docs/blog/xilo-codex-video-editing-knowledge-workflow/): 整理 xilo 关于 Codex 自动剪辑知识类视频的长文，拆解 A-roll 与 B-roll、配音时间轴、视觉编排表、角色一致性、素材库、HyperFrames、Remotion 与样片验收，并补充 GPT88 API 在这套工作流中的接入方式。
 - [智谱清影 AI 视频：把一次生成变成可验收的镜头工作流](https://doc.gpt88.cc/docs/blog/zhipu-qingying-ai-video/): 围绕“智谱清影”这一历史搜索意图，用当前视频生成接口、结构化提示词和异步任务验收，做出可复跑的镜头流程。
