@@ -391,6 +391,7 @@
 - [Jev / System One Model 实测：把语言模型变成软件可直接调用的决策函数](https://doc.gpt88.cc/docs/blog/jev-system-one-model-practical-guide/): 整理 01Coder 对 TypeSafe AI Jev 的视频实测，解释 System One Model、Choice、Score、Boolean、并行评估、概率与置信度，并给出模型路由、内容审核和 LLM 输出校验的工程落地方法。
 - [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
 - [Vibe Coding 项目越做越难维护？用六层工程能力给 AI Coding 加护栏](https://doc.gpt88.cc/docs/blog/kxians-ai-coding-software-engineering-practices/): 整理 Kxians 关于 AI Coding 工程化的长帖，拆解 SDD、TDD、DDD、上下文工程、Workflow/Harness、项目规则与 Skills 的分工，并用可重建性检查知识是否沉淀。
+- [老爷爷 laoyeye Skill：让 AI 按你的处境挑选合适提示语](https://doc.gpt88.cc/docs/blog/laoyeye-prompt-routing-skill-guide/): 卡尔的开源 laoyeye 把思考提示语做成 Agent Skill 路由。本文根据 X 长文和 GitHub 仓库，拆解它的六类场景、路由边界、原文保护机制，以及如何与 GPT88 模型 API 配合。
 - [LeanREA：让编程 Agent 用本机 CLI 做授权软件分析](https://doc.gpt88.cc/docs/blog/leanrea-authorized-software-analysis-skill/): 介绍程序员鱼皮分享的 LeanREA Skill：它怎样用短指引路由到系统 CLI 工具、怎样安装和验证证据，以及如何理解项目作者的有限基准测试。
 - [用 Opus 5.5 做代码动画短片：把需求写成导演简报的六个要点](https://doc.gpt88.cc/docs/blog/lemo-opuscar-director-brief-workflow/): 从 Lemomo 的 Lemo-Opuscar 实践拆解短片创作简报、风格参考、分阶段确认和成片审看，并说明项目当前能力与适用边界。
 - [删掉 80% Prompt 规则后 Agent 交付更稳：把约束放回系统](https://doc.gpt88.cc/docs/blog/less-prompt-rules-agent-delivery/): 整理腾讯云开发者关于精简 Agent Prompt 的工程思路：把上下文索引、可信事实、工具能力和验证关卡分别承担确定性约束，避免依赖超长提示词记住所有规则。
