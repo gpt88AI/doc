@@ -149,6 +149,7 @@
 - [DeepSeek V4.1 Flash 1017 实测怎么看：从 7 项开发测试到自己验证](https://doc.gpt88.cc/docs/blog/deepseek-v41-flash-1017-seven-dev-tests/): 整理 AI超元域关于 DeepSeek V4.1 Flash 1017 的开发测试视频，区分视频标题信息与官方发布说明，并提供在 GPT88 体验模型、复现任务和核验成本的步骤。
 - [OpenClaw 上线决策：部署、渠道安全与可重算成本](https://doc.gpt88.cc/docs/blog/deployment-channels-cost/): 用工作负载、信任边界和预算公式选择本地、VPS 或托管模板，并建立可验证的上线门禁。
 - ["设计审美提升：硅谷设计师私藏的 10 个网站与灵感库"](https://doc.gpt88.cc/docs/blog/design-aesthetic-inspiration-sites-2026-10/): "整理 Dreameryanyan 分享的 10 个设计灵感网站，按产品界面、极简、企业 SaaS、深色模式、动效、落地页、字体和实验性视觉分类，并把收藏转化为审美判断。"
+- [Design Style 开源项目拆解：用代码生成包豪斯动效、风格图与设计令牌](https://doc.gpt88.cc/docs/blog/design-style-open-source-bauhaus-motion-workflow/): 基于观默的 X 帖子与 Design Style GitHub 仓库，拆解包豪斯一期如何用 Remotion、SVG、共享设计令牌和 NumPy 音频合成制作 15 秒动效与四张风格图。
 - [扩散式语言模型会赢得 AI 推理吗？从 Inception 访谈看并行生成、速度与模型架构竞争](https://doc.gpt88.cc/docs/blog/diffusion-language-model-inference-inception/): 整理 No Priors 对 Inception 联合创始人 Stefano Ermon 的访谈，解释扩散式语言模型如何通过并行去噪生成文本，为什么推理阶段可能比自回归模型更适合 GPU，以及速度、可控性、服务引擎和 GPT88 模型路由应该如何评测。
 - [Eight Sleep 的睡眠科技：富人的玩具，还是预防医疗的入口？](https://doc.gpt88.cc/docs/blog/eight-sleep-sleep-technology-preventive-health/): 整理《硅谷101》E252 对 Eight Sleep 两位创始人的访谈，拆解智能床套的温控逻辑、睡眠数据、消费硬件创业、中国市场和从睡眠监测走向预防医疗的产品愿景。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
