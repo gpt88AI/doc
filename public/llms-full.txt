@@ -393,7 +393,7 @@
 - [Jev 到底适合做什么：从客服分流到 AI 质检的真实落地清单](https://doc.gpt88.cc/docs/blog/jev-real-world-applications/): 根据黄小木、huangserva 的 Jev 文章与 TypeSafe 官方资料，整理 Jev 适合落地的客服分流、内容审核、招聘筛选、模型路由、代码质检和海量数据分类场景，并给出结构化决策层的工程设计方法。
 - [Jev 为什么不想做聊天机器人：从 System One 到可编程判断层](https://doc.gpt88.cc/docs/blog/jev-system-one-model-interview/): 整理 Frank Wang 玉伯对 TypeSafe 联合创始人 Diogo Almeida 的访谈转述，解释 Jev 为什么从聊天产品转向 System One、可编程模型、工作流评测与软件内置智能。
 - [Jev / System One Model 实测：把语言模型变成软件可直接调用的决策函数](https://doc.gpt88.cc/docs/blog/jev-system-one-model-practical-guide/): 整理 01Coder 对 TypeSafe AI Jev 的视频实测，解释 System One Model、Choice、Score、Boolean、并行评估、概率与置信度，并给出模型路由、内容审核和 LLM 输出校验的工程落地方法。
-- [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
+- [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 基于上游最新验证梳理 Jianying Headless 的剪映草稿工作流、11.6.0 界面导出、Windows FFmpeg MP4、Agent Skill、验收门禁和许可边界。
 - [Vibe Coding 项目越做越难维护？用六层工程能力给 AI Coding 加护栏](https://doc.gpt88.cc/docs/blog/kxians-ai-coding-software-engineering-practices/): 整理 Kxians 关于 AI Coding 工程化的长帖，拆解 SDD、TDD、DDD、上下文工程、Workflow/Harness、项目规则与 Skills 的分工，并用可重建性检查知识是否沉淀。
 - [老爷爷 laoyeye Skill：让 AI 按你的处境挑选合适提示语](https://doc.gpt88.cc/docs/blog/laoyeye-prompt-routing-skill-guide/): 卡尔的开源 laoyeye 把思考提示语做成 Agent Skill 路由。本文根据 X 长文和 GitHub 仓库，拆解它的六类场景、路由边界、原文保护机制，以及如何与 GPT88 模型 API 配合。
 - [LeanREA：让编程 Agent 用本机 CLI 做授权软件分析](https://doc.gpt88.cc/docs/blog/leanrea-authorized-software-analysis-skill/): 介绍程序员鱼皮分享的 LeanREA Skill：它怎样用短指引路由到系统 CLI 工具、怎样安装和验证证据，以及如何理解项目作者的有限基准测试。

@@ -1,19 +1,19 @@
 ---
 title: Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿
-description: 整理 mcncarl/jianying-headless 项目，详细说明剪映无头编辑能力、yichen-jianying-edit Skill 的安装与调用、计划格式、独立副本编辑、原生导出、验收门禁和许可边界。
-date: 2026-09-19
+description: 基于上游最新验证梳理 Jianying Headless 的剪映草稿工作流、11.6.0 界面导出、Windows FFmpeg MP4、Agent Skill、验收门禁和许可边界。
+date: 2026-10-22
 category: AI工具指南
 tags: [Jianying Headless, 剪映, Agent Skill, AI视频, 无头剪辑, 视频工作流, Codex, GPT88]
-readTime: 20
+readTime: 23
 relatedPath: /docs/blog/codex-hyperframes-video-content-workflow/
 relatedTitle: 用 Codex 和 HyperFrames 自动生成视频
 ---
 
 很多 AI 视频工具可以直接生成一条成片，但如果团队还要继续修改字幕、轨道、片段、配音、画中画或导出参数，单纯拿到一个 MP4 往往不够。真正可复用的工作流，需要把素材、时间线、字幕和音频保留为可继续编辑的工程。
 
-[`mcncarl/jianying-headless`](https://github.com/mcncarl/jianying-headless) 是一个面向剪映专业版 macOS 的本地自动化项目：在安装匹配版本剪映的 Apple Silicon Mac 上，通过结构化剪辑计划生成原生剪映草稿，在独立副本中修改已有多轨工程，并调用本机剪映引擎导出 H.264/AAC MP4。项目同时提供独立 Agent Skill：[`yichen-jianying-edit`](https://github.com/mcncarl/yichen-jianying-edit)，让 Codex 或其他支持 Skill 的 Agent 按固定流程完成环境检查、草稿构建、验证、登记和导出。
+[`mcncarl/jianying-headless`](https://github.com/mcncarl/jianying-headless) 是一个以 macOS 本地剪映工程为核心的自动化项目：在安装匹配版本剪映的 Apple Silicon Mac 上，通过结构化剪辑计划生成原生剪映草稿，在独立副本中修改已有多轨工程，并在受支持版本上调用本机剪映引擎导出 H.264/AAC MP4。当前还提供两条独立能力：macOS 剪映 11.6.0 的界面导出校验流程，以及 Windows 上不依赖剪映的 FFmpeg MP4 导出；后者生成的是视频文件，不是可编辑剪映草稿。项目同时提供独立 Agent Skill：[`yichen-jianying-edit`](https://github.com/mcncarl/yichen-jianying-edit)，让 Codex 或其他支持 Skill 的 Agent 按固定流程完成环境检查、草稿构建、验证、登记和导出。
 
-本文依据仓库 README、`SKILL.md`、安装教程、计划格式、已有工程编辑、原生导出、验证状态和分发范围整理，并补充 GPT88 / Codex 的调用边界与验收方法。
+本文依据仓库 README、`SKILL.md`、Windows FFmpeg 说明、11.6.0 界面导出说明、验证状态和分发范围整理。核对的上游版本为 2026-10-21 的 `27c2627`；项目仍在快速更新，具体版本能力应以使用时的上游文档为准。
 
 ## 一、先看结论：它交付的是剪映工程，不只是视频文件
 
@@ -34,7 +34,9 @@ relatedTitle: 用 Codex 和 HyperFrames 自动生成视频
 | 继续编辑 | 保留视频、音频、字幕和多轨结构 |
 | 批量生成 | 用 JSON 计划描述轨道和片段，重复构建独立输出 |
 | 修改旧工程 | 复制原草稿，在副本上执行明确操作 |
-| 导出成片 | 只导出已经过构建验证的冻结快照 |
+| macOS 原生导出 | 11.5.0 / 11.4.2 从已验证冻结快照导出 |
+| macOS 11.6.0 导出 | 通过剪映界面渲染，由脚本校验；不同于原生无头导出 |
+| Windows 导出 | 用 FFmpeg 从受限计划生成已校验 MP4，不生成剪映工程 |
 | 质量控制 | 检查素材字节、时间线、轨道、帧数、编解码和原生回读 |
 | 安全边界 | 不复制剪映官方程序库，不读取账号凭据，不自动购买素材 |
 
@@ -81,15 +83,37 @@ Skill 不直接覆盖原草稿，而是先检查源草稿身份、时间线哈�
 
 | 依赖 | 当前要求 |
 | --- | --- |
-| 电脑 | Apple Silicon Mac |
-| 系统 | macOS 26.0+，仓库主要验证环境为 macOS 26.5.1 |
-| 剪映 | 国内版剪映专业版 11.5.0；11.4.2 为兼容版本 |
-| Python | 3.9+ |
-| 媒体工具 | FFmpeg / ffprobe |
-| 编译工具 | Xcode Command Line Tools，已验证 Apple clang 21.0.0 / macOS SDK 26.5 |
-| 本地程序 | 匹配版本、签名、Team ID 和原生组件身份的剪映安装 |
+| macOS 草稿与原生导出 | Apple Silicon Mac、macOS 26.0+、Python 3.9+、FFmpeg / ffprobe、Xcode Command Line Tools，以及身份与原生组件均匹配的剪映安装 |
+| 剪映 11.5.0 | 当前主版本；支持草稿构建、独立副本编辑和已审核的原生无头导出 |
+| 剪映 11.4.2 | 兼容配置；可使用对应版本的草稿和原生导出路径 |
+| 剪映 11.6.0 | 支持新建草稿、编辑副本、本地字体和部分复合结构离线操作；**无界面原生导出不支持**，复合草稿仍禁止首页登记 |
+| Windows FFmpeg 导出 | Python 3.9+、FFmpeg / ffprobe（需 H.264、AAC、overlay、drawtext 支持）；计划含文字时需显式指定本地 TTF、OTF 或 TTC 字体 |
 
-这不是 Windows、Intel Mac、Rosetta 终端或任意剪映版本的兼容承诺。版本号相同也不够：项目还会检查安装身份、官方库哈希和签名。未知版本或组件不匹配时，应停在 `doctor`，不能修改固定哈希或删除检查。
+macOS 原生路径不是 Windows、Intel Mac、Rosetta 终端或任意剪映版本的兼容承诺。版本号相同也不够：项目还会检查安装身份、官方库哈希和签名。未知版本或组件不匹配时，应停在 `doctor`，不能修改固定哈希或删除检查。Windows 后端是单独的 FFmpeg 渲染器，不会生成可在剪映里继续编辑的草稿，也不支持 macOS 原生特效与关键帧。
+
+### 11.6.0 的两种“导出”不要混为一谈
+
+11.6.0 没有经过审核的原生无头导出配置，直接执行 `export` 会在读取 build 前拒绝并且不创建任务目录。当前另有 `ui-export`：剪映打开已登记草稿并由其界面导出，脚本只负责检查容器、画幅、帧率、精确帧数、完整解码，以及导出前后草稿是否仍匹配已验证 build。
+
+该路径与原生无头导出是两档独立证据。界面导出的文件使用 QuickTime 品牌 MP4 容器；打开期间剪映会改写被导出草稿的备份、封面和保存时间线，所以来源未变检查可能因此失败。运行前要理解它会影响已登记草稿，并严格按 `plan` 指定的输出目录和对话框设置操作。
+
+上游在剪映 11.6.0 上复测了 9 项既有导出案例中的 8 项，包含 Hypit 案例的 1507/1507 帧。另有“新版保存后再编辑”案例因导出时草稿被界面重写，被来源一致性门禁正确拒绝。结果通过的是机器检查：容器、编码、精确帧数和完整解码；没有人工收听，也没有与 11.5.0 逐像素比较。不能把它简写成“11.6 原生导出已支持”或“所有案例全通过”。
+
+### Windows FFmpeg：只交付 MP4
+
+Windows 后端读取经过校验的计划和素材快照，调用 FFmpeg 生成 `render.mp4`，并保存 `result.json`、滤镜图、FFprobe 证据和完整解码日志。可用能力包括按序视频、画中画视频、时间线空档、切段、变速、原声与独立音轨、音量、静态图以及基础文字。文字计划使用的字体会单独复制并记录名称、大小与 SHA-256。
+
+基本流程如下（Windows PowerShell）：
+
+```powershell
+python skills\yichen-jianying-edit\scripts\headless_draft.py build --plan D:\input\plan.json --out D:\jianying-headless\work\windows-build
+python skills\yichen-jianying-edit\scripts\headless_draft.py verify-build --build D:\jianying-headless\work\windows-build
+python skills\yichen-jianying-edit\scripts\headless_draft.py export --backend windows-ffmpeg --build D:\jianying-headless\work\windows-build --out D:\jianying-headless\work\windows-export --font C:\Windows\Fonts\msyh.ttc
+```
+
+Windows 上 `export` 默认选择 FFmpeg 后端，也可显式传 `--backend windows-ffmpeg`。该流程不需要安装剪映，但生成的视频不能再作为原生剪映工程编辑。它支持范围小于 macOS 草稿构建器：原生蒙版、滤镜、转场、关键帧和 Windows 剪映草稿均不支持。构建会拒绝越界路径、符号链接、未知依赖和构建后发生变化的素材；导出门禁检查时长、画幅、帧率、帧数、H.264/yuv420p、完整解码和输入快照不变。
+
+上游公开案例和 CI 已验证帧数、完整解码与音量增益，并固定校验 CI 所用 FFmpeg 下载资产的版本和 SHA-256。这个证据只覆盖记录的样例与工具链，不代表任意 Windows 环境、字体或复杂计划均已验收；运行者仍需检查实际画面和声音。
 
 ## 五、安装核心项目与 Skill
 
@@ -302,14 +326,14 @@ Agent 必须遵守：
 
 ## 十五、当前限制与许可边界
 
-使用这个项目时，最需要记住：需要匹配版本的本机剪映，不是纯 Python 或纯远程服务；不支持任意剪映版本、在线模板、云端工程和资源下载；复合片段适合离线研究和冻结快照导出，不适合承诺可保存的嵌套工程；图片/GIF 曾出现间歇少一帧，严格帧数门禁会拒绝缺帧输出；原生资源缓存可能依赖本机，技术渲染成功不等于拥有商用或再分发许可；不同 Mac、系统用户和剪映安装仍需独立验收。
+使用这个项目时，要按平台分清边界：macOS 原生草稿操作依赖匹配版本剪映；11.6.0 还没有原生无头导出配置，界面导出会改写已登记草稿；Windows FFmpeg 只生成 MP4，不生成剪映草稿，也不支持原生特效、转场和关键帧。项目不支持任意剪映版本、在线模板、云端工程和资源下载；复合片段即使能离线构建、检查，仍不等于原生保存持久化，首页登记和 11.6.0 下的成片交付都受限；图片/GIF 曾出现间歇少一帧，严格帧数门禁会拒绝缺帧输出。原生资源缓存可能依赖本机，技术渲染成功不等于拥有商用或再分发许可；不同 Mac、Windows 环境、系统用户和剪映安装仍需独立验收。
 
 核心项目原创代码采用个人学习和非商业使用条款，不应把整个仓库称为 MIT / Apache-2.0 整包开源项目。剪映是独立的专有软件；项目不包含剪映安装包、官方动态库、内置字体、效果包、缓存音效、账号资料或付费权益。
 
 ## 来源与边界
 
-原始项目：[mcncarl/jianying-headless](https://github.com/mcncarl/jianying-headless)。
+原始项目：[mcncarl/jianying-headless](https://github.com/mcncarl/jianying-headless)，本文核对版本为上游 commit `27c2627bbd0fccc8484000f32e9d66a820f4b698`（2026-10-21）。关键说明包括 [README](https://github.com/mcncarl/jianying-headless/blob/main/README.md)、[Windows FFmpeg 导出](https://github.com/mcncarl/jianying-headless/blob/main/docs/windows-ffmpeg.md)、[11.6.0 验证状态](https://github.com/mcncarl/jianying-headless/blob/main/docs/VERIFICATION.md) 和 [11.6.0 UI 导出流程](https://github.com/mcncarl/jianying-headless/blob/main/docs/UI-EXPORT.md)。
 
 独立 Skill：[yichen-jianying-edit](https://github.com/mcncarl/yichen-skills/tree/main/yichen-jianying-edit)。
 
-本文依据仓库公开 README、`skills/yichen-jianying-edit/SKILL.md`、安装教程、计划格式、编辑、导出、验证和分发范围整理。版本、兼容范围、验证数字和限制以来源仓库当前内容为准；本文补充的 GPT88 / Codex 调用模板、决策树和工程解释是面向 Agent 使用的二次整理，不代表原项目新增了这些能力。
+本文依据仓库公开 README、`skills/yichen-jianying-edit/SKILL.md`、Windows FFmpeg 说明、UI 导出说明、验证状态和分发范围整理。版本、兼容范围、验证数字和限制以来源仓库当前内容为准；本文保留的 GPT88 / Codex 调用模板、决策树和工程解释是面向 Agent 使用的二次整理，不代表原项目新增了这些能力。本文不构成对不同设备环境的兼容性承诺。
