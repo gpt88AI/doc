@@ -31,6 +31,10 @@ export default function AuthPageEn() {
       <CodeBlock lang="http" code={HEADER} />
 
       <h2 id="security">Key security</h2>
+      <p>
+        For console steps to create, store, verify, and rotate a key, see the{' '}
+        <Link to={localizePath('/docs/guides/api-key-management/', 'en')}>GPT88 API key management guide</Link>.
+      </p>
       <ul>
         <li>Use keys only on the server side.</li>
         <li>Do not commit secrets into source control.</li>

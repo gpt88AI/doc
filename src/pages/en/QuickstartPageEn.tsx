@@ -77,6 +77,7 @@ export default function QuickstartPageEn() {
 
       <h2 id="next">Next steps</h2>
       <ul>
+        <li><Link to={localizePath('/docs/guides/api-key-management/', 'en')}>Create, store, and rotate a GPT88 API key</Link>.</li>
         <li><Link to={localizePath('/docs/api/chat-completions/', 'en')}>Read the Chat Completions API reference</Link>.</li>
         <li><Link to={localizePath('/models/', 'en')}>Browse available models</Link>.</li>
         <li><Link to={localizePath('/docs/auth/', 'en')}>Review auth and billing behavior</Link>.</li>

@@ -132,6 +132,11 @@ export default function CompleteIntegrationGuidePageEn() {
       </p>
 
       <h2 id="five-steps">Finish the first integration in 5 steps</h2>
+      <p>
+        If you do not have a GPT88 API key yet, start with the{' '}
+        <Link to={localizePath('/docs/guides/api-key-management/', 'en')}>API key management guide</Link>.
+        This guide continues with client setup.
+      </p>
       <CodeBlock lang="text" filename="integration-flow" code={FIVE_STEP_FLOW} />
       <p>
         The fastest validation path is still one minimal cURL request. If cURL succeeds, your key, balance,

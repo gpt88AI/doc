@@ -33,6 +33,7 @@ import {
   AgentProductionPage,
   AgentInterviewProjectPage,
   AgentImageQualityCropGuidePage,
+  ApiKeyManagementGuidePage,
   AgentImageStudioGuidePage,
   AsyncImageGenerationGuidePage,
   AsyncImageGenerationNoticePage,
@@ -75,6 +76,7 @@ import {
   Gpt88MigrationGuidePage,
   Gpt88TutorialPage,
   UserManualPage,
+  ImportedDocsPage,
   GptImage2ServiceNoticePage,
   GrokVideoPage,
   ImmersiveTranslateIntegrationPage,
@@ -137,6 +139,8 @@ export default function App() {
         <Route path="overview" element={<OverviewPage />} />
         <Route path="user-manual" element={<UserManualPage />} />
         <Route path="user-manual/:slug" element={<UserManualPage />} />
+        <Route path="guides/gpt88-library" element={route(<ImportedDocsPage />)} />
+        <Route path="guides/gpt88-library/*" element={route(<ImportedDocsPage />)} />
         <Route path="quickstart" element={<QuickstartPage />} />
         <Route path="auth" element={<AuthPage />} />
         <Route path="faq" element={<FaqPage />} />
@@ -173,6 +177,7 @@ export default function App() {
         <Route path="guides/gpt88-ai-proxy" element={route(<Gpt88AiProxyPage />)} />
         <Route path="guides/gpt88-docs-map" element={route(<Gpt88DocsMapPage />)} />
         <Route path="guides/gpt88-migration" element={route(<Gpt88MigrationGuidePage />)} />
+        <Route path="guides/api-key-management" element={route(<ApiKeyManagementGuidePage />)} />
         <Route path="guides/model-price-comparison" element={route(<ModelPriceComparisonPage />)} />
         <Route path="guides/api-key-first-request-failed" element={route(<ApiKeyFirstRequestFailedPage />)} />
         <Route path="guides/billing-units" element={route(<BillingUnitsGuidePage />)} />

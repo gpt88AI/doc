@@ -292,6 +292,9 @@ export default function Gpt88MigrationGuidePage() {
         页面同时给出两个常用端点：标准 API 使用 <code>https://api.gpt88.cc</code>，图片和视频等长任务使用{' '}
         <code>https://img.gpt88.cc</code>。创建 Key 后，只在生成当下保存完整密钥；日后页面通常只显示脱敏值。
       </p>
+      <p>
+        逐步创建、保存、轮换和排查 Key，继续阅读 <Link to="/docs/guides/api-key-management/">GPT88 API Key 创建与管理</Link>。
+      </p>
       <h3>模型分组和用量怎么核对？</h3>
       <p>
         <a href="https://agent.gpt88.cc/model-square" target="_blank" rel="noreferrer">模型广场</a>是公开目录，

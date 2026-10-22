@@ -78,6 +78,10 @@ export default function AuthPage() {
       <CodeBlock lang="http" code={HEADER} />
 
       <h2 id="security">密钥安全</h2>
+      <p>
+        创建、保存、检查和轮换密钥的控制台操作见{' '}
+        <Link to="/docs/guides/api-key-management/">GPT88 API Key 创建与管理</Link>。
+      </p>
       <ul>
         <li>
           <strong>仅在服务端使用</strong>：浏览器、移动端、桌面客户端都无法可靠保管 secret，

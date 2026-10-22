@@ -11,8 +11,16 @@ const apiBaseUrl = 'https://api.gpt88.cc'
 const mediaBaseUrl = 'https://img.gpt88.cc'
 const buildDate = new Date().toISOString().slice(0, 10)
 const userManualCatalog = JSON.parse(await fs.readFile(path.join(root, 'src/data/user-manual/catalog.json'), 'utf8'))
+const importedDocsCatalog = JSON.parse(await fs.readFile(path.join(root, 'src/data/gpt88-library/catalog.json'), 'utf8'))
 
 const docs = [
+  {
+    title: 'GPT88 教程库：全部迁入的开发与创作教程',
+    path: '/docs/guides/gpt88-library',
+    description: '浏览 41 篇迁入 GPT88 的开发工具配置、Codex 实战、API 接入、AI 图片与视频创作教程，并区分通用步骤与平台专属配置。',
+    section: '教程库',
+    priority: '0.9',
+  },
   {
     title: 'OpenTu 用户手册',
     path: '/docs/user-manual',
@@ -223,6 +231,13 @@ const docs = [
     path: '/docs/guides/api-key-first-request-failed',
     description: '按端点、认证头、模型、余额和错误码顺序排查 API Key 创建后的第一次失败。',
     section: '指南',
+  },
+  {
+    title: 'GPT88 API Key 创建与管理',
+    path: '/docs/guides/api-key-management',
+    description: '在 GPT88 控制台创建、保存、验证、搜索和轮换 API Key，并确认请求已进入使用记录。',
+    section: '指南',
+    priority: '0.85',
   },
   {
     title: 'gpt88.cc 通用教程',
@@ -580,6 +595,17 @@ const docs = [
   },
 ]
 
+for (const item of importedDocsCatalog) {
+  if (item.path === 'api-key-management') continue
+  docs.push({
+    title: item.title,
+    path: `/docs/guides/gpt88-library/${item.path}`,
+    description: item.description,
+    section: `GPT88 教程库 · ${item.group}`,
+    priority: '0.75',
+  })
+}
+
 for (const item of userManualCatalog) {
   docs.push({
     title: item.title,
@@ -888,6 +914,7 @@ const additionalEnglishPages = [
   { title: 'OpenAI SDK and GPT88 API', path: '/en/docs/sdk/openai-sdk', description: 'Connect an existing OpenAI SDK project to GPT88 by changing the base URL, API key, and model.', priority: '0.7' },
   { title: 'GPT, Claude, and Gemini API price comparison', path: '/en/docs/guides/model-price-comparison', description: 'Compare model multipliers, input and output costs, and real usage on a consistent basis.', priority: '0.7' },
   { title: 'What to do when the first API request fails', path: '/en/docs/guides/api-key-first-request-failed', description: 'Troubleshoot the first request in order: endpoint, authentication header, model, balance, and error code.', priority: '0.7' },
+  { title: 'Create and Manage GPT88 API Keys', path: '/en/docs/guides/api-key-management', description: 'Create, store, verify, search, and rotate GPT88 API keys, then confirm requests in usage records.', priority: '0.85' },
   { title: 'Configuration Export', path: '/en/docs/guides/config-export', description: 'Package an API key, model, and route into a reusable configuration for Claude Code, Cursor, SDKs, CC Switch, and other tools.', priority: '0.7' },
   { title: 'Grok Video API', path: '/en/docs/api/grok-video', description: 'Integrate asynchronous Grok video generation with model discovery, task creation, polling, content download, image references, and JavaScript-ready request patterns.', priority: '0.7' },
 ]

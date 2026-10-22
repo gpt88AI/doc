@@ -187,6 +187,9 @@ export default function CompleteIntegrationGuidePage() {
       <h2 id="five-steps">5 步完成第一次接入</h2>
       <CodeBlock lang="text" filename="integration flow" code={FIVE_STEP_FLOW} />
       <p>
+        如果还没有 GPT88 API Key，先按<Link to="/docs/guides/api-key-management/">API Key 创建与管理指南</Link>创建并安全保存；本文继续讲如何把它接入不同客户端。
+      </p>
+      <p>
         最快的验证方式是先用 cURL 发一条最小请求。只要 cURL 能通，说明 Key、余额、模型和线路基本可用；
         如果某个客户端失败，再回头检查客户端配置。
       </p>

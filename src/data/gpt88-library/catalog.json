@@ -1,0 +1,330 @@
+[
+  {
+    "id": 1,
+    "slug": "tokenrouter",
+    "path": "tokenrouter",
+    "title": "TokenRouter教程",
+    "description": "GPT88 教程：GPT88教程",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 2,
+    "slug": "tokenrouter--manual",
+    "path": "tokenrouter/manual",
+    "title": "手动配置教程",
+    "description": "手动配置教程",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 11,
+    "slug": "node-npm-mirror",
+    "path": "node-npm-mirror",
+    "title": "Node.js / npm 国内镜像配置教程",
+    "description": "本文档适用于中国大陆网络环境，用于解决 npm 包下载缓慢、连接超时、安装卡死等问题，可在安装 Codex、Claude Code 等 CLI 工具前执行镜像切换操作。 当执行 npm 安装命令长时间转圈、无响应时，优先按照本文流程配置国内镜像，配置完成后重新执行安装指令即可。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 38,
+    "slug": "api-key-management",
+    "path": "api-key-management",
+    "title": "GPT88 API Key 创建与管理",
+    "description": "在 GPT88 控制台创建、保存、核验、搜索与轮换 API Key。",
+    "group": "API 与账户"
+  },
+  {
+    "id": 16,
+    "slug": "token-api-config",
+    "path": "token-api-config",
+    "title": "令牌选择与 API 配置",
+    "description": "使用 GPT88 API Key、标准 Base URL 与当前模型目录完成客户端配置。",
+    "group": "API 与账户"
+  },
+  {
+    "id": 32,
+    "slug": "token-balance-api",
+    "path": "token-balance-api",
+    "title": "令牌余额与消耗查询 API",
+    "description": "从 GPT88 控制台核对账户余额、使用记录和请求消耗。",
+    "group": "API 与账户"
+  },
+  {
+    "id": 20,
+    "slug": "redeem-code",
+    "path": "redeem-code",
+    "title": "兑换码兑换操作流程手册",
+    "description": "核对 GPT88 当前控制台中的充值、优惠或兑换活动入口。",
+    "group": "API 与账户"
+  },
+  {
+    "id": 4,
+    "slug": "claude-mac-linux",
+    "path": "claude-mac-linux",
+    "title": "Claude Mac / Linux 手动安装教程",
+    "description": "在 macOS、Linux 或 Windows WSL 上完成 Claude Code 安装、GPT88 环境配置与连通性验证。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 5,
+    "slug": "claude-windows",
+    "path": "claude-windows",
+    "title": "Claude Windows 手动安装教程",
+    "description": "在 Windows 上完成 Node.js、Claude Code 安装及 GPT88 配置与连通性验证。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 6,
+    "slug": "codex-mac-linux",
+    "path": "codex-mac-linux",
+    "title": "Codex Mac / Linux 手动安装教程",
+    "description": "在 macOS、Linux 或 Windows WSL 上完成 Codex CLI 安装、GPT88 API 配置与连通性验证。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 7,
+    "slug": "codex-windows-manual",
+    "path": "codex-windows-manual",
+    "title": "Codex Windows 手动安装教程",
+    "description": "若当前已打开 Codex 桌面客户端，请点击右下角 Exit 完全关闭桌面版，再执行以下全部配置操作。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 33,
+    "slug": "codex-switch-401",
+    "path": "codex-switch-401",
+    "title": "Codex 会员与中转 API 来回切换：旧会话 401 处理",
+    "description": "解决从 Codex 会员切回中转 API 后旧会话提示 401、新对话正常的问题，说明凭据、服务商配置、会话状态与安全切换步骤。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 8,
+    "slug": "codex-windows-desktop-install",
+    "path": "codex-windows-desktop-install",
+    "title": "Codex Windows 桌面版安装教程",
+    "description": "在 Windows 上通过 Microsoft Store 或 MSIX 安装 Codex 桌面版，并完成启动验证与常见问题排查。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 9,
+    "slug": "codex-windows-desktop-config",
+    "path": "codex-windows-desktop-config",
+    "title": "Codex Windows 桌面版配置",
+    "description": "为已安装的 Codex Windows 桌面版配置 GPT88 Base URL、模型和本地配置文件。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 39,
+    "slug": "codex-subagent-concurrency",
+    "path": "codex-subagent-concurrency",
+    "title": "Codex 子智能体数量配置",
+    "description": "默认推荐 8 个子智能体，按需调整并发数量；含 Windows、macOS、Linux 配置位置、已有 agents 分节合并与生效验证。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 22,
+    "slug": "transfer-chat-history",
+    "path": "transfer-chat-history",
+    "title": "Codex 聊天记录迁移工具使用教程",
+    "description": "本文档介绍官方聊天记录迁移工具的下载渠道、标准迁移流程与异常备份回滚方案,支持 Windows、macOS、Linux 全平台客户端记录转移。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 30,
+    "slug": "deepseek-codex",
+    "path": "deepseek-codex",
+    "title": "DeepSeek 接入 Codex",
+    "description": "透過 GPT88 Responses API，將 deepseek-v4-flash 接入 Codex CLI、桌面版與 VS Code extension。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 40,
+    "slug": "codex-learning-path",
+    "path": "codex-learning-path",
+    "title": "Codex 实战与 Skills：学习路线",
+    "description": "从项目上手到开发、修复、审查与 Skills，选择适合自己的学习路线。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 41,
+    "slug": "codex-project-onboarding",
+    "path": "codex-project-onboarding",
+    "title": "Codex 实战一：让它读懂你的第一个项目",
+    "description": "打开项目、确认工具链并完成第一次小修改，附安装命令、任务提示词与验收清单。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 42,
+    "slug": "codex-feature-workflow",
+    "path": "codex-feature-workflow",
+    "title": "Codex 实战二：从需求到可验收的订单筛选",
+    "description": "以订单列表筛选为例，把功能需求拆成实现步骤、边界状态和可验证的交付。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 43,
+    "slug": "codex-debugging-workflow",
+    "path": "codex-debugging-workflow",
+    "title": "Codex 实战三：从复现问题到验证修复",
+    "description": "从复现步骤找到根因，实施最小修复并通过回归检查验证结果。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 44,
+    "slug": "codex-review-workflow",
+    "path": "codex-review-workflow",
+    "title": "Codex 实战四：审查当前改动，再逐项修复",
+    "description": "审查真实代码改动，按文件位置、用户影响和验证证据整理问题。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 45,
+    "slug": "codex-project-instructions",
+    "path": "codex-project-instructions",
+    "title": "用 AGENTS.md 让 Codex 遵守项目规范",
+    "description": "用 AGENTS.md 保存项目约定，理解目录作用范围、覆盖关系与验证方式。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 46,
+    "slug": "codex-skills-quickstart",
+    "path": "codex-skills-quickstart",
+    "title": "Skills 入门：把常用流程变成可复用能力",
+    "description": "创建第一个 SKILL.md，掌握 Skills 存放位置、发现与调用以及常见问题排查。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 47,
+    "slug": "codex-skill-recipes",
+    "path": "codex-skill-recipes",
+    "title": "3 个可复制的 Codex 实战 Skill",
+    "description": "三个完整 Skill 模板：Bug 排查、代码审查与发布说明，含调用示例与验证方法。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 48,
+    "slug": "codex-token-saving",
+    "path": "codex-token-saving",
+    "title": "Codex 节省 Token 实战：减少无效上下文与返工",
+    "description": "减少无关上下文、重复检索与无效重试，合理控制输出、推理与并行；附可复制提示词及 Token 与费用核对方法。",
+    "group": "Codex 实战"
+  },
+  {
+    "id": 3,
+    "slug": "ccswitch",
+    "path": "ccswitch",
+    "title": "CCSwitch配置教程",
+    "description": "下方配套配置流程仅适用于 CODEX，与 Claudecode 配置流程存在细微差异，请区分操作。 按图示填写对应参数，填写完成后点击添加，即可自由切换不同配置使用。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 12,
+    "slug": "opencode-omo",
+    "path": "opencode-omo",
+    "title": "OpenCode + OMO 配置教程",
+    "description": "安装 OpenCode 与 Oh My OpenCode，并配置 GPT88 OpenAI 兼容网关和 API Key。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 31,
+    "slug": "deepseek-harness",
+    "path": "deepseek-harness",
+    "title": "DeepSeek Harness 接入教程：DeepSeek 与 GPT",
+    "description": "按设置界面完成密钥、API地址、DeepSeek内置模型及GPT Responses配置，含启动、验证与排错。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 34,
+    "slug": "gemini-4-argon",
+    "path": "gemini-4-argon",
+    "title": "Gemini 4 Argon 配置教程：Codex、Cherry Studio 与 API",
+    "description": "通过Gemini分组令牌在Codex或Cherry Studio使用Argon，含Codex地址、密钥、Responses工具配置，cURL、PowerShell、Python及故障排查。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 13,
+    "slug": "openclaw",
+    "path": "openclaw",
+    "title": "OpenClaw 安装教程",
+    "description": "在 macOS、Linux 或 Windows 上安装 OpenClaw，并将全新或现有实例接入 GPT88。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 14,
+    "slug": "vscode-codex-claude",
+    "path": "vscode-codex-claude",
+    "title": "VS Code 使用 Codex 和 Claude Code 插件教程",
+    "description": "在 VS Code 中安装和使用 Codex、Claude Code 插件，并排查 WSL DNS 与代理连接问题。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 15,
+    "slug": "windows-powershell-policy",
+    "path": "windows-powershell-policy",
+    "title": "Windows PowerShell 权限修复教程",
+    "description": "本文档用于解决 Windows 环境执行 npm、codex 等命令时，PowerShell 拦截 ps1 脚本、提示「禁止运行脚本」的权限报错，提供安全合规的修复方案、原理说明与兜底处理方式。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 21,
+    "slug": "faq-errors",
+    "path": "faq-errors",
+    "title": "常见报错问题排查手册",
+    "description": "本文档汇总 Codex、VS Code Codex 插件、GPT88 对接过程中高频报错、版本缺陷与对应完整修复方案,出现异常可按报错关键词快速检索处理。",
+    "group": "开发工具接入"
+  },
+  {
+    "id": 18,
+    "slug": "image2",
+    "path": "image2",
+    "title": "image2 生图技能部署使用教程",
+    "description": "本文档说明 Codex 集成 gpt-image-2 绘图技能完整部署步骤,解压完成后即可在对话中调用图片生成接口。",
+    "group": "AI 图片与视频创作"
+  },
+  {
+    "id": 24,
+    "slug": "aigc",
+    "path": "aigc",
+    "title": "AI 提示词汇总",
+    "description": "面向图片、视频和 AI 漫剧场景，提供可复用的提示词结构、模板与质量检查方法。",
+    "group": "AI 图片与视频创作"
+  },
+  {
+    "id": 27,
+    "slug": "aigc--aigc-image2",
+    "path": "aigc/aigc-image2",
+    "title": "AI 绘图与 Image 2 提示词指南",
+    "description": "使用 Image 2 编写商业海报、信息图、UI、电商图和图像编辑提示词，并控制一致性与合规性。",
+    "group": "AI 图片与视频创作"
+  },
+  {
+    "id": 26,
+    "slug": "aigc--video",
+    "path": "aigc/video",
+    "title": "AI 视频与漫剧提示词指南",
+    "description": "本文档面向 C 端用户,整理 AI 视频、AI 漫剧、短剧脚本、角色一致性、分镜运镜、场景风格、短视频文案与剧情创作等提示词。用户可以直接复制后替换方括号里的内容,用于生成视频、图生视频、漫剧分镜或前期创作素材。",
+    "group": "AI 图片与视频创作"
+  },
+  {
+    "id": 35,
+    "slug": "aigc--video--seedance",
+    "path": "aigc/video/seedance",
+    "title": "Seedance 提示词与视频任务参数参考",
+    "description": "使用 GPT88 Seedance API 完成文生视频、图生视频、参考生成、视频编辑与视频延长，包含 1080p、4k、同步音频、任务提交和结果查询示例。",
+    "group": "AI 图片与视频创作"
+  },
+  {
+    "id": 36,
+    "slug": "aigc--video--seedance--video-model-runtime-limits",
+    "path": "aigc/video/seedance/video-model-runtime-limits",
+    "title": "影片模型即時限制參數",
+    "description": "说明如何从 GPT88 当前模型与 API 文档确认视频模型限制。",
+    "group": "AI 图片与视频创作"
+  },
+  {
+    "id": 37,
+    "slug": "gemini-image-api",
+    "path": "gemini-image-api",
+    "title": "Gemini 图像生成与编辑 API（Nano Banana 2.1）",
+    "description": "gemini-nano-banana-2.1 等 Gemini 生图模型的文生图、参考图编辑、Images 与原生接口、cURL / Python 示例及错误排查。",
+    "group": "AI 图片与视频创作"
+  }
+]

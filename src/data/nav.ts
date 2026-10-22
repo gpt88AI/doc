@@ -35,6 +35,7 @@ export type TopNavItem = {
 
 export const TOP_NAV: TopNavItem[] = [
   { title: '文档', match: '/docs', href: '/docs/overview/' },
+  { title: '教程库', match: '/docs/guides/gpt88-library', href: '/docs/guides/gpt88-library/' },
   { title: '用户手册', match: '/docs/user-manual', href: '/docs/user-manual/' },
   { title: '快速开始', match: '/docs/quickstart', href: '/docs/quickstart/' },
   {
@@ -80,9 +81,24 @@ export const DOCS_NAV: NavSection[] = [
         blurb: 'API Key、用量与配额（数值由控制台动态下发）',
       },
       {
+        title: 'API Key 创建与管理',
+        path: '/docs/guides/api-key-management/',
+        blurb: '在 GPT88 控制台创建、保存、核对和轮换 API Key',
+      },
+      {
         title: '更新日志',
         path: '/docs/changelog/',
         blurb: '持续记录 GPT88 的产品更新、重要修复、图片工作台、模型广场、计费和部署变化',
+      },
+    ],
+  },
+  {
+    title: '教程库 · 全部迁入',
+    items: [
+      {
+        title: 'GPT88 教程库总览',
+        path: '/docs/guides/gpt88-library/',
+        blurb: '41 篇开发工具、Codex 工作流、API 配置与 AI 创作教程',
       },
     ],
   },
@@ -254,6 +270,11 @@ export const DOCS_NAV: NavSection[] = [
         title: 'API Key 首次请求失败排查',
         path: '/docs/guides/api-key-first-request-failed/',
         blurb: '按端点、认证头、模型、余额和错误码定位第一次失败',
+      },
+      {
+        title: 'API Key 创建与管理',
+        path: '/docs/guides/api-key-management/',
+        blurb: '在 GPT88 控制台创建、保存、核对和轮换 API Key',
       },
       {
         title: '通用教程',

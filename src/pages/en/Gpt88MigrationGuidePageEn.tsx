@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { DocPage } from '../../components/layout/DocPage'
 import { Callout } from '../../components/ui/Callout'
 import { CodeBlock } from '../../components/ui/CodeBlock'
+import { localizePath } from '../../lib/locale'
 
 const FLOW = `1. Open the legacy site and confirm the migration notice
 2. Go to https://agent.gpt88.cc
@@ -126,6 +127,7 @@ export default function Gpt88MigrationGuidePageEn() {
 
       <h2 id="next">What to read next</h2>
       <ol>
+        <li><Link to={localizePath('/docs/guides/api-key-management/', 'en')}>Create, store, and rotate a GPT88 API key</Link></li>
         <li><Link to="/docs/auth/">Authentication and billing</Link></li>
         <li><Link to="/docs/guides/complete-integration/">Complete integration guide</Link></li>
         <li><Link to="/docs/guides/config-export/">Configuration export</Link></li>
