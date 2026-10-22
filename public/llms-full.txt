@@ -58,6 +58,7 @@
 - [AI Agent 时代的营销：从 GEO、品牌提及到社群与真实连接](https://doc.gpt88.cc/docs/blog/ai-agent-marketing-geo-community-human-attention/): 整理 Indigo Talk EP51 关于 AI 营销、GEO、AI 推荐、品牌提及、AI Slop、社群和 Agent Vendor 的完整访谈，拆解企业如何从“生产更多内容”转向“被 AI 记住、被真人讨论、由专业 Agent 交付”。
 - [2026 AI API 中转站怎么选？结合 GPT88 的接入、验证与避坑指南](https://doc.gpt88.cc/docs/blog/ai-api-proxy-guide-2026-gpt88/): 整理 GPT88 的 OpenAI 兼容 API 接入流程，覆盖 AI 中转站选型、Base URL、API Key、模型发现、最小请求、计费核对、客户端配置、故障排查与安全边界。
 - [AI 涂色页生成器：用提示词或照片制作可打印线稿](https://doc.gpt88.cc/docs/blog/ai-coloring-page-generator/): 按用途选择 AI 涂色页路线：提示词、照片转线稿、课堂手工、成人细节页、个性化名字页或 KDP/Etsy 涂色书，并检查打印、隐私、导出和商用边界，生成真正可打印的干净线稿。
+- [AI 漫剧从剧本到成片：一套可复用的制作工作流](https://doc.gpt88.cc/docs/blog/ai-comic-production-from-script-to-video/): 围绕剧本、分镜、静帧、视频、配音与剪辑六个环节，整理 AI 漫剧的制作方法、质量检查点和返工顺序。本文依据公开视频标题列出的主题编写工作流指南，不是视频逐字稿。
 - [AI 时代如何建立非对称增长优势：从 Product-Channel Fit 到大 B 销售](https://doc.gpt88.cc/docs/blog/ai-era-asymmetric-growth-advantage/): 整理课代表立正与 Hockey Stick 创始人陈唱关于 AI 产品增长的访谈，拆解 AI Agent Manager、红人营销、Product-Channel Fit、Enterprise 与 PLG、Bardeen 复盘、Churn 和大 B 销售之间的关系。
 - [两小时从零建立 AI 认知：大模型、提示词与 Agent 的一套学习框架](https://doc.gpt88.cc/docs/blog/ai-from-zero-two-hours-knowledge-framework/): 整理龙井长文中的 AI 入门方法，覆盖大模型通识、提示词工程、Agent 认知框架和 WorkBuddy 实操，并补充可复测的学习与选型边界。
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
@@ -448,7 +449,6 @@
 - [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 官方最新模型指南，整理 GPT-6 Astra 的核心能力、新增工具调用方式、提示词策略、迁移参数、Responses API 接入与 GPT88 使用排障。
 - [OpenClaw 架构导读：沿一条消息看懂 Gateway、Node 与 Channel](https://doc.gpt88.cc/docs/blog/openclaw-architecture-guide/): 从合成消息的完整路径出发，判断 Gateway、Node、Channel、pairing、scope 与远程接入分别在哪一层生效。
 - [OpenFDE：把客户访谈、业务记忆和 Agent 任务连成一条证据链](https://doc.gpt88.cc/docs/blog/openfde-local-first-fde-memory/): 介绍 OpenFDE 的本地优先 FDE 工作区，拆解来源引用、业务本体、任务状态机、Agent 上下文、评测验收和执行报告之间的关系。
-- [Opentu 开图功能全解析：把 AI 创作、画布和任务管理放在一起](https://doc.gpt88.cc/docs/blog/opentu-ai-canvas-workspace-guide/): 结合 Opentu 工作台与用户手册，梳理 AI 图片与视频生成、无限画布、流程图、思维导图、素材库、知识库、任务队列等功能，并说明每项功能的使用场景与适合人群。
 - [OpenViking：让研发上下文在不同 Agent 与工具之间持续在线](https://doc.gpt88.cc/docs/blog/openviking-context-filesystem-rnd/): 整理字节跳动技术团队对 OpenViking 的公开介绍：用统一上下文文件系统组织资源、记忆与技能，通过 L0、L1、L2 分层加载减少上下文浪费，并保留会话记忆与检索轨迹。
 - [Opus 5.5 做视频：从代码渲染原理到提示词和 Skill 工作流](https://doc.gpt88.cc/docs/blog/opus55-code-video-workflow/): 整理 xilo 关于 Opus 5.5 代码生成视频的长文，解释逐帧渲染原理、7 类代码路线、5 个案例组合、XML 提示词结构、xilo-opus-video Skill 和成片验收方法。
 - [不会画画、不会剪辑：用 Opus5.5 做一部 7 分钟手绘动画](https://doc.gpt88.cc/docs/blog/opus55-hand-drawn-storybook-animation/): 整理 Hailey 用 GPT、Opus5.5、hand-drawn-storybook-animation skill 和豆包语音制作手绘水彩动画绘本的完整流程，包含剧本打磨、分镜、迭代、配音接入和发布前检查。
