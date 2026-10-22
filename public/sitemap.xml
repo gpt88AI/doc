@@ -2749,6 +2749,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/docs/blog/claude-subscription-stable-use-guide/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/docs/blog/cloudflare-domain-to-ai-backend/</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -6247,6 +6253,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/claude-subscription-stable-use-guide/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/hi/docs/blog/cloudflare-domain-to-ai-backend/</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -9039,6 +9051,12 @@
   <url>
     <loc>https://doc.gpt88.cc/bn/docs/blog/claude-quickstarts-developer-patterns/</loc>
     <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/claude-subscription-stable-use-guide/</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -11839,6 +11857,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/claude-subscription-stable-use-guide/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ur/docs/blog/cloudflare-domain-to-ai-backend/</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -14631,6 +14655,12 @@
   <url>
     <loc>https://doc.gpt88.cc/ta/docs/blog/claude-quickstarts-developer-patterns/</loc>
     <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/claude-subscription-stable-use-guide/</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17431,6 +17461,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/claude-subscription-stable-use-guide/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://doc.gpt88.cc/ne/docs/blog/cloudflare-domain-to-ai-backend/</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -20223,6 +20259,12 @@
   <url>
     <loc>https://doc.gpt88.cc/si/docs/blog/claude-quickstarts-developer-patterns/</loc>
     <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/claude-subscription-stable-use-guide/</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
