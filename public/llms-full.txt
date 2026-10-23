@@ -978,3 +978,4 @@
 ## AUDIO 模型
 
 - [whisper-1](https://doc.gpt88.cc/models/whisper-1/): OpenAI whisper-1 · AUDIO 模型，Model ID: whisper-1，接口路径: /v1/audio/transcriptions。
+- [rayskills：把 Builder 的 AI 工作流做成可路由、可验收的 Skills](https://doc.gpt88.cc/docs/blog/rayskills-builder-agent-workflows/): 基于 rayskills 仓库 README 与 2026-10-22 的 main 提交，介绍它如何用 /ray 选择单步或串联内容流程、8 个 Skill 各自负责什么，以及草稿门控和评测数据应如何理解。
