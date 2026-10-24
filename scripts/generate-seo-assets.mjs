@@ -1141,6 +1141,18 @@ async function readModels() {
       vendors_count: 1,
     },
     {
+      canonical_name: 'kimi-k3.1-pro',
+      display_name: 'Kimi K3.1 Pro',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
+      canonical_name: 'glm-5.3-flash',
+      display_name: 'GLM-5.3-Flash',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
       canonical_name: 'qwen3.8-max-preview',
       display_name: 'Qianwen3.8Max',
       category: 'chat',
@@ -1263,7 +1275,7 @@ function markdownLink(page) {
 
 function llmsTxt(modelPages, englishModelPages, blogPages = []) {
   const featuredModels = modelPages
-    .filter(page => ['gpt-6-astra', 'gpt-6-1-sol', 'gpt-6-sol', 'gpt-6-luna', 'deepseek-v4-1-flash', 'gpt-image-2-5', 'gpt-image-2-5-flare', 'gpt-image-2-5-sunburst', 'gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-5-5', 'claude-haiku-5-5', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'gpt-5-5', 'gpt-5-4', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
+    .filter(page => ['gpt-6-astra', 'gpt-6-1-sol', 'gpt-6-sol', 'gpt-6-luna', 'deepseek-v4-1-flash', 'kimi-k3-1-pro', 'glm-5-3-flash', 'gpt-image-2-5', 'gpt-image-2-5-flare', 'gpt-image-2-5-sunburst', 'gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-5-5', 'claude-haiku-5-5', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 13)
 
   return `# gpt88.cc API 文档
@@ -1314,6 +1326,8 @@ ${englishModelPages.map(markdownLink).join('\n')}
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
 - Kimi K3 推荐：Model ID kimi-k3，适合中文长文本、长周期编程、知识工作、原生视觉理解和工具调用；具体权限和计费以控制台为准。
+- Kimi K3.1 Pro 推荐：Moonshot API Model ID kimi-k3.1-pro，面向长程编程、Agent、3D 与金融资料工作流；GPT88 中的实际权限、线路和计费以控制台为准。
+- GLM-5.3-Flash 推荐：Z.ai GLM-5 系列较新的多模态 Flash 发布款；GPT88 中的实际权限、线路和计费以控制台为准。
 - Token 电力计费理念：充值 1 元 = 账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算。
 - 大模型广场：https://agent.gpt88.cc/model-square，浏览模型、分组和公开价格信息。
 - 官网定价页面：https://gpt88.cc/pricing，查看公开价格与套餐说明。

@@ -10,10 +10,9 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   gpt-6-astra → gpt-6.1-sol → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → grok-4-6 → gpt-5.6-sol → gpt-5.6-terra → gpt-5.6-luna → claude-opus-5-5 → claude-fable-5 → claude-opus-4-8
- *   → claude-opus-4-7 → claude-opus-4-6 → claude-sonnet-4-6 → claude-haiku-5-5 → claude-haiku-4-5-20251001
- *   → gpt-5.5 → gpt-5.4 → gpt-5.4-mini → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → gpt-5.3-codex
- *   → gemini-3.8-flash → claude-fable-5-1
+ *   gpt-6-astra → gpt-6.1-sol → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → kimi-k3.1-pro → glm-5.3-flash
+ *   → gpt-image-2.5 系列 → grok-4.6 → gpt-5.6 系列 → claude-opus-5-5 → claude-fable-5 → Claude 4.x 系列
+ *   → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → kimi-k3 → gemini-3.8-flash → claude-fable-5-1
  *
  * Catalog 处理：
  * - completion 7 条全部 canonical_name 与 chat 重名（snapshot 内同名条目分类为 chat 与 completion 两份），
@@ -122,6 +121,8 @@ export const FEATURED_SLUGS = [
   'gpt-6-sol',
   'gpt-6-luna',
   'deepseek-v4-1-flash',
+  'kimi-k3-1-pro',
+  'glm-5-3-flash',
   'gpt-image-2-5',
   'gpt-image-2-5-flare',
   'gpt-image-2-5-sunburst',
@@ -137,14 +138,10 @@ export const FEATURED_SLUGS = [
   'claude-sonnet-4-6',
   'claude-haiku-5-5',
   'claude-haiku-4-5-20251001',
-  'gpt-5-5',
-  'gpt-5-4',
-  'gpt-5-4-mini',
   'deepseek-v4-pro',
   'deepseek-v4-flash',
   'qwen3-8-max-preview',
   'kimi-k3',
-  'gpt-5-3-codex',
   'gemini-3-8-flash',
   'claude-fable-5-1',
 ] as const
@@ -1309,6 +1306,66 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '正式采用前请使用真实代码库、长文档和工具调用样本做小流量评测。',
     ],
   },
+  // Moonshot Kimi K3.1 Pro technical blog and API platform, verified 2026-10-24.
+  // slug=kimi-k3-1-pro <-> modelId=kimi-k3.1-pro
+  'kimi-k3-1-pro': {
+    provider: 'Moonshot',
+    tagline: 'Kimi K3.1 Pro，面向长程编程、3D 创作、金融研究与 Agent 工作流的旗舰模型。',
+    capabilities: ['1M 上下文', '长程编程', '3D 建模', '金融研究', '视觉理解'],
+    scenarios: ['复杂代码与终端任务', '3D/CAD 建模', '金融文档分析', '长程 Agent 工作流'],
+    overview: [
+      'Kimi K3.1 Pro 是 Moonshot 于 2026-10-23 发布的 K3.1 系列首个模型。官方称其为 3T 级模型，支持 1M-token 上下文，并在代码、3D 创作、金融研究和长程 Agent 任务上重点提升。',
+      'Moonshot 官方 API 使用 model ID kimi-k3.1-pro；Highspeed 变体为 kimi-k3.1-pro-highspeed。GPT88 是否已开放这些 ID、具体价格和线路以控制台与当前 API Key 的 GET /v1/models 为准。',
+      '官方与 Artificial Analysis 的公开评测都显示其 Agent 能力提升明显，但测试 Harness、任务集和评测条件不同，分数不应直接视作同一张统一榜单。',
+    ],
+    whenToUse: [
+      '需要在终端 Harness 中完成多步代码和工程任务时',
+      '需要从图像或描述生成 3D/CAD 模型并迭代时',
+      '需要检索、交叉核对并分析长篇金融资料时',
+      '评测长上下文和工具调用 Agent，并能为结果设置验证环节时',
+    ],
+    integrationNotes: [
+      'GPT88 统一 API 使用 https://api.gpt88.cc；先检查 GET /v1/models 是否返回 kimi-k3.1-pro，再使用账户支持的兼容端点发送最小请求。',
+      'Moonshot 官方 API model ID 为 kimi-k3.1-pro；Highspeed 为 kimi-k3.1-pro-highspeed。不同产品或第三方网关可能采用不同模型 ID。',
+      'Moonshot Kimi Code 文档说明 K3.1 Pro 仅支持 thinking 模式。第三方兼容层是否支持相同推理参数，应通过当前文档和小请求核对。',
+    ],
+    caveats: [
+      'Moonshot 的发布基准大多由厂商报告；其比较表使用不同模型发布帖、Harness 或 leaderboard 数值，读者应查看脚注和具体任务定义。',
+      'Artificial Analysis 独立 Intelligence Index 给出 55 分、位列当时第 4；这是该机构自身综合指标，不代表所有任务或生产场景排名。',
+      '1M 是上下文窗口上限，不保证单次请求的延迟、可用额度或实际费用；按真实任务测量输入输出 Token、缓存、重试和成功率。',
+      'GPT88 可用线路、价格、上下文、权限和功能以当前控制台及 API Key 为准；公开的 Moonshot 定价不等于 GPT88 的实际计费。',
+    ],
+  },
+  // Source: Z.ai official GLM-5.3-Flash release post, 2026-08-26.
+  // slug=glm-5-3-flash <-> modelId=glm-5.3-flash
+  'glm-5-3-flash': {
+    provider: '智谱 (Zhipu)',
+    tagline: 'GLM-5.3-Flash，兼顾多模态理解、Agent 编程与推理效率的 GLM 最新发布款。',
+    capabilities: ['原生多模态', '长上下文', '代码与 Agent', '高推理效率'],
+    scenarios: ['截图与图像理解', '代码 Agent', '长程工具工作流', '高频复杂任务'],
+    overview: [
+      '截至 2026-10-24，Z.ai 官方较新公开发布为 GLM-5.3-Flash（2026-08-26），这是 GLM-5 系列首个原生多模态模型。GLM-5.3 是较早发布的旗舰版；Flash 是参数激活更少、侧重推理效率的版本。',
+      'Z.ai 报告该模型总参数 320B、激活参数 18B，并支持最高 1M 上下文。官方发布的基准和成本比较属于厂商结果，不构成第三方统一复测或 GPT88 路由表现保证。',
+      '官方 API / 权重的开放情况与 GPT88 是否同步是两件事。请先以 GPT88 控制台和当前 API Key 的 GET /v1/models 确认可用模型 ID。',
+    ],
+    whenToUse: [
+      '需要把图像或截图与文本指令一起交给模型处理时',
+      '需要进行代码生成、代码库任务或工具驱动的多步 Agent 工作时',
+      '希望评估高吞吐、长上下文与能力之间的取舍时',
+      '在可验证的代码、视觉问答或办公任务上对比不同 GLM 路线时',
+    ],
+    integrationNotes: [
+      '常见官方 model ID 写作 glm-5.3-flash；GPT88 是否沿用该名称需先通过 GET /v1/models 和控制台确认。',
+      'OpenAI 兼容客户端先用 GPT88 Base URL 发送最小文本请求，再分别验证视觉输入、thinking 参数、工具调用与流式响应。',
+      '建议固定样本、工具权限与验收标准，对照 glm-5.3 或当前生产模型记录成功率、延迟、Token 用量和返工。',
+    ],
+    caveats: [
+      '“最新发布款”指当前核实到较新的 GLM-5.3-Flash 发布，并不表示它替代 GLM-5.3 成为最强旗舰。',
+      'Z.ai Code Bench、Artificial Analysis Index 和成本数字采用各自的测试条件；发布帖的成绩应视为来源方报告。',
+      '1M 是上下文上限，不表示所有 GPT88 路线都开放 1M 或拥有相同费用、速度和缓存策略。',
+      'GPT88 当前路由、价格、限速、模型 ID、视觉与工具能力以控制台及实际 API Key 权限为准。',
+    ],
+  },
   // 来源：智谱 GLM 官方网站与开源仓库；5 系列（含 5.1）面向通用对话；
   // 网上查找补充于 2026-05-09。
   // slug=glm-5-1 ←→ modelId=glm-5.1
@@ -2241,6 +2298,22 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['Moonshot Kimi K3 旗舰模型，支持 1M-token 上下文、长周期编程、知识工作和工具调用，具体价格、权限和线路以控制台为准。'],
   },
   {
+    canonical_name: 'kimi-k3.1-pro',
+    display_name: 'Kimi K3.1 Pro',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['kimi-k3.1-pro'],
+    descriptions_sample: ['Moonshot Kimi K3.1 Pro 旗舰模型；GPT88 可用性、价格与权限以控制台为准。'],
+  },
+  {
+    canonical_name: 'glm-5.3-flash',
+    display_name: 'GLM-5.3-Flash',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['glm-5.3-flash'],
+    descriptions_sample: ['Z.ai GLM-5.3-Flash 原生多模态与高效率模型；GPT88 可用性、价格与权限以控制台为准。'],
+  },
+  {
     canonical_name: 'qwen3.8-max-preview',
     display_name: 'Qianwen3.8Max',
     category: 'chat',
@@ -3133,6 +3206,60 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'Model availability, routes, pricing, rate limits, and permissions are determined by the current GPT88 console configuration.',
       'A 1M-token context window does not mean every request should send the full context. Split work by task, reuse cached context, and monitor latency and cost.',
       'Validate the model on representative codebases, long documents, and tool-calling workloads before a production rollout.',
+    ],
+  },
+  'kimi-k3-1-pro': {
+    tagline: 'Moonshot Kimi K3.1 Pro for long-horizon coding, 3D creation, financial research, and agent workflows.',
+    capabilities: ['1M-token context', 'Long-horizon coding', '3D modeling', 'Financial research', 'Vision'],
+    scenarios: ['Complex coding and terminal tasks', '3D/CAD modeling', 'Financial document analysis', 'Long-horizon agents'],
+    overview: [
+      'Moonshot launched Kimi K3.1 Pro on October 23, 2026 as the first model in its K3.1 series. Moonshot describes it as a 3T-class model with a 1M-token context window and improvements in coding, 3D creation, finance, and agentic work.',
+      'The Moonshot API model ID is kimi-k3.1-pro; the Highspeed variant is kimi-k3.1-pro-highspeed. Check the GPT88 console and GET /v1/models for current account availability and routing.',
+      'Moonshot-reported benchmarks and Artificial Analysis evaluations both indicate stronger agentic performance, but use different harnesses, datasets, and evaluation conditions.',
+    ],
+    whenToUse: [
+      'Multi-step engineering tasks in a terminal harness',
+      'Generating or iterating on 3D/CAD assets from images or text',
+      'Retrieval and analysis across long financial documents',
+      'Long-context and tool-using agent evaluations with verifiable outcomes',
+    ],
+    integrationNotes: [
+      'Use https://api.gpt88.cc for GPT88 and check GET /v1/models for kimi-k3.1-pro before making a minimal request through a supported compatible endpoint.',
+      'Moonshot API IDs are kimi-k3.1-pro and kimi-k3.1-pro-highspeed. IDs can differ across products and third-party gateways.',
+      'Kimi Code documentation says K3.1 Pro requires thinking mode. Confirm reasoning parameter support in the current client and gateway.',
+    ],
+    caveats: [
+      'Most launch scores are vendor-reported. Comparisons may combine different harnesses and leaderboard sources; read each benchmark footnote.',
+      'Artificial Analysis gave it 55 on its Intelligence Index and ranked it fourth at publication. This is one organization’s composite metric, not a universal task ranking.',
+      'A 1M context limit does not guarantee latency, quota, or task cost. Measure actual tokens, cache use, retries, and success rate.',
+      'GPT88 routes, pricing, limits, permissions, and features follow the current console and API key; Moonshot list prices do not establish GPT88 billing.',
+    ],
+  },
+  'glm-5-3-flash': {
+    tagline: 'Z.ai GLM-5.3-Flash for multimodal understanding, agentic coding, and efficient inference.',
+    capabilities: ['Native multimodal', 'Long context', 'Coding and agents', 'Inference efficiency'],
+    scenarios: ['Screenshot and image understanding', 'Coding agents', 'Long-running tool workflows', 'Frequent complex tasks'],
+    overview: [
+      'As of October 24, 2026, GLM-5.3-Flash is Z.ai’s newer public GLM-5 release, announced on August 26. It is the first natively multimodal model in the GLM-5 family. GLM-5.3 is the earlier flagship; Flash focuses on inference efficiency.',
+      'Z.ai reports 320B total parameters, 18B active parameters, and up to 1M context. Release benchmarks and cost comparisons are vendor-reported, not a third-party controlled comparison or a guarantee for GPT88 routes.',
+      'Official API and weight availability do not establish GPT88 availability. Check the GPT88 console and GET /v1/models for the current API key.',
+    ],
+    whenToUse: [
+      'Process images or screenshots together with text instructions',
+      'Generate code or run multi-step coding agents with tools',
+      'Evaluate the tradeoff between throughput, long context, and capability',
+      'Compare GLM routes on verifiable coding, visual, or office workflows',
+    ],
+    integrationNotes: [
+      'The commonly documented model ID is glm-5.3-flash; confirm whether GPT88 uses this exact ID with GET /v1/models and the console.',
+      'Start with a minimal text request via the GPT88 Base URL, then validate image input, reasoning parameters, tools, and streaming separately.',
+      'Use fixed samples, permissions, and acceptance criteria to compare success, latency, usage, and rework against glm-5.3 or the current production model.',
+    ],
+    caveats: [
+      'Newer release does not mean it replaces GLM-5.3 as the strongest flagship; Flash is an efficiency-focused variant.',
+      'Z.ai Code Bench, Artificial Analysis Index, and cost claims use their respective test conditions and are reported by the source.',
+      'A 1M context limit does not mean every GPT88 route enables 1M context or has the same cost, speed, and cache policy.',
+      'GPT88 routes, price, limits, model IDs, image input, and tool support depend on the current console and API key.',
     ],
   },
 }

@@ -1,0 +1,109 @@
+---
+title: Kimi K3.1 Pro 评测整理：Agent 能力跃升，长上下文与基准分数怎么看
+description: 基于 Moonshot 官方技术博客、Kimi API 价格页与 Artificial Analysis 独立评测，梳理 Kimi K3.1 Pro 的代码、Agent、3D、金融表现、成本和评测边界。
+date: 2026-10-24
+category: AI 模型评测
+tags: [Kimi K3.1 Pro, Moonshot, 大模型评测, Agent, 编程模型, 长上下文]
+readTime: 11
+relatedPath: /models/kimi-k3-1-pro/
+relatedTitle: Kimi K3.1 Pro 模型详情与 GPT88 接入说明
+---
+
+> 信息核验日期：2026 年 10 月 24 日。本文综合 [Moonshot 官方技术博客](https://www.kimi.com/en/blog/kimi-k3-1-pro)、[Kimi API 平台](https://platform.kimi.ai/)与 [Artificial Analysis 独立评测](https://artificialanalysis.ai/articles/kimi-k3-1-pro-launch-benchmarks)。官方基准属于厂商报告，Artificial Analysis 的分数来自其自己的测试体系；它们都不能替代你在实际工作流中的复测。
+
+Kimi K3.1 Pro 是 Moonshot 于 10 月 23 日推出的 K3.1 系列首个模型。它的发布重点并非只扩大上下文窗口，而是把强化后的长程 Agent 能力用于代码、3D 创作与金融研究。现阶段公开评测呈现出一个较清晰的轮廓：**终端 Agent 和自动化工作流进步显著，3D 与金融文档任务也有亮点；但综合榜单领先不等于所有知识、推理任务都领先。**
+
+## 先看结论
+
+- **值得重点关注的方向**：多步编码、终端操作、长流程自动化，以及需要视觉输入或工具辅助的 3D/CAD 工作。
+- **第三方综合表现**：Artificial Analysis Intelligence Index 为 55 分，发布时排第 4；该机构报告 Agent 类评测提升明显。
+- **官方比较结果**：Moonshot 报告 Terminal-Bench 4.0 为 65.7%，高于其列出的 GPT-6 Astra 58.2%，略低于 Claude Opus 5.5 的 66.4%。
+- **成本观察**：Moonshot API 页面列出的标准版价格为每百万输入 Token 2 美元、输出 10 美元、缓存命中 0.20 美元。实际任务账单仍受缓存、输出长度、重试和工具调用影响。
+- **主要限制**：部分醒目的成绩来自内部基准或不同 Harness 拼接的比较表；当前还不能仅凭发布资料确定 GPT88 中的模型 ID、线路、价格和额度。
+
+## 公开评测：Agent 进步最突出
+
+Artificial Analysis 在 10 月 23 日的评测文章中给 K3.1 Pro 的 Intelligence Index 55 分，比 Kimi K3 Max 的 44 分高 11 分。发布时它排在 Claude Opus 5.5、Claude Sonnet 5.5 和 Muse Wonder Full 之后。这个综合分数适合做同一评测体系内的横向定位，不应解释为模型在每个任务都排名第四。
+
+更有解释力的是具体任务：Artificial Analysis 报告 K3.1 Pro 在 Terminal-Bench 4.0 得到 67%，Kimi K3 为 13%；AutomationBench-AA 从 58% 升至 73%。GDPval-AA 得分为 1,846 Elo，较 K3 提高 312 Elo。它们共同指向一个判断：**K3.1 Pro 的主要跃升在于调用工具、推进多步骤任务并完成端到端工作的 Agent 表现。**
+
+Moonshot 技术博客给出的 Terminal-Bench 4.0 成绩是 65.7%，不是 67%。这两个数字来自不同评测报告或运行配置，不要平均或混写。Moonshot 说明其 Terminal-Bench 使用 Claude Code Harness；对比模型成绩则取自官方排行榜或各自发布报告中的最高值。Harness、模型设置与来源不同，比较只能作为参考。
+
+| 评测维度 | 公开结果 | 如何解读 |
+| --- | --- | --- |
+| Artificial Analysis Intelligence Index | 55 分，发布时第 4；Kimi K3 为 44 | 综合指标进步明显，但不是通用任务的单一排名 |
+| Terminal-Bench 4.0 | Moonshot 报告 65.7%；Artificial Analysis 报告 67% | 都显示终端 Agent 能力强；测试口径应分别看待 |
+| AutomationBench-AA | 73%，Kimi K3 为 58% | 对 SaaS 自动化工作流是正向信号，不保证业务流程直接成功 |
+| GDPval-AA v2.1 | 1,846 Elo，较 Kimi K3 高 312 | 衡量真实工作产出类任务，仍受评测数据与评分方式影响 |
+| OfficeQA Pro v2 | Moonshot 报告 64.4 | 金融文档分析有优势；这是厂商发布的比较结果 |
+
+## 3D 与金融任务也值得单独看
+
+Moonshot 报告 K3.1 Pro 在 BenchCAD 的带工具测试中得分 92.7%，接近其表中 Claude Opus 5.5 的 96.2% 和 GPT-6 Astra 的 95.9%。不带工具时，K3.1 Pro 为 72.8%，与 Opus 5.5 报告的 73.0%接近。官方说明这里使用了从 17,900 个 Vision2Code 样本中随机抽取的 1,000 个子集；带工具测试由 Claude Code Harness 执行。这个成绩说明模型在结构理解和 CAD 代码生成方面值得实测，但不能直接推出复杂产品设计无需人工检查。
+
+金融方向方面，Moonshot 报告 OfficeQA Pro v2 得分 64.4，并称内部 Financial Modeling、Financial Research 相比 K3 分别提高 7.2 和 11.6 分。内部测试可帮助理解厂商的训练重点，但复现性和跨机构可比性弱于有公开数据、统一脚本与透明评分规则的基准。涉及财务决策时，仍需要可追溯来源、计算复核与专业人员确认。
+
+## 规格、版本和价格
+
+Moonshot 将 K3.1 Pro 描述为 3T 级模型、支持 1M Token 上下文和原生视觉理解。Artificial Analysis 页面给出的参数更具体：总参数约 2.8T，推理时激活 104B。两种说法并不冲突，“3T 级”是量级描述，2.8T 是更精确的总参数数字。
+
+Moonshot API 平台当前列出的价格如下：
+
+| API 计价项 | Kimi K3.1 Pro |
+| --- | ---: |
+| 输入 | $2 / 百万 Token |
+| 输出 | $10 / 百万 Token |
+| 缓存写入 | $2 / 百万 Token |
+| 缓存命中 | $0.20 / 百万 Token |
+
+官方 API 页面还列出 Highspeed 版本，输入和输出单价约为标准版的两倍，缓存命中单价相同。它主打更快响应，但最终是否划算取决于等待时间是否有实际业务成本。价格会变化，接入前请以 [Kimi API 平台实时价格](https://platform.kimi.ai/)为准；Moonshot 官方价格也不能代表 GPT88 或其他网关的收费。
+
+K3.1 Pro Highspeed 与标准版使用不同产品 ID。Moonshot API 文档使用 `kimi-k3.1-pro` 和 `kimi-k3.1-pro-highspeed`。Kimi Code 文档也描述了相应的代码产品模型 ID。第三方代理可能做了名称映射，应以所用服务的模型列表和接入说明为准。Kimi Code 文档指出这两个模型需要开启 thinking；这项要求不应自动外推到所有兼容 API 客户端。
+
+## 评测的边界与风险
+
+当前公开资料需要注意四点：
+
+1. Moonshot 对多数发布成绩采用厂商自测，并在比较表中引用其他模型各自报告或排行榜成绩。官方脚注披露了不少 Harness 和样本信息，但仍不是所有模型在同一环境、同一时点的完整复测。
+2. Artificial Analysis 提供了独立指标和评测，但其结果只代表该机构的评测体系。某个 Agent 基准大幅提升，不代表聊天、写作、数学、中文知识等能力都会同比提升。
+3. 1M 上下文是能力上限，不代表长输入一定被完整、准确地利用。应测试关键信息召回、跨文档引用、延迟、缓存和真实费用。
+4. Moonshot 表示完整权重计划在 2026 年 11 月 4 日前发布。核验日时，权重尚未公开；计划日期不是已经开放的证明。需要自托管的团队应等权重与许可实际可用后，再评估硬件、吞吐和量化方案。
+
+## 适合怎样的工作流
+
+K3.1 Pro 值得先纳入以下候选：
+
+- 有测试、编译或其他机器验收条件的代码 Agent；
+- 能将每一步操作、工具调用和结果保存在日志里的终端任务；
+- 长文档检索、交叉引用、金融资料整理等需要大量上下文的流程；
+- 有人工审核环节的 CAD、3D 原型和空间理解工作。
+
+对会修改生产系统、账户权限或资金状态的 Agent，不应因为基准分高就直接授予执行权限。先提供只读或沙箱环境，再以确定性检查和人工授权约束外部副作用。对于事实或数字敏感的研究任务，应保留原始来源并独立核算。
+
+## 一套可复现的上手评测
+
+用团队真实且已脱敏的任务集做 A/B 对照，至少记录以下数据：
+
+| 项目 | 记录方式 |
+| --- | --- |
+| 成功率 | 按预先写好的验收条件判定，而不是由模型自评 |
+| 返工 | 人工修改分钟数、重试次数、失败后的恢复率 |
+| 延迟 | 首字延迟与完整任务耗时分开记录 |
+| 成本 | 输入、输出、缓存、工具费用和人工复核合计 |
+| Agent 过程 | 工具调用是否正确、是否遵守边界、是否留下可审计结果 |
+| 长上下文 | 关键事实召回率、引用定位正确率和上下文长度分档 |
+
+先在小样本离线评测和影子流量中运行，再让模型承担低风险、可回退的任务。把 K3.1 Pro 与当前生产模型使用相同输入、工具权限、预算和验收条件比较；不要只看单次演示、发布会案例或排行榜名次。
+
+## GPT88 接入前的核对
+
+Moonshot 官方资料能确认其自有 API 的型号和价格，但不能证明 GPT88 已同步相同型号或定价。使用 GPT88 时，应先在控制台确认该型号已开放，并用当前 API Key 查询 `GET /v1/models`。只有模型列表返回预期 ID 后，再从低成本的非流式请求开始，逐步验证上下文、视觉输入、推理参数、工具调用、流式响应与计费。
+
+本文新增了 Kimi K3.1 Pro 主推模型目录项。该目录说明模型用途，不代表账号已经获得调用权限，也不构成对 GPT88 实际路线、价格、SLA 或某一任务成功率的承诺。
+
+## 来源
+
+- [Moonshot：Introducing Kimi K3.1 Pro](https://www.kimi.com/en/blog/kimi-k3-1-pro)（官方发布与基准脚注）
+- [Moonshot Kimi API Platform](https://platform.kimi.ai/)（官方模型名称及实时价格）
+- [Artificial Analysis：Kimi K3.1 Pro launch benchmarks](https://artificialanalysis.ai/articles/kimi-k3-1-pro-launch-benchmarks)（第三方 Intelligence Index、Agent 与成本评测）
+- [Kimi Code 最新动态](https://www.kimi.com/code/docs/en/kimi-code/whats-new.html)（发布日、Thinking 模式与产品接入信息）

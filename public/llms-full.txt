@@ -982,3 +982,8 @@
 - [ECC：给 Codex 装上一套可复用的工程协作系统](https://doc.gpt88.cc/docs/blog/ecc-codex-agent-harness-workflow/): 整理 goan999999 关于 affaan-m/ECC 的实践分享，核对 71 个 Agent、311 个 Skills、Codex 原生插件、持续记忆与 AgentShield 的真实边界，并给出安全试用路径。
 - [一张图看懂 AI 产业：从应用、模型到算力、能源、资本与商业](https://doc.gpt88.cc/docs/blog/ai-industry-six-layer-map/): 整理木子不写代码 65 分钟视频的六层 AI 产业地图：应用如何连接模型，训练与推理如何消耗算力，芯片和数据中心为何继续向能源与资本延伸，以及最后如何回到客户价值。
 - [人像提示词别靠玄学：用参考图、视线和姿态写出可控画面](https://doc.gpt88.cc/docs/blog/ai-portrait-reference-prompt-workflow/): 根据 Alex · Selin 的 X 长文，整理一套人像生图工作流：先准备正面参考图，再分别控制表情、视线、姿态、手部和环境，用最少的词迭代出有情绪的画面。
+- [Kimi K3.1 Pro API Docs](https://doc.gpt88.cc/en/models/kimi-k3-1-pro/): English API reference for Kimi K3.1 Pro. Model ID: kimi-k3.1-pro. OpenAI-compatible endpoint: /v1/chat/completions.
+- [GLM-5.3-Flash API Docs](https://doc.gpt88.cc/en/models/glm-5-3-flash/): English API reference for GLM-5.3-Flash. Model ID: glm-5.3-flash. OpenAI-compatible endpoint: /v1/chat/completions.
+- [Kimi K3.1 Pro 评测整理：Agent 能力跃升，长上下文与基准分数怎么看](https://doc.gpt88.cc/docs/blog/kimi-k3-1-pro-benchmark-review/): 基于 Moonshot 官方技术博客、Kimi API 价格页与 Artificial Analysis 独立评测，梳理 Kimi K3.1 Pro 的代码、Agent、3D、金融表现、成本和评测边界。
+- [GLM-5.3-Flash](https://doc.gpt88.cc/models/glm-5-3-flash/): 智谱 (Zhipu) GLM-5.3-Flash · CHAT 模型，Model ID: glm-5.3-flash，接口路径: /v1/chat/completions。
+- [Kimi K3.1 Pro](https://doc.gpt88.cc/models/kimi-k3-1-pro/): Moonshot Kimi K3.1 Pro · CHAT 模型，Model ID: kimi-k3.1-pro，接口路径: /v1/chat/completions。

@@ -205,10 +205,10 @@
 - [deepseek-v4.1-flash](https://doc.gpt88.cc/models/deepseek-v4-1-flash/): DeepSeek deepseek-v4.1-flash · CHAT 模型，Model ID: deepseek-v4.1-flash，接口路径: /v1/chat/completions。
 - [deepseek-v4-flash](https://doc.gpt88.cc/models/deepseek-v4-flash/): DeepSeek deepseek-v4-flash · CHAT 模型，Model ID: deepseek-v4-flash，接口路径: /v1/chat/completions。
 - [deepseek-v4-pro](https://doc.gpt88.cc/models/deepseek-v4-pro/): DeepSeek deepseek-v4-pro · CHAT 模型，Model ID: deepseek-v4-pro，接口路径: /v1/chat/completions。
-- [gpt-5.4](https://doc.gpt88.cc/models/gpt-5-4/): OpenAI gpt-5.4 · CHAT 模型，Model ID: gpt-5.4，接口路径: /v1/chat/completions。
-- [gpt-5.5](https://doc.gpt88.cc/models/gpt-5-5/): OpenAI gpt-5.5 · CHAT 模型，Model ID: gpt-5.5，接口路径: /v1/chat/completions。
+- [GLM-5.3-Flash](https://doc.gpt88.cc/models/glm-5-3-flash/): 智谱 (Zhipu) GLM-5.3-Flash · CHAT 模型，Model ID: glm-5.3-flash，接口路径: /v1/chat/completions。
 - [gpt-5.6-luna](https://doc.gpt88.cc/models/gpt-5-6-luna/): OpenAI gpt-5.6-luna · CHAT 模型，Model ID: gpt-5.6-luna，接口路径: /v1/chat/completions。
 - [gpt-5.6-sol](https://doc.gpt88.cc/models/gpt-5-6-sol/): OpenAI gpt-5.6-sol · CHAT 模型，Model ID: gpt-5.6-sol，接口路径: /v1/chat/completions。
+- [gpt-5.6-terra](https://doc.gpt88.cc/models/gpt-5-6-terra/): OpenAI gpt-5.6-terra · CHAT 模型，Model ID: gpt-5.6-terra，接口路径: /v1/chat/completions。
 
 ## English model API references
 
@@ -236,6 +236,8 @@
 - [deepseek-v4-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-flash/): English API reference for deepseek-v4-flash. Model ID: deepseek-v4-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [Qianwen3.8Max API Docs](https://doc.gpt88.cc/en/models/qwen3-8-max-preview/): English API reference for Qianwen3.8Max. Model ID: qwen3.8-max-preview. OpenAI-compatible endpoint: /v1/chat/completions.
 - [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
+- [Kimi K3.1 Pro API Docs](https://doc.gpt88.cc/en/models/kimi-k3-1-pro/): English API reference for Kimi K3.1 Pro. Model ID: kimi-k3.1-pro. OpenAI-compatible endpoint: /v1/chat/completions.
+- [GLM-5.3-Flash API Docs](https://doc.gpt88.cc/en/models/glm-5-3-flash/): English API reference for GLM-5.3-Flash. Model ID: glm-5.3-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 
 ## API 摘要
 
@@ -249,6 +251,8 @@
 - gpt88.cc API Key、base_url、OpenAI compatible SDK 接入。
 - Claude / OpenAI / Gemini / DeepSeek / Qwen 多模型统一调用。
 - Kimi K3 推荐：Model ID kimi-k3，适合中文长文本、长周期编程、知识工作、原生视觉理解和工具调用；具体权限和计费以控制台为准。
+- Kimi K3.1 Pro 推荐：Moonshot API Model ID kimi-k3.1-pro，面向长程编程、Agent、3D 与金融资料工作流；GPT88 中的实际权限、线路和计费以控制台为准。
+- GLM-5.3-Flash 推荐：Z.ai GLM-5 系列较新的多模态 Flash 发布款；GPT88 中的实际权限、线路和计费以控制台为准。
 - Token 电力计费理念：充值 1 元 = 账户 1 元余额，实际扣费按官方用量乘所选分组倍率计算。
 - 大模型广场：https://agent.gpt88.cc/model-square，浏览模型、分组和公开价格信息。
 - 官网定价页面：https://gpt88.cc/pricing，查看公开价格与套餐说明。
