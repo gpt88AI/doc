@@ -987,3 +987,4 @@
 - [Kimi K3.1 Pro 评测整理：Agent 能力跃升，长上下文与基准分数怎么看](https://doc.gpt88.cc/docs/blog/kimi-k3-1-pro-benchmark-review/): 基于 Moonshot 官方技术博客、Kimi API 价格页与 Artificial Analysis 独立评测，梳理 Kimi K3.1 Pro 的代码、Agent、3D、金融表现、成本和评测边界。
 - [GLM-5.3-Flash](https://doc.gpt88.cc/models/glm-5-3-flash/): 智谱 (Zhipu) GLM-5.3-Flash · CHAT 模型，Model ID: glm-5.3-flash，接口路径: /v1/chat/completions。
 - [Kimi K3.1 Pro](https://doc.gpt88.cc/models/kimi-k3-1-pro/): Moonshot Kimi K3.1 Pro · CHAT 模型，Model ID: kimi-k3.1-pro，接口路径: /v1/chat/completions。
+- [AI 硬件怎么选：M5 Ultra、RTX 5090 与 DGX Spark 的工作负载决策法](https://doc.gpt88.cc/docs/blog/ai-hardware-buying-guide-m5-ultra-5090-dgx-spark/): 根据深度云创科技的视频主题，整理 M5 Ultra、RTX 5090、DGX Spark 三条 AI 硬件路线的选型方法：先看工作负载、软件栈、显存与部署边界，再计算总成本，而不是只比较峰值参数。
