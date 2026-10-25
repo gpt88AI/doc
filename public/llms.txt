@@ -259,3 +259,4 @@
 - GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障、工具恢复排查和 gpt-image-2 skill 图片生成。
 
 完整机器可读索引见 https://doc.gpt88.cc/llms-full.txt。
+- [Agent Relay 实测：让 Claude Code 和 Codex 直接协作完成代码审查](https://doc.gpt88.cc/docs/blog/agent-relay-multi-agent-code-review/): 整理龙海对 YC 开源项目 Agent Relay 的实测：不同 Agent 如何通过临时 Relay 房间传递任务、代码和审查结果，以及多 Agent 协作中的权限、额度和人工审批边界。
