@@ -39,6 +39,8 @@
 - [deepseek-v4-flash API Docs](https://doc.gpt88.cc/en/models/deepseek-v4-flash/): English API reference for deepseek-v4-flash. Model ID: deepseek-v4-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 - [Qianwen3.8Max API Docs](https://doc.gpt88.cc/en/models/qwen3-8-max-preview/): English API reference for Qianwen3.8Max. Model ID: qwen3.8-max-preview. OpenAI-compatible endpoint: /v1/chat/completions.
 - [kimi-k3 API Docs](https://doc.gpt88.cc/en/models/kimi-k3/): English API reference for kimi-k3. Model ID: kimi-k3. OpenAI-compatible endpoint: /v1/chat/completions.
+- [Kimi K3.1 Pro API Docs](https://doc.gpt88.cc/en/models/kimi-k3-1-pro/): English API reference for Kimi K3.1 Pro. Model ID: kimi-k3.1-pro. OpenAI-compatible endpoint: /v1/chat/completions.
+- [GLM-5.3-Flash API Docs](https://doc.gpt88.cc/en/models/glm-5-3-flash/): English API reference for GLM-5.3-Flash. Model ID: glm-5.3-flash. OpenAI-compatible endpoint: /v1/chat/completions.
 
 ## 技术博客
 
@@ -51,6 +53,7 @@
 - [Agent Memory 7 天落地路径：从单 Agent 到多 Agent 共享记忆](https://doc.gpt88.cc/docs/blog/agent-memory-build-path-and-multi-agent/): 整理《Agent Memory - The 5-Layer Playbook》的七天构建路线、生产决策框架和多 Agent 记忆边界，帮助团队从事件日志逐步走向共享账本。
 - [Agent Memory 实现：JSONL、SQLite、YAML 与完整执行循环](https://doc.gpt88.cc/docs/blog/agent-memory-implementation-patterns/): 从《Agent Memory - The 5-Layer Playbook》整理 Agent 记忆系统的最小实现模式，覆盖 Episodic JSONL、Semantic SQLite、Procedural YAML、配置文件与 Memory-Aware Agent Loop。
 - [Agent Memory 生产化：遗忘、分层存储与测试方法](https://doc.gpt88.cc/docs/blog/agent-memory-testing-and-production/): 整理《Agent Memory - The 5-Layer Playbook》的生产化注意事项，覆盖 memory tax、层级摘要、冷热存储、矛盾流水线、领域生命周期和六类测试。
+- [Agent Relay 实测：让 Claude Code 和 Codex 直接协作完成代码审查](https://doc.gpt88.cc/docs/blog/agent-relay-multi-agent-code-review/): 整理龙海对 YC 开源项目 Agent Relay 的实测：不同 Agent 如何通过临时 Relay 房间传递任务、代码和审查结果，以及多 Agent 协作中的权限、额度和人工审批边界。
 - [当 Agent 成为交易主体：从授权、身份到 A2A 支付的信任基建](https://doc.gpt88.cc/docs/blog/agent-transaction-trust-infrastructure/): 整理硅谷101播客外滩大会圆桌内容，拆解 Agent 从推荐走向办事和交易后，授权、身份、KYA、支付权限、沙箱、责任追踪与 Agent-to-Agent 微交易需要怎样的信任基础设施。
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
 - [AI 3D 游戏制作工作流：从概念图、Tripo 资产到 Blender 与 Unity](https://doc.gpt88.cc/docs/blog/ai-3d-game-workflow-tripo-blender-unity-2026-10/): 整理 Sac 的《小王子》3D 游戏制作分享，拆解 AI 参与需求规划、场景搭建、角色建模、绑定动画和 Unity 集成的流程，并给出可复用的检查清单。
@@ -61,14 +64,17 @@
 - [AI 漫剧从剧本到成片：一套可复用的制作工作流](https://doc.gpt88.cc/docs/blog/ai-comic-production-from-script-to-video/): 围绕剧本、分镜、静帧、视频、配音与剪辑六个环节，整理 AI 漫剧的制作方法、质量检查点和返工顺序。
 - [AI 时代如何建立非对称增长优势：从 Product-Channel Fit 到大 B 销售](https://doc.gpt88.cc/docs/blog/ai-era-asymmetric-growth-advantage/): 整理课代表立正与 Hockey Stick 创始人陈唱关于 AI 产品增长的访谈，拆解 AI Agent Manager、红人营销、Product-Channel Fit、Enterprise 与 PLG、Bardeen 复盘、Churn 和大 B 销售之间的关系。
 - [两小时从零建立 AI 认知：大模型、提示词与 Agent 的一套学习框架](https://doc.gpt88.cc/docs/blog/ai-from-zero-two-hours-knowledge-framework/): 整理龙井长文中的 AI 入门方法，覆盖大模型通识、提示词工程、Agent 认知框架和 WorkBuddy 实操，并补充可复测的学习与选型边界。
+- [AI 硬件怎么选：M5 Ultra、RTX 5090 与 DGX Spark 的工作负载决策法](https://doc.gpt88.cc/docs/blog/ai-hardware-buying-guide-m5-ultra-5090-dgx-spark/): 根据深度云创科技的视频主题，整理 M5 Ultra、RTX 5090、DGX Spark 三条 AI 硬件路线的选型方法：先看工作负载、软件栈、显存与部署边界，再计算总成本，而不是只比较峰值参数。
 - [AI 图片生成器能上传还不限次数？先判断路线，再上传真图](https://doc.gpt88.cc/docs/blog/ai-image-creator-with-uploads-no-limit/): 不要只看免费、上传、不限次数的宣传。用路线安全、上传隐私、额度边界、商用权利、支持路径和官方/API/本地替代方案，判断哪些图片可以上传。
 - [免费 AI 图片生成器无需注册：先试用，再核对限制、隐私和商用](https://doc.gpt88.cc/docs/blog/ai-image-generator-free-no-sign-up/): 无需注册的免费 AI 图片生成器适合低风险提示词试用，但免费、无限、隐私、商用、高清、上传和模型主张都要先核对，再决定是否切换到账号、付费、本地或 API 路线。
 - [有图怎么用 AI 生成新图：先选对以图生图路线](https://doc.gpt88.cc/docs/blog/ai-image-generator-from-image/): 已经有一张图时，不要先找万能工具。先判断什么必须保持不变、什么可以改、上传文件是否敏感，再选择对话式编辑、保真以图生图、免费测试、官方 API、付费创意套件或本地私有流程。
 - [ai-image-prompts-skill：让 Agent 从一万条图片提示词中找答案](https://doc.gpt88.cc/docs/blog/ai-image-prompts-agent-search/): 介绍 ai-image-prompts-skill 的大规模提示词检索思路，说明如何把自然语言需求转换成案例搜索、候选 Prompt、变量替换和连续生图流程。
+- [一张图看懂 AI 产业：从应用、模型到算力、能源、资本与商业](https://doc.gpt88.cc/docs/blog/ai-industry-six-layer-map/): 整理木子不写代码 65 分钟视频的六层 AI 产业地图：应用如何连接模型，训练与推理如何消耗算力，芯片和数据中心为何继续向能源与资本延伸，以及最后如何回到客户价值。
 - [推理芯片之战：Groq、Cerebras 与 OpenAI 三条路线，到底在比什么？](https://doc.gpt88.cc/docs/blog/ai-inference-chip-war-groq-cerebras-openai/): 整理硅谷101 E251 对 Groq、Cerebras、OpenAI 自研推理芯片与 Bill Dally 设计哲学的讨论，解释为什么推理更看带宽、SRAM 与 HBM 如何取舍，以及芯片、模型和系统如何共同决定速度与能耗。
 - [让 AI 维护知识库而不直接改库：把合并、过期和孤立笔记变成审批队列](https://doc.gpt88.cc/docs/blog/ai-maintains-knowledge-base/): 用 Obsidian 的 Search、properties、backlinks 和 links 收集信号，让 AI 只生成带证据的维护提案，等人批准后再进入后续应用流程。
 - [从真实使用感受看模型选择：速度、产出与套餐风险](https://doc.gpt88.cc/docs/blog/ai-models-real-world-experience-selection-2026-10/): 基于 ZinkLu 对 GPT、GLM 5.3、Kimi K3、Qwen 3.8 Max、MiniMax M3.1-Flash、DeepSeek Flash 与 Claude 的个人体验，梳理模型选择维度、适用任务和短期试用方法。
 - [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
+- [人像提示词别靠玄学：用参考图、视线和姿态写出可控画面](https://doc.gpt88.cc/docs/blog/ai-portrait-reference-prompt-workflow/): 根据 Alex · Selin 的 X 长文，整理一套人像生图工作流：先准备正面参考图，再分别控制表情、视线、姿态、手部和环境，用最少的词迭代出有情绪的画面。
 - [AI 会生成 PPT 之后，为什么 Runtime 才决定上限？](https://doc.gpt88.cc/docs/blog/ai-ppt-runtime-artifact-runtime/): 从一次性 PPT 文件到可持续操作的 Artifact，理解 Artifact Runtime、Observe-Address-Operate-Verify 工作循环、布局语义和领域对象。
 - [商品图换背景不改商品：一套可验收的电商修图流程](https://doc.gpt88.cc/docs/blog/ai-product-background-remover/): 先写保护项与允许修改项，再按商品风险选择生成式换背景或抠图合成；逐项检查边缘、标签、颜色、材质、阴影、光线、比例和透视，建立一套可复现、可验收的电商修图流程。
 - [我的 AI 编程全流程：从 Agent 选择到高质量产品交付](https://doc.gpt88.cc/docs/blog/ai-programming-full-delivery-workflow/): 整理马克的技术工作坊关于 AI 编程完整交付流程的视频，拆解编程 Agent 选择、环境搭建、产品方案、技术方案、产品实现和最终复盘，给出一套可验证、可回滚、能持续迭代的 AI 开发工作流。
@@ -77,6 +83,7 @@
 - [AI Town 与多智能体模拟：从热闹演示到可验证系统](https://doc.gpt88.cc/docs/blog/ai-town/): 从 AI Town 的搜索意图出发，理解多智能体模拟的记忆、环境、调度、观察与评估，并做出一个可复跑的最小切片。
 - [企业 AI 培训怎么做：从工具教学到场景诊断、知识转译与 FDE 交付](https://doc.gpt88.cc/docs/blog/ai-training-business-model/): 整理 Miles Ma 关于企业 AI 培训的观点，拆解培训的五层收入、企业 AI 落地的五个阶段、实操课程设计、业务知识转译和培训与 FDE 项目的衔接方法。
 - [AI 动画生成能力怎么验证：从提示词到成片的实测框架](https://doc.gpt88.cc/docs/blog/ai-video-generation-claims-evaluation-guide/): 围绕“Claude Fable 5.5”视频标题中的动画生成主张，拆解模型身份核验、文生视频测试、镜头连续性、声音同步与成片评估方法，并区分标题信息和可验证事实。
+- [AI 网页小游戏分发与变现：从轻量原型到多平台验证](https://doc.gpt88.cc/docs/blog/ai-web-game-distribution-monetization-workflow/): 根据 lifcc 关于 Web Games 分发的 X 帖，整理 AI 辅助开发轻量网页游戏的选型、发布、留存与变现验证流程，并说明原帖中“13 个平台”和“零买量触达数百万”尚无法独立核实。
 - [在线专辑封面制作工具：先选对路线，再导出能上传的文件](https://doc.gpt88.cc/docs/blog/album-cover-maker/): 在线做专辑封面要按发行目标先选路线：模板、AI、照片、手机还是社媒工具。本文给出 3000x3000、RGB、正方形 JPG/PNG 等导出基线，并覆盖版权证明、缩略图测试、平台与发行商规则检查，避免封面被退回。
 - [阿里云《AI Agent Handbook》导读：从 Harness 构建到生产治理](https://doc.gpt88.cc/docs/blog/aliyun-ai-agent-handbook-reading-guide/): 基于阿里云开源 AI Agent Handbook，梳理智能体从架构、构建、运行、治理到调优的完整工程生命周期，并按不同目标给出章节阅读路径。
 - [Anatomy Skill：让 AI 把原理做成可交互的科普视频](https://doc.gpt88.cc/docs/blog/anatomy-skill-interactive-explanation-video-2026-10/): 整理数字生命卡兹克对 Anatomy Skill 的体验，拆解它如何把机械表、显卡、TCP 握手等抽象原理做成可交互模型、HTML 页面和带讲解的视频，并讨论准确性、成本与学习边界。
@@ -157,6 +164,8 @@
 - ["设计审美提升：硅谷设计师私藏的 10 个网站与灵感库"](https://doc.gpt88.cc/docs/blog/design-aesthetic-inspiration-sites-2026-10/): "整理 Dreameryanyan 分享的 10 个设计灵感网站，按产品界面、极简、企业 SaaS、深色模式、动效、落地页、字体和实验性视觉分类，并把收藏转化为审美判断。"
 - [Design Style 开源项目拆解：用代码生成包豪斯动效、风格图与设计令牌](https://doc.gpt88.cc/docs/blog/design-style-open-source-bauhaus-motion-workflow/): 基于观默的 X 帖子与 Design Style GitHub 仓库，拆解包豪斯一期如何用 Remotion、SVG、共享设计令牌和 NumPy 音频合成制作 15 秒动效与四张风格图。
 - [扩散式语言模型会赢得 AI 推理吗？从 Inception 访谈看并行生成、速度与模型架构竞争](https://doc.gpt88.cc/docs/blog/diffusion-language-model-inference-inception/): 整理 No Priors 对 Inception 联合创始人 Stefano Ermon 的访谈，解释扩散式语言模型如何通过并行去噪生成文本，为什么推理阶段可能比自回归模型更适合 GPU，以及速度、可控性、服务引擎和 GPT88 模型路由应该如何评测。
+- [数字人口播 Skill：一张照片生成口播成片的流程、成本与边界](https://doc.gpt88.cc/docs/blog/digital-human-koubo-skill-workflow/): 整理 andyhuo520/digital-human-koubo 的 Agent Skill，拆解人设定妆、分段生成、报价确认、回听质检、声音统一和 Remotion 包装流程，并说明积分成本、安装条件、授权红线与许可边界。
+- [ECC：给 Codex 装上一套可复用的工程协作系统](https://doc.gpt88.cc/docs/blog/ecc-codex-agent-harness-workflow/): 整理 goan999999 关于 affaan-m/ECC 的实践分享，核对 71 个 Agent、311 个 Skills、Codex 原生插件、持续记忆与 AgentShield 的真实边界，并给出安全试用路径。
 - [Eight Sleep 的睡眠科技：富人的玩具，还是预防医疗的入口？](https://doc.gpt88.cc/docs/blog/eight-sleep-sleep-technology-preventive-health/): 整理《硅谷101》E252 对 Eight Sleep 两位创始人的访谈，拆解智能床套的温控逻辑、睡眠数据、消费硬件创业、中国市场和从睡眠监测走向预防医疗的产品愿景。
 - [图片英文翻译成西班牙语：拍照、截图和 OCR 该先用哪条路](https://doc.gpt88.cc/docs/blog/english-to-spanish-photo-translator/): 想把图片里的英文翻译成西班牙语，先用 Google 翻译的相机、相册或网页图片模式；OCR 不准时先修图再换工具，长期使用 App 前先检查广告、订阅、离线和数据安全，并附五个常见场景的选择表。
 - [企业上 AI 之前，先把数据治理做对：从纸质档案到可查询数据](https://doc.gpt88.cc/docs/blog/enterprise-data-governance-before-ai/): 从纸质维修单、扫描版产品手册和 Excel 配件表出发，系统整理企业数据治理流程，说明 OCR、表格解析、清洗、版本、权限、验收和持续维护如何为知识库与 AI 打基础。
@@ -397,6 +406,7 @@
 - [Jev 为什么不想做聊天机器人：从 System One 到可编程判断层](https://doc.gpt88.cc/docs/blog/jev-system-one-model-interview/): 整理 Frank Wang 玉伯对 TypeSafe 联合创始人 Diogo Almeida 的访谈转述，解释 Jev 为什么从聊天产品转向 System One、可编程模型、工作流评测与软件内置智能。
 - [Jev / System One Model 实测：把语言模型变成软件可直接调用的决策函数](https://doc.gpt88.cc/docs/blog/jev-system-one-model-practical-guide/): 整理 01Coder 对 TypeSafe AI Jev 的视频实测，解释 System One Model、Choice、Score、Boolean、并行评估、概率与置信度，并给出模型路由、内容审核和 LLM 输出校验的工程落地方法。
 - [Jianying Headless：用 Agent Skill 生成、修改并导出可编辑剪映草稿](https://doc.gpt88.cc/docs/blog/jianying-headless-skill/): 基于上游最新验证梳理 Jianying Headless 的剪映草稿工作流、11.6.0 界面导出、Windows FFmpeg MP4、Agent Skill、验收门禁和许可边界。
+- [Kimi K3.1 Pro 评测整理：Agent 能力跃升，长上下文与基准分数怎么看](https://doc.gpt88.cc/docs/blog/kimi-k3-1-pro-benchmark-review/): 基于 Moonshot 官方技术博客、Kimi API 价格页与 Artificial Analysis 独立评测，梳理 Kimi K3.1 Pro 的代码、Agent、3D、金融表现、成本和评测边界。
 - [Vibe Coding 项目越做越难维护？用六层工程能力给 AI Coding 加护栏](https://doc.gpt88.cc/docs/blog/kxians-ai-coding-software-engineering-practices/): 整理 Kxians 关于 AI Coding 工程化的长帖，拆解 SDD、TDD、DDD、上下文工程、Workflow/Harness、项目规则与 Skills 的分工，并用可重建性检查知识是否沉淀。
 - [老爷爷 laoyeye Skill：让 AI 按你的处境挑选合适提示语](https://doc.gpt88.cc/docs/blog/laoyeye-prompt-routing-skill-guide/): 卡尔的开源 laoyeye 把思考提示语做成 Agent Skill 路由。本文根据 X 长文和 GitHub 仓库，拆解它的六类场景、路由边界、原文保护机制，以及如何与 GPT88 模型 API 配合。
 - [LeanREA：让编程 Agent 用本机 CLI 做授权软件分析](https://doc.gpt88.cc/docs/blog/leanrea-authorized-software-analysis-skill/): 介绍程序员鱼皮分享的 LeanREA Skill：它怎样用短指引路由到系统 CLI 工具、怎样安装和验证证据，以及如何理解项目作者的有限基准测试。
@@ -451,6 +461,7 @@
 - [OpenAI 最新模型 GPT-6 Astra：能力、迁移与 GPT88 API 接入指南](https://doc.gpt88.cc/docs/blog/openai-latest-model-gpt-6-astra/): 根据 OpenAI 官方最新模型指南，整理 GPT-6 Astra 的核心能力、新增工具调用方式、提示词策略、迁移参数、Responses API 接入与 GPT88 使用排障。
 - [OpenClaw 架构导读：沿一条消息看懂 Gateway、Node 与 Channel](https://doc.gpt88.cc/docs/blog/openclaw-architecture-guide/): 从合成消息的完整路径出发，判断 Gateway、Node、Channel、pairing、scope 与远程接入分别在哪一层生效。
 - [OpenFDE：把客户访谈、业务记忆和 Agent 任务连成一条证据链](https://doc.gpt88.cc/docs/blog/openfde-local-first-fde-memory/): 介绍 OpenFDE 的本地优先 FDE 工作区，拆解来源引用、业务本体、任务状态机、Agent 上下文、评测验收和执行报告之间的关系。
+- [Opentu 开图功能全解析：把 AI 创作、画布和任务管理放在一起](https://doc.gpt88.cc/docs/blog/opentu-ai-canvas-workspace-guide/): 结合 Opentu 工作台与用户手册，梳理 AI 图片与视频生成、无限画布、流程图、思维导图、素材库、知识库、任务队列等功能，并说明每项功能的使用场景与适合人群。
 - [OpenViking：让研发上下文在不同 Agent 与工具之间持续在线](https://doc.gpt88.cc/docs/blog/openviking-context-filesystem-rnd/): 整理字节跳动技术团队对 OpenViking 的公开介绍：用统一上下文文件系统组织资源、记忆与技能，通过 L0、L1、L2 分层加载减少上下文浪费，并保留会话记忆与检索轨迹。
 - [Opus 5.5 做视频：从代码渲染原理到提示词和 Skill 工作流](https://doc.gpt88.cc/docs/blog/opus55-code-video-workflow/): 整理 xilo 关于 Opus 5.5 代码生成视频的长文，解释逐帧渲染原理、7 类代码路线、5 个案例组合、XML 提示词结构、xilo-opus-video Skill 和成片验收方法。
 - [不会画画、不会剪辑：用 Opus5.5 做一部 7 分钟手绘动画](https://doc.gpt88.cc/docs/blog/opus55-hand-drawn-storybook-animation/): 整理 Hailey 用 GPT、Opus5.5、hand-drawn-storybook-animation skill 和豆包语音制作手绘水彩动画绘本的完整流程，包含剧本打磨、分镜、迭代、配音接入和发布前检查。
@@ -476,6 +487,7 @@
 - [Qiaomu Publish：在 Obsidian 写一次，再交付到公众号、X、知乎和小红书](https://doc.gpt88.cc/docs/blog/qiaomu-publish-obsidian-multi-platform/): 整理 Qiaomu Publish 的 Obsidian 写作与多平台发布工作流，覆盖实时排版、42 个主题、封面、HTML/PNG 导出、公众号草稿和浏览器交接，并说明凭据与发布边界。
 - ["用自己的写作数据微调 Qwen2.5-1.5B：一份 LoRA 实验指南"](https://doc.gpt88.cc/docs/blog/qwen25-x-writer-lora-finetuning-guide-2026-10/): "整理雪瑜分享的 Qwen2.5-1.5B-Instruct 本地 LoRA 微调教程，覆盖数据清洗、MLX 环境、训练配置、评估、Adapter 融合和实验边界。"
 - [随机图片生成器：先选照片、提示图、占位图、本地图库还是 AI](https://doc.gpt88.cc/docs/blog/random-image-generator/): 随机图片工具不只有一种：先判断你要随机照片、写作提示图、占位图 URL、本地相册随机，还是一张新的 AI 图片，再核验来源、授权和复用风险。
+- [rayskills：把 Builder 的 AI 工作流做成可路由、可验收的 Skills](https://doc.gpt88.cc/docs/blog/rayskills-builder-agent-workflows/): 基于 rayskills 仓库 README 与 2026-10-22 的 main 提交，介绍它如何用 /ray 选择单步或串联内容流程、8 个 Skill 各自负责什么，以及草稿门控和评测数据应如何理解。
 - [逼真 AI 图像生成器怎么选：先看用途、上传风险和切换规则](https://doc.gpt88.cc/docs/blog/realistic-ai-image-generator/): 先按人物、商品、品牌文字、免费测试、私密上传、API 或本地控制来选逼真 AI 生图路线，再决定是否换工具。
 - [如何降低大语言模型幻觉：把“回答得像真的”变成可验证的工作流](https://doc.gpt88.cc/docs/blog/reducing-gpt-hallucinations/): 用任务边界、受控上下文、结构化输出、工具验证和失败处理降低 LLM 幻觉；区分模型表达与系统可靠性。
 - [Researcher_王十三的 X 长文链接归档：先确认来源，再补全文内容](https://doc.gpt88.cc/docs/blog/researchwang-x-article-2109812002076143824/): 记录 Researcher_王十三于 2026 年 10 月 13 日发布的 X 帖子、短链接解析结果与当前可核验边界，避免在原文不可访问时把猜测写成摘要。
@@ -505,8 +517,8 @@
 - [为什么 Session 不应该等同于 Memory？](https://doc.gpt88.cc/docs/blog/why-session-is-not-memory/): 从 Agent Harness、RAG 和 OTC 交易系统出发，解释 Session、Working Memory、Episodic Memory、Semantic Memory、Compliance Memory 与订单事实的边界，以及如何设计可恢复、可审计的 Agent 上下文系统。
 - [WorkBuddy 接入 GPT88 完整教程：自定义 API 配置与模型验证](https://doc.gpt88.cc/docs/blog/workbuddy-connect-gpt88-guide/): 通过 WorkBuddy 自定义模型接入 GPT88 统一大模型入口，配置 API Base URL、API Key 与模型 ID，并用实际请求验证连通、工具调用和费用边界。
 - [WorkBuddy 接入 GPT88 报错排查：401、404、模型不可用与工具调用失败](https://doc.gpt88.cc/docs/blog/workbuddy-gpt88-troubleshooting/): 排查 WorkBuddy 自定义 GPT88 API 常见问题：Base URL 路径重复、API Key 错误、模型 ID 不可用、工具调用失败与额度不足，并用最小请求定位故障层。
-- [WorkBuddy 如何统一切换不同大模型？用 GPT88 自定义 API 搭建可验证工作流](https://doc.gpt88.cc/docs/blog/workbuddy-unified-model-workflow-gpt88/): 介绍 WorkBuddy 的模型切换和 GPT88 自定义 API 接入思路，按文本、工具调用与多模态任务分工选择模型，并建立可复现的验证、费用核对和回退流程。
 - [WorkBuddy 怎么剪视频：HyperFrames、ChatCut、VideoGen 的分工与实战流程](https://doc.gpt88.cc/docs/blog/workbuddy-three-skills-video-workflow/): 整理秋叶大叔的 WorkBuddy 视频制作教程，说明 HyperFrames 动态卡片、ChatCut 口播粗剪和 VideoGen 补充镜头各自适合什么任务，并给出从脚本到成片的四步工作流。
+- [WorkBuddy 如何统一切换不同大模型？用 GPT88 自定义 API 搭建可验证工作流](https://doc.gpt88.cc/docs/blog/workbuddy-unified-model-workflow-gpt88/): 介绍 WorkBuddy 的模型切换和 GPT88 自定义 API 接入思路，按文本、工具调用与多模态任务分工选择模型，并建立可复现的验证、费用核对和回退流程。
 - [小红书 × vivo 的 3D 图片技术：从相册生成到移动端消费](https://doc.gpt88.cc/docs/blog/xiaohongshu-vivo-3d-gaussian-splatting/): 整理小红书与 vivo 3D 图片实践的公开摘要：基于三维高斯泼溅打通相册生成、社交发布和移动端消费，并通过压缩、剪枝、分级细节和渲染优化控制体积与帧率。
 - [Codex 自动剪辑知识类视频：从 A/B-roll 到视觉编排表的完整工作流](https://doc.gpt88.cc/docs/blog/xilo-codex-video-editing-knowledge-workflow/): 整理 xilo 关于 Codex 自动剪辑知识类视频的长文，拆解 A-roll 与 B-roll、配音时间轴、视觉编排表、角色一致性、素材库、HyperFrames、Remotion 与样片验收，并补充 GPT88 API 在这套工作流中的接入方式。
 - [智谱清影 AI 视频：把一次生成变成可验收的镜头工作流](https://doc.gpt88.cc/docs/blog/zhipu-qingying-ai-video/): 围绕“智谱清影”这一历史搜索意图，用当前视频生成接口、结构化提示词和异步任务验收，做出可复跑的镜头流程。
@@ -823,6 +835,7 @@
 - [GLM-4-Flash](https://doc.gpt88.cc/models/glm-4-flash/): 智谱 (Zhipu) GLM-4-Flash · CHAT 模型，Model ID: glm-4-flash，接口路径: /v1/chat/completions。
 - [glm-5](https://doc.gpt88.cc/models/glm-5/): 智谱 (Zhipu) glm-5 · CHAT 模型，Model ID: glm-5，接口路径: /v1/chat/completions。
 - [glm-5.1](https://doc.gpt88.cc/models/glm-5-1/): 智谱 (Zhipu) glm-5.1 · CHAT 模型，Model ID: glm-5.1，接口路径: /v1/chat/completions。
+- [GLM-5.3-Flash](https://doc.gpt88.cc/models/glm-5-3-flash/): 智谱 (Zhipu) GLM-5.3-Flash · CHAT 模型，Model ID: glm-5.3-flash，接口路径: /v1/chat/completions。
 - [GLM-5-Turbo](https://doc.gpt88.cc/models/glm-5-turbo/): 智谱 (Zhipu) GLM-5-Turbo · CHAT 模型，Model ID: glm-5-turbo，接口路径: /v1/chat/completions。
 - [gpt-3.5-turbo](https://doc.gpt88.cc/models/gpt-3-5-turbo/): OpenAI gpt-3.5-turbo · CHAT 模型，Model ID: gpt-3.5-turbo，接口路径: /v1/chat/completions。
 - [gpt-4](https://doc.gpt88.cc/models/gpt-4/): OpenAI gpt-4 · CHAT 模型，Model ID: gpt-4，接口路径: /v1/chat/completions。
@@ -920,6 +933,7 @@
 - [kimi-k2-instruct](https://doc.gpt88.cc/models/kimi-k2-instruct/): Moonshot kimi-k2-instruct · CHAT 模型，Model ID: kimi-k2-instruct，接口路径: /v1/chat/completions。
 - [kimi-k2-thinking](https://doc.gpt88.cc/models/kimi-k2-thinking/): Moonshot kimi-k2-thinking · CHAT 模型，Model ID: kimi-k2-thinking，接口路径: /v1/chat/completions。
 - [kimi-k3](https://doc.gpt88.cc/models/kimi-k3/): Moonshot kimi-k3 · CHAT 模型，Model ID: kimi-k3，接口路径: /v1/chat/completions。
+- [Kimi K3.1 Pro](https://doc.gpt88.cc/models/kimi-k3-1-pro/): Moonshot Kimi K3.1 Pro · CHAT 模型，Model ID: kimi-k3.1-pro，接口路径: /v1/chat/completions。
 - [minimax-m2](https://doc.gpt88.cc/models/minimax-m2/): MiniMax minimax-m2 · CHAT 模型，Model ID: minimax-m2，接口路径: /v1/chat/completions。
 - [MiniMax-M2.5](https://doc.gpt88.cc/models/minimax-m2-5/): MiniMax MiniMax-M2.5 · CHAT 模型，Model ID: minimax-m2.5，接口路径: /v1/chat/completions。
 - [MiniMax-M2.7](https://doc.gpt88.cc/models/minimax-m2-7/): MiniMax MiniMax-M2.7 · CHAT 模型，Model ID: minimax-m2.7，接口路径: /v1/chat/completions。
@@ -978,14 +992,3 @@
 ## AUDIO 模型
 
 - [whisper-1](https://doc.gpt88.cc/models/whisper-1/): OpenAI whisper-1 · AUDIO 模型，Model ID: whisper-1，接口路径: /v1/audio/transcriptions。
-- [rayskills：把 Builder 的 AI 工作流做成可路由、可验收的 Skills](https://doc.gpt88.cc/docs/blog/rayskills-builder-agent-workflows/): 基于 rayskills 仓库 README 与 2026-10-22 的 main 提交，介绍它如何用 /ray 选择单步或串联内容流程、8 个 Skill 各自负责什么，以及草稿门控和评测数据应如何理解。
-- [ECC：给 Codex 装上一套可复用的工程协作系统](https://doc.gpt88.cc/docs/blog/ecc-codex-agent-harness-workflow/): 整理 goan999999 关于 affaan-m/ECC 的实践分享，核对 71 个 Agent、311 个 Skills、Codex 原生插件、持续记忆与 AgentShield 的真实边界，并给出安全试用路径。
-- [一张图看懂 AI 产业：从应用、模型到算力、能源、资本与商业](https://doc.gpt88.cc/docs/blog/ai-industry-six-layer-map/): 整理木子不写代码 65 分钟视频的六层 AI 产业地图：应用如何连接模型，训练与推理如何消耗算力，芯片和数据中心为何继续向能源与资本延伸，以及最后如何回到客户价值。
-- [人像提示词别靠玄学：用参考图、视线和姿态写出可控画面](https://doc.gpt88.cc/docs/blog/ai-portrait-reference-prompt-workflow/): 根据 Alex · Selin 的 X 长文，整理一套人像生图工作流：先准备正面参考图，再分别控制表情、视线、姿态、手部和环境，用最少的词迭代出有情绪的画面。
-- [Kimi K3.1 Pro API Docs](https://doc.gpt88.cc/en/models/kimi-k3-1-pro/): English API reference for Kimi K3.1 Pro. Model ID: kimi-k3.1-pro. OpenAI-compatible endpoint: /v1/chat/completions.
-- [GLM-5.3-Flash API Docs](https://doc.gpt88.cc/en/models/glm-5-3-flash/): English API reference for GLM-5.3-Flash. Model ID: glm-5.3-flash. OpenAI-compatible endpoint: /v1/chat/completions.
-- [Kimi K3.1 Pro 评测整理：Agent 能力跃升，长上下文与基准分数怎么看](https://doc.gpt88.cc/docs/blog/kimi-k3-1-pro-benchmark-review/): 基于 Moonshot 官方技术博客、Kimi API 价格页与 Artificial Analysis 独立评测，梳理 Kimi K3.1 Pro 的代码、Agent、3D、金融表现、成本和评测边界。
-- [GLM-5.3-Flash](https://doc.gpt88.cc/models/glm-5-3-flash/): 智谱 (Zhipu) GLM-5.3-Flash · CHAT 模型，Model ID: glm-5.3-flash，接口路径: /v1/chat/completions。
-- [Kimi K3.1 Pro](https://doc.gpt88.cc/models/kimi-k3-1-pro/): Moonshot Kimi K3.1 Pro · CHAT 模型，Model ID: kimi-k3.1-pro，接口路径: /v1/chat/completions。
-- [AI 硬件怎么选：M5 Ultra、RTX 5090 与 DGX Spark 的工作负载决策法](https://doc.gpt88.cc/docs/blog/ai-hardware-buying-guide-m5-ultra-5090-dgx-spark/): 根据深度云创科技的视频主题，整理 M5 Ultra、RTX 5090、DGX Spark 三条 AI 硬件路线的选型方法：先看工作负载、软件栈、显存与部署边界，再计算总成本，而不是只比较峰值参数。
-- [Agent Relay 实测：让 Claude Code 和 Codex 直接协作完成代码审查](https://doc.gpt88.cc/docs/blog/agent-relay-multi-agent-code-review/): 整理龙海对 YC 开源项目 Agent Relay 的实测：不同 Agent 如何通过临时 Relay 房间传递任务、代码和审查结果，以及多 Agent 协作中的权限、额度和人工审批边界。

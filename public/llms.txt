@@ -18,9 +18,9 @@
 - [Agent Memory 7 天落地路径：从单 Agent 到多 Agent 共享记忆](https://doc.gpt88.cc/docs/blog/agent-memory-build-path-and-multi-agent/): 整理《Agent Memory - The 5-Layer Playbook》的七天构建路线、生产决策框架和多 Agent 记忆边界，帮助团队从事件日志逐步走向共享账本。
 - [Agent Memory 实现：JSONL、SQLite、YAML 与完整执行循环](https://doc.gpt88.cc/docs/blog/agent-memory-implementation-patterns/): 从《Agent Memory - The 5-Layer Playbook》整理 Agent 记忆系统的最小实现模式，覆盖 Episodic JSONL、Semantic SQLite、Procedural YAML、配置文件与 Memory-Aware Agent Loop。
 - [Agent Memory 生产化：遗忘、分层存储与测试方法](https://doc.gpt88.cc/docs/blog/agent-memory-testing-and-production/): 整理《Agent Memory - The 5-Layer Playbook》的生产化注意事项，覆盖 memory tax、层级摘要、冷热存储、矛盾流水线、领域生命周期和六类测试。
+- [Agent Relay 实测：让 Claude Code 和 Codex 直接协作完成代码审查](https://doc.gpt88.cc/docs/blog/agent-relay-multi-agent-code-review/): 整理龙海对 YC 开源项目 Agent Relay 的实测：不同 Agent 如何通过临时 Relay 房间传递任务、代码和审查结果，以及多 Agent 协作中的权限、额度和人工审批边界。
 - [当 Agent 成为交易主体：从授权、身份到 A2A 支付的信任基建](https://doc.gpt88.cc/docs/blog/agent-transaction-trust-infrastructure/): 整理硅谷101播客外滩大会圆桌内容，拆解 Agent 从推荐走向办事和交易后，授权、身份、KYA、支付权限、沙箱、责任追踪与 Agent-to-Agent 微交易需要怎样的信任基础设施。
 - [Agentic Engineering 实战配置：2000 小时 AI 编程经验总结](https://doc.gpt88.cc/docs/blog/agentic-engineering-setup-2000-hours/): 整理 David Ondrej 的 Agentic Engineering 工作流，覆盖统一界面、模型订阅、云端 Agent、Harness、Skills、Worktrees、权限安全与生产力度量。
-- [AI 3D 游戏制作工作流：从概念图、Tripo 资产到 Blender 与 Unity](https://doc.gpt88.cc/docs/blog/ai-3d-game-workflow-tripo-blender-unity-2026-10/): 整理 Sac 的《小王子》3D 游戏制作分享，拆解 AI 参与需求规划、场景搭建、角色建模、绑定动画和 Unity 集成的流程，并给出可复用的检查清单。
 
 ## GPT88公益站搜索入口
 
@@ -259,4 +259,3 @@
 - GPT88 Agent 图片工作台、电商图片生成、案例提示词、批量生成、Codex CLI、CC Switch、OAuth 登录、插件能力排障、工具恢复排查和 gpt-image-2 skill 图片生成。
 
 完整机器可读索引见 https://doc.gpt88.cc/llms-full.txt。
-- [Agent Relay 实测：让 Claude Code 和 Codex 直接协作完成代码审查](https://doc.gpt88.cc/docs/blog/agent-relay-multi-agent-code-review/): 整理龙海对 YC 开源项目 Agent Relay 的实测：不同 Agent 如何通过临时 Relay 房间传递任务、代码和审查结果，以及多 Agent 协作中的权限、额度和人工审批边界。
