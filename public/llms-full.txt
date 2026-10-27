@@ -992,3 +992,4 @@
 ## AUDIO 模型
 
 - [whisper-1](https://doc.gpt88.cc/models/whisper-1/): OpenAI whisper-1 · AUDIO 模型，Model ID: whisper-1，接口路径: /v1/audio/transcriptions。
+- [三个代码视频 Skill 怎么选：角色动画、动态设计与产品宣传片](https://doc.gpt88.cc/docs/blog/three-code-video-skills-selection-guide/): 整理雪踏乌云对 ClaudeAnimationBase、mg-styles-15 和 video-shotcraft 的实测筛选，并结合三个仓库当前 README，说明它们分别适合什么视频、需要哪些依赖，以及如何从第一个短片开始验证。
