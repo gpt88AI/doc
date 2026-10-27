@@ -118,6 +118,7 @@ export type ModelEntry = {
 export const FEATURED_SLUGS = [
   'gpt-6-astra',
   'gpt-6-1-sol',
+  'gpt-6-1-terra',
   'gpt-6-sol',
   'gpt-6-luna',
   'deepseek-v4-1-flash',
@@ -218,6 +219,33 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       'OpenAI 对接近 Astra 表现和较低成本的描述属于厂商定位，不代表独立评测结论，也不保证 GPT88 各线路上的实际表现或费用。',
       '当前本地后端目录尚未完成同步；模型是否开放、价格、分组、额度、限速和可用线路以 GPT88 控制台及当前 API Key 为准。',
       '未完成业务评测前，不建议直接替换生产默认模型；请保留已验证的备用路由并设置失败回退。',
+    ],
+  },
+  'gpt-6-1-terra': {
+    provider: 'OpenAI',
+    tagline: 'GPT-6.1 Terra 面向视觉推理、电脑操作与日常专业工作，兼顾速度和成本。',
+    capabilities: ['视觉推理', '电脑操作', '图像理解', '代码与工具调用', '自然写作'],
+    scenarios: ['读图与技术图纸分析', '桌面应用自动化', '图像与目录匹配', '日常写作和编辑', '中高频专业任务'],
+    overview: [
+      'OpenAI 将 GPT-6.1 Terra 定位为快速、高效的专业工作模型，侧重视觉推理、精确电脑操作和清晰自然的写作。官方举例包括将商品图与目录条目匹配、理解技术图纸、操作应用界面，以及起草和修改文本。',
+      'OpenAI API 文档列出 1.05M 上下文、128K 最大输出、图像输入、文本输入与输出，并支持从 none 到 max 的 reasoning effort。官方标准 API 价格为每百万输入 token $1、输出 token $5；GPT88 价格和可用规格以控制台为准。',
+      'OpenAI 发布说明称，在其 Agents’ Last Exam 中，medium reasoning effort 下的电脑操作成绩比 GPT-5.6 Terra 高 15 个百分点，成本约为三分之一；Terminal-Bench 4.0 在 max effort 下报告 50.3%。这些是厂商公布的评测结果，不代表独立评测或 GPT88 路由表现。',
+    ],
+    whenToUse: [
+      '需要理解图片、产品照片、界面或技术图纸时',
+      '需要在桌面或应用界面中完成多步操作时',
+      '处理日常专业工作、文本起草和编辑时',
+      '希望在视觉和电脑操作任务中评估质量、速度与成本平衡时',
+    ],
+    integrationNotes: [
+      '使用 GPT88 OpenAI 兼容 API，并将请求体 model 设置为 gpt-6.1-terra。',
+      'OpenAI 文档列出 /v1/responses 与 /v1/chat/completions；工具调用需使用 Responses API。GPT88 是否开放相同端点、工具和参数，以当前控制台及 API Key 实测为准。',
+      'OpenAI API 支持的 reasoning.effort 为 none、low、medium、high、xhigh、max；先通过 GPT88 控制台或最小请求确认具体路由支持情况。',
+    ],
+    caveats: [
+      '价格 $1/$5 每百万 token 是 OpenAI 官方标准 API 价格，不是 GPT88 报价；GPT88 的计费方式、权限、额度、限速和可用线路以控制台为准。',
+      '公开 benchmark 数值来自 OpenAI 自行评测，不应视为独立对比结论，也不保证在 GPT88 路由、不同提示词或工具环境中复现。',
+      '模型权限、分组、额度、价格、限速和可用线路可能因 API Key 而异。',
     ],
   },
   'gpt-6-sol': {
@@ -2157,6 +2185,14 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     descriptions_sample: ['GPT-6.1 Sol 主推模型，官方定位为复杂工作与能力、成本平衡，具体价格、权限和线路以控制台为准。'],
   },
   {
+    canonical_name: 'gpt-6.1-terra',
+    display_name: 'gpt-6.1-terra',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-6.1-terra'],
+    descriptions_sample: ['GPT-6.1 Terra，面向视觉推理、电脑操作和日常专业工作；GPT88 实际价格、权限和线路以控制台为准。'],
+  },
+  {
     canonical_name: 'gpt-6-sol',
     display_name: 'gpt-6-sol',
     category: 'chat',
@@ -2478,6 +2514,32 @@ const ENGLISH_MODEL_DETAILS: Partial<Record<string, LocalizedModelDetail>> = {
       'OpenAI’s near-Astra and lower-cost description is provider positioning, not an independent evaluation or a guarantee of performance or cost on GPT88 routes.',
       'The current local backend catalog has not synced this model. Access, groups, quota, pricing, limits, and routes are determined by the GPT88 console and API key.',
       'Keep a validated fallback route until the model passes your own quality, latency, cost, and reliability checks.',
+    ],
+  },
+  'gpt-6-1-terra': {
+    tagline: 'GPT-6.1 Terra for visual reasoning, computer use, and everyday professional work.',
+    capabilities: ['Visual reasoning', 'Computer use', 'Image understanding', 'Code and tool use', 'Natural writing'],
+    scenarios: ['Image and technical-drawing analysis', 'Desktop app automation', 'Image-to-catalog matching', 'Everyday writing and editing', 'High-volume professional work'],
+    overview: [
+      'OpenAI describes GPT-6.1 Terra as a fast, efficient model for visual reasoning, precise computer use, and clear, natural writing. Its examples include matching product photos to catalog entries, interpreting technical drawings, acting on application screens, and drafting or revising text.',
+      'The OpenAI API catalog lists a 1.05M context window, 128K maximum output, image input, text input and output, and reasoning effort from none to max. OpenAI standard API prices are $1 per million input tokens and $5 per million output tokens; GPT88 pricing and available specifications are set by its console.',
+      'OpenAI reports that Terra scored 15 percentage points above GPT-5.6 Terra on Agents’ Last Exam at medium reasoning effort at about one-third the cost, and scored 50.3% on Terminal-Bench 4.0 at max effort. These are provider-reported results, not independent evaluations or guarantees for GPT88 routes.',
+    ],
+    whenToUse: [
+      'Understand images, product photos, interfaces, or technical drawings',
+      'Complete multi-step tasks in desktop or application interfaces',
+      'Handle everyday professional work, drafting, and editing',
+      'Evaluate the balance of quality, speed, and cost on visual and computer-use tasks',
+    ],
+    integrationNotes: [
+      'Use the GPT88 OpenAI-compatible API and set the request model to gpt-6.1-terra.',
+      'OpenAI lists /v1/responses and /v1/chat/completions; tool calling requires the Responses API. Confirm which endpoints, tools, and parameters the current GPT88 API key can use.',
+      'The OpenAI API supports reasoning.effort values none, low, medium, high, xhigh, and max. Confirm route support with the GPT88 console or a minimal request.',
+    ],
+    caveats: [
+      'The $1/$5 per million token rates are OpenAI standard API prices, not GPT88 prices. Check GPT88 billing, access, quota, rate limits, and routes in the console.',
+      'Published benchmark figures are provider-reported and may not reproduce with GPT88 routes, prompts, or tool environments.',
+      'Access, groups, quota, pricing, rate limits, and available routes may vary by API key.',
     ],
   },
   'gpt-6-sol': {
