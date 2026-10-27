@@ -502,6 +502,7 @@
 - [Skill、Hook、MCP 怎么选：用三个问题分诊，而不是混成一锅](https://doc.gpt88.cc/docs/blog/skills-hooks-mcp-roles/): 根据重复工作流、事件时点保证、外部系统与数据三个问题选对扩展机制，知道何时组合、何时不该上 MCP。
 - [广告埋点参数自动化校验：让 AI 补充规则引擎而不是替代它](https://doc.gpt88.cc/docs/blog/souhu-ad-event-parameter-ai-validation/): 整理搜狐技术产品公开摘要中的广告埋点 AI 校验实践：在确定性规则引擎之外增加复杂关联检查，用新旧链路并行、超时、缓存、熔断和结果融合控制模型接入风险。
 - [火柴人动画 Agent 工作流：从选题、导演提案到人工审片](https://doc.gpt88.cc/docs/blog/stickman-video-director-ai-workflow/): 整理摸鱼局长转发的火柴人动画 Agent 与 CrazyKaomei 开源 Skill，拆解上游项目能做什么、视频生成如何衔接，以及哪些播放量和自动化主张尚未验证。
+- [Story Studio 故事工坊：把历史人物短视频拆成可审核的 AI 制作流水线](https://doc.gpt88.cc/docs/blog/story-studio-ai-short-video-agent-skill-guide/): 整理夏木 GROW 对 Story Studio 开源 Skill 的介绍，并核对项目 README：从选题与口播稿、配音和本地转录，到时间分镜、生图和剪映草稿，梳理适用场景、成本、事实核查与素材授权边界。
 - [淘宝百亿补贴数据分析助手 Agent：让自然语言查询先经过业务语义层](https://doc.gpt88.cc/docs/blog/taobao-subsidy-data-analysis-agent/): 根据大淘宝技术公开摘要整理淘宝百亿补贴数据分析助手的工程思路：在自然语言与 SQL 之间加入业务语义层，用多 Agent 编排、知识检索、血缘溯源和 Python 沙箱串联取数、分析与归因。
 - [观察性思维蒸馏的边界：怎样把重复判断提炼成 Skill，而不是索取隐藏思维链](https://doc.gpt88.cc/docs/blog/thinking-distillation-boundary/): 用 receipts、accepted diffs、corrections 和 validator，把可观察的专家修复方法提炼成候选 Skill，并用 holdout 证明它没有越界到 secret、私有 transcript 或 raw chain-of-thought。
 - [三个代码视频 Skill 怎么选：角色动画、动态设计与产品宣传片](https://doc.gpt88.cc/docs/blog/three-code-video-skills-selection-guide/): 整理雪踏乌云对 ClaudeAnimationBase、mg-styles-15 和 video-shotcraft 的实测筛选，并结合三个仓库当前 README，说明它们分别适合什么视频、需要哪些依赖，以及如何从第一个短片开始验证。
