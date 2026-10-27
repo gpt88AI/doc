@@ -422,6 +422,7 @@
 - [CLAUDE.md 模板：从重复失败里提炼最小可用项目规则](https://doc.gpt88.cc/docs/blog/minimum-claude-md/): 用可直接改写的 CLAUDE.md 模板，把一次已完成任务的重复错误压成短、具体、可验证的项目规则。
 - [用 AI 搭建个人视觉体系：从头像到内容配图的四步流程](https://doc.gpt88.cc/docs/blog/morry-ai-personal-visual-system-guide/): 整理 Morry.AI 的个人视觉体系方法，说明头像、Banner、内容配图规则和个人介绍卡片如何按顺序搭建、继承与复用。
 - [多 Agent 协作适合解决什么问题](https://doc.gpt88.cc/docs/blog/multi-agent-collaboration/): 先画依赖图、冻结接口与验收标准、分配不重叠文件所有权，再选择单 Agent / subagent / agent team / worktree，用合并门禁验证结果。
+- [多智能体系统的下一道门槛：基础设施、身份、隔离与停机能力](https://doc.gpt88.cc/docs/blog/multiagent-engineering-infrastructure-identity-isolation/): 整理 Anthropic 平台负责人 Katelyn Lesse 关于多智能体工程难题的文章，拆解 Agent 工作负载与 Kubernetes 的错配、身份授权、安全隔离、可观测性和全局停机能力，并给出分阶段落地清单。
 - [Gemini 图片免费在线生成：Nano Banana 2 官方入口与第三方工具检查](https://doc.gpt88.cc/docs/blog/nano-banana-2-online-free/): 想在线免费生成 Gemini 图片，先分清官方 Gemini、Google AI Studio、开发者 API、社区 Demo 与第三方包装站的责任边界，再决定是否上传照片、品牌素材或客户文件。
 - [Nano Banana免费版vs付费版：配额、分辨率与功能差异完全对比（2026）](https://doc.gpt88.cc/docs/blog/nano-banana-free-vs-paid-comparison/): 对比 Google Nano Banana 免费版、Pro 与 Ultra 三档的每日配额、分辨率上限、水印政策与功能特性；解析配额用尽后的降级机制，以及 Gemini App 与 AI Studio API 两套独立配额体系的组合用法与成本测算。
 - [Nano Banana 免费使用完整指南：官方渠道、12 个平台与 $300 赠金攻略](https://doc.gpt88.cc/docs/blog/nano-banana-free/): 详解 Nano Banana 免费使用方法：官方 Gemini App、AI Studio、Vertex AI、Whisk、ImageFX 与第三方平台额度对比，$300 Google Cloud 赠金获取与使用、配额重置时间、中国用户访问方案与长期免费策略。
@@ -502,6 +503,7 @@
 - [火柴人动画 Agent 工作流：从选题、导演提案到人工审片](https://doc.gpt88.cc/docs/blog/stickman-video-director-ai-workflow/): 整理摸鱼局长转发的火柴人动画 Agent 与 CrazyKaomei 开源 Skill，拆解上游项目能做什么、视频生成如何衔接，以及哪些播放量和自动化主张尚未验证。
 - [淘宝百亿补贴数据分析助手 Agent：让自然语言查询先经过业务语义层](https://doc.gpt88.cc/docs/blog/taobao-subsidy-data-analysis-agent/): 根据大淘宝技术公开摘要整理淘宝百亿补贴数据分析助手的工程思路：在自然语言与 SQL 之间加入业务语义层，用多 Agent 编排、知识检索、血缘溯源和 Python 沙箱串联取数、分析与归因。
 - [观察性思维蒸馏的边界：怎样把重复判断提炼成 Skill，而不是索取隐藏思维链](https://doc.gpt88.cc/docs/blog/thinking-distillation-boundary/): 用 receipts、accepted diffs、corrections 和 validator，把可观察的专家修复方法提炼成候选 Skill，并用 holdout 证明它没有越界到 secret、私有 transcript 或 raw chain-of-thought。
+- [三个代码视频 Skill 怎么选：角色动画、动态设计与产品宣传片](https://doc.gpt88.cc/docs/blog/three-code-video-skills-selection-guide/): 整理雪踏乌云对 ClaudeAnimationBase、mg-styles-15 和 video-shotcraft 的实测筛选，并结合三个仓库当前 README，说明它们分别适合什么视频、需要哪些依赖，以及如何从第一个短片开始验证。
 - [Skill 触发规则与目录结构：把误触发和漏触发变成可测问题](https://doc.gpt88.cc/docs/blog/trigger-rules-and-structure/): 用触发测试矩阵、目录分层和一个 broad vs bounded 实验设计，给 Skill 划出可验证的边界，并理解 metadata、正文与资源何时加载。
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Uber 软件工厂实践：如何规模化管理 Agent、Token 成本与模型路由](https://doc.gpt88.cc/docs/blog/uber-software-factory-agent-cost-optimization/): 整理 Uber Engineering 软件工厂实践，解释 Agent 使用的四层模型、成本拆解、基准测试选型、Prompt Cache、MCP 工具按需加载、Code-Mode、上下文工程与会话成本可视化，并提炼可复用的 GPT88 Agent 优化方法。
@@ -992,4 +994,3 @@
 ## AUDIO 模型
 
 - [whisper-1](https://doc.gpt88.cc/models/whisper-1/): OpenAI whisper-1 · AUDIO 模型，Model ID: whisper-1，接口路径: /v1/audio/transcriptions。
-- [三个代码视频 Skill 怎么选：角色动画、动态设计与产品宣传片](https://doc.gpt88.cc/docs/blog/three-code-video-skills-selection-guide/): 整理雪踏乌云对 ClaudeAnimationBase、mg-styles-15 和 video-shotcraft 的实测筛选，并结合三个仓库当前 README，说明它们分别适合什么视频、需要哪些依赖，以及如何从第一个短片开始验证。
