@@ -175,6 +175,7 @@
 - [FDE 小团队如何从 0 到 1 做企业 AI 服务：获客、报价、交付与验收 SOP](https://doc.gpt88.cc/docs/blog/fde-enterprise-ai-service-delivery-sop/): 整理企业 AI 服务从线索获取、客户筛选、现场调研、需求边界、报价、SOW、开发交付、测试验收、回款到复盘的完整方法，帮助 FDE 和小团队把模糊的 Agent 想法变成可执行、可测试、可交付的业务结果。
 - [FDE 前线部署工程师指南：从解决客户问题到规模化交付](https://doc.gpt88.cc/docs/blog/fde-field-guide-customer-value-delivery/): 导读范冰的《前线部署工程师：人工智能时代的客户价值交付秘籍》，梳理 FDE 的角色边界、PSF 选题、最小可行部署、客户激活、续约扩张与交付复用，并附企业 AI 项目检查清单。
 - [百万级 FDE 项目交付什么：从范围约定、企业部署到验收交接](https://doc.gpt88.cc/docs/blog/fde-million-scale-project-delivery-boundaries/): 整理 Miles Ma 的集团办公 FDE 项目分享，拆解诊断、试点、工程化、验收四个阶段，说明源码交付、模型网关、资料检索、并发测试与业务价值应怎样分别核对。
+- [FDE 多模态数据清洗指南：把社交平台内容变成可信数据](https://doc.gpt88.cc/docs/blog/fde-multimodal-data-cleaning-guide/): 整理 Miles Ma 的 FDE 实战案例，拆解海量文字、图片、音频和视频数据从规范、原始内容、关系、归一化、冲突清洗到验收入库的八步方法。
 - [FDE 开源工具箱：用四个项目搭建企业 AI 交付体系](https://doc.gpt88.cc/docs/blog/fde-open-source-toolbox-overview/): 从 Applied AI Field Guide、FDEOps、FDEstack 和 OpenFDE 四个开源项目出发，整理企业 AI 项目从现场调研、价值判断、客户交付到知识记忆和 Agent 协作的完整地图。
 - [企业 AI Native 怎么落地：从 Palantir Ontology 到真实 FDE 交付](https://doc.gpt88.cc/docs/blog/fde-palantir-ontology-five-day-delivery/): 整理 Miles Ma 关于 AI Native、Palantir Ontology、五天 PoC 和 FDE 交付的长文，拆解对象、关系、动作、写回、验收与复用，区分真正的企业 AI 落地和换皮 Demo。
 - [零基础如何进入 FDE：从第一个真实交付到可复用的 AI 落地能力](https://doc.gpt88.cc/docs/blog/fde-zero-to-one-entry-guide/): 整理 Formulasearch 关于 FDE 入行路径与能力成长的实践分享，拆解实习入口、AI Coding 转向、真实项目、客户交付、能力评估、面试准备、职业边界与长期资产沉淀。
