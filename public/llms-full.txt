@@ -511,6 +511,7 @@
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Uber 软件工厂实践：如何规模化管理 Agent、Token 成本与模型路由](https://doc.gpt88.cc/docs/blog/uber-software-factory-agent-cost-optimization/): 整理 Uber Engineering 软件工厂实践，解释 Agent 使用的四层模型、成本拆解、基准测试选型、Prompt Cache、MCP 工具按需加载、Code-Mode、上下文工程与会话成本可视化，并提炼可复用的 GPT88 Agent 优化方法。
 - [Obsidian Vault 目录怎样才对 Agent 有用：把分类树写成放置 contract](https://doc.gpt88.cc/docs/blog/vault-directory-for-ai/): 用一个冻结的 synthetic vault 定义 folder roles、canonical paths、reject 边界和审计办法，让 Claude Code 或 Codex 不再跨整个个人 vault 猜文件该放哪。
+- [Vibe Coding 独立游戏实战（二）：Godot、Agent 协作与 AI 美术资产](https://doc.gpt88.cc/docs/blog/vibe-coding-indie-game-coding-art-workflow/): 整理 Nenly 关于《群侠传：幸存者》第二部分复盘，拆解 Godot 4 的文本化工作流、规划与执行模型分工、AGENTS.md 和 Skill 协作，以及 AI 美术资产的风格统一、分层和组件化。
 - [从零用 AI 做独立游戏：一套 Vibe Coding 开发流程复盘](https://doc.gpt88.cc/docs/blog/vibe-coding-indie-game-development-workflow-guide/): 整理 Nenly 对《群侠传：幸存者》开发过程的长文复盘，拆解需求澄清、对标调研、AI Coding、美术动画、音频、发布运营和玩家反馈中的可复用方法。
 - [Vibe Marketing：Solo Founder 如何成为营销工程师](https://doc.gpt88.cc/docs/blog/vibe-marketing-marketing-engineer-workflow/): 整理 Shann³ 关于 Marketing Engineer 的长文，拆解 Vibe Marketing、Agent Development Environment、营销知识层、数据层、工作流、审核循环与自治机器人，并给出可执行的第一条营销工作流。
 - [Wechatian：把微信变成 AI Agent 与 Obsidian 知识库的双向通道](https://doc.gpt88.cc/docs/blog/wechatian-obsidian-wechat-ai-agent-knowledge-base/): 总结 Wechatian 的核心思路、消息收发架构、隐私边界、文章剪藏与 Agent 通知场景，以及在 Obsidian 中安装和接入的方法。
