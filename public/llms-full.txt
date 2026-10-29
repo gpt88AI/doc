@@ -496,6 +496,7 @@
 - [Researcher_王十三的 X 长文链接归档：先确认来源，再补全文内容](https://doc.gpt88.cc/docs/blog/researchwang-x-article-2109812002076143824/): 记录 Researcher_王十三于 2026 年 10 月 13 日发布的 X 帖子、短链接解析结果与当前可核验边界，避免在原文不可访问时把猜测写成摘要。
 - [GPT-6 Astra 时代如何重写 Skills、AGENTS.md 与提示词：从堆指令到清晰边界](https://doc.gpt88.cc/docs/blog/rethinking-skills-prompts-gpt-6-astra/): 结合 OpenAI 官方文章，详细拆解 GPT-6 Astra 时代 Skills、AGENTS.md 和任务提示词的变化：为什么描述要更短、如何使用渐进式披露、哪些旧式流程应该删掉，以及如何在 GPT88 项目中建立更高效的 Agent 指令体系。
 - [Rslib 1.0：面向 JavaScript 库、组件库和 CLI 的构建工具](https://doc.gpt88.cc/docs/blog/rslib-1-library-build-tool/): 整理 Rslib 1.0 的公开摘要：基于 Rsbuild 统一 JavaScript 库的编译、类型生成和资源处理，覆盖工具库、组件库与 CLI，支持 ESM、CJS、模块保留和 Rstest、Rspress 组合。
+- [RuiC-PoseAtlas：一个零依赖、三语、多视角的人体姿态参考图库](https://doc.gpt88.cc/docs/blog/ruic-poseatlas-static-pose-reference-gallery/): 整理 Osub/RuiC-PoseAtlas 项目，介绍 288 组姿态、1,439 张多角度人台线稿、三语搜索筛选、键盘浏览、深链接、静态部署和图片版权边界。
 - [Codex 沙箱与审批怎么分层：最小权限实战教程](https://doc.gpt88.cc/docs/blog/sandbox-and-permissions/): 用一个 docs-link-fix 实验室，拆开“沙箱能做什么”和“何时停下来问”，学会按任务风险选择最小权限。
 - [Stable Diffusion Prompt 语法：把自然语言变成可测试的生成配方](https://doc.gpt88.cc/docs/blog/sd-prompt-syntax/): 用主体、场景、风格、约束和参数构造 Stable Diffusion Prompt；理解权重语法的工具差异，并用小实验而非玄学调参。
 - [Skill 的终极形态：从外部课本到 Agent 大脑](https://doc.gpt88.cc/docs/blog/skill-as-agent-brain/): 整理 Vinkyu 关于 Skill、个人知识库、环境适配与 Agent 大脑的思考，解释为什么同一个 Skill 在不同电脑上效果不同，以及如何构建可持续进化的个人 Agent 知识系统。
