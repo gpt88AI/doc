@@ -530,6 +530,7 @@
 - [小红书 × vivo 的 3D 图片技术：从相册生成到移动端消费](https://doc.gpt88.cc/docs/blog/xiaohongshu-vivo-3d-gaussian-splatting/): 整理小红书与 vivo 3D 图片实践的公开摘要：基于三维高斯泼溅打通相册生成、社交发布和移动端消费，并通过压缩、剪枝、分级细节和渲染优化控制体积与帧率。
 - [Codex 自动剪辑知识类视频：从 A/B-roll 到视觉编排表的完整工作流](https://doc.gpt88.cc/docs/blog/xilo-codex-video-editing-knowledge-workflow/): 整理 xilo 关于 Codex 自动剪辑知识类视频的长文，拆解 A-roll 与 B-roll、配音时间轴、视觉编排表、角色一致性、素材库、HyperFrames、Remotion 与样片验收，并补充 GPT88 API 在这套工作流中的接入方式。
 - [智谱清影 AI 视频：把一次生成变成可验收的镜头工作流](https://doc.gpt88.cc/docs/blog/zhipu-qingying-ai-video/): 围绕“智谱清影”这一历史搜索意图，用当前视频生成接口、结构化提示词和异步任务验收，做出可复跑的镜头流程。
+- [从 9,000 星动态看紫微斗数开源排盘引擎：Renhuai123/ziwei-doushu](https://doc.gpt88.cc/docs/blog/ziwei-doushu-open-source-charting-engine/): 整理王多鱼 AI 在 X 上分享的 9,000 星开源紫微斗数项目，拆解排盘引擎、确定性解读数据集、最小 Demo、测试体系与分层许可。
 
 ## 教程库
 
