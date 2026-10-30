@@ -131,6 +131,7 @@
 - [Claude Quickstarts：从官方示例学习 AI 应用的工程结构](https://doc.gpt88.cc/docs/blog/claude-quickstarts-developer-patterns/): 根据 Ren 对 anthropics/claude-quickstarts 的介绍，梳理客服、数据分析、浏览器与电脑操作、编码 Agent 等示例的学习价值，并说明如何用自己的模型和环境做小规模验证。
 - [Claude 订阅长期稳定使用指南：账户、额度与账单](https://doc.gpt88.cc/docs/blog/claude-subscription-stable-use-guide/): 围绕 Claude 个人订阅的套餐范围、使用限制、续订管理、额度规划与故障排查，整理一套可持续使用的实操指南，并区分 Claude 订阅和 API 计费。
 - [Cloudflare 从域名接入到 AI 后端：一个域名搭起网站、邮箱、存储与 Agent 工具链](https://doc.gpt88.cc/docs/blog/cloudflare-domain-to-ai-backend/): 以一个示例域名串起 Cloudflare 的 DNS、HTTPS、GitHub 网站部署、邮件转发、R2、AI 爬虫控制、Workers、Workers AI 与 cf CLI，给出个人站点从接入到维护的可执行路径。
+- [cn-math-taxonomy：把中小学知识点、先修关系和前置诊断连成一张图](https://doc.gpt88.cc/docs/blog/cn-math-taxonomy-adaptive-diagnosis/): 整理 cn-math-taxonomy 的知识图谱、题库和自适应前置诊断，介绍数学、英语、物理等学科的数据结构、使用方式、覆盖范围和教师审核边界。
 - [族徽生成器怎么选：AI 概念、可控徽章、纹章规则、幻想用途和家族证明](https://doc.gpt88.cc/docs/blog/coat-of-arms-generator/): 先判断你要做的是 AI 概念图、可控徽章、纹章规则图、幻想家族标志，还是需要真实家族证明，再决定使用哪类族徽生成器，并核对文件、商用、隐私与权利边界。
 - [精简 Codex 的 AGENTS.md 与 Skills：让规则只在需要时进入上下文](https://doc.gpt88.cc/docs/blog/codex-agents-md-skill-trigger-optimization/): 根据 goan999999 的帖子，整理项目指令与 Skill 触发规则的瘦身方法：先盘点重复和过宽规则，再用范围、路由与验收标准做小步验证。
 - [Codex 国内接入指南：三种配置路径、GPT88 API 与故障排查](https://doc.gpt88.cc/docs/blog/codex-china-access-gpt88-guide/): 整理 Codex 在国内使用时常见的三种接入路径，解释官方账号登录、GPT88 API Key、config.toml、Base URL 与桌面端工具之间的关系，并补充安全配置、最小请求验证、版本兼容和回滚方法。
