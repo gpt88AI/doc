@@ -53,6 +53,7 @@
 - [Agent Harness 的执行基础设施：任务契约、上下文地图、工具网关与持久状态](https://doc.gpt88.cc/docs/blog/agent-harness-contract-context-tools-state/): 深入整理 Harness Engineering 指南前半部分，说明如何把模糊请求变成任务契约，并用渐进式上下文、受控工具和 durable state 支撑长任务 Agent。
 - [让 Agent 真正完成任务：证据、对抗验证、失败恢复与运行回执](https://doc.gpt88.cc/docs/blog/agent-harness-verification-recovery-observability/): 整理 Harness Engineering 指南后半部分，建立从完成证据到失败分类、策略授权、可观测性、变更回执和系统度量的 Agent 可靠性闭环。
 - [Agent Memory 五层架构：让 Agent 真正记住并持续学习](https://doc.gpt88.cc/docs/blog/agent-memory-5-layer-architecture/): 整理《Agent Memory - The 5-Layer Playbook》的核心框架，解释 Working、Episodic、Semantic、Procedural 与 Forgetting 五层记忆如何协作，以及为什么记忆是 Agent 的工程瓶颈。
+- [Agent 记忆实现方案：从上下文窗口到 MemoryOS 的 8 条路线](https://doc.gpt88.cc/docs/blog/agent-memory-8-strategies-from-window-to-memoryos/): 根据白白说大模型的视频公开信息，并结合 MemoryOS 官方资料，整理 Agent 从窗口记忆到分层长期记忆的八种实现路线、选型边界和 GPT88 落地方法。
 - [Agent Memory 7 天落地路径：从单 Agent 到多 Agent 共享记忆](https://doc.gpt88.cc/docs/blog/agent-memory-build-path-and-multi-agent/): 整理《Agent Memory - The 5-Layer Playbook》的七天构建路线、生产决策框架和多 Agent 记忆边界，帮助团队从事件日志逐步走向共享账本。
 - [Agent Memory 实现：JSONL、SQLite、YAML 与完整执行循环](https://doc.gpt88.cc/docs/blog/agent-memory-implementation-patterns/): 从《Agent Memory - The 5-Layer Playbook》整理 Agent 记忆系统的最小实现模式，覆盖 Episodic JSONL、Semantic SQLite、Procedural YAML、配置文件与 Memory-Aware Agent Loop。
 - [Agent Memory 生产化：遗忘、分层存储与测试方法](https://doc.gpt88.cc/docs/blog/agent-memory-testing-and-production/): 整理《Agent Memory - The 5-Layer Playbook》的生产化注意事项，覆盖 memory tax、层级摘要、冷热存储、矛盾流水线、领域生命周期和六类测试。
