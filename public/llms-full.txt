@@ -511,6 +511,7 @@
 - [淘宝百亿补贴数据分析助手 Agent：让自然语言查询先经过业务语义层](https://doc.gpt88.cc/docs/blog/taobao-subsidy-data-analysis-agent/): 根据大淘宝技术公开摘要整理淘宝百亿补贴数据分析助手的工程思路：在自然语言与 SQL 之间加入业务语义层，用多 Agent 编排、知识检索、血缘溯源和 Python 沙箱串联取数、分析与归因。
 - [观察性思维蒸馏的边界：怎样把重复判断提炼成 Skill，而不是索取隐藏思维链](https://doc.gpt88.cc/docs/blog/thinking-distillation-boundary/): 用 receipts、accepted diffs、corrections 和 validator，把可观察的专家修复方法提炼成候选 Skill，并用 holdout 证明它没有越界到 secret、私有 transcript 或 raw chain-of-thought。
 - [三个代码视频 Skill 怎么选：角色动画、动态设计与产品宣传片](https://doc.gpt88.cc/docs/blog/three-code-video-skills-selection-guide/): 整理雪踏乌云对 ClaudeAnimationBase、mg-styles-15 和 video-shotcraft 的实测筛选，并结合三个仓库当前 README，说明它们分别适合什么视频、需要哪些依赖，以及如何从第一个短片开始验证。
+- [铜匠实验室：把高中物理、化学、生物、地理做成可离线运行的 3D 课件](https://doc.gpt88.cc/docs/blog/tongjiang-lab-interactive-3d-science-lessons/): 整理 smithjohn78390/tongjiang-lab，介绍 54 门高中科学 3D 互动课件、453 个教学步骤、单文件离线架构、教师引导流程、课程目录和 CC BY-NC 4.0 授权边界。
 - [Skill 触发规则与目录结构：把误触发和漏触发变成可测问题](https://doc.gpt88.cc/docs/blog/trigger-rules-and-structure/): 用触发测试矩阵、目录分层和一个 broad vs bounded 实验设计，给 Skill 划出可验证的边界，并理解 metadata、正文与资源何时加载。
 - [如何让 Gemini 不再使用 Nano Banana：真正能关闭的是什么](https://doc.gpt88.cc/docs/blog/turn-off-nano-banana-in-gemini/): 个人 Gemini 目前没有公开确认的 Nano Banana-only 全局关闭开关。先用新对话和纯文字请求排除会话路线，再分别检查 Activity、Workspace 管理策略或 API 模型 ID。
 - [Uber 软件工厂实践：如何规模化管理 Agent、Token 成本与模型路由](https://doc.gpt88.cc/docs/blog/uber-software-factory-agent-cost-optimization/): 整理 Uber Engineering 软件工厂实践，解释 Agent 使用的四层模型、成本拆解、基准测试选型、Prompt Cache、MCP 工具按需加载、Code-Mode、上下文工程与会话成本可视化，并提炼可复用的 GPT88 Agent 优化方法。
