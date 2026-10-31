@@ -1,0 +1,2539 @@
+{
+  "source": "https://subrouter.ai/api/marketplace/models?keyword=&category=&vendor=&sort=&period=&page=1&page_size=600",
+  "fetched_at_utc": "2026-05-09T00:55:00Z",
+  "note_zh": "此快照由 PM 在 2026-05-09 抓取并去重。原始 570 条为 vendor×model 报价，按 (canonical_name, category) 去重后得到 239 条 catalog；categories: chat=与 completion 合并需 human 决定；image/video/audio 较少；本文档站前端读取此 JSON 即可，不要在运行时直接打 subrouter.ai（无 CORS 头）。",
+  "total_records_fetched": 570,
+  "catalog_total": 239,
+  "categories_distribution": {
+    "chat": 208,
+    "image": 18,
+    "completion": 7,
+    "video": 4,
+    "audio": 1,
+    "embedding": 1
+  },
+  "catalog": [
+    {
+      "canonical_name": "claude-opus-4-6",
+      "display_name": "claude-opus-4-6",
+      "category": "chat",
+      "vendors_count": 38,
+      "upstream_samples": [
+        "claude-opus-4-6"
+      ],
+      "descriptions_sample": [
+        "AWS优质官转渠道",
+        "ClaudeMax订阅！1M上下文，真满血！高缓存。",
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！"
+      ]
+    },
+    {
+      "canonical_name": "claude-sonnet-4-6",
+      "display_name": "claude-sonnet-4-6",
+      "category": "chat",
+      "vendors_count": 38,
+      "upstream_samples": [
+        "claude-sonnet-4-6"
+      ],
+      "descriptions_sample": [
+        "AWS优质官转渠道",
+        "ClaudeMax订阅！1M上下文，真满血！高缓存。",
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.4",
+      "display_name": "gpt-5.4",
+      "category": "chat",
+      "vendors_count": 30,
+      "upstream_samples": [
+        "GPT-5.4",
+        "gpt-5.4"
+      ],
+      "descriptions_sample": [
+        "openAI官方高性能，永不掉线",
+        "plus号池，欢迎使用",
+        "官方出血号池/倍率0.2x"
+      ]
+    },
+    {
+      "canonical_name": "claude-opus-4-7",
+      "display_name": "claude-opus-4-7",
+      "category": "chat",
+      "vendors_count": 29,
+      "upstream_samples": [
+        "claude-opus-4-7"
+      ],
+      "descriptions_sample": [
+        "AWS渠道",
+        "ClaudeMax订阅！1M上下文，真满血！高缓存。",
+        "aws/vertex/anthropic 混合满血渠道"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.5",
+      "display_name": "gpt-5.5",
+      "category": "chat",
+      "vendors_count": 26,
+      "upstream_samples": [
+        "gpt-5.5"
+      ],
+      "descriptions_sample": [
+        "不降智，延迟低.plus号池子,支持codex调用技能生图。支持openclaw/爱马仕/AI代理使用，有缓存",
+        "官方出血号池/倍率0.3x",
+        "很多人想看你输 这就是你必须要赢的理由"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.3-codex",
+      "display_name": "gpt-5.3-codex",
+      "category": "chat",
+      "vendors_count": 25,
+      "upstream_samples": [
+        "gpt-5.3-codex"
+      ],
+      "descriptions_sample": [
+        "plus号池，欢迎使用",
+        "官方出血号池/倍率0.2x",
+        "满血gpt，绝非free账号降智版。支持接入codex，openclaw，opencode等"
+      ]
+    },
+    {
+      "canonical_name": "claude-haiku-4-5-20251001",
+      "display_name": "claude-haiku-4-5-20251001",
+      "category": "chat",
+      "vendors_count": 21,
+      "upstream_samples": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "descriptions_sample": [
+        "AWS优质官转渠道",
+        "claude haiku 4.5 Max 满血，极速响应快，稳定连接不掉线",
+        "官key 满血无限制调用"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.4-mini",
+      "display_name": "gpt-5.4-mini",
+      "category": "chat",
+      "vendors_count": 13,
+      "upstream_samples": [
+        "gpt-5.4-mini"
+      ],
+      "descriptions_sample": [
+        "Plus、Pro号池，欢迎使用",
+        "plus号池，欢迎使用",
+        "官方出血号池/倍率0.2x"
+      ]
+    },
+    {
+      "canonical_name": "claude-opus-4-6-thinking",
+      "display_name": "claude-opus-4-6-thinking",
+      "category": "chat",
+      "vendors_count": 11,
+      "upstream_samples": [
+        "claude-opus-4-6-thinking"
+      ],
+      "descriptions_sample": [
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！",
+        "gpt5.4转cc，可以在claude cli，claude desktop中使用",
+        "kiro 官方 claude-opus-4.6-thinking"
+      ]
+    },
+    {
+      "canonical_name": "claude-sonnet-4-5-20250929",
+      "display_name": "claude-sonnet-4-5-20250929",
+      "category": "chat",
+      "vendors_count": 8,
+      "upstream_samples": [
+        "claude-sonnet-4-5-20250929"
+      ],
+      "descriptions_sample": [
+        "无缓存"
+      ]
+    },
+    {
+      "canonical_name": "claude-opus-4-5-20251101",
+      "display_name": "claude-opus-4-5-20251101",
+      "category": "chat",
+      "vendors_count": 7,
+      "upstream_samples": [
+        "claude-opus-4-5-20251101"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-image-2",
+      "display_name": "gpt-image-2",
+      "category": "image",
+      "vendors_count": 7,
+      "upstream_samples": [
+        "gpt-image-2"
+      ],
+      "descriptions_sample": [
+        "image2，高速稳定",
+        "官方出血号池/倍率0.2x",
+        "请使用response接口"
+      ]
+    },
+    {
+      "canonical_name": "claude-sonnet-4-5-20250929-thinking",
+      "display_name": "claude-sonnet-4-5-20250929-thinking",
+      "category": "chat",
+      "vendors_count": 6,
+      "upstream_samples": [
+        "claude-sonnet-4-5-20250929-thinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-sonnet-4-6-thinking",
+      "display_name": "claude-sonnet-4-6-thinking",
+      "category": "chat",
+      "vendors_count": 6,
+      "upstream_samples": [
+        "claude-sonnet-4-6-thinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-flash-preview",
+      "display_name": "gemini-3-flash-preview",
+      "category": "chat",
+      "vendors_count": 6,
+      "upstream_samples": [
+        "gemini-3-flash-preview"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-pro-preview",
+      "display_name": "gemini-3-pro-preview",
+      "category": "chat",
+      "vendors_count": 6,
+      "upstream_samples": [
+        "gemini-3-pro-preview"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-pro-preview",
+      "display_name": "gemini-3.1-pro-preview",
+      "category": "chat",
+      "vendors_count": 6,
+      "upstream_samples": [
+        "gemini-3.1-pro-preview"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.2",
+      "display_name": "gpt-5.2",
+      "category": "chat",
+      "vendors_count": 6,
+      "upstream_samples": [
+        "gpt-5.2"
+      ],
+      "descriptions_sample": [
+        "价格见底了 PLUS+PRO号池",
+        "官方出血号池/倍率0.2x"
+      ]
+    },
+    {
+      "canonical_name": "deepseek-v4-flash",
+      "display_name": "deepseek-v4-flash",
+      "category": "chat",
+      "vendors_count": 5,
+      "upstream_samples": [
+        "deepseek-v4-flash"
+      ],
+      "descriptions_sample": [
+        "DeepSeekV4 国货之光！",
+        "deepseek 最新 V4 模型",
+        "无缓存"
+      ]
+    },
+    {
+      "canonical_name": "deepseek-v4-pro",
+      "display_name": "deepseek-v4-pro",
+      "category": "chat",
+      "vendors_count": 5,
+      "upstream_samples": [
+        "deepseek-v4-pro"
+      ],
+      "descriptions_sample": [
+        "DeepSeekV4 国货之光！",
+        "deepseek 最新 V4 模型",
+        "无缓存"
+      ]
+    },
+    {
+      "canonical_name": "claude-opus-4-5-20251101-thinking",
+      "display_name": "claude-opus-4-5-20251101-thinking",
+      "category": "chat",
+      "vendors_count": 4,
+      "upstream_samples": [
+        "claude-opus-4-5-20251101-thinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "glm-5.1",
+      "display_name": "glm-5.1",
+      "category": "chat",
+      "vendors_count": 4,
+      "upstream_samples": [
+        "GLM-5.1",
+        "glm-5.1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.4",
+      "display_name": "gpt-5.4",
+      "category": "completion",
+      "vendors_count": 4,
+      "upstream_samples": [
+        "gpt-5.4"
+      ],
+      "descriptions_sample": [
+        "Nova出品必属精品（欢迎价格战和缓存PK）稳定便宜",
+        "OpenAI主力模型gpt-5.4",
+        "纯CodexPro订阅池！满血！"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.5",
+      "display_name": "gpt-5.5",
+      "category": "completion",
+      "vendors_count": 4,
+      "upstream_samples": [
+        "gpt-5.5"
+      ],
+      "descriptions_sample": [
+        "Nova出品必属精品（欢迎价格战和缓存PK）稳定便宜",
+        "openAI新模型gpt-5.5",
+        "纯CodexPro订阅池！满血！"
+      ]
+    },
+    {
+      "canonical_name": "claude-haiku-4-5",
+      "display_name": "claude-haiku-4-5",
+      "category": "chat",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "claude-haiku-4-5"
+      ],
+      "descriptions_sample": [
+        "绝对高保真满血claude"
+      ]
+    },
+    {
+      "canonical_name": "claude-opus-4-7-thinking",
+      "display_name": "claude-opus-4-7-thinking",
+      "category": "chat",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "claude-opus-4-7-thinking"
+      ],
+      "descriptions_sample": [
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！",
+        "kiro 官方 claude-opus-4.7-thinking"
+      ]
+    },
+    {
+      "canonical_name": "claude-sonnet-4-20250514",
+      "display_name": "claude-sonnet-4-20250514",
+      "category": "chat",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "claude-sonnet-4-20250514"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-2.5-flash",
+      "display_name": "gemini-2.5-flash",
+      "category": "chat",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "gemini-2.5-flash"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "glm-5",
+      "display_name": "glm-5",
+      "category": "chat",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "GLM-5",
+        "glm-5"
+      ],
+      "descriptions_sample": [
+        "GLM-5 是 Z.AI 推出的一个 7440 亿参数的 MoE 模型（激活参数为 400 亿），具备 200K 上下文窗口和最高 128K 输出长度。它引入了 Slime 异步强化学习框架，并集成了 DeepSeek Sparse Attention，在降低部署成本的同时保持无损长文本性能。在 SWE-bench Verified 上取得了 77.8%，在 Terminal Bench 2.0 上取得了 56.2%，官方称其整体表现超过 Gemini 3.0 Pro。它在系统工程、长时程智能体任务、后端重构和深度调试方面表现突出，并且只需较少的人类干预。"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.2-codex",
+      "display_name": "gpt-5.2-codex",
+      "category": "chat",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "gpt-5.2-codex"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "kimi-k2.5",
+      "display_name": "kimi-k2.5",
+      "category": "chat",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "Kimi-K2.5",
+        "kimi-k2.5"
+      ],
+      "descriptions_sample": [
+        "Kimi K2.5 是 Moonshot AI 的原生多模态模型，具备领先水平的视觉编程能力，以及一种可自我驱动的 agent swarm（智能体群）范式。它基于 Kimi K2 构建，并在约 15T 的视觉与文本混合 token 上持续预训练，因此在通用推理、视觉编程和 agentic 工具调用方面表现强劲。"
+      ]
+    },
+    {
+      "canonical_name": "claude-opus-4-7",
+      "display_name": "claude-opus-4-7",
+      "category": "completion",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "claude-opus-4-7"
+      ],
+      "descriptions_sample": [
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！",
+        "claude opus 4.7 Max 满血，极速响应，稳定连接不掉线",
+        "kiro 官方 claude-opus-4.7"
+      ]
+    },
+    {
+      "canonical_name": "gemini-3-pro-image-preview",
+      "display_name": "gemini-3-pro-image-preview",
+      "category": "image",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "gemini-3-pro-image-preview"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-preview",
+      "display_name": "gemini-3.1-flash-image-preview",
+      "category": "image",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-preview"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-image-2-2k",
+      "display_name": "gpt-image-2-2k",
+      "category": "image",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "gpt-image-2",
+        "gpt-image-2-2k"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-image-2-4k",
+      "display_name": "gpt-image-2-4k",
+      "category": "image",
+      "vendors_count": 3,
+      "upstream_samples": [
+        "gpt-image-2",
+        "gpt-image-2-4k"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-opus-4-1",
+      "display_name": "claude-opus-4-1",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "claude-opus-4-1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-opus-4-20250514",
+      "display_name": "claude-opus-4-20250514",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "claude-opus-4-20250514"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-opus-4-6-agentic",
+      "display_name": "claude-opus-4-6-agentic",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "claude-opus-4-6-agentic"
+      ],
+      "descriptions_sample": [
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！"
+      ]
+    },
+    {
+      "canonical_name": "claude-opus-4-7-agentic",
+      "display_name": "claude-opus-4-7-agentic",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "claude-opus-4-7-agentic"
+      ],
+      "descriptions_sample": [
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！"
+      ]
+    },
+    {
+      "canonical_name": "claude-sonnet-4-6-agentic",
+      "display_name": "claude-sonnet-4-6-agentic",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "claude-sonnet-4-6-agentic"
+      ],
+      "descriptions_sample": [
+        "KIRO订阅反代，保真，可以调用工具包！经济实惠！"
+      ]
+    },
+    {
+      "canonical_name": "deepseek-v3.2",
+      "display_name": "DeepSeek-V3.2",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "DeepSeek-V3.2",
+        "deepseek-v3.2"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-2.5-pro",
+      "display_name": "gemini-2.5-pro",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "gemini-2.5-pro"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4o",
+      "display_name": "gpt-4o",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "gpt-4o"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.3-codex-spark",
+      "display_name": "gpt-5.3-codex-spark",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "gpt-5.3-codex-spark"
+      ],
+      "descriptions_sample": [
+        "官方出血号池/倍率0.2x"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.3-codex-xhigh",
+      "display_name": "gpt-5.3-codex-xhigh",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "gpt-5.3-codex-xhigh"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "minimax-m2.5",
+      "display_name": "MiniMax-M2.5",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "MiniMax-M2.5",
+        "minimax-m2.5"
+      ],
+      "descriptions_sample": [
+        "MiniMax M2.5 是一个拥有 2300 亿参数的混合专家模型（MoE，激活参数为 100 亿），在 SWE-Bench Verified 上取得了 80.2% 的成绩，相比 M2.1 在效率上提升了 37%。它支持 10 多种编程语言，并采用“规格编写（spec-writing）+ 架构规划”的方法。在多个评测中表现优异：在 BrowseComp 上达到 76.3%，在 Multi-SWE-Bench 上达到 51.3%。同时，它在多轮函数调用以及真实世界的智能体生产力任务中表现突出。"
+      ]
+    },
+    {
+      "canonical_name": "minimax-m2.7",
+      "display_name": "MiniMax-M2.7",
+      "category": "chat",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "MiniMax-M2.7",
+        "MiniMax/MiniMax-M2.7"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-opus-4-6",
+      "display_name": "claude-opus-4-6",
+      "category": "completion",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "claude-opus-4-6"
+      ],
+      "descriptions_sample": [
+        "kiro 官方 claude-opus-4.6",
+        "原力kiro正品满血模型！"
+      ]
+    },
+    {
+      "canonical_name": "claude-sonnet-4-6",
+      "display_name": "claude-sonnet-4-6",
+      "category": "completion",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "claude-sonnet-4-6"
+      ],
+      "descriptions_sample": [
+        "kiro 官方 claude-sonnet-4.6",
+        "原力kiro正品满血模型！"
+      ]
+    },
+    {
+      "canonical_name": "gpt-5.3-codex",
+      "display_name": "gpt-5.3-codex",
+      "category": "completion",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "gpt-5.3-codex"
+      ],
+      "descriptions_sample": [
+        "OpenAI",
+        "纯CodexPro订阅池！满血！"
+      ]
+    },
+    {
+      "canonical_name": "doubao-seedance-2.0",
+      "display_name": "Doubao-Seedance-2.0",
+      "category": "video",
+      "vendors_count": 2,
+      "upstream_samples": [
+        "doubao-seedance-2.0",
+        "ep-20260410051610-692jp"
+      ],
+      "descriptions_sample": [
+        "字节跳动火山引擎原厂出品，全网最具性价比的视频生成模型。采用 Seedance-2.0 旗舰架构，画质丝滑，声画同步。确保 99.9% 的请求成功率，是您商业剪辑、短视频出海、创意设计的首选稳定货源。",
+        "最长支持15秒"
+      ]
+    },
+    {
+      "canonical_name": "whisper-1",
+      "display_name": "whisper-1",
+      "category": "audio",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "whisper-1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-0pus-4-5-20251101",
+      "display_name": "claude-0pus-4-5-20251101",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "claude-0pus-4-5-20251101"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-3-5-haiku-20241022",
+      "display_name": "claude-3-5-haiku-20241022",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "claude-3-5-haiku-20241022"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-haiku-3-5",
+      "display_name": "claude-haiku-3-5",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "claude-haiku-3-5"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-haiku-4-5-20251001-thinking",
+      "display_name": "claude-haiku-4-5-20251001-thinking",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "claude-haiku-4-5-20251001-thinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-opus-4-1-20250805",
+      "display_name": "claude-opus-4-1-20250805",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "claude-opus-4-1-20250805"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claude-opus-4-6-20260205",
+      "display_name": "claude-opus-4-6-20260205",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "claude-opus-4-6-20260205"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "claudeopus4-6",
+      "display_name": "Claude opus 4-6",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "Claude opus 4-6"
+      ],
+      "descriptions_sample": [
+        "稳Max逆向"
+      ]
+    },
+    {
+      "canonical_name": "deepseek-r1",
+      "display_name": "deepseek-r1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "deepseek-r1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "deepseek-r1-0528",
+      "display_name": "deepseek-r1-0528",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "deepseek-r1-0528"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "deepseek-v3",
+      "display_name": "deepseek-v3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "deepseek-v3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "deepseek-v3-0324",
+      "display_name": "deepseek-v3-0324",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "deepseek-v3-0324"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "deepseek-v3.1",
+      "display_name": "deepseek-v3.1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "deepseek-v3.1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "deepseek-v4-pro-search",
+      "display_name": "deepseek-v4-pro-search",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "deepseek-v4-pro-search"
+      ],
+      "descriptions_sample": [
+        "deepseek 最新 V4 模型"
+      ]
+    },
+    {
+      "canonical_name": "doubao-seed-1-6-vision-250815",
+      "display_name": "doubao-seed-1-6-vision-250815",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seed-1-6-vision-250815"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "doubao-seed-2-0-pro-260215",
+      "display_name": "doubao-seed-2-0-pro-260215",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seed-2-0-pro-260215"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "doubao-seedance-1-0-pro-250528",
+      "display_name": "doubao-seedance-1-0-pro-250528",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seedance-1-0-pro-250528"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "doubao-seedance-1-5-pro-251215",
+      "display_name": "doubao-seedance-1-5-pro-251215",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seedance-1-5-pro-251215"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "doubao-seedream-4-0-250828",
+      "display_name": "doubao-seedream-4-0-250828",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seedream-4-0-250828"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "ernie-3.5-8k",
+      "display_name": "ERNIE-3.5-8K",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "ERNIE-3.5-8K"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "ernie-4.0-8k",
+      "display_name": "ERNIE-4.0-8K",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "ERNIE-4.0-8K"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "ernie-speed-128k",
+      "display_name": "ERNIE-Speed-128K",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "ERNIE-Speed-128K"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "ernie-speed-8k",
+      "display_name": "ERNIE-Speed-8K",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "ERNIE-Speed-8K"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "ernie-tiny-8k",
+      "display_name": "ERNIE-Tiny-8K",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "ERNIE-Tiny-8K"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-2.5-flash-lite",
+      "display_name": "gemini-2.5-flash-lite",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-2.5-flash-lite"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-2.5-pro-nothinking",
+      "display_name": "gemini-2.5-pro-nothinking",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-2.5-pro-nothinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-2.5-pro-thinking",
+      "display_name": "gemini-2.5-pro-thinking",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-2.5-pro-thinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-flash",
+      "display_name": "gemini-3-flash",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3-flash"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-flash-preview-nothinking",
+      "display_name": "gemini-3-flash-preview-nothinking",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3-flash-preview-nothinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-flash-preview-thinking",
+      "display_name": "gemini-3-flash-preview-thinking",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3-flash-preview-thinking"
+      ],
+      "descriptions_sample": [
+        "vertex渠道"
+      ]
+    },
+    {
+      "canonical_name": "gemini-3-pro",
+      "display_name": "gemini-3-pro",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3-pro"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-pro-high",
+      "display_name": "gemini-3-pro-high",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3-pro-high"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-pro-preview-thinking",
+      "display_name": "gemini-3-pro-preview-thinking",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3-pro-preview-thinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image",
+      "display_name": "gemini-3.1-flash-image",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-16x9",
+      "display_name": "gemini-3.1-flash-image-16x9",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-16x9"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-21x9",
+      "display_name": "gemini-3.1-flash-image-21x9",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-21x9"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k",
+      "display_name": "gemini-3.1-flash-image-2k",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-16x9",
+      "display_name": "gemini-3.1-flash-image-2k-16x9",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-16x9"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-21x9",
+      "display_name": "gemini-3.1-flash-image-2k-21x9",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-21x9"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-2x3",
+      "display_name": "gemini-3.1-flash-image-2k-2x3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-2x3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-3x2",
+      "display_name": "gemini-3.1-flash-image-2k-3x2",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-3x2"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-3x4",
+      "display_name": "gemini-3.1-flash-image-2k-3x4",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-3x4"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-4x3",
+      "display_name": "gemini-3.1-flash-image-2k-4x3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-4x3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-4x5",
+      "display_name": "gemini-3.1-flash-image-2k-4x5",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-4x5"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-5x4",
+      "display_name": "gemini-3.1-flash-image-2k-5x4",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-5x4"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2k-9x16",
+      "display_name": "gemini-3.1-flash-image-2k-9x16",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2k-9x16"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-2x3",
+      "display_name": "gemini-3.1-flash-image-2x3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-2x3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-3x2",
+      "display_name": "gemini-3.1-flash-image-3x2",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-3x2"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-3x4",
+      "display_name": "gemini-3.1-flash-image-3x4",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-3x4"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k",
+      "display_name": "gemini-3.1-flash-image-4k",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-16x9",
+      "display_name": "gemini-3.1-flash-image-4k-16x9",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-16x9"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-21x9",
+      "display_name": "gemini-3.1-flash-image-4k-21x9",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-21x9"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-2x3",
+      "display_name": "gemini-3.1-flash-image-4k-2x3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-2x3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-3x2",
+      "display_name": "gemini-3.1-flash-image-4k-3x2",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-3x2"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-3x4",
+      "display_name": "gemini-3.1-flash-image-4k-3x4",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-3x4"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-4x3",
+      "display_name": "gemini-3.1-flash-image-4k-4x3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-4x3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-4x5",
+      "display_name": "gemini-3.1-flash-image-4k-4x5",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-4x5"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-5x4",
+      "display_name": "gemini-3.1-flash-image-4k-5x4",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-5x4"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4k-9x16",
+      "display_name": "gemini-3.1-flash-image-4k-9x16",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4k-9x16"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4x3",
+      "display_name": "gemini-3.1-flash-image-4x3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4x3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-4x5",
+      "display_name": "gemini-3.1-flash-image-4x5",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-4x5"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-5x4",
+      "display_name": "gemini-3.1-flash-image-5x4",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-5x4"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-flash-image-9x16",
+      "display_name": "gemini-3.1-flash-image-9x16",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-flash-image-9x16"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3.1-pro",
+      "display_name": "gemini-3.1-pro",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3.1-pro"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-flash-latest",
+      "display_name": "gemini-flash-latest",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-flash-latest"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemma-3-12b-it",
+      "display_name": "gemma-3-12b-it",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemma-3-12b-it"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemma-3-27b-it",
+      "display_name": "gemma-3-27b-it",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemma-3-27b-it"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemma-3-4b-it",
+      "display_name": "gemma-3-4b-it",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemma-3-4b-it"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemma-4-31b-it",
+      "display_name": "gemma-4-31b-it",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemma-4-31b-it"
+      ],
+      "descriptions_sample": [
+        "Gemma 4 31B IT 是 Google 推出的一个 310 亿参数的稠密多模态模型，具备 256K 上下文窗口。它提供原生 Thinking Mode，用于更高级的推理。模型支持文本和图像输入，具备较强的工具使用能力，并支持 140 多种语言。"
+      ]
+    },
+    {
+      "canonical_name": "glm-4-flash",
+      "display_name": "GLM-4-Flash",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "GLM-4-Flash"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "glm-4.7",
+      "display_name": "GLM-4.7",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "GLM-4.7"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "glm-5-turbo",
+      "display_name": "GLM-5-Turbo",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "GLM-5-Turbo"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-3.5-turbo",
+      "display_name": "gpt-3.5-turbo",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-3.5-turbo"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4",
+      "display_name": "gpt-4",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4-0613",
+      "display_name": "gpt-4-0613",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4-0613"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4-turbo",
+      "display_name": "gpt-4-turbo",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4-turbo"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4-turbo-2024-04-09",
+      "display_name": "gpt-4-turbo-2024-04-09",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4-turbo-2024-04-09"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4.1",
+      "display_name": "gpt-4.1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4.1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4.1-2025-04-14",
+      "display_name": "gpt-4.1-2025-04-14",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4.1-2025-04-14"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4.1-mini",
+      "display_name": "gpt-4.1-mini",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4.1-mini"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4.1-mini-2025-04-14",
+      "display_name": "gpt-4.1-mini-2025-04-14",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4.1-mini-2025-04-14"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4.1-nano",
+      "display_name": "gpt-4.1-nano",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4.1-nano"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4.1-nano-2025-04-14",
+      "display_name": "gpt-4.1-nano-2025-04-14",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4.1-nano-2025-04-14"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4o-mini",
+      "display_name": "gpt-4o-mini",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4o-mini"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4o-mini-2024-07-18",
+      "display_name": "gpt-4o-mini-2024-07-18",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4o-mini-2024-07-18"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4o-mini-tts",
+      "display_name": "gpt-4o-mini-tts",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4o-mini-tts"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4o-search-preview",
+      "display_name": "gpt-4o-search-preview",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4o-search-preview"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-4o-transcribe",
+      "display_name": "gpt-4o-transcribe",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-4o-transcribe"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5",
+      "display_name": "gpt-5",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5-chat",
+      "display_name": "gpt-5-chat",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5-chat"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5-codex",
+      "display_name": "gpt-5-codex",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5-codex"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5-codex-mini",
+      "display_name": "gpt-5-codex-mini",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5-codex-mini"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5-mini",
+      "display_name": "gpt-5-mini",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5-mini"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5-nano",
+      "display_name": "gpt-5-nano",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5-nano"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1",
+      "display_name": "gpt-5.1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-2025-11-13",
+      "display_name": "gpt-5.1-2025-11-13",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-2025-11-13"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-chat",
+      "display_name": "gpt-5.1-chat",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-chat"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-chat-latest",
+      "display_name": "gpt-5.1-chat-latest",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-chat-latest"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-codex",
+      "display_name": "gpt-5.1-codex",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-codex"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-codex-max",
+      "display_name": "gpt-5.1-codex-max",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-codex-max"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-codex-max-xhigh",
+      "display_name": "gpt-5.1-codex-max-xhigh",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-codex-max-xhigh"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-codex-mini",
+      "display_name": "gpt-5.1-codex-mini",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-codex-mini"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.1-high",
+      "display_name": "gpt-5.1-high",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.1-high"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.2-2025-12-11",
+      "display_name": "gpt-5.2-2025-12-11",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.2-2025-12-11"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.2-chat",
+      "display_name": "gpt-5.2-chat",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.2-chat"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.2-chat-latest",
+      "display_name": "gpt-5.2-chat-latest",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.2-chat-latest"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.2-codex-xhigh",
+      "display_name": "gpt-5.2-codex-xhigh",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.2-codex-xhigh"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.2-xhigh",
+      "display_name": "gpt-5.2-xhigh",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.2-xhigh"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.3-chat",
+      "display_name": "gpt-5.3-chat",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.3-chat"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.3-chat-latest",
+      "display_name": "gpt-5.3-chat-latest",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.3-chat-latest"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.3-codex-high",
+      "display_name": "gpt-5.3-codex-high",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.3-codex-high"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.4-2026-03-05",
+      "display_name": "gpt-5.4-2026-03-05",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.4-2026-03-05"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.4-pro",
+      "display_name": "gpt-5.4-pro",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.4-pro"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-5.4-xhigh",
+      "display_name": "gpt-5.4-xhigh",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-5.4-xhigh"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-oss-120b",
+      "display_name": "gpt-oss-120b",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-oss-120b"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-oss-120b-turbo",
+      "display_name": "gpt-oss-120b-turbo",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-oss-120b-turbo"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-oss-20b",
+      "display_name": "gpt-oss-20b",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-oss-20b"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gpt-oss-safeguard-20b",
+      "display_name": "gpt-oss-safeguard-20b",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-oss-safeguard-20b"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4-0709",
+      "display_name": "grok-4-0709",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4-0709"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4-1-fast-non-reasoning",
+      "display_name": "grok-4-1-fast-non-reasoning",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4-1-fast-non-reasoning"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4-1-fast-reasoning",
+      "display_name": "grok-4-1-fast-reasoning",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4-1-fast-reasoning"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4-fast-non-reasoning",
+      "display_name": "grok-4-fast-non-reasoning",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4-fast-non-reasoning"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4-fast-reasoning",
+      "display_name": "grok-4-fast-reasoning",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4-fast-reasoning"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4.20-beta-0309-non-reasoning",
+      "display_name": "grok-4.20-beta-0309-non-reasoning",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4.20-beta-0309-non-reasoning"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4.20-beta-0309-reasoning",
+      "display_name": "grok-4.20-beta-0309-reasoning",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4.20-beta-0309-reasoning"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4.20-multi-agent-beta-0309",
+      "display_name": "grok-4.20-multi-agent-beta-0309",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4.20-multi-agent-beta-0309"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4.3",
+      "display_name": "grok-4.3",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4.3"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-code-fast-1",
+      "display_name": "grok-code-fast-1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-code-fast-1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-a13b",
+      "display_name": "hunyuan-a13b",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-a13b"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-code",
+      "display_name": "hunyuan-code",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-code"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-functioncall",
+      "display_name": "hunyuan-functioncall",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-functioncall"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-large",
+      "display_name": "hunyuan-large",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-large"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-large-longcontext",
+      "display_name": "hunyuan-large-longcontext",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-large-longcontext"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-large-role",
+      "display_name": "hunyuan-large-role",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-large-role"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-lite",
+      "display_name": "hunyuan-lite",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-lite"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-pro",
+      "display_name": "hunyuan-pro",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-pro"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-role",
+      "display_name": "hunyuan-role",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-role"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-standard",
+      "display_name": "hunyuan-standard",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-standard"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-standard-256k",
+      "display_name": "hunyuan-standard-256K",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-standard-256K"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-t1-20250403",
+      "display_name": "hunyuan-t1-20250403",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-t1-20250403"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-t1-vision",
+      "display_name": "hunyuan-t1-vision",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-t1-vision"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-turbo",
+      "display_name": "hunyuan-turbo",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-turbo"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-turbos-vision",
+      "display_name": "hunyuan-turbos-vision",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-turbos-vision"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "hunyuan-vision",
+      "display_name": "hunyuan-vision",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "hunyuan-vision"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "kimi-k2",
+      "display_name": "kimi-k2",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "kimi-k2"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "kimi-k2-0711-preview",
+      "display_name": "kimi-k2-0711-preview",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "kimi-k2-0711-preview"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "kimi-k2-instruct",
+      "display_name": "kimi-k2-instruct",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "kimi-k2-instruct"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "kimi-k2-thinking",
+      "display_name": "kimi-k2-thinking",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "kimi-k2-thinking"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "kimi-k2.6",
+      "display_name": "kimi-k2.6",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "kimi-k2.6"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "minimax-m2",
+      "display_name": "minimax-m2",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "minimax-m2"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "minimax-m2.7-highspeed",
+      "display_name": "MiniMax-M2.7-highspeed",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "MiniMax-M2.7-highspeed"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "mistral-large-latest",
+      "display_name": "mistral-large-latest",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "mistral-large-latest"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "mistral-small-latest",
+      "display_name": "mistral-small-latest",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "mistral-small-latest"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "o1-mini",
+      "display_name": "o1-mini",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "o1-mini"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "o1-mini-2024-09-12",
+      "display_name": "o1-mini-2024-09-12",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "o1-mini-2024-09-12"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "o3-mini",
+      "display_name": "o3-mini",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "o3-mini"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen-max",
+      "display_name": "qwen-max",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen-max"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen-plus",
+      "display_name": "qwen-plus",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen-plus"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen-turbo",
+      "display_name": "qwen-turbo",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen-turbo"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen3-235b-a22b",
+      "display_name": "qwen3-235b-a22b",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen3-235b-a22b"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen3-max",
+      "display_name": "qwen3-max",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen3-max"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen3.5-9b",
+      "display_name": "qwen3.5-9b",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen3.5-9b"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen3.5-plus",
+      "display_name": "Qwen3.5-Plus",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "Qwen3.5-Plus"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "qwen3.6-27b",
+      "display_name": "qwen3.6-27b",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen3.6-27b"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "sparkdesk-v1.1",
+      "display_name": "SparkDesk-v1.1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "SparkDesk-v1.1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "sparkdesk-v2.1",
+      "display_name": "SparkDesk-v2.1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "SparkDesk-v2.1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "sparkdesk-v3.1",
+      "display_name": "SparkDesk-v3.1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "SparkDesk-v3.1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "sparkdesk-v3.5",
+      "display_name": "SparkDesk-v3.5",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "SparkDesk-v3.5"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "text-embedding-v1",
+      "display_name": "text-embedding-v1",
+      "category": "chat",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "text-embedding-v1"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "deepseek-v4-pro-search",
+      "display_name": "deepseek-v4-pro-search",
+      "category": "completion",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "deepseek-v4-pro-search"
+      ],
+      "descriptions_sample": [
+        "DeepSeekV4 国货之光！带搜索功能！"
+      ]
+    },
+    {
+      "canonical_name": "text-embedding-3-small",
+      "display_name": "text-embedding-3-small",
+      "category": "embedding",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "text-embedding-3-small"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "doubao-seedream-4-5-251128",
+      "display_name": "doubao-seedream-4-5-251128",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seedream-4-5-251128"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-2.5-flash-image",
+      "display_name": "gemini-2.5-flash-image",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-2.5-flash-image"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "gemini-3-flash-image-preview",
+      "display_name": "gemini-3-flash-image-preview",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "[Special]gemini-3-flash-image-preview"
+      ],
+      "descriptions_sample": [
+        "反重力渠道"
+      ]
+    },
+    {
+      "canonical_name": "google-image-4",
+      "display_name": "google-image-4",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "imagen-4.0-apimart"
+      ],
+      "descriptions_sample": [
+        "Google Imagen 4.0 提供尖端的 AI 图像生成能力。使用 Google 最新一代技术，从文本提示创建逼真和艺术风格的图像。"
+      ]
+    },
+    {
+      "canonical_name": "gpt-image-2-1k",
+      "display_name": "gpt-image-2-1k",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gpt-image-2"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4.1-image",
+      "display_name": "grok-4.1-image",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4.1-image"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "grok-4.2-image",
+      "display_name": "grok-4.2-image",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "grok-4.2-image"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "imagen-3.0-generate-002",
+      "display_name": "imagen-3.0-generate-002",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "imagen-3.0-generate-002"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "nanobanana2",
+      "display_name": "NanoBanana2",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "gemini-3-pro-image-preview"
+      ],
+      "descriptions_sample": [
+        "Nano Banana 2 API基于Google的Gemini 3 Pro Image Preview - 最先进的AI图像生成模型,革命性多步骤工作流程，内置错误纠正、原生4K输出和340%更快处理。体验专业级质量和精度的AI图像生成未来。"
+      ]
+    },
+    {
+      "canonical_name": "qwen-image-max",
+      "display_name": "qwen-image-max",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "qwen-image-max"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "wan2.6-t2i",
+      "display_name": "wan2.6-t2i",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "wan2.6-t2i"
+      ],
+      "descriptions_sample": []
+    },
+    {
+      "canonical_name": "wan2.7-image",
+      "display_name": "wan2.7-image",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "wan2.7-image"
+      ],
+      "descriptions_sample": [
+        "wan2.7 generate image 是阿里巴巴推出的 wan 系列旗舰文生图模型，具备卓越的图像质量和丰富的创作能力。支持文生图、图像编辑、多图参考、组图生成等多种模式，满足专业创作者的全场景需求。"
+      ]
+    },
+    {
+      "canonical_name": "wan2.7-image-pro",
+      "display_name": "wan2.7-image-pro",
+      "category": "image",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "wan2.7-image-pro"
+      ],
+      "descriptions_sample": [
+        "wan2.7 generate image 是阿里巴巴推出的 wan 系列旗舰文生图模型，具备卓越的图像质量和丰富的创作能力。支持文生图、图像编辑、多图参考、组图生成等多种模式，满足专业创作者的全场景需求。"
+      ]
+    },
+    {
+      "canonical_name": "doubao-seedance-2.0-face",
+      "display_name": "doubao-seedance-2.0-face",
+      "category": "video",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seedance-2.0-face"
+      ],
+      "descriptions_sample": [
+        "最长支持15秒"
+      ]
+    },
+    {
+      "canonical_name": "doubao-seedance-2.0-fast",
+      "display_name": "doubao-seedance-2.0-fast",
+      "category": "video",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seedance-2.0-fast"
+      ],
+      "descriptions_sample": [
+        "最长支持15秒"
+      ]
+    },
+    {
+      "canonical_name": "doubao-seedance-2.0-fast-face",
+      "display_name": "doubao-seedance-2.0-fast-face",
+      "category": "video",
+      "vendors_count": 1,
+      "upstream_samples": [
+        "doubao-seedance-2.0-fast-face"
+      ],
+      "descriptions_sample": [
+        "最长支持15秒"
+      ]
+    }
+  ]
+}
