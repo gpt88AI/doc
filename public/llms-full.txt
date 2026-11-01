@@ -492,6 +492,7 @@
 - [Pi Coding Harness 实践：用 AGENTS.md、Skills 与 Packages 重建可控的编程 Agent](https://doc.gpt88.cc/docs/blog/pi-coding-harness-efficiency-guide/): 整理 Chasen 关于从 Claude Code 转向 Pi Coding Agent 的实践，解释 Coding Harness 的三层结构、按需加载 Skills、子 Agent 并行、上下文管理、验证闭环与权限安全。
 - [Pi Agent 多智能体实战：用 pi-herdr-agents 搭建可监督的 AI 团队](https://doc.gpt88.cc/docs/blog/pi-herdr-agents-multi-agent-workflow/): 整理畅的科技工坊关于 Pi Agent、pi-herdr-agents、subagent 和 workflow 工作流的视频，并结合公开 GitHub 仓库核对安装、角色、并行执行、Herdr 面板、Git worktree 与审查边界，给出可复用的多智能体工程方法。
 - [流水线型 Skill 设计：用 stage contract 和 receipt 让失败可恢复，而不是把步骤塞进巨大 prompt](https://doc.gpt88.cc/docs/blog/pipeline-skill-design/): 用一个 3 文档迁移 Showcase 学会 stage contract、receipt、checkpoint、resume、invalidation 和 idempotency 的最小骨架。
+- [PixelFX：把像素风游戏特效做成可运行代码和精灵图](https://doc.gpt88.cc/docs/blog/pixelfx-code-driven-pixel-art-vfx-library/): 整理 TaoBuilds 分享的 PixelFX 项目，介绍代码驱动的像素风 VFX、实时预览与调色、游戏引擎接入、精灵图导出、角色动作编排和 MIT 许可边界。
 - [Plan、Auto 与人工审批边界：按风险放权，别按信任放权](https://doc.gpt88.cc/docs/blog/plan-auto-approval-boundary/): 用只读计划、普通自动执行、需人工批准三档风险边界，决定 coding agent 哪些动作能自动跑，并在 Claude Code 与 Codex 里各自选对权限原语。
 - [产品项目初始化 Prompt：让 Agent 参与从市场分析到版本复盘的全流程](https://doc.gpt88.cc/docs/blog/product-project-agent-workspace-init/): 整理一套适用于 Codex、Claude Code 和其他 Coding Agent 的产品项目初始化方法：用编号目录、唯一事实源、需求池、版本门槛和评审记录，把一次性 Prompt 变成可持续协作的产品工作空间。
 - [AI 编程项目的开工与验收清单：把散文变成一道确定性闸门](https://doc.gpt88.cc/docs/blog/project-checklist/): 用六格开工清单，把仓库、运行、禁区、密钥、验收、回滚写清楚，并用一段脚本校验成退出码。
