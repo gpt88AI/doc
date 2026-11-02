@@ -76,6 +76,7 @@
 - [一张图看懂 AI 产业：从应用、模型到算力、能源、资本与商业](https://doc.gpt88.cc/docs/blog/ai-industry-six-layer-map/): 整理木子不写代码 65 分钟视频的六层 AI 产业地图：应用如何连接模型，训练与推理如何消耗算力，芯片和数据中心为何继续向能源与资本延伸，以及最后如何回到客户价值。
 - [推理芯片之战：Groq、Cerebras 与 OpenAI 三条路线，到底在比什么？](https://doc.gpt88.cc/docs/blog/ai-inference-chip-war-groq-cerebras-openai/): 整理硅谷101 E251 对 Groq、Cerebras、OpenAI 自研推理芯片与 Bill Dally 设计哲学的讨论，解释为什么推理更看带宽、SRAM 与 HBM 如何取舍，以及芯片、模型和系统如何共同决定速度与能耗。
 - [让 AI 维护知识库而不直接改库：把合并、过期和孤立笔记变成审批队列](https://doc.gpt88.cc/docs/blog/ai-maintains-knowledge-base/): 用 Obsidian 的 Search、properties、backlinks 和 links 收集信号，让 AI 只生成带证据的维护提案，等人批准后再进入后续应用流程。
+- [21 个题材的 AI 漫剧 Skill：一句点子如何拆成五阶段制作文档](https://doc.gpt88.cc/docs/blog/ai-manju-skills-21-genre-production-workflow/): 整理 zhanghao123vip/ai-manju-skills，拆解 21 个题材模板的五阶段产出、资产编号与一致性锚点、分镜和视频提示词结构、连续性检查与发布包，并说明实测状态和合规边界。
 - [从真实使用感受看模型选择：速度、产出与套餐风险](https://doc.gpt88.cc/docs/blog/ai-models-real-world-experience-selection-2026-10/): 基于 ZinkLu 对 GPT、GLM 5.3、Kimi K3、Qwen 3.8 Max、MiniMax M3.1-Flash、DeepSeek Flash 与 Claude 的个人体验，梳理模型选择维度、适用任务和短期试用方法。
 - [AI Native SDLC 深度解读：从 Vibe Coding 到 Agentic Engineering](https://doc.gpt88.cc/docs/blog/ai-native-sdlc-four-reports/): 基于 Google、OpenAI、Anthropic 与 LangChain 的行业材料，系统拆解 AI 原生软件开发生命周期、上下文工程、Harness、Evals 与企业落地路径。
 - [人像提示词别靠玄学：用参考图、视线和姿态写出可控画面](https://doc.gpt88.cc/docs/blog/ai-portrait-reference-prompt-workflow/): 根据 Alex · Selin 的 X 长文，整理一套人像生图工作流：先准备正面参考图，再分别控制表情、视线、姿态、手部和环境，用最少的词迭代出有情绪的画面。
