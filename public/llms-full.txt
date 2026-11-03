@@ -520,6 +520,7 @@
 - [Story Studio 故事工坊：把历史人物短视频拆成可审核的 AI 制作流水线](https://doc.gpt88.cc/docs/blog/story-studio-ai-short-video-agent-skill-guide/): 整理夏木 GROW 对 Story Studio 开源 Skill 的介绍，并核对项目 README：从选题与口播稿、配音和本地转录，到时间分镜、生图和剪映草稿，梳理适用场景、成本、事实核查与素材授权边界。
 - [超级 Agent 设计：从会话隔离到常驻多任务系统](https://doc.gpt88.cc/docs/blog/super-agent-design-router-worker-watchdog/): 整理 DeepSeek Harness 的《Exploring Super-agent Design》，拆解 Router/Worker 两级架构、事件触发与订阅、全双工交互、计算与状态分离、Watchdog，以及消融实验和四个开放问题。
 - [淘宝百亿补贴数据分析助手 Agent：让自然语言查询先经过业务语义层](https://doc.gpt88.cc/docs/blog/taobao-subsidy-data-analysis-agent/): 根据大淘宝技术公开摘要整理淘宝百亿补贴数据分析助手的工程思路：在自然语言与 SQL 之间加入业务语义层，用多 Agent 编排、知识检索、血缘溯源和 Python 沙箱串联取数、分析与归因。
+- [10 个 AI 教育与交互学习项目：从虚拟实验到可视化教材](https://doc.gpt88.cc/docs/blog/ten-ai-education-projects-interactive-learning-2026-11/): 整理洛克船长分享的 10 个 AI 教育和交互学习项目，覆盖中小学实验、GCSE 科学课程、AI 可视化课件与词汇学习，并标注链接、开源状态和数据口径边界。
 - [观察性思维蒸馏的边界：怎样把重复判断提炼成 Skill，而不是索取隐藏思维链](https://doc.gpt88.cc/docs/blog/thinking-distillation-boundary/): 用 receipts、accepted diffs、corrections 和 validator，把可观察的专家修复方法提炼成候选 Skill，并用 holdout 证明它没有越界到 secret、私有 transcript 或 raw chain-of-thought。
 - [三个代码视频 Skill 怎么选：角色动画、动态设计与产品宣传片](https://doc.gpt88.cc/docs/blog/three-code-video-skills-selection-guide/): 整理雪踏乌云对 ClaudeAnimationBase、mg-styles-15 和 video-shotcraft 的实测筛选，并结合三个仓库当前 README，说明它们分别适合什么视频、需要哪些依赖，以及如何从第一个短片开始验证。
 - [铜匠实验室：把高中物理、化学、生物、地理做成可离线运行的 3D 课件](https://doc.gpt88.cc/docs/blog/tongjiang-lab-interactive-3d-science-lessons/): 整理 smithjohn78390/tongjiang-lab，介绍 54 门高中科学 3D 互动课件、453 个教学步骤、单文件离线架构、教师引导流程、课程目录和 CC BY-NC 4.0 授权边界。
