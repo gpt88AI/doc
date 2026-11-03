@@ -542,6 +542,7 @@
 - [为什么 Agent 要把 Skill 和 Tool 分成两个能力层？](https://doc.gpt88.cc/docs/blog/why-agent-skills-and-tools-should-be-separated/): 从 DeepSeek Harness 的插件化设计出发，解释 Skill 与 Tool 的职责边界、Agent Loop 中的协作方式，以及它们在 RAG、OTC 撮合和金融级 Agent 系统中的实践价值。
 - [为什么 reserve_match 不能只靠 LLM 决定是否调用？](https://doc.gpt88.cc/docs/blog/why-reserve-match-cannot-be-llm-only/): 以 OTC 撮合中的 reserve_match 锁定交易 Tool 为例，解释 LLM 意图判断与交易授权的区别，以及状态机、规则引擎、实时事实、并发控制、幂等和 Human-in-loop 如何共同守住副作用边界。
 - [为什么 Session 不应该等同于 Memory？](https://doc.gpt88.cc/docs/blog/why-session-is-not-memory/): 从 Agent Harness、RAG 和 OTC 交易系统出发，解释 Session、Working Memory、Episodic Memory、Semantic Memory、Compliance Memory 与订单事实的边界，以及如何设计可恢复、可审计的 Agent 上下文系统。
+- [下班后的 WorkBuddy：把 100 个生活杂事变成可检查的 Agent 工作流](https://doc.gpt88.cc/docs/blog/workbuddy-after-hours-100-life-use-cases/): 整理萝卜哥关于 WorkBuddy 的 100 个生活场景用法，覆盖文件与照片、家庭账单、孩子学习、长辈协助、出行求职、学习副业和定时任务，并提炼权限、复核与提示词边界。
 - [WorkBuddy 接入 GPT88 完整教程：自定义 API 配置与模型验证](https://doc.gpt88.cc/docs/blog/workbuddy-connect-gpt88-guide/): 通过 WorkBuddy 自定义模型接入 GPT88 统一大模型入口，配置 API Base URL、API Key 与模型 ID，并用实际请求验证连通、工具调用和费用边界。
 - [WorkBuddy 接入 GPT88 报错排查：401、404、模型不可用与工具调用失败](https://doc.gpt88.cc/docs/blog/workbuddy-gpt88-troubleshooting/): 排查 WorkBuddy 自定义 GPT88 API 常见问题：Base URL 路径重复、API Key 错误、模型 ID 不可用、工具调用失败与额度不足，并用最小请求定位故障层。
 - [WorkBuddy 怎么剪视频：HyperFrames、ChatCut、VideoGen 的分工与实战流程](https://doc.gpt88.cc/docs/blog/workbuddy-three-skills-video-workflow/): 整理秋叶大叔的 WorkBuddy 视频制作教程，说明 HyperFrames 动态卡片、ChatCut 口播粗剪和 VideoGen 补充镜头各自适合什么任务，并给出从脚本到成片的四步工作流。
