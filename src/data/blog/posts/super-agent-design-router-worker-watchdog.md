@@ -10,6 +10,8 @@ relatedTitle: DeepSeek Harness 架构全解：从 Model + Harness 到插件树�
 ---
 
 > 本文根据 DeepSeek Harness 于 2026 年 11 月 1 日发布的 X Article [《Exploring Super-agent Design: Towards a More Autonomous Agent System》](https://x.com/DeepSeekHarness/status/2116857257245987236)整理。原文为中文，公开页面提供的是机器翻译版本；原帖本身只分享了文章链接。配套原型 [deepseek-ai/dsh-superagent-prototype](https://github.com/deepseek-ai/dsh-superagent-prototype) 采用 MIT 许可，README 明确说明它是研究原型，不是官方产品，也未完全实现文章中的设计。文中的实验数据来自作者自测，测试用耗时工具模拟编码，因此衡量的是调度而不是真实任务执行。
+>
+> 本文也吸收了 [cxuan（criscxuan）对这篇设计的长文解读](https://x.com/i/article/2117138004242550784)（由[原帖](https://x.com/criscxuan/status/2117139890957861046)分享，2026 年 11 月 2 日）。这篇解读用“单任务的上限取决于模型，多任务的上限取决于人的注意力”概括了问题，并把 Router/Worker、事件过滤、Inline/Spill、异步 ReAct Loop、BYOM 和 Watchdog 串成一条更容易阅读的主线。下文保留官方文章的术语、实验数据和研究原型边界；通俗比喻属于解读作者的说明，不应当当作 DeepSeek Harness 的额外产品承诺。
 
 现有 Agent 产品大多以“会话”为工作单位：一个任务一个窗口，任务之间彼此隔离。要同时推进几件事，人就得在多个会话之间切换。文章引用了一个经验数字：人通常只能同时跟踪 3–5 个活跃会话。单任务的能力瓶颈来自模型，多任务的瓶颈则来自人的注意力。
 
@@ -191,6 +193,8 @@ Trigger 到达率从每分钟约 1 条升到 40 条时：
 ## 来源
 
 - [DeepSeek Harness：Exploring Super-agent Design](https://x.com/DeepSeekHarness/status/2116857257245987236)（2026 年 11 月 1 日；原文中文，公开页面为机器翻译）
+- [cxuan：通了个宵，终于把 Super-Agent 架构玩明白了](https://x.com/criscxuan/status/2117139890957861046)及其 [X Article](https://x.com/i/article/2117138004242550784)（2026 年 11 月 2 日；二次解读）
+- [cxuan 长文中引用的微信原文](https://mp.weixin.qq.com/s/vt2qgHGAmzpqY-CXBWAj0g)
 - [deepseek-ai/dsh-superagent-prototype](https://github.com/deepseek-ai/dsh-superagent-prototype)（MIT；研究原型，非官方产品）
 - [原型架构文档](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/007-architecture.md)
 - [原型设计原则](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/000-philosophy.md)
