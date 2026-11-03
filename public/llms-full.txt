@@ -185,6 +185,7 @@
 - [FDE 多模态数据清洗指南：把社交平台内容变成可信数据](https://doc.gpt88.cc/docs/blog/fde-multimodal-data-cleaning-guide/): 整理 Miles Ma 的 FDE 实战案例，拆解海量文字、图片、音频和视频数据从规范、原始内容、关系、归一化、冲突清洗到验收入库的八步方法。
 - [FDE 开源工具箱：用四个项目搭建企业 AI 交付体系](https://doc.gpt88.cc/docs/blog/fde-open-source-toolbox-overview/): 从 Applied AI Field Guide、FDEOps、FDEstack 和 OpenFDE 四个开源项目出发，整理企业 AI 项目从现场调研、价值判断、客户交付到知识记忆和 Agent 协作的完整地图。
 - [企业 AI Native 怎么落地：从 Palantir Ontology 到真实 FDE 交付](https://doc.gpt88.cc/docs/blog/fde-palantir-ontology-five-day-delivery/): 整理 Miles Ma 关于 AI Native、Palantir Ontology、五天 PoC 和 FDE 交付的长文，拆解对象、关系、动作、写回、验收与复用，区分真正的企业 AI 落地和换皮 Demo。
+- [FDE 可信取数实践：先定义业务口径，再让 AI 调用 MCP Tool](https://doc.gpt88.cc/docs/blog/fde-trusted-data-mcp-tools-seven-day-practice-2026-11/): 整理拉布拉卡对 FDE 可信取数案例的拆解，比较四种查询路径，说明 MCP Tool 如何显式表达业务口径，并将合成数据 demo 与 7 天练习整理为可复核的落地路线。
 - [零基础如何进入 FDE：从第一个真实交付到可复用的 AI 落地能力](https://doc.gpt88.cc/docs/blog/fde-zero-to-one-entry-guide/): 整理 Formulasearch 关于 FDE 入行路径与能力成长的实践分享，拆解实习入口、AI Coding 转向、真实项目、客户交付、能力评估、面试准备、职业边界与长期资产沉淀。
 - [FDEOps：如何管理客户现场的 AI 交付、验收与移交](https://doc.gpt88.cc/docs/blog/fdeops-client-delivery-governance/): 介绍 FDEOps 的客户交付治理思路，拆解简报、成功标准、决策权、风险、上线、验收和移交记录，帮助 FDE 小团队减少现场信息丢失。
 - [FDEstack：把客户发现、POC 和生产集成变成可复用工作流](https://doc.gpt88.cc/docs/blog/fdestack-fde-workflow/): 介绍 FDEstack 的八个 Claude Code Skill，解释它如何把客户上下文、需求范围、价值框架、POC、生产集成和复盘串成一套可重复的 FDE 工作流。
