@@ -11,7 +11,7 @@
  *
  * 主推顺序：
  *   gpt-6-astra → gpt-6.1-sol → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → kimi-k3.1-pro → glm-5.3-flash
- *   → gpt-image-2.5 系列 → grok-4.6 → gpt-5.6 系列 → claude-opus-5-5 → claude-fable-5 → Claude 4.x 系列
+ *   → gpt-image-2.6 系列 → gpt-image-2.5 系列 → grok-4.6 → gpt-5.6 系列 → claude-opus-5-5 → claude-fable-5 → Claude 4.x 系列
  *   → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → kimi-k3 → gemini-3.8-flash → claude-fable-5-1
  *
  * Catalog 处理：
@@ -124,6 +124,8 @@ export const FEATURED_SLUGS = [
   'deepseek-v4-1-flash',
   'kimi-k3-1-pro',
   'glm-5-3-flash',
+  'gpt-image-2-6-sunburst',
+  'gpt-image-2-6-flare',
   'gpt-image-2-5',
   'gpt-image-2-5-flare',
   'gpt-image-2-5-sunburst',
@@ -420,6 +422,62 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '“精度优先”是产品定位，不代表所有提示词、尺寸或编辑任务都能获得相同质量提升；请使用业务样例评测。',
       '复杂编辑仍可能出现局部细节、文字、手部或品牌元素偏差，交付前必须人工检查。',
       '价格、尺寸、质量档位和编辑能力以 GPT88 控制台及当前 API Key 的模型列表为准。',
+    ],
+  },
+  'gpt-image-2-6-sunburst': {
+    provider: 'OpenAI',
+    tagline: 'GPT-Image-2.6 Sunburst：精度优先的图像生成与编辑主推模型。',
+    capabilities: ['GPT-Image-2.6 Sunburst', '高细节生成', '多轮编辑一致性', '复杂构图', 'SVG 与 GIF 输出'],
+    scenarios: ['广告与品牌视觉', '电商产品图', '复杂参考图编辑', '多轮创意迭代', '高质量最终交付'],
+    overview: [
+      'GPT-Image-2.6 Sunburst 是 OpenAI Images 2.6 API 的精度优先变体，面向详细视觉工作、复杂构图和多轮图像编辑。',
+      'OpenAI 官方资料说明，Images 2.6 在 ChatGPT、Codex 和 API 中提供更快的生成、更强的编辑控制与更稳定的角色、产品和品牌细节；API 中的 Sunburst 适合质量设为 medium 或 high 的精细工作。',
+      'API 正式模型 ID 是 gpt-image-2.6-sunburst；gpt-image-2.6 是系列名称，不是当前文档列出的可直接调用 ID。',
+    ],
+    whenToUse: [
+      '需要广告、品牌、电商产品图或复杂视觉交付时',
+      '需要多轮编辑后保持角色、产品和品牌细节一致时',
+      '需要复杂布局、密集文字或多个对象之间的关系更稳定时',
+      '需要使用 markup-guided edit、SVG 或 animated GIF 输出时',
+    ],
+    integrationNotes: [
+      '使用 GPT88 图片 Base URL https://img.gpt88.cc，端点为 POST /v1/images/generations；请求体 model 使用 gpt-image-2.6-sunburst。',
+      '先调用 GET /v1/models 确认当前 API Key 已开放该 ID，再逐步加入 quality、complexity、图像编辑和批量任务。',
+      'complexity 支持 low、medium、high，用于控制规划程度；quality 控制渲染质量，两者应分别记录。',
+      '建议记录 request ID、复杂度、质量、尺寸、生成耗时、编辑轮次、失败率和实际扣费，形成自己的回归样本。',
+    ],
+    caveats: [
+      'OpenAI 官方定位与示例不等于 GPT88 的可用性、价格、额度或 SLA；以控制台和当前 API 响应为准。',
+      '更高 complexity 可能增加延迟，也可能引入不必要的画面变化；局部编辑应先用 low，再按任务增加。',
+      '复杂文字、手部、品牌标识和多轮一致性仍需人工验收，不能只凭模型名称承诺最终质量。',
+      '生成用户图片时应处理隐私、授权、保存期限、删除策略和稳定的隐私保护 safety_identifier。',
+    ],
+  },
+  'gpt-image-2-6-flare': {
+    provider: 'OpenAI',
+    tagline: 'GPT-Image-2.6 Flare：速度优先，适合快速试稿和批量创意迭代。',
+    capabilities: ['GPT-Image-2.6 Flare', '快速迭代', '低复杂度编辑', '海报与产品布局', 'SVG 与 GIF 输出'],
+    scenarios: ['快速试稿', '社交媒体素材', '批量方向探索', '低复杂度编辑', '动图草稿'],
+    overview: [
+      'GPT-Image-2.6 Flare 是 OpenAI Images 2.6 API 的速度优先变体，适合快速试验提示词、布局和编辑方向。',
+      '官方发布说明称，在低质量设置下 Flare 可在约 6 秒内生成图片；这是官方示例定位，不是所有 GPT88 请求、尺寸、线路和并发下的 SLA。',
+      'API 正式模型 ID 是 gpt-image-2.6-flare；它适合先探索方向，再把关键成片交给 Sunburst 复核或精修。',
+    ],
+    whenToUse: [
+      '需要快速生成多个构图或社交媒体候选时',
+      '需要批量探索海报、产品图和网页素材方向时',
+      '需要低复杂度局部编辑或动图草稿时',
+      '希望先用较短反馈周期筛掉不合适的提示词时',
+    ],
+    integrationNotes: [
+      '使用 https://img.gpt88.cc/v1/images/generations，并将 model 设置为 gpt-image-2.6-flare。',
+      '固定提示词、尺寸、quality 和 complexity 后再比较吞吐、成功率和返工量；不要只比较一次响应时间。',
+      '批量任务限制并发并使用指数退避；关键素材进入发布前交给人工或 Sunburst 复核。',
+    ],
+    caveats: [
+      '低延迟定位不等于所有任务都比 Sunburst 快，也不代表低质量草稿可直接用于最终交付。',
+      '图片价格、额度、尺寸、格式和账号权限以 GPT88 控制台、GET /v1/models 和用量记录为准。',
+      '不要把 API Key 放在浏览器或公开前端；批量生成要有成本上限和失败任务清理策略。',
     ],
   },
   'grok-4-6': {
@@ -2225,6 +2283,23 @@ const LOCAL_CATALOG_ROWS: CatalogRow[] = [
     vendors_count: 1,
     upstream_samples: ['gpt-image-2.5'],
     descriptions_sample: ['OpenAI ChatGPT Images 2.5，GPT88 同步上线，当前宣传价每张 0.08 元。'],
+  },
+  {
+    // OpenAI Images 2.6 于 2026-11-04 发布；API 正式 ID 为两个变体。
+    canonical_name: 'gpt-image-2.6-sunburst',
+    display_name: 'GPT-Image-2.6 Sunburst',
+    category: 'image',
+    vendors_count: 1,
+    upstream_samples: ['gpt-image-2.6-sunburst'],
+    descriptions_sample: ['GPT-Image-2.6 Sunburst，精度优先的图像生成与编辑路线。'],
+  },
+  {
+    canonical_name: 'gpt-image-2.6-flare',
+    display_name: 'GPT-Image-2.6 Flare',
+    category: 'image',
+    vendors_count: 1,
+    upstream_samples: ['gpt-image-2.6-flare'],
+    descriptions_sample: ['GPT-Image-2.6 Flare，速度优先的图像生成与编辑路线。'],
   },
   {
     // 2026-09-09 GPT88 变体补丁：公开 marketplace snapshot 更新后可移除。

@@ -26142,4 +26142,59 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
+<url>
+    <loc>https://doc.gpt88.cc/docs/blog/gpt-image-2-6-evaluation/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/hi/docs/blog/gpt-image-2-6-evaluation/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/bn/docs/blog/gpt-image-2-6-evaluation/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/ur/docs/blog/gpt-image-2-6-evaluation/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/ta/docs/blog/gpt-image-2-6-evaluation/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/ne/docs/blog/gpt-image-2-6-evaluation/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/si/docs/blog/gpt-image-2-6-evaluation/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/models/gpt-image-2-6-flare/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>https://doc.gpt88.cc/models/gpt-image-2-6-sunburst/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

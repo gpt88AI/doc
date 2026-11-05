@@ -1066,6 +1066,19 @@ async function readModels() {
       vendors_count: 1,
     },
     {
+      // OpenAI Images 2.6 于 2026-11-04 发布；API 正式 ID 为两个变体。
+      canonical_name: 'gpt-image-2.6-sunburst',
+      display_name: 'GPT-Image-2.6 Sunburst',
+      category: 'image',
+      vendors_count: 1,
+    },
+    {
+      canonical_name: 'gpt-image-2.6-flare',
+      display_name: 'GPT-Image-2.6 Flare',
+      category: 'image',
+      vendors_count: 1,
+    },
+    {
       // GPT88 2026-09-09 变体补丁：公开 marketplace snapshot 更新后可移除。
       canonical_name: 'gpt-image-2.5-flare',
       display_name: 'GPT-Image-2.5 Flare',
@@ -1281,7 +1294,7 @@ function markdownLink(page) {
 
 function llmsTxt(modelPages, englishModelPages, blogPages = []) {
   const featuredModels = modelPages
-    .filter(page => ['gpt-6-astra', 'gpt-6-1-sol', 'gpt-6-1-terra', 'gpt-6-sol', 'gpt-6-luna', 'deepseek-v4-1-flash', 'kimi-k3-1-pro', 'glm-5-3-flash', 'gpt-image-2-5', 'gpt-image-2-5-flare', 'gpt-image-2-5-sunburst', 'gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-5-5', 'claude-haiku-5-5', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
+    .filter(page => ['gpt-6-astra', 'gpt-6-1-sol', 'gpt-6-1-terra', 'gpt-6-sol', 'gpt-6-luna', 'deepseek-v4-1-flash', 'kimi-k3-1-pro', 'glm-5-3-flash', 'gpt-image-2-6-sunburst', 'gpt-image-2-6-flare', 'gpt-image-2-5', 'gpt-image-2-5-flare', 'gpt-image-2-5-sunburst', 'gpt-5-6-sol', 'gpt-5-6-terra', 'gpt-5-6-luna', 'claude-opus-5-5', 'claude-haiku-5-5', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'deepseek-v4-pro', 'deepseek-v4-flash', 'qwen3-8-max-preview', 'kimi-k3', 'nanobanana2'].some(slug => page.path.endsWith(slug)))
     .slice(0, 13)
 
   return `# gpt88.cc API 文档
