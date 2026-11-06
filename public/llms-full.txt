@@ -170,6 +170,7 @@
 - [DeepSeek Harness 架构全解：从 Model + Harness 到插件树、Session Log 与安全管线](https://doc.gpt88.cc/docs/blog/deepseek-harness-architecture-explained/): 整理 Russell 关于 DeepSeek Harness 的架构长文，解释 Agent = Model + Harness、Profile、Cordis 插件生命周期、Turn 与 Step、Session Log、工具审批、Capability Seam、子 Agent 与远程沙箱。
 - [DeepSeek Harness 进阶玩法：Agent Teams、动态工作流与自然语言开发插件](https://doc.gpt88.cc/docs/blog/deepseek-harness-complete-guide/): 根据进阶视频整理 DeepSeek Harness 的四种运行模式、Agent Teams 并行协作、动态工作流、社区插件安装与自然语言创建插件的方法，并补充权限、安全和排障建议。
 - [DeepSeek V4.1 Flash 1017 实测怎么看：从 7 项开发测试到自己验证](https://doc.gpt88.cc/docs/blog/deepseek-v41-flash-1017-seven-dev-tests/): 整理 AI超元域关于 DeepSeek V4.1 Flash 1017 的开发测试视频，区分视频标题信息与官方发布说明，并提供在 GPT88 体验模型、复现任务和核验成本的步骤。
+- [从需求到架构：DeFi Card 系统如何连接银行卡支付与链上资产](https://doc.gpt88.cc/docs/blog/defi-card-system-architecture-design-practice/): 以一套 DeFi Card 架构设计实践为例，梳理多链充值、智能合约钱包、银行卡实时授权、链上异步结算、DeFi 生息和抵押借贷之间的关系，以及模块复用与风险边界。
 - [OpenClaw 上线决策：部署、渠道安全与可重算成本](https://doc.gpt88.cc/docs/blog/deployment-channels-cost/): 用工作负载、信任边界和预算公式选择本地、VPS 或托管模板，并建立可验证的上线门禁。
 - ["设计审美提升：硅谷设计师私藏的 10 个网站与灵感库"](https://doc.gpt88.cc/docs/blog/design-aesthetic-inspiration-sites-2026-10/): "整理 Dreameryanyan 分享的 10 个设计灵感网站，按产品界面、极简、企业 SaaS、深色模式、动效、落地页、字体和实验性视觉分类，并把收藏转化为审美判断。"
 - [Design Style 开源项目拆解：用代码生成包豪斯动效、风格图与设计令牌](https://doc.gpt88.cc/docs/blog/design-style-open-source-bauhaus-motion-workflow/): 基于观默的 X 帖子与 Design Style GitHub 仓库，拆解包豪斯一期如何用 Remotion、SVG、共享设计令牌和 NumPy 音频合成制作 15 秒动效与四张风格图。
