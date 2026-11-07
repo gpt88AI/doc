@@ -126,6 +126,7 @@
 - [Claude Code 做 3D 游戏：10 个开源工具与一套可复用的原型工作流](https://doc.gpt88.cc/docs/blog/claude-code-3d-game-open-source-toolkit/): 整理爆裂队长 NEXT 推荐的 10 个 3D 游戏开发开源项目，覆盖 Agent Skills、Unity/Godot MCP、单图建模、three.js 组件、物理、NPC、粒子、后处理和多人联机，并补充选型、安装与验收方法。
 - [5 个 Claude Code 代码动画视频 Skill：从艺术风格到逐镜头验收](https://doc.gpt88.cc/docs/blog/claude-code-five-code-animation-video-skills/): 整理 369Serena 推荐的五个 Claude Code 视频 Skill，按风格覆盖、方案预览、制作流程和运行依赖比较，并给出安装前检查与成片验收清单。
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
+- [Claude Code、Codex 与 Seedance：从创意到 AI 视频成片的工作流](https://doc.gpt88.cc/docs/blog/claude-codex-seedance-ai-video-production-workflow/): 整理 Eian 的多模型 AI 视频制作实践，按故事、分镜、视觉设定、首尾帧、视频提示词、生成、剪辑和复核拆解流程，并总结如何降低返工与付费抽卡成本。
 - [Claude Haiku 5.5 发布：平均运行成本降低约 75%，小模型该怎么选？](https://doc.gpt88.cc/docs/blog/claude-haiku-5-5-cost-and-model-selection/): 整理 Claude 官方关于 Haiku 5.5 的公开消息，解释“平均运行成本低约 75%”的口径边界，并给出按任务质量、延迟、吞吐和总账单进行模型选型与复测的方法。
 - [CLAUDE.md + index.md 如何限制 Agent 读取范围：用路由预算代替全库递归](https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/): 学会把 Claude Code 的指令加载机制和项目自写 index.md 组合成可审计的路由预算，让 Agent 只读必要入口而不是递归扫完整个 vault。
 - [用 Claude 和 Openverse 为视频挑选音效：从搜索到授权核验](https://doc.gpt88.cc/docs/blog/claude-openverse-freesound-sound-effects-workflow-2026-10/): 整理程序员鱼皮分享的 Claude、Openverse 与 Freesound 音效工作流，说明免申请 API Key 搜索的适用边界、筛选思路、素材试听和授权署名检查。
