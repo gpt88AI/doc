@@ -414,6 +414,7 @@
 - [HyperFrames Studio 长视频工作流：从一分钟动效到可持续的知识栏目](https://doc.gpt88.cc/docs/blog/hyperframes-studio-long-form-video-series-workflow/): 整理 Miao Yang 的 HyperFrames Studio 演示，围绕一条 9 分 34 秒的泰国经济讲解，拆解栏目模板、脚本与画面时间轴、数字人与声音、音乐音效和长视频验收方法。
 - [ImagineArt AI 指南：免费积分、价格、模型和适用场景](https://doc.gpt88.cc/docs/blog/imagineart-ai-guide/): 用免费日积分、订阅与充值积分、Pro 模型访问、商用边界和官方 API 区别，判断 ImagineArt 是否适合你的图片或视频工作流：先试哪条路、先停在哪里，以及哪些场景应直接跳过套件。
 - [ImagineArt 价格、免费积分和评价：付费前先查这几件事](https://doc.gpt88.cc/docs/blog/imagineart-pricing-free-credits-review/): 面向想试用或订阅 ImagineArt 的中文读者：免费积分、付费套餐、网页与 App 付款路线、取消订阅、评价信号和适合跳过的情况，避免把"低价""无限"当成购买承诺。
+- [独立开发者 AI 产品宣传片工作流：从真实 UI 到 15 秒样片](https://doc.gpt88.cc/docs/blog/indie-product-promo-video-ai-workflow/): 整理 BaiFu 的产品宣传片制作实践，拆解首发片、功能介绍片和品牌片的叙事方式，并讲解真实 UI 合成、配音对齐、Remotion 制作与六轮样片迭代。
 - [Claude Code 安装与第一个项目：先跑通一次可验收的小闭环](https://doc.gpt88.cc/docs/blog/install-and-first-project/): 用一个可丢弃的 git 小仓库，完成 Claude Code 的第一次安装、登录核验与最小改动闭环。
 - [Stable Diffusion 安装与部署：先选工作流，再做一次可复现的本地运行](https://doc.gpt88.cc/docs/blog/installation/): 用硬件、隐私、控制需求和维护成本选择 Stable Diffusion 工作流；完成一次可复现安装并保留模型、参数和错误证据。
 - [指令层：把意图翻译成 Agent 能执行的项目地图](https://doc.gpt88.cc/docs/blog/instruction-layer/): 用目标、范围、顺序、验收和冲突优先级五个可执行维度，把一份指令从形容词变成能被验收的项目地图。
