@@ -148,6 +148,7 @@
 - [Codex 从 0 到 1 全攻略：从第一次安装到完整工作流](https://doc.gpt88.cc/docs/blog/codex-from-zero-to-one-complete-guide/): 整理马克的技术工作坊关于 Codex 的完整教程，覆盖安装登录、模型与套餐、预览和 Annotate、权限安全、内置终端、Git、Fork、Archive、AGENTS.md、Plan Mode、多任务、Plugin、Skill、Automation 与 Mobile。
 - [Codex + GitHub Spec Kit：先写清规格、任务和验收，再分步实现](https://doc.gpt88.cc/docs/blog/codex-github-spec-kit-spec-driven-development/): 根据 goan999999 的实践帖，整理 GitHub Spec Kit 在 Codex 中的安装、需求澄清、规划、任务拆解和收敛检查，并说明如何控制返工与覆盖风险。
 - [用 Codex 和 HyperFrames 自动生成视频：从文章到口播、分镜与成片的完整教程](https://doc.gpt88.cc/docs/blog/codex-hyperframes-video-content-workflow/): 整理 Miles Ma 关于 Codex 视频生产流程的实践，讲清如何用文章或主题生成口播稿，完成 TTS 或声音复刻、字幕时间轴、分镜、HyperFrames 成片，以及真人口播和内容获客的后续扩展。
+- [用 Codex 图像生成制作拼贴 B-roll：从视觉隐喻到循环 GIF](https://doc.gpt88.cc/docs/blog/codex-image26-collage-broll/): 拆解 gbroai 分享的半调纸拼贴视频工作流：先确认隐喻与风格静帧，再让图像模型生成循环 GIF，最后转换为剪辑可用的 MP4，并附上逐步验收清单。
 - [9 个值得按需评估的 Agent Skills：从前端、演示到视频和数据图表](https://doc.gpt88.cc/docs/blog/codex-nine-practical-skills/): 按用途梳理 goan999999 推荐的九个 Skill 仓库，并核对当前 README 所述能力、依赖和边界，避免把作者宣传数字当成通用基准。
 - [把复杂任务拆成推理与执行：用 Task Packet 交接，而不是只换模型](https://doc.gpt88.cc/docs/blog/codex-reasoning-execution-task-packet/): 整理 goan999999 提出的 Luna 搜集信息、Sol 负责判断与实现的双阶段流程，并给出不依赖固定模型名称的 Task Packet 模板和验证办法。
 - [给 Codex 接入 Serena MCP：让 Agent 按符号理解大型代码库](https://doc.gpt88.cc/docs/blog/codex-serena-mcp-semantic-code-navigation/): 整理 govin.eth 关于 Codex 与 Serena 的分享，核对 Serena 官方能力与 Codex 配置方式，并拆解 Token 节省说法、项目激活和安全边界。
