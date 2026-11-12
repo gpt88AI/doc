@@ -10,7 +10,7 @@
  *   产物会跟随 dist/assets/index-*.js 一起打包，无需 fetch。
  *
  * 主推顺序：
- *   gpt-6-astra → gpt-6.1-sol → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → kimi-k3.1-pro → glm-5.3-flash
+ *   gpt-6.2-astra → gpt-6.2-sol → gpt-6-astra → gpt-6.1-sol → gpt-6-sol → gpt-6-luna → deepseek-v4-1-flash → kimi-k3.1-pro → glm-5.3-flash
  *   → gpt-image-2.6 系列 → gpt-image-2.5 系列 → grok-4.6 → gpt-5.6 系列 → claude-opus-5-5 → claude-fable-5 → Claude 4.x 系列
  *   → deepseek-v4-pro → deepseek-v4-flash → qwen3.8-max-preview → kimi-k3 → gemini-3.8-flash → claude-fable-5-1
  *
@@ -116,6 +116,8 @@ export type ModelEntry = {
  * ────────────────────────────────────────────────────────────────── */
 
 export const FEATURED_SLUGS = [
+  'gpt-6-2-astra',
+  'gpt-6-2-sol',
   'gpt-6-astra',
   'gpt-6-1-sol',
   'gpt-6-1-terra',
@@ -134,6 +136,7 @@ export const FEATURED_SLUGS = [
   'gpt-5-6-terra',
   'gpt-5-6-luna',
   'claude-opus-5-5',
+  'claude-fable-5-2',
   'claude-fable-5',
   'claude-opus-4-8',
   'claude-opus-4-7',
@@ -165,6 +168,58 @@ type FeaturedDetail = {
 }
 
 const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
+  'gpt-6-2-astra': {
+    provider: 'OpenAI',
+    tagline: 'GPT-6.2 Astra 主推候选：面向高难度技术任务，先确认路由与规格再开展灰度评测。',
+    capabilities: ['GPT-6.2 Astra', '高难度推理', '代码与 Agent 评测', '待核验'],
+    scenarios: ['复杂代码库', '长链路 Agent', '研究分析', '质量优先灰度'],
+    overview: [
+      'GPT88 将 gpt-6.2-astra 作为本地主推候选补丁展示。截至 2026-11-12，OpenAI 官方开发者目录尚未列出 GPT-6.2 Astra 的对应模型页或参数说明；本条目不代表模型已经对所有 GPT88 账号开放。',
+      '在确认真实路由前，不应为 GPT-6.2 Astra 填写上下文、价格、推理档位或 benchmark 数字。先用当前 API Key 调用 GET /v1/models，再与 GPT-6 Astra、GPT-6.1 Sol 使用相同任务集对照。',
+      '本文档页提供接入占位和可复现的评测顺序；模型规格、权限、线路、限速和计费仍以 GPT88 控制台及实际 API 返回为准。',
+    ],
+    whenToUse: [
+      '你需要提前验证 GPT-6.2 Astra 是否已经在当前账号或线路开放时',
+      '准备把新模型与 GPT-6 Astra、GPT-6.1 Sol 做固定样本对比时',
+      '需要评估复杂代码、工具调用、结构化输出和长链路 Agent 时',
+      '可以保留已验证的回退模型并接受灰度测试时',
+    ],
+    integrationNotes: [
+      '使用 GPT88 OpenAI 兼容 Base URL，并将请求体 model 设置为 gpt-6.2-astra；发送业务流量前先调用 GET /v1/models 确认该 ID 是否返回。',
+      '按纯文本、结构化输出、streaming、tools、长上下文的顺序逐项验证；每一步记录成功率、延迟、错误类型和实际用量。',
+      '对 Agent 任务固定工具 Schema、权限、初始上下文和验收条件，单独记录模型失败与 Harness / 工具失败。',
+    ],
+    caveats: [
+      '截至 2026-11-12 尚未找到 OpenAI 官方 GPT-6.2 Astra 发布页、模型页或可复核的 benchmark；任何具体分数、价格和上下文数字都不应视为已证实信息。',
+      '主推补丁不等于后端已开放。以当前 API Key 的 GET /v1/models、控制台权限和真实请求结果为准。',
+      '在通过自己的质量、延迟、成本和稳定性门槛前，不要替换 GPT-6 Astra、GPT-6.1 Sol 或其他已验证生产路由。',
+    ],
+  },
+  'gpt-6-2-sol': {
+    provider: 'OpenAI',
+    tagline: 'GPT-6.2 Sol 主推候选：先核验 GPT88 账号可见性，再用真实代码与工具任务评估。',
+    capabilities: ['GPT-6.2 Sol', '代码任务评测', '工具调用评测', '待核验'],
+    scenarios: ['代码修复', '结构化输出', '工具调用', '质量 / 成本灰度'],
+    overview: [
+      'GPT88 将 gpt-6.2-sol 作为本地主推候选补丁展示。截至 2026-11-12，OpenAI 官方开发者目录尚未列出 GPT-6.2 Sol 的对应模型页或参数说明；本条目不代表模型已经对所有 GPT88 账号开放。',
+      '在确认真实路由前，不应为 GPT-6.2 Sol 填写上下文、价格、推理档位或 benchmark 数字。先用当前 API Key 调用 GET /v1/models，再与 GPT-6 Sol、GPT-6.1 Sol 使用相同任务集对照。',
+      '模型规格、权限、线路、限速和计费仍以 GPT88 控制台及实际 API 返回为准。',
+    ],
+    whenToUse: [
+      '你需要提前验证 GPT-6.2 Sol 是否已经在当前账号或线路开放时',
+      '准备评估代码修复、工具调用、结构化输出和多步 Agent 时',
+      '可以保留已验证的回退模型并接受灰度测试时',
+    ],
+    integrationNotes: [
+      '使用 GPT88 OpenAI 兼容 Base URL，并将请求体 model 设置为 gpt-6.2-sol；发送业务流量前先调用 GET /v1/models 确认该 ID 是否返回。',
+      '按纯文本、结构化输出、streaming、tools、长上下文的顺序逐项验证，记录成功率、延迟、错误类型和实际用量。',
+    ],
+    caveats: [
+      '截至 2026-11-12 尚未找到 OpenAI 官方 GPT-6.2 Sol 发布页、模型页或可复核的 benchmark；任何具体分数、价格和上下文数字都不应视为已证实信息。',
+      '主推补丁不等于后端已开放。以当前 API Key 的 GET /v1/models、控制台权限和真实请求结果为准。',
+      '在通过自己的质量、延迟、成本和稳定性门槛前，不要替换 GPT-6 Sol、GPT-6.1 Sol 或其他已验证生产路由。',
+    ],
+  },
   'gpt-6-astra': {
     provider: 'OpenAI',
     tagline: 'GPT88 当前主推的 GPT-6 Astra，面向复杂推理、编码 Agent 与高价值生产工作流。',
@@ -659,6 +714,33 @@ const FEATURED_DETAILS: Record<string, FeaturedDetail> = {
       '公开报道显示，Claude Fable 5 带有更严格的高风险安全护栏；涉及部分网络安全、生物或化学高风险请求时，系统可能回退到更保守的 Claude Opus 4.8 路径。',
       '公开报道还将其描述为高于 Claude Opus 4.8 的定价档，但 gpt88.cc 文档站不固化价格；实际计费、可用线路、上下文和限速以控制台当前配置为准。',
       '如果你的任务主要是轻量问答或高频批量处理，Haiku、Sonnet 或 GPT mini 一类模型往往更划算，不必默认全量切到 Fable 5。',
+    ],
+  },
+  'claude-fable-5-2': {
+    provider: 'Anthropic',
+    tagline: 'Claude Fable 5.2：面向最难技术工作的 Anthropic 主推模型，强调长周期编码、科学研究与多 Agent 协作。',
+    capabilities: ['技术工作', '长周期 Agent', '代码与工具调用', '科学与金融分析', '视觉与 3D'],
+    scenarios: ['大型代码库', '科学研究循环', '金融分析', '3D / 硬件设计', '长时间自主任务'],
+    overview: [
+      'Anthropic 官方页面将 Claude Fable 5.2 定位为处理最难技术工作的模型，覆盖软件工程、科学研究、数据分析、金融分析以及 3D、硬件和动画设计。官方 API 模型 ID 为 claude-fable-5-2。',
+      '官方介绍称，Fable 5.2 能处理含糊问题、验证自己的工作，并在循环中协调子 Agent；这些是厂商定位与自测描述，不是 GPT88 路由上的性能保证。',
+      'Anthropic 页面列出 FrontierCode 2.0、FrontierSWE v2、AutomationBench、Terminal-Bench-Science、OSWorld 2.1 等基准。分数来自厂商测试，使用条件、护栏和工具配置必须连同数字一起阅读。',
+    ],
+    whenToUse: [
+      '需要在多个仓库、大型 monorepo 或长链路工具任务中持续推进时',
+      '需要科学研究、数据分析、金融分析或复杂知识工作时',
+      '需要处理图像、PDF、3D 场景、硬件设计或动画原型时',
+      '愿意为质量优先任务记录工具调用、返工和人工审查成本时',
+    ],
+    integrationNotes: [
+      '使用 GPT88 OpenAI 兼容 Base URL，并将请求体 model 设置为 claude-fable-5-2；先调用 GET /v1/models 确认当前账号可见。',
+      '先发送最小非流式请求，再分别验证 streaming、tools、结构化输出和长上下文；不要一次性把所有参数加入排错范围。',
+      '如果使用 Claude / Anthropic 风格客户端，仍需按 GPT88 当前网关支持的协议和精确模型 ID 配置，并以控制台为准。',
+    ],
+    caveats: [
+      'Anthropic 官方基准和速度、能力描述属于厂商自报；不能直接替代独立复测，也不保证在 GPT88 路由上复现。',
+      '官方页面说明，网络安全和生物领域的部分请求会触发护栏或回退到能力更低的模型；应把拒答与回退纳入验收。',
+      '价格、上下文、限速、可用线路和 GPT88 账号权限以当前控制台和 API 返回为准。',
     ],
   },
   // slug=claude-fable-5-1 ←→ modelId=claude-fable-5-1
@@ -2226,6 +2308,33 @@ type CatalogRow = {
 }
 
 const LOCAL_CATALOG_ROWS: CatalogRow[] = [
+  {
+    // 2026-11-12 主推候选补丁：公开目录尚未同步，需以 API Key 实测为准。
+    canonical_name: 'gpt-6.2-astra',
+    display_name: 'gpt-6.2-astra',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-6.2-astra'],
+    descriptions_sample: ['GPT-6.2 Astra 主推候选入口；公开规格、价格、权限和线路尚待 GPT88 控制台确认。'],
+  },
+  {
+    // 2026-11-12 主推候选补丁：公开目录尚未同步，需以 API Key 实测为准。
+    canonical_name: 'gpt-6.2-sol',
+    display_name: 'gpt-6.2-sol',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['gpt-6.2-sol'],
+    descriptions_sample: ['GPT-6.2 Sol 主推候选入口；公开规格、价格、权限和线路尚待 GPT88 控制台确认。'],
+  },
+  {
+    // 2026-11-12 Anthropic 官方页面已公开模型 ID，GPT88 路由仍需单独确认。
+    canonical_name: 'claude-fable-5-2',
+    display_name: 'claude-fable-5-2',
+    category: 'chat',
+    vendors_count: 1,
+    upstream_samples: ['claude-fable-5-2'],
+    descriptions_sample: ['Anthropic Claude Fable 5.2，官方 API 模型 ID 为 claude-fable-5-2；GPT88 可用性、价格和线路以控制台为准。'],
+  },
   {
     canonical_name: 'gpt-6-astra',
     display_name: 'gpt-6-astra',

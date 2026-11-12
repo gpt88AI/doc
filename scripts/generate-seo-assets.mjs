@@ -1022,6 +1022,24 @@ async function readModels() {
   const snapshot = JSON.parse(await fs.readFile(snapshotPath, 'utf8'))
   const localCatalog = [
     {
+      canonical_name: 'gpt-6.2-astra',
+      display_name: 'gpt-6.2-astra',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
+      canonical_name: 'gpt-6.2-sol',
+      display_name: 'gpt-6.2-sol',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
+      canonical_name: 'claude-fable-5-2',
+      display_name: 'claude-fable-5-2',
+      category: 'chat',
+      vendors_count: 1,
+    },
+    {
       canonical_name: 'gpt-6-astra',
       display_name: 'gpt-6-astra',
       category: 'chat',

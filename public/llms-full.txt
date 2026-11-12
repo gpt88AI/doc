@@ -127,6 +127,7 @@
 - [5 个 Claude Code 代码动画视频 Skill：从艺术风格到逐镜头验收](https://doc.gpt88.cc/docs/blog/claude-code-five-code-animation-video-skills/): 整理 369Serena 推荐的五个 Claude Code 视频 Skill，按风格覆盖、方案预览、制作流程和运行依赖比较，并给出安装前检查与成片验收清单。
 - [Claude Code 配置第三方 API 完整教程：以 GPT88 为例](https://doc.gpt88.cc/docs/blog/claude-code-third-party-api-config/): 从安装 Claude Code 到接入 GPT88 等第三方兼容网关，详解 Base URL、API Key、模型名称、持久化配置、连通性验证与常见报错排查。
 - [Claude Code、Codex 与 Seedance：从创意到 AI 视频成片的工作流](https://doc.gpt88.cc/docs/blog/claude-codex-seedance-ai-video-production-workflow/): 整理 Eian 的多模型 AI 视频制作实践，按故事、分镜、视觉设定、首尾帧、视频提示词、生成、剪辑和复核拆解流程，并总结如何降低返工与付费抽卡成本。
+- [Claude Fable 5.2 官方评测怎么看：代码、科学研究与安全边界](https://doc.gpt88.cc/docs/blog/claude-fable-5-2-official-benchmarks-review/): 根据 Anthropic 官方 Claude Fable 5.2 页面整理公开定位、基准分数、可用性和安全护栏，并给出在 GPT88 上复测时应记录的指标。
 - [Claude Fable 5.2 七大场景实测怎么看：从古画探索到 Unity、Godot 与动画](https://doc.gpt88.cc/docs/blog/claude-fable-5-2-seven-scenario-video-review/): 整理 AI 超元域关于 Claude Fable 5.2 的 YouTube 测评，区分视频标题可确认的信息与未能取得的字幕正文，并给出古画探索、Unity 3D、Godot 4 和动画生成的复测框架。
 - [Claude Haiku 5.5 发布：平均运行成本降低约 75%，小模型该怎么选？](https://doc.gpt88.cc/docs/blog/claude-haiku-5-5-cost-and-model-selection/): 整理 Claude 官方关于 Haiku 5.5 的公开消息，解释“平均运行成本低约 75%”的口径边界，并给出按任务质量、延迟、吞吐和总账单进行模型选型与复测的方法。
 - [CLAUDE.md + index.md 如何限制 Agent 读取范围：用路由预算代替全库递归](https://doc.gpt88.cc/docs/blog/claude-md-index-navigation/): 学会把 Claude Code 的指令加载机制和项目自写 index.md 组合成可审计的路由预算，让 Agent 只读必要入口而不是递归扫完整个 vault。
@@ -234,6 +235,8 @@
 - [Google AI Studio 速率限制：Gemini 提示已达到速率限制时先这样恢复](https://doc.gpt88.cc/docs/blog/google-ai-studio-rate-limit/): Google AI Studio 出现 Gemini 速率限制提示时，先保存当前聊天，再区分限制属于 AI Studio 界面、Gemini API 429、项目配额、计费状态还是服务状态，并提供降载顺序、429 工程化排查方法与升级证据清单。
 - [Google Gemini API 免费层限制完全指南（2026年1月更新）：速率限制、配额变化与最佳实践](https://doc.gpt88.cc/docs/blog/google-gemini-api-free-tier-limits-2026/): 全面解析 2026 年 Gemini API 免费层的 RPM/TPM/RPD 限制，分析 2025 年 12 月配额削减的具体影响，提供 429 错误处理、多模态 Token 计算、地区访问方案与升级决策指南，含各模型免费层对比表与代码示例。
 - [GPT-6.1 Sol 到底能不能打？官方评测、成本与适用场景](https://doc.gpt88.cc/docs/blog/gpt-6-1-sol-benchmarks-and-cost/): 根据 OpenAI 的 GPT-6.1 Sol 发布资料，梳理编程、专业工作、计算机使用、科学研究、事实准确性与安全评测，并说明五分之一标价和单任务成本的区别。
+- [GPT-6.2 Sol 与 Astra 现在能不能用：模型核验、灰度接入与评测清单](https://doc.gpt88.cc/docs/blog/gpt-6-2-model-verification-and-evaluation/): 截至 2026-11-12，公开目录尚未给出可复核的 GPT-6.2 Sol 或 Astra 官方模型页。本文说明如何核验两个模型 ID，并用固定任务集评估质量、延迟、成本与稳定性。
+- [GPT-6.2 Sol、Astra 与 Claude Fable 5.2 怎么选：先看可用性，再看真实任务成本](https://doc.gpt88.cc/docs/blog/gpt-6-2-vs-claude-fable-5-2-model-selection/): 对比 GPT-6.2 Sol、Astra 的待核验状态与 Claude Fable 5.2 的官方定位，给出代码、知识工作、工具调用和长任务的选型与复测方法。
 - [GPT-6 Astra 与哥德巴赫猜想：AI 数学突破意味着什么？](https://doc.gpt88.cc/docs/blog/gpt-6-astra-goldbach-conjecture/): 整理李永乐老师关于 GPT-6 Astra、哥德巴赫猜想与刘维尔函数的科普视频，区分视频论断、数学背景和仍需独立验证的研究结论。
 - [GPT-6 Astra 时代的 Skills 与 Prompt 重构指南：少一点脚手架，多一点判断](https://doc.gpt88.cc/docs/blog/gpt-6-astra-skills-prompts-guide/): 整理 Eric Provencher 关于 GPT-6 Astra、Skills、AGENTS.md、决策边界和任务持续性的实践，帮助团队清理过时指令，构建更轻量、更稳定的 Agent 工作流。
 - [GPT-6 与 Intelligent UI：ChatGPT 正在把回答变成可交互界面](https://doc.gpt88.cc/docs/blog/gpt-6-intelligent-ui-chatgpt/): 整理 OpenAI 2026 年 10 月 7 日关于 GPT-6 与 Intelligent UI 的公开消息，解释交互式回答的产品含义、可复用的 UI 输出架构，以及目前仍未公布的模型规格与开放范围。
@@ -777,6 +780,7 @@
 - [claude-3-5-haiku-20241022](https://doc.gpt88.cc/models/claude-3-5-haiku-20241022/): Anthropic claude-3-5-haiku-20241022 · CHAT 模型，Model ID: claude-3-5-haiku-20241022，接口路径: /v1/chat/completions。
 - [claude-fable-5](https://doc.gpt88.cc/models/claude-fable-5/): Anthropic claude-fable-5 · CHAT 模型，Model ID: claude-fable-5，接口路径: /v1/chat/completions。
 - [claude-fable-5-1](https://doc.gpt88.cc/models/claude-fable-5-1/): Anthropic claude-fable-5-1 · CHAT 模型，Model ID: claude-fable-5-1，接口路径: /v1/chat/completions。
+- [claude-fable-5-2](https://doc.gpt88.cc/models/claude-fable-5-2/): Anthropic claude-fable-5-2 · CHAT 模型，Model ID: claude-fable-5-2，接口路径: /v1/chat/completions。
 - [claude-haiku-3-5](https://doc.gpt88.cc/models/claude-haiku-3-5/): Anthropic claude-haiku-3-5 · CHAT 模型，Model ID: claude-haiku-3-5，接口路径: /v1/chat/completions。
 - [claude-haiku-4-5](https://doc.gpt88.cc/models/claude-haiku-4-5/): Anthropic claude-haiku-4-5 · CHAT 模型，Model ID: claude-haiku-4-5，接口路径: /v1/chat/completions。
 - [claude-haiku-4-5-20251001](https://doc.gpt88.cc/models/claude-haiku-4-5-20251001/): Anthropic claude-haiku-4-5-20251001 · CHAT 模型，Model ID: claude-haiku-4-5-20251001，接口路径: /v1/chat/completions。
@@ -936,6 +940,8 @@
 - [gpt-5-nano](https://doc.gpt88.cc/models/gpt-5-nano/): OpenAI gpt-5-nano · CHAT 模型，Model ID: gpt-5-nano，接口路径: /v1/chat/completions。
 - [gpt-6.1-sol](https://doc.gpt88.cc/models/gpt-6-1-sol/): OpenAI gpt-6.1-sol · CHAT 模型，Model ID: gpt-6.1-sol，接口路径: /v1/chat/completions。
 - [gpt-6.1-terra](https://doc.gpt88.cc/models/gpt-6-1-terra/): OpenAI gpt-6.1-terra · CHAT 模型，Model ID: gpt-6.1-terra，接口路径: /v1/chat/completions。
+- [gpt-6.2-astra](https://doc.gpt88.cc/models/gpt-6-2-astra/): OpenAI gpt-6.2-astra · CHAT 模型，Model ID: gpt-6.2-astra，接口路径: /v1/chat/completions。
+- [gpt-6.2-sol](https://doc.gpt88.cc/models/gpt-6-2-sol/): OpenAI gpt-6.2-sol · CHAT 模型，Model ID: gpt-6.2-sol，接口路径: /v1/chat/completions。
 - [gpt-6-astra](https://doc.gpt88.cc/models/gpt-6-astra/): OpenAI gpt-6-astra · CHAT 模型，Model ID: gpt-6-astra，接口路径: /v1/chat/completions。
 - [gpt-6-luna](https://doc.gpt88.cc/models/gpt-6-luna/): OpenAI gpt-6-luna · CHAT 模型，Model ID: gpt-6-luna，接口路径: /v1/chat/completions。
 - [gpt-6-sol](https://doc.gpt88.cc/models/gpt-6-sol/): OpenAI gpt-6-sol · CHAT 模型，Model ID: gpt-6-sol，接口路径: /v1/chat/completions。
