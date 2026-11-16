@@ -121,3 +121,38 @@ deliverables
 - 制作复盘：[包豪斯制作过程](https://github.com/guanmo-ai/design-style/blob/main/styles/001-bauhaus/PROCESS.md)
 - 成片：[Design Style · day-01](https://github.com/guanmo-ai/design-style/releases/tag/day-01)
 - GPT88：[模型列表 API](/docs/api/list-models/)与[Chat Completions API](/docs/api/chat-completions/)
+
+## 2026-11-17 仓库复核：项目已经从单期示例变成风格目录
+
+本文最初围绕包豪斯首期展开。按用户提供的 [Design Style 仓库](https://github.com/guanmo-ai/design-style)当前公开 README 复核后，项目的范围已经可以按两条线理解：
+
+- **设计风格**：当前 README 列出包豪斯、瑞士国际主义、构成主义、孟菲斯、波普艺术、Y2K、孔版印刷、新粗野主义、装饰艺术、液态玻璃、中世纪现代、微缩景观、低多边形、字符画、生成艺术、毛绒、新艺术运动和马克笔手绘等条目；每期通常对应短片、过程文档和风格指南，具体发布状态以仓库目录和 Releases 为准。
+- **布局方式**：当前 README 另列便当盒布局和瀑布流布局。它们与风格条目共用“短片 + 图解 + 规则 + 源码”的组织方式，但解决的是信息排列问题，不应和视觉风格混为一谈。
+
+README 还把每期交付物写得更明确：15—20 秒、1920×1080 的动效短片，四张 1080×1350 的风格图或布局图，`PROCESS.md` 制作过程，部分期数提供 `MAKING.md` 从 0 到 1 的复刻流程，以及 `tokens.ts`、`tokens.css`、`tokens.json` 这类共享设计令牌。令牌的价值在于让视频、SVG 图片、网页画廊和 AI 提示词引用同一套颜色、字体、线宽和版式参数。
+
+### 从画廊浏览到本地渲染，分两条路径
+
+只想浏览已发布作品时，README 给出的画廊流程是：
+
+```bash
+npm run gallery:setup
+npm run gallery:sync
+npm run gallery:build
+npm run gallery:serve
+```
+
+这条路径面向静态画廊，需要 Node.js 22.12 以上版本和已登录的 GitHub CLI；完整制作与渲染则还需要 Python 3.10 以上、FFmpeg、Git、字体和浏览器。以构成主义一期为例，仓库提供 `npm run studio` 做逐帧预览，`npm run render:003` 生成视频，`npm run images:003` 生成带内嵌字体的 SVG 预览。不同期数的脚本名、GPU 要求和额外依赖可能不同，不能把某一期的命令当作整个仓库的稳定 API。
+
+### 复用时先拆开代码、字体、素材和成片
+
+仓库 README 对代码、提示词、文档、字体、图片、音乐和视频的说明并不等于一份统一的商业授权。实际复用前至少要分别检查：
+
+1. 当前提交中的根目录和子目录许可文件；
+2. 字体、第三方图片、音频和样本的原始授权；
+3. Releases 中成片与源码的署名要求；
+4. 你自己的产品截图、品牌字体和配音是否拥有再发布权。
+
+因此，本文可以把仓库当成可学习、可复刻的代码创作参考，但不会把“开源设计风格库”自动解释成“所有导出素材都能直接商用”。正式发布前应保留仓库链接、作者署名和逐项许可记录。
+
+本次复核只更新了仓库公开 README、目录和脚本说明，没有把 Star 数、提交数量或某个条目的视觉质量当成稳定指标；这些内容会随仓库继续变化。
