@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">大模型推理芯片路线动画解释</title>
+  <desc id="desc">动画展示提示词进入 Prefill，再进入 KV Cache 和 Decode 生成区间，并对比 GPU 加 HBM、确定性加速器加片上 SRAM、晶圆级大芯片三条路线。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08131e" />
+      <stop offset="1" stop-color="#101b2a" />
+    </linearGradient>
+    <linearGradient id="cyanPanel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12384a" />
+      <stop offset="1" stop-color="#0e2634" />
+    </linearGradient>
+    <linearGradient id="amberPanel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a2d16" />
+      <stop offset="1" stop-color="#2b211b" />
+    </linearGradient>
+    <filter id="glowCyan" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="7" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="glowAmber" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .label { fill: #eef7fb; font-size: 25px; font-weight: 700; }
+      .small { fill: #a8bfca; font-size: 18px; }
+      .tiny { fill: #7f9aa8; font-size: 15px; }
+      .line { fill: none; stroke: #416273; stroke-width: 4; stroke-linecap: round; }
+      .cyan-line { fill: none; stroke: #45d7e8; stroke-width: 4; stroke-linecap: round; }
+      .amber-line { fill: none; stroke: #f7a44b; stroke-width: 4; stroke-linecap: round; }
+      .pulse { animation: pulse 2.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .pulse-delay { animation-delay: -1.4s; }
+      .scan { animation: scan 3.2s ease-in-out infinite; }
+      .scan-delay { animation-delay: -1.6s; }
+      @keyframes pulse { 0%, 100% { opacity: .45; transform: scale(.84); } 50% { opacity: 1; transform: scale(1.16); } }
+      @keyframes scan { 0% { opacity: 0; transform: translateX(-15px); } 20%, 75% { opacity: 1; } 100% { opacity: 0; transform: translateX(120px); } }
+      @media (prefers-reduced-motion: reduce) {
+        .pulse, .scan { animation: none; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1600" height="980" rx="28" fill="url(#bg)" />
+  <rect x="34" y="34" width="1532" height="912" rx="24" fill="none" stroke="#294453" stroke-width="2" />
+
+  <text x="82" y="92" class="label" font-size="34">AI 推理芯片路线图</text>
+  <text x="82" y="126" class="small">同一个模型，瓶颈会随着阶段从“算得快”转向“搬得快”</text>
+  <circle cx="1438" cy="88" r="8" fill="#45d7e8" class="pulse" />
+  <text x="1460" y="95" class="tiny">动画中</text>
+
+  <rect x="70" y="165" width="1460" height="326" rx="20" fill="#0b1722" stroke="#264654" stroke-width="2" />
+  <text x="104" y="208" class="small" fill="#45d7e8">一条请求的推理路径</text>
+
+  <path d="M214 327 H310" class="cyan-line" opacity=".7" />
+  <path d="M492 327 H590" class="cyan-line" opacity=".7" />
+  <path d="M772 327 H870" class="amber-line" opacity=".7" />
+  <path d="M1052 327 H1160" class="amber-line" opacity=".7" />
+  <path d="M1339 327 H1450" class="line" opacity=".7" />
+
+  <g fill="#45d7e8" filter="url(#glowCyan)">
+    <circle r="7"><animateMotion dur="2.8s" repeatCount="indefinite" path="M214 327 H310" /></circle>
+    <circle r="7"><animateMotion dur="2.8s" begin="-.9s" repeatCount="indefinite" path="M492 327 H590" /></circle>
+  </g>
+  <g fill="#f7a44b" filter="url(#glowAmber)">
+    <circle r="7"><animateMotion dur="2.4s" repeatCount="indefinite" path="M772 327 H870" /></circle>
+    <circle r="7"><animateMotion dur="2.4s" begin="-1.2s" repeatCount="indefinite" path="M1052 327 H1160" /></circle>
+  </g>
+
+  <g>
+    <rect x="104" y="272" width="110" height="112" rx="16" fill="#142a38" stroke="#45d7e8" stroke-width="2" />
+    <text x="159" y="320" text-anchor="middle" class="label" font-size="21">提示词</text>
+    <text x="159" y="351" text-anchor="middle" class="small">输入</text>
+    <circle cx="159" cy="369" r="5" fill="#45d7e8" class="pulse" />
+  </g>
+  <g>
+    <rect x="310" y="244" width="182" height="166" rx="18" fill="url(#cyanPanel)" stroke="#45d7e8" stroke-width="2" />
+    <text x="401" y="300" text-anchor="middle" class="label">Prefill</text>
+    <text x="401" y="336" text-anchor="middle" class="small">并行算力密集</text>
+    <text x="401" y="367" text-anchor="middle" class="tiny">一次处理整段输入</text>
+    <g stroke="#45d7e8" stroke-width="3" opacity=".65">
+      <path d="M344 384 h28 M378 384 h28 M412 384 h28" />
+    </g>
+  </g>
+  <g>
+    <rect x="590" y="272" width="182" height="112" rx="16" fill="#142a38" stroke="#45d7e8" stroke-width="2" />
+    <text x="681" y="320" text-anchor="middle" class="label">KV Cache</text>
+    <text x="681" y="351" text-anchor="middle" class="small">记住已读内容</text>
+    <path d="M626 370 h110" stroke="#45d7e8" stroke-width="3" stroke-dasharray="7 9" class="scan" />
+  </g>
+  <g>
+    <rect x="870" y="244" width="182" height="166" rx="18" fill="url(#amberPanel)" stroke="#f7a44b" stroke-width="2" />
+    <text x="961" y="300" text-anchor="middle" class="label">Decode</text>
+    <text x="961" y="336" text-anchor="middle" class="small">带宽密集</text>
+    <text x="961" y="367" text-anchor="middle" class="tiny">逐个生成下一个 Token</text>
+    <circle cx="927" cy="386" r="5" fill="#f7a44b" class="pulse" />
+    <circle cx="961" cy="386" r="5" fill="#f7a44b" class="pulse pulse-delay" />
+    <circle cx="995" cy="386" r="5" fill="#f7a44b" class="pulse" />
+  </g>
+  <g>
+    <rect x="1160" y="272" width="179" height="112" rx="16" fill="#2e241b" stroke="#f7a44b" stroke-width="2" />
+    <text x="1249" y="320" text-anchor="middle" class="label">下一个 Token</text>
+    <text x="1249" y="351" text-anchor="middle" class="small">输出一个，再循环</text>
+    <path d="M1206 370 h86" stroke="#f7a44b" stroke-width="3" stroke-dasharray="4 8" class="scan scan-delay" />
+  </g>
+  <g>
+    <rect x="1450" y="272" width="52" height="112" rx="16" fill="#1d2a31" stroke="#8aa7b2" stroke-width="2" />
+    <text x="1476" y="333" text-anchor="middle" class="label" font-size="18" transform="rotate(-90 1476 333)">回答</text>
+  </g>
+
+  <text x="122" y="449" class="tiny">Prefill 更像“做矩阵乘法”</text>
+  <text x="1040" y="449" class="tiny">Decode 更像“反复搬数据，再做一点计算”</text>
+
+  <rect x="70" y="525" width="700" height="380" rx="20" fill="#0b1722" stroke="#264654" stroke-width="2" />
+  <text x="104" y="570" class="small" fill="#45d7e8">内存层级：推理速度首先受数据移动约束</text>
+  <text x="104" y="604" class="tiny">离计算单元越近，延迟越低；容量、成本和功耗也会改变</text>
+
+  <g>
+    <rect x="108" y="657" width="170" height="138" rx="16" fill="#12384a" stroke="#45d7e8" stroke-width="2" />
+    <text x="193" y="704" text-anchor="middle" class="label">SRAM</text>
+    <text x="193" y="735" text-anchor="middle" class="small">片上 · 快</text>
+    <text x="193" y="765" text-anchor="middle" class="tiny">容量小 / 成本高</text>
+    <rect x="126" y="779" width="134" height="4" rx="2" fill="#45d7e8" class="scan" />
+  </g>
+  <g>
+    <rect x="315" y="657" width="170" height="138" rx="16" fill="#233346" stroke="#78c5d2" stroke-width="2" />
+    <text x="400" y="704" text-anchor="middle" class="label">HBM</text>
+    <text x="400" y="735" text-anchor="middle" class="small">堆叠 · 高带宽</text>
+    <text x="400" y="765" text-anchor="middle" class="tiny">容量更大 / 仍耗电</text>
+    <rect x="333" y="779" width="134" height="4" rx="2" fill="#78c5d2" class="scan scan-delay" />
+  </g>
+  <g>
+    <rect x="522" y="657" width="170" height="138" rx="16" fill="#2a2e3c" stroke="#9a9ba9" stroke-width="2" />
+    <text x="607" y="704" text-anchor="middle" class="label">DRAM</text>
+    <text x="607" y="735" text-anchor="middle" class="small">片外 · 大容量</text>
+    <text x="607" y="765" text-anchor="middle" class="tiny">延迟更高 / 搬运远</text>
+    <rect x="540" y="779" width="134" height="4" rx="2" fill="#9a9ba9" class="scan" />
+  </g>
+  <path d="M193 630 V657 M400 630 V657 M607 630 V657" stroke="#416273" stroke-width="3" stroke-dasharray="6 8" />
+  <text x="104" y="846" class="small">设计问题：把最常用的数据放在哪里，才能少走路？</text>
+
+  <rect x="810" y="525" width="720" height="380" rx="20" fill="#0b1722" stroke="#264654" stroke-width="2" />
+  <text x="844" y="570" class="small" fill="#f7a44b">三条路线：不是谁“绝对更快”，而是谁的取舍更匹配</text>
+
+  <g>
+    <rect x="844" y="608" width="652" height="76" rx="14" fill="#172638" stroke="#526b7a" />
+    <rect x="864" y="627" width="42" height="38" rx="8" fill="#5d7cff" />
+    <text x="928" y="642" class="label" font-size="21">GPU + HBM</text>
+    <text x="928" y="666" class="tiny">通用性强 · 生态成熟 · 数据搬运压力大</text>
+    <path d="M1304 646 h126" class="line" />
+    <circle cx="1310" cy="646" r="5" fill="#5d7cff" class="pulse" />
+  </g>
+  <g>
+    <rect x="844" y="704" width="652" height="76" rx="14" fill="#12384a" stroke="#45d7e8" />
+    <rect x="864" y="723" width="42" height="38" rx="8" fill="#45d7e8" />
+    <text x="928" y="738" class="label" font-size="21">确定性加速器 + SRAM</text>
+    <text x="928" y="762" class="tiny">静态调度 · 延迟可预测 · 动态性和容量受限</text>
+    <path d="M1304 742 h126" class="cyan-line" />
+    <circle cx="1310" cy="742" r="5" fill="#45d7e8" class="pulse pulse-delay" />
+  </g>
+  <g>
+    <rect x="844" y="800" width="652" height="76" rx="14" fill="#34251b" stroke="#f7a44b" />
+    <rect x="864" y="819" width="42" height="38" rx="8" fill="#f7a44b" />
+    <text x="928" y="834" class="label" font-size="21">晶圆级大芯片</text>
+    <text x="928" y="858" class="tiny">片上通信密集 · 大模型映射直接 · 良率与系统适配复杂</text>
+    <path d="M1304 838 h126" class="amber-line" />
+    <circle cx="1310" cy="838" r="5" fill="#f7a44b" class="pulse" />
+  </g>
+
+  <text x="844" y="919" class="tiny">未来更可能是异构组合：通用性、带宽、局部性、功耗与软件栈一起决定答案</text>
+</svg>

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Jev System One Model 工作流</title>
+  <desc id="desc">结构化状态进入 Jev，同时评估多个 Choice、Score 和 Boolean 问题，输出带概率的类型化决策，最后由业务代码路由或交给人工复核。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#091522" />
+      <stop offset="1" stop-color="#162333" />
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#123e55" />
+      <stop offset="1" stop-color="#0e2739" />
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#362658" />
+      <stop offset="1" stop-color="#241c3c" />
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#154537" />
+      <stop offset="1" stop-color="#122e2d" />
+    </linearGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#6bd7f5" />
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .title { fill: #f1fbff; font-size: 36px; font-weight: 800; }
+      .subtitle { fill: #9bb4c1; font-size: 19px; }
+      .head { fill: #f2fbff; font-size: 25px; font-weight: 750; }
+      .body { fill: #d0e5ec; font-size: 20px; }
+      .code { fill: #8fe6ff; font-size: 19px; font-family: "SFMono-Regular", Consolas, monospace; }
+      .muted { fill: #8ba6b5; font-size: 16px; }
+      .panel { stroke: #365467; stroke-width: 2; }
+      .line { fill: none; stroke: #58c9ea; stroke-width: 4; marker-end: url(#arrow); }
+      .dash { fill: none; stroke: #456579; stroke-width: 2; stroke-dasharray: 8 10; }
+      .pulse { fill: #8fe6ff; filter: url(#glow); }
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <text x="80" y="82" class="title">Jev / System One Model</text>
+  <text x="80" y="120" class="subtitle">把状态转换为软件可以直接消费的、带概率的类型化决策</text>
+
+  <rect x="80" y="205" width="295" height="450" rx="22" fill="url(#cyan)" class="panel" />
+  <text x="115" y="260" class="head">01 · State</text>
+  <text x="115" y="302" class="body">结构化状态输入</text>
+  <rect x="115" y="345" width="225" height="210" rx="14" fill="#07131f" stroke="#2c6177" />
+  <text x="140" y="390" class="code">ticket: {</text>
+  <text x="155" y="425" class="code">queue: "billing",</text>
+  <text x="155" y="460" class="code">urgent: true,</text>
+  <text x="155" y="495" class="code">message: "..."</text>
+  <text x="140" y="530" class="code">}</text>
+  <text x="115" y="610" class="muted">string / object / array</text>
+
+  <path d="M375 430 C435 430 440 430 500 430" class="line" />
+  <circle cx="430" cy="430" r="7" class="pulse" />
+
+  <rect x="500" y="165" width="410" height="530" rx="22" fill="url(#violet)" class="panel" />
+  <text x="535" y="220" class="head">02 · Jev evaluate</text>
+  <text x="535" y="260" class="body">一次声明多个独立问题</text>
+  <rect x="535" y="310" width="340" height="82" rx="13" fill="#241a3e" stroke="#705ba2" />
+  <text x="565" y="348" class="head" font-size="22">Choice</text>
+  <text x="690" y="348" class="body">选择队列</text>
+  <text x="565" y="375" class="muted">account / billing / technical</text>
+  <rect x="535" y="417" width="340" height="82" rx="13" fill="#241a3e" stroke="#705ba2" />
+  <text x="565" y="455" class="head" font-size="22">Score</text>
+  <text x="690" y="455" class="body">评估紧急程度</text>
+  <text x="565" y="482" class="muted">low → medium → high → critical</text>
+  <rect x="535" y="524" width="340" height="82" rx="13" fill="#241a3e" stroke="#705ba2" />
+  <text x="565" y="562" class="head" font-size="22">Boolean</text>
+  <text x="710" y="562" class="body">是否要求退款</text>
+  <text x="565" y="589" class="muted">视频称 Noul</text>
+  <text x="535" y="650" class="muted">并行评估 · 非逐 Token 生成</text>
+
+  <path d="M910 430 C970 430 975 430 1035 430" class="line" />
+  <circle cx="965" cy="430" r="7" class="pulse" />
+
+  <rect x="1035" y="205" width="245" height="450" rx="22" fill="url(#green)" class="panel" />
+  <text x="1070" y="260" class="head">03 · Answers</text>
+  <text x="1070" y="302" class="body">类型 + 概率</text>
+  <text x="1070" y="370" class="code">queue: billing</text>
+  <text x="1070" y="405" class="muted">p = 0.86</text>
+  <text x="1070" y="470" class="code">urgent: high</text>
+  <text x="1070" y="505" class="muted">p = 0.71</text>
+  <text x="1070" y="570" class="code">refund: true</text>
+  <text x="1070" y="605" class="muted">confidence / distribution</text>
+
+  <path d="M1280 430 C1340 430 1345 430 1400 430" class="line" />
+  <circle cx="1330" cy="430" r="7" class="pulse" />
+
+  <rect x="1400" y="205" width="135" height="450" rx="22" fill="#202f3e" class="panel" />
+  <text x="1430" y="260" class="head" font-size="22">04</text>
+  <text x="1430" y="315" class="body">代码</text>
+  <text x="1430" y="355" class="body">路由</text>
+  <text x="1430" y="395" class="body">审核</text>
+  <text x="1430" y="435" class="body">重试</text>
+  <text x="1430" y="475" class="body">人工</text>
+  <text x="1430" y="515" class="body">复核</text>
+  <text x="1430" y="595" class="muted">副作用仍由</text>
+  <text x="1430" y="620" class="muted">策略门禁控制</text>
+
+  <path d="M1020 760 H250 Q180 760 180 690 V655" class="dash" />
+  <text x="270" y="800" class="subtitle">不确定的答案 → 转人工；模型输出不是事实证明，业务代码仍是最终执行边界</text>
+  <g class="pulse">
+    <circle cx="395" cy="430" r="5"><animate attributeName="cx" from="395" to="485" dur="1.7s" repeatCount="indefinite" /></circle>
+    <circle cx="930" cy="430" r="5"><animate attributeName="cx" from="930" to="1020" dur="1.4s" repeatCount="indefinite" /></circle>
+    <circle cx="1300" cy="430" r="5"><animate attributeName="cx" from="1300" to="1390" dur="1.2s" repeatCount="indefinite" /></circle>
+  </g>
+  <style>
+    @media (prefers-reduced-motion: reduce) { .pulse animate { display: none; } }
+  </style>
+</svg>
